@@ -1,10 +1,9 @@
-import pprint
-import wave
-
 import dataclasses
 import json
-import sys
 import re
+import sys
+import wave
+
 from pathlib import Path
 
 from PySide2.QtCore import (
