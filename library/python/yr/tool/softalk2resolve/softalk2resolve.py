@@ -90,7 +90,7 @@ class MainWindow(QMainWindow):
         v.hideColumn(1)
         v.hideColumn(2)
 
-        # header setting_window
+        # header
         h = v.header()
         h.setStretchLastSection(False)
         h.setSectionResizeMode(0, QHeaderView.Stretch)
@@ -99,6 +99,7 @@ class MainWindow(QMainWindow):
         h.setSectionResizeMode(3, QHeaderView.ResizeToContents)
 
         self.set_tree_root()
+
         # event
         self.ui.softalkwToolButton.clicked.connect(self.softalkwToolButton_clicked)
         self.ui.outToolButton.clicked.connect(self.outToolButton_clicked)
