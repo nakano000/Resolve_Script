@@ -34,8 +34,6 @@ from yr.tool.softalk2resolve.softalk2resolve_ui import Ui_MainWindow
 TEXT_COLOR = QColor(210, 210, 210)
 ERROR_COLOR = QColor(210, 0, 0)
 
-SUBTITLES_COMP = config.ROOT_PATH.joinpath('data', 'template', 'subtitles.comp')
-
 APP_NAME = 'softalk2resolve'
 
 
