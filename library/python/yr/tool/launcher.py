@@ -1,6 +1,7 @@
 import sys
 import json
 from pathlib import Path
+from typing import List
 
 from PySide2.QtCore import (
     Qt,
@@ -47,7 +48,7 @@ class MainWindow(QWidget):
         lo = QVBoxLayout()
         lo.setContentsMargins(5, 5, 5, 5)
         # import json
-        lst = p.pipe(
+        lst: List[dict] = p.pipe(
             MENU_JSON.read_text(),
             json.loads,
             list,
