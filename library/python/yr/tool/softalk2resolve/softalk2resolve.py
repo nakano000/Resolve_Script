@@ -168,7 +168,7 @@ class MainWindow(QMainWindow):
         path, _ = QFileDialog.getOpenFileName(
             self,
             'Open File',
-            '',
+            self.ui.outLineEdit.text().strip(),
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
@@ -182,7 +182,7 @@ class MainWindow(QMainWindow):
         path, _ = QFileDialog.getSaveFileName(
             self,
             'Save File',
-            '',
+            self.ui.outLineEdit.text().strip(),
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
@@ -194,7 +194,7 @@ class MainWindow(QMainWindow):
         path, _ = QFileDialog.getSaveFileName(
             self,
             'Save Voice Template',
-            '',
+            self.ui.outLineEdit.text().strip(),
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
