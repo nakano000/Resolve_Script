@@ -1,7 +1,7 @@
 import subprocess
 import dataclasses
 from pathlib import Path
-from typing import List, Optional
+from typing import List
 
 from yr.core import config
 
