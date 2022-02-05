@@ -7,5 +7,5 @@ lib_path = os.path.abspath(
 sys.path.append(lib_path)
 
 if __name__ == "__main__":
-    from yr.tool.softalk2resolve import run
+    from yr.tool.text2wave.softalk2wave import run
     run()

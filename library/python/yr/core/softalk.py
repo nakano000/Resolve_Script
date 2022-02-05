@@ -3,7 +3,9 @@ import dataclasses
 from pathlib import Path
 from typing import List
 
-from yr.core import config
+from yr.core import (
+    read_aloud_cmd,
+)
 
 VOICE_LIST: List[str] = [
     '女性01',
@@ -38,22 +40,20 @@ VOICE_LIST: List[str] = [
     'Microsoft Zira Desktop - English (United States)',
 ]
 
+EXE_NAME = 'softalkw.exe'
+
 
 @dataclasses.dataclass
-class Data(config.DataInterface):
-    softalkw_path: str = ''
-
+class Data(read_aloud_cmd.Data):
     voice: str = '女性01'
 
     volume: int = 50
     speed: int = 120
     pitch: int = 100
 
-    text: str = ''
-
     def export(self, path: Path) -> None:
         command: List[str] = [
-            str(self.softalkw_path),
+            str(self.exe_path),
             '/R:' + str(path),
             '/NM:' + self.voice,
             '/V:' + str(self.volume),
@@ -66,6 +66,6 @@ class Data(config.DataInterface):
 
 if __name__ == '__main__':
     s = Data()
-    s.softalkw_path = 'D:/App/softalk/softalkw.exe'
+    s.exe_path = 'D:/App/softalk/softalkw.exe'
     s.text = 'おはようございます。'
     s.export(Path('D:/App/softalk/out.wav'))

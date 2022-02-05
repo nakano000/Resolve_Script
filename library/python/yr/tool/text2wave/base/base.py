@@ -24,32 +24,27 @@ from PySide2.QtGui import (
 from yr.core import (
     config,
     pipe as p,
-    softalk,
+    read_aloud_cmd,
     srt,
 )
 from yr.gui import appearance
-from yr.tool.softalk2resolve.softalk2resolve_ui import Ui_MainWindow
+from yr.tool.text2wave.base.base_ui import Ui_MainWindow
 
 TEXT_COLOR = QColor(210, 210, 210)
 ERROR_COLOR = QColor(210, 0, 0)
 
-APP_NAME = 'softalk2resolve'
-
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
-    from yr.core import (
-        softalk as st,
-    )
     out_dir: str = ''
-    softalk: st.Data = dataclasses.field(default_factory=st.Data)
+    cmd: read_aloud_cmd.Data = dataclasses.field(default_factory=read_aloud_cmd.Data)
 
     def save_voice_template(self, path: Path) -> None:
         dct = dataclasses.asdict(self)
         del dct['out_dir']
-        st = dct['softalk']
-        for key in ['softalkw_path', 'text']:
-            del st[key]
+        cmd_data = dct['cmd']
+        for key in ['exe_path', 'text']:
+            del cmd_data[key]
         path.write_text(
             json.dumps(dct, indent=2),
             encoding='utf-8',
@@ -66,17 +61,10 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.setWindowTitle(APP_NAME)
-
-        # combobox
-        self.ui.voiceComboBox.addItems(softalk.VOICE_LIST)
-
-        # config
-        self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
-        self.load_config()
+        # exe_name
+        self.exe_name = '*.exe'
 
         # tree view
-
         model = QFileSystemModel()
         model.setFilter(QDir.Files)
         model.setNameFilters(['*.wav', '*.srt'])
@@ -101,7 +89,7 @@ class MainWindow(QMainWindow):
         self.set_tree_root()
 
         # event
-        self.ui.softalkwToolButton.clicked.connect(self.softalkwToolButton_clicked)
+        self.ui.exeToolButton.clicked.connect(self.exeToolButton_clicked)
         self.ui.outToolButton.clicked.connect(self.outToolButton_clicked)
 
         self.ui.closeButton.clicked.connect(self.close)
@@ -124,37 +112,19 @@ class MainWindow(QMainWindow):
             _index = m.setRootPath(str(path))
             v.setRootIndex(_index)
 
+    def new_config(self):
+        return ConfigData()
+
     def set_data(self, c: ConfigData):
-        st = c.softalk
-
-        self.ui.softalkwLineEdit.setText(st.softalkw_path)
-
         self.ui.outLineEdit.setText(c.out_dir)
 
-        self.ui.voiceComboBox.setCurrentText(st.voice)
-        self.ui.volumeSpinBox.setValue(st.volume)
-        self.ui.speedSpinBox.setValue(st.speed)
-        self.ui.pitchSpinBox.setValue(st.pitch)
-        self.ui.plainTextEdit.setPlainText(st.text)
-
     def get_data(self) -> ConfigData:
-        c = ConfigData()
-        st = c.softalk
-
-        st.softalkw_path = self.ui.softalkwLineEdit.text()
-
+        c = self.new_config()
         c.out_dir = self.ui.outLineEdit.text()
-
-        st.voice = self.ui.voiceComboBox.currentText()
-        st.volume = self.ui.volumeSpinBox.value()
-        st.speed = self.ui.speedSpinBox.value()
-        st.pitch = self.ui.pitchSpinBox.value()
-        st.text = self.ui.plainTextEdit.toPlainText()
-
         return c
 
     def load_config(self) -> None:
-        c = ConfigData()
+        c = self.new_config()
         if self.config_file.is_file():
             c.load(self.config_file)
         self.set_data(c)
@@ -213,13 +183,13 @@ class MainWindow(QMainWindow):
         log.setTextColor(TEXT_COLOR)
         log.repaint()
 
-    def softalkwToolButton_clicked(self) -> None:
-        w = self.ui.softalkwLineEdit
+    def exeToolButton_clicked(self) -> None:
+        w = self.ui.exeLineEdit
         path, _ = QFileDialog.getOpenFileName(
             self,
-            'Select softalkw.exe',
+            'Select %s' % self.exe_name,
             w.text(),
-            'softalkw.exe(softalkw.exe)'
+            '%s(%s)' % (self.exe_name, self.exe_name),
         )
         if path != '':
             w.setText(path)
@@ -234,18 +204,29 @@ class MainWindow(QMainWindow):
         if path != '':
             w.setText(path)
 
+    def export_wave(self, path: Path) -> bool:
+        data = self.get_data()
+        cmd_data = data.cmd
+        cmd_data.export(path)
+        if path.is_file():
+            self.add2log('Export: %s' % str(path))
+            return True
+        else:
+            self.add2log('[ERROR]wav fileの書き出しに失敗しました。', ERROR_COLOR)
+        return False
+
     def export(self) -> None:
         self.ui.logTextEdit.clear()
 
         data = self.get_data()
-        st = data.softalk
+        cmd_data = data.cmd
 
-        # softalkw check
-        softalkw: Path = Path(st.softalkw_path)
-        if softalkw.is_file():
-            self.add2log('softalkw: %s' % str(softalkw))
+        # exe check
+        exe: Path = Path(cmd_data.exe_path)
+        if exe.is_file():
+            self.add2log('%s: %s' % (self.exe_name, str(exe)))
         else:
-            self.add2log('[ERROR]softalkw.exeの設定に失敗しました。', ERROR_COLOR)
+            self.add2log('[ERROR]%sの設定に失敗しました。' % self.exe_name, ERROR_COLOR)
             return
 
         # out directory check
@@ -268,7 +249,7 @@ class MainWindow(QMainWindow):
             p.map(lambda l: int(l[0])),
             list,
             lambda xs: str(1 if len(xs) == 0 else max(xs) + 1).zfill(4),
-            lambda s: '%s.%s' % (s, re.sub(r'[\\/:*?"<>|]+', '', st.text[:5])),
+            lambda s: '%s.%s' % (s, re.sub(r'[\\/:*?"<>|]+', '', cmd_data.text[:5])),
             p.call.replace('\n', ' '),
         )
 
@@ -276,11 +257,7 @@ class MainWindow(QMainWindow):
         _wav_file = out_dir.joinpath(_name + '.wav')
 
         self.add2log('処理中(wav file)')
-        st.export(_wav_file)
-        if _wav_file.is_file():
-            self.add2log('Export: %s' % str(_wav_file))
-        else:
-            self.add2log('[ERROR]wav fileの書き出しに失敗しました。', ERROR_COLOR)
+        if not self.export_wave(_wav_file):
             return
 
         self.add2log('')  # new line
@@ -292,7 +269,7 @@ class MainWindow(QMainWindow):
         with wave.open(str(_wav_file), 'rb') as f:
             _d = float(f.getnframes()) / f.getframerate()
         _srt = srt.Srt()
-        _srt.subtitles.append(srt.Subtitle(0, _d, st.text))
+        _srt.subtitles.append(srt.Subtitle(0, _d, cmd_data.text))
         _srt.save(_srt_file)
         self.add2log('Export: %s' % str(_srt_file))
 

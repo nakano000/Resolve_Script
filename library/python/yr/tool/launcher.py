@@ -22,7 +22,7 @@ from yr.core import (
 from yr.gui import appearance
 from yr.gui.script_button import ScriptButton
 
-APP_NAME = 'ゆっくりぞるぶ'
+APP_NAME = 'りぞりぷと'
 __version__ = '0.2.0'
 
 MENU_JSON = config.ROOT_PATH.joinpath('data', 'app', 'launcher_menu.json')
