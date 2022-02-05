@@ -2,7 +2,7 @@ import dataclasses
 import json
 import re
 import sys
-import wave
+import soundfile
 
 from pathlib import Path
 
@@ -63,6 +63,7 @@ class MainWindow(QMainWindow):
         )
         # exe_name
         self.exe_name = '*.exe'
+        self.template_dir = config.ROOT_PATH.joinpath('data', 'template')
 
         # tree view
         model = QFileSystemModel()
@@ -134,11 +135,12 @@ class MainWindow(QMainWindow):
         c = self.get_data()
         c.save(self.config_file)
 
-    def open(self) -> None:
+    def open(self, is_template=False) -> None:
+        dir_path = str(self.template_dir) if is_template else self.ui.outLineEdit.text().strip()
         path, _ = QFileDialog.getOpenFileName(
             self,
             'Open File',
-            self.ui.outLineEdit.text().strip(),
+            dir_path,
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
@@ -164,7 +166,7 @@ class MainWindow(QMainWindow):
         path, _ = QFileDialog.getSaveFileName(
             self,
             'Save Voice Template',
-            self.ui.outLineEdit.text().strip(),
+            str(self.template_dir),
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
@@ -249,6 +251,7 @@ class MainWindow(QMainWindow):
             p.map(lambda l: int(l[0])),
             list,
             lambda xs: str(1 if len(xs) == 0 else max(xs) + 1).zfill(4),
+            lambda s: '%s.%s' % (s, cmd_data.cid) if hasattr(cmd_data, 'cid') else s,
             lambda s: '%s.%s' % (s, re.sub(r'[\\/:*?"<>|]+', '', cmd_data.text[:5])),
             p.call.replace('\n', ' '),
         )
@@ -265,9 +268,10 @@ class MainWindow(QMainWindow):
         # subtitles
         self.add2log('処理中(srt file)')
         _srt_file = out_dir.joinpath(_name + '.srt')
-        _d: float = 0.0
-        with wave.open(str(_wav_file), 'rb') as f:
-            _d = float(f.getnframes()) / f.getframerate()
+
+        wave_data, samplerate = soundfile.read(str(_wav_file))
+        _d: float = float(wave_data.shape[0]) / samplerate
+
         _srt = srt.Srt()
         _srt.subtitles.append(srt.Subtitle(0, _d, cmd_data.text))
         _srt.save(_srt_file)

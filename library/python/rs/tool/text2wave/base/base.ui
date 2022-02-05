@@ -32,7 +32,7 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>300</width>
+         <width>350</width>
          <height>0</height>
         </size>
        </property>
@@ -110,7 +110,14 @@
           </property>
           <layout class="QHBoxLayout" name="SettingLayout">
            <item>
-            <widget class="QPlainTextEdit" name="plainTextEdit"/>
+            <widget class="QPlainTextEdit" name="plainTextEdit">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>

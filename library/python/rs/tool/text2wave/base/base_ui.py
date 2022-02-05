@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\yr\tool\text2wave\base\base.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\yr\tool\text2wave\base\base.ui' applies.
+# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\text2wave\base\base.ui',
+# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\text2wave\base\base.ui' applies.
 #
-# Created: Sat Feb  5 16:26:01 2022
+# Created: Sun Feb  6 01:13:19 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.treeView.sizePolicy().hasHeightForWidth())
         self.treeView.setSizePolicy(sizePolicy)
-        self.treeView.setMinimumSize(QtCore.QSize(300, 0))
+        self.treeView.setMinimumSize(QtCore.QSize(350, 0))
         self.treeView.setDragEnabled(True)
         self.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.treeView.setObjectName("treeView")
@@ -76,6 +76,7 @@ class Ui_MainWindow(object):
         self.SettingLayout = QtWidgets.QHBoxLayout(self.groupBox)
         self.SettingLayout.setObjectName("SettingLayout")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.groupBox)
+        self.plainTextEdit.setMinimumSize(QtCore.QSize(250, 0))
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.SettingLayout.addWidget(self.plainTextEdit)
         self.verticalLayout_2.addWidget(self.groupBox)
