@@ -21,14 +21,14 @@ from PySide2.QtGui import (
     QColor,
 )
 
-from yr.core import (
+from rs.core import (
     config,
     pipe as p,
     read_aloud_cmd,
     srt,
 )
-from yr.gui import appearance
-from yr.tool.text2wave.base.base_ui import Ui_MainWindow
+from rs.gui import appearance
+from rs.tool.text2wave.base.base_ui import Ui_MainWindow
 
 TEXT_COLOR = QColor(210, 210, 210)
 ERROR_COLOR = QColor(210, 0, 0)

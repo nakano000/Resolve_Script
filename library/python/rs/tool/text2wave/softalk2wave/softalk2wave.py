@@ -8,13 +8,13 @@ from PySide2.QtWidgets import (
     QWidget,
 )
 
-from yr.core import (
+from rs.core import (
     config,
     softalk,
 )
-from yr.gui import appearance
-from yr.tool.text2wave import base
-from yr.tool.text2wave.softalk2wave.softalk_ui import Ui_Form
+from rs.gui import appearance
+from rs.tool.text2wave import base
+from rs.tool.text2wave.softalk2wave.softalk_ui import Ui_Form
 
 APP_NAME = 'softalk2wave'
 

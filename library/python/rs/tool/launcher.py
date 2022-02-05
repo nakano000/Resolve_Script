@@ -15,12 +15,12 @@ from PySide2.QtWidgets import (
     QWidget,
 )
 
-from yr.core import (
+from rs.core import (
     config,
     pipe as p,
 )
-from yr.gui import appearance
-from yr.gui.script_button import ScriptButton
+from rs.gui import appearance
+from rs.gui.script_button import ScriptButton
 
 APP_NAME = 'りぞりぷと'
 __version__ = '0.2.0'

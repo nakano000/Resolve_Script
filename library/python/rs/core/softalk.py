@@ -3,7 +3,7 @@ import dataclasses
 from pathlib import Path
 from typing import List
 
-from yr.core import (
+from rs.core import (
     read_aloud_cmd,
 )
 

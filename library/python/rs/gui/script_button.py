@@ -7,7 +7,7 @@ from PySide2.QtWidgets import (
     QPushButton,
 )
 
-from yr.core import config
+from rs.core import config
 
 
 def run_python(path, args, env=None):

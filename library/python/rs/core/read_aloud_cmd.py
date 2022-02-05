@@ -1,7 +1,7 @@
 import dataclasses
 from pathlib import Path
 
-from yr.core import config
+from rs.core import config
 
 
 @dataclasses.dataclass

@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import List
 
 import dataclasses
-from yr.core import pipe as p
+from rs.core import pipe as p
 
 
 def seconds2str(s: float) -> str:
