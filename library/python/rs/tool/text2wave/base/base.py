@@ -3,6 +3,7 @@ import json
 import re
 import sys
 import soundfile
+import subprocess
 
 from pathlib import Path
 
@@ -90,6 +91,8 @@ class MainWindow(QMainWindow):
         self.set_tree_root()
 
         # event
+        self.ui.treeView.doubleClicked.connect(self.open_out_dir)
+
         self.ui.exeToolButton.clicked.connect(self.exeToolButton_clicked)
         self.ui.outToolButton.clicked.connect(self.outToolButton_clicked)
 
@@ -102,6 +105,9 @@ class MainWindow(QMainWindow):
         self.ui.actionSave.triggered.connect(self.save)
         self.ui.actionSave_Voice_Template.triggered.connect(self.save_voice_template)
         self.ui.actionExit.triggered.connect(self.close)
+
+    def open_out_dir(self):
+        subprocess.Popen(['explorer', self.ui.outLineEdit.text().strip().replace('/', '\\')])
 
     def set_tree_root(self):
         path = Path(self.ui.outLineEdit.text())
