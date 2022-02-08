@@ -360,19 +360,19 @@ class MainWindow(QMainWindow):
                 x_pos = part_cnt * 5
                 y_pos = -3 * (count + 1)
                 result = None
-                for i2 in range(len(lst) - 1, -1, -1):
-                    ld = comp.AddTool('Loader', x_pos, y_pos - i2)
-                    ld.Clip[1] = str(lst[i2])
+                for i in range(len(lst) - 1, -1, -1):
+                    ld = comp.AddTool('Loader', x_pos, y_pos - i)
+                    ld.Clip[1] = str(lst[i])
                     ld.Loop[1] = 1
                     ld.SetAttrs({'TOOLS_Name': '%s_%s' % (part, k)})
-                    if i2 == len(lst) - 1:
+                    if i == len(lst) - 1:
                         result = ld
                     else:
-                        dx = comp.AddTool('Dissolve', x_pos + 1, y_pos - i2)
+                        dx = comp.AddTool('Dissolve', x_pos + 1, y_pos - i)
                         dx.ConnectInput('Background', ld)
                         dx.ConnectInput('Foreground', result)
                         dx.Mix = 0
-                        dx.Mix.SetExpression('%s.%s - %d' % (ctrl_xf_name, part + '_anim', i2))
+                        dx.Mix.SetExpression('%s.%s - %d' % (ctrl_xf_name, part + '_anim', i))
                         result = dx
 
                 ld_list.append(result)
