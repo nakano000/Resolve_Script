@@ -129,7 +129,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>
-            <widget class="QTextEdit" name="logTextEdit">
+            <widget class="LogTextEdit" name="logTextEdit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -247,6 +247,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LogTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header>rs.gui.log</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

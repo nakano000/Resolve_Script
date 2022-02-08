@@ -28,11 +28,11 @@ from rs.core import (
     read_aloud_cmd,
     srt,
 )
-from rs.gui import appearance
+from rs.gui import (
+    appearance,
+    log,
+)
 from rs.tool.text2wave.base.base_ui import Ui_MainWindow
-
-TEXT_COLOR = QColor(210, 210, 210)
-ERROR_COLOR = QColor(210, 0, 0)
 
 
 @dataclasses.dataclass
@@ -119,6 +119,11 @@ class MainWindow(QMainWindow):
             _index = m.setRootPath(str(path))
             v.setRootIndex(_index)
 
+    def reset_tree(self):
+        model = self.ui.treeView.model()
+        model.setRootPath("");
+        model.setRootPath(str(Path(self.ui.outLineEdit.text())));
+
     def new_config(self):
         return ConfigData()
 
@@ -184,12 +189,8 @@ class MainWindow(QMainWindow):
         self.save_config()
         super().closeEvent(event)
 
-    def add2log(self, text: str, color: QColor = TEXT_COLOR) -> None:
-        log = self.ui.logTextEdit
-        log.setTextColor(color)
-        log.append(text)
-        log.setTextColor(TEXT_COLOR)
-        log.repaint()
+    def add2log(self, text: str, color: QColor = log.TEXT_COLOR) -> None:
+        self.ui.logTextEdit.log(text, color)
 
     def exeToolButton_clicked(self) -> None:
         w = self.ui.exeLineEdit
@@ -220,7 +221,7 @@ class MainWindow(QMainWindow):
             self.add2log('Export: %s' % str(path))
             return True
         else:
-            self.add2log('[ERROR]wav fileの書き出しに失敗しました。', ERROR_COLOR)
+            self.add2log('[ERROR]wav fileの書き出しに失敗しました。', log.ERROR_COLOR)
         return False
 
     def export(self) -> None:
@@ -234,7 +235,7 @@ class MainWindow(QMainWindow):
         if exe.is_file():
             self.add2log('%s: %s' % (self.exe_name, str(exe)))
         else:
-            self.add2log('[ERROR]%sの設定に失敗しました。' % self.exe_name, ERROR_COLOR)
+            self.add2log('[ERROR]%sの設定に失敗しました。' % self.exe_name, log.ERROR_COLOR)
             return
 
         # out directory check
@@ -243,7 +244,7 @@ class MainWindow(QMainWindow):
         if out_dir.is_dir() and out_text != '':
             self.add2log('保存先: %s' % str(out_dir))
         else:
-            self.add2log('[ERROR]保存先が存在しません。', ERROR_COLOR)
+            self.add2log('[ERROR]保存先が存在しません。', log.ERROR_COLOR)
             return
 
         self.add2log('')  # new line
@@ -294,6 +295,7 @@ class MainWindow(QMainWindow):
         self.add2log('')  # new line
         # end
         self.add2log('Done!')
+        self.reset_tree()
 
 
 def run() -> None:

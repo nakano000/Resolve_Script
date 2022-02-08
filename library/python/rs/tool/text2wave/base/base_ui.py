@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\text2wave\base\base.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\text2wave\base\base.ui' applies.
 #
-# Created: Sun Feb  6 01:13:19 2022
+# Created: Tue Feb  8 20:32:32 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -84,7 +84,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setObjectName("groupBox_2")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_2)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.logTextEdit = QtWidgets.QTextEdit(self.groupBox_2)
+        self.logTextEdit = LogTextEdit(self.groupBox_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -153,3 +153,4 @@ class Ui_MainWindow(object):
         self.actionExit.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Q", None, -1))
         self.actionSave_Voice_Template.setText(QtWidgets.QApplication.translate("MainWindow", "Save Voice Template", None, -1))
 
+from rs.gui.log import LogTextEdit
