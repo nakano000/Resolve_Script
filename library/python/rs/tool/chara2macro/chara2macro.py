@@ -78,6 +78,14 @@ class ConfigData(config.Data):
 
 
 def file_operation(data: ConfigData, src: Path, dst: Path):
+    src = p.pipe(
+        src.iterdir(),
+        p.filter(p.call.is_file()),
+        list,
+        len,
+        lambda n: n == 0 and src.joinpath('00').is_dir(),
+        lambda b: src.joinpath('00') if b else src,
+    )
     dst.mkdir(exist_ok=True)
     part = dst.name
     dct = OrderedDict()
