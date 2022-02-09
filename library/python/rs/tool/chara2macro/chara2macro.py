@@ -465,7 +465,7 @@ class MainWindow(QMainWindow):
         self.add2log('Save: %s' % str(comp_file))
 
         # setting file
-        hedder_text = '\n'.join([
+        header_text = '\n'.join([
             '{',
             'Tools = ordered() {',
             'RigTool = GroupOperator {',
@@ -495,7 +495,7 @@ class MainWindow(QMainWindow):
             'ActiveTool = "RigTool"'
             '}'
         ])
-        setting_list: List[str] = [hedder_text]
+        setting_list: List[str] = [header_text]
         cnt = 1
         for part in PARTS_DICT.keys():
             if part in parts_file_dct:
