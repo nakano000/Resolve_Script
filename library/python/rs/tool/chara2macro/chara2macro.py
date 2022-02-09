@@ -379,12 +379,8 @@ class MainWindow(QMainWindow):
                 count += 1
 
             dx_list = []
-            sp_size = 10
-            ld10_list = p.pipe(
-                range(0, len(ld_list), sp_size),
-                p.map(lambda index: ld_list[index: index + sp_size]),
-            )
             x_pos = 2 + part_cnt * 5
+
             if len(ld_list) > 1:
                 for i in range(len(ld_list) - 1, 0, -1):
                     y_pos = -3 * i
@@ -444,12 +440,66 @@ class MainWindow(QMainWindow):
         xf.UserControls = uc
         xf.SetAttrs({'TOOLS_Name': ctrl_xf_name})
 
+        flow = comp.CurrentFrame.FlowView
+        tool_list = comp.GetToolList()
+        for key in tool_list:
+            flow.Select(tool_list[key])
+        comp.Copy()
+        setting_base = QApplication.clipboard().text()
         # --------------------
         comp.Unlock()
         comp_file = dst_dir.joinpath('%s.comp' % name)
         comp.Save(str(comp_file))
         comp.Close()
         self.add2log('Save: %s' % str(comp_file))
+
+        # setting file
+        hedder_text = '\n'.join([
+            '{',
+            'Tools = ordered() {',
+            'RigTool = GroupOperator {',
+            'Inputs = ordered() {',
+        ])
+        uc_text = '\n'.join([
+            'Input%d = InstanceInput {',
+            'SourceOp = "Ctrl_Transform",',
+            'Source = "%s",',
+            'Page = "Controls",',
+            'Default = 0,',
+            '},'
+        ])
+        mid_text = '\n'.join([
+            '},',
+            'Outputs = {',
+            'MainOutput1 = InstanceOutput {',
+            'SourceOp = "Ctrl_Transform",',
+            'Source = "Output",',
+            '}'
+            '},'
+            'ViewInfo = GroupInfo { Pos = { 0, 0 } },'
+        ])
+        footer_text = '\n'.join([
+            '}'
+            '},'
+            'ActiveTool = "RigTool"'
+            '}'
+        ])
+        setting_list: List[str] = [hedder_text]
+        cnt = 1
+        for part in PARTS_DICT.keys():
+            if part in parts_file_dct:
+                setting_list.append(uc_text % (cnt, part))
+                cnt += 1
+                if part in data.anim_list:
+                    uc_name = part + '_anim'
+                    setting_list.append(uc_text % (cnt, uc_name))
+                    cnt += 1
+        setting_list.append(mid_text)
+        setting_list.append('\n'.join(setting_base.split('\n')[1:-1]))
+        setting_list.append(footer_text)
+        setting_file = dst_dir.joinpath('%s.setting' % name)
+        setting_file.write_text('\n'.join(setting_list))
+        self.add2log('Make: %s' % str(setting_file))
 
         self.add2log('')  # new line
 
