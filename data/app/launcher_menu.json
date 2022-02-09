@@ -1,4 +1,5 @@
 [
     { "name": "softalk2wave", "path": "bin\\softalk2wave.py" },
-    { "name": "AssistantSeika2wave", "path": "bin\\assistant_seika2wave.py" }
+    { "name": "AssistantSeika2wave", "path": "bin\\assistant_seika2wave.py" },
+    { "name": "Chara2MACRO", "path": "bin\\chara2macro.py" }
 ]
