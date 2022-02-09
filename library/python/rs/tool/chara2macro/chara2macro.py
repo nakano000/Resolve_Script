@@ -1,8 +1,6 @@
 import dataclasses
 import json
-import re
 import shutil
-import subprocess
 import sys
 
 from collections import OrderedDict
@@ -10,9 +8,6 @@ from functools import partial
 from pathlib import Path
 from typing import List
 
-from PySide2.QtCore import (
-    Qt,
-)
 from PySide2.QtWidgets import (
     QApplication,
     QFileDialog,
