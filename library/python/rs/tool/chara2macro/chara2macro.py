@@ -314,11 +314,13 @@ class MainWindow(QMainWindow):
             src = src_dir.joinpath(PARTS_DICT[key])
             if src.is_dir():
                 self.add2log('処理中(%s)' % PARTS_DICT[key])
-                parts_file_dct[key] = file_operation(
+                lst = file_operation(
                     data,
                     src,
                     dst_dir.joinpath(key),
                 )
+                if len(lst) > 0:
+                    parts_file_dct[key] = lst
 
         self.add2log('')  # new line
 
