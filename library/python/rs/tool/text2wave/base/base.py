@@ -10,6 +10,7 @@ from pathlib import Path
 from PySide2.QtCore import (
     Qt,
     QDir,
+    QItemSelectionModel,
 )
 from PySide2.QtWidgets import (
     QApplication,
@@ -87,11 +88,12 @@ class MainWindow(QMainWindow):
         h.setSectionResizeMode(1, QHeaderView.ResizeToContents)
         h.setSectionResizeMode(2, QHeaderView.ResizeToContents)
         h.setSectionResizeMode(3, QHeaderView.ResizeToContents)
+        h.setSortIndicator(3, Qt.SortOrder.DescendingOrder)
 
         self.set_tree_root()
 
         # style sheet
-        self.ui.exportButton.setStyleSheet(appearance.export_stylesheet)
+        self.ui.exportButton.setStyleSheet(appearance.ex_stylesheet)
 
         # event
         self.ui.treeView.doubleClicked.connect(self.open_out_dir)
@@ -253,7 +255,7 @@ class MainWindow(QMainWindow):
         self.add2log('')  # new line
 
         # name
-        _name = p.pipe(
+        name = p.pipe(
             out_dir.iterdir(),
             p.filter(p.call.is_file()),
             p.map(lambda s: s.name.split('.')),
@@ -267,39 +269,47 @@ class MainWindow(QMainWindow):
         )
 
         # export wav
-        _wav_file = out_dir.joinpath(_name + '.wav')
+        wav_file = out_dir.joinpath(name + '.wav')
 
         self.add2log('処理中(wav file)')
-        if not self.export_wave(_wav_file):
+        if not self.export_wave(wav_file):
             return
 
         self.add2log('')  # new line
 
         # subtitles
         self.add2log('処理中(srt file)')
-        _srt_file = out_dir.joinpath(_name + '.srt')
+        srt_file = out_dir.joinpath(name + '.srt')
 
-        wave_data, samplerate = soundfile.read(str(_wav_file))
+        wave_data, samplerate = soundfile.read(str(wav_file))
         _d: float = float(wave_data.shape[0]) / samplerate
 
-        _srt = srt.Srt()
-        _srt.subtitles.append(srt.Subtitle(0, _d, cmd_data.text))
-        _srt.save(_srt_file)
-        self.add2log('Export: %s' % str(_srt_file))
+        srt_data = srt.Srt()
+        srt_data.subtitles.append(srt.Subtitle(0, _d, cmd_data.text))
+        srt_data.save(srt_file)
+        self.add2log('Export: %s' % str(srt_file))
 
         self.add2log('')  # new line
 
         # config file
         self.add2log('設定保存(json file)')
-        _json_file = out_dir.joinpath(_name + '.json')
-        data.save(_json_file)
-        self.add2log('Export: %s' % str(_json_file))
+        json_file: Path = out_dir.joinpath(name + '.json')
+        data.save(json_file)
+        self.add2log('Export: %s' % str(json_file))
 
         self.add2log('')  # new line
         # end
         self.add2log('Done!')
+
         self.reset_tree()
-        # todo:tree view上でexportされたファイルを選択
+        tree = self.ui.treeView
+        model = tree.model()
+        wav_index = model.index(str(wav_file))
+        srt_index = model.index(str(srt_file))
+        sel = tree.selectionModel()
+        sel.clearSelection()
+        sel.select(wav_index, QItemSelectionModel.Select)
+        sel.select(srt_index, QItemSelectionModel.Select)
 
 
 def run() -> None:
