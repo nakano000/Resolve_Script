@@ -8,6 +8,9 @@ from functools import partial
 from pathlib import Path
 from typing import List
 
+from PySide2.QtCore import (
+    Qt,
+)
 from PySide2.QtWidgets import (
     QApplication,
     QFileDialog,
@@ -144,6 +147,11 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setWindowTitle(APP_NAME)
+        self.setWindowFlags(
+            Qt.Window
+            | Qt.WindowCloseButtonHint
+            | Qt.WindowStaysOnTopHint
+        )
         self.resize(500, 800)
         # checkbox_dict
         self.checkbox_dict = OrderedDict((
