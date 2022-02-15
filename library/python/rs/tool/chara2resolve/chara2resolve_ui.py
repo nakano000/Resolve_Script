@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\chara2resolve\chara2resolve.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\chara2resolve\chara2resolve.ui' applies.
 #
-# Created: Wed Feb 16 01:39:40 2022
+# Created: Wed Feb 16 02:55:05 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -174,6 +174,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem1)
+        self.installButton = QtWidgets.QPushButton(self.centralwidget)
+        self.installButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.installButton.setObjectName("installButton")
+        self.horizontalLayout_3.addWidget(self.installButton)
         self.exportButton = QtWidgets.QPushButton(self.centralwidget)
         self.exportButton.setMinimumSize(QtCore.QSize(100, 40))
         self.exportButton.setObjectName("exportButton")
@@ -232,6 +236,7 @@ class Ui_MainWindow(object):
         self.label_6.setText(QtWidgets.QApplication.translate("MainWindow", "舞台サイズ", None, -1))
         self.templateButton.setText(QtWidgets.QApplication.translate("MainWindow", "Template", None, -1))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
+        self.installButton.setText(QtWidgets.QApplication.translate("MainWindow", "install", None, -1))
         self.exportButton.setText(QtWidgets.QApplication.translate("MainWindow", "export", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))

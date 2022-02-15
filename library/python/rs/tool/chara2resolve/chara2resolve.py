@@ -172,7 +172,8 @@ class MainWindow(QMainWindow):
         self.template_dir = config.ROOT_PATH.joinpath('data', 'template', APP_NAME)
 
         # style sheet
-        self.ui.exportButton.setStyleSheet(appearance.export_stylesheet)
+        self.ui.exportButton.setStyleSheet(appearance.ex_stylesheet)
+        self.ui.installButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
 
@@ -181,6 +182,7 @@ class MainWindow(QMainWindow):
 
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.exportButton.clicked.connect(self.export)
+        self.ui.installButton.clicked.connect(self.install)
         self.ui.templateButton.clicked.connect(partial(self.open, is_template=True))
 
         self.ui.actionOpen.triggered.connect(self.open)
@@ -530,6 +532,9 @@ class MainWindow(QMainWindow):
         self.add2log('')  # new line
         # end
         self.add2log('Done!')
+
+    def install(self):
+        pass
 
 
 def run() -> None:

@@ -326,6 +326,19 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="installButton">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>install</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="exportButton">
         <property name="minimumSize">
          <size>
