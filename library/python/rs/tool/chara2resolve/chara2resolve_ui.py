@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\chara2macro\chara2macro.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\chara2macro\chara2macro.ui' applies.
+# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\chara2resolve\chara2resolve.ui',
+# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\chara2resolve\chara2resolve.ui' applies.
 #
-# Created: Tue Feb  8 23:52:41 2022
+# Created: Wed Feb 16 01:39:40 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!

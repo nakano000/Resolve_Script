@@ -26,7 +26,7 @@ from rs.gui import (
     appearance,
     log,
 )
-from rs.tool.chara2macro.chara2macro_ui import Ui_MainWindow
+from rs.tool.chara2resolve.chara2resolve_ui import Ui_MainWindow
 
 TOP = 'top'
 BOTTOM = 'bottom'
@@ -48,7 +48,7 @@ PARTS_DICT = OrderedDict((
     (TOP, '服上'),
 ))
 
-APP_NAME = 'Chara2MACRO'
+APP_NAME = 'Chara2Resolve'
 
 
 @dataclasses.dataclass

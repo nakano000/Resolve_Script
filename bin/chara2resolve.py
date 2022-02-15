@@ -7,5 +7,5 @@ lib_path = os.path.abspath(
 sys.path.append(lib_path)
 
 if __name__ == "__main__":
-    from rs.tool.chara2macro import run
+    from rs.tool.chara2resolve import run
     run()
