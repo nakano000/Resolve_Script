@@ -90,6 +90,9 @@ class MainWindow(QMainWindow):
 
         self.set_tree_root()
 
+        # style sheet
+        self.ui.exportButton.setStyleSheet(appearance.export_stylesheet)
+
         # event
         self.ui.treeView.doubleClicked.connect(self.open_out_dir)
 
@@ -296,6 +299,7 @@ class MainWindow(QMainWindow):
         # end
         self.add2log('Done!')
         self.reset_tree()
+        # todo:tree view上でexportされたファイルを選択
 
 
 def run() -> None:

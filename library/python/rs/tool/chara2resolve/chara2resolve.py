@@ -170,6 +170,10 @@ class MainWindow(QMainWindow):
         self.load_config()
 
         self.template_dir = config.ROOT_PATH.joinpath('data', 'template', APP_NAME)
+
+        # style sheet
+        self.ui.exportButton.setStyleSheet(appearance.export_stylesheet)
+
         # event
 
         self.ui.srcToolButton.clicked.connect(partial(self.toolButton_clicked, self.ui.srcLineEdit))

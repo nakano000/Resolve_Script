@@ -17,6 +17,19 @@ stylesheet = '\n'.join(
     ]
 )
 
+in_stylesheet = '\n'.join(
+    [
+        'background-color: #2f5d50;',
+        'color: rgb(255, 255, 255);',
+    ]
+)
+ex_stylesheet = '\n'.join(
+    [
+        'background-color: #74325c;',
+        'color: rgb(255, 255, 255);',
+    ]
+)
+
 
 def _get_palette():
     text_color: QColor = QColor(210, 210, 210)
