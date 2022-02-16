@@ -102,7 +102,7 @@ class MainWindow(QMainWindow):
         self.ui.outToolButton.clicked.connect(self.outToolButton_clicked)
 
         self.ui.closeButton.clicked.connect(self.close)
-        self.ui.exportButton.clicked.connect(self.export)
+        self.ui.exportButton.clicked.connect(self.export, Qt.QueuedConnection)
 
         self.ui.outLineEdit.textChanged.connect(self.set_tree_root)
 
