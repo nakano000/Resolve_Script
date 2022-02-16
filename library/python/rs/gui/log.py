@@ -18,5 +18,4 @@ class LogTextEdit(QTextEdit):
         self.setTextColor(color)
         self.append(text)
         self.setTextColor(TEXT_COLOR)
-        # self.repaint()
         QApplication.processEvents()
