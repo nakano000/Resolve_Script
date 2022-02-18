@@ -2,10 +2,5 @@
   "fps": 30,
   "step": 2,
   "idle": 90,
-  "x_size": 960,
-  "y_size": 540,
-  "anim_list": [
-    "mouth",
-    "eye"
-  ]
+  "offset": 30
 }

@@ -1,12 +1,14 @@
+from pprint import pprint
+
 import dataclasses
-import json
 import shutil
 import sys
+import json
 
 from collections import OrderedDict
 from functools import partial
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 from PySide2.QtCore import (
     Qt,
@@ -22,34 +24,16 @@ from PySide2.QtGui import (
 
 from rs.core import (
     config,
+    chara_sozai as cs,
     pipe as p,
-    resolve,
+    resolve as reso,
+    fusion as fu,
 )
 from rs.gui import (
     appearance,
     log,
 )
 from rs.tool.chara2resolve.chara2resolve_ui import Ui_MainWindow
-
-TOP = 'top'
-BOTTOM = 'bottom'
-HAIR = 'hair'
-EYEBROW = 'eyebrow'
-EYE = 'eye'
-MOUTH = 'mouth'
-FACE = 'face'
-BODY = 'body'
-
-PARTS_DICT = OrderedDict((
-    (BODY, '体'),
-    (FACE, '顔'),
-    (MOUTH, '口'),
-    (EYE, '目'),
-    (EYEBROW, '眉'),
-    (HAIR, '髪'),
-    (BOTTOM, '服下'),
-    (TOP, '服上'),
-))
 
 APP_NAME = 'Chara2Resolve'
 
@@ -61,9 +45,7 @@ class ConfigData(config.Data):
     fps: int = 30
     step: int = 1
     idle: int = 90
-    x_size: int = 960
-    y_size: int = 540
-    anim_list: List[str] = dataclasses.field(default_factory=lambda: [EYE, MOUTH])
+    offset: int = 30
 
     def save_template(self, path: Path) -> None:
         dct = dataclasses.asdict(self)
@@ -75,70 +57,97 @@ class ConfigData(config.Data):
         )
 
 
-def file_operation(data: ConfigData, src: Path, dst: Path):
-    src = p.pipe(
-        src.iterdir(),
-        p.filter(p.call.is_file()),
-        p.filter(lambda x: x.name[:2].isdigit()),
-        list,
-        len,
-        lambda n: n == 0 and src.joinpath('00').is_dir(),
-        lambda b: src.joinpath('00') if b else src,
-    )
-    dst.mkdir(exist_ok=True)
-    part = dst.name
-    dct = OrderedDict()
-    for f in p.pipe(
-            src.iterdir(),
-            p.filter(p.call.is_file()),
-            p.filter(lambda x: len(x.name) > 2 and x.name[:2].isdigit()),
-            p.map(str),
-            sorted,
-            p.map(Path)
-    ):
-        f: Path
-        key = f.name[:2] if part in data.anim_list else f.name.split('.')[0]
-        if key not in dct:
-            dct[key] = []
-        dct[key].append(f)
+def copy_file(f: Path, dst_dir: Path, part: str) -> Path:
+    ss: List[str] = f.name.split('.')
+    ss.insert(1, part)
+    dst_file: Path = dst_dir.joinpath('.'.join(ss))
+    shutil.copy(f, dst_file)
+    return dst_file
 
+
+def copy_anim(lst: List[Path], dst_dir: Path, anim_type: str) -> Optional[Path]:
+    if len(lst) < 1:
+        return None
+
+    anim_dir_name = '%s.%s' % (anim_type, 'anim')
+    anim_dir = dst_dir.joinpath(anim_dir_name)
+    anim_dir.mkdir(exist_ok=True)
+
+    anim_file = None
+    for i in range(len(lst)):
+        f = lst[i]
+        dst_anim_file = anim_dir.joinpath('%s.%s%s' % (anim_dir_name, str(i).zfill(3), f.suffix))
+        shutil.copy(f, dst_anim_file)
+        if i == 0:
+            anim_file = dst_anim_file
+    return anim_file
+
+
+def copy_files(data: ConfigData, pattern: str, part: str):
+    part_src = Path(data.src_dir).joinpath(cs.PARTS_DICT[part])
+    pattern_src = part_src.joinpath(pattern)
+    src = pattern_src if pattern_src.is_dir() else part_src
+
+    dst = Path(data.dst_dir).joinpath(pattern, part)
+    dst.mkdir(parents=True, exist_ok=True)
+
+    dct = cs.path_to_dict(src)
+    if part == cs.BODY:
+        for key in p.pipe(
+                dct.keys(),
+                p.filter(lambda s: s != pattern),
+                list,
+        ):
+            dct.pop(key)
+    dst_dct = OrderedDict()
     for key in dct:
-        first_file = dct[key][0]
-        ss: List[str] = first_file.name.split('.')
-        ss.insert(1, part)
-        dst_file: Path = dst.joinpath('.'.join(ss))
-        shutil.copy(first_file, dst_file)
-        dct[key][0] = dst_file
-        size = len(dct[key])
-        if size > 1:
-            anim01_dir = dst.joinpath('%s.%s.%s' % (key, part, 'anim01'))
-            anim02_dir = dst.joinpath('%s.%s.%s' % (key, part, 'anim02'))
-            anim01_dir.mkdir(exist_ok=True)
-            anim02_dir.mkdir(exist_ok=True)
+        if part == cs.BODY:
+            # Body
+            dst_dct[key] = [copy_file(dct[key][0], dst, part)]
 
-            cnt: int = 0
-            anim_list = list(range(1, size)) + list(reversed(range(1, size - 1)))
-            for anim_frame in anim_list:
-                f = dct[key][anim_frame]
-                for i in range(data.step):
-                    anim01_file = anim01_dir.joinpath('%s.%s%s' % (anim01_dir.name, str(cnt).zfill(3), f.suffix))
-                    anim02_file = anim02_dir.joinpath('%s.%s%s' % (anim02_dir.name, str(cnt).zfill(3), f.suffix))
-                    shutil.copy(f, anim01_file)
-                    shutil.copy(f, anim02_file)
-                    cnt += 1
-            for i in range(data.idle):
-                anim02_file = anim02_dir.joinpath(
-                    '%s.%s%s' % (anim02_dir.name, str(cnt).zfill(3), dct[key][0].suffix)
-                )
-                shutil.copy(dct[key][0], anim02_file)
-                cnt += 1
+        elif part not in [cs.MOUTH, cs.EYE]:
+            # General
+            lst = p.pipe(
+                cs.get_key_file(dct[key]),
+                p.filter(lambda x: x is not None),
+                list,
+            )
+            dst_dct[key] = []
+            for f in lst:
+                dst_dct[key].append(copy_file(f, dst, part))
+        else:
+            # Animated
+            base_file, v_file, _ = cs.get_key_file(dct[key], is_anim=True)
+            lst = p.pipe(
+                [base_file, v_file],
+                p.filter(lambda x: x is not None),
+                list,
+            )
+            dst_dct[key] = []
+            for f in lst:
+                dst_dct[key].append(copy_file(f, dst, part))
+            # Anim
+            anim_file_list = cs.get_anim_file_list(base_file.name, dct[key])
+            anim_list = cs.make_anim(data.step, anim_file_list)
+            anim_list02 = cs.make_anim02(data.step, data.idle, data.offset, base_file, anim_file_list)
+            v_anim_file_list = [] if v_file is None else cs.get_anim_file_list(v_file.name, dct[key])
+            v_anim_list = cs.make_anim(data.step, v_anim_file_list)
+            v_anim_list02 = cs.make_anim02(data.step, data.idle, data.offset, v_file, v_anim_file_list)
 
-            dct[key] = [
-                dct[key][0],
-                anim01_dir.joinpath('%s.%s%s' % (anim01_dir.name, str(0).zfill(3), dct[key][0].suffix)),
-                anim02_dir.joinpath('%s.%s%s' % (anim02_dir.name, str(0).zfill(3), dct[key][0].suffix)),
-            ]
-    return dct
+            anim_file = copy_anim(anim_list, dst, '%s_01.%s' % (key, part))
+            if anim_file is not None:
+                dst_dct[key].append(anim_file)
+            v_anim_file = copy_anim(v_anim_list, dst, '%sv_01.%s' % (key, part))
+            if v_anim_file is not None:
+                dst_dct[key].append(v_anim_file)
+            anim_file02 = copy_anim(anim_list02, dst, '%s_02.%s' % (key, part))
+            if anim_file02 is not None:
+                dst_dct[key].append(anim_file02)
+            v_anim_file02 = copy_anim(v_anim_list02, dst, '%sv_02.%s' % (key, part))
+            if v_anim_file02 is not None:
+                dst_dct[key].append(v_anim_file02)
+
+    return dst_dct
 
 
 class MainWindow(QMainWindow):
@@ -152,18 +161,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(500, 800)
-        # checkbox_dict
-        self.checkbox_dict = OrderedDict((
-            (BODY, self.ui.bodyCheckBox),
-            (FACE, self.ui.faceCheckBox),
-            (MOUTH, self.ui.mouthCheckBox),
-            (EYE, self.ui.eyeCheckBox),
-            (EYEBROW, self.ui.eyebrowCheckBox),
-            (HAIR, self.ui.hairCheckBox),
-            (BOTTOM, self.ui.bottomCheckBox),
-            (TOP, self.ui.topCheckBox),
-        ))
+        self.resize(700, 500)
 
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
@@ -181,7 +179,7 @@ class MainWindow(QMainWindow):
         self.ui.dstToolButton.clicked.connect(partial(self.toolButton_clicked, self.ui.dstLineEdit))
 
         self.ui.closeButton.clicked.connect(self.close)
-        self.ui.exportButton.clicked.connect(self.export)
+        self.ui.exportButton.clicked.connect(self.export, Qt.QueuedConnection)
         self.ui.installButton.clicked.connect(self.install)
         self.ui.templateButton.clicked.connect(partial(self.open, is_template=True))
 
@@ -197,14 +195,7 @@ class MainWindow(QMainWindow):
         self.ui.fpsSpinBox.setValue(c.fps)
         self.ui.stepSpinBox.setValue(c.step)
         self.ui.idleSpinBox.setValue(c.idle)
-        self.ui.xSpinBox.setValue(c.x_size)
-        self.ui.ySpinBox.setValue(c.y_size)
-
-        p.pipe(
-            self.checkbox_dict,
-            dict.items,
-            p.iter(lambda x: x[1].setChecked(x[0] in c.anim_list))
-        )
+        self.ui.offsetSpinBox.setValue(c.offset)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
@@ -214,16 +205,7 @@ class MainWindow(QMainWindow):
         c.fps = self.ui.fpsSpinBox.value()
         c.step = self.ui.stepSpinBox.value()
         c.idle = self.ui.idleSpinBox.value()
-        c.x_size = self.ui.xSpinBox.value()
-        c.y_size = self.ui.ySpinBox.value()
-
-        c.anim_list = p.pipe(
-            self.checkbox_dict,
-            dict.items,
-            p.filter(lambda x: x[1].isChecked()),
-            p.map(lambda x: x[0]),
-            list,
-        )
+        c.offset = self.ui.offsetSpinBox.value()
         return c
 
     def load_config(self) -> None:
@@ -320,25 +302,41 @@ class MainWindow(QMainWindow):
         self.add2log('')  # new line
 
         # resolve check
-        resolve_app = resolve.get()
-        if resolve_app is None:
+        resolve = reso.get()
+        if resolve is None:
             self.add2log('[ERROR]Resolveが見つかりません', log.ERROR_COLOR)
             return
 
         # file
         self.add2log('処理中(copy)')
-        parts_file_dct = OrderedDict()
-        for key in PARTS_DICT:
-            src = src_dir.joinpath(PARTS_DICT[key])
-            if src.is_dir():
-                self.add2log('処理中(%s)' % PARTS_DICT[key])
-                lst = file_operation(
-                    data,
-                    src,
-                    dst_dir.joinpath(key),
-                )
-                if len(lst) > 0:
-                    parts_file_dct[key] = lst
+        body_src = src_dir.joinpath(cs.PARTS_DICT[cs.BODY])
+        if not body_src.is_dir():
+            self.add2log('[ERROR] %sが存在しません。' % cs.PARTS_DICT[cs.BODY], log.ERROR_COLOR)
+            return
+        pattern_list = p.pipe(
+            body_src.iterdir(),
+            p.filter(p.call.is_file()),
+            p.map(p.get.name),
+            p.filter(lambda s: len(s) > 2 and s[:2].isdigit()),
+            p.map(lambda s: s.split('.')[0]),
+            sorted,
+        )
+
+        all_file_dct = OrderedDict()
+        for pattern in pattern_list:
+            parts_file_dct = OrderedDict()
+            for key in cs.PARTS_DICT:
+                src = src_dir.joinpath(cs.PARTS_DICT[key])
+                if src.is_dir():
+                    self.add2log('処理中(copy, %s, %s)' % (pattern, cs.PARTS_DICT[key]))
+                    lst = copy_files(
+                        data,
+                        pattern,
+                        key,
+                    )
+                    if len(lst) > 0:
+                        parts_file_dct[key] = lst
+            all_file_dct[pattern] = parts_file_dct
 
         self.add2log('')  # new line
 
@@ -346,179 +344,219 @@ class MainWindow(QMainWindow):
         name = src_dir.name
 
         self.add2log('処理中(comp)')
-        fusion = resolve_app.Fusion()
+        fusion = resolve.Fusion()
         comp = fusion.NewComp()
         comp.Lock()
         # --------------------
         # pref
-        comp.SetPrefs({
-            "Comp.FrameFormat.Name": name,
-            "Comp.FrameFormat.Width": data.x_size,
-            "Comp.FrameFormat.Height": data.y_size,
-            "Comp.FrameFormat.AspectX": 1.0,
-            "Comp.FrameFormat.AspectY": 1.0,
-            "Comp.FrameFormat.GuideRatio": float(data.x_size) / float(data.y_size),
-            "Comp.FrameFormat.Rate": data.fps,
-            "Comp.FrameFormat.DepthInteractive": 2,  # 16 bits Float
-            "Comp.FrameFormat.DepthFull": 2,  # 16 bits Float
-            "Comp.FrameFormat.DepthPreview": 2  # 16 bits Float
-        })
+        fu.set_pref(comp, name, data.fps)
+
         # node
         ctrl_xf_name = 'Ctrl_Transform'
-        bg_base = comp.AddTool('Background', 0, 0)
-        bg_base.TopLeftAlpha = 0
+        end_nodes = []
+        BODY_X_OFFSET = 42
+        Y_OFFSET = -7
+        X_OFFSET = 5
+        for pattern in all_file_dct.keys():
+            # offset expression parameter
+            mouth_xf = None
+            mouth_y_pos_list = []
+            eyebrow_xf = None
+            eyebrow_y_pos_list = []
+            # blend expression parameter
+            mouth_mg = None
+            mouth_blend_list = []
+            eyebrow_mg = None
+            eyebrow_blend_list = []
 
-        base_node = bg_base
+            # Body parts
+            body_x_pos = (len(all_file_dct) - len(end_nodes) - 1) * BODY_X_OFFSET
+            body_y_pos = 0
+            file_dct = all_file_dct[pattern]
 
-        part_cnt = 0
-        for part in parts_file_dct:
-            file_dct = parts_file_dct[part]
-            ld_list = []
-            count = 0
-            for k in file_dct:
-                lst = file_dct[k]
-                x_pos = part_cnt * 5
-                y_pos = -3 * (count + 1)
-                result = None
-                for i in range(len(lst) - 1, -1, -1):
-                    ld = comp.AddTool('Loader', x_pos, y_pos - i)
-                    ld.Clip[1] = str(lst[i])
-                    ld.Loop[1] = 1
-                    ld.SetAttrs({'TOOLS_Name': '%s_%s' % (part, k)})
-                    if i == len(lst) - 1:
-                        result = ld
+            ld = fu.add_ld(comp, body_x_pos, body_y_pos, file_dct[cs.BODY][pattern][0])
+            base_node = ld
+
+            # parts
+            part_cnt = 0
+            for part in file_dct:
+                self.add2log('処理中(comp, %s, %s)' % (pattern, cs.PARTS_DICT[part]))
+                if part in [cs.BODY]:
+                    continue
+                dct = file_dct[part]
+                image_list = []
+                for k in dct:
+                    lst = dct[k]
+
+                    if part == cs.EYE:  # for expression
+                        mouth_offset, eyebrow_offset = cs.get_offset(lst[0])
+                        i = len(image_list)
+                        if mouth_offset is not None:
+                            mouth_y_pos_list.append((i, mouth_offset))
+                        if eyebrow_offset is not None:
+                            eyebrow_y_pos_list.append((i, eyebrow_offset))
+
+                        mouth_blend, eyebrow_blend = cs.get_blend(lst[0])
+                        if mouth_blend is not None:
+                            mouth_blend_list.append((i, mouth_blend))
+                        if eyebrow_blend is not None:
+                            eyebrow_blend_list.append((i, eyebrow_blend))
+
+                    x_pos = body_x_pos + (part_cnt * X_OFFSET)
+                    y_pos = body_y_pos + (Y_OFFSET * (len(image_list) + 2))
+                    result = None
+                    # General
+                    if part not in [cs.EYE, cs.MOUTH] or len(lst) < 3:
+                        for i in range(len(lst) - 1, -1, -1):
+                            ld = fu.add_ld(comp, x_pos, y_pos - i, lst[i])
+                            if i == len(lst) - 1:
+                                result = ld
+                            else:
+                                mg = comp.AddTool('Merge', x_pos + 1, y_pos - i)
+                                mg.ConnectInput('Foreground', ld)
+                                mg.ConnectInput('Background', result)
+                                result = mg
+                    # Animated
                     else:
-                        dx = comp.AddTool('Dissolve', x_pos + 1, y_pos - i)
-                        dx.ConnectInput('Background', ld)
-                        dx.ConnectInput('Foreground', result)
+                        ld_list = []
+                        for i in range(len(lst) - 1, -1, -1):
+                            ld = fu.add_ld(comp, x_pos, y_pos - i, lst[i])
+                            ld_list.append(ld)
+
+                        anim_type_list = []
+                        if len(lst) == 6:  # marge 00,00v
+                            for i in [4, 2, 0]:
+                                mg = comp.AddTool('Merge', x_pos + 1, y_pos - i)
+                                mg.ConnectInput('Foreground', ld_list[5 - i])
+                                mg.ConnectInput('Background', ld_list[4 - i])
+                                anim_type_list.append(mg)
+                        elif len(lst) == 3:
+                            anim_type_list = ld_list
+
+                        # anim selector
+                        if len(anim_type_list) == 3:
+                            for i in [2, 1, 0]:
+                                if i == len(anim_type_list) - 1:
+                                    result = anim_type_list[2 - i]
+                                else:
+                                    dx = comp.AddTool(
+                                        'Dissolve',
+                                        x_pos + 2,
+                                        y_pos - (i * int(len(lst) / len(anim_type_list)))
+                                    )
+                                    dx.ConnectInput('Background', anim_type_list[2 - i])
+                                    dx.ConnectInput('Foreground', result)
+                                    dx.Mix = 0
+                                    dx.Mix.SetExpression('%s.%s - %d' % (ctrl_xf_name, part + '_anim', i))
+                                    result = dx
+                        else:
+                            result = ld_list[0]
+
+                    image_list.append(result)
+                # empty image(-1)
+                bg = comp.AddTool('Background', body_x_pos + (part_cnt * X_OFFSET), body_y_pos + (Y_OFFSET * 1))
+                bg.TopLeftAlpha = 0
+
+                image_list = [bg] + image_list
+
+                # parts selector
+                part_node = None
+                x_pos = body_x_pos + (3 + part_cnt * X_OFFSET)
+                for i in range(len(image_list) - 1, -1, -1):
+                    y_pos = body_y_pos + (Y_OFFSET * (i + 1))
+                    if i == len(image_list) - 1:
+                        part_node = image_list[i]
+                    else:
+                        dx = comp.AddTool('Dissolve', x_pos, y_pos)
+                        dx.ConnectInput('Background', image_list[i])
+                        dx.ConnectInput('Foreground', part_node)
                         dx.Mix = 0
-                        dx.Mix.SetExpression('%s.%s - %d' % (ctrl_xf_name, part + '_anim', i))
-                        result = dx
+                        dx.Mix.SetExpression('%s.%s - (%d)' % (ctrl_xf_name, part, i - 1))
+                        part_node = dx
 
-                ld_list.append(result)
-                count += 1
+                # parts marge
+                xf = comp.AddTool('Transform', x_pos, body_y_pos + (Y_OFFSET * 0) - 2)
+                xf.ConnectInput('Input', part_node)
+                if part == cs.EYEBROW:
+                    eyebrow_xf = xf
+                if part == cs.MOUTH:
+                    mouth_xf = xf
+                mg = comp.AddTool('Merge', x_pos, body_y_pos + (Y_OFFSET * 0))
+                mg.ConnectInput('Background', base_node)
+                mg.ConnectInput('Foreground', xf)
+                base_node = mg
+                if part == cs.EYEBROW:
+                    eyebrow_mg = mg
+                if part == cs.MOUTH:
+                    mouth_mg = mg
 
-            dx_list = []
-            x_pos = 2 + part_cnt * 5
+                part_cnt += 1
 
-            if len(ld_list) > 1:
-                for i in range(len(ld_list) - 1, 0, -1):
-                    y_pos = -3 * i
-                    node = ld_list[i]
-                    if len(dx_list) > 0:
-                        node = dx_list[len(dx_list) - 1]
-                    dx = comp.AddTool('Dissolve', x_pos, y_pos)
-                    dx.ConnectInput('Background', ld_list[i - 1])
-                    dx.ConnectInput('Foreground', node)
-                    dx.Mix = 0
-                    dx.Mix.SetExpression('%s.%s - %d' % (ctrl_xf_name, part, i - 1))
-                    dx_list.append(dx)
+            end_nodes.append(base_node)
+
+            # expression
+            if len(mouth_y_pos_list) > 0:
+                mouth_xf.Center.SetExpression(fu.make_offset_expression(mouth_y_pos_list))
+            if len(eyebrow_y_pos_list) > 0:
+                eyebrow_xf.Center.SetExpression(fu.make_offset_expression(eyebrow_y_pos_list))
+            if len(mouth_blend_list) > 0:
+                mouth_mg.Blend.SetExpression(fu.make_blend_expression(mouth_blend_list))
+            if len(eyebrow_blend_list) > 0:
+                eyebrow_mg.Blend.SetExpression(fu.make_blend_expression(eyebrow_blend_list))
+        end_node = None
+
+        # body selector
+        for i in range(len(end_nodes) - 1, -1, -1):
+            if i == len(end_nodes) - 1:
+                end_node = end_nodes[i]
             else:
-                dx_list.append(ld_list[0])
+                dx = comp.AddTool('Dissolve', (len(all_file_dct) - i) * BODY_X_OFFSET - 3, -4 * Y_OFFSET)
+                dx.ConnectInput('Background', end_nodes[i])
+                dx.ConnectInput('Foreground', end_node)
+                dx.Mix = 0
+                dx.Mix.SetExpression('%s.%s - %d' % (ctrl_xf_name, cs.BODY, i))
+                end_node = dx
 
-            mg = comp.AddTool('Merge', x_pos + 1, 0)
-            mg.ConnectInput('Background', base_node)
-            mg.ConnectInput('Foreground', dx_list[len(dx_list) - 1])
-            base_node = mg
-
-            part_cnt += 1
-
+        # User Control
         uc = {}
-        for part in PARTS_DICT:
-            if part in parts_file_dct:
-                file_dct = parts_file_dct[part]
-                size = len(file_dct)
-                uc[part] = {
-                    'LINKS_Name': part,
-                    'LINKID_DataType': "Number",
-                    'INPID_InputControl': "SliderControl",
-                    'INP_Default': 0,
-                    'INP_Integer': True,
-                    'INP_MinScale': 0,
-                    'INP_MaxScale': size - 1,
-                    'INP_MinAllowed': 0,
-                    'INP_MaxAllowed': size - 1,
-                    'ICS_ControlPage': "Controls",
-                }
-                if part in data.anim_list:
-                    uc_name = part + '_anim'
-                    uc[uc_name] = {
-                        'LINKS_Name': uc_name,
-                        'LINKID_DataType': "Number",
-                        'INPID_InputControl': "SliderControl",
-                        'INP_Default': 0,
-                        'INP_Integer': True,
-                        'INP_MinScale': 0,
-                        'INP_MaxScale': 2,
-                        'INP_MinAllowed': 0,
-                        'INP_MaxAllowed': 2,
-                        'ICS_ControlPage': "Controls",
-                    }
+        uc_list = []
+        for part in cs.PARTS_DICT:
+            if part in all_file_dct['00']:
+                file_dct = all_file_dct['00'][part]
+                size = len(all_file_dct) if part == cs.BODY else len(file_dct) + 1
+                if size != 1:
+                    uc[part] = (
+                        fu.get_uc(part, 0, size - 1)
+                    ) if part == cs.BODY else (
+                        fu.get_uc(part, -1, size - 2, center=int((size - 1) / 2))
+                    )
+                    uc_list.append(part)
 
-        xf = comp.AddTool('Transform', 2 + part_cnt * 5, 0)
-        xf.ConnectInput('Input', base_node)
+                    if part in [cs.EYE, cs.MOUTH]:
+                        uc_name = part + '_anim'
+                        uc[uc_name] = fu.get_uc(uc_name, 0, 2)
+                        uc_list.append(uc_name)
+
+        # ctrl transform
+        xf = comp.AddTool('Transform', len(all_file_dct) * BODY_X_OFFSET, -4 * Y_OFFSET)
+        xf.ConnectInput('Input', end_node)
         xf.UserControls = uc
         xf.SetAttrs({'TOOLS_Name': ctrl_xf_name})
 
-        flow = comp.CurrentFrame.FlowView
-        tool_list = comp.GetToolList()
-        for key in tool_list:
-            flow.Select(tool_list[key])
-        comp.Copy()
+        # copy
+        fu.copy_all_nodes(comp)
         setting_base = QApplication.clipboard().text()
         # --------------------
         comp.Unlock()
         comp_file = dst_dir.joinpath('%s.comp' % name)
         comp.Save(str(comp_file))
         comp.Close()
+
         self.add2log('Save: %s' % str(comp_file))
 
         # setting file
-        header_text = '\n'.join([
-            '{',
-            'Tools = ordered() {',
-            'RigTool = GroupOperator {',
-            'Inputs = ordered() {',
-        ])
-        uc_text = '\n'.join([
-            'Input%d = InstanceInput {',
-            'SourceOp = "Ctrl_Transform",',
-            'Source = "%s",',
-            'Page = "Controls",',
-            'Default = 0,',
-            '},'
-        ])
-        mid_text = '\n'.join([
-            '},',
-            'Outputs = {',
-            'MainOutput1 = InstanceOutput {',
-            'SourceOp = "Ctrl_Transform",',
-            'Source = "Output",',
-            '}'
-            '},'
-            'ViewInfo = GroupInfo { Pos = { 0, 0 } },'
-        ])
-        footer_text = '\n'.join([
-            '}'
-            '},'
-            'ActiveTool = "RigTool"'
-            '}'
-        ])
-        setting_list: List[str] = [header_text]
-        cnt = 1
-        for part in PARTS_DICT.keys():
-            if part in parts_file_dct:
-                setting_list.append(uc_text % (cnt, part))
-                cnt += 1
-                if part in data.anim_list:
-                    uc_name = part + '_anim'
-                    setting_list.append(uc_text % (cnt, uc_name))
-                    cnt += 1
-        setting_list.append(mid_text)
-        setting_list.append('\n'.join(setting_base.split('\n')[1:-1]))
-        setting_list.append(footer_text)
         setting_file = dst_dir.joinpath('%s.setting' % name)
-        setting_file.write_text('\n'.join(setting_list))
+        setting_file.write_text(fu.make_setting_file(setting_base, uc_list))
         self.add2log('Make: %s' % str(setting_file))
 
         self.add2log('')  # new line
