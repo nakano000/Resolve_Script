@@ -56,6 +56,7 @@ class MainWindow(QWidget):
         for i in lst:
             btn = ScriptButton(i['name'], script_path=Path(config.ROOT_PATH.joinpath(i['path'])))
             btn.setMinimumHeight(40)
+            btn.setStyleSheet(appearance.in_stylesheet)
             lo.addWidget(btn)
 
         lo.addItem(
