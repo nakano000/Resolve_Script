@@ -604,6 +604,7 @@ class MainWindow(QMainWindow):
                 'Generators',
                 f.name,
             )
+            install_path.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy(f, install_path)
             self.add2log('Install: %s' % str(f))
         self.add2log('Done!')
