@@ -1,9 +1,8 @@
-from pprint import pprint
-
 import dataclasses
+import json
+import os
 import shutil
 import sys
-import json
 
 from collections import OrderedDict
 from functools import partial
@@ -572,7 +571,42 @@ class MainWindow(QMainWindow):
         self.add2log('Done!')
 
     def install(self):
-        pass
+        self.ui.logTextEdit.clear()
+
+        data = self.get_data()
+
+        # dst directory check
+        dst_text = data.dst_dir.strip()
+        dst_dir: Path = Path(dst_text)
+        if dst_dir.is_dir() and dst_text != '':
+            pass
+        else:
+            self.add2log('[ERROR]出力先が存在しません。', log.ERROR_COLOR)
+            return
+
+        setting_list = p.pipe(
+            dst_dir.iterdir(),
+            p.filter(p.call.is_file()),
+            p.filter(lambda x: x.suffix == '.setting'),
+            list,
+        )
+        if len(setting_list) < 1:
+            self.add2log('[ERROR]settingファイルが存在しません。', log.ERROR_COLOR)
+            return
+        for f in setting_list:
+            install_path = Path(os.path.expandvars('%APPDATA%')).joinpath(
+                'Blackmagic Design',
+                'DaVinci Resolve',
+                'Support',
+                'Fusion',
+                'Templates',
+                'Edit',
+                'Generators',
+                f.name,
+            )
+            shutil.copy(f, install_path)
+            self.add2log('Install: %s' % str(f))
+        self.add2log('Done!')
 
 
 def run() -> None:
