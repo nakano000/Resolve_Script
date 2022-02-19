@@ -36,7 +36,7 @@ AssistantSeika、他音声読み上げソフトが必要です。
 8. DaVinci Resolve を立ち上げ直す。installしたものを有効にするため。
 9. Effects->Toolbox->Generators->FusionGeneratorsから使用。
 
-DaVinci Resolvedeでのテンプレートのパラメータについて
+DaVinci Resolveでのテンプレートのパラメータについて
 - -1 にするとパーツは非表示になります。
 - eye_anim, mouth_anim について
   - 0でアニメーションなし
