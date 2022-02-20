@@ -1,5 +1,6 @@
 ## 使い方
 DaVinci Resolve で使える ゆっくり動画補助ツールです。  
+[概要動画](https://www.youtube.com/watch?v=xZS6A7KWWbA)
 1. 右のReleasesからzipファイルをダウンロードし解凍。
 2. りぞりぷと.exeを立ち上げる。
 3. 使いたい機能のボタンを押す。
@@ -34,7 +35,8 @@ AssistantSeika、他音声読み上げソフトが必要です。
 ### Chara2Resolve
 [nicotalk&キャラ素材配布所](http://www.nicotalk.com/charasozai.html)  
 こちらの素材をDaVinci Resolveでそこそこ使えるように変換(自動コンポ)するツールです。  
-DaVinci Resolve Studio 17.4.4 にて確認してます。
+DaVinci Resolve Studio 17.4.4  
+ゆっくり霊夢改、新れいむ で確認しました。
 1. nicotalk&キャラ素材配布所からキャラ素材をダウンロードし解凍。
 2. 左上のディレクトリ設定、キャラ素材に解凍した場所を設定。
 3. その下の出力先に保存したい場所を設定。 DaVinci Resolve は、ここを参照しますので、後にファイルを動かすとリンク切れになります。
