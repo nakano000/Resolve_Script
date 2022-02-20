@@ -3,10 +3,10 @@ DaVinci Resolve で使える ゆっくり動画補助ツールです。
 1. 右のReleasesからzipファイルをダウンロードし解凍。
 2. りぞりぷと.exeを立ち上げる。
 3. 使いたい機能のボタンを押す。
-     ####目次
-   * [softalk2wave](#softalk2wave)
-   * [AssistantSeika2wave](#AssistantSeika2wave)
-   * [Chara2Resolve](#Chara2Resolve)
+###目次
+* [softalk2wave](#softalk2wave)
+* [AssistantSeika2wave](#AssistantSeika2wave)
+* [Chara2Resolve](#Chara2Resolve)
 ### softalk2wave
 音声と字幕ファイル(srt)を書き出します。  
 簡単に書き出しからDaVinci ResolveのEdit pageへドラッグアンドドラップするのが目的のツールです。  
