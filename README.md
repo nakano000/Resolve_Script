@@ -1,6 +1,6 @@
 ## 使い方
 DaVinci Resolve で使える ゆっくり動画補助ツールです。  
-[概要動画](https://www.youtube.com/watch?v=xZS6A7KWWbA)
+[概要動画](https://www.youtube.com/watch?v=CJGFOHqtUkE)
 1. 右のReleasesからzipファイルをダウンロードし解凍。
 2. りぞりぷと.exeを立ち上げる。
 3. 使いたい機能のボタンを押す。
