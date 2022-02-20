@@ -3,7 +3,7 @@ DaVinci Resolve で使える ゆっくり動画補助ツールです。
 1. 右のReleasesからzipファイルをダウンロードし解凍。
 2. りぞりぷと.exeを立ち上げる。
 3. 使いたい機能のボタンを押す。
-   * 機能 目次
+   * ####目次
    * [softalk2wave](#softalk2wave)
    * [AssistantSeika2wave](#AssistantSeika2wave)
    * [Chara2Resolve](#Chara2Resolve)
@@ -16,6 +16,8 @@ SofTalkが別途必要です。
 3. 音声設定にしゃべらせたい文字を入力。
 4. 下のexportボタンを押す。ここでwavとsrtファイルを書き出します。
 5. 左のファイル一覧から wavとsrtファイルを DaVinci Resolve の Edit page へ、ドラッグアンドドラップする。
+
+[目次へ](#目次)
 ### AssistantSeika2wave
 音声と字幕ファイル(srt)を書き出します。  
 簡単に書き出しからDaVinci ResolveのEdit pageへドラッグアンドドラップするのが目的のツールです。  
@@ -27,6 +29,8 @@ AssistantSeika、他音声読み上げソフトが必要です。
 5. 音声設定の右側を AssistantSeika の話者一覧を見ながら設定。 Template があればそれを使っても可。
 6. 下のexportボタンを押す。ここでwavとsrtファイルを書き出します。
 7. 左のファイル一覧から wavとsrtファイルを DaVinci Resolve の Edit page へ、ドラッグアンドドラップする。
+
+[目次へ](#目次)
 ### Chara2Resolve
 [nicotalk&キャラ素材配布所](http://www.nicotalk.com/charasozai.html)  
 こちらの素材をDaVinci Resolveでそこそこ使えるように変換(自動コンポ)するツールです。  
@@ -49,3 +53,5 @@ DaVinci Resolveでのテンプレートのパラメータについて
   - 2で待機->アニメーション->待機->アニメーション以下繰り返し
     - 待機時間はアニメ設定で指定した値を以下のように使う。
     - オフセット -> アニメーション -> (休憩 - オフセット) 以下この3つを繰り返し
+
+[目次へ](#目次)
