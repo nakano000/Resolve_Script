@@ -1,0 +1,171 @@
+{
+	Tools = ordered() {
+		Group1 = GroupOperator {
+			CtrlWZoom = false,
+			Inputs = ordered() {
+				CommentsNest = Input { Value = 0, },
+			},
+			Outputs = {
+				Output1 = InstanceOutput {
+					SourceOp = "Background2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 605, -115.5 },
+				Flags = {
+					Expanded = true,
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 173.917, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { -605, 122.659 }
+			},
+			Tools = ordered() {
+				Background2 = Background {
+					CtrlWZoom = false,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						BackgroundNest = Input { Value = 0, },
+						TopLeftRed = Input {
+							Value = 1,
+							Expression = "Group1.Red",
+						},
+						TopLeftGreen = Input {
+							Value = 1,
+							Expression = "Group1.Green",
+						},
+						TopLeftBlue = Input {
+							Value = 1,
+							Expression = "Group1.Blue",
+						},
+						TopLeftAlpha = Input { Expression = "Group1.Alpha", },
+						EffectMask = Input {
+							SourceOp = "Rectangle1",
+							Source = "Mask",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, -49.5 } },
+				},
+				Rectangle1 = RectangleMask {
+					CtrlWZoom = false,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						BorderWidth = Input {
+							Value = 0.005,
+							Expression = "Group1.BorderWidth / 1000",
+						},
+						Solid = Input { Value = 0, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Center = Input { Expression = "(Group1.P1 + Group1.P2) / 2", },
+						Width = Input { Expression = "abs(Group1.P1.X - Group1.P2.X)", },
+						Height = Input { Expression = "abs(Group1.P1.Y - Group1.P2.Y)", },
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, -115.5 } },
+				}
+			},
+			UserControls = ordered() {
+				P1 = {
+					LINKS_Name = "P1",
+					LINKID_DataType = "Point",
+					INPID_InputControl = "OffsetControl",
+					INPID_PreviewControl = "CrosshairControl",
+					INP_DefaultX = 0.25,
+					INP_DefaultY = 0.75,
+					CHC_Style = "NormalCross",
+				},
+				P2 = {
+					LINKS_Name = "P2",
+					LINKID_DataType = "Point",
+					INPID_InputControl = "OffsetControl",
+					INPID_PreviewControl = "CrosshairControl",
+					INP_DefaultX = 0.75,
+					INP_DefaultY = 0.25,
+					CHC_Style = "NormalCross",
+				},
+				BorderWidth = {
+					LINKS_Name = "BorderWidth",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "SliderControl",
+					INP_Default = 5,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1000,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+				},
+				Red = {
+					LINKS_Name = "Color",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ColorControl",
+					INP_Default = 1,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					IC_ControlGroup = 1,
+					IC_ControlID = 0,
+					CLRC_ColorSpace = "HSV",
+					CLRC_ShowWheel = false,
+				},
+				Green = {
+					LINKS_Name = "Color",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ColorControl",
+					INP_Default = 1,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					IC_ControlGroup = 1,
+					IC_ControlID = 1,
+					CLRC_ColorSpace = "HSV",
+					CLRC_ShowWheel = false,
+				},
+				Blue = {
+					LINKS_Name = "Color",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ColorControl",
+					INP_Default = 1,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					IC_ControlGroup = 1,
+					IC_ControlID = 2,
+					CLRC_ColorSpace = "HSV",
+					CLRC_ShowWheel = false,
+				},
+				Alpha = {
+					LINKS_Name = "Color",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ColorControl",
+					INP_Default = 1,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					IC_ControlGroup = 1,
+					IC_ControlID = 3,
+					CLRC_ColorSpace = "HSV",
+					CLRC_ShowWheel = false,
+				}
+			}
+		}
+	}
+}
