@@ -8,6 +8,7 @@ DaVinci Resolve で使える ゆっくり動画補助ツールです。
 * [softalk2wave](#softalk2wave)
 * [AssistantSeika2wave](#AssistantSeika2wave)
 * [Chara2Resolve](#Chara2Resolve)
+* [Macro2Group](#Macro2Group)
 ### softalk2wave
 音声と字幕ファイル(srt)を書き出します。  
 簡単に書き出しからDaVinci ResolveのEdit pageへドラッグアンドドラップするのが目的のツールです。  
@@ -56,5 +57,10 @@ DaVinci Resolveでのテンプレートのパラメータについて
   - 2で待機->アニメーション->待機->アニメーション以下繰り返し
     - 待機時間はアニメ設定で指定した値を以下のように使う。
     - オフセット -> アニメーション -> (休憩 - オフセット) 以下この3つを繰り返し
+
+[目次へ](#目次)
+### Macro2Group
+動画参照
+https://youtu.be/ul7grfLvJCM
 
 [目次へ](#目次)
