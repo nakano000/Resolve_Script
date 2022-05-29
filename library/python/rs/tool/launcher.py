@@ -23,7 +23,7 @@ from rs.gui import appearance
 from rs.gui.script_button import ScriptButton
 
 APP_NAME = 'りぞりぷと'
-__version__ = '0.6.1'
+__version__ = '0.7.0'
 
 MENU_JSON = config.ROOT_PATH.joinpath('data', 'app', 'launcher_menu.json')
 
