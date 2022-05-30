@@ -1,0 +1,277 @@
+{
+	Tools = ordered() {
+		MacroTool1 = GroupOperator {
+			CtrlWZoom = false,
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "sRender1",
+					Source = "P1",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "sRender1",
+					Source = "P2",
+					DefaultX = 0.25,
+					DefaultY = 0.5,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "sRender1",
+					Source = "Size",
+					Default = 0.100000001490116,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "sBoolean1",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "sBoolean1",
+					Source = "Green",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "sBoolean1",
+					Source = "Blue",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "sBoolean1",
+					Source = "Alpha",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Outline = InstanceInput {
+					SourceOp = "sRender1",
+					Source = "Outline",
+				},
+				Input8 = InstanceInput {
+					SourceOp = "sOutline1",
+					Source = "Thickness",
+					Default = 0,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "sBoolean2",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 6,
+					Default = 1,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "sBoolean2",
+					Source = "Green",
+					ControlGroup = 6,
+					Default = 0,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "sBoolean2",
+					Source = "Blue",
+					ControlGroup = 6,
+					Default = 0,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "sBoolean2",
+					Source = "Alpha",
+					ControlGroup = 6,
+					Default = 1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "sRender1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 495, 82.5 },
+				Flags = {
+					AllowPan = false,
+					GridSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 621, 264.364, 310.5, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				sRender1 = sRender {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sTransform1",
+							Source = "Output",
+						},
+						Outline = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 247, 107.758 } },
+					UserControls = ordered() {
+						P1 = {
+							INPID_PreviewControl = "CrosshairControl",
+							LINKID_DataType = "Point",
+							INPID_InputControl = "OffsetControl",
+							CHC_Style = "NormalCross",
+							LINKS_Name = "P1",
+						},
+						P2 = {
+							INP_DefaultX = 0.25,
+							INPID_PreviewControl = "CrosshairControl",
+							INP_DefaultY = 0.5,
+							LINKID_DataType = "Point",
+							INPID_InputControl = "OffsetControl",
+							CHC_Style = "NormalCross",
+							LINKS_Name = "P2",
+						},
+						Size = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "SliderControl",
+							INP_MaxScale = 1,
+							INP_Default = 0.100000001490116,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							LINKS_Name = "Size",
+						},
+						Outline = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							LBLC_DropDownButton = true,
+							INPID_InputControl = "LabelControl",
+							LBLC_NumInputs = 5,
+							INP_MaxScale = 1,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							LINKS_Name = "Outline",
+						}
+					}
+				},
+				sBoolean1 = sBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						Operation = Input { Value = FuID { "Union" }, },
+						Input1 = Input {
+							SourceOp = "sRectangle1",
+							Source = "Output",
+						},
+						Input2 = Input {
+							SourceOp = "sNGon1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -83, 107.758 } },
+				},
+				sOutline1 = sOutline {
+					CtrlWShown = false,
+					Inputs = {
+						Thickness = Input { Value = 0, },
+						JoinStyle = Input { Value = 3, },
+						CapStyle = Input { Value = 0, },
+						Input = Input {
+							SourceOp = "sBoolean2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 27, 8.75758 } },
+				},
+				sBoolean2 = sBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						Operation = Input { Value = FuID { "Union" }, },
+						Input1 = Input {
+							SourceOp = "sRectangle1",
+							Source = "Output",
+						},
+						Input2 = Input {
+							SourceOp = "sNGon1",
+							Source = "Output",
+						},
+						Green = Input { Value = 0, },
+						Blue = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -83, 8.75758 } },
+				},
+				sTransform1 = sTransform {
+					CtrlWShown = false,
+					Inputs = {
+						XOffset = Input { Expression = "sRender1.P1.X - 0.5", },
+						YOffset = Input { Expression = "(sRender1.P1.Y - 0.5) * sRender1.Height / sRender1.Width", },
+						ZRotation = Input { Expression = "deg(atan2(YOffset - sTransform2.YOffset, XOffset - sTransform2.XOffset))", },
+						Input = Input {
+							SourceOp = "sMerge1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 137, 107.758 } },
+				},
+				sTransform2 = sTransform {
+					CtrlWShown = false,
+					Inputs = {
+						XOffset = Input {
+							Value = -0.25,
+							Expression = "sRender1.P2.X - 0.5",
+						},
+						YOffset = Input { Expression = "(sRender1.P2.Y - 0.5) * sRender1.Height / sRender1.Width", },
+					},
+					ViewInfo = OperatorInfo { Pos = { 137, 206.758 } },
+				},
+				sMerge1 = sMerge {
+					CtrlWShown = false,
+					Inputs = {
+						Input1 = Input {
+							SourceOp = "sBoolean1",
+							Source = "Output",
+						},
+						Input2 = Input {
+							SourceOp = "sOutline1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 27, 107.758 } },
+				},
+				sNGon1 = sNGon {
+					CtrlWShown = false,
+					Inputs = {
+						Sides = Input { Value = 3, },
+						Width = Input {
+							Value = 0.200000002980232,
+							Expression = "sRender1.Size *2",
+						},
+						Height = Input {
+							Value = 0.200000002980232,
+							Expression = "sRender1.Size *2",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -248, 8.75758 } },
+				},
+				sRectangle1 = sRectangle {
+					CtrlWShown = false,
+					Inputs = {
+						["Translate.X"] = Input {
+							Value = -0.125,
+							Expression = "- Width / 2",
+						},
+						Width = Input {
+							Value = 0.25,
+							Expression = "sqrt((sTransform2.XOffset - sTransform1.XOffset) ^ 2 + (sTransform2.YOffset - sTransform1.YOffset) ^ 2)",
+						},
+						Height = Input {
+							Value = 0.100000001490116,
+							Expression = "sRender1.Size",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -248, 107.758 } },
+				}
+			},
+		}
+	}
+}
