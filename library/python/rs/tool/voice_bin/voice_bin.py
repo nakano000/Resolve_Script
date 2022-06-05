@@ -1,7 +1,4 @@
 import dataclasses
-import os
-import json
-import re
 import sys
 import soundfile
 import subprocess
@@ -21,19 +18,14 @@ from PySide2.QtWidgets import (
     QWidget,
     QHeaderView,
 )
-from PySide2.QtGui import (
-    QColor,
-)
 
 from rs.core import (
     config,
     pipe as p,
-    read_aloud_cmd,
     srt,
 )
 from rs.gui import (
     appearance,
-    log,
 )
 from rs.tool.voice_bin.voice_bin_ui import Ui_Form
 
