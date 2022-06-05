@@ -1,6 +1,7 @@
 [
     { "name": "softalk2wave", "path": "bin\\softalk2wave.py" },
     { "name": "AssistantSeika2wave", "path": "bin\\assistant_seika2wave.py" },
+    { "name": "VoiceBin", "path": "bin\\voice_bin.py" },
     { "name": "Chara2Resolve", "path": "bin\\chara2resolve.py" },
     { "name": "Macro2Group", "path": "bin\\macro2group.py" }
 ]

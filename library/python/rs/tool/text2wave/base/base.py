@@ -126,8 +126,8 @@ class MainWindow(QMainWindow):
 
     def reset_tree(self):
         model = self.ui.treeView.model()
-        model.setRootPath("");
-        model.setRootPath(str(Path(self.ui.outLineEdit.text())));
+        model.setRootPath("")
+        model.setRootPath(str(Path(self.ui.outLineEdit.text())))
 
     def new_config(self):
         return ConfigData()

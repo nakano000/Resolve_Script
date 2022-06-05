@@ -44,7 +44,7 @@ class Srt:
         )
 
     def save(self, path: Path) -> None:
-        path.write_text(str(self))
+        path.write_text(str(self), encoding='utf-8')
 
 
 if __name__ == '__main__':
