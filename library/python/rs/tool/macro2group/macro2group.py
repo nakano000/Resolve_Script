@@ -77,7 +77,7 @@ class Form(QWidget):
             p.map(p.call.toLocalFile()),
             p.map(Path),
             p.filter(p.call.is_file()),
-            p.filter(lambda f: f.name.endswith('.setting')),
+            p.filter(lambda f: f.name.lower().endswith('.setting')),
             p.map(str),
             p.map(p.call.replace('\\', '/')),
             list,
