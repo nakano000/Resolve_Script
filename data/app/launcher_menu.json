@@ -1,7 +1,8 @@
 [
-    { "name": "softalk2wave", "path": "bin\\softalk2wave.py" },
-    { "name": "AssistantSeika2wave", "path": "bin\\assistant_seika2wave.py" },
-    { "name": "VoiceBin", "path": "bin\\voice_bin.py" },
-    { "name": "Chara2Resolve", "path": "bin\\chara2resolve.py" },
-    { "name": "Macro2Group", "path": "bin\\macro2group.py" }
+    { "name": "softalk2wave", "path": "bin\\softalk2wave.py", "color": "#2f5d50" },
+    { "name": "AssistantSeika2wave", "path": "bin\\assistant_seika2wave.py", "color": "#2f5d50" },
+    { "name": "VoiceBin", "path": "bin\\voice_bin.py", "color": "#2f5d50" },
+    { "name": "Chara2Resolve", "path": "bin\\chara2resolve.py", "color": "#74325c" },
+    { "name": "Macro2Group", "path": "bin\\macro2group.py", "color": "#274a78" },
+    { "name": "VTT2Anim", "path": "bin\\vtt2anim.py", "color": "#274a78" }
 ]
