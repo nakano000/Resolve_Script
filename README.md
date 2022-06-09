@@ -10,6 +10,7 @@ DaVinci Resolve で使える ゆっくり動画補助ツールです。
 * [VoiceBin](#VoiceBin)
 * [Chara2Resolve](#Chara2Resolve)
 * [Macro2Group](#Macro2Group)
+* [VTT2Anim](#VTT2Anim)
 
 ### softalk2wave
 音声と字幕ファイル(srt)を書き出します。  
@@ -69,5 +70,10 @@ DaVinci Resolveでのテンプレートのパラメータについて
 ### Macro2Group
 動画参照
 https://youtu.be/ul7grfLvJCM
+
+[目次へ](#目次)
+### VTT2Anim
+動画参照
+https://youtu.be/zWq4AQeHZ68
 
 [目次へ](#目次)
