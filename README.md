@@ -42,6 +42,7 @@ https://youtu.be/BAn7sj5xbxg
 
 [目次へ](#目次)
 ### Chara2Resolve
+現在Resolve18で動かないようです。ご注意ください。
 [nicotalk&キャラ素材配布所](http://www.nicotalk.com/charasozai.html)  
 こちらの素材をDaVinci Resolveでそこそこ使えるように変換(自動コンポ)するツールです。  
 DaVinci Resolve Studio 17.4.4  
