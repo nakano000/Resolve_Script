@@ -23,3 +23,8 @@ def get():
             return None
 
     return bmd.scriptapp("Resolve")
+
+
+if __name__ == '__main__':
+    resolve = get()
+    print(resolve)

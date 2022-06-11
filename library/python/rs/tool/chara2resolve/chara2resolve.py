@@ -25,7 +25,7 @@ from rs.core import (
     config,
     chara_sozai as cs,
     pipe as p,
-    resolve as reso,
+    davinci_resolve as dr,
     fusion as fu,
 )
 from rs.gui import (
@@ -301,7 +301,7 @@ class MainWindow(QMainWindow):
         self.add2log('')  # new line
 
         # resolve check
-        resolve = reso.get()
+        resolve = dr.get()
         if resolve is None:
             self.add2log('[ERROR]Resolveが見つかりません', log.ERROR_COLOR)
             return

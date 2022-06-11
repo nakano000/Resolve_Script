@@ -61,9 +61,9 @@ def dict2anim(d: dict) -> str:
     for i, frame in enumerate(flame_list):
         s = key01_block % (frame, i)
         if i != 0:
-            s += key02_block % ((flame_list[i - 1] - frame)/3.0)
+            s += key02_block % ((flame_list[i - 1] - frame) / 3.0)
         if i != size - 1:
-            s += key03_block % ((flame_list[i + 1] - frame)/3.0)
+            s += key03_block % ((flame_list[i + 1] - frame) / 3.0)
         s += key04_block
         s += value_block % d[frame].replace('\n', '\\n').replace('"', '\\"')
         key_list.append(s)
@@ -120,7 +120,7 @@ class Form(QWidget):
 
     def str2frame(self, s: str) -> int:
         data = self.get_data()
-        return (Timecode(data.fps, s) - data.get_timecode()).frame_number
+        return Timecode(data.fps, s).frame_number - data.get_timecode().frame_number
 
     def dropEvent(self, e):
         paths = p.pipe(
