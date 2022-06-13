@@ -3,6 +3,7 @@
     { "name": "AssistantSeika2wave", "path": "bin\\assistant_seika2wave.py", "color": "#2f5d50" },
     { "name": "VoiceBin", "path": "bin\\voice_bin.py", "color": "#2f5d50" },
     { "name": "Chara2Resolve", "path": "bin\\chara2resolve.py", "color": "#74325c" },
+    { "name": "PsdSplitter", "path": "bin\\psd_splitter.py", "color": "#74325c" },
     { "name": "Macro2Group", "path": "bin\\macro2group.py", "color": "#274a78" },
     { "name": "VTT2Anim", "path": "bin\\vtt2anim.py", "color": "#274a78" }
 ]
