@@ -1,12 +1,12 @@
 import json
 from pathlib import Path
 
-import BlackmagicFusion as bmd
+# import BlackmagicFusion as bmd
 
 X_OFFSET = 1
 Y_OFFSET = 4
 
-fu = bmd.scriptapp('Fusion')
+# fu = bmd.scriptapp('Fusion')
 
 selectedPath = fu.RequestFile(
     '',  # dir
@@ -17,9 +17,10 @@ selectedPath = fu.RequestFile(
         'FReqS_Title': 'Choose JSON',
     },
 )
+org_comp = None
 comp = None
 if selectedPath is not None:
-    # comp = fu.CurrentComp
+    org_comp = fu.CurrentComp
     comp = fu.NewComp()
 
 
@@ -119,9 +120,9 @@ if selectedPath is not None:
         flow.Select(tool_list[key])
     comp.Copy()
     comp.EndUndo(True)
-    comp.Undo()
-    comp.Paste()
-    flow.Select()
+    # comp.Undo()
+    comp.Close()
     comp.Unlock()
-    comp.AskUser('Done!', {})
+    org_comp.Paste()
+    org_comp.AskUser('Done!', {})
     print('Done!')
