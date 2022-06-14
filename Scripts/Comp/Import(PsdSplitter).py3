@@ -123,5 +123,5 @@ if selectedPath is not None:
     comp.Paste()
     flow.Select()
     comp.Unlock()
-    # comp.AskUser('Done!', {})
+    comp.AskUser('Done!', {})
     print('Done!')
