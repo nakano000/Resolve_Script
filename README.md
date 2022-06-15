@@ -9,6 +9,7 @@ DaVinci Resolve で使える ゆっくり動画補助ツールです。
 * [AssistantSeika2wave](#AssistantSeika2wave)
 * [VoiceBin](#VoiceBin)
 * [Chara2Resolve](#Chara2Resolve)
+* [PsdSplitter](#PsdSplitter)
 * [Macro2Group](#Macro2Group)
 * [VTT2Anim](#VTT2Anim)
 
@@ -66,6 +67,11 @@ DaVinci Resolveでのテンプレートのパラメータについて
   - 2で待機->アニメーション->待機->アニメーション以下繰り返し
     - 待機時間はアニメ設定で指定した値を以下のように使う。
     - オフセット -> アニメーション -> (休憩 - オフセット) 以下この3つを繰り返し
+
+[目次へ](#目次)
+### PsdSplitter
+動画参照
+https://youtu.be/LHM6jDKnLng
 
 [目次へ](#目次)
 ### Macro2Group
