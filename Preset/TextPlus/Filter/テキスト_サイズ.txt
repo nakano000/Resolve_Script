@@ -1,0 +1,5 @@
+StyledText
+Width
+Height
+UseFrameFormatSettings
+Size

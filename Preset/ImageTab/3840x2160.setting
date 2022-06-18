@@ -1,0 +1,13 @@
+{
+	Tools = ordered() {
+		PipeRouter1 = PipeRouter {
+			CtrlWZoom = false,
+			Inputs = {
+				Width = Input { Value = 3840, },
+				Height = Input { Value = 2160, },
+				UseFrameFormatSettings = Input { Value = 0, },
+			},
+			ViewInfo = PipeRouterInfo { Pos = { 358, 6.75757 } },
+		}
+	}
+}
