@@ -38,7 +38,7 @@ class MainWindow(QWidget):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(300, 10)
+        self.resize(300, 300)
 
         self.comp_path = config.ROOT_PATH.joinpath('Scripts', 'Comp')
 
