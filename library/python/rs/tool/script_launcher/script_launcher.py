@@ -38,23 +38,26 @@ class MainWindow(QWidget):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(300, 300)
+        self.resize(300, 500)
 
         self.comp_path = config.ROOT_PATH.joinpath('Scripts', 'Comp')
+        self.edit_path = config.ROOT_PATH.joinpath('Scripts', 'Edit')
 
         # sub window
         self.preset_window = PresetForm()
         # button
         self.open_button = QPushButton('open', self)
         self.open_button.setMinimumHeight(30)
-        self.open_button.setStyleSheet(appearance.in_stylesheet)
+        self.open_button.setStyleSheet(appearance.other_stylesheet)
         self.close_button = QPushButton('close', self)
         self.close_button.setMinimumHeight(40)
 
         # tree view
         self.compTreeView = QTreeView()
         self.compTreeView.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        for v in [self.compTreeView]:
+        self.editTreeView = QTreeView()
+        self.editTreeView.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        for v in [self.compTreeView, self.editTreeView]:
             model = QFileSystemModel()
             model.setOption(QFileSystemModel.DontWatchForChanges)
             model.setFilter(QDir.Files)
@@ -84,6 +87,10 @@ class MainWindow(QWidget):
         self.comp_watcher.directoryChanged.connect(self.comp_directory_changed)
         self.set_tree_root(self.compTreeView, self.comp_watcher, self.comp_path)
 
+        self.edit_watcher = QFileSystemWatcher(self)
+        self.edit_watcher.directoryChanged.connect(self.edit_directory_changed)
+        self.set_tree_root(self.editTreeView, self.edit_watcher, self.edit_path)
+
         # FrameLayout
         preset_fl = FrameLayout()
         preset_fl.setText('Preset')
@@ -93,18 +100,25 @@ class MainWindow(QWidget):
         preset_fl.setLayout(preset_lo)
 
         comp_fl = FrameLayout()
-
         comp_fl.setText('Comp')
         comp_fl.setStyleSheetToTitle(appearance.ex_stylesheet)
         comp_lo = QVBoxLayout()
         comp_lo.addWidget(self.compTreeView)
         comp_fl.setLayout(comp_lo)
 
+        edit_fl = FrameLayout()
+        edit_fl.setText('Edit')
+        edit_fl.setStyleSheetToTitle(appearance.in_stylesheet)
+        edit_lo = QVBoxLayout()
+        edit_lo.addWidget(self.editTreeView)
+        edit_fl.setLayout(edit_lo)
+
         # layout
         lo = QVBoxLayout()
         lo.setContentsMargins(5, 5, 5, 5)
         lo.addWidget(preset_fl)
         lo.addWidget(comp_fl)
+        lo.addWidget(edit_fl)
 
         lo.addItem(
             QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -114,11 +128,15 @@ class MainWindow(QWidget):
 
         # event
         self.compTreeView.doubleClicked.connect(partial(self.open_dir, self.comp_path))
+        self.editTreeView.doubleClicked.connect(partial(self.open_dir, self.edit_path))
         self.open_button.clicked.connect(self.preset_window.show)
         self.close_button.clicked.connect(self.close)
 
     def comp_directory_changed(self, s):
         self.reset_tree(self.compTreeView, self.comp_path)
+
+    def edit_directory_changed(self, s):
+        self.reset_tree(self.editTreeView, self.edit_path)
 
     @staticmethod
     def set_tree_root(v, w, path):
