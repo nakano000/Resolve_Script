@@ -11,6 +11,7 @@ DaVinci Resolve で使える 動画制作補助ツールです。
 * [PsdSplitter](#PsdSplitter)
 * [Macro2Group](#Macro2Group)
 * [VTT2Anim](#VTT2Anim)
+* [ScriptLauncher](#ScriptLauncher)
 
 ### softalk2wave
 音声と字幕ファイル(srt)を書き出します。  
@@ -81,5 +82,13 @@ https://youtu.be/ul7grfLvJCM
 ### VTT2Anim
 動画参照
 https://youtu.be/zWq4AQeHZ68
+
+[目次へ](#目次)
+### ScriptLauncher
+動画参照
+https://youtu.be/5h5jIBJ4Lmo
+
+動画参照
+https://youtu.be/ZwZyUCaTaTw
 
 [目次へ](#目次)
