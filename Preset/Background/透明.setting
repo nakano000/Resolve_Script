@@ -1,0 +1,15 @@
+{
+	Tools = ordered() {
+		Background1 = Background {
+			CtrlWZoom = false,
+			Inputs = {
+				UseFrameFormatSettings = Input { Value = 1, },
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				TopLeftAlpha = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 1045, 82.5 } },
+		}
+	}
+}

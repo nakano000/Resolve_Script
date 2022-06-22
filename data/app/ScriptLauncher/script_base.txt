@@ -1,15 +1,4 @@
-local function read_file(path)
-    local file = io.open(path, "rb")
-    if not file then
-        return nil
-    end
-    local content = file:read "*a"
-    file:close()
-    return content
-end
-
-local function getToolName(s)
-    st = bmd.readstring(s)
+local function getToolName(st)
     for key, v in pairs(st['Tools']) do
         if (type(v) == 'table') and (v['Inputs'] ~= nil) then
             return key
@@ -29,15 +18,13 @@ local function getAnim(st)
 end
 
 local function setData(path, filter_list)
-    local f_s = read_file(path)
-    local f_name = getToolName(f_s)
-
     local tool_list = comp:GetToolList(true)
     comp:StartUndo('apply setting')
     for i, v in pairs(tool_list) do
         local st = v:SaveSettings()
         local anim = getAnim(st)
-        local f_st = bmd.readstring(f_s)
+        local f_st = bmd.readfile(path)
+        local f_name = getToolName(f_st)
         for i2, key in pairs(filter_list) do
             f_st['Tools'][f_name]['Inputs'][key] = st['Tools'][v.Name]['Inputs'][key]
             local tmp = f_st['Tools'][f_name]['Inputs'][key]
