@@ -132,3 +132,4 @@ dmypy.json
 
 /bin/python-3.6.8-embed-amd64/
 /config/
+/bin/ffmpeg-5.0.1-essentials_build/

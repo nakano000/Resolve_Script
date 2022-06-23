@@ -10,6 +10,39 @@ PYTHONW_EXE_PATH: Path = ROOT_PATH.joinpath(
 CONFIG_DIR: Path = ROOT_PATH.joinpath('config')
 
 
+class DataList(list):
+    def __init__(self, cls):
+        super().__init__()
+        self._data_cls = cls
+
+    def new_data(self):
+        return self._data_cls()
+
+    def set(self, lst: list):
+        self.clear()
+        for i in lst:
+            data = self._data_cls()
+            data.set(i)
+            self.append(data)
+
+    def set_list(self, lst: list):
+        self.clear()
+        for i in lst:
+            self.append(i)
+
+    def to_list(self) -> list:
+        lst = []
+        for i in self:
+            lst.append(i)
+        return lst
+
+    def to_list_of_dict(self) -> list:
+        lst = []
+        for i in self:
+            lst.append(dataclasses.asdict(i))
+        return lst
+
+
 @dataclasses.dataclass
 class DataInterface:
     def set(self, dct):
@@ -18,8 +51,17 @@ class DataInterface:
             if k in dct:
                 if isinstance(getattr(self, k), DataInterface):
                     getattr(self, k).set(dct[k])
+                elif isinstance(getattr(self, k), DataList):
+                    getattr(self, k).set(dct[k])
                 else:
                     setattr(self, k, dct[k])
+
+    def as_dict(self) -> dict:
+        dct = dataclasses.asdict(self)
+        for k in dct.keys():
+            if isinstance(getattr(self, k), DataList):
+                dct[k] = getattr(self, k).to_list_of_dict()
+        return dct
 
 
 @dataclasses.dataclass
@@ -30,7 +72,7 @@ class Data(DataInterface):
 
     def save(self, path: Path) -> None:
         path.write_text(
-            json.dumps(dataclasses.asdict(self), indent=2),
+            json.dumps(self.as_dict(), indent=2, ensure_ascii=False),
             encoding='utf-8',
         )
 
@@ -41,3 +83,20 @@ if __name__ == '__main__':
     print(LAUNCHER_CONFIG_FILE.read_text())
     print(PYTHONW_EXE_PATH)
     print(CONFIG_DIR)
+
+
+    @dataclasses.dataclass
+    class D(DataInterface):
+        a: int = 10
+
+
+    dl = DataList(D)
+    print(dl)
+    dl.set(
+        [
+            {'a': 10},
+            {'a': 20},
+            {'a': 30},
+        ]
+    )
+    print(dl)

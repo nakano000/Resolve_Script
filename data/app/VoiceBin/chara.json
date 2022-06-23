@@ -1,0 +1,14 @@
+{
+  "chara_list": [
+    {
+      "reg_exp": "^\\d+_\u56db\u56fd\u3081\u305f\u3093.+",
+      "color": "Violet",
+      "_setting": "Preset\\TextPlus\\\u5b57\u5e55_\u767d_\u8d64\u7d2b.setting"
+    },
+    {
+      "reg_exp": "^\\d+_\u305a\u3093\u3060\u3082\u3093.+",
+      "color": "Olive",
+      "_setting": "Preset\\TextPlus\\\u5b57\u5e55_\u767d_\u7dd1.setting"
+    }
+  ]
+}
