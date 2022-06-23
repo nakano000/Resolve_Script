@@ -40,7 +40,7 @@ local function setJimaku(txt, color, setting_path)
 
     local tool = lst[1]
 
-    comp:StartUndo('set up jimaku')
+    comp:StartUndo('RS Jimaku')
     comp:Lock()
 
     -- setting

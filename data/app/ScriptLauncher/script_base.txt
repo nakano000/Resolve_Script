@@ -9,7 +9,7 @@ end
 
 local function setDataForFusion(path, filter_list)
     local tool_list = comp:GetToolList(true)
-    comp:StartUndo('apply setting')
+    comp:StartUndo('RS Apply')
     for i, v in ipairs(tool_list) do
         local st = v:SaveSettings()
         local f_st = bmd.readfile(path)
@@ -59,7 +59,7 @@ local function setDataForResolve(path, filter_list, track_index)
             ['Background'] = true,
         }
         for i2, t in ipairs(lst) do
-            if tool_filter[t.ID] then
+            if tool_filter[t.ID] and not t.ParentTool then
                 tool = t
                 break
             end
@@ -67,7 +67,7 @@ local function setDataForResolve(path, filter_list, track_index)
         if not tool then
             goto continue
         end
-        comp:StartUndo('apply setting')
+        comp:StartUndo('RS Apply')
         comp:Lock()
         local st = tool:SaveSettings()
         local f_st = bmd.readfile(path)
