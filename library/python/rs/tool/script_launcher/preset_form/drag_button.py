@@ -23,12 +23,16 @@ class DragButton(QPushButton):
         #
         self.filter_file = None
         self.setting_file = None
+        self.track_index: int = 1
 
     def setFilterFile(self, path):
         self.filter_file = path
 
     def setSettingFile(self, path):
         self.setting_file = path
+
+    def setTrackIndex(self, index: int):
+        self.track_index = index
 
     def mousePressEvent(self, e):
         setting = self.setting_file
@@ -46,7 +50,7 @@ class DragButton(QPushButton):
                 list,
                 ',\n'.join,
             )
-        r = self.script_base % (str(setting).replace('\\', '\\\\'), filter_text)
+        r = self.script_base % (str(setting).replace('\\', '\\\\'), filter_text, self.track_index)
         self.cmd_file.write_text(r, encoding='utf-8')
         # Drag
         m = QMimeData()

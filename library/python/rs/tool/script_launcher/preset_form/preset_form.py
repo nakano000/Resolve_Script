@@ -96,6 +96,7 @@ class Form(QWidget):
         self.ui.fileListView.selectionModel().selectionChanged.connect(self.update_setting_path)
         self.ui.filterListView.selectionModel().selectionChanged.connect(self.update_text)
         self.ui.filterListView.selectionModel().selectionChanged.connect(self.update_filter_path)
+        self.ui.trackIndexSpinBox.valueChanged.connect(self.update_track_index)
         self.ui.addFilterButton.clicked.connect(self.add_filter)
         self.ui.renameButton.clicked.connect(self.rename_filter)
         self.ui.editFilterButton.clicked.connect(self.edit_filter)
@@ -103,6 +104,9 @@ class Form(QWidget):
         self.ui.dirListView.doubleClicked.connect(partial(self.open_dir, self.preset_path))
         self.ui.fileListView.doubleClicked.connect(self.open_file_dir)
         self.ui.filterListView.doubleClicked.connect(self.open_filter_dir)
+
+        #
+        self.update_track_index()
 
     def update_text(self):
         name = ''
@@ -116,6 +120,9 @@ class Form(QWidget):
 
     def update_setting_path(self):
         self.ui.makeButton.setSettingFile(self.get_file_path())
+
+    def update_track_index(self):
+        self.ui.makeButton.setTrackIndex(self.ui.trackIndexSpinBox.value())
 
     def add_filter(self):
         path = self.get_dir_path()

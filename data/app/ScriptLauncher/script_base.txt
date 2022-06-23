@@ -7,30 +7,19 @@ local function getToolName(st)
     return nil
 end
 
-local function getAnim(st)
-    local r = {}
-    for key, v in pairs(st['Tools']) do
-        if (type(v) == 'table') and (v['__ctor'] == 'BezierSpline') then
-            r[key] = v
-        end
-    end
-    return r
-end
-
-local function setData(path, filter_list)
+local function setDataForFusion(path, filter_list)
     local tool_list = comp:GetToolList(true)
     comp:StartUndo('apply setting')
-    for i, v in pairs(tool_list) do
+    for i, v in ipairs(tool_list) do
         local st = v:SaveSettings()
-        local anim = getAnim(st)
         local f_st = bmd.readfile(path)
         local f_name = getToolName(f_st)
-        for i2, key in pairs(filter_list) do
+        for i2, key in ipairs(filter_list) do
             f_st['Tools'][f_name]['Inputs'][key] = st['Tools'][v.Name]['Inputs'][key]
             local tmp = f_st['Tools'][f_name]['Inputs'][key]
             if (type(tmp) == 'table') and (tmp['SourceOp'] ~= nil) then
                 local src = tmp['SourceOp']
-                f_st['Tools'][src] = anim[src]
+                f_st['Tools'][src] = st['Tools'][src]
             end
         end
         v:LoadSettings(f_st)
@@ -39,10 +28,80 @@ local function setData(path, filter_list)
     print('Done!: ' .. path)
 end
 
+local function setDataForResolve(path, filter_list, track_index)
+    local projectManager = resolve:GetProjectManager()
+    local project = projectManager:GetCurrentProject()
+    if not project then
+        print('Projectが見付かりません。')
+        return
+    end
+    local timeline = project:GetCurrentTimeline()
+    if not timeline then
+        print('Timelineが見付かりません。')
+        return
+    end
+    if timeline:GetTrackCount('video') < track_index then
+        print('Trackが見付かりません。')
+    end
+    local items = timeline:GetItemListInTrack('video', track_index)
+    for i, item in ipairs(items) do
+        if item:GetFusionCompCount() == 0 then
+            print('FusionCompが見付かりません。')
+            goto continue
+        end
+        local comp = item:GetFusionCompByIndex(1)
+        local lst = comp:GetToolList(false)
+        local tool
+        local tool_filter = {
+            ['MacroOperator'] = true,
+            ['GroupOperator'] = true,
+            ['TextPlus'] = true,
+            ['Background'] = true,
+        }
+        for i2, t in ipairs(lst) do
+            if tool_filter[t.ID] then
+                tool = t
+                break
+            end
+        end
+        if not tool then
+            goto continue
+        end
+        comp:StartUndo('apply setting')
+        comp:Lock()
+        local st = tool:SaveSettings()
+        local f_st = bmd.readfile(path)
+        local f_name = getToolName(f_st)
+        for i2, key in ipairs(filter_list) do
+            f_st['Tools'][f_name]['Inputs'][key] = st['Tools'][tool.Name]['Inputs'][key]
+            local tmp = f_st['Tools'][f_name]['Inputs'][key]
+            if (type(tmp) == 'table') and (tmp['SourceOp'] ~= nil) then
+                local src = tmp['SourceOp']
+                f_st['Tools'][src] = st['Tools'][src]
+            end
+        end
+        tool = tool:Refresh()
+        tool:LoadSettings(f_st)
+        comp:Unlock()
+        comp:EndUndo(true)
+        :: continue ::
+    end
+    print('Done!: ' .. path)
+end
+
+local function setData(path, filter_list, track_index)
+    if resolve and resolve:GetCurrentPage() ~= 'fusion' then
+        setDataForResolve(path, filter_list, track_index)
+    else
+        setDataForFusion(path, filter_list)
+    end
+end
+
 setData(
         '%s',
         {
 %s
-        }
+        },
+        %d
 )
 
