@@ -11,45 +11,37 @@ local function setJimaku(txt, color, setting_path)
     local projectManager = resolve:GetProjectManager()
     local project = projectManager:GetCurrentProject()
     if not project then
+        print('Projectが見付かりません。')
         return
     end
     local timeline = project:GetCurrentTimeline()
     if not timeline then
+        print('Timelineが見付かりません。')
         return
     end
-    local mov = timeline:GetCurrentVideoItem()
-    if not mov then
+    local textPlus = timeline:GetCurrentVideoItem()
+    if not textPlus then
+        print('VideoItemが見付かりません。')
         return
     end
-    if color ~= 'None' then
-        mov:GetMediaPoolItem():SetClipColor(color)
+
+    if textPlus:GetFusionCompCount() == 0 then
+        print('FusionCompが見付かりません。')
+        return
     end
 
-    -- Fusion
-    -- AddFusionComp()で作ったものはエディダページで更新されないので
-    -- compを作って保存、エディタページでimportしてみたけど変らん
+    local comp = textPlus:GetFusionCompByIndex(1)
 
-    local comp
-    if mov:GetFusionCompCount() > 0 then
-        comp = mov:GetFusionCompByIndex(1)
-    else
-        comp = mov:AddFusionComp()
+    local lst = comp:GetToolList(false, 'TextPlus')
+    if not lst[1] then
+        print('TextPlus Nodeが見付かりません。')
+        return
     end
-    comp:StartUndo('add text')
+
+    local tool = lst[1]
+
+    comp:StartUndo('set up jimaku')
     comp:Lock()
-    local tool = comp:AddTool('TextPlus')
-
-    local lst = comp:GetToolList(false, 'MediaOut')
-    if lst[1] then
-        lst[1]:Delete()
-    end
-    lst = comp:GetToolList(false, 'MediaIn')
-    if lst[1] then
-        lst[1]:Delete()
-    end
-
-    local mediaOut = comp:AddTool('MediaOut')
-    mediaOut:ConnectInput('Input', tool)
 
     -- setting
     tool.StyledText = txt
@@ -66,6 +58,10 @@ local function setJimaku(txt, color, setting_path)
     tool:LoadSettings(f_st)
     comp:Unlock()
     comp:EndUndo(true)
+
+    if color ~= 'None' then
+        textPlus:SetClipColor(color)
+    end
     print('Dane!')
 end
 

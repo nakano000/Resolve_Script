@@ -50,7 +50,7 @@
      </widget>
      <widget class="QWidget" name="textTab">
       <attribute name="title">
-       <string>FusionComp(実験的機能)</string>
+       <string>テキスト+用</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
@@ -111,7 +111,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTreeView" name="movTreeView">
+        <widget class="QTreeView" name="wavTreeView">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>

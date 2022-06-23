@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui' applies.
 #
-# Created: Thu Jun 23 11:37:41 2022
+# Created: Thu Jun 23 21:32:32 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -55,16 +55,16 @@ class Ui_Form(object):
         self.verticalLayout_2.addWidget(self.charaButton)
         self.horizontalLayout_3.addLayout(self.verticalLayout_2)
         self.verticalLayout_4.addLayout(self.horizontalLayout_3)
-        self.movTreeView = QtWidgets.QTreeView(self.textTab)
+        self.wavTreeView = QtWidgets.QTreeView(self.textTab)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.movTreeView.sizePolicy().hasHeightForWidth())
-        self.movTreeView.setSizePolicy(sizePolicy)
-        self.movTreeView.setMinimumSize(QtCore.QSize(350, 0))
-        self.movTreeView.setDragEnabled(True)
-        self.movTreeView.setObjectName("movTreeView")
-        self.verticalLayout_4.addWidget(self.movTreeView)
+        sizePolicy.setHeightForWidth(self.wavTreeView.sizePolicy().hasHeightForWidth())
+        self.wavTreeView.setSizePolicy(sizePolicy)
+        self.wavTreeView.setMinimumSize(QtCore.QSize(350, 0))
+        self.wavTreeView.setDragEnabled(True)
+        self.wavTreeView.setObjectName("wavTreeView")
+        self.verticalLayout_4.addWidget(self.wavTreeView)
         self.tabWidget.addTab(self.textTab, "")
         self.verticalLayout_3.addWidget(self.tabWidget)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
@@ -99,7 +99,7 @@ class Ui_Form(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.stTab), QtWidgets.QApplication.translate("Form", "字幕", None, -1))
         self.dragButton.setText(QtWidgets.QApplication.translate("Form", "drag", None, -1))
         self.charaButton.setText(QtWidgets.QApplication.translate("Form", "キャラクター設定", None, -1))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.textTab), QtWidgets.QApplication.translate("Form", "FusionComp(実験的機能)", None, -1))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.textTab), QtWidgets.QApplication.translate("Form", "テキスト+用", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("Form", "声フォルダ: ", None, -1))
         self.folderToolButton.setText(QtWidgets.QApplication.translate("Form", "...", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("Form", "close", None, -1))

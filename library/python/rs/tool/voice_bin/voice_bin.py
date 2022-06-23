@@ -25,7 +25,6 @@ from rs.core import (
     config,
     pipe as p,
     srt,
-    ffmpeg,
 )
 from rs.gui import (
     appearance,
@@ -70,7 +69,7 @@ class Form(QWidget):
         self.ui.charaButton.setStyleSheet(appearance.in_stylesheet)
 
         # tree view
-        for v in [self.ui.treeView, self.ui.movTreeView]:
+        for v in [self.ui.treeView, self.ui.wavTreeView]:
             model = QFileSystemModel()
             model.setOption(QFileSystemModel.DontWatchForChanges)
             model.setFilter(QDir.Files)
@@ -92,7 +91,7 @@ class Form(QWidget):
             h.setSectionResizeMode(3, QHeaderView.ResizeToContents)
             h.setSortIndicator(3, Qt.SortOrder.DescendingOrder)
         self.ui.treeView.model().setNameFilters(['*.wav', '*.srt'])
-        self.ui.movTreeView.model().setNameFilters(['*.mov'])
+        self.ui.wavTreeView.model().setNameFilters(['*.wav'])
 
         # watcher
         self.watcher = QFileSystemWatcher(self)
@@ -104,8 +103,8 @@ class Form(QWidget):
         self.ui.charaButton.clicked.connect(self.chara_window.show)
 
         self.ui.treeView.doubleClicked.connect(self.open_dir)
-        self.ui.movTreeView.doubleClicked.connect(self.open_dir)
-        self.ui.movTreeView.selectionModel().selectionChanged.connect(self.set_lua)
+        self.ui.wavTreeView.doubleClicked.connect(self.open_dir)
+        self.ui.wavTreeView.selectionModel().selectionChanged.connect(self.set_lua)
 
         self.ui.folderLineEdit.textChanged.connect(self.set_tree_root)
 
@@ -114,7 +113,7 @@ class Form(QWidget):
         self.ui.folderToolButton.clicked.connect(self.folderToolButton_clicked)
 
     def set_lua(self):
-        v = self.ui.movTreeView
+        v = self.ui.wavTreeView
         m: QFileSystemModel = v.model()
         sel = v.selectionModel()
         lst = sel.selectedIndexes()
@@ -129,7 +128,7 @@ class Form(QWidget):
         model = tree.model()
         sel = tree.selectionModel()
 
-        mov_tree = self.ui.movTreeView
+        mov_tree = self.ui.wavTreeView
         mov_model = mov_tree.model()
         mov_sel = mov_tree.selectionModel()
 
@@ -142,7 +141,6 @@ class Form(QWidget):
             txt_file = d.joinpath(f.stem + '.txt')
             srt_file = d.joinpath(f.stem + '.srt')
             lua_file = d.joinpath(f.stem + '.lua')
-            mov_file = d.joinpath(f.stem + '.mov')
             srt_flag = not srt_file.is_file()
             lua_flag = not lua_file.is_file()
             if txt_file.is_file() and (srt_flag or lua_flag):
@@ -167,7 +165,7 @@ class Form(QWidget):
                     sel.clearSelection()
                     sel.select(wav_index, QItemSelectionModel.Select)
                     sel.select(srt_index, QItemSelectionModel.Select)
-                if lua_flag and self.ui.tabWidget.currentIndex() == 1:
+                if lua_flag:
                     chara_data = CharaData()
                     for cd in self.chara_window.get_chara_list():
                         cd: CharaData
@@ -178,9 +176,8 @@ class Form(QWidget):
                     lua = self.script_base % (t, chara_data.color, str(chara_data.setting_file))
                     wasBlocked = self.watcher.blockSignals(True)
                     lua_file.write_text(lua, encoding='utf-8')
-                    ffmpeg.execute(ffmpeg.make_args(f, mov_file))
                     self.watcher.blockSignals(wasBlocked)
-                    index = mov_model.index(str(mov_file))
+                    index = mov_model.index(str(f))
                     mov_sel.clearSelection()
                     mov_sel.select(index, QItemSelectionModel.Select)
 
@@ -189,7 +186,7 @@ class Form(QWidget):
     def set_tree_root(self):
         path = Path(self.ui.folderLineEdit.text())
         flag = path.is_dir()
-        for v in [self.ui.treeView, self.ui.movTreeView]:
+        for v in [self.ui.treeView, self.ui.wavTreeView]:
             v.setEnabled(flag)
             if flag:
                 m = v.model()
@@ -201,7 +198,7 @@ class Form(QWidget):
             self.watcher.addPath(str(path))
 
     def reset_tree(self):
-        for v in [self.ui.treeView, self.ui.movTreeView]:
+        for v in [self.ui.treeView, self.ui.wavTreeView]:
             model = v.model()
             model.setRootPath("")
             model.setRootPath(str(Path(self.ui.folderLineEdit.text())))
