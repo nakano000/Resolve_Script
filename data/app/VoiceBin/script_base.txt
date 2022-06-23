@@ -43,6 +43,10 @@ local function setJimaku(txt, color, setting_path)
     if lst[1] then
         lst[1]:Delete()
     end
+    lst = comp:GetToolList(false, 'MediaIn')
+    if lst[1] then
+        lst[1]:Delete()
+    end
 
     local mediaOut = comp:AddTool('MediaOut')
     mediaOut:ConnectInput('Input', tool)
