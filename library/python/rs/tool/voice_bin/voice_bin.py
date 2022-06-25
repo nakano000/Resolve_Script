@@ -148,14 +148,25 @@ class Form(QWidget):
                 with open(txt_file, 'rb') as _f:
                     content = _f.read()
                     char_code = chardet.detect(content)
-                try:
+                print(char_code['encoding'])
+                enc = char_code['encoding']
+                if enc is None or enc.lower() not in [
+                    'utf-8',
+                    'utf-16',
+                    'utf-16be',
+                    'utf-16le',
+                    'utf-32',
+                    'utf-32be',
+                    'utf-32le',
+                    'cp932',
+                    'shift_jis',
+                ]:
+                    try:
+                        t = content.decode(encoding='utf-8')
+                    except:
+                        t = content.decode(encoding='cp932')
+                else:
                     t = content.decode(encoding=char_code['encoding'])
-                except:
-                    t = content.decode(encoding='utf-8')
-                # try:
-                #     t = txt_file.read_text(encoding='utf-8')
-                # except:
-                #     t = txt_file.read_text(encoding='cp932')
 
                 if srt_flag:
                     wave_data, samplerate = soundfile.read(str(f))
