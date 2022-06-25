@@ -1,8 +1,9 @@
 ## 使い方
 DaVinci Resolve で使える 動画制作補助ツールです。  
 1. 右のReleasesからzipファイルをダウンロードし解凍。
-2. りぞりぷと.exeを立ち上げる。
-3. 使いたい機能のボタンを押す。
+2. (オプション)アップグレードの場合は旧ツールからconfigフォルダをコピー
+3. りぞりぷと.exeを立ち上げる。
+4. 使いたい機能のボタンを押す。
 ### 目次
 * [softalk2wave](#softalk2wave)
 * [AssistantSeika2wave](#AssistantSeika2wave)
@@ -40,6 +41,7 @@ AssistantSeika、他音声読み上げソフトが必要です。
 ### VoiceBin
 動画参照
 https://youtu.be/BAn7sj5xbxg
+https://youtu.be/afiJp1lodMo
 
 [目次へ](#目次)
 ### Chara2Resolve
