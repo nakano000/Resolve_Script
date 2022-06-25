@@ -41,6 +41,8 @@ AssistantSeika、他音声読み上げソフトが必要です。
 ### VoiceBin
 動画参照
 https://youtu.be/BAn7sj5xbxg
+
+動画参照
 https://youtu.be/afiJp1lodMo
 
 [目次へ](#目次)
