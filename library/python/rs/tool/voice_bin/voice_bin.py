@@ -93,7 +93,8 @@ class Form(QWidget):
             h.setSortIndicator(3, Qt.SortOrder.DescendingOrder)
         self.ui.treeView.model().setNameFilters(['*.wav', '*.srt'])
         self.ui.wavTreeView.model().setNameFilters(['*.wav'])
-
+        self.sel_wav = ''
+        self.sel_srt = ''
         # watcher
         self.watcher = QFileSystemWatcher(self)
         self.watcher.directoryChanged.connect(self.directory_changed)
@@ -124,14 +125,16 @@ class Form(QWidget):
             self.ui.dragButton.setLuaFile(path)
 
     def directory_changed(self, s):
+        self.reset_tree()
+
         d = Path(s)
         tree = self.ui.treeView
         model = tree.model()
         sel = tree.selectionModel()
 
-        wav_tree = self.ui.wavTreeView
-        wav_model = wav_tree.model()
-        wav_sel = wav_tree.selectionModel()
+        txt_tree = self.ui.wavTreeView
+        txt_model = txt_tree.model()
+        txt_sel = txt_tree.selectionModel()
 
         for f in p.pipe(
                 d.iterdir(),
@@ -148,8 +151,8 @@ class Form(QWidget):
                 with open(txt_file, 'rb') as _f:
                     content = _f.read()
                     char_code = chardet.detect(content)
-                print(char_code['encoding'])
-                enc = char_code['encoding']
+                enc: str = char_code['encoding']
+
                 if enc is None or enc.lower() not in [
                     'utf-8',
                     'utf-8-sig',
@@ -167,7 +170,9 @@ class Form(QWidget):
                     except:
                         t = content.decode(encoding='cp932')
                 else:
-                    t = content.decode(encoding=char_code['encoding'])
+                    if enc.lower() == 'shift_jis':
+                        enc = 'cp932'
+                    t = content.decode(encoding=enc)
 
                 if srt_flag:
                     wave_data, samplerate = soundfile.read(str(f))
@@ -180,12 +185,8 @@ class Form(QWidget):
                     wasBlocked = self.watcher.blockSignals(True)
                     srt_data.save(srt_file)
                     self.watcher.blockSignals(wasBlocked)
-                    self._reset_tree(tree)
-                    sel.clearSelection()
-                    wav_index = model.index(str(f))
-                    sel.select(wav_index, QItemSelectionModel.Select)
-                    srt_index = model.index(str(srt_file))
-                    sel.select(srt_index, QItemSelectionModel.Select)
+                    self.sel_wav = str(f)
+                    self.sel_srt = str(srt_file)
                 if lua_flag:
                     chara_data = CharaData()
                     for cd in self.chara_window.get_chara_list():
@@ -198,10 +199,14 @@ class Form(QWidget):
                     wasBlocked = self.watcher.blockSignals(True)
                     lua_file.write_text(lua, encoding='utf-8')
                     self.watcher.blockSignals(wasBlocked)
-                    self._reset_tree(wav_tree)
-                    index = wav_model.index(str(f))
-                    wav_sel.clearSelection()
-                    wav_sel.select(index, QItemSelectionModel.Select)
+                    self.sel_wav = str(f)
+        if self.sel_wav != '':
+            sel.clearSelection()
+            sel.select(model.index(self.sel_srt.replace('\\', '/')), QItemSelectionModel.Select)
+            sel.select(model.index(self.sel_wav.replace('\\', '/')), QItemSelectionModel.Select)
+        if self.sel_wav != '':
+            txt_sel.clearSelection()
+            txt_sel.select(txt_model.index(self.sel_wav), QItemSelectionModel.Select)
 
     def set_tree_root(self):
         path = Path(self.ui.folderLineEdit.text())
@@ -218,13 +223,16 @@ class Form(QWidget):
             self.watcher.addPath(str(path))
 
     def _reset_tree(self, v):
-        model = v.model()
+        model: QFileSystemModel = v.model()
+        sel = v.selectionModel()
         model.setRootPath("")
         model.setRootPath(str(Path(self.ui.folderLineEdit.text())))
 
     def reset_tree(self):
+        wasBlocked = self.watcher.blockSignals(True)
         for v in [self.ui.treeView, self.ui.wavTreeView]:
             self._reset_tree(v)
+        self.watcher.blockSignals(wasBlocked)
 
     def open_dir(self):
         subprocess.Popen(['explorer', self.ui.folderLineEdit.text().strip().replace('/', '\\')])
