@@ -4,8 +4,9 @@ import dataclasses
 import sys
 import soundfile
 import subprocess
-
 from pathlib import Path
+
+import chardet
 
 from PySide2.QtCore import (
     Qt,
@@ -128,9 +129,9 @@ class Form(QWidget):
         model = tree.model()
         sel = tree.selectionModel()
 
-        mov_tree = self.ui.wavTreeView
-        mov_model = mov_tree.model()
-        mov_sel = mov_tree.selectionModel()
+        wav_tree = self.ui.wavTreeView
+        wav_model = wav_tree.model()
+        wav_sel = wav_tree.selectionModel()
 
         for f in p.pipe(
                 d.iterdir(),
@@ -144,10 +145,17 @@ class Form(QWidget):
             srt_flag = not srt_file.is_file()
             lua_flag = not lua_file.is_file()
             if txt_file.is_file() and (srt_flag or lua_flag):
+                with open(txt_file, 'rb') as _f:
+                    content = _f.read()
+                    char_code = chardet.detect(content)
                 try:
-                    t = txt_file.read_text(encoding='utf-8')
+                    t = content.decode(encoding=char_code['encoding'])
                 except:
-                    t = txt_file.read_text(encoding='shift_jis')
+                    t = content.decode(encoding='utf-8')
+                # try:
+                #     t = txt_file.read_text(encoding='utf-8')
+                # except:
+                #     t = txt_file.read_text(encoding='cp932')
 
                 if srt_flag:
                     wave_data, samplerate = soundfile.read(str(f))
@@ -160,10 +168,11 @@ class Form(QWidget):
                     wasBlocked = self.watcher.blockSignals(True)
                     srt_data.save(srt_file)
                     self.watcher.blockSignals(wasBlocked)
-                    wav_index = model.index(str(f))
-                    srt_index = model.index(str(srt_file))
+                    self._reset_tree(tree)
                     sel.clearSelection()
+                    wav_index = model.index(str(f))
                     sel.select(wav_index, QItemSelectionModel.Select)
+                    srt_index = model.index(str(srt_file))
                     sel.select(srt_index, QItemSelectionModel.Select)
                 if lua_flag:
                     chara_data = CharaData()
@@ -177,11 +186,10 @@ class Form(QWidget):
                     wasBlocked = self.watcher.blockSignals(True)
                     lua_file.write_text(lua, encoding='utf-8')
                     self.watcher.blockSignals(wasBlocked)
-                    index = mov_model.index(str(f))
-                    mov_sel.clearSelection()
-                    mov_sel.select(index, QItemSelectionModel.Select)
-
-        self.reset_tree()
+                    self._reset_tree(wav_tree)
+                    index = wav_model.index(str(f))
+                    wav_sel.clearSelection()
+                    wav_sel.select(index, QItemSelectionModel.Select)
 
     def set_tree_root(self):
         path = Path(self.ui.folderLineEdit.text())
@@ -197,11 +205,14 @@ class Form(QWidget):
             self.watcher.removePaths(self.watcher.files())
             self.watcher.addPath(str(path))
 
+    def _reset_tree(self, v):
+        model = v.model()
+        model.setRootPath("")
+        model.setRootPath(str(Path(self.ui.folderLineEdit.text())))
+
     def reset_tree(self):
         for v in [self.ui.treeView, self.ui.wavTreeView]:
-            model = v.model()
-            model.setRootPath("")
-            model.setRootPath(str(Path(self.ui.folderLineEdit.text())))
+            self._reset_tree(v)
 
     def open_dir(self):
         subprocess.Popen(['explorer', self.ui.folderLineEdit.text().strip().replace('/', '\\')])
