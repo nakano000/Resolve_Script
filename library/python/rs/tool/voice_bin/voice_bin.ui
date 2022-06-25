@@ -64,7 +64,7 @@
             </size>
            </property>
            <property name="text">
-            <string>drag</string>
+            <string> Apply</string>
            </property>
           </widget>
          </item>

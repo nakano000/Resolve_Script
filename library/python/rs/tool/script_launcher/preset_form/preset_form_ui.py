@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\script_launcher\preset_form\preset_form.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\script_launcher\preset_form\preset_form.ui' applies.
 #
-# Created: Fri Jun 24 01:01:32 2022
+# Created: Sat Jun 25 17:44:52 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(552, 467)
+        Form.resize(552, 459)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.splitter_2 = QtWidgets.QSplitter(Form)
@@ -55,10 +55,10 @@ class Ui_Form(object):
         self.groupBox_3.setObjectName("groupBox_3")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_3)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.makeButton = DragButton(self.groupBox_3)
-        self.makeButton.setMinimumSize(QtCore.QSize(100, 100))
-        self.makeButton.setObjectName("makeButton")
-        self.verticalLayout_2.addWidget(self.makeButton)
+        self.applyButton = DragButton(self.groupBox_3)
+        self.applyButton.setMinimumSize(QtCore.QSize(100, 100))
+        self.applyButton.setObjectName("applyButton")
+        self.verticalLayout_2.addWidget(self.applyButton)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label = QtWidgets.QLabel(self.groupBox_3)
@@ -124,7 +124,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QtWidgets.QApplication.translate("Form", "Form", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("Form", "Setting File", None, -1))
-        self.makeButton.setText(QtWidgets.QApplication.translate("Form", "Drag", None, -1))
+        self.applyButton.setText(QtWidgets.QApplication.translate("Form", " Apply", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("Form", "トラック番号", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("Form", "close", None, -1))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("Form", "Filter", None, -1))

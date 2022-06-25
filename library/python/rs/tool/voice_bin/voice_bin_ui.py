@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui' applies.
 #
-# Created: Fri Jun 24 15:31:32 2022
+# Created: Sat Jun 25 17:49:02 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -97,7 +97,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QtWidgets.QApplication.translate("Form", "Form", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.stTab), QtWidgets.QApplication.translate("Form", "字幕", None, -1))
-        self.dragButton.setText(QtWidgets.QApplication.translate("Form", "drag", None, -1))
+        self.dragButton.setText(QtWidgets.QApplication.translate("Form", " Apply", None, -1))
         self.charaButton.setText(QtWidgets.QApplication.translate("Form", "キャラクター設定", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.textTab), QtWidgets.QApplication.translate("Form", "テキスト+", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("Form", "声フォルダ: ", None, -1))

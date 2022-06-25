@@ -85,7 +85,7 @@ class Form(QWidget):
             m.setStringList([])
             v.setModel(m)
         # button
-        self.ui.makeButton.setStyleSheet(appearance.ex_stylesheet)
+        self.ui.applyButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.addFilterButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.renameButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.editFilterButton.setStyleSheet(appearance.in_stylesheet)
@@ -116,13 +116,13 @@ class Form(QWidget):
         self.ui.filterNameLineEdit.setText(name)
 
     def update_filter_path(self):
-        self.ui.makeButton.setFilterFile(self.get_filter_path())
+        self.ui.applyButton.setFilterFile(self.get_filter_path())
 
     def update_setting_path(self):
-        self.ui.makeButton.setSettingFile(self.get_file_path())
+        self.ui.applyButton.setSettingFile(self.get_file_path())
 
     def update_track_index(self):
-        self.ui.makeButton.setTrackIndex(self.ui.trackIndexSpinBox.value())
+        self.ui.applyButton.setTrackIndex(self.ui.trackIndexSpinBox.value())
 
     def add_filter(self):
         path = self.get_dir_path()
