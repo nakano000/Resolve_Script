@@ -148,7 +148,6 @@ class Form(QWidget):
                 with open(txt_file, 'rb') as _f:
                     content = _f.read()
                     char_code = chardet.detect(content)
-                print(char_code['encoding'])
                 enc = char_code['encoding']
                 if enc is None or enc.lower() not in [
                     'utf-8',
