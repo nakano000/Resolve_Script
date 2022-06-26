@@ -12,7 +12,7 @@ from PySide2.QtCore import (
     Qt,
     QDir,
     QItemSelectionModel,
-    QFileSystemWatcher,
+    Signal,
 )
 from PySide2.QtWidgets import (
     QApplication,
@@ -21,6 +21,9 @@ from PySide2.QtWidgets import (
     QWidget,
     QHeaderView,
 )
+
+from watchdog.observers.polling import PollingObserver
+from watchdog.events import FileSystemEventHandler
 
 from rs.core import (
     config,
@@ -42,7 +45,48 @@ class ConfigData(config.Data):
     voice_dir: str = ''
 
 
+# 監視中の挙動
+class WatchdogEvent(FileSystemEventHandler):
+    def __init__(self, sig):
+        super(WatchdogEvent, self).__init__()
+        self.modified: Signal = sig
+        self.created_lst = []
+        self.moved_lst = []
+        self.deleted_lst = []
+
+    def on_created(self, event):
+        src_path = Path(event.src_path)
+        # print('created', src_path)
+        if src_path.suffix.lower() in ['.wav', '.txt']:
+            self.created_lst.append(src_path)
+
+    def on_modified(self, event):
+        src_path = Path(event.src_path)
+        # print('modified', src_path)
+        if src_path.is_dir():
+            flag = False
+            for lst in [self.created_lst, self.moved_lst, self.deleted_lst]:
+                if len(lst) > 0:
+                    flag = True
+                    lst.clear()
+            if flag:
+                self.modified.emit(str(src_path))
+
+    def on_moved(self, event):
+        src_path = Path(event.src_path)
+        # print('moved', src_path)
+        self.moved_lst.append(src_path)
+
+    def on_deleted(self, event):
+        src_path = Path(event.src_path)
+        # print('deleted', src_path)
+        if src_path.suffix.lower() in ['.wav', '.srt']:
+            self.deleted_lst.append(src_path)
+
+
 class Form(QWidget):
+    modified = Signal(str)
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.ui = Ui_Form()
@@ -96,9 +140,8 @@ class Form(QWidget):
         self.sel_wav = ''
         self.sel_srt = ''
         # watcher
-        self.watcher = QFileSystemWatcher(self)
-        self.watcher.directoryChanged.connect(self.directory_changed)
-
+        self.modified.connect(self.directory_changed)
+        self.__observer = PollingObserver()
         self.set_tree_root()
 
         # event
@@ -114,6 +157,21 @@ class Form(QWidget):
 
         self.ui.folderToolButton.clicked.connect(self.folderToolButton_clicked)
 
+    def start(self):
+        path = Path(self.ui.folderLineEdit.text())
+        if path.is_dir():
+            if self.__observer.is_alive():
+                self.__observer.stop()
+                self.__observer.join()
+            self.__observer = PollingObserver()
+            self.__observer.schedule(WatchdogEvent(self.modified), str(path), True)
+            self.__observer.start()
+
+    def stop(self):
+        if self.__observer.is_alive():
+            self.__observer.stop()
+            self.__observer.join()
+
     def set_lua(self):
         v = self.ui.wavTreeView
         m: QFileSystemModel = v.model()
@@ -125,8 +183,7 @@ class Form(QWidget):
             self.ui.dragButton.setLuaFile(path)
 
     def directory_changed(self, s):
-        self.reset_tree()
-
+        # print('refresh')
         d = Path(s)
         tree = self.ui.treeView
         model = tree.model()
@@ -182,9 +239,7 @@ class Form(QWidget):
 
                     srt_data.subtitles.append(srt.Subtitle(0, _d, t))
 
-                    wasBlocked = self.watcher.blockSignals(True)
                     srt_data.save(srt_file)
-                    self.watcher.blockSignals(wasBlocked)
                     self.sel_wav = str(f)
                     self.sel_srt = str(srt_file)
                 if lua_flag:
@@ -196,10 +251,9 @@ class Form(QWidget):
                             chara_data = cd
                             break
                     lua = self.script_base % (t, chara_data.color, str(chara_data.setting_file))
-                    wasBlocked = self.watcher.blockSignals(True)
                     lua_file.write_text(lua, encoding='utf-8')
-                    self.watcher.blockSignals(wasBlocked)
                     self.sel_wav = str(f)
+        self.reset_tree()
         if self.sel_wav != '':
             sel.clearSelection()
             sel.select(model.index(self.sel_srt.replace('\\', '/')), QItemSelectionModel.Select)
@@ -217,22 +271,18 @@ class Form(QWidget):
                 m = v.model()
                 _index = m.setRootPath(str(path))
                 v.setRootIndex(_index)
-        if flag:
-            self.watcher.removePaths(self.watcher.directories())
-            self.watcher.removePaths(self.watcher.files())
-            self.watcher.addPath(str(path))
+
+        self.stop()
+        self.start()
 
     def _reset_tree(self, v):
         model: QFileSystemModel = v.model()
-        sel = v.selectionModel()
         model.setRootPath("")
         model.setRootPath(str(Path(self.ui.folderLineEdit.text())))
 
     def reset_tree(self):
-        wasBlocked = self.watcher.blockSignals(True)
         for v in [self.ui.treeView, self.ui.wavTreeView]:
             self._reset_tree(v)
-        self.watcher.blockSignals(wasBlocked)
 
     def open_dir(self):
         subprocess.Popen(['explorer', self.ui.folderLineEdit.text().strip().replace('/', '\\')])
@@ -269,7 +319,12 @@ class Form(QWidget):
         c = self.get_data()
         c.save(self.config_file)
 
+    def show(self) -> None:
+        self.start()
+        super().show()
+
     def closeEvent(self, event):
+        self.stop()
         self.save_config()
         super().closeEvent(event)
 
