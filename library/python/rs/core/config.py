@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT_PATH: Path = Path(__file__).joinpath('..', '..', '..', '..', '..').resolve()
 LAUNCHER_CONFIG_FILE: Path = ROOT_PATH.joinpath('data', 'app', 'launcher.json')
 PYTHONW_EXE_PATH: Path = ROOT_PATH.joinpath(
-    json.loads(LAUNCHER_CONFIG_FILE.read_text())['program']
+    json.loads(LAUNCHER_CONFIG_FILE.read_text(encoding='utf-8'))['program']
 )
 CONFIG_DIR: Path = ROOT_PATH.joinpath('config')
 
@@ -67,7 +67,7 @@ class DataInterface:
 @dataclasses.dataclass
 class Data(DataInterface):
     def load(self, path: Path) -> None:
-        dct = json.loads(path.read_text())
+        dct = json.loads(path.read_text(encoding='utf-8'))
         self.set(dct)
 
     def save(self, path: Path) -> None:
@@ -80,7 +80,7 @@ class Data(DataInterface):
 if __name__ == '__main__':
     print(ROOT_PATH)
     print(LAUNCHER_CONFIG_FILE)
-    print(LAUNCHER_CONFIG_FILE.read_text())
+    print(LAUNCHER_CONFIG_FILE.read_text(encoding='utf-8'))
     print(PYTHONW_EXE_PATH)
     print(CONFIG_DIR)
 

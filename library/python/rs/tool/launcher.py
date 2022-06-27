@@ -49,7 +49,7 @@ class MainWindow(QWidget):
         lo.setContentsMargins(5, 5, 5, 5)
         # import json
         lst: List[dict] = p.pipe(
-            MENU_JSON.read_text(),
+            MENU_JSON.read_text(encoding='utf-8'),
             json.loads,
             list,
         )

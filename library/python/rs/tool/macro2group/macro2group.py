@@ -84,7 +84,7 @@ class Form(QWidget):
             sorted,
         )
         if len(paths) > 0:
-            setting = Path(paths[0]).read_text().replace('MacroOperator', 'GroupOperator')
+            setting = Path(paths[0]).read_text(encoding='utf-8').replace('MacroOperator', 'GroupOperator')
             clipboard = QApplication.clipboard()
             clipboard.setText(setting)
             self.ui.label.setText('DONE!')
