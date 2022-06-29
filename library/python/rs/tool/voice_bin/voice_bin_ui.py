@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui' applies.
 #
-# Created: Sat Jun 25 17:49:02 2022
+# Created: Thu Jun 30 04:44:57 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(402, 537)
+        Form.resize(475, 696)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.tabWidget = QtWidgets.QTabWidget(Form)
@@ -44,12 +44,35 @@ class Ui_Form(object):
         self.dragButton.setMinimumSize(QtCore.QSize(100, 100))
         self.dragButton.setObjectName("dragButton")
         self.horizontalLayout_3.addWidget(self.dragButton)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem)
+        self.tatieDragButton = DragButton(self.textTab)
+        self.tatieDragButton.setMinimumSize(QtCore.QSize(100, 100))
+        self.tatieDragButton.setObjectName("tatieDragButton")
+        self.horizontalLayout_3.addWidget(self.tatieDragButton)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem1)
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
+        self.verticalLayout_5.addItem(spacerItem2)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.label_2 = QtWidgets.QLabel(self.textTab)
+        self.label_2.setObjectName("label_2")
+        self.horizontalLayout_4.addWidget(self.label_2)
+        self.fpsSpinBox = QtWidgets.QDoubleSpinBox(self.textTab)
+        self.fpsSpinBox.setMinimum(0.1)
+        self.fpsSpinBox.setMaximum(999.99)
+        self.fpsSpinBox.setProperty("value", 30.0)
+        self.fpsSpinBox.setObjectName("fpsSpinBox")
+        self.horizontalLayout_4.addWidget(self.fpsSpinBox)
+        self.verticalLayout_5.addLayout(self.horizontalLayout_4)
+        self.horizontalLayout_3.addLayout(self.verticalLayout_5)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
-        self.verticalLayout_2.addItem(spacerItem1)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
+        self.verticalLayout_2.addItem(spacerItem3)
         self.charaButton = QtWidgets.QPushButton(self.textTab)
         self.charaButton.setObjectName("charaButton")
         self.verticalLayout_2.addWidget(self.charaButton)
@@ -82,8 +105,8 @@ class Ui_Form(object):
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem2)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem4)
         self.closeButton = QtWidgets.QPushButton(Form)
         self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
         self.closeButton.setObjectName("closeButton")
@@ -97,9 +120,11 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QtWidgets.QApplication.translate("Form", "Form", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.stTab), QtWidgets.QApplication.translate("Form", "字幕", None, -1))
-        self.dragButton.setText(QtWidgets.QApplication.translate("Form", " Apply", None, -1))
+        self.dragButton.setText(QtWidgets.QApplication.translate("Form", " TEXT+", None, -1))
+        self.tatieDragButton.setText(QtWidgets.QApplication.translate("Form", " 立ち絵", None, -1))
+        self.label_2.setText(QtWidgets.QApplication.translate("Form", "FPS", None, -1))
         self.charaButton.setText(QtWidgets.QApplication.translate("Form", "キャラクター設定", None, -1))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.textTab), QtWidgets.QApplication.translate("Form", "テキスト+", None, -1))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.textTab), QtWidgets.QApplication.translate("Form", "テキスト+ 立ち絵", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("Form", "声フォルダ: ", None, -1))
         self.folderToolButton.setText(QtWidgets.QApplication.translate("Form", "...", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("Form", "close", None, -1))

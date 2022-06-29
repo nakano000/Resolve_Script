@@ -29,6 +29,7 @@ from rs.core import (
     config,
     pipe as p,
     srt,
+    lab,
 )
 from rs.gui import (
     appearance,
@@ -43,6 +44,7 @@ APP_NAME = 'VoiceBin'
 @dataclasses.dataclass
 class ConfigData(config.Data):
     voice_dir: str = ''
+    fps: float = 30.0
 
 
 # 監視中の挙動
@@ -57,7 +59,7 @@ class WatchdogEvent(FileSystemEventHandler):
     def on_created(self, event):
         src_path = Path(event.src_path)
         # print('created', src_path)
-        if src_path.suffix.lower() in ['.wav', '.txt']:
+        if src_path.suffix.lower() in ['.wav', '.txt', '.lab']:
             self.created_lst.append(src_path)
 
     def on_modified(self, event):
@@ -103,14 +105,19 @@ class Form(QWidget):
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
 
-        script_base_file: Path = config.ROOT_PATH.joinpath('data', 'app', APP_NAME, 'script_base.txt')
-        self.script_base: str = script_base_file.read_text(encoding='utf-8')
+        text_script_base_file: Path = config.ROOT_PATH.joinpath('data', 'app', APP_NAME, 'text_script_base.txt')
+        self.text_script_base: str = text_script_base_file.read_text(encoding='utf-8')
+        tatie_script_base_file: Path = config.ROOT_PATH.joinpath('data', 'app', APP_NAME, 'tatie_script_base.txt')
+        self.tatie_script_base: str = tatie_script_base_file.read_text(encoding='utf-8')
+        tatie_setting_base_file: Path = config.ROOT_PATH.joinpath('data', 'app', APP_NAME, 'tatie_setting_base.txt')
+        self.tatie_setting_base: str = tatie_setting_base_file.read_text(encoding='utf-8')
 
         # window
         self.chara_window = CharaWindow(self)
 
         # button
         self.ui.dragButton.setStyleSheet(appearance.ex_stylesheet)
+        self.ui.tatieDragButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.charaButton.setStyleSheet(appearance.in_stylesheet)
 
         # tree view
@@ -178,9 +185,11 @@ class Form(QWidget):
         sel = v.selectionModel()
         lst = sel.selectedIndexes()
         if len(lst) > 0:
-            mov_path = Path(m.filePath(lst[0]))
-            path = mov_path.parent.joinpath(mov_path.stem + '.lua')
+            wav_path = Path(m.filePath(lst[0]))
+            path = wav_path.parent.joinpath(wav_path.stem + '.lua')
+            tatie_path = wav_path.parent.joinpath(wav_path.stem + '.tatie.lua')
             self.ui.dragButton.setLuaFile(path)
+            self.ui.tatieDragButton.setLuaFile(tatie_path)
 
     def directory_changed(self, s):
         # print('refresh')
@@ -202,9 +211,13 @@ class Form(QWidget):
             txt_file = d.joinpath(f.stem + '.txt')
             srt_file = d.joinpath(f.stem + '.srt')
             lua_file = d.joinpath(f.stem + '.lua')
+            tatie_lua_file = d.joinpath(f.stem + '.tatie.lua')
+            lab_file = d.joinpath(f.stem + '.lab')
+            setting_file = d.joinpath(f.stem + '.setting')
             srt_flag = not srt_file.is_file()
             lua_flag = not lua_file.is_file()
-            if txt_file.is_file() and (srt_flag or lua_flag):
+            setting_flag = lab_file.is_file() and not setting_file.is_file()
+            if txt_file.is_file() and (srt_flag or lua_flag or setting_file):
                 with open(txt_file, 'rb') as _f:
                     content = _f.read()
                     char_code = chardet.detect(content)
@@ -242,7 +255,7 @@ class Form(QWidget):
                     srt_data.save(srt_file)
                     self.sel_wav = str(f)
                     self.sel_srt = str(srt_file)
-                if lua_flag:
+                if lua_flag and setting_flag:
                     chara_data = CharaData()
                     for cd in self.chara_window.get_chara_list():
                         cd: CharaData
@@ -250,9 +263,27 @@ class Form(QWidget):
                         if m is not None:
                             chara_data = cd
                             break
-                    lua = self.script_base % (t, chara_data.color, str(chara_data.setting_file))
-                    lua_file.write_text(lua, encoding='utf-8')
-                    self.sel_wav = str(f)
+                    if lua_flag:
+                        lua = self.text_script_base % (
+                            t,
+                            chara_data.color,
+                            chara_data.track_name,
+                            str(chara_data.setting_file)
+                        )
+                        lua_file.write_text(lua, encoding='utf-8')
+                    if setting_flag:
+                        data = self.get_data()
+                        setting = self.tatie_setting_base % (
+                            t.replace('\n', '\\n').replace('"', '\\"'),
+                            lab.lab2anim(lab_file, data.fps)
+                        )
+                        setting_file.write_text(setting, encoding='utf-8')
+                        tatie_lua = self.tatie_script_base % (
+                            chara_data.color,
+                            chara_data.track_name,
+                            str(setting_file)
+                        )
+                        tatie_lua_file.write_text(tatie_lua, encoding='utf-8')
         self.reset_tree()
         if self.sel_wav != '':
             sel.clearSelection()
@@ -302,10 +333,12 @@ class Form(QWidget):
 
     def set_data(self, c: ConfigData):
         self.ui.folderLineEdit.setText(c.voice_dir)
+        self.ui.fpsSpinBox.setValue(c.fps)
 
     def get_data(self) -> ConfigData:
         c = self.new_config()
         c.voice_dir = self.ui.folderLineEdit.text()
+        c.fps = self.ui.fpsSpinBox.value()
         return c
 
     def load_config(self) -> None:

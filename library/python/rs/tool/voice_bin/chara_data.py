@@ -10,6 +10,7 @@ from rs.gui import basic_table
 @dataclasses.dataclass
 class CharaData(basic_table.RowData):
     # reg_exp: str = r'^\d+_ずんだもん.+'
+    track_name: str = ''
     reg_exp: str = r'.+'
     color: str = 'None'
     _setting: str = r'Preset\TextPlus\字幕_白.setting'
@@ -30,7 +31,7 @@ class CharaData(basic_table.RowData):
 
     @classmethod
     def toHeaderList(cls) -> List[str]:
-        return ['正規表現', '色', 'settingファイル']
+        return ['トラック名', '正規表現', '色', 'settingファイル']
 
 
 if __name__ == '__main__':

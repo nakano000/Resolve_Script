@@ -1,3 +1,54 @@
+local function split(str, ts)
+    if ts == nil then
+        return {}
+    end
+    local t = {};
+    i = 1
+    for s in string.gmatch(str, "([^" .. ts .. "]+)") do
+        t[i] = s
+        i = i + 1
+    end
+    return t
+end
+
+local function timecode2Frame(timecode, fps)
+    local t = split(timecode, ':')
+    local h = tonumber(t[1])
+    local m = tonumber(t[2]) + (h * 60)
+    local s = tonumber(t[3]) + (m * 60)
+    local f = tonumber(t[4]) + (s * fps)
+    return f
+end
+
+local function getTrackIndexByName(timeline, name)
+    local r = nil
+    local cnt = timeline:GetTrackCount('video')
+    if cnt == 0 then
+        return r
+    end
+    for i = 1, cnt do
+        if timeline:GetTrackName('video', i) == name then
+            r = i
+        end
+    end
+    return r
+end
+
+local function getItemByTrackName(timeline, name)
+    local r = timeline:GetCurrentVideoItem()
+    local index = getTrackIndexByName(timeline, name)
+    if not index then
+        return r
+    end
+    local currentFrame = timecode2Frame(timeline:GetCurrentTimecode(), timeline:GetSetting('timelineFrameRate'))
+    for i, item in ipairs(timeline:GetItemListInTrack('video', index)) do
+        if item:GetStart() < currentFrame and item:GetEnd() > currentFrame then
+            return item
+        end
+    end
+    return r
+end
+
 local function getToolName(st)
     for key, v in pairs(st['Tools']) do
         if (type(v) == 'table') and (v['Inputs'] ~= nil) then
@@ -7,7 +58,7 @@ local function getToolName(st)
     return nil
 end
 
-local function setJimaku(txt, color, setting_path)
+local function setJimaku(txt, color, track_name, setting_path)
     local projectManager = resolve:GetProjectManager()
     local project = projectManager:GetCurrentProject()
     if not project then
@@ -19,7 +70,7 @@ local function setJimaku(txt, color, setting_path)
         print('Timelineが見付かりません。')
         return
     end
-    local textPlus = timeline:GetCurrentVideoItem()
+    local textPlus = getItemByTrackName(timeline, track_name)
     if not textPlus then
         print('VideoItemが見付かりません。')
         return
@@ -67,6 +118,7 @@ end
 
 setJimaku(
         [[%s]],
+        '%s',
         '%s',
         [[%s]]
 )
