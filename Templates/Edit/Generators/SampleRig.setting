@@ -1,0 +1,399 @@
+{
+	Tools = ordered() {
+		RigTool = GroupOperator {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = ordered() {
+				StyledText = Input { Value = "字幕", },
+			},
+			Outputs = {
+				Output1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 110, 280.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 1055, 417.3, 503, 22 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { -660, -170.8 }
+			},
+			Tools = ordered() {
+				Dissolve_I = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(RigTool.Anim < 4, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "I",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Dissolve_U",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 550, 313.5 } },
+				},
+				O = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Font = Input { Value = "Meiryo", },
+						StyledText = Input { Value = "お", },
+						Style = Input { Value = "Bold", },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 220, 313.5 } },
+				},
+				U = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Font = Input { Value = "Meiryo", },
+						StyledText = Input { Value = "う", },
+						Style = Input { Value = "Bold", },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 440, 181.5 } },
+				},
+				I = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Font = Input { Value = "Meiryo", },
+						StyledText = Input { Value = "い", },
+						Style = Input { Value = "Bold", },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 550, 181.5 } },
+				},
+				Text1 = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Font = Input { Value = "Meiryo", },
+						StyledText = Input { Value = "通常", },
+						Style = Input { Value = "Bold", },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 880, 181.5 } },
+				},
+				N = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Font = Input { Value = "Meiryo", },
+						StyledText = Input { Value = "ん", },
+						Style = Input { Value = "Bold", },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 770, 181.5 } },
+				},
+				A = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Font = Input { Value = "Meiryo", },
+						StyledText = Input { Value = "あ", },
+						Style = Input { Value = "Bold", },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 660, 181.5 } },
+				},
+				Dissolve1 = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(RigTool.Anim < 1, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "Text1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Dissolve_N",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 880, 313.5 } },
+				},
+				Dissolve_N = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(RigTool.Anim < 2, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "N",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Dissolve_A",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 770, 313.5 } },
+				},
+				Dissolve_A = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input { Expression = "iif(RigTool.Anim < 3, 0, 1)", },
+						Background = Input {
+							SourceOp = "A",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Dissolve_I",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 660, 313.5 } },
+				},
+				Dissolve_U = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(RigTool.Anim < 5, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "U",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Dissolve_E",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 440, 313.5 } },
+				},
+				Dissolve_E = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input { Expression = "iif(RigTool.Anim < 6, 0, 1)", },
+						Background = Input {
+							SourceOp = "E",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "O",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 330, 313.5 } },
+				},
+				E = TextPlus {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Font = Input { Value = "Meiryo", },
+						StyledText = Input { Value = "え", },
+						Style = Input { Value = "Bold", },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 330, 181.5 } },
+				},
+				Background1 = Background {
+					Inputs = {
+						UseFrameFormatSettings = Input { Value = 1, },
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 770, 445.5 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Dissolve1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 880, 445.5 } },
+				},
+				Merge1 = Merge {
+					NameSet = true,
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Text1_1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1100, 445.5 } },
+				},
+				Text1_1 = TextPlus {
+					Inputs = {
+						HorizontalJustificationNew = Input { Value = 3, },
+						ElementShape5 = Input { Value = 1, },
+						Thickness5 = Input { Value = 0.14, },
+						VerticalJustificationNew = Input { Value = 3, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Center = Input { Value = { 0.5, 0.15 }, },
+						Size = Input { Value = 0.07, },
+						Font = Input { Value = "Meiryo", },
+						StyledText = Input {
+							Value = "字幕",
+							Expression = "RigTool.StyledText",
+						},
+						Style = Input { Value = "Bold", },
+						ManualFontKerningPlacement = Input {
+							Value = StyledText {
+								Array = {
+								},
+								Value = ""
+							},
+						},
+						SelectElement = Input { Value = 1, },
+						Select = Input { Value = 1, },
+						Enabled2 = Input { Value = 1, },
+						Thickness2 = Input { Value = 0.125, },
+						Red2 = Input { Value = 0.0705882352941176, },
+						Green2 = Input { Value = 0.388235294117647, },
+						Blue2 = Input { Value = 0.0549019607843137, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1100, 181.5 } },
+				}
+			},
+			UserControls = ordered() {
+				StyledText = {
+					TEC_ReadOnly = false,
+					LINKID_DataType = "Text",
+					LINKS_Name = "StyledText",
+					INPID_InputControl = "TextEditControl",
+					TEC_Wrap = false,
+				},
+				Anim = {
+					INP_Integer = true,
+					LINKS_Name = "Anim",
+					INPID_InputControl = "SliderControl",
+					INP_MinScale = 0,
+					LINKID_DataType = "Number",
+					INP_MaxScale = 6,
+					INP_Default = 0,
+				}
+			}
+		}
+	}
+}
