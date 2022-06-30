@@ -47,7 +47,6 @@ class ConfigData(config.Data):
     fps: float = 30.0
 
 
-# 監視中の挙動
 class WatchdogEvent(FileSystemEventHandler):
     def __init__(self, sig):
         super(WatchdogEvent, self).__init__()

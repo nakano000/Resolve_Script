@@ -1,0 +1,11 @@
+{
+	Tools = ordered() {
+		PipeRouter1 = PipeRouter {
+			CtrlWZoom = false,
+			Inputs = {
+				Depth = Input { Value = 1, },
+			},
+			ViewInfo = PipeRouterInfo { Pos = { 358, 6.75757 } },
+		}
+	}
+}
