@@ -14,6 +14,7 @@ DaVinci Resolve で使える 動画制作補助ツールです。
 * [Macro2Group](#Macro2Group)
 * [VTT2Anim](#VTT2Anim)
 * [ScriptLauncher](#ScriptLauncher)
+* [DiskCache](#DiskCache)
 
 ### softalk2wave
 音声と字幕ファイル(srt)を書き出します。  
@@ -45,6 +46,9 @@ https://youtu.be/BAn7sj5xbxg
 
 動画参照
 https://youtu.be/afiJp1lodMo
+
+動画参照
+https://youtu.be/5Q6WNtMFhWI
 
 [目次へ](#目次)
 ### Chara2Resolve
@@ -95,5 +99,9 @@ https://youtu.be/5h5jIBJ4Lmo
 
 動画参照
 https://youtu.be/ZwZyUCaTaTw
+
+[目次へ](#目次)
+### DiskCache
+
 
 [目次へ](#目次)
