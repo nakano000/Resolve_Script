@@ -2,13 +2,6 @@
 	Tools = ordered() {
 		RigTool = GroupOperator {
 			CtrlWZoom = false,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "C:\\Users\\yoshi\\AppData\\Roaming\\Blackmagic Design\\DaVinci Resolve\\Support\\Fusion\\Templates\\Edit\\Generators\\"
-					}
-				},
-			},
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "Text1",

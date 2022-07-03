@@ -1,0 +1,166 @@
+local function split(str, ts)
+    if ts == nil then
+        return {}
+    end
+    local t = {};
+    i = 1
+    for s in string.gmatch(str, "([^" .. ts .. "]+)") do
+        t[i] = s
+        i = i + 1
+    end
+    return t
+end
+
+local function timecode2Frame(timecode, fps)
+    local t = split(timecode, ':')
+    local h = tonumber(t[1])
+    local m = tonumber(t[2]) + (h * 60)
+    local s = tonumber(t[3]) + (m * 60)
+    local f = tonumber(t[4]) + (s * fps)
+    return f
+end
+
+local function getItem(timeline, index)
+    local r
+    if not index then
+        return r
+    end
+    local currentFrame = timecode2Frame(timeline:GetCurrentTimecode(), timeline:GetSetting('timelineFrameRate'))
+    for i, item in ipairs(timeline:GetItemListInTrack('video', index)) do
+        if item:GetStart() <= currentFrame and item:GetEnd() > currentFrame then
+            return item
+        end
+    end
+    return r
+end
+
+local function getItemByMarker(timeline, color,  index)
+    local items = {}
+    if not index or index > timeline:GetTrackCount('video') then
+        return items
+    end
+    local markers = {}
+    for k, v in pairs(timeline:GetMarkers()) do
+        if v['color'] == color then
+            local s = k + timeline:GetStartFrame()
+            local e = s + v['duration']
+            markers[#markers + 1] = {
+                ['s'] = s,
+                ['e'] = e
+            }
+        end
+    end
+    if #markers == 0 then
+        items[#items + 1] = getItem(timeline, index)
+    else
+        for i, item in ipairs(timeline:GetItemListInTrack('video', index)) do
+            for i2, marker in ipairs(markers) do
+                if item:GetStart() < marker['e'] and item:GetEnd() > marker['s'] then
+                    items[#items + 1] = item
+                    break
+                end
+            end
+        end
+    end
+    return items
+end
+
+local function cache(render, color, trackIndexes)
+    if resolve:GetCurrentPage() ~= 'edit' then
+        print('Edit Pageで実行してください。')
+        return
+    end
+    local projectManager = resolve:GetProjectManager()
+    local project = projectManager:GetCurrentProject()
+    if not project then
+        print('Projectが見付かりません。')
+        return
+    end
+    local timeline = project:GetCurrentTimeline()
+    if not timeline then
+        print('Timelineが見付かりません。')
+        return
+    end
+
+    local data = {}
+    for i, v in ipairs(trackIndexes) do
+        local items = getItemByMarker(timeline, color, v)
+        for i2, item in ipairs(items) do
+            if item:GetFusionCompCount() == 0 then
+                goto continue
+            end
+            local comp = item:GetFusionCompByIndex(1)
+            local lst = comp:GetToolList(false, 'MediaOut')
+            if not lst[1] then
+                goto continue
+            end
+            data[#data + 1] = {
+                ['item'] = item,
+                ['comp'] = comp,
+                ['tool'] = lst[1]
+            }
+            :: continue ::
+        end
+    end
+    if render then
+        resolve:OpenPage('fusion')
+    end
+    for i, d in ipairs(data) do
+        print('--------------------------------------------------------')
+        print(i .. '/' .. #data .. ': '
+                .. project:GetName()
+                .. ':'
+                .. timeline:GetName()
+                .. ':'
+                .. d.item:GetName()
+                .. ':'
+                .. d.item:GetStart()
+        )
+        d.tool.Output:ClearDiskCache()
+        if render then
+            local path = 'DiskCaches:\\'
+                    .. project:GetName()
+                    .. '\\'
+                    .. timeline:GetName()
+                    .. '\\'
+                    .. d.item:GetName()
+                    .. '_'
+                    .. d.item:GetStart()
+                    .. '\\'
+                    .. os.date('%y_%m_%d_%H_%M_%S')
+                    .. '\\'
+                    .. 'cache.0000.raw'
+            d.tool.Output:EnableDiskCache(
+                    true,
+                    path,
+                    false,
+                    false,
+                    true,
+                    true
+            )
+            local _ct = 0
+            while d.comp:GetAttrs()['COMPB_Rendering'] do
+                local ct = d.comp:GetAttrs()['COMPN_CurrentTime']
+                if _ct ~= ct then
+                    print(ct)
+                end
+                _ct = ct
+                local sec = tonumber(os.clock() + 1.0);
+                while (os.clock() < sec) do
+                end
+            end
+            print('Render end')
+
+        else
+            d.tool.Output:EnableDiskCache(
+                    false
+            )
+            print('Clear!')
+        end
+    end
+    if render then
+        resolve:OpenPage('edit')
+    end
+    print('--------------------------------------------------------')
+    print('Done!')
+end

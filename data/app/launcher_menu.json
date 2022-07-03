@@ -6,5 +6,6 @@
     { "name": "PsdSplitter", "path": "bin\\psd_splitter.py", "color": "#74325c" },
     { "name": "Macro2Group", "path": "bin\\macro2group.py", "color": "#274a78" },
     { "name": "VTT2Anim", "path": "bin\\vtt2anim.py", "color": "#274a78" },
-    { "name": "ScriptLauncher", "path": "bin\\script_launcher.py", "color": "#274a78" }
+    { "name": "ScriptLauncher", "path": "bin\\script_launcher.py", "color": "#274a78" },
+    { "name": "DiskCache", "path": "bin\\disk_cache.py", "color": "#274a78" }
 ]
