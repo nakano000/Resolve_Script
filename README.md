@@ -102,6 +102,7 @@ https://youtu.be/ZwZyUCaTaTw
 
 [目次へ](#目次)
 ### DiskCache
-
+動画参照
+https://youtu.be/kta_94REcEE
 
 [目次へ](#目次)
