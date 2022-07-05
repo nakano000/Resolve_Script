@@ -47,7 +47,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(500, 500)
+        self.resize(100, 430)
 
         # list view
         maker_m = QStringListModel()
