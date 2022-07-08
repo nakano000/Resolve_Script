@@ -25,14 +25,15 @@ def run_python(path, args, env=None):
 
 
 class ScriptButton(QPushButton):
-    def __init__(self, *args, script_path=None, **kwargs):
+    def __init__(self, *args, script_path=None, env=None, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.script_file: Optional[Path] = script_path
+        self.env = env
 
         self.clicked.connect(self.run)
 
     def run(self) -> None:
         if self.script_file is None:
             return
-        run_python(self.script_file, [])
+        run_python(self.script_file, [], env=self.env)

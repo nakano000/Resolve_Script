@@ -11,8 +11,8 @@ from PySide2.QtWidgets import (
 
 from rs.core import (
     config,
-    seika_say2,
 )
+from rs.core.read_aloud import seika_say2
 from rs.gui import appearance
 from rs.tool.text2wave import base
 from rs.tool.text2wave.assistant_seika2wave.seika_say2_ui import Ui_Form

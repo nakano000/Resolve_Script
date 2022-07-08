@@ -1,3 +1,4 @@
+import os
 import sys
 import json
 from pathlib import Path
@@ -54,7 +55,12 @@ class MainWindow(QWidget):
             list,
         )
         for i in lst:
-            btn = ScriptButton(i['name'], script_path=Path(config.ROOT_PATH.joinpath(i['path'])))
+            env = None
+            if len(i['env']) > 0:
+                env = os.environ.copy()
+                for k in i['env']:
+                    env[k] = i['env'][k]
+            btn = ScriptButton(i['name'], script_path=Path(config.ROOT_PATH.joinpath(i['path'])), env=env)
             btn.setMinimumHeight(40)
             ss = '\n'.join([
                 'background-color: %s;' % i['color'],

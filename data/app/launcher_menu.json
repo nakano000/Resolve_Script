@@ -1,11 +1,65 @@
 [
-    { "name": "softalk2wave", "path": "bin\\softalk2wave.py", "color": "#2f5d50" },
-    { "name": "AssistantSeika2wave", "path": "bin\\assistant_seika2wave.py", "color": "#2f5d50" },
-    { "name": "VoiceBin", "path": "bin\\voice_bin.py", "color": "#2f5d50" },
-    { "name": "Chara2Resolve", "path": "bin\\chara2resolve.py", "color": "#74325c" },
-    { "name": "PsdSplitter", "path": "bin\\psd_splitter.py", "color": "#74325c" },
-    { "name": "Macro2Group", "path": "bin\\macro2group.py", "color": "#274a78" },
-    { "name": "VTT2Anim", "path": "bin\\vtt2anim.py", "color": "#274a78" },
-    { "name": "ScriptLauncher", "path": "bin\\script_launcher.py", "color": "#274a78" },
-    { "name": "DiskCache", "path": "bin\\disk_cache.py", "color": "#274a78" }
+  {
+    "name": "ResolveLauncher",
+    "path": "bin\\resolve_launcher.py",
+    "color": "#274a78",
+    "env": {}
+  },
+  {
+    "name": "softalk2wave",
+    "path": "bin\\softalk2wave.py",
+    "color": "#2f5d50",
+    "env": {}
+  },
+  {
+    "name": "AssistantSeika2wave",
+    "path": "bin\\assistant_seika2wave.py",
+    "color": "#2f5d50",
+    "env": {}
+  },
+  {
+    "name": "VoiceBin",
+    "path": "bin\\voice_bin.py",
+    "color": "#2f5d50",
+    "env": {}
+  },
+  {
+    "name": "Chara2Resolve",
+    "path": "bin\\chara2resolve.py",
+    "color": "#74325c",
+    "env": {
+      "RESOLVE_SCRIPT_API": "%PROGRAMDATA%\\Blackmagic Design\\DaVinci Resolve\\Support\\Developer\\Scripting",
+      "RESOLVE_SCRIPT_LIB": "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\fusionscript.dll"
+    }
+  },
+  {
+    "name": "PsdSplitter",
+    "path": "bin\\psd_splitter.py",
+    "color": "#74325c",
+    "env": {}
+  },
+  {
+    "name": "Macro2Group",
+    "path": "bin\\macro2group.py",
+    "color": "#274a78",
+    "env": {}
+  },
+  {
+    "name": "VTT2Anim",
+    "path": "bin\\vtt2anim.py",
+    "color": "#274a78",
+    "env": {}
+  },
+  {
+    "name": "ScriptLauncher",
+    "path": "bin\\script_launcher.py",
+    "color": "#274a78",
+    "env": {}
+  },
+  {
+    "name": "DiskCache",
+    "path": "bin\\disk_cache.py",
+    "color": "#274a78",
+    "env": {}
+  }
 ]

@@ -1,0 +1,34 @@
+{
+  Language = "Python3",
+
+  Action
+  {
+    ID = "RS_Launcher",
+    Category = "Utilities",
+    Name = "建設予定地",
+
+    Targets =
+    {
+      Composition =
+      {
+        Execute = _Python [=[
+          import sys
+          print(sys.version)
+        ]=],
+      },
+    },
+  },
+
+  Menus
+  {
+    Target = "ChildFrame",
+
+    Before "Help"
+    {
+      Sub "りぞりぷと"
+      {
+        "RS_Launcher{}",
+      },
+    },
+  },
+}

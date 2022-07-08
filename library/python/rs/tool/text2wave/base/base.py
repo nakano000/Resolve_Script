@@ -26,9 +26,9 @@ from PySide2.QtGui import (
 from rs.core import (
     config,
     pipe as p,
-    read_aloud_cmd,
     srt,
 )
+from rs.core.read_aloud import cmd as read_aloud_cmd
 from rs.gui import (
     appearance,
     log,

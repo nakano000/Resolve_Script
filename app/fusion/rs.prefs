@@ -1,0 +1,11 @@
+{
+	Global = {
+		Paths = {
+			EnableReverseMapping = true,
+			Map = {
+				["UserPaths:"] = "UserData:;AllData:;Fusion:;$(RS_FUSION_USER_PATH)",
+			}
+		},
+	},
+	Locked = true,
+}

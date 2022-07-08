@@ -1,4 +1,4 @@
 {
-  "program": "bin\\python-3.6.8-embed-amd64\\pythonw.exe",
+  "program": "bin\\python-3.6.8\\pythonw.exe",
   "arg": "bin\\launcher.py"
 }

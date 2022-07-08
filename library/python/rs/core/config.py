@@ -8,6 +8,15 @@ PYTHONW_EXE_PATH: Path = ROOT_PATH.joinpath(
     json.loads(LAUNCHER_CONFIG_FILE.read_text(encoding='utf-8'))['program']
 )
 CONFIG_DIR: Path = ROOT_PATH.joinpath('config')
+DATA_PATH = ROOT_PATH.joinpath('data')
+BIN_PATH = ROOT_PATH.joinpath('bin')
+
+APP_SET_PATH = ROOT_PATH.joinpath('app')
+FUSION_SET_PATH = APP_SET_PATH.joinpath('fusion')
+RESOLVE_SET_PATH = APP_SET_PATH.joinpath('resolve')
+
+PYTHON_INSTALL_PATH: Path = PYTHONW_EXE_PATH.parent
+PYTHON_EXE_PATH = PYTHON_INSTALL_PATH.joinpath('python.exe')
 
 
 class DataList(list):

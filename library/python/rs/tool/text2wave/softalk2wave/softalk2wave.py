@@ -10,8 +10,8 @@ from PySide2.QtWidgets import (
 
 from rs.core import (
     config,
-    softalk,
 )
+from rs.core.read_aloud import softalk
 from rs.gui import appearance
 from rs.tool.text2wave import base
 from rs.tool.text2wave.softalk2wave.softalk_ui import Ui_Form

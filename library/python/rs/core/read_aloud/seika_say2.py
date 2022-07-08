@@ -3,15 +3,14 @@ import dataclasses
 from pathlib import Path
 from typing import List
 
-from rs.core import (
-    read_aloud_cmd,
-)
+from rs.core.read_aloud import cmd
+
 
 EXE_NAME = 'SeikaSay2.exe'
 
 
 @dataclasses.dataclass
-class Data(read_aloud_cmd.Data):
+class Data(cmd.Data):
     cid: str = '4000'
 
     volume: str = ''

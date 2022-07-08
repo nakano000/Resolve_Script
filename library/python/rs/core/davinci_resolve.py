@@ -3,6 +3,7 @@ import sys
 
 def get():
     try:
+        print('test')
         import DaVinciResolveScript as bmd
     except ImportError:
         if sys.platform.startswith("darwin"):

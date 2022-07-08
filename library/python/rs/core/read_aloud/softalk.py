@@ -3,9 +3,7 @@ import dataclasses
 from pathlib import Path
 from typing import List
 
-from rs.core import (
-    read_aloud_cmd,
-)
+from rs.core.read_aloud import cmd
 
 VOICE_LIST: List[str] = [
     '女性01',
@@ -44,7 +42,7 @@ EXE_NAME = 'softalkw.exe'
 
 
 @dataclasses.dataclass
-class Data(read_aloud_cmd.Data):
+class Data(cmd.Data):
     voice: str = '女性01'
 
     volume: int = 50
