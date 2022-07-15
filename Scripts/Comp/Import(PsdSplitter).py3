@@ -98,7 +98,7 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
         'ICS_ControlPage': 'User',
     }
     xf.ConnectInput('Input', pre_node)
-    uc = {'__flags': 2097152}
+    uc = {'__flags': 2097152}  # 順番を保持するフラグ
     for k, v in reversed(list(user_controls.items())):
         uc[k] = v
     xf.UserControls = uc
