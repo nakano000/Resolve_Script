@@ -17,6 +17,7 @@ selectedPath = fu.RequestFile(
         'FReqS_Title': 'Choose JSON',
     },
 )
+ver = fu.Version
 org_comp = None
 comp = None
 if selectedPath is not None:
@@ -28,6 +29,7 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
     xf = comp.AddTool('Transform', pos_x * X_OFFSET, pos_y * Y_OFFSET)
     xf.SetAttrs({'TOOLS_Name': name})
     pre_node = comp.AddTool('Background', pos_x * X_OFFSET, (pos_y - 1) * Y_OFFSET)
+    pre_node.UseFrameFormatSettings = 0
     pre_node.Width = size_x
     pre_node.Height = size_y
     pre_node.TopLeftAlpha = 0
@@ -49,8 +51,7 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
             node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
             node.Clip[1] = comp.ReverseMapPath(layer_data.replace('/', '\\'))
             node.Loop[1] = 1
-            node.PostMultiplyByAlpha = 1
-            # node.PostMultiplyByAlpha = 0
+            node.PostMultiplyByAlpha = 1 if ver < 10 else 0
             pos_x += 1
         mg.ConnectInput('Foreground', node)
         mg.ConnectInput('Background', pre_node)
@@ -97,10 +98,11 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
         'ICS_ControlPage': 'User',
     }
     xf.ConnectInput('Input', pre_node)
-    uc = {}
+    uc = {'__flags': 2097152}
     for k, v in reversed(list(user_controls.items())):
         uc[k] = v
     xf.UserControls = uc
+    xf = xf.Refresh()
     return xf, pos_x
 
 
@@ -118,9 +120,8 @@ if selectedPath is not None:
     tool_list = comp.GetToolList()
     for key in tool_list:
         flow.Select(tool_list[key])
-    comp.Copy()
     comp.EndUndo(True)
-    # comp.Undo()
+    comp.Copy()
     comp.Close()
     comp.Unlock()
     org_comp.Paste()
