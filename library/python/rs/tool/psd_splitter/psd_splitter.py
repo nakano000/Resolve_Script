@@ -178,8 +178,6 @@ class MainWindow(QMainWindow):
                 lst.append(dct)
             else:
                 img = Image.new("RGBA", size, (0, 0, 0, 0))
-                print(layer.topil())
-                print(layer.offset)
                 if layer.topil() is not None:
                     img.paste(layer.topil(), layer.offset)
                 img_path = d.joinpath(name + '.png')
