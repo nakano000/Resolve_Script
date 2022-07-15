@@ -6,6 +6,7 @@ DaVinci Resolve で使える 動画制作補助ツールです。
 3. りぞりぷと.exeを立ち上げる。
 4. 使いたい機能のボタンを押す。
 ### 目次
+* [ResolveLauncher](#ResolveLauncher)
 * [softalk2wave](#softalk2wave)
 * [AssistantSeika2wave](#AssistantSeika2wave)
 * [VoiceBin](#VoiceBin)
@@ -16,6 +17,11 @@ DaVinci Resolve で使える 動画制作補助ツールです。
 * [ScriptLauncher](#ScriptLauncher)
 * [DiskCache](#DiskCache)
 
+### ResolveLauncher
+動画参照
+https://youtu.be/hrrWekhWuYY
+
+[目次へ](#目次)
 ### softalk2wave
 音声と字幕ファイル(srt)を書き出します。  
 簡単に書き出しからDaVinci ResolveのEdit pageへドラッグアンドドラップするのが目的のツールです。  
