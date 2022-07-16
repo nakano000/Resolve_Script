@@ -33,6 +33,8 @@ class ConfigData(config.Data):
     post_multiply: bool = False
     use_cb: bool = True
     cb_name: str = 'Select'
+    width: int = 1920
+    height: int = 1080
 
 
 class MainWindow(QMainWindow):
@@ -61,7 +63,7 @@ class MainWindow(QMainWindow):
 
         # event
         self.ui.loaderButton.clicked.connect(self.make_loader)
-        self.ui.margeButton.clicked.connect(self.marge_combo)
+        self.ui.margeButton.clicked.connect(self.marge)
         self.ui.closeButton.clicked.connect(self.close)
 
     def make_loader(self):
@@ -75,8 +77,9 @@ class MainWindow(QMainWindow):
             return
 
         # data
-        flow = comp.CurrentFrame.FlowView
         data = self.get_data()
+
+        flow = comp.CurrentFrame.FlowView
         _x = None
         _y = None
 
@@ -109,7 +112,7 @@ class MainWindow(QMainWindow):
         comp.Unlock()
         print('Done!')
 
-    def marge_combo(self):
+    def marge(self):
         resolve = self.fusion.GetResolve()
         if resolve is not None and resolve.GetCurrentPage() != 'fusion':
             QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
@@ -140,16 +143,14 @@ class MainWindow(QMainWindow):
 
         # BG
         _x, _y = flow.GetPosTable(tools[0]).values()
-        pre_node = comp.AddTool('Background', _x - 1, _y + 4)
-        pre_node.UseFrameFormatSettings = 0
+        bg = comp.AddTool('Background', _x - 1, _y + 4)
+        bg.UseFrameFormatSettings = 0
+        bg.Width = data.width
+        bg.Height = data.height
+        bg.TopLeftAlpha = 0
+        bg.Depth = 1
 
-        _v = tools[0].Output.GetValue()
-        if _v.ID == 'Image':
-            pre_node.Width = _v.Width
-            pre_node.Height = _v.Height
-
-        pre_node.TopLeftAlpha = 0
-        pre_node.Depth = 1
+        pre_node = bg
 
         # user_controls
         user_controls = {}
@@ -189,6 +190,7 @@ class MainWindow(QMainWindow):
                 }
                 mg.Blend.SetExpression('%s.%s' % (xf.Name, uc_name))
             pre_node = mg
+        # xf
         xf.ConnectInput('Input', pre_node)
         uc = {'__flags': 2097152}  # 順番を保持するフラグ
         for k, v in list(user_controls.items()):
@@ -208,6 +210,8 @@ class MainWindow(QMainWindow):
         self.ui.multiplyCheckBox.setChecked(c.post_multiply)
         self.ui.cbGroupBox.setChecked(c.use_cb)
         self.ui.cbNameLineEdit.setText(c.cb_name)
+        self.ui.widthSpinBox.setValue(c.width)
+        self.ui.heightSpinBox.setValue(c.height)
 
     def get_data(self) -> ConfigData:
         c = self.new_config()
@@ -216,6 +220,8 @@ class MainWindow(QMainWindow):
         c.cb_name = self.ui.cbNameLineEdit.text().strip()
         if c.cb_name == '':
             c.cb_name = 'Select'
+        c.width = self.ui.widthSpinBox.value()
+        c.height = self.ui.heightSpinBox.value()
         return c
 
     def load_config(self) -> None:
