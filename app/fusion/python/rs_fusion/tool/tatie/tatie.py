@@ -80,8 +80,8 @@ class MainWindow(QMainWindow):
         data = self.get_data()
 
         flow = comp.CurrentFrame.FlowView
-        _x = None
-        _y = None
+        _x = -32768  # 自動を自動的に
+        _y = -32768
 
         # Files
         urls, _ = QFileDialog.getOpenFileNames(
@@ -94,17 +94,21 @@ class MainWindow(QMainWindow):
         comp.Lock()
         comp.StartUndo('RS Loader')
 
+        # deselect
+        for n in comp.GetToolList(False):
+            flow.Select(n, False)
+
         # import
+        node = None
         for url in urls:
-            node = None
-            if _x is None:
-                node = comp.AddTool('Loader')
+            node = comp.AddTool('Loader', _x, _y)
+            if _x == -32768:
                 _x, _y = flow.GetPosTable(node).values()
-            else:
-                node = comp.AddTool('Loader', _x, _y)
             node.Clip[1] = comp.ReverseMapPath(url.replace('/', '\\'))
             node.Loop[1] = 1
             node.PostMultiplyByAlpha = 1 if data.post_multiply else 0
+
+            flow.Select(node)
             _x += 1
 
         # end
