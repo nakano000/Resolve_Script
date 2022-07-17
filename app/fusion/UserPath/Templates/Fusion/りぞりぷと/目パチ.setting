@@ -1,0 +1,48 @@
+{
+	Tools = ordered() {
+		EyeCtrl = Transform {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				Input = Input {
+					SourceOp = "Dissolve1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 3025, 907.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+			UserControls = ordered() {
+				Blink = {
+					LINKS_Name = "Blink",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "SliderControl",
+					INP_Default = 127,
+					INP_Integer = true,
+				}
+			}
+		},
+		Dissolve1 = Dissolve {
+			Transitions = {
+				[0] = "DFTLumaRamp"
+			},
+			Inputs = {
+				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+				Mix = Input {
+					Value = 0,
+					Expression = "iif(time % EyeCtrl.Blink  > EyeCtrl.Blink - 4, 1, 0)",
+				},
+				Foreground = Input {
+					SourceOp = "Closed",
+					Source = "Output",
+				},
+				["DFTLumaRamp.Softness"] = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2915, 907.501 } },
+		},
+		Closed = Fuse.Wireless {
+			NameSet = true,
+			ViewInfo = OperatorInfo { Pos = { 2805, 907.501 } },
+		}
+	},
+	ActiveTool = "EyeCtrl"
+}
