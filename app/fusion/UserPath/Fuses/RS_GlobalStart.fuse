@@ -1,0 +1,24 @@
+FuRegisterClass("RS_GlobalStart", CT_Modifier, {
+    REGS_Category = "Fuses",
+    REGS_OpIconString = "RSGS",
+    REGS_OpDescription = "Comp.GlobalStart",
+    REGID_DataType = "Number",
+    REGID_InputDataType = "Number",
+    REG_Fuse_NoEdit = true,
+    REG_Fuse_NoReload = true,
+})
+
+function Create()
+    OutValue = self:AddOutput("Output", "Output", {
+        LINKID_DataType = "Number",
+        LINK_Main = 1,
+    })
+end
+
+function Process(req)
+    local sf = self.Comp.GlobalStart
+    if sf < 0 then
+        sf = 0
+    end
+    OutValue:Set(req, sf)
+end
