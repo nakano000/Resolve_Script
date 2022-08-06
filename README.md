@@ -5,6 +5,11 @@ DaVinci Resolve で使える 動画制作補助ツールです。
 2. (オプション)アップグレードの場合は旧ツールからconfigフォルダをコピー
 3. りぞりぷと.exeを立ち上げる。
 4. 使いたい機能のボタンを押す。
+
+参考
+立ち絵、口パクの作り方
+https://youtu.be/WyKujodsLh0
+
 ### 目次
 * [ResolveLauncher](#ResolveLauncher)
 * [softalk2wave](#softalk2wave)
