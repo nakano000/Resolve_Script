@@ -104,6 +104,10 @@ class MainWindow(QMainWindow):
             node = comp.AddTool('Loader', _x, _y)
             if _x == -32768:
                 _x, _y = flow.GetPosTable(node).values()
+                _x = int(_x)
+                _y = int(_y)
+                flow.SetPos(node, _x, _y)
+                print(_x, _y)
             node.Clip[1] = comp.ReverseMapPath(url.replace('/', '\\'))
             node.Loop[1] = 1
             node.PostMultiplyByAlpha = 1 if data.post_multiply else 0
