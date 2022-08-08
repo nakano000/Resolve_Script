@@ -4,10 +4,12 @@ from pathlib import Path
 
 from typing import Dict, List, Optional
 
-from rs.core import pipe as p, util
+from strenum import StrEnum
+
+from rs.core import pipe as p
 
 
-class EnvKey(util.StrEnum):
+class EnvKey(StrEnum):
     #
     RS_FUSION_USER_PATH = enum.auto()
     # python
@@ -107,4 +109,5 @@ if __name__ == '__main__':
 
     print(os.pathsep.join(['aaa', 'bbb']))
     print(list(EnvKey))
+
     pass
