@@ -1,5 +1,3 @@
-from functools import partial, cmp_to_key
-
 import dataclasses
 import sys
 from pathlib import Path
@@ -9,16 +7,14 @@ from PySide2.QtCore import (
 from PySide2.QtWidgets import (
     QApplication,
     QFileDialog,
-    QMainWindow, QMessageBox,
+    QMainWindow,
+    QMessageBox,
+    QButtonGroup,
 )
 
 from rs.core import (
     config,
     pipe as p,
-)
-from rs.core.app import (
-    Fusion,
-    Resolve,
 )
 from rs.gui import (
     appearance,
@@ -27,12 +23,16 @@ from rs_fusion.tool.tatie.tatie_ui import Ui_MainWindow
 
 APP_NAME = '立ち絵アシスタント'
 
+CHECKBOX_ID = 0
+COMBOBOX_ID = 1
+SLIDER_ID = 2
+
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
     post_multiply: bool = False
-    use_cb: bool = True
-    cb_name: str = 'Select'
+    ctrl_type: int = 1
+    ctrl_name: str = 'Select'
     width: int = 1920
     height: int = 1080
 
@@ -52,6 +52,11 @@ class MainWindow(QMainWindow):
         self.resize(250, 250)
 
         self.fusion = fusion
+        # button group
+        self.button_group = QButtonGroup()
+        self.button_group.addButton(self.ui.chkRadioButton, CHECKBOX_ID)
+        self.button_group.addButton(self.ui.cmbRadioButton, COMBOBOX_ID)
+        self.button_group.addButton(self.ui.sldRadioButton, SLIDER_ID)
 
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
@@ -80,7 +85,7 @@ class MainWindow(QMainWindow):
         data = self.get_data()
 
         flow = comp.CurrentFrame.FlowView
-        _x = -32768  # 自動を自動的に
+        _x = -32768  # 自動的に配置する
         _y = -32768
 
         # Files
@@ -99,7 +104,6 @@ class MainWindow(QMainWindow):
             flow.Select(n, False)
 
         # import
-        node = None
         for url in urls:
             node = comp.AddTool('Loader', _x, _y)
             if _x == -32768:
@@ -107,7 +111,6 @@ class MainWindow(QMainWindow):
                 _x = int(_x)
                 _y = int(_y)
                 flow.SetPos(node, _x, _y)
-                print(_x, _y)
             node.Clip[1] = comp.ReverseMapPath(url.replace('/', '\\'))
             node.Loop[1] = 1
             node.PostMultiplyByAlpha = 1 if data.post_multiply else 0
@@ -162,16 +165,29 @@ class MainWindow(QMainWindow):
 
         # user_controls
         user_controls = {}
-        cb_name = 'RS_ComboBox'
-        if data.use_cb:
-            user_controls[cb_name] = {
+        ctrl_name = 'RS_ComboBox'
+        if data.ctrl_type == COMBOBOX_ID:
+            user_controls[ctrl_name] = {
                 'LINKID_DataType': 'Number',
                 'INPID_InputControl': 'ComboControl',
-                'LINKS_Name': data.cb_name,
+                'LINKS_Name': data.ctrl_name,
                 'INP_Integer': True,
                 'INP_Default': 0,
                 'ICS_ControlPage': 'User',
             }
+        elif data.ctrl_type == SLIDER_ID:
+            ctrl_name = 'RS_Slider'
+            user_controls[ctrl_name] = {
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'SliderControl',
+                'LINKS_Name': data.ctrl_name,
+                'INP_Integer': True,
+                'INP_Default': 0,
+                'INP_MinScale': 0,
+                'INP_MaxScale': len(tools) - 1,
+                'ICS_ControlPage': 'User',
+            }
+
         for i, layer in enumerate(tools):
             layer_name: str = layer.Name
             if layer.ID == 'Loader':
@@ -180,10 +196,12 @@ class MainWindow(QMainWindow):
             mg = comp.AddTool('Merge', _x, _y + 4)
             mg.ConnectInput('Foreground', layer)
             mg.ConnectInput('Background', pre_node)
-            if data.use_cb:
-                dct = user_controls[cb_name]
+            if data.ctrl_type == COMBOBOX_ID:
+                dct = user_controls[ctrl_name]
                 dct[i + 1] = {'CCS_AddString': '%s' % layer_name}
-                mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (xf.Name, cb_name, i))
+                mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (xf.Name, ctrl_name, i))
+            elif data.ctrl_type == SLIDER_ID:
+                mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (xf.Name, ctrl_name, i))
             else:
                 uc_name = 'N' + str(i).zfill(3) + '_' + layer.Name
                 user_controls[uc_name] = {
@@ -216,18 +234,18 @@ class MainWindow(QMainWindow):
 
     def set_data(self, c: ConfigData):
         self.ui.multiplyCheckBox.setChecked(c.post_multiply)
-        self.ui.cbGroupBox.setChecked(c.use_cb)
-        self.ui.cbNameLineEdit.setText(c.cb_name)
+        self.button_group.button(c.ctrl_type).setChecked(True)
+        self.ui.ctrlNameLineEdit.setText(c.ctrl_name)
         self.ui.widthSpinBox.setValue(c.width)
         self.ui.heightSpinBox.setValue(c.height)
 
     def get_data(self) -> ConfigData:
         c = self.new_config()
         c.post_multiply = self.ui.multiplyCheckBox.isChecked()
-        c.use_cb = self.ui.cbGroupBox.isChecked()
-        c.cb_name = self.ui.cbNameLineEdit.text().strip()
-        if c.cb_name == '':
-            c.cb_name = 'Select'
+        c.ctrl_type = self.button_group.checkedId()
+        c.ctrl_name = self.ui.ctrlNameLineEdit.text().strip()
+        if c.ctrl_name == '':
+            c.ctrl_name = 'Select'
         c.width = self.ui.widthSpinBox.value()
         c.height = self.ui.heightSpinBox.value()
         return c
