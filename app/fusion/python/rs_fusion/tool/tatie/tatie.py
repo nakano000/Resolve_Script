@@ -1,6 +1,7 @@
 import dataclasses
 import sys
 from pathlib import Path
+from enum import IntEnum
 from PySide2.QtCore import (
     Qt,
 )
@@ -23,9 +24,11 @@ from rs_fusion.tool.tatie.tatie_ui import Ui_MainWindow
 
 APP_NAME = '立ち絵アシスタント'
 
-CHECKBOX_ID = 0
-COMBOBOX_ID = 1
-SLIDER_ID = 2
+
+class CtrlID(IntEnum):
+    CHECKBOX = 0
+    COMBOBOX = 1
+    SLIDER = 2
 
 
 @dataclasses.dataclass
@@ -54,9 +57,9 @@ class MainWindow(QMainWindow):
         self.fusion = fusion
         # button group
         self.button_group = QButtonGroup()
-        self.button_group.addButton(self.ui.chkRadioButton, CHECKBOX_ID)
-        self.button_group.addButton(self.ui.cmbRadioButton, COMBOBOX_ID)
-        self.button_group.addButton(self.ui.sldRadioButton, SLIDER_ID)
+        self.button_group.addButton(self.ui.chkRadioButton, CtrlID.CHECKBOX)
+        self.button_group.addButton(self.ui.cmbRadioButton, CtrlID.COMBOBOX)
+        self.button_group.addButton(self.ui.sldRadioButton, CtrlID.SLIDER)
 
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
@@ -166,7 +169,7 @@ class MainWindow(QMainWindow):
         # user_controls
         user_controls = {}
         ctrl_name = 'RS_ComboBox'
-        if data.ctrl_type == COMBOBOX_ID:
+        if data.ctrl_type == CtrlID.COMBOBOX:
             user_controls[ctrl_name] = {
                 'LINKID_DataType': 'Number',
                 'INPID_InputControl': 'ComboControl',
@@ -175,7 +178,7 @@ class MainWindow(QMainWindow):
                 'INP_Default': 0,
                 'ICS_ControlPage': 'User',
             }
-        elif data.ctrl_type == SLIDER_ID:
+        elif data.ctrl_type == CtrlID.SLIDER:
             ctrl_name = 'RS_Slider'
             user_controls[ctrl_name] = {
                 'LINKID_DataType': 'Number',
@@ -196,11 +199,11 @@ class MainWindow(QMainWindow):
             mg = comp.AddTool('Merge', _x, _y + 4)
             mg.ConnectInput('Foreground', layer)
             mg.ConnectInput('Background', pre_node)
-            if data.ctrl_type == COMBOBOX_ID:
+            if data.ctrl_type == CtrlID.COMBOBOX:
                 dct = user_controls[ctrl_name]
                 dct[i + 1] = {'CCS_AddString': '%s' % layer_name}
                 mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (xf.Name, ctrl_name, i))
-            elif data.ctrl_type == SLIDER_ID:
+            elif data.ctrl_type == CtrlID.SLIDER:
                 mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (xf.Name, ctrl_name, i))
             else:
                 uc_name = 'N' + str(i).zfill(3) + '_' + layer.Name
