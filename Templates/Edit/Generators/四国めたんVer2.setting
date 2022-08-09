@@ -1,0 +1,4458 @@
+{
+	Tools = ordered() {
+		Metan = GroupOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "Text1",
+					Source = "StyledText",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Merge80",
+					Source = "Center",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Merge80",
+					Source = "Size",
+					Default = 1,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Merge80",
+					Source = "Angle",
+					Default = 0,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Merge80",
+					Source = "FlipHoriz",
+					ControlGroup = 5,
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "Merge80",
+					Source = "FlipVert",
+					ControlGroup = 5,
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "眉",
+					Source = "N000",
+					Page = "User",
+					Default = 2,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "目",
+					Source = "N000",
+					Page = "User",
+					Default = 7,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "顔色",
+					Source = "N001",
+					Page = "User",
+					Default = 3,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "顔色",
+					Source = "N000_kageri",
+					Page = "User",
+					Default = 0,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "口",
+					Source = "N000",
+					Page = "User",
+					Default = 11,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "左腕",
+					Source = "N001",
+					Page = "User",
+					Default = 4,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "左腕",
+					Source = "N000_manjuufukuro",
+					Page = "User",
+					Default = 0,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "右腕",
+					Source = "N001",
+					Page = "User",
+					Default = 2,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "右腕",
+					Source = "N000_manjuu",
+					Page = "User",
+					Default = 0,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "EyeCtrl",
+					Source = "Blink",
+					Default = 149,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "MouthCtrl",
+					Source = "Anim",
+					Default = 0,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge81",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Loader30 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-む.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3575, -1105.5 } },
+				},
+				Loader58 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!眉\\-おこ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2145, -907.5 } },
+				},
+				Loader54 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!眉\\-太眉こまり.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1705, -907.5 } },
+				},
+				Loader15 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!左腕\\-抱える.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 715, -1138.5 } },
+				},
+				Loader14 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!左腕\\まんじゅう袋.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, -1138.5 } },
+				},
+				Loader32 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-ゆ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3795, -1105.5 } },
+				},
+				Loader33 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-お.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3905, -1105.5 } },
+				},
+				Loader31 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-△.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3685, -1105.5 } },
+				},
+				Loader28 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-うえー.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3355, -1105.5 } },
+				},
+				Loader29 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-いー.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3465, -1105.5 } },
+				},
+				Loader35 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-にやり.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4125, -1105.5 } },
+				},
+				Loader36 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-▽.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4235, -1105.5 } },
+				},
+				Loader34 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-ぺろり.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4015, -1105.5 } },
+				},
+				Loader37 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-ほほえみ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4345, -1105.5 } },
+				},
+				Loader38 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-わあー.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4455, -1105.5 } },
+				},
+				Loader26 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-もむー.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3135, -1105.5 } },
+				},
+				Loader27 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!口\\-んー.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3245, -1105.5 } },
+				},
+				Loader65 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!前髪もみあげ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5775, -247.5 } },
+				},
+				Loader40 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-__.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4785, -1171.5 } },
+				},
+				Loader66 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\記号など\\汗.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3410, -676.5 } },
+				},
+				Loader42 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目閉じ2_.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5005, -1171.5 } },
+				},
+				Loader44 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-見上げ2_.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5225, -1171.5 } },
+				},
+				Loader45 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-見上げ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5335, -1171.5 } },
+				},
+				Loader41 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-○○.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4895, -1171.5 } },
+				},
+				Loader63 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\頭部アクセサリ\\うさみみ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2915, -676.5 } },
+				},
+				Loader62 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\頭部アクセサリ\\髪留めハート.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2805, -676.5 } },
+				},
+				Loader56 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!眉\\-太眉ごきげん.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1925, -907.5 } },
+				},
+				Loader57 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!眉\\-こまり.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2035, -907.5 } },
+				},
+				Loader21 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!顔色\\-(非表示).png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1595, -610.5 } },
+				},
+				Loader20 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!顔色\\かげり.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1485, -610.5 } },
+				},
+				Loader22 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!顔色\\-青ざめ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1705, -610.5 } },
+				},
+				Loader25 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!顔色\\-普通.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2035, -610.5 } },
+				},
+				Loader23 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!顔色\\-赤面.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1815, -610.5 } },
+				},
+				Loader67 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\記号など\\涙.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3520, -676.5 } },
+				},
+				Loader48 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目セット\\!黒目\\-目そらし2_.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4895, -1765.5 } },
+				},
+				Loader39 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-ぐるぐる.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4675, -1171.5 } },
+				},
+				Loader64 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\頭部アクセサリ\\ヘッドドレス.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3025, -676.5 } },
+				},
+				Loader61 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\頭部アクセサリ\\髪留めフリル.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2695, -676.5 } },
+				},
+				Loader9 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!体.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 825, -577.5 } },
+				},
+				Loader17 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!左腕\\-ひそひそ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, -1138.5 } },
+				},
+				Loader18 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!左腕\\-口元に指.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1045, -1138.5 } },
+				},
+				Loader19 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!左腕\\-普通.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1155, -1138.5 } },
+				},
+				Loader53 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目セット\\!黒目\\-普通目.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -1765.5 } },
+				},
+				Loader52 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目セット\\!黒目\\-普通目2_.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5335, -1765.5 } },
+				},
+				Loader46 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目セット\\-見開き白目.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5225, -1468.5 } },
+				},
+				Loader49 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目セット\\!黒目\\-目そらし.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5005, -1765.5 } },
+				},
+				Loader47 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目セット\\-普通白目.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5335, -1468.5 } },
+				},
+				Loader2 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\ツインドリル右.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, -247.5 } },
+				},
+				Loader1 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\回転移動でポニテにするなど.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, -247.5 } },
+				},
+				Loader12 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!右腕\\-指差す.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 825, -874.5 } },
+				},
+				Loader3 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\ツインドリル左.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, -247.5 } },
+				},
+				Loader60 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!眉\\-ごきげん.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2365, -907.5 } },
+				},
+				Loader59 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!眉\\-ややおこ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2255, -907.5 } },
+				},
+				Loader55 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!眉\\-太眉おこ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1815, -907.5 } },
+				},
+				Loader51 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目セット\\!黒目\\-カメラ目線.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5225, -1765.5 } },
+				},
+				Loader50 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目セット\\!黒目\\-カメラ目線2_.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5115, -1765.5 } },
+				},
+				Loader43 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!目\\-目閉じ.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5115, -1171.5 } },
+				},
+				Loader24 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\!顔色\\-普通2_.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1925, -610.5 } },
+				},
+				Loader16 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!左腕\\-マイク.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 825, -1138.5 } },
+				},
+				Loader13 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!右腕\\-普通.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, -874.5 } },
+				},
+				Loader11 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!右腕\\-手をかざす.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 715, -874.5 } },
+				},
+				Loader10 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-白ロリ服\\!右腕\\まんじゅう.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, -874.5 } },
+				},
+				Loader8 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-その他の服\\-バニー服.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 495, -577.5 } },
+				},
+				Loader7 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-その他の服\\-水着.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, -577.5 } },
+				},
+				Loader6 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-その他の服\\-バスタオル.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, -577.5 } },
+				},
+				Loader5 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-その他の服\\-(非表示).png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, -577.5 } },
+				},
+				Loader4 = Loader {
+					Clips = {
+						Clip {
+							ID = "Clip1",
+							Filename = "CHARA:\\四国めたん立ち絵素材2.1\\-その他の服\\!素体.png",
+							FormatID = "PNGFormat",
+							StartFrame = -1,
+							LengthSetManually = true,
+							TrimIn = 0,
+							TrimOut = 0,
+							ExtendFirst = 0,
+							ExtendLast = 0,
+							Loop = 0,
+							AspectMode = 0,
+							Depth = 0,
+							TimeCode = 0,
+							GlobalStart = 0,
+							GlobalEnd = 0
+						}
+					},
+					Inputs = {
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, -577.5 } },
+				},
+				Text1 = TextPlus {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Center = Input { Value = { 0.5, 0.15 }, },
+						SelectElement = Input { Value = 1, },
+						Select = Input { Value = 1, },
+						Enabled2 = Input { Value = 1, },
+						Font = Input { Value = "Meiryo", },
+						Style = Input { Value = "Bold", },
+						Size = Input { Value = 0.07, },
+						VerticalJustificationNew = Input { Value = 3, },
+						HorizontalJustificationNew = Input { Value = 3, },
+						Thickness2 = Input { Value = 0.125, },
+						Red2 = Input { Value = 0.6862745098039, },
+						Green2 = Input { Value = 0.2, },
+						Blue2 = Input { Value = 0.4509803921569, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5940, 49.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Merge80 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background14",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "四国めたん立ち絵素材21",
+							Source = "Output",
+						},
+						Center = Input { Value = { 0.15, 0.15 }, },
+						FlipHoriz = Input { Value = 1, },
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5775, 214.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				["眉"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge70",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 2365, -247.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						["Grp_!眉"] = {
+							LINKS_Name = "!眉",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 1,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000 = {
+							{
+								CCS_AddString = "*太眉こまり"
+							},
+							{
+								CCS_AddString = "*太眉おこ"
+							},
+							{
+								CCS_AddString = "*太眉ごきげん"
+							},
+							{
+								CCS_AddString = "*こまり"
+							},
+							{
+								CCS_AddString = "*おこ"
+							},
+							{
+								CCS_AddString = "*ややおこ"
+							},
+							{
+								CCS_AddString = "*ごきげん"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 2,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				["目"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge53",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -808.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						["Grp_!目"] = {
+							LINKS_Name = "!目",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 1,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000 = {
+							{
+								CCS_AddString = "*ぐるぐる"
+							},
+							{
+								CCS_AddString = "*><"
+							},
+							{
+								CCS_AddString = "*○○"
+							},
+							{
+								CCS_AddString = "*目閉じ2"
+							},
+							{
+								CCS_AddString = "*目閉じ"
+							},
+							{
+								CCS_AddString = "*見上げ2"
+							},
+							{
+								CCS_AddString = "*見上げ"
+							},
+							{
+								CCS_AddString = "*目セット"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 7,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				["顔色"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge30",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 2035, -247.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						["Grp_!顔色"] = {
+							LINKS_Name = "!顔色",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 2,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N001 = {
+							{
+								CCS_AddString = "*(非表示)"
+							},
+							{
+								CCS_AddString = "*青ざめ"
+							},
+							{
+								CCS_AddString = "*赤面"
+							},
+							{
+								CCS_AddString = "*普通2"
+							},
+							{
+								CCS_AddString = "*普通"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 3,
+							ICS_ControlPage = "User",
+						},
+						N000_kageri = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "かげり",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				["口"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge44",
+							Source = "Output",
+						},
+						N000 = Input { Value = 11, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4455, -808.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						["Grp_!口"] = {
+							LINKS_Name = "!口",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 1,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000 = {
+							{
+								CCS_AddString = "*もむー"
+							},
+							{
+								CCS_AddString = "*んー"
+							},
+							{
+								CCS_AddString = "*うえー"
+							},
+							{
+								CCS_AddString = "*いー"
+							},
+							{
+								CCS_AddString = "*む"
+							},
+							{
+								CCS_AddString = "*△"
+							},
+							{
+								CCS_AddString = "*ゆ"
+							},
+							{
+								CCS_AddString = "*お"
+							},
+							{
+								CCS_AddString = "*ぺろり"
+							},
+							{
+								CCS_AddString = "*にやり"
+							},
+							{
+								CCS_AddString = "*▽"
+							},
+							{
+								CCS_AddString = "*ほほえみ"
+							},
+							{
+								CCS_AddString = "*わあー"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 12,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				["左腕"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge23",
+							Source = "Output",
+						},
+						N001 = Input { Value = 4, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1155, -577.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						["Grp_!左腕"] = {
+							LINKS_Name = "!左腕",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 2,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N001 = {
+							{
+								CCS_AddString = "*抱える"
+							},
+							{
+								CCS_AddString = "*マイク"
+							},
+							{
+								CCS_AddString = "*ひそひそ"
+							},
+							{
+								CCS_AddString = "*口元に指"
+							},
+							{
+								CCS_AddString = "*普通"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000_manjuufukuro = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "まんじゅう袋",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				["右腕"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge16",
+							Source = "Output",
+						},
+						N001 = Input { Value = 2, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, -577.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						["Grp_!右腕"] = {
+							LINKS_Name = "!右腕",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 2,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N001 = {
+							{
+								CCS_AddString = "*手をかざす"
+							},
+							{
+								CCS_AddString = "*指差す"
+							},
+							{
+								CCS_AddString = "*普通"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000_manjuu = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "まんじゅう",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				EyeCtrl = Transform {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Dissolve1",
+							Source = "Output",
+						},
+						Blink = Input { Value = 149, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -280.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						Blink = {
+							INP_Integer = true,
+							LINKID_DataType = "Number",
+							INP_Default = 127,
+							INPID_InputControl = "SliderControl",
+							LINKS_Name = "Blink",
+						}
+					}
+				},
+				MouthCtrl = Transform {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Dissolve2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 4455, -280.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						Anim = {
+							INP_Integer = true,
+							LINKS_Name = "Anim",
+							INPID_InputControl = "SliderControl",
+							INP_MinScale = 0,
+							LINKID_DataType = "Number",
+							INP_MaxScale = 6,
+							INP_Default = 0,
+						}
+					}
+				},
+				Merge17 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "白ロリ服.N002_hidariude", },
+						Background = Input {
+							SourceOp = "Merge12",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "左腕",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1155, -445.5 } },
+				},
+				Background6 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1375, -478.5 } },
+				},
+				Merge24 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N005_kaoiro", },
+						Background = Input {
+							SourceOp = "Merge10",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "顔色",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2035, -115.5 } },
+				},
+				Merge63 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N008_mayu", },
+						Background = Input {
+							SourceOp = "Merge24",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "眉",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2365, -115.5 } },
+				},
+				Dissolve2 = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(MouthCtrl.Anim < 1, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "TimeStretcher1_1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "DissolveN",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4455, -412.5 } },
+				},
+				N = Fuse.Wireless {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Loader37",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 4345, -511.499 } },
+				},
+				TimeStretcher1_1 = TimeStretcher {
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						SourceTime = Input {
+							SourceOp = "RS_GlobalStart3_1",
+							Source = "Output",
+						},
+						Input = Input {
+							SourceOp = "口",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 4455, -676.5 } },
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				},
+				RS_GlobalStart3_1 = Fuse.RS_GlobalStart {
+					CtrlWZoom = false,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+				},
+				DissolveA = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					},
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(MouthCtrl.Anim < 3, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "A",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "DissolveI",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4235, -412.499 } },
+				},
+				TimeStretcher1 = TimeStretcher {
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						SourceTime = Input {
+							SourceOp = "RS_GlobalStart3",
+							Source = "Output",
+						},
+						Input = Input {
+							SourceOp = "Merge77",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 3905, -115.5 } },
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				},
+				RS_GlobalStart3 = Fuse.RS_GlobalStart {
+					CtrlWZoom = false,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+				},
+				TimeStretcher1_2 = TimeStretcher {
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						SourceTime = Input {
+							SourceOp = "RS_GlobalStart3_2",
+							Source = "Output",
+						},
+						Input = Input {
+							SourceOp = "目",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -643.5 } },
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				},
+				RS_GlobalStart3_2 = Fuse.RS_GlobalStart {
+					CtrlWZoom = false,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+				},
+				Dissolve1 = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(time % EyeCtrl.Blink  > EyeCtrl.Blink - 4, 1, 0)",
+						},
+						Background = Input {
+							SourceOp = "TimeStretcher1_2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Closed",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -445.5 } },
+				},
+				Closed = Fuse.Wireless {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Loader42",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 5335, -445.5 } },
+				},
+				Merge81 = Merge {
+					CtrlWZoom = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge80",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Text1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5940, 214.5 } },
+				},
+				["四国めたん立ち絵素材21"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge76",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 5775, 49.5 } },
+					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
+					UserControls = ordered() {
+						["Grp_四国めたん立ち絵素材2.1"] = {
+							LINKS_Name = "四国めたん立ち絵素材2.1",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 11,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N011_kigounado = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "記号など",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N010_maegamimomiage = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!前髪もみあげ",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N009_toubuakusesari = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "頭部アクセサリ",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N008_mayu = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!眉",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N007_me = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!目",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N006_kuchi = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!口",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N005_kaoiro = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!顔色",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N003 = {
+							{
+								CCS_AddString = "*その他の服"
+							},
+							{
+								CCS_AddString = "*白ロリ服"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N002_tsuindoriruhidari = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "ツインドリル左",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N001_tsuindorirumigi = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "ツインドリル右",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000_kaitenidoudeponitenisurunado = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "回転移動でポニテにするなど",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				A = Fuse.Wireless {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Loader38",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 4235, -511.499 } },
+				},
+				Merge37 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 5, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge36",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader31",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3685, -973.5 } },
+				},
+				Merge35 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 3, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge34",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader29",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3465, -973.5 } },
+				},
+				Merge33 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge32",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader27",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3245, -973.5 } },
+				},
+				Merge32 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Background7",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader26",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3135, -973.5 } },
+				},
+				Merge23 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(左腕.N001 == 4, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge22",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader19",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1155, -1006.5 } },
+				},
+				Merge21 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(左腕.N001 == 2, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge20",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader17",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, -1006.5 } },
+				},
+				Merge54 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目セット.N000 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Background9",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader46",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5225, -1336.5 } },
+				},
+				Merge56 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "目セット.N002_kurome", },
+						Background = Input {
+							SourceOp = "Merge55",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "黒目",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -1336.5 } },
+				},
+				Merge31 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N006_kuchi", },
+						Background = Input {
+							SourceOp = "TimeStretcher1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "MouthCtrl",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4455, -115.5 } },
+				},
+				DissolveN = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					},
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(MouthCtrl.Anim < 2, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "N",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "DissolveA",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4345, -412.499 } },
+				},
+				DissolveI = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					},
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(MouthCtrl.Anim < 4, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "I",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "DissolveU",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4125, -412.499 } },
+				},
+				DissolveU = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					},
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(MouthCtrl.Anim < 5, 0, 1)",
+						},
+						Background = Input {
+							SourceOp = "U",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "DissolveE",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4015, -412.499 } },
+				},
+				DissolveE = Dissolve {
+					Transitions = {
+						[0] = "DFTLumaRamp"
+					},
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					},
+					Inputs = {
+						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+						Mix = Input { Expression = "iif(MouthCtrl.Anim < 6, 0, 1)", },
+						Background = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "O",
+							Source = "Output",
+						},
+						["DFTLumaRamp.Softness"] = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3905, -412.499 } },
+				},
+				O = Fuse.Wireless {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Loader33",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 3795, -412.499 } },
+				},
+				U = Fuse.Wireless {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Loader32",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 4015, -511.499 } },
+				},
+				Merge79 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "記号など.N001_namida", },
+						Background = Input {
+							SourceOp = "Merge78",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader67",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3520, -544.5 } },
+				},
+				Merge40 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 8, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge39",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader34",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4015, -973.5 } },
+				},
+				Merge39 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 7, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge38",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader33",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3905, -973.5 } },
+				},
+				Background8 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4565, -1039.5 } },
+				},
+				Merge46 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目.N000 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Background8",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader39",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4675, -1039.5 } },
+				},
+				Merge42 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 10, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge41",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader36",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4235, -973.5 } },
+				},
+				Merge43 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 11, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge42",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader37",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4345, -973.5 } },
+				},
+				Merge44 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 12, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge43",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader38",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4455, -973.5 } },
+				},
+				Background7 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3025, -973.5 } },
+				},
+				I = Fuse.Wireless {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Loader29",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 4125, -511.499 } },
+				},
+				Transform1 = Transform {
+					Inputs = {
+						Pivot = Input { Value = { 0.481304990757856, 0.779747252747253 }, },
+						Size = Input { Value = 0.8, },
+						Input = Input {
+							SourceOp = "E",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 3905, -511.499 } },
+				},
+				E = Fuse.Wireless {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = {
+						Input = Input {
+							SourceOp = "Loader38",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 3905, -610.499 } },
+				},
+				["頭部アクセサリ"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge75",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 3025, -247.5 } },
+					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
+					UserControls = ordered() {
+						["Grp_頭部アクセサリ"] = {
+							LINKS_Name = "頭部アクセサリ",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 4,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N003_heddodoresu = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "ヘッドドレス",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N002_usamimi = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "うさみみ",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						},
+						N001_kamitomehaato = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "髪留めハート",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000_kamitomefuriru = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "髪留めフリル",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				Merge47 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目.N000 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge46",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader40",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4785, -1039.5 } },
+				},
+				["記号など"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge79",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 3520, -247.5 } },
+					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
+					UserControls = ordered() {
+						["Grp_記号など"] = {
+							LINKS_Name = "記号など",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 2,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N001_namida = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "涙",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						},
+						N000_ase = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "汗",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				Merge49 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目.N000 == 3, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge48",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader42",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5005, -1039.5 } },
+				},
+				Merge48 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目.N000 == 2, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge47",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader41",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4895, -1039.5 } },
+				},
+				Merge45 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N007_me", },
+						Background = Input {
+							SourceOp = "Merge31",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "EyeCtrl",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -115.5 } },
+				},
+				Background13 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3300, -544.5 } },
+				},
+				Merge74 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "頭部アクセサリ.N002_usamimi", },
+						Background = Input {
+							SourceOp = "Merge73",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader63",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2915, -544.5 } },
+				},
+				Merge75 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "頭部アクセサリ.N003_heddodoresu", },
+						Background = Input {
+							SourceOp = "Merge74",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader64",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3025, -544.5 } },
+				},
+				Merge65 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(眉.N000 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge64",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader55",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1815, -775.5 } },
+				},
+				Background11 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1595, -775.5 } },
+				},
+				Merge67 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(眉.N000 == 3, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge66",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader57",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2035, -775.5 } },
+				},
+				Merge66 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(眉.N000 == 2, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge65",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader56",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1925, -775.5 } },
+				},
+				Merge25 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "顔色.N000_kageri", },
+						Background = Input {
+							SourceOp = "Background6",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader20",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1485, -478.5 } },
+				},
+				Merge27 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(顔色.N001 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge26",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader22",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1705, -478.5 } },
+				},
+				Merge28 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(顔色.N001 == 2, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge27",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader23",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1815, -478.5 } },
+				},
+				Background14 = Background {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5610, 214.5 } },
+				},
+				Merge30 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(顔色.N001 == 4, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge29",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader25",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2035, -478.5 } },
+				},
+				Merge50 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目.N000 == 4, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge49",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader43",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5115, -1039.5 } },
+				},
+				Merge51 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目.N000 == 5, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge50",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader44",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5225, -1039.5 } },
+				},
+				Merge53 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目.N000 == 7, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge52",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "目セット",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -1039.5 } },
+				},
+				Merge76 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N010_maegamimomiage", },
+						Background = Input {
+							SourceOp = "Merge45",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader65",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5775, -115.5 } },
+				},
+				["黒目"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge62",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -1468.5 } },
+					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
+					UserControls = ordered() {
+						["Grp_!黒目"] = {
+							LINKS_Name = "!黒目",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 1,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000 = {
+							{
+								CCS_AddString = "*目そらし2"
+							},
+							{
+								CCS_AddString = "*目そらし"
+							},
+							{
+								CCS_AddString = "*カメラ目線2"
+							},
+							{
+								CCS_AddString = "*カメラ目線"
+							},
+							{
+								CCS_AddString = "*普通目2"
+							},
+							{
+								CCS_AddString = "*普通目"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 3,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				["目セット"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge56",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -1171.5 } },
+					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
+					UserControls = ordered() {
+						["Grp_*目セット"] = {
+							LINKS_Name = "*目セット",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 2,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N002_kurome = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!黒目",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000 = {
+							{
+								CCS_AddString = "*見開き白目"
+							},
+							{
+								CCS_AddString = "*普通白目"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				Merge41 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 9, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge40",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader35",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4125, -973.5 } },
+				},
+				Merge38 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 6, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge37",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader32",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3795, -973.5 } },
+				},
+				Merge36 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 4, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge35",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader30",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3575, -973.5 } },
+				},
+				Merge34 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(口.N000 == 2, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge33",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader28",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3355, -973.5 } },
+				},
+				Merge59 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(黒目.N000 == 2, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge58",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader50",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5115, -1633.5 } },
+				},
+				Merge77 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N011_kigounado", },
+						Background = Input {
+							SourceOp = "Merge71",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "記号など",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3520, -115.5 } },
+				},
+				Merge78 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "記号など.N000_ase", },
+						Background = Input {
+							SourceOp = "Background13",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader66",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3410, -544.5 } },
+				},
+				Merge71 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N009_toubuakusesari", },
+						Background = Input {
+							SourceOp = "Merge63",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "頭部アクセサリ",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 3025, -115.5 } },
+				},
+				Merge70 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(眉.N000 == 6, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge69",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader60",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2365, -775.5 } },
+				},
+				Merge64 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(眉.N000 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Background11",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader54",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1705, -775.5 } },
+				},
+				Merge68 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(眉.N000 == 4, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge67",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader58",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2145, -775.5 } },
+				},
+				Merge69 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(眉.N000 == 5, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge68",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader59",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2255, -775.5 } },
+				},
+				Merge72 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "頭部アクセサリ.N000_kamitomefuriru", },
+						Background = Input {
+							SourceOp = "Background12",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader61",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2695, -544.5 } },
+				},
+				Merge73 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "頭部アクセサリ.N001_kamitomehaato", },
+						Background = Input {
+							SourceOp = "Merge72",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader62",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2805, -544.5 } },
+				},
+				Background12 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2585, -544.5 } },
+				},
+				Merge52 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目.N000 == 6, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge51",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader45",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5335, -1039.5 } },
+				},
+				Merge26 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(顔色.N001 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge25",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader21",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1595, -478.5 } },
+				},
+				["白ロリ服"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge17",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1155, -247.5 } },
+					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
+					UserControls = ordered() {
+						["Grp_*白ロリ服"] = {
+							LINKS_Name = "*白ロリ服",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 3,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N002_hidariude = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!左腕",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N001_migiude = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!右腕",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N000_karada = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!体",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				["その他の服"] = Transform {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge9",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 495, -247.5 } },
+					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
+					UserControls = ordered() {
+						["Grp_*その他の服"] = {
+							LINKS_Name = "*その他の服",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 2,
+							INP_Default = 1,
+							ICS_ControlPage = "User",
+						},
+						N001 = {
+							{
+								CCS_AddString = "*(非表示)"
+							},
+							{
+								CCS_AddString = "*バスタオル"
+							},
+							{
+								CCS_AddString = "*水着"
+							},
+							{
+								CCS_AddString = "*バニー服"
+							},
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "Select",
+							INP_Integer = true,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						},
+						N000_motokarada = {
+							LINKID_DataType = "Number",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "!素体",
+							INP_Integer = true,
+							CBC_TriState = false,
+							INP_Default = 0,
+							ICS_ControlPage = "User",
+						}
+					}
+				},
+				Merge12 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "白ロリ服.N001_migiude", },
+						Background = Input {
+							SourceOp = "Merge11",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "右腕",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, -445.5 } },
+				},
+				Merge55 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(目セット.N000 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge54",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader47",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5335, -1336.5 } },
+				},
+				Background9 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5115, -1336.5 } },
+				},
+				Merge58 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(黒目.N000 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge57",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader49",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5005, -1633.5 } },
+				},
+				Merge62 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(黒目.N000 == 5, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge61",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader53",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5445, -1633.5 } },
+				},
+				Background3 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 715, -445.5 } },
+				},
+				Merge9 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(その他の服.N001 == 3, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge8",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader8",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 495, -445.5 } },
+				},
+				Merge19 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(左腕.N001 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge18",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader15",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 715, -1006.5 } },
+				},
+				Merge16 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(右腕.N001 == 2, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge15",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader13",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, -742.5 } },
+				},
+				Background2 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, -445.5 } },
+				},
+				Merge10 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(四国めたん立ち絵素材21.N003 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge4",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "白ロリ服",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1155, -115.5 } },
+				},
+				Merge11 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "白ロリ服.N000_karada", },
+						Background = Input {
+							SourceOp = "Background3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader9",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 825, -445.5 } },
+				},
+				Background5 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 495, -1006.5 } },
+				},
+				Background4 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 495, -742.5 } },
+				},
+				Merge61 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(黒目.N000 == 4, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge60",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader52",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5335, -1633.5 } },
+				},
+				Merge60 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(黒目.N000 == 3, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge59",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader51",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 5225, -1633.5 } },
+				},
+				Merge57 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(黒目.N000 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Background10",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader48",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4895, -1633.5 } },
+				},
+				Background10 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4785, -1633.5 } },
+				},
+				Merge29 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(顔色.N001 == 3, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge28",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader24",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1925, -478.5 } },
+				},
+				Merge22 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(左腕.N001 == 3, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge21",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader18",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1045, -1006.5 } },
+				},
+				Merge20 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(左腕.N001 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge19",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader16",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 825, -1006.5 } },
+				},
+				Merge18 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "左腕.N000_manjuufukuro", },
+						Background = Input {
+							SourceOp = "Background5",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader14",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, -1006.5 } },
+				},
+				Merge15 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(右腕.N001 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge14",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader12",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 825, -742.5 } },
+				},
+				Merge14 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(右腕.N001 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge13",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader11",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 715, -742.5 } },
+				},
+				Merge13 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "右腕.N000_manjuu", },
+						Background = Input {
+							SourceOp = "Background4",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader10",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, -742.5 } },
+				},
+				Merge8 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(その他の服.N001 == 2, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge7",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader7",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, -445.5 } },
+				},
+				Merge7 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(その他の服.N001 == 1, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge6",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader6",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, -445.5 } },
+				},
+				Merge6 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(その他の服.N001 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge5",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader5",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, -445.5 } },
+				},
+				Merge5 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "その他の服.N000_motokarada", },
+						Background = Input {
+							SourceOp = "Background2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader4",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, -445.5 } },
+				},
+				Merge4 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "iif(四国めたん立ち絵素材21.N003 == 0, 1, 0)", },
+						Background = Input {
+							SourceOp = "Merge3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "その他の服",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 495, -115.5 } },
+				},
+				Merge3 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N002_tsuindoriruhidari", },
+						Background = Input {
+							SourceOp = "Merge2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader3",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, -115.5 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N001_tsuindorirumigi", },
+						Background = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader2",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, -115.5 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Blend = Input { Expression = "四国めたん立ち絵素材21.N000_kaitenidoudeponitenisurunado", },
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Loader1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, -115.5 } },
+				},
+				Background1 = Background {
+					Inputs = {
+						Width = Input { Value = 1082, },
+						Height = Input { Value = 1820, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, -115.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "Metan"
+}
