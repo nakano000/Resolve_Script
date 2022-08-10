@@ -242,6 +242,7 @@ class Form(QWidget):
                     if enc.lower() == 'shift_jis':
                         enc = 'cp932'
                     t = content.decode(encoding=enc)
+                t = t.replace('\r\n', '\n')
 
                 if srt_flag:
                     wave_data, samplerate = soundfile.read(str(f))
