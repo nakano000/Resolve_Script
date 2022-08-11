@@ -2841,7 +2841,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 1375, 1976.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!枝豆"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!枝豆", }, N000 = { { CCS_AddString = "*枝豆萎え" }, { CCS_AddString = "*枝豆通常" }, { CCS_AddString = "*パーカー(裏地とセットで使用)" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!枝豆"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!枝豆", }, N000 = { { CCS_AddString = "*枝豆萎え" }, { CCS_AddString = "*枝豆通常" }, { CCS_AddString = "*パーカー(裏地とセットで使用)" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "枝豆", } }
 				},
 				["眉"] = Transform {
 					CtrlWShown = false,
@@ -2853,7 +2853,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 770, 1976.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!眉"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!眉", }, N000 = { { CCS_AddString = "*困り眉2" }, { CCS_AddString = "*困り眉1" }, { CCS_AddString = "*上がり眉" }, { CCS_AddString = "*怒り眉" }, { CCS_AddString = "*普通眉" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 3, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!眉"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!眉", }, N000 = { { CCS_AddString = "*困り眉2" }, { CCS_AddString = "*困り眉1" }, { CCS_AddString = "*上がり眉" }, { CCS_AddString = "*怒り眉" }, { CCS_AddString = "*普通眉" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 3, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "眉", } }
 				},
 				["目"] = Transform {
 					CtrlWShown = false,
@@ -2865,7 +2865,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 3300, 986.758 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!目"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!目", }, N000 = { { CCS_AddString = "*ぐるぐる" }, { CCS_AddString = "*〇〇" }, { CCS_AddString = "*><" }, { CCS_AddString = "*UU" }, { CCS_AddString = "*にっこり2" }, { CCS_AddString = "*にっこり" }, { CCS_AddString = "*なごみ目" }, { CCS_AddString = "*ジト目" }, { CCS_AddString = "*細め目" }, { CCS_AddString = "*細め目ハート" }, { CCS_AddString = "*上向き3" }, { CCS_AddString = "*上向き2" }, { CCS_AddString = "*上向き" }, { CCS_AddString = "*目セット" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 13, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!目"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!目", }, N000 = { { CCS_AddString = "*ぐるぐる" }, { CCS_AddString = "*〇〇" }, { CCS_AddString = "*><" }, { CCS_AddString = "*UU" }, { CCS_AddString = "*にっこり2" }, { CCS_AddString = "*にっこり" }, { CCS_AddString = "*なごみ目" }, { CCS_AddString = "*ジト目" }, { CCS_AddString = "*細め目" }, { CCS_AddString = "*細め目ハート" }, { CCS_AddString = "*上向き3" }, { CCS_AddString = "*上向き2" }, { CCS_AddString = "*上向き" }, { CCS_AddString = "*目セット" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 13, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "目", } }
 				},
 				["顔色"] = Transform {
 					CtrlWShown = false,
@@ -2877,7 +2877,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -55, 1976.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!顔色"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 2, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!顔色", }, N001 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*青ざめ" }, { CCS_AddString = "*ほっぺ赤め" }, { CCS_AddString = "*ほっぺ2" }, { CCS_AddString = "*ほっぺ" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 4, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", }, N000_kageri = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "かげり", } }
+					UserControls = ordered() { ["Grp_!顔色"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 2, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!顔色", }, N001 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*青ざめ" }, { CCS_AddString = "*ほっぺ赤め" }, { CCS_AddString = "*ほっぺ2" }, { CCS_AddString = "*ほっぺ" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 4, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "顔色", }, N000_kageri = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "かげり", } }
 				},
 				["口"] = Transform {
 					CtrlWShown = false,
@@ -2890,7 +2890,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 2695, 1349.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!口"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!口", }, N000 = { { CCS_AddString = "*ほあー" }, { CCS_AddString = "*ほあ" }, { CCS_AddString = "*ほー" }, { CCS_AddString = "*むふ" }, { CCS_AddString = "*△" }, { CCS_AddString = "*んあー" }, { CCS_AddString = "*んへー" }, { CCS_AddString = "*んー" }, { CCS_AddString = "*はへえ" }, { CCS_AddString = "*おほお" }, { CCS_AddString = "*お" }, { CCS_AddString = "*ゆ" }, { CCS_AddString = "*むー" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!口"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!口", }, N000 = { { CCS_AddString = "*ほあー" }, { CCS_AddString = "*ほあ" }, { CCS_AddString = "*ほー" }, { CCS_AddString = "*むふ" }, { CCS_AddString = "*△" }, { CCS_AddString = "*んあー" }, { CCS_AddString = "*んへー" }, { CCS_AddString = "*んー" }, { CCS_AddString = "*はへえ" }, { CCS_AddString = "*おほお" }, { CCS_AddString = "*お" }, { CCS_AddString = "*ゆ" }, { CCS_AddString = "*むー" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "口", } }
 				},
 				["右腕1"] = Transform {
 					CtrlWShown = false,
@@ -2902,7 +2902,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -990, 1679.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!右腕"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!右腕", }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*マイク" }, { CCS_AddString = "*指差し" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 7, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!右腕"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!右腕", }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*マイク" }, { CCS_AddString = "*指差し" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 7, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "右腕", } }
 				},
 				["左腕1"] = Transform {
 					CtrlWShown = false,
@@ -2914,7 +2914,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -1155, 1679.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!左腕"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!左腕", }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*ひそひそ" }, { CCS_AddString = "*考える" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 7, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!左腕"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!左腕", }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*ひそひそ" }, { CCS_AddString = "*考える" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 7, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "左腕", } }
 				},
 				EyeCtrl = Transform {
 					CtrlWShown = false,
