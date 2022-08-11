@@ -13,6 +13,7 @@ class CharaData(basic_table.RowData):
     track_name: str = ''
     reg_exp: str = r'.+'
     color: str = 'None'
+    c_code: str = 'auto'
     _setting: str = r'Preset\TextPlus\字幕_白.setting'
 
     @property
@@ -31,7 +32,7 @@ class CharaData(basic_table.RowData):
 
     @classmethod
     def toHeaderList(cls) -> List[str]:
-        return ['トラック名', '正規表現', '色', 'settingファイル']
+        return ['トラック名', '正規表現', '色', '文字コード', 'settingファイル']
 
 
 if __name__ == '__main__':

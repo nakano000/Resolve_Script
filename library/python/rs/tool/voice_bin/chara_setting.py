@@ -66,7 +66,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             # | Qt.WindowStaysOnTopHint
         )
-        self.resize(750, 300)
+        self.resize(850, 300)
 
         # style sheet
         self.ui.setButton.setStyleSheet(appearance.ex_stylesheet)
@@ -86,7 +86,7 @@ class MainWindow(QMainWindow):
         v.setModel(Model(CharaData))
 
         hh = v.horizontalHeader()
-        hh.setSectionResizeMode(3, QHeaderView.Stretch)
+        hh.setSectionResizeMode(4, QHeaderView.Stretch)
 
         v.setContextMenuPolicy(Qt.CustomContextMenu)
         v.customContextMenuRequested.connect(self.contextMenu)

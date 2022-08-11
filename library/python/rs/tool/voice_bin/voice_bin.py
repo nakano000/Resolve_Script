@@ -85,6 +85,44 @@ class WatchdogEvent(FileSystemEventHandler):
             self.deleted_lst.append(src_path)
 
 
+def read_text(f: Path, c_code: str):
+    # 文字コード
+    _code = c_code.strip().lower()
+
+    if _code in ['auto', '']:
+        with open(f, 'rb') as _f:
+            content = _f.read()
+            char_code = chardet.detect(content)
+        enc: str = char_code['encoding']
+
+        if enc is None or enc.lower() not in [
+            'utf-8',
+            'utf-8-sig',
+            'utf-16',
+            'utf-16be',
+            'utf-16le',
+            'utf-32',
+            'utf-32be',
+            'utf-32le',
+            'cp932',
+            'shift_jis',
+        ]:
+            try:
+                t = content.decode(encoding='utf-8')
+            except:
+                t = content.decode(encoding='cp932')
+        else:
+            if enc.lower() == 'shift_jis':
+                enc = 'cp932'
+            t = content.decode(encoding=enc)
+    else:
+        t = f.read_text(encoding=_code)
+
+    # 改行コード
+    t = t.replace('\r\n', '\n')
+    return t
+
+
 class Form(QWidget):
     modified = Signal(str)
 
@@ -191,7 +229,6 @@ class Form(QWidget):
             self.ui.tatieDragButton.setLuaFile(tatie_path)
 
     def directory_changed(self, s):
-        # print('refresh')
         d = Path(s)
         tree = self.ui.treeView
         model = tree.model()
@@ -209,40 +246,26 @@ class Form(QWidget):
             f: Path
             txt_file = d.joinpath(f.stem + '.txt')
             srt_file = d.joinpath(f.stem + '.srt')
+            lab_file = d.joinpath(f.stem + '.lab')
+
             lua_file = d.joinpath(f.stem + '.lua')
             tatie_lua_file = d.joinpath(f.stem + '.tatie.lua')
-            lab_file = d.joinpath(f.stem + '.lab')
             setting_file = d.joinpath(f.stem + '.setting')
+
+            # flag
             srt_flag = not srt_file.is_file()
             lua_flag = not lua_file.is_file()
             setting_flag = lab_file.is_file() and not setting_file.is_file()
             if txt_file.is_file() and (srt_flag or lua_flag or setting_file):
-                with open(txt_file, 'rb') as _f:
-                    content = _f.read()
-                    char_code = chardet.detect(content)
-                enc: str = char_code['encoding']
+                chara_data = CharaData()
+                for cd in self.chara_window.get_chara_list():
+                    cd: CharaData
+                    m = re.fullmatch(cd.reg_exp, f.stem)
+                    if m is not None:
+                        chara_data = cd
+                        break
 
-                if enc is None or enc.lower() not in [
-                    'utf-8',
-                    'utf-8-sig',
-                    'utf-16',
-                    'utf-16be',
-                    'utf-16le',
-                    'utf-32',
-                    'utf-32be',
-                    'utf-32le',
-                    'cp932',
-                    'shift_jis',
-                ]:
-                    try:
-                        t = content.decode(encoding='utf-8')
-                    except:
-                        t = content.decode(encoding='cp932')
-                else:
-                    if enc.lower() == 'shift_jis':
-                        enc = 'cp932'
-                    t = content.decode(encoding=enc)
-                t = t.replace('\r\n', '\n')
+                t = read_text(txt_file, chara_data.c_code)
 
                 if srt_flag:
                     wave_data, samplerate = soundfile.read(str(f))
@@ -256,13 +279,7 @@ class Form(QWidget):
                     self.sel_wav = str(f)
                     self.sel_srt = str(srt_file)
                 if lua_flag and setting_flag:
-                    chara_data = CharaData()
-                    for cd in self.chara_window.get_chara_list():
-                        cd: CharaData
-                        m = re.fullmatch(cd.reg_exp, f.stem)
-                        if m is not None:
-                            chara_data = cd
-                            break
+
                     if lua_flag:
                         lua = self.text_script_base % (
                             t,
