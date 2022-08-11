@@ -60,7 +60,7 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
                 user_controls[cb_name] = {
                     'LINKID_DataType': 'Number',
                     'INPID_InputControl': 'ComboControl',
-                    'LINKS_Name': name,
+                    'LINKS_Name': name if name == 'Root' else 'Select',
                     'INP_Integer': True,
                     'INP_Default': 0,
                     'ICS_ControlPage': 'User',

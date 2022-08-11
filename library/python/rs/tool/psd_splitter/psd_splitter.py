@@ -227,7 +227,7 @@ class MainWindow(QMainWindow):
         json_path.write_text(
             json.dumps(
                 {
-                    'name': src_file.stem,
+                    'name': 'Root',
                     'x': psd.size[0],
                     'y': psd.size[1],
                     'data': self.export_layer(psd.size, out_dir, psd),
