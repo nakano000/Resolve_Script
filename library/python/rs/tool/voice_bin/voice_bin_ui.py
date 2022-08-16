@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui' applies.
 #
-# Created: Thu Jun 30 04:44:57 2022
+# Created: Wed Aug 17 08:17:09 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -107,6 +107,11 @@ class Ui_Form(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem4)
+        self.minimizeButton = QtWidgets.QToolButton(Form)
+        self.minimizeButton.setMinimumSize(QtCore.QSize(40, 40))
+        self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)
+        self.minimizeButton.setObjectName("minimizeButton")
+        self.horizontalLayout.addWidget(self.minimizeButton)
         self.closeButton = QtWidgets.QPushButton(Form)
         self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
         self.closeButton.setObjectName("closeButton")
@@ -127,6 +132,9 @@ class Ui_Form(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.textTab), QtWidgets.QApplication.translate("Form", "テキスト+ 立ち絵", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("Form", "声フォルダ: ", None, -1))
         self.folderToolButton.setText(QtWidgets.QApplication.translate("Form", "...", None, -1))
+        self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("Form", "最小化", None, -1))
+        self.minimizeButton.setText(QtWidgets.QApplication.translate("Form", "...", None, -1))
+        self.closeButton.setToolTip(QtWidgets.QApplication.translate("Form", "閉じる", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("Form", "close", None, -1))
 
 from rs.tool.voice_bin.drag_button import DragButton

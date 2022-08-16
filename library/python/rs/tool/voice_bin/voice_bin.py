@@ -1,12 +1,11 @@
-import re
-
+import chardet
 import dataclasses
-import sys
+import re
 import soundfile
 import subprocess
+import sys
+from functools import partial
 from pathlib import Path
-
-import chardet
 
 from PySide2.QtCore import (
     Qt,
@@ -133,7 +132,6 @@ class Form(QWidget):
         self.setWindowTitle(APP_NAME)
         self.setWindowFlags(
             Qt.Window
-            | Qt.WindowMinimizeButtonHint
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
@@ -191,6 +189,7 @@ class Form(QWidget):
 
         # event
         self.ui.charaButton.clicked.connect(self.chara_window.show)
+        self.ui.minimizeButton.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
 
         self.ui.treeView.doubleClicked.connect(self.open_dir)
         self.ui.wavTreeView.doubleClicked.connect(self.open_dir)

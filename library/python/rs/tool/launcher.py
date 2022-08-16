@@ -42,15 +42,14 @@ class MainWindow(QWidget):
         self.resize(200, 10)
 
         # button
-
         self.close_button = QPushButton('close', self)
         self.close_button.setMinimumHeight(40)
-        self.close_button.setToolTip('close')
+        self.close_button.setToolTip('閉じる')
         self.minimize_button = QToolButton(self)
         self.minimize_button.setArrowType(Qt.DownArrow)
         self.minimize_button.setMinimumHeight(40)
         self.minimize_button.setMinimumWidth(40)
-        self.minimize_button.setToolTip('minimize')
+        self.minimize_button.setToolTip('最小化')
 
         # layout
         lo = QVBoxLayout()

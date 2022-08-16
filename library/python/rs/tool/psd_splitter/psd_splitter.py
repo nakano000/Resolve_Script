@@ -47,7 +47,6 @@ class MainWindow(QMainWindow):
         self.setWindowTitle('%s' % APP_NAME)
         self.setWindowFlags(
             Qt.Window
-            | Qt.WindowMinimizeButtonHint
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
