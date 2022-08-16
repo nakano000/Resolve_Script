@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from functools import partial
 from pathlib import Path
 from typing import List
 
@@ -13,7 +14,7 @@ from PySide2.QtWidgets import (
     QSizePolicy,
     QSpacerItem,
     QVBoxLayout,
-    QWidget,
+    QWidget, QHBoxLayout, QToolButton,
 )
 
 from rs.core import (
@@ -44,6 +45,12 @@ class MainWindow(QWidget):
 
         self.close_button = QPushButton('close', self)
         self.close_button.setMinimumHeight(40)
+        self.close_button.setToolTip('close')
+        self.minimize_button = QToolButton(self)
+        self.minimize_button.setArrowType(Qt.DownArrow)
+        self.minimize_button.setMinimumHeight(40)
+        self.minimize_button.setMinimumWidth(40)
+        self.minimize_button.setToolTip('minimize')
 
         # layout
         lo = QVBoxLayout()
@@ -72,11 +79,14 @@ class MainWindow(QWidget):
         lo.addItem(
             QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
         )
-        lo.addWidget(self.close_button)
+        lo2 = QHBoxLayout()
+        lo2.addWidget(self.minimize_button)
+        lo2.addWidget(self.close_button)
+        lo.addLayout(lo2)
         self.setLayout(lo)
-
         # event
         self.close_button.clicked.connect(self.close)
+        self.minimize_button.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
 
 
 def run() -> None:
