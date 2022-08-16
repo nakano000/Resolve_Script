@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\resolve_launcher\resolve_launcher.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\resolve_launcher\resolve_launcher.ui' applies.
 #
-# Created: Fri Jul  8 14:59:02 2022
+# Created: Tue Aug 16 17:41:46 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(674, 133)
+        MainWindow.resize(684, 282)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -39,12 +39,29 @@ class Ui_MainWindow(object):
         self.fusionToolButton.setObjectName("fusionToolButton")
         self.gridLayout.addWidget(self.fusionToolButton, 1, 2, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
-        spacerItem = QtWidgets.QSpacerItem(653, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox.setObjectName("checkBox")
+        self.verticalLayout.addWidget(self.checkBox)
+        spacerItem = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.verticalLayout.addItem(spacerItem)
+        spacerItem1 = QtWidgets.QSpacerItem(653, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem1)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.dragButton = DragButton(self.centralwidget)
+        self.dragButton.setMinimumSize(QtCore.QSize(100, 100))
+        self.dragButton.setObjectName("dragButton")
+        self.horizontalLayout_2.addWidget(self.dragButton)
+        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
+        self.plainTextEdit.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.plainTextEdit.setReadOnly(True)
+        self.plainTextEdit.setObjectName("plainTextEdit")
+        self.horizontalLayout_2.addWidget(self.plainTextEdit)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
         self.resolveButton = QtWidgets.QPushButton(self.centralwidget)
         self.resolveButton.setMinimumSize(QtCore.QSize(100, 40))
         self.resolveButton.setObjectName("resolveButton")
@@ -53,8 +70,8 @@ class Ui_MainWindow(object):
         self.fusionButton.setMinimumSize(QtCore.QSize(100, 40))
         self.fusionButton.setObjectName("fusionButton")
         self.horizontalLayout.addWidget(self.fusionButton)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem2)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem3)
         self.closeButton = QtWidgets.QPushButton(self.centralwidget)
         self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
         self.closeButton.setObjectName("closeButton")
@@ -71,7 +88,13 @@ class Ui_MainWindow(object):
         self.resolveToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Fusion", None, -1))
         self.fusionToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
+        self.checkBox.setText(QtWidgets.QApplication.translate("MainWindow", "DaVinciResolve または Fusion 起動時に自動で閉じる", None, -1))
+        self.dragButton.setText(QtWidgets.QApplication.translate("MainWindow", "設定", None, -1))
+        self.plainTextEdit.setPlainText(QtWidgets.QApplication.translate("MainWindow", "初回起動時、またはスクリプトがメニューに表示されない場合\n"
+"左の設定ボタンをDaVinci Resolveのコンソールへドラッグアンドドロップしてください。\n"
+"Path MapのUserPaths:へ$(RS_FUSION_USER_PATH)を追加します。", None, -1))
         self.resolveButton.setText(QtWidgets.QApplication.translate("MainWindow", "Resolve", None, -1))
         self.fusionButton.setText(QtWidgets.QApplication.translate("MainWindow", "Fusion", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
 
+from rs.tool.resolve_launcher.drag_button import DragButton

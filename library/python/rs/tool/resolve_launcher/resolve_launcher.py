@@ -33,6 +33,7 @@ APP_NAME = 'ResolveLauncher'
 class ConfigData(config.Data):
     fusion: Fusion = dataclasses.field(default_factory=Fusion)
     resolve: Resolve = dataclasses.field(default_factory=Resolve)
+    do_close: bool = False
 
 
 class MainWindow(QMainWindow):
@@ -54,8 +55,11 @@ class MainWindow(QMainWindow):
         self.load_config()
 
         # button
+        self.ui.dragButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.resolveButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.fusionButton.setStyleSheet(appearance.other_stylesheet)
+
+        self.ui.dragButton.lua_file = config.DATA_PATH.joinpath('app', 'ResolveLauncher', 'set_pathmap.lua')
 
         # event
         self.ui.fusionButton.clicked.connect(self.run_fusion)
@@ -80,7 +84,8 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, 'File Not Found', '%s\nファイルが存在しません。' % app.exe)
             return
         app.execute([])
-        self.close()
+        if c.do_close:
+            self.close()
 
     def run_resolve(self):
         c = self.get_data()
@@ -89,7 +94,8 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, 'File Not Found', '%s\nファイルが存在しません。' % app.exe)
             return
         app.execute([])
-        self.close()
+        if c.do_close:
+            self.close()
 
     def toolButton_clicked(self, w, name: str) -> None:
         path, _ = QFileDialog.getOpenFileName(
@@ -107,11 +113,13 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.fusionLineEdit.setText(c.fusion.exe.replace('\\', '/'))
         self.ui.resolveLineEdit.setText(c.resolve.exe.replace('\\', '/'))
+        self.ui.checkBox.setChecked(c.do_close)
 
     def get_data(self) -> ConfigData:
         c = self.new_config()
         c.fusion.exe = self.ui.fusionLineEdit.text()
         c.resolve.exe = self.ui.resolveLineEdit.text()
+        c.do_close = self.ui.checkBox.isChecked()
         return c
 
     def load_config(self) -> None:

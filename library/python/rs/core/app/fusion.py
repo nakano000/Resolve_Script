@@ -27,11 +27,11 @@ class Fusion(App):
         )
 
         # FUSION_MasterPrefs
-        master_prefs = config.FUSION_SET_PATH.joinpath('rs.prefs')
-        env.set(EnvKey.FUSION_MasterPrefs, str(master_prefs))
-        env.set(EnvKey.FUSION_MasterPrefs8, str(master_prefs))
-        env.set(EnvKey.FUSION9_MasterPrefs, str(master_prefs))
-        env.set(EnvKey.FUSION16_MasterPrefs, str(master_prefs))
+        # master_prefs = config.FUSION_SET_PATH.joinpath('rs.prefs')
+        # env.set(EnvKey.FUSION_MasterPrefs, str(master_prefs))
+        # env.set(EnvKey.FUSION_MasterPrefs8, str(master_prefs))
+        # env.set(EnvKey.FUSION9_MasterPrefs, str(master_prefs))
+        # env.set(EnvKey.FUSION16_MasterPrefs, str(master_prefs))
 
         # PYTHONPATH
         env.add_path(EnvKey.PYTHONPATH, pre=[
