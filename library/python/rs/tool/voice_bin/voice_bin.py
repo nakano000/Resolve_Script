@@ -133,6 +133,7 @@ class Form(QWidget):
         self.setWindowTitle(APP_NAME)
         self.setWindowFlags(
             Qt.Window
+            | Qt.WindowMinimizeButtonHint
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
