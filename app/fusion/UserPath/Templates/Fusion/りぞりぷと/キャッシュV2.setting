@@ -1,0 +1,87 @@
+{
+	Tools = ordered() {
+		RS_Cache = GroupOperator {
+			CtrlWZoom = false,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "TimeStretcher1",
+					Source = "Input",
+				}
+			},
+			Outputs = {
+				Output1 = InstanceOutput {
+					SourceOp = "RS_Null1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 1155, 379.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 291, 107.503, 145.5, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { -1732.5, -469.864 }
+			},
+			Tools = ordered() {
+				RS_Null1 = Fuse.RS_Null {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "TimeStretcher1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1815, 478.5 } },
+					Version = 1
+				},
+				TimeStretcher1 = TimeStretcher {
+					CtrlWShown = false,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					},
+					Inputs = {
+						SourceTime = Input {
+							SourceOp = "RS_GlobalStart3",
+							Source = "Output",
+						},
+						InterpolateBetweenFrames = Input { Value = 0, },
+						SampleSpread = Input { Disabled = true, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1650, 478.5 } },
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				}
+			},
+			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+		},
+		RS_GlobalStart3 = Fuse.RS_GlobalStart {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+		}
+	}
+}
