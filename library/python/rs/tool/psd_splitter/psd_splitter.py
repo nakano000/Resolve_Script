@@ -22,6 +22,7 @@ import pykakasi
 
 from rs.core import (
     config,
+    util,
 )
 from rs.gui import (
     appearance,
@@ -224,7 +225,8 @@ class MainWindow(QMainWindow):
         out_dir.mkdir(parents=True, exist_ok=True)
         self.add2log('Mkdir: %s => %s' % (src_file.stem, str(out_dir).replace('\\', '/')))
         json_path = out_dir.joinpath(src_file.stem + '.json')
-        json_path.write_text(
+        util.write_text(
+            json_path,
             json.dumps(
                 {
                     'name': 'Root',
@@ -235,7 +237,6 @@ class MainWindow(QMainWindow):
                 indent=2,
                 ensure_ascii=False,
             ),
-            encoding='utf-8',
         )
         self.add2log('')  # new line
         self.add2log('Save JSON: %s' % str(json_path).replace('\\', '/'))
