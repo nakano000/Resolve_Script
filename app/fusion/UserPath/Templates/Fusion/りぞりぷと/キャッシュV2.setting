@@ -1,6 +1,6 @@
 {
 	Tools = ordered() {
-		RS_Cache = GroupOperator {
+		RS_Cache = MacroOperator {
 			CtrlWZoom = false,
 			NameSet = true,
 			CustomData = {
