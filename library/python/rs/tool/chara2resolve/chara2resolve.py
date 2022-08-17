@@ -53,7 +53,6 @@ class ConfigData(config.Data):
         path.write_text(
             json.dumps(dct, indent=2),
             encoding='utf-8',
-            newline='\n',
         )
 
 
@@ -559,7 +558,6 @@ class MainWindow(QMainWindow):
         setting_file.write_text(
             fu.make_setting_file(setting_base, uc_list),
             encoding='utf-8',
-            newline='\n',
         )
         self.add2log('Make: %s' % str(setting_file))
 

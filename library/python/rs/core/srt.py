@@ -47,7 +47,6 @@ class Srt:
         path.write_text(
             str(self),
             encoding='utf-8',
-            newline='\n',
         )
 
 

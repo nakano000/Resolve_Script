@@ -141,7 +141,6 @@ class Form(QWidget):
             file_path.write_text(
                 '',
                 encoding='utf-8',
-                newline='\n',
             )
         self.load_filter_List()
         self.select_by_name(self.ui.filterListView, name + ext)

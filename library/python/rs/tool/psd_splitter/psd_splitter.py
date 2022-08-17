@@ -236,7 +236,6 @@ class MainWindow(QMainWindow):
                 ensure_ascii=False,
             ),
             encoding='utf-8',
-            newline='\n',
         )
         self.add2log('')  # new line
         self.add2log('Save JSON: %s' % str(json_path).replace('\\', '/'))

@@ -63,7 +63,6 @@ class DragButton(QPushButton):
         self.cmd_file.write_text(
             r,
             encoding='utf-8',
-            newline='\n',
         )
         # Drag
         m = QMimeData()
