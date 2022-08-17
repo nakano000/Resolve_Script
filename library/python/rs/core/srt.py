@@ -3,7 +3,10 @@ from pathlib import Path
 from typing import List
 
 import dataclasses
-from rs.core import pipe as p
+from rs.core import (
+    pipe as p,
+    util,
+)
 
 
 def seconds2str(s: float) -> str:
@@ -44,9 +47,9 @@ class Srt:
         )
 
     def save(self, path: Path) -> None:
-        path.write_text(
+        util.write_text(
+            path,
             str(self),
-            encoding='utf-8',
         )
 
 
