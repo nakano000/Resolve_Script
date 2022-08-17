@@ -35,6 +35,11 @@ def memoize(f):
     return wrapper
 
 
+def write_text(path: Path, s: str) -> None:
+    with path.open('w', encoding='utf-8', newline='\n') as f:
+        f.write(s)
+
+
 def open_url(url):
     import webbrowser
     webbrowser.get('windows-default').open(url)

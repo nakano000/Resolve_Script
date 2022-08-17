@@ -2,6 +2,8 @@ import json
 import dataclasses
 from pathlib import Path
 
+from rs.core import util
+
 ROOT_PATH: Path = Path(__file__).joinpath('..', '..', '..', '..', '..').resolve()
 LAUNCHER_CONFIG_FILE: Path = ROOT_PATH.joinpath('data', 'app', 'launcher.json')
 PYTHONW_EXE_PATH: Path = ROOT_PATH.joinpath(
@@ -80,10 +82,9 @@ class Data(DataInterface):
         self.set(dct)
 
     def save(self, path: Path) -> None:
-        path.write_text(
+        util.write_text(
+            path,
             json.dumps(self.as_dict(), indent=2, ensure_ascii=False),
-            encoding='utf-8',
-            newline='\n',
         )
 
 
