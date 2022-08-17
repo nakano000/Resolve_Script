@@ -45,6 +45,7 @@ class DragButton(QPushButton):
                 ')\n',
             ]),
             encoding='utf-8',
+            newline='\n',
         )
         # Drag
         m = QMimeData()

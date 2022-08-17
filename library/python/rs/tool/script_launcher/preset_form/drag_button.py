@@ -60,7 +60,11 @@ class DragButton(QPushButton):
                 ',\n'.join,
             )
         r = self.script_base % (str(setting).replace('\\', '\\\\'), filter_text, self.track_index)
-        self.cmd_file.write_text(r, encoding='utf-8')
+        self.cmd_file.write_text(
+            r,
+            encoding='utf-8',
+            newline='\n',
+        )
         # Drag
         m = QMimeData()
         m.setUrls(['file:' + str(self.cmd_file).replace('\\', '/')])

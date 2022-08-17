@@ -285,20 +285,32 @@ class Form(QWidget):
                         chara_data.track_name,
                         str(chara_data.setting_file)
                     )
-                    lua_file.write_text(lua, encoding='utf-8')
+                    lua_file.write_text(
+                        lua,
+                        encoding='utf-8',
+                        newline='\n',
+                    )
                 if setting_flag:
                     data = self.get_data()
                     setting = self.tatie_setting_base % (
                         t.replace('\n', '\\n').replace('"', '\\"'),
                         lab.lab2anim(lab_file, data.fps)
                     )
-                    setting_file.write_text(setting, encoding='utf-8')
+                    setting_file.write_text(
+                        setting,
+                        encoding='utf-8',
+                        newline='\n',
+                    )
                     tatie_lua = self.tatie_script_base % (
                         chara_data.color,
                         chara_data.track_name,
                         str(setting_file)
                     )
-                    tatie_lua_file.write_text(tatie_lua, encoding='utf-8')
+                    tatie_lua_file.write_text(
+                        tatie_lua,
+                        encoding='utf-8',
+                        newline='\n',
+                    )
         self.reset_tree()
         if self.sel_wav != '':
             sel.clearSelection()

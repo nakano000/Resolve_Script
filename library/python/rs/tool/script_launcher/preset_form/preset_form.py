@@ -138,7 +138,11 @@ class Form(QWidget):
         dir_path.mkdir(parents=True, exist_ok=True)
         file_path = dir_path.joinpath(name + '.txt')
         if not file_path.is_file():
-            file_path.write_text('', encoding='utf-8')
+            file_path.write_text(
+                '',
+                encoding='utf-8',
+                newline='\n',
+            )
         self.load_filter_List()
         self.select_by_name(self.ui.filterListView, name + ext)
 
