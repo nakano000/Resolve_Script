@@ -2,7 +2,6 @@
 	Tools = ordered() {
 		Zundamon = GroupOperator {
 			CtrlWZoom = false,
-			CustomData = { Path = { Map = { ["Setting:"] = "C:\\Users\\yoshi\\PycharmProjects\\Resolve_Script\\Templates\\Edit\\Generators\\" } }, },
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "Text1",
