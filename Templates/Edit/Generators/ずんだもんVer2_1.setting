@@ -2,7 +2,7 @@
 	Tools = ordered() {
 		Zundamon = GroupOperator {
 			CtrlWZoom = false,
-			CustomData = { Path = { Map = { ["Setting:"] = "EditTemplates:\\Generators\\" } }, },
+			CustomData = { Path = { Map = { ["Setting:"] = "C:\\Users\\yoshi\\PycharmProjects\\Resolve_Script\\Templates\\Edit\\Generators\\" } }, },
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "Text1",
@@ -2790,6 +2790,7 @@
 					ViewInfo = OperatorInfo { Pos = { -3190, 1052.76 } },
 				},
 				Text1 = TextPlus {
+					CtrlWShown = false,
 					Inputs = {
 						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1920, },
@@ -2841,7 +2842,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 1375, 1976.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!枝豆"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!枝豆", }, N000 = { { CCS_AddString = "*枝豆萎え" }, { CCS_AddString = "*枝豆通常" }, { CCS_AddString = "*パーカー(裏地とセットで使用)" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "枝豆", } }
+					UserControls = ordered() { ["Grp_!枝豆"] = { LINKS_Name = "!枝豆", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*枝豆萎え" }, { CCS_AddString = "*枝豆通常" }, { CCS_AddString = "*パーカー(裏地とセットで使用)" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "枝豆", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 1, } }
 				},
 				["眉"] = Transform {
 					CtrlWShown = false,
@@ -2853,7 +2854,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 770, 1976.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!眉"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!眉", }, N000 = { { CCS_AddString = "*困り眉2" }, { CCS_AddString = "*困り眉1" }, { CCS_AddString = "*上がり眉" }, { CCS_AddString = "*怒り眉" }, { CCS_AddString = "*普通眉" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 3, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "眉", } }
+					UserControls = ordered() { ["Grp_!眉"] = { LINKS_Name = "!眉", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*困り眉2" }, { CCS_AddString = "*困り眉1" }, { CCS_AddString = "*上がり眉" }, { CCS_AddString = "*怒り眉" }, { CCS_AddString = "*普通眉" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "眉", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 3, } }
 				},
 				["目"] = Transform {
 					CtrlWShown = false,
@@ -2865,7 +2866,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 3300, 986.758 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!目"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!目", }, N000 = { { CCS_AddString = "*ぐるぐる" }, { CCS_AddString = "*〇〇" }, { CCS_AddString = "*><" }, { CCS_AddString = "*UU" }, { CCS_AddString = "*にっこり2" }, { CCS_AddString = "*にっこり" }, { CCS_AddString = "*なごみ目" }, { CCS_AddString = "*ジト目" }, { CCS_AddString = "*細め目" }, { CCS_AddString = "*細め目ハート" }, { CCS_AddString = "*上向き3" }, { CCS_AddString = "*上向き2" }, { CCS_AddString = "*上向き" }, { CCS_AddString = "*目セット" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 13, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "目", } }
+					UserControls = ordered() { ["Grp_!目"] = { LINKS_Name = "!目", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*ぐるぐる" }, { CCS_AddString = "*〇〇" }, { CCS_AddString = "*><" }, { CCS_AddString = "*UU" }, { CCS_AddString = "*にっこり2" }, { CCS_AddString = "*にっこり" }, { CCS_AddString = "*なごみ目" }, { CCS_AddString = "*ジト目" }, { CCS_AddString = "*細め目" }, { CCS_AddString = "*細め目ハート" }, { CCS_AddString = "*上向き3" }, { CCS_AddString = "*上向き2" }, { CCS_AddString = "*上向き" }, { CCS_AddString = "*目セット" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "目", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 13, } }
 				},
 				["顔色"] = Transform {
 					CtrlWShown = false,
@@ -2877,10 +2878,9 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -55, 1976.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!顔色"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 2, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!顔色", }, N001 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*青ざめ" }, { CCS_AddString = "*ほっぺ赤め" }, { CCS_AddString = "*ほっぺ2" }, { CCS_AddString = "*ほっぺ" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 4, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "顔色", }, N000_kageri = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "かげり", } }
+					UserControls = ordered() { ["Grp_!顔色"] = { LINKS_Name = "!顔色", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 2, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N001 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*青ざめ" }, { CCS_AddString = "*ほっぺ赤め" }, { CCS_AddString = "*ほっぺ2" }, { CCS_AddString = "*ほっぺ" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "顔色", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 4, }, N000_kageri = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "かげり", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, } }
 				},
 				["口"] = Transform {
-					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge62",
@@ -2890,7 +2890,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 2695, 1349.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!口"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!口", }, N000 = { { CCS_AddString = "*ほあー" }, { CCS_AddString = "*ほあ" }, { CCS_AddString = "*ほー" }, { CCS_AddString = "*むふ" }, { CCS_AddString = "*△" }, { CCS_AddString = "*んあー" }, { CCS_AddString = "*んへー" }, { CCS_AddString = "*んー" }, { CCS_AddString = "*はへえ" }, { CCS_AddString = "*おほお" }, { CCS_AddString = "*お" }, { CCS_AddString = "*ゆ" }, { CCS_AddString = "*むー" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "口", } }
+					UserControls = ordered() { ["Grp_!口"] = { LINKS_Name = "!口", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*ほあー" }, { CCS_AddString = "*ほあ" }, { CCS_AddString = "*ほー" }, { CCS_AddString = "*むふ" }, { CCS_AddString = "*△" }, { CCS_AddString = "*んあー" }, { CCS_AddString = "*んへー" }, { CCS_AddString = "*んー" }, { CCS_AddString = "*はへえ" }, { CCS_AddString = "*おほお" }, { CCS_AddString = "*お" }, { CCS_AddString = "*ゆ" }, { CCS_AddString = "*むー" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "口", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 0, } }
 				},
 				["右腕1"] = Transform {
 					CtrlWShown = false,
@@ -2902,7 +2902,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -990, 1679.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!右腕"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!右腕", }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*マイク" }, { CCS_AddString = "*指差し" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 7, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "右腕", } }
+					UserControls = ordered() { ["Grp_!右腕"] = { LINKS_Name = "!右腕", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*マイク" }, { CCS_AddString = "*指差し" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "右腕", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 7, } }
 				},
 				["左腕1"] = Transform {
 					CtrlWShown = false,
@@ -2914,7 +2914,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -1155, 1679.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { ["Grp_!左腕"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!左腕", }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*ひそひそ" }, { CCS_AddString = "*考える" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 7, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "左腕", } }
+					UserControls = ordered() { ["Grp_!左腕"] = { LINKS_Name = "!左腕", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*ひそひそ" }, { CCS_AddString = "*考える" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "左腕", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 7, } }
 				},
 				EyeCtrl = Transform {
 					CtrlWShown = false,
@@ -2928,7 +2928,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 3300, 1877.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { Blink = { INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Blink", INPID_InputControl = "SliderControl", INP_Default = 127, } }
+					UserControls = ordered() { Blink = { INP_Integer = true, LINKID_DataType = "Number", INP_Default = 127, INPID_InputControl = "SliderControl", LINKS_Name = "Blink", } }
 				},
 				MouthCtrl = Transform {
 					CtrlWShown = false,
@@ -2942,7 +2942,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 2695, 1877.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() { Anim = { INP_Integer = true, INP_Default = 0, INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 6, LINKS_Name = "Anim", } }
+					UserControls = ordered() { Anim = { INP_Integer = true, LINKS_Name = "Anim", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 6, INP_Default = 0, } }
 				},
 				Merge98 = Merge {
 					CtrlWShown = false,
@@ -3078,14 +3078,14 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 3300, 2372.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
-					UserControls = ordered() { ["Grp_ずんだもん立ち絵素材2.3"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 9, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "ずんだもん立ち絵素材2.3", }, N009_kigounado = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "記号など", }, N008_edamame = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!枝豆", }, N007_mayu = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!眉", }, N006_me = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!目", }, N005_kaoiro = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!顔色", }, N004_kuchi = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!口", }, N002 = { { CCS_AddString = "*服装2" }, { CCS_AddString = "*服装1" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", }, N001_paakaauraji = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "パーカー裏地", }, N000_shippotekinaare = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "尻尾的なアレ", } }
+					UserControls = ordered() { ["Grp_ずんだもん立ち絵素材2.3"] = { LINKS_Name = "ずんだもん立ち絵素材2.3", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 9, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N009_kigounado = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "記号など", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N008_edamame = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!枝豆", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N007_mayu = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!眉", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N006_me = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!目", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N005_kaoiro = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!顔色", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N004_kuchi = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!口", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N002 = { { CCS_AddString = "*服装2" }, { CCS_AddString = "*服装1" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Select", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 1, }, N001_paakaauraji = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "パーカー裏地", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, }, N000_shippotekinaare = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "尻尾的なアレ", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, } }
 				},
 				Merge49 = Merge {
 					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "ずんだもん立ち絵素材23.N004_kuchi", },
 						Background = Input {
-							SourceOp = "TimeStretcher1",
+							SourceOp = "RS_Null1",
 							Source = "Output",
 						},
 						Foreground = Input {
@@ -3097,7 +3097,6 @@
 					ViewInfo = OperatorInfo { Pos = { 2695, 2108.76 } },
 				},
 				Merge108 = Merge {
-					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "ずんだもん立ち絵素材23.N009_kigounado", },
 						Background = Input {
@@ -3122,7 +3121,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -990, 1976.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
-					UserControls = ordered() { ["Grp_*服装1"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 3, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "*服装1", }, N003_migiude = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!右腕", }, N002_hidariude = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!左腕", }, N000 = { { CCS_AddString = "*制服" }, { CCS_AddString = "*いつもの服" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_*服装1"] = { LINKS_Name = "*服装1", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 3, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N003_migiude = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!右腕", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N002_hidariude = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!左腕", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N000 = { { CCS_AddString = "*制服" }, { CCS_AddString = "*いつもの服" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Select", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 1, } }
 				},
 				Merge31 = Merge {
 					CtrlWShown = false,
@@ -3244,26 +3243,6 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 1760, 1481.76 } },
 				},
-				TimeStretcher1_1 = TimeStretcher {
-					CtrlWShown = false,
-					CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-					Inputs = {
-						SourceTime = Input {
-							SourceOp = "RS_GlobalStart3_1",
-							Source = "Output",
-						},
-						Input = Input {
-							SourceOp = "口",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 2695, 1514.76 } },
-					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
-				},
-				RS_GlobalStart3_1 = Fuse.RS_GlobalStart {
-					CtrlWZoom = false,
-					CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-				},
 				Dissolve2 = Dissolve {
 					Transitions = {
 						[0] = "DFTLumaRamp"
@@ -3277,7 +3256,7 @@
 							Expression = "iif(MouthCtrl.Anim < 1, 0, 1)",
 						},
 						Background = Input {
-							SourceOp = "TimeStretcher1_1",
+							SourceOp = "RS_Null1_1",
 							Source = "Output",
 						},
 						Foreground = Input {
@@ -3287,26 +3266,6 @@
 						["DFTLumaRamp.Softness"] = Input { Value = 0, },
 					},
 					ViewInfo = OperatorInfo { Pos = { 2695, 1745.76 } },
-				},
-				TimeStretcher1 = TimeStretcher {
-					CtrlWShown = false,
-					CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-					Inputs = {
-						SourceTime = Input {
-							SourceOp = "RS_GlobalStart3",
-							Source = "Output",
-						},
-						Input = Input {
-							SourceOp = "Merge108",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 2200, 2108.76 } },
-					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
-				},
-				RS_GlobalStart3 = Fuse.RS_GlobalStart {
-					CtrlWZoom = false,
-					CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
 				},
 				Merge63 = Merge {
 					CtrlWShown = false,
@@ -3428,26 +3387,6 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 2585, 1646.76 } },
 				},
-				TimeStretcher1_2 = TimeStretcher {
-					CtrlWShown = false,
-					CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-					Inputs = {
-						SourceTime = Input {
-							SourceOp = "RS_GlobalStart3_2",
-							Source = "Output",
-						},
-						Input = Input {
-							SourceOp = "目",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 3300, 1514.76 } },
-					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
-				},
-				RS_GlobalStart3_2 = Fuse.RS_GlobalStart {
-					CtrlWZoom = false,
-					CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-				},
 				Closed = Fuse.Wireless {
 					CtrlWShown = false,
 					NameSet = true,
@@ -3470,9 +3409,10 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 1760, 1976.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
-					UserControls = ordered() { ["Grp_記号など"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 5, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "記号など", }, N004_ahiruchan = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "アヒルちゃん", }, N003_namida = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "涙", }, N002_ase1 = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "汗1", }, N001_ase2 = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "汗2", }, N000_ase3 = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "汗3", } }
+					UserControls = ordered() { ["Grp_記号など"] = { LINKS_Name = "記号など", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 5, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N004_ahiruchan = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "アヒルちゃん", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, }, N003_namida = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "涙", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, }, N002_ase1 = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "汗1", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, }, N001_ase2 = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "汗2", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, }, N000_ase3 = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "汗3", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, } }
 				},
 				Background16 = Background {
+					CtrlWShown = false,
 					Inputs = {
 						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1920, },
@@ -3525,7 +3465,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -2310, 1976.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
-					UserControls = ordered() { ["Grp_*服装2"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 3, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "*服装2", }, N005_hidariude = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!左腕", }, N004_migiude = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!右腕", }, N000 = { { CCS_AddString = "*素体" }, { CCS_AddString = "*ぱんつ" }, { CCS_AddString = "*スク水" }, { CCS_AddString = "*バスタオル" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_*服装2"] = { LINKS_Name = "*服装2", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 3, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N005_hidariude = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!左腕", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, }, N004_migiude = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!右腕", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 0, }, N000 = { { CCS_AddString = "*素体" }, { CCS_AddString = "*ぱんつ" }, { CCS_AddString = "*スク水" }, { CCS_AddString = "*バスタオル" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Select", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 0, } }
 				},
 				Merge18 = Merge {
 					CtrlWShown = false,
@@ -3553,7 +3493,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -2310, 1679.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
-					UserControls = ordered() { ["Grp_!左腕"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!左腕", }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*ひそひそ" }, { CCS_AddString = "*胸元" }, { CCS_AddString = "*考える" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!左腕"] = { LINKS_Name = "!左腕", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*ひそひそ" }, { CCS_AddString = "*胸元" }, { CCS_AddString = "*考える" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Select", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 0, } }
 				},
 				["右腕"] = Transform {
 					CtrlWShown = false,
@@ -3565,7 +3505,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -2530, 1679.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
-					UserControls = ordered() { ["Grp_!右腕"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!右腕", }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*胸元" }, { CCS_AddString = "*マイク" }, { CCS_AddString = "*指差し" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!右腕"] = { LINKS_Name = "!右腕", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*(非表示)" }, { CCS_AddString = "*胸元" }, { CCS_AddString = "*マイク" }, { CCS_AddString = "*指差し" }, { CCS_AddString = "*苦しむ" }, { CCS_AddString = "*口元" }, { CCS_AddString = "*手を挙げる" }, { CCS_AddString = "*腰" }, { CCS_AddString = "*基本" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Select", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 0, } }
 				},
 				Merge104 = Merge {
 					CtrlWShown = false,
@@ -3593,7 +3533,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 3300, 326.758 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
-					UserControls = ordered() { ["Grp_!黒目"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "!黒目", }, N000 = { { CCS_AddString = "*目逸らし3" }, { CCS_AddString = "*目逸らし2" }, { CCS_AddString = "*目逸らし" }, { CCS_AddString = "*カメラ目線3" }, { CCS_AddString = "*カメラ目線2" }, { CCS_AddString = "*カメラ目線" }, { CCS_AddString = "*普通目3" }, { CCS_AddString = "*普通目2" }, { CCS_AddString = "*普通目" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 8, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_!黒目"] = { LINKS_Name = "!黒目", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 1, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N000 = { { CCS_AddString = "*目逸らし3" }, { CCS_AddString = "*目逸らし2" }, { CCS_AddString = "*目逸らし" }, { CCS_AddString = "*カメラ目線3" }, { CCS_AddString = "*カメラ目線2" }, { CCS_AddString = "*カメラ目線" }, { CCS_AddString = "*普通目3" }, { CCS_AddString = "*普通目2" }, { CCS_AddString = "*普通目" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Select", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 8, } }
 				},
 				["目セット"] = Transform {
 					CtrlWShown = false,
@@ -3605,7 +3545,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 3300, 689.758 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
-					UserControls = ordered() { ["Grp_*目セット"] = { INP_Default = 1, LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 2, LINKID_DataType = "Number", INPID_InputControl = "LabelControl", LINKS_Name = "*目セット", }, N003_kurome = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 1, ICS_ControlPage = "User", INPID_InputControl = "CheckboxControl", LINKS_Name = "!黒目", }, N000 = { { CCS_AddString = "*見開き白目" }, { CCS_AddString = "*ジト白目" }, { CCS_AddString = "*普通白目" }, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 2, ICS_ControlPage = "User", INPID_InputControl = "ComboControl", LINKS_Name = "Select", } }
+					UserControls = ordered() { ["Grp_*目セット"] = { LINKS_Name = "*目セット", LBLC_DropDownButton = true, ICS_ControlPage = "User", LBLC_NumInputs = 2, INPID_InputControl = "LabelControl", LINKID_DataType = "Number", INP_Default = 1, }, N003_kurome = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "!黒目", INPID_InputControl = "CheckboxControl", ICS_ControlPage = "User", INP_Default = 1, }, N000 = { { CCS_AddString = "*見開き白目" }, { CCS_AddString = "*ジト白目" }, { CCS_AddString = "*普通白目" }, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Select", INPID_InputControl = "ComboControl", ICS_ControlPage = "User", INP_Default = 2, } }
 				},
 				Dissolve1 = Dissolve {
 					Transitions = {
@@ -3620,7 +3560,7 @@
 							Expression = "iif(time % EyeCtrl.Blink  > EyeCtrl.Blink - 4, 1, 0)",
 						},
 						Background = Input {
-							SourceOp = "TimeStretcher1_2",
+							SourceOp = "RS_Null1_2",
 							Source = "Output",
 						},
 						Foreground = Input {
@@ -5365,6 +5305,219 @@
 						PerformDepthMerge = Input { Value = 0, },
 					},
 					ViewInfo = OperatorInfo { Pos = { -1430, 1184.76 } },
+				},
+				RS_Cache = MacroOperator {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = ordered() {
+						Input1 = InstanceInput {
+							SourceOp = "TimeStretcher1_3",
+							Source = "Input",
+						}
+					},
+					Outputs = {
+						Output1 = InstanceOutput {
+							SourceOp = "RS_Null1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = GroupInfo { Pos = { 2255, 2108.76 } },
+					Tools = ordered() {
+						RS_Null1 = Fuse.RS_Null {
+							CtrlWShown = false,
+							Inputs = {
+								Input = Input {
+									SourceOp = "TimeStretcher1_3",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { 82, 28.7576 } },
+							Version = 1
+						},
+						TimeStretcher1_3 = TimeStretcher {
+							CtrlWShown = false,
+							CustomData = {
+								Path = {
+									Map = {
+										["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+									}
+								}
+							},
+							Inputs = {
+								SourceTime = Input {
+									SourceOp = "RS_GlobalStart3_3",
+									Source = "Output",
+								},
+								InterpolateBetweenFrames = Input { Value = 0, },
+								SampleSpread = Input { Disabled = true, },
+								Input = Input {
+									SourceOp = "Merge108",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { -83, 28.7576 } },
+							Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+						}
+					},
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				},
+				RS_Cache_1 = MacroOperator {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = ordered() {
+						Input1 = InstanceInput {
+							SourceOp = "TimeStretcher1",
+							Source = "Input",
+						}
+					},
+					Outputs = {
+						Output1 = InstanceOutput {
+							SourceOp = "RS_Null1_1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = GroupInfo { Pos = { 2695, 1534.5 } },
+					Tools = ordered() {
+						RS_Null1_1 = Fuse.RS_Null {
+							CtrlWShown = false,
+							Inputs = {
+								Input = Input {
+									SourceOp = "TimeStretcher1",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { 82, 28.7576 } },
+							Version = 1
+						},
+						TimeStretcher1 = TimeStretcher {
+							CtrlWShown = false,
+							CustomData = {
+								Path = {
+									Map = {
+										["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+									}
+								}
+							},
+							Inputs = {
+								SourceTime = Input {
+									SourceOp = "RS_GlobalStart3",
+									Source = "Output",
+								},
+								InterpolateBetweenFrames = Input { Value = 0, },
+								SampleSpread = Input { Disabled = true, },
+								Input = Input {
+									SourceOp = "口",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { -83, 28.7576 } },
+							Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+						}
+					},
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				},
+				RS_Cache_2 = MacroOperator {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = ordered() {
+						Input1 = InstanceInput {
+							SourceOp = "TimeStretcher1_4",
+							Source = "Input",
+						}
+					},
+					Outputs = {
+						Output1 = InstanceOutput {
+							SourceOp = "RS_Null1_2",
+							Source = "Output",
+						}
+					},
+					ViewInfo = GroupInfo { Pos = { 3300, 1501.5 } },
+					Tools = ordered() {
+						RS_Null1_2 = Fuse.RS_Null {
+							CtrlWShown = false,
+							Inputs = {
+								Input = Input {
+									SourceOp = "TimeStretcher1_4",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { 82, 28.7576 } },
+							Version = 1
+						},
+						TimeStretcher1_4 = TimeStretcher {
+							CtrlWShown = false,
+							CustomData = {
+								Path = {
+									Map = {
+										["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+									}
+								}
+							},
+							Inputs = {
+								SourceTime = Input {
+									SourceOp = "RS_GlobalStart3_4",
+									Source = "Output",
+								},
+								InterpolateBetweenFrames = Input { Value = 0, },
+								SampleSpread = Input { Disabled = true, },
+								Input = Input {
+									SourceOp = "目",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { -83, 28.7576 } },
+							Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+						}
+					},
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				}
+			},
+		},
+		RS_GlobalStart3_3 = Fuse.RS_GlobalStart {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+		},
+		RS_GlobalStart3 = Fuse.RS_GlobalStart {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+		},
+		RS_GlobalStart3_4 = Fuse.RS_GlobalStart {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
 				}
 			},
 		}

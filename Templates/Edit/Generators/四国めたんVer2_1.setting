@@ -1,6 +1,14 @@
 {
 	Tools = ordered() {
 		Metan = GroupOperator {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "C:\\Users\\yoshi\\PycharmProjects\\Resolve_Script\\Templates\\Edit\\Generators\\"
+					}
+				},
+			},
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "Text1",
@@ -95,7 +103,7 @@
 					SourceOp = "MouthCtrl",
 					Source = "Anim",
 					Default = 0,
-				},
+				}
 			},
 			Outputs = {
 				MainOutput1 = InstanceOutput {
@@ -103,7 +111,22 @@
 					Source = "Output",
 				}
 			},
-			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			ViewInfo = GroupInfo {
+				Pos = { 220, 49.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 6121, 2089.85, 3060.5, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
 			Tools = ordered() {
 				Loader30 = Loader {
 					Clips = {
@@ -125,11 +148,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3575, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 632, 689.758 } },
 				},
 				Loader58 = Loader {
 					Clips = {
@@ -151,11 +175,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2145, -907.5 } },
+					ViewInfo = OperatorInfo { Pos = { -798, 887.758 } },
 				},
 				Loader54 = Loader {
 					Clips = {
@@ -177,11 +202,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1705, -907.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1238, 887.758 } },
 				},
 				Loader15 = Loader {
 					Clips = {
@@ -203,11 +229,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 715, -1138.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2228, 656.758 } },
 				},
 				Loader14 = Loader {
 					Clips = {
@@ -229,11 +256,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 605, -1138.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2338, 656.758 } },
 				},
 				Loader32 = Loader {
 					Clips = {
@@ -255,11 +283,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3795, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 852, 689.758 } },
 				},
 				Loader33 = Loader {
 					Clips = {
@@ -281,11 +310,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3905, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 962, 689.758 } },
 				},
 				Loader31 = Loader {
 					Clips = {
@@ -307,11 +337,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3685, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 742, 689.758 } },
 				},
 				Loader28 = Loader {
 					Clips = {
@@ -333,11 +364,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3355, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 412, 689.758 } },
 				},
 				Loader29 = Loader {
 					Clips = {
@@ -359,11 +391,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3465, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 522, 689.758 } },
 				},
 				Loader35 = Loader {
 					Clips = {
@@ -385,11 +418,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4125, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1182, 689.758 } },
 				},
 				Loader36 = Loader {
 					Clips = {
@@ -411,11 +445,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4235, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1292, 689.758 } },
 				},
 				Loader34 = Loader {
 					Clips = {
@@ -437,11 +472,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4015, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1072, 689.758 } },
 				},
 				Loader37 = Loader {
 					Clips = {
@@ -463,11 +499,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4345, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1402, 689.758 } },
 				},
 				Loader38 = Loader {
 					Clips = {
@@ -489,11 +526,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4455, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1512, 689.758 } },
 				},
 				Loader26 = Loader {
 					Clips = {
@@ -515,11 +553,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3135, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 192, 689.758 } },
 				},
 				Loader27 = Loader {
 					Clips = {
@@ -541,11 +580,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3245, -1105.5 } },
+					ViewInfo = OperatorInfo { Pos = { 302, 689.758 } },
 				},
 				Loader65 = Loader {
 					Clips = {
@@ -567,11 +607,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5775, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2832, 1547.76 } },
 				},
 				Loader40 = Loader {
 					Clips = {
@@ -593,11 +634,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4785, -1171.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1842, 623.758 } },
 				},
 				Loader66 = Loader {
 					Clips = {
@@ -619,11 +661,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3410, -676.5 } },
+					ViewInfo = OperatorInfo { Pos = { 467, 1118.76 } },
 				},
 				Loader42 = Loader {
 					Clips = {
@@ -645,11 +688,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5005, -1171.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2062, 623.758 } },
 				},
 				Loader44 = Loader {
 					Clips = {
@@ -671,11 +715,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5225, -1171.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2282, 623.758 } },
 				},
 				Loader45 = Loader {
 					Clips = {
@@ -697,11 +742,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5335, -1171.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2392, 623.758 } },
 				},
 				Loader41 = Loader {
 					Clips = {
@@ -723,11 +769,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4895, -1171.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1952, 623.758 } },
 				},
 				Loader63 = Loader {
 					Clips = {
@@ -749,11 +796,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2915, -676.5 } },
+					ViewInfo = OperatorInfo { Pos = { -28, 1118.76 } },
 				},
 				Loader62 = Loader {
 					Clips = {
@@ -775,11 +823,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2805, -676.5 } },
+					ViewInfo = OperatorInfo { Pos = { -138, 1118.76 } },
 				},
 				Loader56 = Loader {
 					Clips = {
@@ -801,11 +850,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1925, -907.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1018, 887.758 } },
 				},
 				Loader57 = Loader {
 					Clips = {
@@ -827,11 +877,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2035, -907.5 } },
+					ViewInfo = OperatorInfo { Pos = { -908, 887.758 } },
 				},
 				Loader21 = Loader {
 					Clips = {
@@ -853,11 +904,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1595, -610.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1348, 1184.76 } },
 				},
 				Loader20 = Loader {
 					Clips = {
@@ -879,11 +931,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1485, -610.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1458, 1184.76 } },
 				},
 				Loader22 = Loader {
 					Clips = {
@@ -905,11 +958,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1705, -610.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1238, 1184.76 } },
 				},
 				Loader25 = Loader {
 					Clips = {
@@ -931,11 +985,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2035, -610.5 } },
+					ViewInfo = OperatorInfo { Pos = { -908, 1184.76 } },
 				},
 				Loader23 = Loader {
 					Clips = {
@@ -957,11 +1012,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1815, -610.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1128, 1184.76 } },
 				},
 				Loader67 = Loader {
 					Clips = {
@@ -983,11 +1039,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3520, -676.5 } },
+					ViewInfo = OperatorInfo { Pos = { 577, 1118.76 } },
 				},
 				Loader48 = Loader {
 					Clips = {
@@ -1009,11 +1066,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4895, -1765.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1952, 29.7576 } },
 				},
 				Loader39 = Loader {
 					Clips = {
@@ -1035,11 +1093,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4675, -1171.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1732, 623.758 } },
 				},
 				Loader64 = Loader {
 					Clips = {
@@ -1061,11 +1120,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3025, -676.5 } },
+					ViewInfo = OperatorInfo { Pos = { 82, 1118.76 } },
 				},
 				Loader61 = Loader {
 					Clips = {
@@ -1087,11 +1147,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2695, -676.5 } },
+					ViewInfo = OperatorInfo { Pos = { -248, 1118.76 } },
 				},
 				Loader9 = Loader {
 					Clips = {
@@ -1113,11 +1174,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 825, -577.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2118, 1217.76 } },
 				},
 				Loader17 = Loader {
 					Clips = {
@@ -1139,11 +1201,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 935, -1138.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2008, 656.758 } },
 				},
 				Loader18 = Loader {
 					Clips = {
@@ -1165,11 +1228,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1045, -1138.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1898, 656.758 } },
 				},
 				Loader19 = Loader {
 					Clips = {
@@ -1191,11 +1255,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1155, -1138.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1788, 656.758 } },
 				},
 				Loader53 = Loader {
 					Clips = {
@@ -1217,11 +1282,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -1765.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 29.7576 } },
 				},
 				Loader52 = Loader {
 					Clips = {
@@ -1243,11 +1309,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5335, -1765.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2392, 29.7576 } },
 				},
 				Loader46 = Loader {
 					Clips = {
@@ -1269,11 +1336,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5225, -1468.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2282, 326.758 } },
 				},
 				Loader49 = Loader {
 					Clips = {
@@ -1295,11 +1363,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5005, -1765.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2062, 29.7576 } },
 				},
 				Loader47 = Loader {
 					Clips = {
@@ -1321,11 +1390,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5335, -1468.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2392, 326.758 } },
 				},
 				Loader2 = Loader {
 					Clips = {
@@ -1347,11 +1417,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 275, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2668, 1547.76 } },
 				},
 				Loader1 = Loader {
 					Clips = {
@@ -1373,11 +1444,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 165, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2778, 1547.76 } },
 				},
 				Loader12 = Loader {
 					Clips = {
@@ -1399,11 +1471,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 825, -874.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2118, 920.758 } },
 				},
 				Loader3 = Loader {
 					Clips = {
@@ -1425,11 +1498,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 385, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2558, 1547.76 } },
 				},
 				Loader60 = Loader {
 					Clips = {
@@ -1451,11 +1525,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2365, -907.5 } },
+					ViewInfo = OperatorInfo { Pos = { -578, 887.758 } },
 				},
 				Loader59 = Loader {
 					Clips = {
@@ -1477,11 +1552,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2255, -907.5 } },
+					ViewInfo = OperatorInfo { Pos = { -688, 887.758 } },
 				},
 				Loader55 = Loader {
 					Clips = {
@@ -1503,11 +1579,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1815, -907.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1128, 887.758 } },
 				},
 				Loader51 = Loader {
 					Clips = {
@@ -1529,11 +1606,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5225, -1765.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2282, 29.7576 } },
 				},
 				Loader50 = Loader {
 					Clips = {
@@ -1555,11 +1633,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5115, -1765.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2172, 29.7576 } },
 				},
 				Loader43 = Loader {
 					Clips = {
@@ -1581,11 +1660,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5115, -1171.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2172, 623.758 } },
 				},
 				Loader24 = Loader {
 					Clips = {
@@ -1607,11 +1687,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1925, -610.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1018, 1184.76 } },
 				},
 				Loader16 = Loader {
 					Clips = {
@@ -1633,11 +1714,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 825, -1138.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2118, 656.758 } },
 				},
 				Loader13 = Loader {
 					Clips = {
@@ -1659,11 +1741,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 935, -874.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2008, 920.758 } },
 				},
 				Loader11 = Loader {
 					Clips = {
@@ -1685,11 +1768,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 715, -874.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2228, 920.758 } },
 				},
 				Loader10 = Loader {
 					Clips = {
@@ -1711,11 +1795,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 605, -874.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2338, 920.758 } },
 				},
 				Loader8 = Loader {
 					Clips = {
@@ -1737,11 +1822,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 495, -577.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2448, 1217.76 } },
 				},
 				Loader7 = Loader {
 					Clips = {
@@ -1763,11 +1849,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 385, -577.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2558, 1217.76 } },
 				},
 				Loader6 = Loader {
 					Clips = {
@@ -1789,11 +1876,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 275, -577.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2668, 1217.76 } },
 				},
 				Loader5 = Loader {
 					Clips = {
@@ -1815,11 +1903,12 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 165, -577.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2778, 1217.76 } },
 				},
 				Loader4 = Loader {
 					Clips = {
@@ -1841,14 +1930,17 @@
 							GlobalEnd = 0
 						}
 					},
+					CtrlWShown = false,
 					Inputs = {
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 55, -577.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2888, 1217.76 } },
 				},
 				Text1 = TextPlus {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1920, },
 						Height = Input { Value = 1080, },
 						UseFrameFormatSettings = Input { Value = 1, },
@@ -1868,10 +1960,11 @@
 						Green2 = Input { Value = 0.2, },
 						Blue2 = Input { Value = 0.4509803921569, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5940, 49.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2997, 1844.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 				},
 				Merge80 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Background = Input {
 							SourceOp = "Background14",
@@ -1885,27 +1978,28 @@
 						FlipHoriz = Input { Value = 1, },
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5775, 214.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2832, 2009.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 				},
 				["眉"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge70",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 2365, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { -578, 1547.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						["Grp_!眉"] = {
-							LINKS_Name = "!眉",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 1,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "!眉",
 						},
 						N000 = {
 							{
@@ -1929,12 +2023,12 @@
 							{
 								CCS_AddString = "*ごきげん"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 2,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "眉",
-							INP_Integer = true,
-							INP_Default = 2,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
@@ -1945,17 +2039,17 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -808.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 986.758 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						["Grp_!目"] = {
-							LINKS_Name = "!目",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 1,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "!目",
 						},
 						N000 = {
 							{
@@ -1982,33 +2076,34 @@
 							{
 								CCS_AddString = "*目セット"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 7,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "目",
-							INP_Integer = true,
-							INP_Default = 7,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				["顔色"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge30",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 2035, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { -908, 1547.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						["Grp_!顔色"] = {
-							LINKS_Name = "!顔色",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 2,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "!顔色",
 						},
 						N001 = {
 							{
@@ -2026,21 +2121,21 @@
 							{
 								CCS_AddString = "*普通"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 3,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "顔色",
-							INP_Integer = true,
-							INP_Default = 3,
-							ICS_ControlPage = "User",
 						},
 						N000_kageri = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "かげり",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
@@ -2052,17 +2147,17 @@
 						},
 						N000 = Input { Value = 11, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4455, -808.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1512, 986.758 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						["Grp_!口"] = {
-							LINKS_Name = "!口",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 1,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "!口",
 						},
 						N000 = {
 							{
@@ -2104,16 +2199,17 @@
 							{
 								CCS_AddString = "*わあー"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 12,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "口",
-							INP_Integer = true,
-							INP_Default = 12,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				["左腕"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge23",
@@ -2121,17 +2217,17 @@
 						},
 						N001 = Input { Value = 4, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1155, -577.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1788, 1217.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						["Grp_!左腕"] = {
-							LINKS_Name = "!左腕",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 2,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "!左腕",
 						},
 						N001 = {
 							{
@@ -2149,25 +2245,26 @@
 							{
 								CCS_AddString = "*普通"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "左腕",
-							INP_Integer = true,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N000_manjuufukuro = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "まんじゅう袋",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				["右腕"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge16",
@@ -2175,17 +2272,17 @@
 						},
 						N001 = Input { Value = 2, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 935, -577.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2008, 1217.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						["Grp_!右腕"] = {
-							LINKS_Name = "!右腕",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 2,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "!右腕",
 						},
 						N001 = {
 							{
@@ -2197,32 +2294,33 @@
 							{
 								CCS_AddString = "*普通"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "右腕",
-							INP_Integer = true,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N000_manjuu = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "まんじゅう",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				EyeCtrl = Transform {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -2231,26 +2329,27 @@
 						},
 						Blink = Input { Value = 149, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -280.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 1514.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						Blink = {
 							INP_Integer = true,
 							LINKID_DataType = "Number",
-							INP_Default = 127,
-							INPID_InputControl = "SliderControl",
 							LINKS_Name = "Blink",
+							INPID_InputControl = "SliderControl",
+							INP_Default = 127,
 						}
 					}
 				},
 				MouthCtrl = Transform {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -2258,21 +2357,22 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 4455, -280.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1512, 1514.76 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						Anim = {
 							INP_Integer = true,
-							LINKS_Name = "Anim",
+							INP_Default = 0,
 							INPID_InputControl = "SliderControl",
 							INP_MinScale = 0,
 							LINKID_DataType = "Number",
 							INP_MaxScale = 6,
-							INP_Default = 0,
+							LINKS_Name = "Anim",
 						}
 					}
 				},
 				Merge17 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "白ロリ服.N002_hidariude", },
 						Background = Input {
@@ -2285,19 +2385,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1155, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1788, 1349.76 } },
 				},
 				Background6 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1375, -478.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1568, 1316.76 } },
 				},
 				Merge24 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N005_kaoiro", },
 						Background = Input {
@@ -2310,9 +2413,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2035, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -908, 1679.76 } },
 				},
 				Merge63 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N008_mayu", },
 						Background = Input {
@@ -2325,18 +2429,19 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2365, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -578, 1679.76 } },
 				},
 				Dissolve2 = Dissolve {
 					Transitions = {
 						[0] = "DFTLumaRamp"
 					},
+					CtrlWShown = false,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
@@ -2345,7 +2450,7 @@
 							Expression = "iif(MouthCtrl.Anim < 1, 0, 1)",
 						},
 						Background = Input {
-							SourceOp = "TimeStretcher1_1",
+							SourceOp = "RS_Null1_1",
 							Source = "Output",
 						},
 						Foreground = Input {
@@ -2354,16 +2459,17 @@
 						},
 						["DFTLumaRamp.Softness"] = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4455, -412.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1512, 1382.76 } },
 				},
 				N = Fuse.Wireless {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -2371,43 +2477,13 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 4345, -511.499 } },
-				},
-				TimeStretcher1_1 = TimeStretcher {
-					CustomData = {
-						Path = {
-							Map = {
-								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-							}
-						},
-					},
-					Inputs = {
-						SourceTime = Input {
-							SourceOp = "RS_GlobalStart3_1",
-							Source = "Output",
-						},
-						Input = Input {
-							SourceOp = "口",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 4455, -676.5 } },
-					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
-				},
-				RS_GlobalStart3_1 = Fuse.RS_GlobalStart {
-					CtrlWZoom = false,
-					CustomData = {
-						Path = {
-							Map = {
-								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-							}
-						},
-					},
+					ViewInfo = OperatorInfo { Pos = { 1402, 1283.76 } },
 				},
 				DissolveA = Dissolve {
 					Transitions = {
 						[0] = "DFTLumaRamp"
 					},
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
@@ -2432,80 +2508,19 @@
 						},
 						["DFTLumaRamp.Softness"] = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4235, -412.499 } },
-				},
-				TimeStretcher1 = TimeStretcher {
-					CustomData = {
-						Path = {
-							Map = {
-								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-							}
-						},
-					},
-					Inputs = {
-						SourceTime = Input {
-							SourceOp = "RS_GlobalStart3",
-							Source = "Output",
-						},
-						Input = Input {
-							SourceOp = "Merge77",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 3905, -115.5 } },
-					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
-				},
-				RS_GlobalStart3 = Fuse.RS_GlobalStart {
-					CtrlWZoom = false,
-					CustomData = {
-						Path = {
-							Map = {
-								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-							}
-						},
-					},
-				},
-				TimeStretcher1_2 = TimeStretcher {
-					CustomData = {
-						Path = {
-							Map = {
-								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-							}
-						},
-					},
-					Inputs = {
-						SourceTime = Input {
-							SourceOp = "RS_GlobalStart3_2",
-							Source = "Output",
-						},
-						Input = Input {
-							SourceOp = "目",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -643.5 } },
-					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
-				},
-				RS_GlobalStart3_2 = Fuse.RS_GlobalStart {
-					CtrlWZoom = false,
-					CustomData = {
-						Path = {
-							Map = {
-								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-							}
-						},
-					},
+					ViewInfo = OperatorInfo { Pos = { 1292, 1382.76 } },
 				},
 				Dissolve1 = Dissolve {
 					Transitions = {
 						[0] = "DFTLumaRamp"
 					},
+					CtrlWShown = false,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Operation = Input { Value = FuID { "DFTLumaRamp" }, },
@@ -2514,7 +2529,7 @@
 							Expression = "iif(time % EyeCtrl.Blink  > EyeCtrl.Blink - 4, 1, 0)",
 						},
 						Background = Input {
-							SourceOp = "TimeStretcher1_2",
+							SourceOp = "RS_Null1_2",
 							Source = "Output",
 						},
 						Foreground = Input {
@@ -2523,16 +2538,17 @@
 						},
 						["DFTLumaRamp.Softness"] = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 1369.5 } },
 				},
 				Closed = Fuse.Wireless {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -2540,10 +2556,11 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 5335, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2392, 1349.76 } },
 				},
 				Merge81 = Merge {
 					CtrlWZoom = false,
+					CtrlWShown = false,
 					Inputs = {
 						Background = Input {
 							SourceOp = "Merge80",
@@ -2555,89 +2572,90 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5940, 214.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2997, 2009.76 } },
 				},
 				["四国めたん立ち絵素材21"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge76",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 5775, 49.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2832, 1844.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
 					UserControls = ordered() {
 						["Grp_四国めたん立ち絵素材2.1"] = {
-							LINKS_Name = "四国めたん立ち絵素材2.1",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 11,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "四国めたん立ち絵素材2.1",
 						},
 						N011_kigounado = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "記号など",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N010_maegamimomiage = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!前髪もみあげ",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N009_toubuakusesari = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "頭部アクセサリ",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N008_mayu = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!眉",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N007_me = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!目",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N006_kuchi = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!口",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N005_kaoiro = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!顔色",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N003 = {
 							{
@@ -2646,50 +2664,51 @@
 							{
 								CCS_AddString = "*白ロリ服"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "Select",
-							INP_Integer = true,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N002_tsuindoriruhidari = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "ツインドリル左",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N001_tsuindorirumigi = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "ツインドリル右",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N000_kaitenidoudeponitenisurunado = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "回転移動でポニテにするなど",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				A = Fuse.Wireless {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -2697,9 +2716,10 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 4235, -511.499 } },
+					ViewInfo = OperatorInfo { Pos = { 1292, 1283.76 } },
 				},
 				Merge37 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 5, 1, 0)", },
 						Background = Input {
@@ -2712,9 +2732,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3685, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 742, 821.758 } },
 				},
 				Merge35 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 3, 1, 0)", },
 						Background = Input {
@@ -2727,9 +2748,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3465, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 522, 821.758 } },
 				},
 				Merge33 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 1, 1, 0)", },
 						Background = Input {
@@ -2742,9 +2764,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3245, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 302, 821.758 } },
 				},
 				Merge32 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 0, 1, 0)", },
 						Background = Input {
@@ -2757,9 +2780,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3135, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 192, 821.758 } },
 				},
 				Merge23 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(左腕.N001 == 4, 1, 0)", },
 						Background = Input {
@@ -2772,9 +2796,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1155, -1006.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1788, 788.758 } },
 				},
 				Merge21 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(左腕.N001 == 2, 1, 0)", },
 						Background = Input {
@@ -2787,9 +2812,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 935, -1006.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2008, 788.758 } },
 				},
 				Merge54 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目セット.N000 == 0, 1, 0)", },
 						Background = Input {
@@ -2802,9 +2828,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5225, -1336.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2282, 458.758 } },
 				},
 				Merge56 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "目セット.N002_kurome", },
 						Background = Input {
@@ -2817,13 +2844,14 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -1336.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 458.758 } },
 				},
 				Merge31 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N006_kuchi", },
 						Background = Input {
-							SourceOp = "TimeStretcher1",
+							SourceOp = "RS_Null1",
 							Source = "Output",
 						},
 						Foreground = Input {
@@ -2832,12 +2860,13 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4455, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1512, 1679.76 } },
 				},
 				DissolveN = Dissolve {
 					Transitions = {
 						[0] = "DFTLumaRamp"
 					},
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
@@ -2862,12 +2891,13 @@
 						},
 						["DFTLumaRamp.Softness"] = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4345, -412.499 } },
+					ViewInfo = OperatorInfo { Pos = { 1402, 1382.76 } },
 				},
 				DissolveI = Dissolve {
 					Transitions = {
 						[0] = "DFTLumaRamp"
 					},
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
@@ -2892,12 +2922,13 @@
 						},
 						["DFTLumaRamp.Softness"] = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4125, -412.499 } },
+					ViewInfo = OperatorInfo { Pos = { 1182, 1382.76 } },
 				},
 				DissolveU = Dissolve {
 					Transitions = {
 						[0] = "DFTLumaRamp"
 					},
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
@@ -2922,12 +2953,13 @@
 						},
 						["DFTLumaRamp.Softness"] = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4015, -412.499 } },
+					ViewInfo = OperatorInfo { Pos = { 1072, 1382.76 } },
 				},
 				DissolveE = Dissolve {
 					Transitions = {
 						[0] = "DFTLumaRamp"
 					},
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
@@ -2949,16 +2981,17 @@
 						},
 						["DFTLumaRamp.Softness"] = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3905, -412.499 } },
+					ViewInfo = OperatorInfo { Pos = { 962, 1382.76 } },
 				},
 				O = Fuse.Wireless {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -2966,16 +2999,17 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 3795, -412.499 } },
+					ViewInfo = OperatorInfo { Pos = { 852, 1382.76 } },
 				},
 				U = Fuse.Wireless {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -2983,9 +3017,10 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 4015, -511.499 } },
+					ViewInfo = OperatorInfo { Pos = { 1072, 1283.76 } },
 				},
 				Merge79 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "記号など.N001_namida", },
 						Background = Input {
@@ -2998,9 +3033,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3520, -544.5 } },
+					ViewInfo = OperatorInfo { Pos = { 577, 1250.76 } },
 				},
 				Merge40 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 8, 1, 0)", },
 						Background = Input {
@@ -3013,9 +3049,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4015, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1072, 821.758 } },
 				},
 				Merge39 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 7, 1, 0)", },
 						Background = Input {
@@ -3028,19 +3065,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3905, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 962, 821.758 } },
 				},
 				Background8 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4565, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1622, 755.758 } },
 				},
 				Merge46 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目.N000 == 0, 1, 0)", },
 						Background = Input {
@@ -3053,9 +3093,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4675, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1732, 755.758 } },
 				},
 				Merge42 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 10, 1, 0)", },
 						Background = Input {
@@ -3068,9 +3109,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4235, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1292, 821.758 } },
 				},
 				Merge43 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 11, 1, 0)", },
 						Background = Input {
@@ -3083,9 +3125,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4345, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1402, 821.758 } },
 				},
 				Merge44 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 12, 1, 0)", },
 						Background = Input {
@@ -3098,26 +3141,29 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4455, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1512, 821.758 } },
 				},
 				Background7 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3025, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 82, 821.758 } },
 				},
 				I = Fuse.Wireless {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -3125,9 +3171,10 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 4125, -511.499 } },
+					ViewInfo = OperatorInfo { Pos = { 1182, 1283.76 } },
 				},
 				Transform1 = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Pivot = Input { Value = { 0.481304990757856, 0.779747252747253 }, },
 						Size = Input { Value = 0.8, },
@@ -3136,16 +3183,17 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 3905, -511.499 } },
+					ViewInfo = OperatorInfo { Pos = { 962, 1283.76 } },
 				},
 				E = Fuse.Wireless {
+					CtrlWShown = false,
 					NameSet = true,
 					CustomData = {
 						Path = {
 							Map = {
 								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 							}
-						},
+						}
 					},
 					Inputs = {
 						Input = Input {
@@ -3153,66 +3201,68 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 3905, -610.499 } },
+					ViewInfo = OperatorInfo { Pos = { 962, 1184.76 } },
 				},
 				["頭部アクセサリ"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge75",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 3025, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { 82, 1547.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
 					UserControls = ordered() {
 						["Grp_頭部アクセサリ"] = {
-							LINKS_Name = "頭部アクセサリ",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 4,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "頭部アクセサリ",
 						},
 						N003_heddodoresu = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "ヘッドドレス",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N002_usamimi = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "うさみみ",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						},
 						N001_kamitomehaato = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "髪留めハート",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N000_kamitomefuriru = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "髪留めフリル",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				Merge47 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目.N000 == 1, 1, 0)", },
 						Background = Input {
@@ -3225,48 +3275,50 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4785, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1842, 755.758 } },
 				},
 				["記号など"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge79",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 3520, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { 577, 1547.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
 					UserControls = ordered() {
 						["Grp_記号など"] = {
-							LINKS_Name = "記号など",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 2,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "記号など",
 						},
 						N001_namida = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "涙",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						},
 						N000_ase = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "汗",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				Merge49 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目.N000 == 3, 1, 0)", },
 						Background = Input {
@@ -3279,9 +3331,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5005, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2062, 755.758 } },
 				},
 				Merge48 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目.N000 == 2, 1, 0)", },
 						Background = Input {
@@ -3294,9 +3347,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4895, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1952, 755.758 } },
 				},
 				Merge45 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N007_me", },
 						Background = Input {
@@ -3309,19 +3363,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 1679.76 } },
 				},
 				Background13 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3300, -544.5 } },
+					ViewInfo = OperatorInfo { Pos = { 357, 1250.76 } },
 				},
 				Merge74 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "頭部アクセサリ.N002_usamimi", },
 						Background = Input {
@@ -3334,9 +3391,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2915, -544.5 } },
+					ViewInfo = OperatorInfo { Pos = { -28, 1250.76 } },
 				},
 				Merge75 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "頭部アクセサリ.N003_heddodoresu", },
 						Background = Input {
@@ -3349,9 +3407,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3025, -544.5 } },
+					ViewInfo = OperatorInfo { Pos = { 82, 1250.76 } },
 				},
 				Merge65 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(眉.N000 == 1, 1, 0)", },
 						Background = Input {
@@ -3364,19 +3423,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1815, -775.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1128, 1019.76 } },
 				},
 				Background11 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1595, -775.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1348, 1019.76 } },
 				},
 				Merge67 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(眉.N000 == 3, 1, 0)", },
 						Background = Input {
@@ -3389,9 +3451,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2035, -775.5 } },
+					ViewInfo = OperatorInfo { Pos = { -908, 1019.76 } },
 				},
 				Merge66 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(眉.N000 == 2, 1, 0)", },
 						Background = Input {
@@ -3404,9 +3467,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1925, -775.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1018, 1019.76 } },
 				},
 				Merge25 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "顔色.N000_kageri", },
 						Background = Input {
@@ -3419,9 +3483,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1485, -478.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1458, 1316.76 } },
 				},
 				Merge27 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(顔色.N001 == 1, 1, 0)", },
 						Background = Input {
@@ -3434,9 +3499,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1705, -478.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1238, 1316.76 } },
 				},
 				Merge28 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(顔色.N001 == 2, 1, 0)", },
 						Background = Input {
@@ -3449,10 +3515,12 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1815, -478.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1128, 1316.76 } },
 				},
 				Background14 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1920, },
 						Height = Input { Value = 1080, },
 						UseFrameFormatSettings = Input { Value = 1, },
@@ -3460,9 +3528,10 @@
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5610, 214.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2667, 2009.76 } },
 				},
 				Merge30 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(顔色.N001 == 4, 1, 0)", },
 						Background = Input {
@@ -3475,9 +3544,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2035, -478.5 } },
+					ViewInfo = OperatorInfo { Pos = { -908, 1316.76 } },
 				},
 				Merge50 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目.N000 == 4, 1, 0)", },
 						Background = Input {
@@ -3490,9 +3560,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5115, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2172, 755.758 } },
 				},
 				Merge51 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目.N000 == 5, 1, 0)", },
 						Background = Input {
@@ -3505,9 +3576,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5225, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2282, 755.758 } },
 				},
 				Merge53 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目.N000 == 7, 1, 0)", },
 						Background = Input {
@@ -3520,9 +3592,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 755.758 } },
 				},
 				Merge76 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N010_maegamimomiage", },
 						Background = Input {
@@ -3535,26 +3608,27 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5775, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2832, 1679.76 } },
 				},
 				["黒目"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge62",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -1468.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 326.758 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
 					UserControls = ordered() {
 						["Grp_!黒目"] = {
-							LINKS_Name = "!黒目",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 1,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "!黒目",
 						},
 						N000 = {
 							{
@@ -3575,42 +3649,43 @@
 							{
 								CCS_AddString = "*普通目"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 3,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "Select",
-							INP_Integer = true,
-							INP_Default = 3,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				["目セット"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge56",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -1171.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 623.758 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
 					UserControls = ordered() {
 						["Grp_*目セット"] = {
-							LINKS_Name = "*目セット",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 2,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "*目セット",
 						},
 						N002_kurome = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!黒目",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N000 = {
 							{
@@ -3619,16 +3694,17 @@
 							{
 								CCS_AddString = "*普通白目"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "Select",
-							INP_Integer = true,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				Merge41 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 9, 1, 0)", },
 						Background = Input {
@@ -3641,9 +3717,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4125, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1182, 821.758 } },
 				},
 				Merge38 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 6, 1, 0)", },
 						Background = Input {
@@ -3656,9 +3733,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3795, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 852, 821.758 } },
 				},
 				Merge36 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 4, 1, 0)", },
 						Background = Input {
@@ -3671,9 +3749,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3575, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 632, 821.758 } },
 				},
 				Merge34 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(口.N000 == 2, 1, 0)", },
 						Background = Input {
@@ -3686,9 +3765,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3355, -973.5 } },
+					ViewInfo = OperatorInfo { Pos = { 412, 821.758 } },
 				},
 				Merge59 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(黒目.N000 == 2, 1, 0)", },
 						Background = Input {
@@ -3701,7 +3781,7 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5115, -1633.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2172, 161.758 } },
 				},
 				Merge77 = Merge {
 					Inputs = {
@@ -3716,9 +3796,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3520, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { 577, 1679.76 } },
 				},
 				Merge78 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "記号など.N000_ase", },
 						Background = Input {
@@ -3731,9 +3812,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3410, -544.5 } },
+					ViewInfo = OperatorInfo { Pos = { 467, 1250.76 } },
 				},
 				Merge71 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N009_toubuakusesari", },
 						Background = Input {
@@ -3746,9 +3828,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 3025, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { 82, 1679.76 } },
 				},
 				Merge70 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(眉.N000 == 6, 1, 0)", },
 						Background = Input {
@@ -3761,9 +3844,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2365, -775.5 } },
+					ViewInfo = OperatorInfo { Pos = { -578, 1019.76 } },
 				},
 				Merge64 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(眉.N000 == 0, 1, 0)", },
 						Background = Input {
@@ -3776,9 +3860,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1705, -775.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1238, 1019.76 } },
 				},
 				Merge68 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(眉.N000 == 4, 1, 0)", },
 						Background = Input {
@@ -3791,9 +3876,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2145, -775.5 } },
+					ViewInfo = OperatorInfo { Pos = { -798, 1019.76 } },
 				},
 				Merge69 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(眉.N000 == 5, 1, 0)", },
 						Background = Input {
@@ -3806,9 +3892,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2255, -775.5 } },
+					ViewInfo = OperatorInfo { Pos = { -688, 1019.76 } },
 				},
 				Merge72 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "頭部アクセサリ.N000_kamitomefuriru", },
 						Background = Input {
@@ -3821,9 +3908,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2695, -544.5 } },
+					ViewInfo = OperatorInfo { Pos = { -248, 1250.76 } },
 				},
 				Merge73 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "頭部アクセサリ.N001_kamitomehaato", },
 						Background = Input {
@@ -3836,19 +3924,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2805, -544.5 } },
+					ViewInfo = OperatorInfo { Pos = { -138, 1250.76 } },
 				},
 				Background12 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 2585, -544.5 } },
+					ViewInfo = OperatorInfo { Pos = { -358, 1250.76 } },
 				},
 				Merge52 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目.N000 == 6, 1, 0)", },
 						Background = Input {
@@ -3861,9 +3952,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5335, -1039.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2392, 755.758 } },
 				},
 				Merge26 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(顔色.N001 == 0, 1, 0)", },
 						Background = Input {
@@ -3876,74 +3968,76 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1595, -478.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1348, 1316.76 } },
 				},
 				["白ロリ服"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge17",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 1155, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1788, 1547.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
 					UserControls = ordered() {
 						["Grp_*白ロリ服"] = {
-							LINKS_Name = "*白ロリ服",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 3,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "*白ロリ服",
 						},
 						N002_hidariude = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!左腕",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N001_migiude = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!右腕",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						},
 						N000_karada = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 1,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!体",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 1,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				["その他の服"] = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Merge9",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 495, -247.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2448, 1547.76 } },
 					Colors = { TileColor = { R = 0.584313725490196, G = 0.294117647058824, B = 0.803921568627451 }, },
 					UserControls = ordered() {
 						["Grp_*その他の服"] = {
-							LINKS_Name = "*その他の服",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
+							ICS_ControlPage = "User",
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 2,
 							INP_Default = 1,
-							ICS_ControlPage = "User",
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "*その他の服",
 						},
 						N001 = {
 							{
@@ -3958,25 +4052,26 @@
 							{
 								CCS_AddString = "*バニー服"
 							},
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "ComboControl",
 							LINKS_Name = "Select",
-							INP_Integer = true,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						},
 						N000_motokarada = {
+							CBC_TriState = false,
+							INP_Integer = true,
 							LINKID_DataType = "Number",
+							ICS_ControlPage = "User",
+							INP_Default = 0,
 							INPID_InputControl = "CheckboxControl",
 							LINKS_Name = "!素体",
-							INP_Integer = true,
-							CBC_TriState = false,
-							INP_Default = 0,
-							ICS_ControlPage = "User",
 						}
 					}
 				},
 				Merge12 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "白ロリ服.N001_migiude", },
 						Background = Input {
@@ -3989,9 +4084,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 935, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2008, 1349.76 } },
 				},
 				Merge55 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(目セット.N000 == 1, 1, 0)", },
 						Background = Input {
@@ -4004,19 +4100,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5335, -1336.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2392, 458.758 } },
 				},
 				Background9 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5115, -1336.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2172, 458.758 } },
 				},
 				Merge58 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(黒目.N000 == 1, 1, 0)", },
 						Background = Input {
@@ -4029,9 +4128,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5005, -1633.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2062, 161.758 } },
 				},
 				Merge62 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(黒目.N000 == 5, 1, 0)", },
 						Background = Input {
@@ -4044,19 +4144,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5445, -1633.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2502, 161.758 } },
 				},
 				Background3 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 715, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2228, 1349.76 } },
 				},
 				Merge9 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(その他の服.N001 == 3, 1, 0)", },
 						Background = Input {
@@ -4069,9 +4172,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 495, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2448, 1349.76 } },
 				},
 				Merge19 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(左腕.N001 == 0, 1, 0)", },
 						Background = Input {
@@ -4084,9 +4188,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 715, -1006.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2228, 788.758 } },
 				},
 				Merge16 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(右腕.N001 == 2, 1, 0)", },
 						Background = Input {
@@ -4099,19 +4204,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 935, -742.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2008, 1052.76 } },
 				},
 				Background2 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { -55, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2998, 1349.76 } },
 				},
 				Merge10 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(四国めたん立ち絵素材21.N003 == 1, 1, 0)", },
 						Background = Input {
@@ -4124,9 +4232,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1155, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1788, 1679.76 } },
 				},
 				Merge11 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "白ロリ服.N000_karada", },
 						Background = Input {
@@ -4139,29 +4248,34 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 825, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2118, 1349.76 } },
 				},
 				Background5 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 495, -1006.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2448, 788.758 } },
 				},
 				Background4 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 495, -742.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2448, 1052.76 } },
 				},
 				Merge61 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(黒目.N000 == 4, 1, 0)", },
 						Background = Input {
@@ -4174,9 +4288,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5335, -1633.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2392, 161.758 } },
 				},
 				Merge60 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(黒目.N000 == 3, 1, 0)", },
 						Background = Input {
@@ -4189,9 +4304,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 5225, -1633.5 } },
+					ViewInfo = OperatorInfo { Pos = { 2282, 161.758 } },
 				},
 				Merge57 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(黒目.N000 == 0, 1, 0)", },
 						Background = Input {
@@ -4204,19 +4320,22 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4895, -1633.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1952, 161.758 } },
 				},
 				Background10 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4785, -1633.5 } },
+					ViewInfo = OperatorInfo { Pos = { 1842, 161.758 } },
 				},
 				Merge29 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(顔色.N001 == 3, 1, 0)", },
 						Background = Input {
@@ -4229,9 +4348,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1925, -478.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1018, 1316.76 } },
 				},
 				Merge22 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(左腕.N001 == 3, 1, 0)", },
 						Background = Input {
@@ -4244,9 +4364,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 1045, -1006.5 } },
+					ViewInfo = OperatorInfo { Pos = { -1898, 788.758 } },
 				},
 				Merge20 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(左腕.N001 == 1, 1, 0)", },
 						Background = Input {
@@ -4259,9 +4380,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 825, -1006.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2118, 788.758 } },
 				},
 				Merge18 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "左腕.N000_manjuufukuro", },
 						Background = Input {
@@ -4274,9 +4396,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 605, -1006.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2338, 788.758 } },
 				},
 				Merge15 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(右腕.N001 == 1, 1, 0)", },
 						Background = Input {
@@ -4289,9 +4412,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 825, -742.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2118, 1052.76 } },
 				},
 				Merge14 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(右腕.N001 == 0, 1, 0)", },
 						Background = Input {
@@ -4304,9 +4428,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 715, -742.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2228, 1052.76 } },
 				},
 				Merge13 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "右腕.N000_manjuu", },
 						Background = Input {
@@ -4319,9 +4444,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 605, -742.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2338, 1052.76 } },
 				},
 				Merge8 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(その他の服.N001 == 2, 1, 0)", },
 						Background = Input {
@@ -4334,9 +4460,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 385, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2558, 1349.76 } },
 				},
 				Merge7 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(その他の服.N001 == 1, 1, 0)", },
 						Background = Input {
@@ -4349,9 +4476,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 275, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2668, 1349.76 } },
 				},
 				Merge6 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(その他の服.N001 == 0, 1, 0)", },
 						Background = Input {
@@ -4364,9 +4492,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 165, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2778, 1349.76 } },
 				},
 				Merge5 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "その他の服.N000_motokarada", },
 						Background = Input {
@@ -4379,9 +4508,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 55, -445.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2888, 1349.76 } },
 				},
 				Merge4 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "iif(四国めたん立ち絵素材21.N003 == 0, 1, 0)", },
 						Background = Input {
@@ -4394,9 +4524,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 495, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2448, 1679.76 } },
 				},
 				Merge3 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N002_tsuindoriruhidari", },
 						Background = Input {
@@ -4409,9 +4540,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 385, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2558, 1679.76 } },
 				},
 				Merge2 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N001_tsuindorirumigi", },
 						Background = Input {
@@ -4424,9 +4556,10 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 275, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2668, 1679.76 } },
 				},
 				Merge1 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Expression = "四国めたん立ち絵素材21.N000_kaitenidoudeponitenisurunado", },
 						Background = Input {
@@ -4439,20 +4572,234 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 165, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2778, 1679.76 } },
 				},
 				Background1 = Background {
+					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input { Value = 1082, },
 						Height = Input { Value = 1820, },
 						Depth = Input { Value = 1, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 						TopLeftAlpha = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 55, -115.5 } },
+					ViewInfo = OperatorInfo { Pos = { -2888, 1679.76 } },
+				},
+				RS_Cache = MacroOperator {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = ordered() {
+						Input1 = InstanceInput {
+							SourceOp = "TimeStretcher1_3",
+							Source = "Input",
+						}
+					},
+					Outputs = {
+						Output1 = InstanceOutput {
+							SourceOp = "RS_Null1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = GroupInfo { Pos = { 1100, 1679.76 } },
+					Tools = ordered() {
+						RS_Null1 = Fuse.RS_Null {
+							CtrlWShown = false,
+							Inputs = {
+								Input = Input {
+									SourceOp = "TimeStretcher1_3",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { 82, 34.7576 } },
+							Version = 1
+						},
+						TimeStretcher1_3 = TimeStretcher {
+							CtrlWShown = false,
+							CustomData = {
+								Path = {
+									Map = {
+										["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+									}
+								}
+							},
+							Inputs = {
+								SourceTime = Input {
+									SourceOp = "RS_GlobalStart3_3",
+									Source = "Output",
+								},
+								InterpolateBetweenFrames = Input { Value = 0, },
+								SampleSpread = Input { Disabled = true, },
+								Input = Input {
+									SourceOp = "Merge77",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { -83, 34.7576 } },
+							Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+						}
+					},
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				},
+				RS_Cache_1 = MacroOperator {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = ordered() {
+						Input1 = InstanceInput {
+							SourceOp = "TimeStretcher1",
+							Source = "Input",
+						}
+					},
+					Outputs = {
+						Output1 = InstanceOutput {
+							SourceOp = "RS_Null1_1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = GroupInfo { Pos = { 1512, 1138.5 } },
+					Tools = ordered() {
+						RS_Null1_1 = Fuse.RS_Null {
+							CtrlWShown = false,
+							Inputs = {
+								Input = Input {
+									SourceOp = "TimeStretcher1",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { 82, 34.7576 } },
+							Version = 1
+						},
+						TimeStretcher1 = TimeStretcher {
+							CtrlWShown = false,
+							CustomData = {
+								Path = {
+									Map = {
+										["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+									}
+								}
+							},
+							Inputs = {
+								SourceTime = Input {
+									SourceOp = "RS_GlobalStart3",
+									Source = "Output",
+								},
+								InterpolateBetweenFrames = Input { Value = 0, },
+								SampleSpread = Input { Disabled = true, },
+								Input = Input {
+									SourceOp = "口",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { -83, 34.7576 } },
+							Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+						}
+					},
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				},
+				RS_Cache_2 = MacroOperator {
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+					},
+					Inputs = ordered() {
+						Input1 = InstanceInput {
+							SourceOp = "TimeStretcher1_4",
+							Source = "Input",
+						}
+					},
+					Outputs = {
+						Output1 = InstanceOutput {
+							SourceOp = "RS_Null1_2",
+							Source = "Output",
+						}
+					},
+					ViewInfo = GroupInfo { Pos = { 2502, 1171.5 } },
+					Tools = ordered() {
+						RS_Null1_2 = Fuse.RS_Null {
+							CtrlWShown = false,
+							Inputs = {
+								Input = Input {
+									SourceOp = "TimeStretcher1_4",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { 82, 34.7576 } },
+							Version = 1
+						},
+						TimeStretcher1_4 = TimeStretcher {
+							CtrlWShown = false,
+							CustomData = {
+								Path = {
+									Map = {
+										["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+									}
+								}
+							},
+							Inputs = {
+								SourceTime = Input {
+									SourceOp = "RS_GlobalStart3_4",
+									Source = "Output",
+								},
+								InterpolateBetweenFrames = Input { Value = 0, },
+								SampleSpread = Input { Disabled = true, },
+								Input = Input {
+									SourceOp = "目",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { -83, 34.7576 } },
+							Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+						}
+					},
+					Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+				}
+			},
+		},
+		RS_GlobalStart3_3 = Fuse.RS_GlobalStart {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+		},
+		RS_GlobalStart3 = Fuse.RS_GlobalStart {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+		},
+		RS_GlobalStart3_4 = Fuse.RS_GlobalStart {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
 				}
 			},
 		}
-	},
-	ActiveTool = "Metan"
+	}
 }
