@@ -50,8 +50,10 @@ def lab2anim(path: Path, fps) -> str:
 
     space = '\t\t\t\t'
     key01_block = '[%d] = { %d,'
-    key02_block = ' LHrel = { %s, %s },'
-    key03_block = ' RHrel = { %s, %s },'
+    # key02_block = ' LHrel = { %s, %s },'
+    # key03_block = ' RHrel = { %s, %s },'
+    key02_block = ' LH = { %s, %s },'
+    key03_block = ' RH = { %s, %s },'
     flagA_block = ' Flags = { Linear = true } }'
     flagB_block = ' Flags = { StepIn = true } }'
 

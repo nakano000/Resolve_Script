@@ -121,8 +121,8 @@ local function setTatie(color, track_name, setting_path)
     local new_keys = {}
     local gs = comp:GetAttrs()['COMPN_GlobalStart']
     for i, v in pairs(keys) do
-        local rh = v['RHrel']
-        local lh = v['LHrel']
+        local rh = v['RH']
+        local lh = v['LH']
         if rh then
             rh[1] = rh[1] + gs
         end
