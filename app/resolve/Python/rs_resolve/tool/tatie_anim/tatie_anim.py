@@ -1,6 +1,5 @@
 import sys
 from functools import partial
-from pathlib import Path
 from timecode import Timecode
 
 from PySide2.QtCore import (
@@ -10,9 +9,7 @@ from PySide2.QtCore import (
 )
 from PySide2.QtWidgets import (
     QApplication,
-    QFileDialog,
     QMainWindow,
-    QMessageBox,
 )
 
 from rs.core import (
