@@ -178,7 +178,7 @@ local function getNode(comp)
     return tool
 end
 
-local function exportAnim(index)
+local function copyAnim(index)
     local projectManager = resolve:GetProjectManager()
     local project = projectManager:GetCurrentProject()
     if not project then
@@ -250,5 +250,5 @@ local function exportAnim(index)
     end
 end
 
---exportAnim(3)
+--copyAnim(3)
 

@@ -54,7 +54,7 @@ class MainWindow(QMainWindow):
 
         self.fusion = fusion
 
-        self.export_anim_script = config.DATA_PATH.joinpath('lua', 'export_anim.lua').read_text(encoding='utf-8')
+        self.copy_anim_script = config.DATA_PATH.joinpath('lua', 'copy_anim.lua').read_text(encoding='utf-8')
 
         # list view
         m = QStringListModel()
@@ -114,8 +114,8 @@ class MainWindow(QMainWindow):
             print('indexを選択してください。')
             return
         self.fusion.Execute('\n'.join([
-            self.export_anim_script,
-            'exportAnim(%d)' % index,
+            self.copy_anim_script,
+            'copyAnim(%d)' % index,
         ]))
 
     def get_timeline(self):
