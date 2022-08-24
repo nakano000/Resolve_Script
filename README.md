@@ -24,6 +24,9 @@ https://youtu.be/WyKujodsLh0
 
 ### ResolveLauncher
 動画参照
+https://youtu.be/MfRBx0_7ZB4
+
+動画参照
 https://youtu.be/hrrWekhWuYY
 
 [目次へ](#目次)
