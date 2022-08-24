@@ -1,4 +1,3 @@
-import enum
 import functools
 import subprocess
 from pathlib import Path

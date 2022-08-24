@@ -82,5 +82,5 @@ def lab2anim(path: Path, fps) -> str:
 
 
 if __name__ == '__main__':
-    setting = lab2anim(Path(r'\\qnap\PJ\youtube\test\out06\001_春日部つむぎ（ノーマル）_以前動画で投稿した….lab'), 30)
+    setting = lab2anim(Path(r'\\qnap\PJ\youtube\test\out06\001_四国めたん（ノーマル）_おはようございます。.lab'), 30)
     print(setting)
