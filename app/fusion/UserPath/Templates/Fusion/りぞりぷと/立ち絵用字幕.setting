@@ -1,6 +1,26 @@
 {
 	Tools = ordered() {
+		ST_MergeB = Merge {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			Inputs = {
+				Background = Input {
+					SourceOp = "ST_Background",
+					Source = "Output",
+				},
+				PerformDepthMerge = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 1155, 82.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+		},
 		ST_MergeA = Merge {
+			CtrlWZoom = false,
 			NameSet = true,
 			CustomData = {
 				Path = {
@@ -20,28 +40,7 @@
 				},
 				PerformDepthMerge = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 0, 49.5 } },
-		},
-		ST_MergeB = Merge {
-			CtrlWZoom = false,
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-					}
-				},
-			},
-			Inputs = {
-				Background = Input {
-					SourceOp = "ST_Background",
-					Source = "Output",
-				},
-				Center = Input { Value = { 0.85, 0.15 }, },
-				PerformDepthMerge = Input { Value = 0, },
-			},
-			ViewInfo = OperatorInfo { Pos = { -220, 49.5 } },
-			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+			ViewInfo = OperatorInfo { Pos = { 1375, 82.5 } },
 		},
 		ST_Text = TextPlus {
 			NameSet = true,
@@ -50,7 +49,7 @@
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				GlobalOut = Input { Value = 149, },
@@ -75,7 +74,7 @@
 				Green2 = Input { Value = 0.3882352941176, },
 				Blue2 = Input { Value = 0.0549019607843, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 0, -115.5 } },
+			ViewInfo = OperatorInfo { Pos = { 1375, -82.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 		},
 		ST_Background = Background {
@@ -96,8 +95,8 @@
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				TopLeftAlpha = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { -440, 49.5 } },
+			ViewInfo = OperatorInfo { Pos = { 935, 82.5 } },
 		}
 	},
-	ActiveTool = "ST_MergeB"
+	ActiveTool = "ST_MergeA"
 }
