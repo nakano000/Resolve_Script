@@ -24,15 +24,6 @@
     "env": {}
   },
   {
-    "name": "Chara2Resolve",
-    "path": "bin\\chara2resolve.py",
-    "color": "#74325c",
-    "env": {
-      "RESOLVE_SCRIPT_API": "%PROGRAMDATA%\\Blackmagic Design\\DaVinci Resolve\\Support\\Developer\\Scripting",
-      "RESOLVE_SCRIPT_LIB": "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\fusionscript.dll"
-    }
-  },
-  {
     "name": "PsdSplitter",
     "path": "bin\\psd_splitter.py",
     "color": "#74325c",
