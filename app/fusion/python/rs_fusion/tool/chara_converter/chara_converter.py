@@ -11,7 +11,7 @@ from functools import partial
 from pathlib import Path
 from typing import List, Optional
 
-from PIL import Image, ImageChops
+from PIL import Image
 
 from PySide2.QtCore import (
     Qt,
@@ -64,6 +64,7 @@ ADD_NULL = [
     BACK,
     OTHER,
     FRONT,
+    FACE,
 ]
 
 
@@ -243,7 +244,7 @@ class MainWindow(QMainWindow):
             if len(part_data) > 0:
                 src_data[d.name] = part_data
         # コンバート
-        dst_data = {FRONT: {}}
+        dst_data = {}
         for part in src_data:
             self.add2log('処理中(変換,%s)' % part)
             part_data = {}
@@ -275,7 +276,7 @@ class MainWindow(QMainWindow):
                         # copy
                         shutil.copy(f, dst_file)
                         dst_file_list.append(dst_file)
-                    part_data[key] = dst_file_list
+                    part_data[dst_name] = dst_file_list
                 # 他の処理
                 else:
                     # 名前決め
@@ -294,6 +295,8 @@ class MainWindow(QMainWindow):
                     # copy
                     shutil.copy(f0, dst_file)
                     if is_front:
+                        if FRONT not in dst_data.keys():
+                            dst_data[FRONT] = {}
                         dst_data[FRONT][key] = [dst_file]
                     else:
                         part_data[key] = [dst_file]
@@ -329,6 +332,29 @@ class MainWindow(QMainWindow):
                 p.map(len),
                 max,
             )
+        # 眉の非表示と口、眉のオフセット
+        no_eyebrow_list = []
+        offset_list = []
+        for i, key in enumerate(dst_data[EYE].keys()):
+            if key.endswith('-15'):
+                offset_list.append('[%d]=1' % i)
+            if key.endswith('+眉'):
+                no_eyebrow_list.append('[%d]=1' % i)
+        no_eyebrow_exp = ''
+        offset_exp = ''
+        if len(no_eyebrow_list) > 0:
+            no_eyebrow_exp = ':dct = {%s};if dct[%s.EYE_Slider] then return 0 else return 1 end' % (
+                ','.join(no_eyebrow_list),
+                xf.Name,
+            )
+        if len(offset_list) > 0:
+            offset_exp = ':dct = {%s};' \
+                         'if dct[%s.EYE_Slider] then return Point(0.5, 0.5 + (10/%d)) ' \
+                         'else return Point(0.5, 0.5) end' % (
+                             ','.join(offset_list),
+                             xf.Name,
+                             height,
+                         )
         for part in PARTS_LIST:
             if part not in dst_data.keys():
                 continue
@@ -373,6 +399,10 @@ class MainWindow(QMainWindow):
             mg.ConnectInput('Background', pre_node)
             if part in [FACE]:
                 mg.ApplyMode = 'Multiply'
+            if part in [EYEBROW] and no_eyebrow_exp != '':
+                mg.Blend.SetExpression(no_eyebrow_exp)
+            if part in [MOUTH, EYEBROW] and offset_exp != '':
+                mg.Center.SetExpression(offset_exp)
             pre_node = mg
 
         xf.ConnectInput('Input', pre_node)
