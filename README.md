@@ -15,7 +15,6 @@ https://youtu.be/WyKujodsLh0
 * [softalk2wave](#softalk2wave)
 * [AssistantSeika2wave](#AssistantSeika2wave)
 * [VoiceBin](#VoiceBin)
-* [Chara2Resolve](#Chara2Resolve)
 * [PsdSplitter](#PsdSplitter)
 * [Macro2Group](#Macro2Group)
 * [VTT2Anim](#VTT2Anim)
@@ -63,33 +62,6 @@ https://youtu.be/afiJp1lodMo
 
 動画参照
 https://youtu.be/5Q6WNtMFhWI
-
-[目次へ](#目次)
-### Chara2Resolve
-現在Resolve18で動かないようです。ご注意ください。
-[nicotalk&キャラ素材配布所](http://www.nicotalk.com/charasozai.html)  
-こちらの素材をDaVinci Resolveでそこそこ使えるように変換(自動コンポ)するツールです。  
-DaVinci Resolve Studio 17.4.4  
-ゆっくり霊夢改(ver1a)、新れいむ(ver5f) で確認しました。
-ver4a のものは未確認です。4aと5fは内部がそこそこ違うようで多分あまりよい結果にはなりません。
-1. nicotalk&キャラ素材配布所からキャラ素材をダウンロードし解凍。
-2. 左上のディレクトリ設定、キャラ素材に解凍した場所を設定。
-3. その下の出力先に保存したい場所を設定。 DaVinci Resolve は、ここを参照しますので、後にファイルを動かすとリンク切れになります。
-4. DaVinci Resolve を立ち上げ使える状態にする。プログラムからDaVinci Resolve の機能を使うため必要になります。
-5. Chara2Resolveにもどり下のexportボタンを押す。ここでcompとsettingファイルを書き出します。
-6. (オプション)settingファイルを fusion で改造。
-7. installボタンを押しインストール。
-8. DaVinci Resolve を立ち上げ直す。installしたものを有効にするため。
-9. Effects->Toolbox->Generators->FusionGeneratorsから使用。
-
-DaVinci Resolveでのテンプレートのパラメータについて
-- -1 にするとパーツは非表示になります。
-- eye_anim, mouth_anim について
-  - 0でアニメーションなし
-  - 1でループアニメーション
-  - 2で待機->アニメーション->待機->アニメーション以下繰り返し
-    - 待機時間はアニメ設定で指定した値を以下のように使う。
-    - オフセット -> アニメーション -> (休憩 - オフセット) 以下この3つを繰り返し
 
 [目次へ](#目次)
 ### PsdSplitter
