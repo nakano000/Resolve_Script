@@ -1,28 +1,21 @@
-import pprint
-
-import dataclasses
-import json
-import os
 import shutil
 import sys
-
-from collections import OrderedDict
 from functools import partial
 from pathlib import Path
-from typing import List, Optional
+from typing import List
 
+import dataclasses
 from PIL import Image
-
 from PySide2.QtCore import (
     Qt,
+)
+from PySide2.QtGui import (
+    QColor,
 )
 from PySide2.QtWidgets import (
     QApplication,
     QFileDialog,
     QMainWindow,
-)
-from PySide2.QtGui import (
-    QColor,
 )
 
 from rs.core import (
@@ -355,6 +348,7 @@ class MainWindow(QMainWindow):
                              xf.Name,
                              height,
                          )
+        # import メイン
         for part in PARTS_LIST:
             if part not in dst_data.keys():
                 continue
