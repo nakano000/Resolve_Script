@@ -258,6 +258,8 @@ class MainWindow(QMainWindow):
                         suffix = '-15'
                     if s.endswith('z'):
                         suffix = '+眉'
+                    if s.endswith('x'):
+                        suffix = '+眉口'
                     dst_name = key + suffix
                     dst_file_list = []
                     for i, f in enumerate(lst):
@@ -327,17 +329,27 @@ class MainWindow(QMainWindow):
             )
         # 眉の非表示と口、眉のオフセット
         no_eyebrow_list = []
+        no_mouth_list = []
         offset_list = []
         for i, key in enumerate(dst_data[EYE].keys()):
             if key.endswith('-15'):
                 offset_list.append('[%d]=1' % i)
             if key.endswith('+眉'):
                 no_eyebrow_list.append('[%d]=1' % i)
+            if key.endswith('+眉口'):
+                no_eyebrow_list.append('[%d]=1' % i)
+                no_mouth_list.append('[%d]=1' % i)
         no_eyebrow_exp = ''
+        no_mouth_exp = ''
         offset_exp = ''
         if len(no_eyebrow_list) > 0:
             no_eyebrow_exp = ':dct = {%s};if dct[%s.EYE_Slider] then return 0 else return 1 end' % (
                 ','.join(no_eyebrow_list),
+                xf.Name,
+            )
+        if len(no_mouth_list) > 0:
+            no_mouth_exp = ':dct = {%s};if dct[%s.EYE_Slider] then return 0 else return 1 end' % (
+                ','.join(no_mouth_list),
                 xf.Name,
             )
         if len(offset_list) > 0:
@@ -395,6 +407,8 @@ class MainWindow(QMainWindow):
                 mg.ApplyMode = 'Multiply'
             if part in [EYEBROW] and no_eyebrow_exp != '':
                 mg.Blend.SetExpression(no_eyebrow_exp)
+            if part in [MOUTH] and no_mouth_exp != '':
+                mg.Blend.SetExpression(no_mouth_exp)
             if part in [MOUTH, EYEBROW] and offset_exp != '':
                 mg.Center.SetExpression(offset_exp)
             pre_node = mg
