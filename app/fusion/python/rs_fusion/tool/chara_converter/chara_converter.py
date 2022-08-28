@@ -82,16 +82,18 @@ X_OFFSET = 1
 Y_OFFSET = 4
 
 
-def add_node(comp, pos_x, pos_y, size_x, size_y, data, name, p_name, index):
+def add_node(comp, pre, pos_x, pos_y, size_x, size_y, data, name, p_name, index):
     flow = comp.CurrentFrame.FlowView
     xf = comp.AddTool('Transform', pos_x * X_OFFSET, pos_y * Y_OFFSET)
     xf.SetAttrs({'TOOLS_Name': name})
-    pre_node = comp.AddTool('Background', pos_x * X_OFFSET, (pos_y - 1) * Y_OFFSET)
-    pre_node.UseFrameFormatSettings = 0
-    pre_node.Width = size_x
-    pre_node.Height = size_y
-    pre_node.TopLeftAlpha = 0
-    pre_node.Depth = 1
+    pre_node = pre
+    if pre_node is None:
+        pre_node = comp.AddTool('Background', pos_x * X_OFFSET, (pos_y - 1) * Y_OFFSET)
+        pre_node.UseFrameFormatSettings = 0
+        pre_node.Width = size_x
+        pre_node.Height = size_y
+        pre_node.TopLeftAlpha = 0
+        pre_node.Depth = 1
     pos_x += 1
     pos_y -= 2
     user_controls = {}
@@ -107,8 +109,9 @@ def add_node(comp, pos_x, pos_y, size_x, size_y, data, name, p_name, index):
         'INP_MaxScale': len(data) - 1,
         'ICS_ControlPage': 'User',
     }
-    ctrl_cnt: int = 0
-    for key, lst in data.items():
+    ctrl_cnt: int = len(data) - 1
+    base_node_list = [pre_node]
+    for key, lst in reversed(list(data.items())):
         f: Path = lst[0] if len(lst) - 1 < index else lst[index]
         mg = comp.AddTool('Merge', pos_x * X_OFFSET, (pos_y + 1) * Y_OFFSET)
         node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
@@ -120,13 +123,14 @@ def add_node(comp, pos_x, pos_y, size_x, size_y, data, name, p_name, index):
         mg.ConnectInput('Foreground', node)
         mg.ConnectInput('Background', pre_node)
         mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (p_name, ctrl_name, ctrl_cnt))
-        ctrl_cnt += 1
+        ctrl_cnt -= 1
         pre_node = mg
+        base_node_list.append(mg)
     pos_x -= 1
     xf.ConnectInput('Input', pre_node)
     _x, _y = flow.GetPosTable(xf).values()
     flow.SetPos(xf, pos_x, _y)
-    return xf, user_controls, pos_x
+    return xf, list(reversed(base_node_list)), user_controls, pos_x
 
 
 @dataclasses.dataclass
@@ -367,7 +371,9 @@ class MainWindow(QMainWindow):
             self.add2log('処理中(読み込み,%s)' % part)
             pos_x += 2
             pre_pos_x = pos_x
-            node, uc, pos_x = add_node(comp, pos_x, pos_y, width, height, dst_data[part], part, xf.Name, 0)
+            node, base_node_list, uc, pos_x = add_node(
+                comp, None, pos_x, pos_y, width, height, dst_data[part], part, xf.Name, 0
+            )
             if max_size[part] > 1 and part in [EYE, MOUTH]:
                 _pre_node = None
                 _node = node
@@ -390,8 +396,23 @@ class MainWindow(QMainWindow):
                     if _node is not None:
                         dx.ConnectInput('Background', _node)
                     _pre_node = dx
-                    _node, _, _ = add_node(
-                        comp, pre_pos_x, pos_y + (-3 * i), width, height, dst_data[part], part, xf.Name, i
+                    # dst_data[part]を整理
+                    _dct = {}
+                    _add_flag = False
+                    # 後ろの一枚しか存在しない部分を除去する。
+                    for _key, _lst in reversed(list(dst_data[part].items())):
+                        if len(_lst) > 1 or _add_flag:
+                            _dct[_key] = _lst
+                        if len(_lst) > 1:
+                            _add_flag = True
+                    _dct2 = {}  # 反転
+                    for _key, _lst in reversed(list(_dct.items())):
+                        _dct2[_key] = _lst
+
+                    _node, _, _, _ = add_node(
+                        comp, base_node_list[len(_dct2)],
+                        pre_pos_x + len(dst_data[part]) - len(_dct2), pos_y + (-3 * i),
+                        width, height, _dct2, part, xf.Name, i
                     )
                     if i == 1:
                         node = dx
