@@ -246,6 +246,9 @@ class Form(QWidget):
         ):
             f: Path
             txt_file = d.joinpath(f.stem + '.txt')
+            if not txt_file.is_file():
+                continue
+
             srt_file = d.joinpath(f.stem + '.srt')
             lab_file = d.joinpath(f.stem + '.lab')
 
@@ -254,61 +257,79 @@ class Form(QWidget):
             setting_file = d.joinpath(f.stem + '.setting')
 
             # flag
-            srt_flag = not srt_file.is_file()
-            lua_flag = not lua_file.is_file()
-            setting_flag = lab_file.is_file() and not setting_file.is_file()
-            if txt_file.is_file() and (srt_flag or lua_flag or setting_file):
-                chara_data = CharaData()
-                for cd in self.chara_window.get_chara_list():
-                    cd: CharaData
-                    m = re.fullmatch(cd.reg_exp, f.stem)
-                    if m is not None:
-                        chara_data = cd
-                        break
+            srt_exists = srt_file.is_file()
+            lua_exists = lua_file.is_file()
+            setting_exists = setting_file.is_file()
+            if srt_exists and lua_exists and setting_exists:
+                continue
 
-                t = read_text(txt_file, chara_data.c_code)
+            # キャラクター設定
+            chara_data = CharaData()
+            for cd in self.chara_window.get_chara_list():
+                cd: CharaData
+                m = re.fullmatch(cd.reg_exp, f.stem)
+                if m is not None:
+                    chara_data = cd
+                    break
 
-                if srt_flag:
-                    wave_data, samplerate = soundfile.read(str(f))
-                    _d: float = float(wave_data.shape[0]) / samplerate
+            t = read_text(txt_file, chara_data.c_code)
 
-                    srt_data = srt.Srt()
+            # SRT
+            if not srt_exists:
+                wave_data, samplerate = soundfile.read(str(f))
+                _d: float = float(wave_data.shape[0]) / samplerate
 
-                    srt_data.subtitles.append(srt.Subtitle(0, _d, t))
+                srt_data = srt.Srt()
 
-                    srt_data.save(srt_file)
-                    self.sel_wav = str(f)
-                    self.sel_srt = str(srt_file)
-                if lua_flag:
-                    lua = self.text_script_base % (
-                        t,
-                        chara_data.color,
-                        chara_data.track_name,
-                        str(chara_data.setting_file)
-                    )
-                    util.write_text(
-                        lua_file,
-                        lua,
-                    )
-                if setting_flag:
-                    data = self.get_data()
-                    setting = self.tatie_setting_base % (
+                srt_data.subtitles.append(srt.Subtitle(0, _d, t))
+
+                srt_data.save(srt_file)
+                self.sel_wav = str(f)
+                self.sel_srt = str(srt_file)
+
+            # Text+
+            if not lua_exists:
+                lua = self.text_script_base % (
+                    t,
+                    chara_data.color,
+                    chara_data.track_name,
+                    str(chara_data.setting_file)
+                )
+                util.write_text(
+                    lua_file,
+                    lua,
+                )
+
+            # 立ち絵
+            if setting_exists:
+                continue
+            anim = ''
+            data = self.get_data()
+            if chara_data.anim_type == 'open':
+                anim = lab.wav2anim(f, data.fps)
+            elif lab_file.is_file():
+                anim = lab.lab2anim(lab_file, data.fps)
+
+            if anim != '':
+                util.write_text(
+                    setting_file,
+                    self.tatie_setting_base % (
                         t.replace('\n', '\\n').replace('"', '\\"'),
-                        lab.lab2anim(lab_file, data.fps)
-                    )
-                    util.write_text(
-                        setting_file,
-                        setting,
-                    )
-                    tatie_lua = self.tatie_script_base % (
+                        chara_data.anim_parameter,
+                        chara_data.anim_parameter,
+                        chara_data.anim_parameter,
+                        anim,
+                    ),
+                )
+                util.write_text(
+                    tatie_lua_file,
+                    self.tatie_script_base % (
                         chara_data.color,
                         chara_data.track_name,
+                        chara_data.anim_parameter,
                         str(setting_file)
-                    )
-                    util.write_text(
-                        tatie_lua_file,
-                        tatie_lua,
-                    )
+                    ),
+                )
         self.reset_tree()
         if self.sel_wav != '':
             sel.clearSelection()

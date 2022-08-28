@@ -58,7 +58,7 @@ local function getToolName(st)
     return nil
 end
 
-local function setTatie(color, track_name, setting_path)
+local function setTatie(color, track_name, parameter_name, setting_path)
     local projectManager = resolve:GetProjectManager()
     local project = projectManager:GetCurrentProject()
     if not project then
@@ -104,7 +104,7 @@ local function setTatie(color, track_name, setting_path)
     tool_lst[#tool_lst + 1] = tool
     local attr_filter = {
         ['StyledText'] = true,
-        ['Anim'] = true,
+        [parameter_name] = true,
     }
     for k, v in pairs(tool:SaveSettings()['Tools'][tool.Name]['Inputs']) do
         if type(v) == 'table' and v['__ctor'] and v['__ctor'] == 'InstanceInput' then
@@ -117,7 +117,7 @@ local function setTatie(color, track_name, setting_path)
     comp:StartUndo('RS Tatie')
     comp:Lock()
     local f_st = bmd.readfile(setting_path)
-    local keys = f_st['Tools']['MouthAnim']['KeyFrames']
+    local keys = f_st['Tools']['MouthAnimBezierSpline']['KeyFrames']
     local new_keys = {}
     local gs = comp:GetAttrs()['COMPN_GlobalStart']
     for i, v in pairs(keys) do
@@ -131,7 +131,7 @@ local function setTatie(color, track_name, setting_path)
         end
         new_keys[i + gs] = v
     end
-    f_st['Tools']['MouthAnim']['KeyFrames'] = new_keys
+    f_st['Tools']['MouthAnimBezierSpline']['KeyFrames'] = new_keys
     for i, t in pairs(tool_lst) do
         t:LoadSettings(f_st)
     end
@@ -146,6 +146,7 @@ local function setTatie(color, track_name, setting_path)
 end
 
 setTatie(
+        '%s',
         '%s',
         '%s',
         [[%s]]
