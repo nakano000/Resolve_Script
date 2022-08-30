@@ -397,22 +397,31 @@ class MainWindow(QMainWindow):
                         dx.ConnectInput('Background', _node)
                     _pre_node = dx
                     # dst_data[part]を整理
+                    # 後ろの一枚しか存在しない部分を除去する。
                     _dct = {}
                     _add_flag = False
-                    # 後ろの一枚しか存在しない部分を除去する。
-                    for _key, _lst in reversed(list(dst_data[part].items())):
+                    for _key, _lst in p.pipe(
+                            dst_data[part].items(),
+                            list,
+                            reversed,
+                    ):
                         if len(_lst) > 1 or _add_flag:
                             _dct[_key] = _lst
                         if len(_lst) > 1:
                             _add_flag = True
-                    _dct2 = {}  # 反転
-                    for _key, _lst in reversed(list(_dct.items())):
-                        _dct2[_key] = _lst
+                    # 反転
+                    _dct = p.pipe(
+                        _dct.items(),
+                        list,
+                        reversed,
+                        list,
+                        dict,
+                    )
 
                     _node, _, _, _ = add_node(
-                        comp, base_node_list[len(_dct2)],
-                        pre_pos_x + len(dst_data[part]) - len(_dct2), pos_y + (-3 * i),
-                        width, height, _dct2, part, xf.Name, i
+                        comp, base_node_list[len(_dct)],
+                        pre_pos_x + len(dst_data[part]) - len(_dct), pos_y + (-3 * i),
+                        width, height, _dct, part, xf.Name, i
                     )
                     if i == 1:
                         node = dx
