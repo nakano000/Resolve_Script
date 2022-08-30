@@ -102,6 +102,11 @@ local function setJimaku(txt, color, track_name, setting_path)
 
     local st = tool:SaveSettings()
     local f_st = bmd.readfile(setting_path)
+    if not f_st then
+        print(setting_path)
+        print('settingファイルの読み込みに失敗しました。')
+        return
+    end
     local name = getToolName(f_st)
     for i, key in pairs({ 'StyledText', 'UseFrameFormatSettings', 'Width', 'Height' }) do
         f_st['Tools'][name]['Inputs'][key] = st['Tools'][tool.Name]['Inputs'][key]
