@@ -1,4 +1,3 @@
-
 from PySide2.QtGui import (
     QPalette,
     QColor,
@@ -36,6 +35,7 @@ other_stylesheet = '\n'.join(
         'color: rgb(255, 255, 255);',
     ]
 )
+
 
 def _get_palette():
     text_color: QColor = QColor(210, 210, 210)

@@ -1,9 +1,7 @@
-import os
-import sys
 import json
+import sys
 from functools import partial
 from pathlib import Path
-from typing import List
 
 from PySide2.QtCore import (
     Qt,
@@ -28,6 +26,12 @@ APP_NAME = 'りぞりぷと'
 __version__ = '1.3.2'
 
 MENU_JSON = config.ROOT_PATH.joinpath('data', 'app', 'launcher_menu.json')
+
+SS_DICT = {
+    'ex': appearance.ex_stylesheet,
+    'in': appearance.in_stylesheet,
+    'other': appearance.other_stylesheet,
+}
 
 
 class MainWindow(QWidget):
@@ -55,24 +59,14 @@ class MainWindow(QWidget):
         lo = QVBoxLayout()
         lo.setContentsMargins(5, 5, 5, 5)
         # import json
-        lst: List[dict] = p.pipe(
-            MENU_JSON.read_text(encoding='utf-8'),
-            json.loads,
-            list,
-        )
-        for i in lst:
-            env = None
-            if len(i['env']) > 0:
-                env = os.environ.copy()
-                for k in i['env']:
-                    env[k] = i['env'][k]
-            btn = ScriptButton(i['name'], script_path=Path(config.ROOT_PATH.joinpath(i['path'])), env=env)
+        for i in p.pipe(
+                MENU_JSON.read_text(encoding='utf-8'),
+                json.loads,
+                list,
+        ):
+            btn = ScriptButton(i['name'], script_path=Path(config.ROOT_PATH.joinpath(i['path'])))
             btn.setMinimumHeight(40)
-            ss = '\n'.join([
-                'background-color: %s;' % i['color'],
-                'color: rgb(255, 255, 255);',
-            ])
-            btn.setStyleSheet(ss)
+            btn.setStyleSheet(SS_DICT[i['ss']])
             lo.addWidget(btn)
 
         lo.addItem(
