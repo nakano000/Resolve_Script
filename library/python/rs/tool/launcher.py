@@ -28,9 +28,9 @@ __version__ = '1.3.2'
 MENU_JSON = config.ROOT_PATH.joinpath('data', 'app', 'launcher_menu.json')
 
 SS_DICT = {
-    'ex': appearance.ex_stylesheet,
-    'in': appearance.in_stylesheet,
-    'other': appearance.other_stylesheet,
+    'picture': appearance.ex_stylesheet,
+    'sound': appearance.in_stylesheet,
+    'utility': appearance.other_stylesheet,
 }
 
 
