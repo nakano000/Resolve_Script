@@ -75,9 +75,7 @@ class Model(QAbstractTableModel):
         return False
 
     def insert_row_data(self, i: int, row_data):
-        self.beginInsertRows(QModelIndex(), i, i)
-        self._data.append(row_data)
-        self.endInsertRows()
+        self.insert_rows_data(i, [row_data])
         return False
 
     def insert_rows_data(self, i: int, row_data_list):
@@ -121,6 +119,8 @@ class Model(QAbstractTableModel):
         if role == Qt.DisplayRole:
             if orientation == Qt.Horizontal:
                 return self._data.new_data().toHeaderList()[section]
+            elif orientation == Qt.Vertical:
+                return str(section + 1)
 
             return ''  # 垂直は表示しない
 

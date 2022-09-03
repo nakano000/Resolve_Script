@@ -151,6 +151,7 @@ class MainWindow(QMainWindow):
         for row in p.pipe(
                 sm.selectedIndexes(),
                 p.map(p.call.row()),
+                set,
                 list,
                 sorted,
                 reversed,
@@ -167,6 +168,7 @@ class MainWindow(QMainWindow):
         for row in p.pipe(
                 sm.selectedIndexes(),
                 p.map(p.call.row()),
+                set,
                 list,
                 sorted,
                 reversed,
@@ -195,6 +197,7 @@ class MainWindow(QMainWindow):
         for row in p.pipe(
                 sm.selectedIndexes(),
                 p.map(p.call.row()),
+                set,
                 list,
                 sorted,
                 reversed,

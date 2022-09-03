@@ -7,6 +7,6 @@ lib_path = os.path.abspath(
 sys.path.append(lib_path)
 
 if __name__ == "__main__":
-    from rs.tool.text2wave.assistant_seika2wave import run
+    from rs.tool.aquestalk_wrapper import run
 
     run()

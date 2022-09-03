@@ -15,6 +15,11 @@
     "ss": "sound"
   },
   {
+    "name": "AquesTalkWrapper",
+    "path": "bin\\aquestalk_wrapper.py",
+    "ss": "sound"
+  },
+  {
     "name": "VoiceBin",
     "path": "bin\\voice_bin.py",
     "ss": "sound"
