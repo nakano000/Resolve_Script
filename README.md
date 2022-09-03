@@ -14,6 +14,7 @@ https://youtu.be/WyKujodsLh0
 * [ResolveLauncher](#ResolveLauncher)
 * [softalk2wave](#softalk2wave)
 * [AssistantSeika2wave](#AssistantSeika2wave)
+* [AquesTalkWrapper](#AquesTalkWrapper)
 * [VoiceBin](#VoiceBin)
 * [PsdSplitter](#PsdSplitter)
 * [Macro2Group](#Macro2Group)
@@ -51,6 +52,10 @@ AssistantSeika、他音声読み上げソフトが必要です。
 5. 音声設定の右側を AssistantSeika の話者一覧を見ながら設定。 Template があればそれを使っても可。
 6. 下のexportボタンを押す。ここでwavとsrtファイルを書き出します。
 7. 左のファイル一覧から wavとsrtファイルを DaVinci Resolve の Edit page へ、ドラッグアンドドラップする。
+8. 
+[目次へ](#目次)
+### AquesTalkWrapper
+AquesTalkPlayerをラップして使いやすくします。
 
 [目次へ](#目次)
 ### VoiceBin
