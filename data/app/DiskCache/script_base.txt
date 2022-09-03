@@ -11,13 +11,36 @@ local function split(str, ts)
     return t
 end
 
-local function timecode2Frame(timecode, fps)
+local function getCurrentFrame(timeline)
+    local timecode = timeline:GetCurrentTimecode()
+    local fps = timeline:GetSetting('timelineFrameRate')
+    local intFps = {
+        [23] = 24,
+        [29] = 30,
+        [47] = 48,
+        [59] = 60,
+        [95] = 96,
+        [119] = 120,
+    }
+    if intFps[fps] then
+        fps = intFps[fps]
+    end
+    local isDF = false
+    if string.find(timecode, ';') ~= nil then
+        isDF = true
+        timecode = string.gsub(timecode, ';', ':')
+    end
     local t = split(timecode, ':')
     local h = tonumber(t[1])
     local m = tonumber(t[2]) + (h * 60)
     local s = tonumber(t[3]) + (m * 60)
     local f = tonumber(t[4]) + (s * fps)
-    return f
+    local drop_frames = 0
+    if isDF then
+        local _f = fps / 15
+        drop_frames = _f * (m - math.floor(m / 10))
+    end
+    return f - drop_frames
 end
 
 local function getItem(timeline, index)
@@ -25,7 +48,7 @@ local function getItem(timeline, index)
     if not index then
         return r
     end
-    local currentFrame = timecode2Frame(timeline:GetCurrentTimecode(), timeline:GetSetting('timelineFrameRate'))
+    local currentFrame = getCurrentFrame(timeline)
     for i, item in ipairs(timeline:GetItemListInTrack('video', index)) do
         if item:GetStart() <= currentFrame and item:GetEnd() > currentFrame then
             return item
