@@ -148,7 +148,6 @@ class MainWindow(QMainWindow):
     @staticmethod
     def get_item(timeline, index):
         frame = get_currentframe(timeline)
-        print(frame)
         for item in timeline.GetItemListInTrack('video', index):
             if item.GetStart() <= frame < item.GetEnd():
                 return item
