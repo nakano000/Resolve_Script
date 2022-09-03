@@ -19,6 +19,7 @@ from rs.core import (
 from rs.gui import (
     appearance,
 )
+from rs_resolve.core import get_fps
 
 from rs_resolve.tool.youtube_chapter.youtube_chapter_ui import Ui_MainWindow
 
@@ -113,7 +114,7 @@ class MainWindow(QMainWindow):
             v.setPlainText('Timelineが見付かりません。')
             return
 
-        fps = timeline.GetSetting('timelineFrameRate')
+        fps = get_fps(timeline)
         m: dict = timeline.GetMarkers()
 
         lst = [data.title]

@@ -38,7 +38,7 @@ end
 
 local function getCurrentFrame(timeline)
     local timecode = timeline:GetCurrentTimecode()
-    local fps = timeline:GetSetting('timelineFrameRate')
+    local fps = tonumber(timeline:GetSetting('timelineFrameRate'))
     local intFps = {
         [23] = 24,
         [29] = 30,

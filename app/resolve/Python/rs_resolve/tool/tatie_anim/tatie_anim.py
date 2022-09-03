@@ -19,6 +19,7 @@ from rs.core import (
 from rs.gui import (
     appearance,
 )
+from rs_resolve.core import get_currentframe
 from rs_resolve.tool.tatie_anim.tatie_anim_ui import Ui_MainWindow
 
 APP_NAME = '立ち絵アニメ'
@@ -146,7 +147,8 @@ class MainWindow(QMainWindow):
 
     @staticmethod
     def get_item(timeline, index):
-        frame = Timecode(timeline.GetSetting('timelineFrameRate'), timeline.GetCurrentTimecode()).frame_number
+        frame = get_currentframe(timeline)
+        print(frame)
         for item in timeline.GetItemListInTrack('video', index):
             if item.GetStart() <= frame < item.GetEnd():
                 return item
