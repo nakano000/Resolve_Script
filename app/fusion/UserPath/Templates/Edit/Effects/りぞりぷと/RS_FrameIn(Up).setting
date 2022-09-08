@@ -1,9 +1,17 @@
 {
 	Tools = ordered() {
 		FrameIn = GroupOperator {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\"
+					}
+				},
+			},
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
-					SourceOp = "Transform2",
+					SourceOp = "Transform",
 					Source = "Input",
 				},
 				Input1 = InstanceInput {
@@ -17,37 +25,56 @@
 					Width = 0.5,
 				},
 				Input3 = InstanceInput {
-					SourceOp = "AnimCurves1",
-					Source = "TimeScale",
-					Default = 1,
-				},
-				Input4 = InstanceInput {
-					SourceOp = "AnimCurves1",
-					Source = "TimeOffset",
-					Default = 0,
-				},
+					SourceOp = "Transform",
+                    Name = "スピード",
+					Source = "speed",
+                    Default = 1,
+				}
 			},
 			Outputs = {
 				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform2",
+					SourceOp = "Transform",
 					Source = "Output",
 				}
 			},
-			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			ViewInfo = GroupInfo {
+				Pos = { 330, 379.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 117.736, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
 			Tools = ordered() {
-				Transform2 = Transform {
-					CtrlWZoom = false,
+				Transform = Transform {
+					NameSet = true,
 					Inputs = {
 						Center = Input {
 							SourceOp = "Path1",
 							Source = "Position",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 4840, 808.5 } },
+					ViewInfo = OperatorInfo { Pos = { 0, 16.5 } },
+					UserControls = ordered() {
+						speed = {
+							INP_Integer = false,
+							LINKID_DataType = "Number",
+							INP_Default = 1,
+							INPID_InputControl = "ScrewControl",
+							LINKS_Name = "speed",
+						}
+					}
 				},
 				Path1 = PolyPath {
 					DrawMode = "InsertAndModify",
-					CtrlWZoom = false,
 					Inputs = {
 						Displacement = Input {
 							SourceOp = "AnimCurves1",
@@ -75,20 +102,23 @@
 						EaseIn = Input { Value = FuID { "Cubic" }, },
 						EaseOut = Input { Value = FuID { "Cubic" }, },
 						Lookup = Input {
-							SourceOp = "AnimCurves1Lookup",
+							SourceOp = "AnimCurvesonPath1Lookup",
 							Source = "Value",
+						},
+						TimeScale = Input {
+							Value = 2,
+							Expression = "Transform.speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate",
 						},
 					},
 				},
 				AnimCurvesonPath1Input = BezierSpline {
 					SplineColor = { Red = 255, Green = 0, Blue = 255 },
-					CtrlWZoom = false,
 					KeyFrames = {
 						[0] = { 0, RH = { 10, 0.333333333333333 }, Flags = { Linear = true, LockedY = true } },
 						[30] = { 1, LH = { 20, 0.666666666666667 }, Flags = { Linear = true, LockedY = true } }
 					}
 				},
-				AnimCurves1Lookup = LUTBezier {
+				AnimCurvesonPath1Lookup = LUTBezier {
 					KeyColorSplines = {
 						[0] = {
 							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
@@ -96,7 +126,6 @@
 						}
 					},
 					SplineColor = { Red = 255, Green = 255, Blue = 255 },
-					CtrlWZoom = false,
 				}
 			},
 		}
