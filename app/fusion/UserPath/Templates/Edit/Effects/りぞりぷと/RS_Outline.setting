@@ -1,0 +1,148 @@
+{
+	Tools = ordered() {
+		Outline = GroupOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter1",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "DeltaKeyer1",
+					Source = "ErodeDilate",
+					Name = "太さ",
+					MinScale = 0,
+					Default = 0.01,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "DeltaKeyer1",
+					Source = "ReplaceRed",
+					Name = "色",
+					ControlGroup = 3,
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "DeltaKeyer1",
+					Source = "ReplaceGreen",
+					ControlGroup = 3,
+					Default = 1,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "DeltaKeyer1",
+					Source = "ReplaceBlue",
+					ControlGroup = 3,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Merge80",
+					Source = "Blend",
+					Default = 1,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge80",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				PipeRouter1 = PipeRouter {
+					ViewInfo = PipeRouterInfo { Pos = { 4125, 643.5 } },
+				},
+				ChannelBooleans1 = ChannelBoolean {
+					Inputs = {
+						ClippingMode = Input { Value = FuID { "Frame" }, },
+						ToRed = Input { Value = 15, },
+						ToBlue = Input { Value = 15, },
+						ToAlpha = Input { Value = 16, },
+						Background = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Bitmap1",
+							Source = "Mask",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 4125, 808.5 } },
+				},
+				Bitmap1 = BitmapMask {
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						Invert = Input { Value = 1, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Image = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 3960, 808.5 } },
+				},
+				DeltaKeyer1 = DeltaKeyer {
+					Inputs = {
+						BackgroundRed = Input { Value = 0, },
+						BackgroundGreen = Input { Value = 1, },
+						BackgroundBlue = Input { Value = 0, },
+						ErodeDilate = Input { Value = 0.01, },
+						ReplaceMode = Input { Value = FuID { "HardColor" }, },
+						ReplaceRed = Input { Value = 1, },
+						ReplaceGreen = Input { Value = 1, },
+						ReplaceBlue = Input { Value = 1, },
+						TuningRanges = Input {
+							Value = ColorCurves {
+								Curves = {
+									{
+										Points = {
+											{ 0, 1 },
+											{ 0.4, 0.2 },
+											{ 0.6, 0 },
+											{ 1, 0 }
+										}
+									},
+									{
+										Points = {
+											{ 0, 0 },
+											{ 0.4, 0 },
+											{ 0.6, 0.2 },
+											{ 1, 1 }
+										}
+									}
+								}
+							},
+						},
+						["Garbage.Matte"] = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Input = Input {
+							SourceOp = "ChannelBooleans1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 4290, 808.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Merge80 = Merge {
+					CtrlWZoom = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "DeltaKeyer1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 4455, 808.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "Outline"
+}
