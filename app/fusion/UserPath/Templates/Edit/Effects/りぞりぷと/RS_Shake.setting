@@ -1,0 +1,146 @@
+{
+	Tools = ordered() {
+		Shake = GroupOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Input",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "RandomSeed",
+					Width = 1,
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "Randomize",
+					Width = 0.385,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "Smoothness",
+					Default = 10,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "x",
+					Name = "X",
+					Default = 0.1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "y",
+					Name = "Y",
+					Default = 0.1,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Transform1 = Transform {
+					CtrlWZoom = false,
+					Inputs = {
+						Center = Input { Expression = "Point(0.5, 0.5) + shake * in_out", },
+						x = Input { Value = 0.1, },
+						y = Input { Value = 0.1, },
+						shake = Input {
+							SourceOp = "Shake1",
+							Source = "Position",
+						},
+						in_out = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 330, 181.5 } },
+					UserControls = ordered() {
+						x = {
+							LINKS_Name = "x",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "SliderControl",
+							INP_Default = 0.1,
+							INP_Integer = false,
+							INP_MinScale = 0,
+							INP_MaxScale = 1,
+						},
+						y = {
+							LINKS_Name = "y",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "SliderControl",
+							INP_Default = 0.1,
+							INP_Integer = false,
+							INP_MinScale = 0,
+							INP_MaxScale = 1,
+						},
+						shake = {
+							LINKS_Name = "shake",
+							LINKID_DataType = "Point",
+							INPID_InputControl = "OffsetControl",
+						},
+						in_out = {
+							LINKS_Name = "in_out",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "SliderControl",
+							INP_Default = 0,
+							INP_Integer = false,
+							INP_MinScale = 0,
+							INP_MaxScale = 1,
+						}
+					}
+				},
+				Shake1 = Shake {
+					Faster = true,
+					CtrlWZoom = false,
+					Inputs = {
+						LockXY = Input { Value = 0, },
+						XMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1.x",
+						},
+						XMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1.x",
+						},
+						YMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1.y",
+						},
+						YMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1.y",
+						},
+					},
+				},
+				KeyframeStretcher1 = KeyStretcherMod {
+					CtrlWZoom = false,
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "KeyStretcheronTransform1Keyframes",
+							Source = "Value",
+						},
+						StretchStart = Input { Value = 10, },
+						StretchEnd = Input { Value = 110, },
+					},
+				},
+				KeyStretcheronTransform1Keyframes = BezierSpline {
+					SplineColor = { Red = 193, Green = 106, Blue = 231 },
+					CtrlWZoom = false,
+					NameSet = true,
+					KeyFrames = {
+						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
+						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
+						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
+					}
+				}
+			},
+		}
+	},
+	ActiveTool = "Shake"
+}
