@@ -1,0 +1,96 @@
+{
+	Tools = ordered() {
+		Bound = GroupOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "speed",
+					Name = "スピード",
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Calculation2",
+					Source = "SecondOperand",
+					Name = "強さ",
+					Default = 1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "offset",
+					Name = "時間オフセット(フレーム)",
+					Default = 0,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Transform1 = Transform {
+					CtrlWZoom = false,
+					Inputs = {
+						Center = Input {
+							SourceOp = "XYPath1",
+							Source = "Value",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 49.5 } },
+					UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 1, INPID_InputControl = "ScrewControl", LINKS_Name = "speed", }, offset = { INP_Integer = true, INPID_InputControl = "ScrewControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_Default = 0, INP_MaxScale = 500, LINKS_Name = "offset", } }
+				},
+				XYPath1 = XYPath {
+					ShowKeyPoints = false,
+					DrawMode = "ModifyOnly",
+					CtrlWZoom = false,
+					Inputs = {
+						X = Input { Value = 0.5, },
+						Y = Input {
+							SourceOp = "Calculation1",
+							Source = "Result",
+						},
+					},
+				},
+				Calculation1 = Calculation {
+					CtrlWZoom = false,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "Calculation2",
+							Source = "Result",
+						},
+						SecondOperand = Input { Value = 0.5, },
+						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart - Transform1.offset", },
+					},
+				},
+				Calculation2 = Calculation {
+					CtrlWZoom = false,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "CalculationonCalculationonTransform1CenterXYPath1YFirstOperand",
+							Source = "Value",
+						},
+						Operator = Input { Value = 2, },
+						SecondOperand = Input { Value = 1, },
+						FirstOperandTimeScale = Input { Expression = "Transform1.speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate", },
+					},
+				},
+				CalculationonCalculationonTransform1CenterXYPath1YFirstOperand = BezierSpline {
+					SplineColor = { Red = 0, Green = 255, Blue = 0 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 4.65, 0.225 }, Flags = { Linear = true } },
+						[17] = { 0, LH = { 12.4, 0.214 }, RH = { 19.6825406677053, 0.0439451976698349 } },
+						[25] = { 0.000999999999999557, LH = { 23.6, 0.0269999999999996 }, RH = { 27.6, 0.025 } },
+						[30] = { 0, LH = { 28.4282452630596, 0 } }
+					}
+				}
+			},
+		}
+	},
+	ActiveTool = "Bound"
+}
