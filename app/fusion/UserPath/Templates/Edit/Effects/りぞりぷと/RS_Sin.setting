@@ -9,7 +9,7 @@
 				Input1 = InstanceInput {
 					SourceOp = "Transform1",
 					Source = "speed",
-					MinScale = 0.0010000000475,
+					MinScale = 0.001,
 					Default = 2,
 				},
 				Input2 = InstanceInput {
@@ -37,7 +37,7 @@
 						out = Input { Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)", },
 					},
 					ViewInfo = OperatorInfo { Pos = { 440, 247.5 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_Default = 0, INP_MaxScale = 1, LINKS_Name = "out", } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_Default = 0, INP_MaxScale = 1, LINKS_Name = "out", } }
 				}
 			},
 		}
