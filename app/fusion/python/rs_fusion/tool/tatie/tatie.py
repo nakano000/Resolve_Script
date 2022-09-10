@@ -1,3 +1,5 @@
+from functools import partial
+
 import dataclasses
 import sys
 from pathlib import Path
@@ -15,6 +17,7 @@ from PySide2.QtWidgets import (
 
 from rs.core import (
     config,
+    util,
     pipe as p,
 )
 from rs.gui import (
@@ -68,10 +71,16 @@ class MainWindow(QMainWindow):
         # button
         self.ui.loaderButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.margeButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.switchButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
+        self.ui.openSiteButton.clicked.connect(partial(
+            util.open_url,
+            'https://www.steakunderwater.com/VFXPedia/96.0.243.189/indexae7c.html',
+        ))
         self.ui.loaderButton.clicked.connect(self.make_loader)
         self.ui.margeButton.clicked.connect(self.marge)
+        self.ui.switchButton.clicked.connect(self.switch_fuse)
         self.ui.closeButton.clicked.connect(self.close)
 
     def make_loader(self):
@@ -120,6 +129,69 @@ class MainWindow(QMainWindow):
 
             flow.Select(node)
             _x += 1
+
+        # end
+        comp.EndUndo(True)
+        comp.Unlock()
+        print('Done!')
+
+    def switch_fuse(self):
+        resolve = self.fusion.GetResolve()
+        if resolve is not None and resolve.GetCurrentPage() != 'fusion':
+            QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
+            return
+        comp = self.fusion.CurrentComp
+        if comp is None:
+            QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
+            return
+
+        # tools
+        tools = list(comp.GetToolList(True).values())
+        if len(tools) == 0:
+            QMessageBox.warning(self, 'Warning', 'ノードを選択してください。')
+            return
+        if len(tools) > 64:
+            QMessageBox.warning(self, 'Warning', '選択数を64個以下にしてください。')
+            return
+        flow = comp.CurrentFrame.FlowView
+        tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+
+        # data
+        data = self.get_data()
+
+        # undo
+        comp.Lock()
+        comp.StartUndo('RS SwitchFuse')
+
+        # Fuse.Switch
+        _x, _y = flow.GetPosTable(tools[len(tools) - 1]).values()
+        sw = comp.AddTool('Fuse.Switch', _x, _y + 4)
+
+        # user_controls
+        user_controls = {}
+        ctrl_name = 'SW_ComboBox'
+        user_controls[ctrl_name] = {
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'ComboControl',
+            'LINKS_Name': data.ctrl_name,
+            'INP_Integer': True,
+            'INP_Default': 0,
+            'ICS_ControlPage': 'User',
+        }
+        for i, layer in enumerate(tools):
+            layer_name: str = layer.Name
+            if layer.ID == 'Loader':
+                layer_name = Path(layer.Clip[1]).stem.strip()
+            sw.ConnectInput('Input%d' % (i + 1), layer)
+            dct = user_controls[ctrl_name]
+            dct[i + 1] = {'CCS_AddString': '%s' % layer_name}
+        # xf
+        uc = {'__flags': 2097152}  # 順番を保持するフラグ
+        for k, v in list(user_controls.items()):
+            uc[k] = v
+        sw.UserControls = uc
+        sw.Which.SetExpression('%s + 1' % ctrl_name)
+        sw.Refresh()
 
         # end
         comp.EndUndo(True)

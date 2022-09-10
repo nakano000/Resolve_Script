@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\tatie\tatie.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\tatie\tatie.ui' applies.
 #
-# Created: Mon Aug  8 10:19:28 2022
+# Created: Sun Sep 11 00:54:35 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,11 +13,11 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(354, 334)
+        MainWindow.resize(460, 412)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setObjectName("groupBox")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.multiplyCheckBox)
         spacerItem = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
-        self.verticalLayout_4.addWidget(self.groupBox)
+        self.verticalLayout_5.addWidget(self.groupBox)
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName("groupBox_2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.groupBox_2)
@@ -97,11 +97,22 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.cbGroupBox)
         spacerItem4 = QtWidgets.QSpacerItem(20, 2, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_3.addItem(spacerItem4)
-        self.verticalLayout_4.addWidget(self.groupBox_2)
+        self.verticalLayout_5.addWidget(self.groupBox_2)
+        self.groupBox_5 = QtWidgets.QGroupBox(self.centralwidget)
+        self.groupBox_5.setObjectName("groupBox_5")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.groupBox_5)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.openSiteButton = QtWidgets.QPushButton(self.groupBox_5)
+        self.openSiteButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.openSiteButton.setObjectName("openSiteButton")
+        self.horizontalLayout_5.addWidget(self.openSiteButton)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem5)
+        self.verticalLayout_5.addWidget(self.groupBox_5)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem5 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem5)
+        spacerItem6 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem6)
         self.loaderButton = QtWidgets.QPushButton(self.centralwidget)
         self.loaderButton.setMinimumSize(QtCore.QSize(100, 40))
         self.loaderButton.setObjectName("loaderButton")
@@ -110,13 +121,17 @@ class Ui_MainWindow(object):
         self.margeButton.setMinimumSize(QtCore.QSize(100, 40))
         self.margeButton.setObjectName("margeButton")
         self.horizontalLayout_2.addWidget(self.margeButton)
-        spacerItem6 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem6)
+        self.switchButton = QtWidgets.QPushButton(self.centralwidget)
+        self.switchButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.switchButton.setObjectName("switchButton")
+        self.horizontalLayout_2.addWidget(self.switchButton)
+        spacerItem7 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem7)
         self.closeButton = QtWidgets.QPushButton(self.centralwidget)
         self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
         self.closeButton.setObjectName("closeButton")
         self.horizontalLayout_2.addWidget(self.closeButton)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_5.addLayout(self.horizontalLayout_2)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -136,7 +151,10 @@ class Ui_MainWindow(object):
         self.cmbRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "コンボボックス", None, -1))
         self.sldRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "スライダー", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "名前", None, -1))
+        self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "SwitchFuse", None, -1))
+        self.openSiteButton.setText(QtWidgets.QApplication.translate("MainWindow", "ダウンロードページを開く", None, -1))
         self.loaderButton.setText(QtWidgets.QApplication.translate("MainWindow", "読み込み", None, -1))
         self.margeButton.setText(QtWidgets.QApplication.translate("MainWindow", "マージ", None, -1))
+        self.switchButton.setText(QtWidgets.QApplication.translate("MainWindow", "SwitchFuse", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
 
