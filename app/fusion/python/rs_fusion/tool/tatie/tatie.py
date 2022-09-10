@@ -79,9 +79,19 @@ class MainWindow(QMainWindow):
             util.open_url,
             'https://www.steakunderwater.com/VFXPedia/96.0.243.189/indexae7c.html',
         ))
+        generators_path = Path(
+            os.path.expandvars('$APPDATA/Blackmagic Design/DaVinci Resolve/Support/Fusion/Templates/Edit/Generators')
+        )
+        fuse_path = Path(os.path.expandvars('$APPDATA/Blackmagic Design/DaVinci Resolve/Support/Fusion/Fuses'))
+        if self.fusion.GetResolve() is None:
+            fuse_path = Path(os.path.expandvars('$APPDATA/Blackmagic Design/Fusion/Fuses'))
         self.ui.openDirButton.clicked.connect(partial(
             util.open_directory,
-            Path(os.path.expandvars('$APPDATA/Blackmagic Design/DaVinci Resolve/Support/Fusion/Fuses')),
+            Path(generators_path),
+        ))
+        self.ui.openFuseDirButton.clicked.connect(partial(
+            util.open_directory,
+            Path(fuse_path),
         ))
         self.ui.loaderButton.clicked.connect(self.make_loader)
         self.ui.margeButton.clicked.connect(self.marge)

@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\tatie\tatie.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\tatie\tatie.ui' applies.
 #
-# Created: Sun Sep 11 04:24:50 2022
+# Created: Sun Sep 11 05:19:33 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,11 +13,15 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(460, 412)
+        MainWindow.resize(460, 458)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.openDirButton = QtWidgets.QPushButton(self.centralwidget)
+        self.openDirButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.openDirButton.setObjectName("openDirButton")
+        self.verticalLayout_4.addWidget(self.openDirButton)
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setObjectName("groupBox")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
@@ -27,7 +31,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.multiplyCheckBox)
         spacerItem = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
-        self.verticalLayout_5.addWidget(self.groupBox)
+        self.verticalLayout_4.addWidget(self.groupBox)
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName("groupBox_2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.groupBox_2)
@@ -97,7 +101,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.cbGroupBox)
         spacerItem4 = QtWidgets.QSpacerItem(20, 2, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_3.addItem(spacerItem4)
-        self.verticalLayout_5.addWidget(self.groupBox_2)
+        self.verticalLayout_4.addWidget(self.groupBox_2)
         self.groupBox_5 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_5.setObjectName("groupBox_5")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.groupBox_5)
@@ -106,13 +110,13 @@ class Ui_MainWindow(object):
         self.openSiteButton.setMinimumSize(QtCore.QSize(100, 40))
         self.openSiteButton.setObjectName("openSiteButton")
         self.horizontalLayout_5.addWidget(self.openSiteButton)
-        self.openDirButton = QtWidgets.QPushButton(self.groupBox_5)
-        self.openDirButton.setMinimumSize(QtCore.QSize(100, 40))
-        self.openDirButton.setObjectName("openDirButton")
-        self.horizontalLayout_5.addWidget(self.openDirButton)
+        self.openFuseDirButton = QtWidgets.QPushButton(self.groupBox_5)
+        self.openFuseDirButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.openFuseDirButton.setObjectName("openFuseDirButton")
+        self.horizontalLayout_5.addWidget(self.openFuseDirButton)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem5)
-        self.verticalLayout_5.addWidget(self.groupBox_5)
+        self.verticalLayout_4.addWidget(self.groupBox_5)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         spacerItem6 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -135,7 +139,7 @@ class Ui_MainWindow(object):
         self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
         self.closeButton.setObjectName("closeButton")
         self.horizontalLayout_2.addWidget(self.closeButton)
-        self.verticalLayout_5.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -143,6 +147,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
+        self.openDirButton.setText(QtWidgets.QApplication.translate("MainWindow", "Generators テンプレートフォルダを開く", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "静止画読み込み(Loader)", None, -1))
         self.multiplyCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Post-Multiply by Alpha", None, -1))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", " マージ", None, -1))
@@ -157,7 +162,7 @@ class Ui_MainWindow(object):
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "名前", None, -1))
         self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "SwitchFuse", None, -1))
         self.openSiteButton.setText(QtWidgets.QApplication.translate("MainWindow", " ダウンロードページを開く ", None, -1))
-        self.openDirButton.setText(QtWidgets.QApplication.translate("MainWindow", " インストールフォルダを開く ", None, -1))
+        self.openFuseDirButton.setText(QtWidgets.QApplication.translate("MainWindow", " インストールフォルダを開く ", None, -1))
         self.loaderButton.setText(QtWidgets.QApplication.translate("MainWindow", "読み込み", None, -1))
         self.margeButton.setText(QtWidgets.QApplication.translate("MainWindow", "マージ", None, -1))
         self.switchButton.setText(QtWidgets.QApplication.translate("MainWindow", "SwitchFuse", None, -1))
