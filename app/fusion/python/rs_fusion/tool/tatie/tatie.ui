@@ -249,7 +249,20 @@
           </size>
          </property>
          <property name="text">
-          <string>ダウンロードページを開く</string>
+          <string> ダウンロードページを開く </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="openDirButton">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="text">
+          <string> インストールフォルダを開く </string>
          </property>
         </widget>
        </item>

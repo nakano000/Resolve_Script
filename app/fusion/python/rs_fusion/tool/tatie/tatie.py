@@ -1,3 +1,4 @@
+import os.path
 from functools import partial
 
 import dataclasses
@@ -77,6 +78,10 @@ class MainWindow(QMainWindow):
         self.ui.openSiteButton.clicked.connect(partial(
             util.open_url,
             'https://www.steakunderwater.com/VFXPedia/96.0.243.189/indexae7c.html',
+        ))
+        self.ui.openDirButton.clicked.connect(partial(
+            util.open_directory,
+            Path(os.path.expandvars('$APPDATA/Blackmagic Design/DaVinci Resolve/Support/Fusion/Fuses')),
         ))
         self.ui.loaderButton.clicked.connect(self.make_loader)
         self.ui.margeButton.clicked.connect(self.marge)

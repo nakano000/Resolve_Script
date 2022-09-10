@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\tatie\tatie.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\tatie\tatie.ui' applies.
 #
-# Created: Sun Sep 11 00:54:35 2022
+# Created: Sun Sep 11 04:24:50 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -106,6 +106,10 @@ class Ui_MainWindow(object):
         self.openSiteButton.setMinimumSize(QtCore.QSize(100, 40))
         self.openSiteButton.setObjectName("openSiteButton")
         self.horizontalLayout_5.addWidget(self.openSiteButton)
+        self.openDirButton = QtWidgets.QPushButton(self.groupBox_5)
+        self.openDirButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.openDirButton.setObjectName("openDirButton")
+        self.horizontalLayout_5.addWidget(self.openDirButton)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem5)
         self.verticalLayout_5.addWidget(self.groupBox_5)
@@ -152,7 +156,8 @@ class Ui_MainWindow(object):
         self.sldRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "スライダー", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "名前", None, -1))
         self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "SwitchFuse", None, -1))
-        self.openSiteButton.setText(QtWidgets.QApplication.translate("MainWindow", "ダウンロードページを開く", None, -1))
+        self.openSiteButton.setText(QtWidgets.QApplication.translate("MainWindow", " ダウンロードページを開く ", None, -1))
+        self.openDirButton.setText(QtWidgets.QApplication.translate("MainWindow", " インストールフォルダを開く ", None, -1))
         self.loaderButton.setText(QtWidgets.QApplication.translate("MainWindow", "読み込み", None, -1))
         self.margeButton.setText(QtWidgets.QApplication.translate("MainWindow", "マージ", None, -1))
         self.switchButton.setText(QtWidgets.QApplication.translate("MainWindow", "SwitchFuse", None, -1))
