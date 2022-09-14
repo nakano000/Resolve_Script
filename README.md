@@ -100,7 +100,7 @@ https://youtu.be/kta_94REcEE
 [目次へ](#目次)
 ### Linuxで使う
 検証不足です。ご注意ください。<br>
-下記環境にて確認しています。<br>
+下記環境にて確認しています。
 - CentOS Linux release 7.9.2009 (Core)
 - python 3.6.8
 - DaVinci Resolve 18.02
