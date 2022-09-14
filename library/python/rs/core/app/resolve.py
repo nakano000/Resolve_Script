@@ -3,7 +3,6 @@
 import os
 import string
 import dataclasses
-import winreg
 from pathlib import Path
 
 from rs.core import config, util

@@ -27,7 +27,7 @@ class Fusion(App):
         env = super().get_env()
         env.set(
             EnvKey.RS_FUSION_USER_PATH,
-            str(config.FUSION_SET_PATH.joinpath('UserPath')) + str('\\')
+            str(config.FUSION_SET_PATH.joinpath('UserPath')) + os.sep
         )
 
         # FUSION_MasterPrefs
