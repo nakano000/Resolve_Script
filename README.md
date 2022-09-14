@@ -103,6 +103,7 @@ https://youtu.be/kta_94REcEE
 下記環境にて確認しています。<br>
 CentOS Linux release 7.9.2009 (Core)<br>
 python 3.6.8
+DaVinci Resolve 18.02
 
 #### python3.6をダビンチリゾルブに認識させる。
 ```
