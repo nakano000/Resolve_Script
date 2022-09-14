@@ -104,7 +104,7 @@ https://youtu.be/kta_94REcEE
 CentOS Linux release 7.9.2009 (Core)<br>
 python 3.6.8
 
-#### python3をダビンチリゾルブに認識させる。
+#### python3.6をダビンチリゾルブに認識させる。
 ```
 cd /lib64
 sudo ln -s libpython3.6m.so.1.0 libpython3.6.so.1.0
