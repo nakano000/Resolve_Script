@@ -6,7 +6,7 @@ import dataclasses
 import winreg
 from pathlib import Path
 
-from rs.core import config
+from rs.core import config, util
 from rs.core import pipe as p
 from rs.core.app import Fusion
 from rs.core.env import Env, EnvKey
@@ -14,7 +14,7 @@ from rs.core.env import Env, EnvKey
 
 @dataclasses.dataclass
 class Resolve(Fusion):
-    exe: str = r'C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe'
+    exe: str = r'C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe' if util.IS_WIN else '/opt/resolve/bin/opt'
 
     def get_env(self) -> Env:
         env = super().get_env()

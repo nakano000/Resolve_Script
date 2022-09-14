@@ -1,4 +1,5 @@
 import functools
+import platform
 import subprocess
 from pathlib import Path
 
@@ -32,6 +33,9 @@ def memoize(f):
         return cache[key]
 
     return wrapper
+
+
+IS_WIN = platform.system() == 'Windows'
 
 
 def write_text(path: Path, s: str) -> None:

@@ -6,7 +6,7 @@ import dataclasses
 from pathlib import Path
 from typing import Dict
 
-from rs.core import config
+from rs.core import config, util
 from rs.core import pipe as p
 from rs.core.app import App
 from rs.core.env import Env, EnvKey
@@ -37,15 +37,15 @@ class Fusion(App):
         env.add_path(EnvKey.PYTHONPATH, pre=[
             config.APP_SET_PATH.joinpath('fusion', 'python'),
         ])
-
-        # PYTHONHOME
-        env.set(EnvKey.PYTHON3HOME, str(config.PYTHON_INSTALL_PATH))
-        env.set(EnvKey.FUSION_Python3_Home, str(config.PYTHON_INSTALL_PATH))
-        env.set(EnvKey.FUSION_Python36_Home, str(config.PYTHON_INSTALL_PATH))
-        # PATH
-        env.add_path(EnvKey.PATH, pre=[
-            config.PYTHON_INSTALL_PATH,
-        ])
+        if util.IS_WIN:
+            # PYTHONHOME
+            env.set(EnvKey.PYTHON3HOME, str(config.PYTHON_INSTALL_PATH))
+            env.set(EnvKey.FUSION_Python3_Home, str(config.PYTHON_INSTALL_PATH))
+            env.set(EnvKey.FUSION_Python36_Home, str(config.PYTHON_INSTALL_PATH))
+            # PATH
+            env.add_path(EnvKey.PATH, pre=[
+                config.PYTHON_INSTALL_PATH,
+            ])
 
         return env
 

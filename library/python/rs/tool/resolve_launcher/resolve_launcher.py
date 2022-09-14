@@ -16,6 +16,7 @@ from PySide2.QtWidgets import (
 from rs.core import (
     config,
     pipe as p,
+    util,
 )
 from rs.core.app import (
     Fusion,
@@ -69,12 +70,12 @@ class MainWindow(QMainWindow):
         self.ui.fusionToolButton.clicked.connect(partial(
             self.toolButton_clicked,
             self.ui.fusionLineEdit,
-            'Fusion.exe'
+            'Fusion' + ('.exe' if util.IS_WIN else '')
         ))
         self.ui.resolveToolButton.clicked.connect(partial(
             self.toolButton_clicked,
             self.ui.resolveLineEdit,
-            'Resolve.exe'
+            'Resolve' + ('.exe' if util.IS_WIN else '')
         ))
 
     def run_fusion(self):
