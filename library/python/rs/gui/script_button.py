@@ -7,12 +7,15 @@ from PySide2.QtWidgets import (
     QPushButton,
 )
 
-from rs.core import config
+from rs.core import (
+    config,
+    util,
+)
 
 
 def run_python(path, args, env=None):
     cmd = [
-              str(config.PYTHONW_EXE_PATH),
+              str(config.PYTHONW_EXE_PATH) if util.IS_WIN else 'python3',
               str(path),
           ] + list(args)
     if env is None:
