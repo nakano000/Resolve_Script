@@ -70,12 +70,12 @@ class MainWindow(QMainWindow):
         self.ui.fusionToolButton.clicked.connect(partial(
             self.toolButton_clicked,
             self.ui.fusionLineEdit,
-            'Fusion' + ('.exe' if util.IS_WIN else '')
+            'Fusion.exe' if util.IS_WIN else 'Fusion'
         ))
         self.ui.resolveToolButton.clicked.connect(partial(
             self.toolButton_clicked,
             self.ui.resolveLineEdit,
-            'Resolve' + ('.exe' if util.IS_WIN else '')
+            'Resolve.exe' if util.IS_WIN else 'resolve'
         ))
 
     def run_fusion(self):

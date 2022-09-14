@@ -15,6 +15,11 @@ from rs.core.env import Env, EnvKey
 @dataclasses.dataclass
 class Fusion(App):
     exe: str = r'C:\Program Files\Blackmagic Design\Fusion 18\Fusion.exe'
+    exe: str = (
+        r'C:\Program Files\Blackmagic Design\Fusion 18\Fusion.exe'
+        if util.IS_WIN else
+        '/opt/BlackmagicDesign/Fusion9/Fusion'
+    )
 
     def get_path(self) -> Path:
         return Path(self.exe)
