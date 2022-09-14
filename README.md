@@ -21,6 +21,7 @@ https://youtu.be/WyKujodsLh0
 * [VTT2Anim](#VTT2Anim)
 * [ScriptLauncher](#ScriptLauncher)
 * [DiskCache](#DiskCache)
+* [Linuxで使う](#Linux)
 
 ### ResolveLauncher
 動画参照
@@ -95,5 +96,29 @@ https://youtu.be/ZwZyUCaTaTw
 ### DiskCache
 動画参照
 https://youtu.be/kta_94REcEE
+
+[目次へ](#目次)
+### Linuxで使う
+検証不足です。ご注意ください。<br>
+下記環境にて確認しています。<br>
+CentOS Linux release 7.9.2009 (Core)<br>
+python 3.6.8
+
+#### python3ダビンチリゾルブに認識させる。
+```
+cd /lib64
+sudo ln -s libpython3.6m.so.1.0 libpython3.6.so.1.0
+sudo ldconfig
+```
+#### python3に必要なライブラリを入れる。
+'りぞりぷと'を解凍したフォルダ内で
+```
+sudo pip3 install --upgrade pip
+pin3 install -r requirements.txt
+```
+#### 'りぞりぷと'を立ち上げる
+```
+python3 bin/launcher.py
+```
 
 [目次へ](#目次)
