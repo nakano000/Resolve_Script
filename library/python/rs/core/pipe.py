@@ -78,6 +78,13 @@ if __name__ == '__main__':
         "aaa",
         print,
     )
+    pipe(
+        ["aaa", 'bbb'],
+        do(
+            iter(print),
+        ),
+        print,
+    )
 
     print('end')
 

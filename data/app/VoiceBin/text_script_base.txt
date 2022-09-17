@@ -56,9 +56,12 @@ local function getTrackIndexByName(timeline, name)
     return r
 end
 
-local function getItemByTrackName(timeline, name)
+local function getItemByTrackName_t(timeline, name)
     local r = timeline:GetCurrentVideoItem()
-    local index = getTrackIndexByName(timeline, name)
+    local index = getTrackIndexByName(timeline, (name .. '_t'))
+    if not index then
+        index = getTrackIndexByName(timeline, name)
+    end
     if not index then
         return r
     end
@@ -92,7 +95,7 @@ local function setJimaku(txt, color, track_name, setting_path)
         print('Timelineが見付かりません。')
         return
     end
-    local textPlus = getItemByTrackName(timeline, track_name)
+    local textPlus = getItemByTrackName_t(timeline, track_name)
     if not textPlus then
         print('VideoItemが見付かりません。')
         return
@@ -140,7 +143,7 @@ local function setJimaku(txt, color, track_name, setting_path)
     if color ~= 'None' then
         textPlus:SetClipColor(color)
     end
-    print('Dane!')
+    print('Dane!(Text+)')
 end
 
 setJimaku(

@@ -155,6 +155,7 @@ class Form(QWidget):
         # button
         self.ui.dragButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.tatieDragButton.setStyleSheet(appearance.ex_stylesheet)
+        self.ui.wDragButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.charaButton.setStyleSheet(appearance.in_stylesheet)
 
         # tree view
@@ -228,6 +229,7 @@ class Form(QWidget):
             tatie_path = wav_path.parent.joinpath(wav_path.stem + '.tatie.lua')
             self.ui.dragButton.setLuaFile(path)
             self.ui.tatieDragButton.setLuaFile(tatie_path)
+            self.ui.wDragButton.setLuaFiles(path, tatie_path)
 
     def directory_changed(self, s):
         d = Path(s)

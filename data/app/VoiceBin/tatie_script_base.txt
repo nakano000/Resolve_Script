@@ -165,7 +165,7 @@ local function setTatie(color, track_name, parameter_name, setting_path)
         textPlus:SetClipColor(color)
     end
     -- end
-    print('Dane!')
+    print('Dane!(立ち絵)')
 end
 
 setTatie(
