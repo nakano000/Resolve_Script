@@ -250,6 +250,7 @@ class Form(QWidget):
             file_list = p.pipe(
                 created_lst,
                 p.map(lambda x: Path(x).parent.joinpath(Path(x).stem + '.wav')),
+                p.filter(p.call.is_file()),
                 dict.fromkeys,
                 list,
             )
