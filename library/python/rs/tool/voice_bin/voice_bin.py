@@ -59,30 +59,28 @@ class WatchdogEvent(FileSystemEventHandler):
         src_path = Path(event.src_path)
         # print('created', src_path)
         if src_path.suffix.lower() in ['.wav', '.txt', '.lab']:
-            self.created_lst.append(src_path)
+            self.created_lst.append(str(src_path))
 
     def on_modified(self, event):
         src_path = Path(event.src_path)
         # print('modified', src_path)
         if src_path.is_dir():
-            flag = False
-            for lst in [self.created_lst, self.moved_lst, self.deleted_lst]:
-                if len(lst) > 0:
-                    flag = True
-                    lst.clear()
-            if flag:
-                self.modified.emit(str(src_path))
+            if len(self.created_lst) + len(self.moved_lst) + len(self.deleted_lst) > 0:
+                self.modified.emit(str(src_path), self.created_lst.copy())
+                self.created_lst.clear()
+                self.moved_lst.clear()
+                self.deleted_lst.clear()
 
     def on_moved(self, event):
         src_path = Path(event.src_path)
         # print('moved', src_path)
-        self.moved_lst.append(src_path)
+        self.moved_lst.append(str(src_path))
 
     def on_deleted(self, event):
         src_path = Path(event.src_path)
         # print('deleted', src_path)
         if src_path.suffix.lower() in ['.wav', '.srt']:
-            self.deleted_lst.append(src_path)
+            self.deleted_lst.append(str(src_path))
 
 
 def read_text(f: Path, c_code: str):
@@ -124,7 +122,7 @@ def read_text(f: Path, c_code: str):
 
 
 class Form(QWidget):
-    modified = Signal(str)
+    modified = Signal(str, list)
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -231,7 +229,7 @@ class Form(QWidget):
             self.ui.tatieDragButton.setLuaFile(tatie_path)
             self.ui.wDragButton.setLuaFiles(path, tatie_path)
 
-    def directory_changed(self, s):
+    def directory_changed(self, s, created_lst):
         d = Path(s)
         tree = self.ui.treeView
         model = tree.model()
@@ -240,12 +238,23 @@ class Form(QWidget):
         txt_tree = self.ui.wavTreeView
         txt_model = txt_tree.model()
         txt_sel = txt_tree.selectionModel()
-
-        for f in p.pipe(
+        file_list = []
+        if len(created_lst) == 0:
+            file_list = p.pipe(
                 d.iterdir(),
                 p.filter(p.call.is_file()),
                 p.filter(lambda x: x.suffix in ['.wav']),
-        ):
+                list,
+            )
+        else:
+            file_list = p.pipe(
+                created_lst,
+                p.map(lambda x: Path(x).parent.joinpath(Path(x).stem + '.wav')),
+                dict.fromkeys,
+                list,
+            )
+
+        for f in file_list:
             f: Path
             txt_file = d.joinpath(f.stem + '.txt')
             if not txt_file.is_file():
