@@ -49,7 +49,7 @@ class DragButton(QPushButton):
         urls = p.pipe(
             [0, 1],
             p.filter(lambda i: self.lua_files[i] is not None and self.lua_files[i].is_file()),
-            list,  # filter objectと doが相性悪い？
+            list,  # ジェネレーターは使い回せないのでlistに
             p.do(
                 p.iter(lambda i: shutil.copyfile(self.lua_files[i], self.cmd_files[i])),
             ),
