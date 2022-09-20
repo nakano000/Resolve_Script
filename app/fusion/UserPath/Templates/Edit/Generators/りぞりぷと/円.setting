@@ -1,6 +1,6 @@
 {
 	Tools = ordered() {
-		Rectangle = GroupOperator {
+		Ellipse = GroupOperator {
 			CtrlWZoom = false,
 			CustomData = {
 				Path = {
@@ -10,113 +10,100 @@
 				},
 			},
 			Inputs = ordered() {
-				Input10 = InstanceInput {
+				Input9 = InstanceInput {
 					SourceOp = "CtrlExpression_main",
 					Source = "p1",
 				},
 				Input2 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sEllipse1",
 					Source = "Width",
 				},
 				Input3 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sEllipse1",
 					Source = "Height",
 				},
-				Input5 = InstanceInput {
-					SourceOp = "sRectangle1",
+				Input4 = InstanceInput {
+					SourceOp = "sEllipse1",
 					Source = "Angle",
 				},
-				Input4 = InstanceInput {
-					SourceOp = "sRectangle1",
-					Source = "CornerRadius",
-					Default = 0,
-				},
 				Input1 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sEllipse1",
 					Source = "ShapeSeparator",
 				},
-				Input6 = InstanceInput {
-					SourceOp = "sRectangle1",
+				Input5 = InstanceInput {
+					SourceOp = "sEllipse1",
 					Source = "Red",
 					Name = "Color",
-					ControlGroup = 6,
+					ControlGroup = 5,
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "sEllipse1",
+					Source = "Green",
+					ControlGroup = 5,
 					Default = 1,
 				},
 				Input7 = InstanceInput {
-					SourceOp = "sRectangle1",
-					Source = "Green",
-					ControlGroup = 6,
+					SourceOp = "sEllipse1",
+					Source = "Blue",
+					ControlGroup = 5,
 					Default = 1,
 				},
 				Input8 = InstanceInput {
-					SourceOp = "sRectangle1",
-					Source = "Blue",
-					ControlGroup = 6,
-					Default = 1,
-				},
-				Input9 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sEllipse1",
 					Source = "Alpha",
-					ControlGroup = 6,
+					ControlGroup = 5,
 					Default = 1,
 				},
 				InputBorder = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sEllipse1",
 					Source = "Border",
-					Page = "Controls",
 				},
-				Input11 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input10 = InstanceInput {
+					SourceOp = "Instance_sEllipse1",
 					Source = "BorderWidth",
 				},
-				Input12 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
-					Source = "JoinStyle",
-					Name = "Border Style",
-					ControlGroup = 9,
-					Default = 2,
-				},
-				Input13 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input11 = InstanceInput {
+					SourceOp = "Instance_sEllipse1",
 					Source = "CapStyle",
-					ControlGroup = 9,
+					ControlGroup = 8,
 					Default = 1,
 				},
-				Input14 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input12 = InstanceInput {
+					SourceOp = "Instance_sEllipse1",
 					Source = "WritePosition",
 					Default = 0,
 				},
-				Input15 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input13 = InstanceInput {
+					SourceOp = "Instance_sEllipse1",
 					Source = "WriteLength",
 					Default = 1,
 				},
-				InputSp = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input14 = InstanceInput {
+					SourceOp = "Instance_sEllipse1",
 					Source = "ShapeSeparator",
 				},
-				Input16 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input15 = InstanceInput {
+					SourceOp = "Instance_sEllipse1",
 					Source = "Red",
 					Name = "Color",
+					ControlGroup = 12,
+					Default = 1,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "Instance_sEllipse1",
+					Source = "Green",
 					ControlGroup = 12,
 					Default = 1,
 				},
 				Input17 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
-					Source = "Green",
-					ControlGroup = 12,
-					Default = 1,
-				},
-				Input18 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+					SourceOp = "Instance_sEllipse1",
 					Source = "Blue",
 					ControlGroup = 12,
 					Default = 1,
 				},
-				Input19 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input18 = InstanceInput {
+					SourceOp = "Instance_sEllipse1",
 					Source = "Alpha",
 					ControlGroup = 12,
 					Default = 1,
@@ -129,7 +116,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 165, -82.5 },
+				Pos = { 165, -16.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -144,10 +131,8 @@
 				Offset = { 0, 0 }
 			},
 			Tools = ordered() {
-				sRectangle1 = sRectangle {
-					CtrlWShown = false,
+				sEllipse1 = sEllipse {
 					Inputs = {
-						JoinStyle = Input { Value = 2, },
 						["Translate.X"] = Input {
 							SourceOp = "Expression1",
 							Source = "NumberResult",
@@ -160,14 +145,14 @@
 					ViewInfo = OperatorInfo { Pos = { -165, 133.258 } },
 					UserControls = ordered() {
 						Border = {
-							ICS_ControlPage = "Controls",
+							LINKS_Name = "Border",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							INP_Default = 0,
 							INP_Integer = true,
 							LBLC_DropDownButton = true,
-							LINKID_DataType = "Number",
 							LBLC_NumInputs = 9,
-							INP_Default = 0,
-							INPID_InputControl = "LabelControl",
-							LINKS_Name = "Border",
+							ICS_ControlPage = "Controls",
 						}
 					}
 				},
@@ -292,13 +277,15 @@
 						Value = Input { Value = 1080, },
 					},
 				},
-				Instance_sRectangle1 = sRectangle {
+				Instance_sEllipse1 = sEllipse {
 					CtrlWShown = false,
-					SourceOp = "sRectangle1",
+					SourceOp = "sEllipse1",
 					Inputs = {
 						Solid = Input { Value = 0, },
 						BorderWidth = Input { },
 						CapStyle = Input { },
+						WritePosition = Input { },
+						WriteLength = Input { },
 						Red = Input { },
 						Green = Input { Value = 0, },
 						Blue = Input { Value = 0, },
@@ -310,24 +297,20 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -165, 34.2576 } },
 				},
-				sRender1 = sRender {
+				Merge1 = Merge {
 					CtrlWShown = false,
 					Inputs = {
-						Width = Input {
-							SourceOp = "Publish4",
-							Source = "Value",
-						},
-						Height = Input {
-							SourceOp = "Publish5",
-							Source = "Value",
-						},
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						Input = Input {
-							SourceOp = "sRectangle1",
+						Background = Input {
+							SourceOp = "AlphaMultiply1",
 							Source = "Output",
 						},
+						Foreground = Input {
+							SourceOp = "Instance_AlphaMultiply1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { -55, 133.258 } },
+					ViewInfo = OperatorInfo { Pos = { 165, 133.258 } },
 				},
 				AlphaMultiply1 = AlphaMultiply {
 					CtrlWShown = false,
@@ -338,28 +321,6 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 55, 133.258 } },
-				},
-				Instance_sRender1 = sRender {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					SourceOp = "sRender1",
-					Inputs = {
-						EffectMask = Input { },
-						SettingsNest = Input { },
-						ImageNest = Input { },
-						["Gamut.ColorSpaceNest"] = Input { },
-						["Gamut.GammaSpaceNest"] = Input { },
-						Input = Input {
-							SourceOp = "Instance_sRectangle1",
-							Source = "Output",
-						},
-						["ShapeRasterizer.Nest"] = Input { },
-						CommentsNest = Input { },
-						FrameRenderScriptNest = Input { },
-						StartRenderScripts = Input { },
-						EndRenderScripts = Input { },
-					},
-					ViewInfo = OperatorInfo { Pos = { -55, 34.2576 } },
 				},
 				Instance_AlphaMultiply1 = AlphaMultiply {
 					CtrlWShown = false,
@@ -378,24 +339,50 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 55, 34.2576 } },
 				},
-				Merge1 = Merge {
+				sRender1 = sRender {
 					CtrlWShown = false,
 					Inputs = {
-						Background = Input {
-							SourceOp = "AlphaMultiply1",
+						Width = Input {
+							SourceOp = "Publish4",
+							Source = "Value",
+						},
+						Height = Input {
+							SourceOp = "Publish5",
+							Source = "Value",
+						},
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sEllipse1",
 							Source = "Output",
 						},
-						Foreground = Input {
-							SourceOp = "Instance_AlphaMultiply1",
-							Source = "Output",
-						},
-						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 165, 133.258 } },
+					ViewInfo = OperatorInfo { Pos = { -55, 133.258 } },
+				},
+				Instance_sRender1 = sRender {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					SourceOp = "sRender1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						Input = Input {
+							SourceOp = "Instance_sEllipse1",
+							Source = "Output",
+						},
+						["ShapeRasterizer.Nest"] = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 34.2576 } },
 				}
 			},
 			UserControls = ordered() {
-				Input10 = {
+				Input9 = {
 					INP_DefaultX = 0.5,
 					INPID_PreviewControl = "CrosshairControl",
 					INP_DefaultY = 0.5,
@@ -429,7 +416,7 @@
 					ICS_ControlPage = "Controls",
 					LINKS_Name = "Height"
 				},
-				Input5 = {
+				Input4 = {
 					INP_MaxAllowed = 1000000,
 					INP_Integer = false,
 					INPID_InputControl = "ScrewControl",
@@ -440,7 +427,7 @@
 					LINKID_DataType = "Number",
 					ICS_ControlPage = "Controls",
 					INP_MinScale = 0,
-					ACID_Center = "Input10",
+					ACID_Center = "Input9",
 					LINKS_Name = "Angle"
 				}
 			}
