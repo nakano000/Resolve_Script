@@ -1,6 +1,6 @@
 {
 	Tools = ordered() {
-		Rectangle = GroupOperator {
+		NGon = GroupOperator {
 			CtrlWZoom = false,
 			CustomData = {
 				Path = {
@@ -13,118 +13,126 @@
 				Input10 = InstanceInput {
 					SourceOp = "CtrlExpression_main",
 					Source = "p1",
-				},
-				Input2 = InstanceInput {
-					SourceOp = "sRectangle1",
-					Source = "Width",
+					Page = "Controls",
+					DefaultX = 0.5,
+					DefaultY = 0.5,
 				},
 				Input3 = InstanceInput {
-					SourceOp = "sRectangle1",
-					Source = "Height",
-				},
-				Input5 = InstanceInput {
-					SourceOp = "sRectangle1",
-					Source = "Angle",
-				},
-				Input100 = InstanceInput {
-					SourceOp = "sRectangle1",
-					Source = "ShapeSeparator",
+					SourceOp = "sNGon1",
+					Source = "Width",
+					Page = "Controls",
+					Default = 0.5,
 				},
 				Input4 = InstanceInput {
-					SourceOp = "sRectangle1",
-					Source = "CornerRadius",
+					SourceOp = "sNGon1",
+					Source = "Height",
+					Page = "Controls",
+					Default = 0.5,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "sNGon1",
+					Source = "Angle",
+					Page = "Controls",
 					Default = 0,
 				},
+				Input100 = InstanceInput {
+					SourceOp = "sNGon1",
+					Source = "ShapeSeparator",
+				},
 				Input1 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sNGon1",
+					Source = "Sides",
+					Default = 6,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "sNGon1",
 					Source = "ShapeSeparator",
 				},
 				Input6 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sNGon1",
 					Source = "Red",
 					Name = "Color",
 					ControlGroup = 6,
 					Default = 1,
 				},
 				Input7 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sNGon1",
 					Source = "Green",
 					ControlGroup = 6,
 					Default = 1,
 				},
 				Input8 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sNGon1",
 					Source = "Blue",
 					ControlGroup = 6,
 					Default = 1,
 				},
 				Input9 = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sNGon1",
 					Source = "Alpha",
 					ControlGroup = 6,
 					Default = 1,
 				},
 				InputBorder = InstanceInput {
-					SourceOp = "sRectangle1",
+					SourceOp = "sNGon1",
 					Source = "Border",
-					Page = "Controls",
 				},
 				Input11 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+					SourceOp = "Instance_sNGon1",
 					Source = "BorderWidth",
 				},
 				Input12 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+					SourceOp = "Instance_sNGon1",
 					Source = "JoinStyle",
 					Name = "Border Style",
 					ControlGroup = 9,
 					Default = 2,
 				},
 				Input13 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+					SourceOp = "Instance_sNGon1",
 					Source = "CapStyle",
 					ControlGroup = 9,
 					Default = 1,
 				},
 				Input14 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+					SourceOp = "Instance_sNGon1",
 					Source = "WritePosition",
 					Default = 0,
 				},
 				Input15 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+					SourceOp = "Instance_sNGon1",
 					Source = "WriteLength",
 					Default = 1,
 				},
-				InputSp = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input16 = InstanceInput {
+					SourceOp = "Instance_sNGon1",
 					Source = "ShapeSeparator",
 				},
-				Input16 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
+				Input17 = InstanceInput {
+					SourceOp = "Instance_sNGon1",
 					Source = "Red",
 					Name = "Color",
-					ControlGroup = 12,
-					Default = 1,
-				},
-				Input17 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
-					Source = "Green",
-					ControlGroup = 12,
+					ControlGroup = 13,
 					Default = 1,
 				},
 				Input18 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
-					Source = "Blue",
-					ControlGroup = 12,
+					SourceOp = "Instance_sNGon1",
+					Source = "Green",
+					ControlGroup = 13,
 					Default = 1,
 				},
 				Input19 = InstanceInput {
-					SourceOp = "Instance_sRectangle1",
-					Source = "Alpha",
-					ControlGroup = 12,
+					SourceOp = "Instance_sNGon1",
+					Source = "Blue",
+					ControlGroup = 13,
 					Default = 1,
-				}
+				},
+				Input20 = InstanceInput {
+					SourceOp = "Instance_sNGon1",
+					Source = "Alpha",
+					ControlGroup = 13,
+					Default = 1,
+				},
 			},
 			Outputs = {
 				MainOutput1 = InstanceOutput {
@@ -133,7 +141,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 165, -82.5 },
+				Pos = { 165, -49.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -141,14 +149,15 @@
 					AutoSnap = true,
 					RemoveRouters = true
 				},
-				Size = { 456, 217.206, 228, 24.2424 },
+				Size = { 456, 217.413, 228, 24.2424 },
 				Direction = "Horizontal",
 				PipeStyle = "Direct",
 				Scale = 1,
 				Offset = { 0, 0 }
 			},
 			Tools = ordered() {
-				sRectangle1 = sRectangle {
+				sNGon1 = sNGon {
+					CtrlWZoom = false,
 					CtrlWShown = false,
 					Inputs = {
 						JoinStyle = Input { Value = 2, },
@@ -296,13 +305,15 @@
 						Value = Input { Value = 1080, },
 					},
 				},
-				Instance_sRectangle1 = sRectangle {
+				Instance_sNGon1 = sNGon {
 					CtrlWShown = false,
-					SourceOp = "sRectangle1",
+					SourceOp = "sNGon1",
 					Inputs = {
 						Solid = Input { Value = 0, },
 						BorderWidth = Input { },
 						CapStyle = Input { },
+						WritePosition = Input { },
+						WriteLength = Input { },
 						Red = Input { },
 						Green = Input { Value = 0, },
 						Blue = Input { Value = 0, },
@@ -314,37 +325,7 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -165, 34.2576 } },
 				},
-				sRender1 = sRender {
-					CtrlWShown = false,
-					Inputs = {
-						Width = Input {
-							SourceOp = "Publish4",
-							Source = "Value",
-						},
-						Height = Input {
-							SourceOp = "Publish5",
-							Source = "Value",
-						},
-						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-						Input = Input {
-							SourceOp = "sRectangle1",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { -55, 133.258 } },
-				},
-				AlphaMultiply1 = AlphaMultiply {
-					CtrlWShown = false,
-					Inputs = {
-						Input = Input {
-							SourceOp = "sRender1",
-							Source = "Output",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 55, 133.258 } },
-				},
 				Instance_sRender1 = sRender {
-					CtrlWZoom = false,
 					CtrlWShown = false,
 					SourceOp = "sRender1",
 					Inputs = {
@@ -354,7 +335,7 @@
 						["Gamut.ColorSpaceNest"] = Input { },
 						["Gamut.GammaSpaceNest"] = Input { },
 						Input = Input {
-							SourceOp = "Instance_sRectangle1",
+							SourceOp = "Instance_sNGon1",
 							Source = "Output",
 						},
 						["ShapeRasterizer.Nest"] = Input { },
@@ -382,6 +363,35 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 55, 34.2576 } },
 				},
+				sRender1 = sRender {
+					CtrlWShown = false,
+					Inputs = {
+						Width = Input {
+							SourceOp = "Publish4",
+							Source = "Value",
+						},
+						Height = Input {
+							SourceOp = "Publish5",
+							Source = "Value",
+						},
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sNGon1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 133.258 } },
+				},
+				AlphaMultiply1 = AlphaMultiply {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "sRender1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, 133.258 } },
+				},
 				Merge1 = Merge {
 					CtrlWShown = false,
 					Inputs = {
@@ -400,52 +410,52 @@
 			},
 			UserControls = ordered() {
 				Input10 = {
-					INP_DefaultX = 0.5,
-					INPID_PreviewControl = "CrosshairControl",
-					INP_DefaultY = 0.5,
-					LINKID_DataType = "Point",
-					ICS_ControlPage = "Controls",
-					INPID_InputControl = "OffsetControl",
-					CHC_Style = "NormalCross",
 					LINKS_Name = "Center",
-				},
-				Input2 = {
-					INP_MaxAllowed = 1000000,
-					INP_Integer = false,
-					INPID_InputControl = "SliderControl",
-					INP_MaxScale = 2,
-					INP_Default = 0.5,
-					INP_MinScale = 0,
-					INP_MinAllowed = 0,
-					LINKID_DataType = "Number",
+					LINKID_DataType = "Point",
+					INPID_InputControl = "OffsetControl",
+					INPID_PreviewControl = "CrosshairControl",
+					INP_DefaultX = 0.5,
+					INP_DefaultY = 0.5,
+					CHC_Style = "NormalCross",
 					ICS_ControlPage = "Controls",
-					LINKS_Name = "Width"
 				},
 				Input3 = {
-					INP_MaxAllowed = 1000000,
-					INP_Integer = false,
-					INPID_InputControl = "SliderControl",
-					INP_MaxScale = 2,
-					INP_Default = 0.5,
-					INP_MinScale = 0,
-					INP_MinAllowed = 0,
+					LINKS_Name = "Width",
 					LINKID_DataType = "Number",
-					ICS_ControlPage = "Controls",
-					LINKS_Name = "Height"
+					INPID_InputControl = "SliderControl",
+					INP_Default = 0.5,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 2,
+					INP_MinAllowed = 0,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				Input4 = {
+					LINKS_Name = "Height",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "SliderControl",
+					INP_Default = 0.5,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 2,
+					INP_MinAllowed = 0,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
 				},
 				Input5 = {
-					INP_MaxAllowed = 1000000,
-					INP_Integer = false,
-					INPID_InputControl = "ScrewControl",
-					INP_MaxScale = 360,
-					INP_Default = 0,
-					INPID_PreviewControl = "AngleControl",
-					INP_MinAllowed = -1000000,
+					LINKS_Name = "Angle",
 					LINKID_DataType = "Number",
-					ICS_ControlPage = "Controls",
+					INPID_InputControl = "ScrewControl",
+					INPID_PreviewControl = "AngleControl",
+					INP_Default = 0,
+					INP_Integer = false,
 					INP_MinScale = 0,
+					INP_MaxScale = 360,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
 					ACID_Center = "Input10",
-					LINKS_Name = "Angle"
+					ICS_ControlPage = "Controls"
 				}
 			}
 		}
