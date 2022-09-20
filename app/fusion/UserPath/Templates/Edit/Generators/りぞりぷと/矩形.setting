@@ -1,0 +1,449 @@
+{
+	Tools = ordered() {
+		Rectangle = GroupOperator {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "EditTemplates:\\Generators\\りぞりぷと\\"
+					}
+				},
+			},
+			Inputs = ordered() {
+				Input10 = InstanceInput {
+					SourceOp = "CtrlExpression_main",
+					Source = "p1",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Width",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Height",
+				},
+				Input5 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Angle",
+				},
+				Input4 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "CornerRadius",
+					Default = 0,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "ShapeSeparator",
+				},
+				Input6 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 6,
+					Default = 1,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Green",
+					ControlGroup = 6,
+					Default = 1,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Blue",
+					ControlGroup = 6,
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Alpha",
+					ControlGroup = 6,
+					Default = 1,
+				},
+				InputBorder = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Border",
+					Page = "Controls",
+				},
+				Input11 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "BorderWidth",
+				},
+				Input12 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "JoinStyle",
+					Name = "Border Style",
+					ControlGroup = 9,
+					Default = 2,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "CapStyle",
+					ControlGroup = 9,
+					Default = 1,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "WritePosition",
+					Default = 0,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "WriteLength",
+					Default = 1,
+				},
+				InputSp = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "ShapeSeparator",
+				},
+				Input16 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 12,
+					Default = 1,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Green",
+					ControlGroup = 12,
+					Default = 1,
+				},
+				Input18 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Blue",
+					ControlGroup = 12,
+					Default = 1,
+				},
+				Input19 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Alpha",
+					ControlGroup = 12,
+					Default = 1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 165, -82.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 456, 217.206, 228, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				sRectangle1 = sRectangle {
+					CtrlWShown = false,
+					Inputs = {
+						JoinStyle = Input { Value = 2, },
+						["Translate.X"] = Input {
+							SourceOp = "Expression1",
+							Source = "NumberResult",
+						},
+						["Translate.Y"] = Input {
+							SourceOp = "Expression2",
+							Source = "NumberResult",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -165, 133.258 } },
+					UserControls = ordered() {
+						Border = {
+							ICS_ControlPage = "Controls",
+							INP_Integer = true,
+							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
+							LBLC_NumInputs = 9,
+							INP_Default = 0,
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "Border",
+						}
+					}
+				},
+				Expression1 = Expression {
+					CtrlWZoom = false,
+					Inputs = {
+						p1 = Input {
+							SourceOp = "CtrlExpression_main",
+							Source = "PointResult",
+						},
+						NumberExpression = Input { Value = "p1x - 0.5", },
+						ShowNumber1 = Input { Value = 0, },
+						ShowNumber2 = Input { Value = 0, },
+						ShowNumber3 = Input { Value = 0, },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+				},
+				CtrlExpression_main = Expression {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						NumberExpression = Input { Value = "n1", },
+						PointExpressionX = Input { Value = "p1x", },
+						PointExpressionY = Input { Value = "p1y", },
+						ShowNumber1 = Input { Value = 0, },
+						NameforNumber1 = Input { Value = "Angle", },
+						ShowNumber2 = Input { Value = 0, },
+						ShowNumber3 = Input { Value = 0, },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						PointControls = Input { Value = 1, },
+						NameforPoint1 = Input { Value = "Center", },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+					UserControls = ordered() {
+						n1 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 360,
+							INP_Default = 0,
+							INPID_PreviewControl = "AngleControl",
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							INP_MinScale = 0,
+							ACID_Center = "p1",
+							LINKS_Name = "Angle"
+						}
+					}
+				},
+				Expression2 = Expression {
+					CtrlWZoom = false,
+					Inputs = {
+						p1 = Input {
+							SourceOp = "CtrlExpression_main",
+							Source = "PointResult",
+						},
+						n1 = Input {
+							SourceOp = "Publish4",
+							Source = "Value",
+						},
+						n2 = Input {
+							SourceOp = "Publish5",
+							Source = "Value",
+						},
+						NumberExpression = Input { Value = "(p1y -0.5) * n2 / n1", },
+						NumberControls = Input { Value = 1, },
+						NameforNumber1 = Input { Value = "Width", },
+						NameforNumber2 = Input { Value = "Height", },
+						ShowNumber3 = Input { Value = 0, },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						PointControls = Input { Value = 1, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+				},
+				Publish4 = PublishNumber {
+					CtrlWZoom = false,
+					Inputs = {
+						Value = Input { Value = 1920, },
+					},
+				},
+				Publish5 = PublishNumber {
+					CtrlWZoom = false,
+					Inputs = {
+						Value = Input { Value = 1080, },
+					},
+				},
+				Instance_sRectangle1 = sRectangle {
+					CtrlWShown = false,
+					SourceOp = "sRectangle1",
+					Inputs = {
+						Solid = Input { Value = 0, },
+						BorderWidth = Input { },
+						CapStyle = Input { },
+						Red = Input { },
+						Green = Input { Value = 0, },
+						Blue = Input { Value = 0, },
+						Alpha = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -165, 34.2576 } },
+				},
+				sRender1 = sRender {
+					CtrlWShown = false,
+					Inputs = {
+						Width = Input {
+							SourceOp = "Publish4",
+							Source = "Value",
+						},
+						Height = Input {
+							SourceOp = "Publish5",
+							Source = "Value",
+						},
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sRectangle1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 133.258 } },
+				},
+				AlphaMultiply1 = AlphaMultiply {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "sRender1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, 133.258 } },
+				},
+				Instance_sRender1 = sRender {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					SourceOp = "sRender1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						Input = Input {
+							SourceOp = "Instance_sRectangle1",
+							Source = "Output",
+						},
+						["ShapeRasterizer.Nest"] = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 34.2576 } },
+				},
+				Instance_AlphaMultiply1 = AlphaMultiply {
+					CtrlWShown = false,
+					SourceOp = "AlphaMultiply1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						Input = Input {
+							SourceOp = "Instance_sRender1",
+							Source = "Output",
+						},
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, 34.2576 } },
+				},
+				Merge1 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "AlphaMultiply1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Instance_AlphaMultiply1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 133.258 } },
+				}
+			},
+			UserControls = ordered() {
+				Input10 = {
+					INP_DefaultX = 0.5,
+					INPID_PreviewControl = "CrosshairControl",
+					INP_DefaultY = 0.5,
+					LINKID_DataType = "Point",
+					ICS_ControlPage = "Controls",
+					INPID_InputControl = "OffsetControl",
+					CHC_Style = "NormalCross",
+					LINKS_Name = "Center",
+				},
+				Input2 = {
+					INP_MaxAllowed = 1000000,
+					INP_Integer = false,
+					INPID_InputControl = "SliderControl",
+					INP_MaxScale = 1,
+					INP_Default = 0.5,
+					INP_MinScale = 0,
+					INP_MinAllowed = 0,
+					LINKID_DataType = "Number",
+					ICS_ControlPage = "Controls",
+					LINKS_Name = "Width"
+				},
+				Input3 = {
+					INP_MaxAllowed = 1000000,
+					INP_Integer = false,
+					INPID_InputControl = "SliderControl",
+					INP_MaxScale = 1,
+					INP_Default = 0.5,
+					INP_MinScale = 0,
+					INP_MinAllowed = 0,
+					LINKID_DataType = "Number",
+					ICS_ControlPage = "Controls",
+					LINKS_Name = "Height"
+				},
+				Input5 = {
+					INP_MaxAllowed = 1000000,
+					INP_Integer = false,
+					INPID_InputControl = "ScrewControl",
+					INP_MaxScale = 360,
+					INP_Default = 0,
+					INPID_PreviewControl = "AngleControl",
+					INP_MinAllowed = -1000000,
+					LINKID_DataType = "Number",
+					ICS_ControlPage = "Controls",
+					INP_MinScale = 0,
+					ACID_Center = "Input10",
+					LINKS_Name = "Angle"
+				}
+			}
+		}
+	}
+}
