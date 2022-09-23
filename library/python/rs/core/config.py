@@ -1,4 +1,6 @@
 import json
+import os
+
 import dataclasses
 from pathlib import Path
 
@@ -19,6 +21,14 @@ RESOLVE_SET_PATH = APP_SET_PATH.joinpath('resolve')
 
 PYTHON_INSTALL_PATH: Path = PYTHONW_EXE_PATH.parent
 PYTHON_EXE_PATH = PYTHON_INSTALL_PATH.joinpath('python.exe')
+
+APPDATA_PATH = Path(os.path.expandvars('$APPDATA'))
+RESOLVE_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'DaVinci Resolve', 'Support', 'Fusion')
+FUSION_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'Fusion')
+
+
+def get_user_path(is_resolve: bool):
+    return RESOLVE_USER_PATH if is_resolve else FUSION_USER_PATH
 
 
 class DataList(list):

@@ -20,7 +20,7 @@ from PySide2.QtWidgets import (
 
 from rs.core import (
     config,
-    pipe as p,
+    pipe as p, util,
 )
 from rs.gui import (
     appearance,
@@ -133,10 +133,51 @@ def add_node(comp, pre, pos_x, pos_y, size_x, size_y, data, name, p_name, index)
     return xf, list(reversed(base_node_list)), user_controls, pos_x
 
 
+def add_node_sw(comp, base_nodes, pos_x, pos_y, data, name, p_name, index):
+    flow = comp.CurrentFrame.FlowView
+    swf = comp.AddTool('Fuse.Switch', pos_x * X_OFFSET, pos_y * Y_OFFSET)
+    swf.SetAttrs({'TOOLS_Name': name})
+    pos_x += 1
+    pos_y -= 2
+    user_controls = {}
+    ctrl_name = part2en(name) + '_Slider'
+    imp_def = len(data) - 1 if name in ADD_NULL else 0
+    user_controls[ctrl_name] = {
+        'LINKID_DataType': 'Number',
+        'INPID_InputControl': 'SliderControl',
+        'LINKS_Name': name,
+        'INP_Integer': True,
+        'INP_Default': imp_def,
+        'INP_MinScale': 0,
+        'INP_MaxScale': len(data) - 1,
+        'ICS_ControlPage': 'User',
+    }
+    sw_cnt = 0
+    base_node_list = []
+    for key, lst in data.items():
+        if len(lst) - 1 < index:
+            node = base_nodes[sw_cnt]
+        else:
+            node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
+            node.Clip[1] = comp.ReverseMapPath(str(lst[index]).replace('/', '\\'))
+            node.Loop[1] = 1
+            node.PostMultiplyByAlpha = 0
+        swf.ConnectInput('Input%d' % (sw_cnt + 1), node)
+        pos_x += 1
+        sw_cnt += 1
+        base_node_list.append(node)
+    pos_x -= 1
+    swf.Which.SetExpression('%s.%s + 1' % (p_name, ctrl_name))
+    _x, _y = flow.GetPosTable(swf).values()
+    flow.SetPos(swf, pos_x, _y)
+    return swf, base_node_list, user_controls, pos_x
+
+
 @dataclasses.dataclass
 class ConfigData(config.Data):
     src_dir: str = ''
     dst_dir: str = ''
+    use_sw: bool = False
 
 
 class MainWindow(QMainWindow):
@@ -165,6 +206,16 @@ class MainWindow(QMainWindow):
 
         self.ui.srcToolButton.clicked.connect(partial(self.toolButton_clicked, self.ui.srcLineEdit))
         self.ui.dstToolButton.clicked.connect(partial(self.toolButton_clicked, self.ui.dstLineEdit))
+
+        self.ui.openSiteButton.clicked.connect(partial(
+            util.open_url,
+            'https://www.steakunderwater.com/VFXPedia/96.0.243.189/indexae7c.html',
+        ))
+        user_path = config.get_user_path(self.fusion.GetResolve() is not None)
+        self.ui.openFuseDirButton.clicked.connect(partial(
+            util.open_directory,
+            user_path.joinpath('Fuses'),
+        ))
 
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.importButton.clicked.connect(self.import_chara, Qt.QueuedConnection)
@@ -371,63 +422,86 @@ class MainWindow(QMainWindow):
             self.add2log('処理中(読み込み,%s)' % part)
             pos_x += 2
             pre_pos_x = pos_x
-            node, base_node_list, uc, pos_x = add_node(
-                comp, None, pos_x, pos_y, width, height, dst_data[part], part, xf.Name, 0
-            )
-            if max_size[part] > 1 and part in [EYE, MOUTH]:
-                _pre_node = None
-                _node = node
-                for i in range(1, max_size[part]):
-                    dx = comp.AddTool(
-                        'Dissolve',
-                        (pos_x + 4) * X_OFFSET,
-                        (pos_y - 3 * (i - 1)) * Y_OFFSET
-                    )
+            if data.use_sw:
+                node, base_node_list, uc, pos_x = add_node_sw(
+                    comp, {}, pos_x, pos_y, dst_data[part], part, xf.Name, 0
+                )
+                if max_size[part] > 1 and part in [EYE, MOUTH]:
+                    _pre_node = None
+                    _node = node
+                    swf = comp.AddTool('Fuse.Switch', (pos_x + 4) * X_OFFSET, pos_y * Y_OFFSET)
+                    swf.ConnectInput('Input%d' % 1, _node)
                     if part == MOUTH:
-                        dx.Mix.SetExpression(
-                            'iif((%s.%s * %d) > %d, 1, 0)' % (xf.Name, 'MouthOpen', max_size[part], i)
-                        )
+                        swf.Which.SetExpression('%s.%s * %d + 0.5' % (xf.Name, 'MouthOpen', max_size[part]))
                     if part == EYE:
-                        dx.Mix.SetExpression(
-                            'iif((%s.%s * %d) > %d, 1, 0)' % (xf.Name, 'EyeClose', max_size[part], i)
+                        swf.Which.SetExpression('%s.%s * %d + 0.5' % (xf.Name, 'EyeClose', max_size[part]))
+                    for i in range(1, max_size[part]):
+                        _node, _, _, _ = add_node_sw(
+                            comp, base_node_list, pre_pos_x, pos_y + (-3 * i),
+                            dst_data[part], part, xf.Name, i
                         )
-                    if _pre_node is not None:
-                        _pre_node.ConnectInput('Foreground', dx)
-                    if _node is not None:
-                        dx.ConnectInput('Background', _node)
-                    _pre_node = dx
-                    # dst_data[part]を整理
-                    # 後ろの一枚しか存在しない部分を除去する。
-                    _dct = {}
-                    _add_flag = False
-                    for _key, _lst in p.pipe(
-                            dst_data[part].items(),
+                        swf.ConnectInput('Input%d' % (i + 1), _node)
+                    node = swf
+                    pos_x += 4
+            else:
+                node, base_node_list, uc, pos_x = add_node(
+                    comp, None, pos_x, pos_y, width, height, dst_data[part], part, xf.Name, 0
+                )
+                if max_size[part] > 1 and part in [EYE, MOUTH]:
+                    _pre_node = None
+                    _node = node
+                    for i in range(1, max_size[part]):
+                        dx = comp.AddTool(
+                            'Dissolve',
+                            (pos_x + 4) * X_OFFSET,
+                            (pos_y - 3 * (i - 1)) * Y_OFFSET
+                        )
+                        if part == MOUTH:
+                            dx.Mix.SetExpression(
+                                'iif((%s.%s * %d) > %d, 1, 0)' % (xf.Name, 'MouthOpen', max_size[part], i)
+                            )
+                        if part == EYE:
+                            dx.Mix.SetExpression(
+                                'iif((%s.%s * %d) > %d, 1, 0)' % (xf.Name, 'EyeClose', max_size[part], i)
+                            )
+                        if _pre_node is not None:
+                            _pre_node.ConnectInput('Foreground', dx)
+                        if _node is not None:
+                            dx.ConnectInput('Background', _node)
+                        _pre_node = dx
+
+                        # dst_data[part]を整理
+                        # 後ろの一枚しか存在しない部分を除去する。
+                        _dct = {}
+                        _add_flag = False
+                        for _key, _lst in p.pipe(
+                                dst_data[part].items(),
+                                list,
+                                reversed,
+                        ):
+                            if len(_lst) > 1 or _add_flag:
+                                _dct[_key] = _lst
+                            if len(_lst) > 1:
+                                _add_flag = True
+                        # 反転
+                        _dct = p.pipe(
+                            _dct.items(),
                             list,
                             reversed,
-                    ):
-                        if len(_lst) > 1 or _add_flag:
-                            _dct[_key] = _lst
-                        if len(_lst) > 1:
-                            _add_flag = True
-                    # 反転
-                    _dct = p.pipe(
-                        _dct.items(),
-                        list,
-                        reversed,
-                        list,
-                        dict,
-                    )
+                            list,
+                            dict,
+                        )
 
-                    _node, _, _, _ = add_node(
-                        comp, base_node_list[len(_dct)],
-                        pre_pos_x + len(dst_data[part]) - len(_dct), pos_y + (-3 * i),
-                        width, height, _dct, part, xf.Name, i
-                    )
-                    if i == 1:
-                        node = dx
-                    if i == max_size[part] - 1:
-                        dx.ConnectInput('Foreground', _node)
-                pos_x += 4
+                        _node, _, _, _ = add_node(
+                            comp, base_node_list[len(_dct)],
+                            pre_pos_x + len(dst_data[part]) - len(_dct), pos_y + (-3 * i),
+                            width, height, _dct, part, xf.Name, i
+                        )
+                        if i == 1:
+                            node = dx
+                        if i == max_size[part] - 1:
+                            dx.ConnectInput('Foreground', _node)
+                    pos_x += 4
             for key in uc.keys():
                 user_controls[key] = uc[key]
             mg = comp.AddTool('Merge', pos_x * X_OFFSET, (pos_y + 1) * Y_OFFSET)
@@ -497,11 +571,13 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.srcLineEdit.setText(c.src_dir)
         self.ui.dstLineEdit.setText(c.dst_dir)
+        self.ui.useSwichCheckBox.setChecked(c.use_sw)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.src_dir = self.ui.srcLineEdit.text()
         c.dst_dir = self.ui.dstLineEdit.text()
+        c.use_sw = self.ui.useSwichCheckBox.isChecked()
 
         return c
 
