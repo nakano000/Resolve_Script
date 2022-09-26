@@ -1,0 +1,279 @@
+{
+	Tools = ordered() {
+		LightSweep = GroupOperator {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\"
+					}
+				},
+			},
+			Inputs = ordered() {
+				Input5 = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "Speed",
+					Page = "Controls",
+					Default = 1.5,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "StartPos",
+					Page = "Controls",
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "EndPos",
+					Page = "Controls",
+					Default = 1,
+				},
+				InputSp01 = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "MaskSeparator",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "SoftEdge",
+					Default = 0.04,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "Width",
+					Default = 0.15,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "Angle",
+					Default = -10,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "MaskSeparator",
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Input",
+				},
+				Input8 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Threshold",
+					Default = 0,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Gain",
+					Default = 2,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "LockXY",
+					Default = 1,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "XGlowSize",
+					Default = 10,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "YGlowSize",
+					Default = 10,
+				},
+				InputCS = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "ColorScale",
+					Default = 0,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "RedScale",
+					Default = 1,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "GreenScale",
+					Default = 1,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "BlueScale",
+					Default = 1,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "AlphaScale",
+					Default = 1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "SoftGlow1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 330, 115.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 216.008, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Rectangle1 = RectangleMask {
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						SoftEdge = Input { Value = 0.04, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Center = Input {
+							SourceOp = "Expression_Center",
+							Source = "PointResult",
+						},
+						Width = Input { Value = 0.15, },
+						Height = Input { Value = 2, },
+						Angle = Input { Value = -10, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 34.2576 } },
+					UserControls = ordered() {
+						Speed = {
+							ICS_ControlPage = "Controls",
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							LINKID_DataType = "Number",
+							INP_MinScale = 0,
+							INP_Default = 1.5,
+							INP_MaxScale = 2,
+							LINKS_Name = "Speed",
+						},
+						StartPos = {
+							ICS_ControlPage = "Controls",
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							LINKID_DataType = "Number",
+							INP_MinScale = 0,
+							INP_Default = 0,
+							INP_MaxScale = 1,
+							LINKS_Name = "StartPos",
+						},
+						EndPos = {
+							ICS_ControlPage = "Controls",
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							LINKID_DataType = "Number",
+							INP_MinScale = 0,
+							INP_Default = 1,
+							INP_MaxScale = 1,
+							LINKS_Name = "EndPos",
+						}
+					}
+				},
+				Expression_Center = Expression {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						p1 = Input { Value = { 0, 0.5 }, },
+						n1 = Input {
+							SourceOp = "Calculation_TimeOffset",
+							Source = "Result",
+						},
+						n2 = Input { Expression = " Rectangle1.StartPos", },
+						n3 = Input {
+							Value = 1,
+							Expression = " Rectangle1.EndPos",
+						},
+						PointExpressionX = Input { Value = "n1 * (n3 - n2) + n2", },
+						PointExpressionY = Input { Value = "0.5", },
+						NameforNumber1 = Input { Value = "Input", },
+						NameforNumber2 = Input { Value = "S", },
+						NameforNumber3 = Input { Value = "E", },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						ShowPoint1 = Input { Value = 0, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+				},
+				Calculation_TimeOffset = Calculation {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "Calculation_TimeScale",
+							Source = "Result",
+						},
+						Operator = Input { Value = 9, },
+						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart", },
+					},
+				},
+				Calculation_TimeScale = Calculation {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "Calculation_TimeScaleFirstOperand",
+							Source = "Value",
+						},
+						Operator = Input { Value = 9, },
+						SecondOperand = Input { Value = 1, },
+						FirstOperandTimeScale = Input {
+							Value = 1.5,
+							Expression = "Rectangle1.Speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate",
+						},
+					},
+				},
+				Calculation_TimeScaleFirstOperand = BezierSpline {
+					SplineColor = { Red = 0, Green = 255, Blue = 0 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 10, 0.333333333333333 }, Flags = { Linear = true } },
+						[30] = { 1, LH = { 20, 0.666666666666667 }, Flags = { Linear = true } }
+					}
+				},
+				SoftGlow1 = SoftGlow {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "Rectangle1",
+							Source = "Mask",
+						},
+						Blend = Input {
+							Value = 0,
+							Expression = "iif(Rectangle1.Center.X < Rectangle1.EndPos, 1, 0)",
+						},
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						Input = Input {
+							SourceOp = "Text1",
+							Source = "Output",
+						},
+						Comments = Input { Value = " ", },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 133.258 } },
+				}
+			},
+		}
+	}
+}
