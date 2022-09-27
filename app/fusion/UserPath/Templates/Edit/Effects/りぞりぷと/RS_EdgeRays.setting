@@ -1,0 +1,363 @@
+{
+	Tools = ordered() {
+		EdgeRays = GroupOperator {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\"
+					}
+				},
+			},
+			Inputs = ordered() {
+				Input3 = InstanceInput {
+					SourceOp = "Calculation_Amount",
+					Source = "FirstOperand",
+					MaxScale = 0.01,
+					Page = "Controls",
+					Default = 0.004,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Expression_Center",
+					Source = "n2",
+					Page = "Controls",
+					Default = 0,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Expression_Center",
+					Source = "n3",
+					Page = "Controls",
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftRed",
+					Name = "Color",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftGreen",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftBlue",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "ChannelBooleans2",
+					Source = "Blend",
+					Default = 0.2,
+				},
+				InputRays = InstanceInput {
+					SourceOp = "Rays1",
+					Source = "Rays",
+				},
+				Input8 = InstanceInput {
+					SourceOp = "Rays1",
+					Source = "Center",
+				},
+				Input13 = InstanceInput {
+					SourceOp = "Merge1",
+					Source = "Blend",
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "Rays1",
+					Source = "Decay",
+					Default = 0.01,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "Rays1",
+					Source = "Weight",
+					Default = 3,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "Rays1",
+					Source = "Exposure",
+					Default = 1,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "Rays1",
+					Source = "Threshold",
+					Default = 0.8,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter1",
+					Source = "Input",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 275, 49.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 731, 371.917, 365.5, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							SourceOp = "Expression_Center",
+							Source = "PointResult",
+						},
+						Input = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -303, 193.758 } },
+				},
+				Expression_Center = Expression {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						n1 = Input {
+							SourceOp = "Calculation_Amount",
+							Source = "Result",
+						},
+						PointExpressionX = Input { Value = "(n1 * 2) * n2 + 0.5 ", },
+						PointExpressionY = Input { Value = "(n1 * 2) * n3 + 0.5 ", },
+						NumberControls = Input { Value = 1, },
+						NameforNumber1 = Input { Value = "Input", },
+						NameforNumber2 = Input { Value = "X", },
+						NameforNumber3 = Input { Value = "Y", },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						ShowPoint1 = Input { Value = 0, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+					UserControls = ordered() {
+						n2 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "SliderControl",
+							INP_MaxScale = 1,
+							INP_Default = 0,
+							INP_MinScale = -1,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "X"
+						},
+						n3 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "SliderControl",
+							INP_MaxScale = 1,
+							INP_Default = 0,
+							INP_MinScale = -1,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "Y"
+						}
+					}
+				},
+				Calculation_Amount = Calculation {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						Operator = Input { Value = 2, },
+						SecondOperand = Input { Value = -1, },
+						FirstOperand = Input { Value = 0.004, }
+					},
+					UserControls = ordered() {
+						FirstOperand = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 0.01,
+							INP_Default = 0.004,
+							INP_MinScale = 0,
+							INP_MinAllowed = 0,
+							LINKID_DataType = "Number",
+							LINKS_Name = "Thickness"
+						}
+					}
+				},
+				Background1 = Background {
+					CtrlWShown = false,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 1, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 82, 94.7576 } },
+				},
+				ChannelBooleans2 = ChannelBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						Blend = Input { Value = 0.2, },
+						ToAlpha = Input { Value = 8, },
+						Background = Input {
+							SourceOp = "ChannelBooleans1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 82, 193.758 } },
+				},
+				Rays1 = Fuse.OCLRays {
+					Inputs = {
+						Image = Input {
+							SourceOp = "AlphaMultiply1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 302, 193.758 } },
+					UserControls = ordered() {
+						Rays = {
+							LINKS_Name = "Rays",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							INP_Default = 1,
+							INP_Integer = true,
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 6,
+							INP_External = false,
+						}
+					}
+				},
+				Merge1 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Rays1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 302, 292.758 } },
+				},
+				AlphaMultiply1 = AlphaMultiply {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "ChannelBooleans2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 192, 193.758 } },
+				},
+				ChannelBooleans1 = ChannelBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						ToRed = Input { Value = 5, },
+						ToGreen = Input { Value = 6, },
+						ToBlue = Input { Value = 7, },
+						Background = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Bitmap1",
+							Source = "Mask",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -83, 193.758 } },
+				},
+				Bitmap1 = BitmapMask {
+					CtrlWShown = false,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "Bitmap2",
+							Source = "Mask",
+						},
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "Invert" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Image = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -83, 28.7576 } },
+				},
+				ErodeDilate1 = ErodeDilate {
+					CtrlWShown = false,
+					Inputs = {
+						XAmount = Input {
+							SourceOp = "Calculation_Amount",
+							Source = "Result",
+						},
+						Input = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -303, 94.7576 } },
+				},
+				Bitmap2 = BitmapMask {
+					CtrlWShown = false,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Image = Input {
+							SourceOp = "ErodeDilate1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -303, 28.7576 } },
+				},
+				PipeRouter1 = PipeRouter {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "Text1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = PipeRouterInfo { Pos = { -193, 292.758 } },
+				}
+			},
+		}
+	}
+}
