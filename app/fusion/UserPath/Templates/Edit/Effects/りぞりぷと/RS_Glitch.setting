@@ -1,0 +1,414 @@
+{
+	Tools = ordered() {
+		Glitch = GroupOperator {
+			Inputs = ordered() {
+				Input6 = InstanceInput {
+					SourceOp = "Calculation_XRefraction",
+					Source = "FirstOperand",
+					Page = "Controls",
+					Default = 1.60000002384186,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "Calculation_YRefraction",
+					Source = "FirstOperand",
+					Page = "Controls",
+					Default = 1.60000002384186,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Expression_FastNoiseCenter",
+					Source = "n2",
+					Page = "Controls",
+					Default = 4,
+				},
+				InputSp = InstanceInput {
+					SourceOp = "Displace_A",
+					Source = "Sp",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "MosaicBlur1",
+					Source = "PixelFrequency",
+					MinScale = 0.2000000029802,
+					Default = 200,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "MosaicBlur1",
+					Source = "aliasing",
+					Default = 1,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "MosaicBlur1",
+					Source = "aspect",
+					MinScale = 0.2000000029802,
+					Default = 5,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Gamma",
+					Default = 0.25,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "Displace_A",
+					Source = "Input",
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Instance_DisplaceA",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Instance_FastNoise1 = FastNoise {
+					NameSet = true,
+					SourceOp = "FastNoise1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						NoiseNest = Input { },
+						Angle = Input { Value = -24, },
+						Color1Nest = Input { },
+						Color2Nest = Input { },
+						GradientNest = Input { },
+						NoiseBrightnessMap = Input { },
+						NoiseDetailMap = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 137.5, -280.5 } },
+				},
+				Expression_FastNoiseCenter = Expression {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						n1 = Input {
+							SourceOp = "Expression_FastNoiseCenterInput",
+							Source = "Value",
+						},
+						PointExpressionX = Input { Value = "int( n1 / n2)", },
+						PointExpressionY = Input { Value = "0.5\n", },
+						NumberControls = Input { Value = 1, },
+						NameforNumber1 = Input { Value = "Input", },
+						NameforNumber2 = Input { Value = "間隔(フレーム)", },
+						ShowNumber3 = Input { Value = 0, },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						ShowPoint1 = Input { Value = 0, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+						n2 = Input { Value = 4, }
+					},
+					UserControls = ordered() {
+						n2 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = true,
+							INPID_InputControl = "SliderControl",
+							INP_MaxScale = 15,
+							INP_Default = 2,
+							INP_MinScale = 1,
+							INP_MinAllowed = 1,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "間隔(フレーム)"
+						}
+					}
+				},
+				Expression_FastNoiseCenterInput = BezierSpline {
+					SplineColor = { Red = 233, Green = 19, Blue = 5 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 10, 10 }, Flags = { Linear = true, Loop = true } },
+						[30] = { 30, LH = { 20, 20 }, Flags = { Linear = true, Loop = true } }
+					}
+				},
+				ChannelBooleans1 = ChannelBoolean {
+					Inputs = {
+						ToRed = Input { Value = 5, },
+						ToBlue = Input { Value = 17, },
+						ToAlpha = Input { Value = 16, },
+						Background = Input {
+							SourceOp = "FastNoise1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Instance_FastNoise1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 302.5, -280.5 } },
+				},
+				FastNoise1 = FastNoise {
+					NameSet = true,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Depth = Input { Value = 3, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Center = Input {
+							SourceOp = "Expression_FastNoiseCenter",
+							Source = "PointResult",
+						},
+						XScale = Input { Value = 40, },
+						YScale = Input { Value = 20, },
+						Color1Alpha = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 137.5, -181.5 } },
+				},
+				MosaicBlur1 = ofx.com.blackmagicdesign.resolvefx.MosaicBlur {
+					NameSet = true,
+					Inputs = {
+						ProcessBlue = Input { Value = 0, },
+						ProcessAlpha = Input { Value = 0, },
+						Source = Input {
+							SourceOp = "ChannelBooleans1",
+							Source = "Output",
+						},
+						PixelFrequency = Input { Value = 200, },
+						SmoothStrength = Input { Value = 0, },
+						cellShape = Input { Value = FuID { "CellShapeSquare" }, },
+						aliasing = Input { Value = 1, },
+						advancedControlsGroup = Input { Value = 1, },
+						xOffset = Input { Value = 0, },
+						yOffset = Input { Value = 0, },
+						aspect = Input { Value = 5, },
+						BorderType = Input { Value = FuID { "BORDER_TYPE_REFLECT" }, },
+						isAntiAlias = Input { Value = 0, },
+						isBinarizeAlpha = Input { Value = 0, },
+						isLegacyMethod = Input { Value = 0, },
+						BlendAmount = Input { Value = 0, },
+						blendGroup = Input { Value = 0, },
+						blendIn = Input { Value = 1, },
+						blend = Input { Value = 0, },
+						ignoreContentShape = Input { Value = 0, },
+						legacyIsProcessRGBOnly = Input { Value = 0, },
+						refreshTrigger = Input { Value = 1, },
+						resolvefxVersion = Input { Value = "3.0", },
+					},
+					ViewInfo = OperatorInfo { Pos = { 412.5, -280.5 } },
+				},
+				BrightnessContrast_SetRange1 = BrightnessContrast {
+					NameSet = true,
+					Inputs = {
+						Blue = Input { Value = 0, },
+						High = Input { Value = 0.5, },
+						Input = Input {
+							SourceOp = "MosaicBlur1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 412.5, -181.5 } },
+				},
+				InvertColor1 = ofx.com.blackmagicdesign.resolvefx.InvertColor {
+					Inputs = {
+						Source = Input {
+							SourceOp = "BrightnessContrast_SetRange1",
+							Source = "Output",
+						},
+						isInvertR = Input { Value = 1, },
+						isInvertG = Input { Value = 1, },
+						isInvertB = Input { Value = 0, },
+						isInvertA = Input { Value = 0, },
+						blendGroup = Input { Value = 0, },
+						blendIn = Input { Value = 1, },
+						blend = Input { Value = 0, },
+						ignoreContentShape = Input { Value = 0, },
+						legacyIsProcessRGBOnly = Input { Value = 0, },
+						refreshTrigger = Input { Value = 1, },
+						resolvefxVersion = Input { Value = "1.0", },
+					},
+					ViewInfo = OperatorInfo { Pos = { 412.5, -82.4998 } },
+				},
+				BrightnessContrast_SetRange2 = BrightnessContrast {
+					NameSet = true,
+					Inputs = {
+						Blue = Input { Value = 0, },
+						Low = Input { Value = 0.5, },
+						Input = Input {
+							SourceOp = "MosaicBlur1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 522.5, -181.5 } },
+				},
+				Instance_BrightnessContrast1 = BrightnessContrast {
+					NameSet = true,
+					SourceOp = "BrightnessContrast1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						Input = Input {
+							SourceOp = "BrightnessContrast_SetRange2",
+							Source = "Output",
+						},
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 522.5, 16.5002 } },
+				},
+				BrightnessContrast1 = BrightnessContrast {
+					NameSet = true,
+					Inputs = {
+						Blue = Input { Value = 0, },
+						Gamma = Input { Value = 0.25, },
+						Input = Input {
+							SourceOp = "InvertColor1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 412.5, 16.5002 } },
+				},
+				Instance_DisplaceA = Displace {
+					CtrlWZoom = false,
+					NameSet = true,
+					SourceOp = "Displace_A",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						XRefraction = Input {
+							SourceOp = "Calculation1",
+							Source = "Result",
+						},
+						YRefraction = Input {
+							SourceOp = "Calculation2",
+							Source = "Result",
+						},
+						Input = Input {
+							SourceOp = "Displace_A",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Instance_BrightnessContrast1",
+							Source = "Output",
+						},
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 522.5, 115.5 } },
+				},
+				Calculation1 = Calculation {
+					CtrlWZoom = false,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "Calculation_XRefraction",
+							Source = "Result",
+						},
+						Operator = Input { Value = 2, },
+						SecondOperand = Input { Value = -1, },
+					},
+				},
+				Calculation_XRefraction = Calculation {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						Operator = Input { Value = 9, },
+						FirstOperand = Input { Value = 1.6, }
+					},
+					UserControls = ordered() {
+						FirstOperand = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "SliderControl",
+							INP_MaxScale = 2,
+							INP_Default = 1.60000002384186,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "X Refraction"
+						}
+					}
+				},
+				Calculation2 = Calculation {
+					CtrlWZoom = false,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "Calculation_YRefraction",
+							Source = "Result",
+						},
+						Operator = Input { Value = 2, },
+						SecondOperand = Input { Value = -1, },
+					},
+				},
+				Calculation_YRefraction = Calculation {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						Operator = Input { Value = 9, },
+						FirstOperand = Input { Value = 1.6, }
+					},
+					UserControls = ordered() {
+						FirstOperand = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "SliderControl",
+							INP_MaxScale = 2,
+							INP_Default = 1.60000002384186,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "Y Refraction"
+						}
+					}
+				},
+				Displace_A = Displace {
+					NameSet = true,
+					Inputs = {
+						Type = Input { Value = 1, },
+						XRefraction = Input {
+							SourceOp = "Calculation_XRefraction",
+							Source = "Result",
+						},
+						YRefraction = Input {
+							SourceOp = "Calculation_YRefraction",
+							Source = "Result",
+						},
+						Foreground = Input {
+							SourceOp = "BrightnessContrast1",
+							Source = "Output",
+						},
+						Sp = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 412.5, 115.5 } },
+					UserControls = ordered() {
+						Sp = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							LBLC_DropDownButton = true,
+							INPID_InputControl = "LabelControl",
+							LBLC_NumInputs = 4,
+							INP_MaxScale = 1,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							INP_External = false,
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "Source"
+						}
+					}
+				}
+			},
+		}
+	},
+	ActiveTool = "Glitch"
+}
