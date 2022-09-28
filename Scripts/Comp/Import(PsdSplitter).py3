@@ -86,7 +86,6 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
                 dct['INP_Default'] = cb_cnt
                 pub_dct['INP_Default'] = cb_cnt
                 pub_combobox_def = cb_cnt
-            # mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (xf.Name, cb_name, cb_cnt))
             exp = comp.AddTool('Expression')
             exp.NumberExpression = 'n1 == %d' % cb_cnt
             mg.ConnectInput('Blend', exp.NumberResult)
@@ -117,7 +116,6 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
                 'CBC_TriState': False,
                 'INP_Default': 1 if visible else 0,
                 'ICS_ControlPage': 'User',
-                # 'ICS_ControlPage': 'Controls',
             }
             mg.ConnectInput('Blend', pub)
             connect_list.append([uc_name, pub, 1 if visible else 0])
@@ -130,7 +128,6 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
         'INPID_InputControl': 'LabelControl',
         'LBLC_DropDownButton': True,
         'LBLC_NumInputs': len(user_controls),
-        # 'LBLC_NestLevel': nest_level,
         'INP_Default': 1,
         'ICS_ControlPage': 'User',
     }
@@ -155,9 +152,6 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
         'G': 0.431372549019608,
         'B': 0,
     }
-    # flow = comp.CurrentFrame.FlowView
-    # _x, _y = flow.GetPosTable(xf).values()
-    # flow.SetPos(xf, pos_x, _y)
     return xf, pos_x
 
 
