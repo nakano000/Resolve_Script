@@ -13,7 +13,6 @@
 				Input3 = InstanceInput {
 					SourceOp = "Calculation_Amount",
 					Source = "FirstOperand",
-					MaxScale = 0.01,
 					Page = "Controls",
 					Default = 0.004,
 				},
@@ -98,7 +97,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 275, 49.5 },
+				Pos = { 220, 49.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -106,7 +105,7 @@
 					AutoSnap = true,
 					RemoveRouters = true
 				},
-				Size = { 731, 371.917, 365.5, 24.2424 },
+				Size = { 731, 462.519, 365.5, 24.2424 },
 				Direction = "Horizontal",
 				PipeStyle = "Direct",
 				Scale = 1,
@@ -114,8 +113,6 @@
 			},
 			Tools = ordered() {
 				Transform1 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
 					Inputs = {
 						Center = Input {
 							SourceOp = "Expression_Center",
@@ -126,7 +123,7 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -303, 193.758 } },
+					ViewInfo = OperatorInfo { Pos = { -275, 181.5 } },
 				},
 				Expression_Center = Expression {
 					CtrlWZoom = false,
@@ -186,12 +183,10 @@
 					}
 				},
 				Calculation_Amount = Calculation {
-					CtrlWZoom = false,
 					NameSet = true,
 					Inputs = {
 						Operator = Input { Value = 2, },
 						SecondOperand = Input { Value = -1, },
-						FirstOperand = Input { Value = 0.004, }
 					},
 					UserControls = ordered() {
 						FirstOperand = {
@@ -203,13 +198,13 @@
 							INP_MinScale = 0,
 							INP_MinAllowed = 0,
 							LINKID_DataType = "Number",
-							LINKS_Name = "Thickness"
+							LINKS_Name = "Thickness",
 						}
 					}
 				},
 				Background1 = Background {
-					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 59, },
 						Width = Input { Value = 1920, },
 						Height = Input { Value = 1080, },
 						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
@@ -217,10 +212,9 @@
 						TopLeftGreen = Input { Value = 1, },
 						TopLeftBlue = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 82, 94.7576 } },
+					ViewInfo = OperatorInfo { Pos = { 55, 16.5 } },
 				},
 				ChannelBooleans2 = ChannelBoolean {
-					CtrlWShown = false,
 					Inputs = {
 						Blend = Input { Value = 0.2, },
 						ToAlpha = Input { Value = 8, },
@@ -233,7 +227,7 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 82, 193.758 } },
+					ViewInfo = OperatorInfo { Pos = { 55, 115.5 } },
 				},
 				Rays1 = Fuse.OCLRays {
 					Inputs = {
@@ -242,47 +236,44 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 302, 193.758 } },
+					ViewInfo = OperatorInfo { Pos = { 275, 115.5 } },
 					UserControls = ordered() {
 						Rays = {
-							LINKS_Name = "Rays",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
-							INP_Default = 1,
+							INP_External = false,
 							INP_Integer = true,
 							LBLC_DropDownButton = true,
+							LINKID_DataType = "Number",
 							LBLC_NumInputs = 6,
-							INP_External = false,
+							INP_Default = 1,
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "Rays",
 						}
 					}
 				},
 				Merge1 = Merge {
-					CtrlWShown = false,
 					Inputs = {
 						Background = Input {
 							SourceOp = "PipeRouter1",
 							Source = "Output",
 						},
 						Foreground = Input {
-							SourceOp = "Rays1",
+							SourceOp = "BrightnessContrast1",
 							Source = "Output",
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 302, 292.758 } },
+					ViewInfo = OperatorInfo { Pos = { 275, 313.5 } },
 				},
 				AlphaMultiply1 = AlphaMultiply {
-					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "ChannelBooleans2",
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 192, 193.758 } },
+					ViewInfo = OperatorInfo { Pos = { 165, 115.5 } },
 				},
 				ChannelBooleans1 = ChannelBoolean {
-					CtrlWShown = false,
 					Inputs = {
 						ToRed = Input { Value = 5, },
 						ToGreen = Input { Value = 6, },
@@ -296,10 +287,9 @@
 							Source = "Mask",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -83, 193.758 } },
+					ViewInfo = OperatorInfo { Pos = { -55, 115.5 } },
 				},
 				Bitmap1 = BitmapMask {
-					CtrlWShown = false,
 					Inputs = {
 						EffectMask = Input {
 							SourceOp = "Bitmap2",
@@ -316,10 +306,9 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -83, 28.7576 } },
+					ViewInfo = OperatorInfo { Pos = { -110, 16.5 } },
 				},
 				ErodeDilate1 = ErodeDilate {
-					CtrlWShown = false,
 					Inputs = {
 						XAmount = Input {
 							SourceOp = "Calculation_Amount",
@@ -330,10 +319,9 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -303, 94.7576 } },
+					ViewInfo = OperatorInfo { Pos = { -275, 82.5 } },
 				},
 				Bitmap2 = BitmapMask {
-					CtrlWShown = false,
 					Inputs = {
 						Filter = Input { Value = FuID { "Fast Gaussian" }, },
 						MaskWidth = Input { Value = 1920, },
@@ -345,17 +333,31 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -303, 28.7576 } },
+					ViewInfo = OperatorInfo { Pos = { -275, 16.5 } },
 				},
 				PipeRouter1 = PipeRouter {
-					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
-							SourceOp = "Text1",
+							SourceOp = "MediaIn1",
 							Source = "Output",
 						},
 					},
-					ViewInfo = PipeRouterInfo { Pos = { -193, 292.758 } },
+					ViewInfo = PipeRouterInfo { Pos = { -165, 313.5 } },
+				},
+				BrightnessContrast1 = BrightnessContrast {
+					Inputs = {
+						Red = Input { Value = 0, },
+						Green = Input { Value = 0, },
+						Blue = Input { Value = 0, },
+						Alpha = Input { Value = 1, },
+						ClipBlack = Input { Value = 1, },
+						ClipWhite = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "Rays1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, 214.5 } },
 				}
 			},
 		}
