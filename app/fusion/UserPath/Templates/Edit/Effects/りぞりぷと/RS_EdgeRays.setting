@@ -185,6 +185,7 @@
 				Calculation_Amount = Calculation {
 					NameSet = true,
 					Inputs = {
+						FirstOperand = Input { Value = 0.004, },
 						Operator = Input { Value = 2, },
 						SecondOperand = Input { Value = -1, },
 					},
