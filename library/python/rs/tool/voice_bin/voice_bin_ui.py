@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui' applies.
 #
-# Created: Sat Sep 17 20:39:16 2022
+# Created: Sun Oct  2 00:59:12 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(475, 696)
+        Form.resize(489, 696)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.tabWidget = QtWidgets.QTabWidget(Form)
@@ -106,6 +106,10 @@ class Ui_Form(object):
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.rebuildButton = QtWidgets.QPushButton(Form)
+        self.rebuildButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.rebuildButton.setObjectName("rebuildButton")
+        self.horizontalLayout.addWidget(self.rebuildButton)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem4)
         self.minimizeButton = QtWidgets.QToolButton(Form)
@@ -135,6 +139,8 @@ class Ui_Form(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.textTab), QtWidgets.QApplication.translate("Form", "テキスト+ 立ち絵", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("Form", "声フォルダ: ", None, -1))
         self.folderToolButton.setText(QtWidgets.QApplication.translate("Form", "...", None, -1))
+        self.rebuildButton.setToolTip(QtWidgets.QApplication.translate("Form", "閉じる", None, -1))
+        self.rebuildButton.setText(QtWidgets.QApplication.translate("Form", "リビルド データ", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("Form", "最小化", None, -1))
         self.minimizeButton.setText(QtWidgets.QApplication.translate("Form", "...", None, -1))
         self.closeButton.setToolTip(QtWidgets.QApplication.translate("Form", "閉じる", None, -1))

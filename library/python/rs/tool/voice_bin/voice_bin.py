@@ -18,7 +18,7 @@ from PySide2.QtWidgets import (
     QFileDialog,
     QFileSystemModel,
     QWidget,
-    QHeaderView,
+    QHeaderView, QProgressDialog,
 )
 
 from watchdog.observers.polling import PollingObserver
@@ -155,6 +155,7 @@ class Form(QWidget):
         self.ui.tatieDragButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.wDragButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.charaButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.rebuildButton.setStyleSheet(appearance.other_stylesheet)
 
         # tree view
         for v in [self.ui.treeView, self.ui.wavTreeView]:
@@ -189,6 +190,7 @@ class Form(QWidget):
 
         # event
         self.ui.charaButton.clicked.connect(self.chara_window.show)
+        self.ui.rebuildButton.clicked.connect(self.rebuild_all, Qt.QueuedConnection)
         self.ui.minimizeButton.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
 
         self.ui.treeView.doubleClicked.connect(self.open_dir)
@@ -256,6 +258,7 @@ class Form(QWidget):
             )
 
         for f in file_list:
+            QApplication.processEvents()
             f: Path
             txt_file = d.joinpath(f.stem + '.txt')
             if not txt_file.is_file():
@@ -350,6 +353,28 @@ class Form(QWidget):
         if self.sel_wav != '':
             txt_sel.clearSelection()
             txt_sel.select(txt_model.index(self.sel_wav), QItemSelectionModel.Select)
+
+    def rebuild_all(self):
+        c = self.get_data()
+        d = Path(c.voice_dir)
+
+        progress_dialog = QProgressDialog(
+            'processing....', None, 0, 0, None,
+            Qt.Window
+            | Qt.WindowCloseButtonHint
+            | Qt.WindowStaysOnTopHint
+        )
+        progress_dialog.setWindowTitle("rebuild")
+        progress_dialog.show()
+        QApplication.processEvents()
+        for f in p.pipe(
+            d.iterdir(),
+            p.filter(p.call.is_file()),
+            p.filter(lambda x: x.suffix in ['.srt', '.lua', '.setting']),
+        ):
+            f.unlink()
+            QApplication.processEvents()
+        self.directory_changed(c.voice_dir, [])
 
     def set_tree_root(self):
         path = Path(self.ui.folderLineEdit.text())
