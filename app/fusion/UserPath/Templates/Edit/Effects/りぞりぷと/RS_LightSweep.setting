@@ -16,6 +16,13 @@
 					Page = "Controls",
 					Default = 1.5,
 				},
+				InputTimeOffset = InstanceInput {
+					SourceOp = "Rectangle1",
+					Source = "TimeOffset",
+					Name = "TimeOffset",
+					Page = "Controls",
+					Default = 0,
+				},
 				Input6 = InstanceInput {
 					SourceOp = "Rectangle1",
 					Source = "StartPos",
@@ -113,7 +120,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 330, 115.5 },
+				Pos = { 440, 49.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -129,7 +136,6 @@
 			},
 			Tools = ordered() {
 				Rectangle1 = RectangleMask {
-					CtrlWShown = false,
 					NameSet = true,
 					Inputs = {
 						Filter = Input { Value = FuID { "Fast Gaussian" }, },
@@ -149,34 +155,44 @@
 					ViewInfo = OperatorInfo { Pos = { 0, 34.2576 } },
 					UserControls = ordered() {
 						Speed = {
-							ICS_ControlPage = "Controls",
-							INP_Integer = false,
-							INPID_InputControl = "ScrewControl",
-							LINKID_DataType = "Number",
-							INP_MinScale = 0,
-							INP_Default = 1.5,
-							INP_MaxScale = 2,
 							LINKS_Name = "Speed",
+							INP_Integer = false,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							INPID_InputControl = "ScrewControl",
+							INP_MinScale = 0,
+							INP_MaxScale = 2,
+							INP_Default = 1.5,
 						},
 						StartPos = {
-							ICS_ControlPage = "Controls",
-							INP_Integer = false,
-							INPID_InputControl = "ScrewControl",
-							LINKID_DataType = "Number",
-							INP_MinScale = 0,
-							INP_Default = 0,
-							INP_MaxScale = 1,
 							LINKS_Name = "StartPos",
+							INP_Integer = false,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							INPID_InputControl = "ScrewControl",
+							INP_MinScale = 0,
+							INP_MaxScale = 1,
+							INP_Default = 0,
 						},
 						EndPos = {
-							ICS_ControlPage = "Controls",
-							INP_Integer = false,
-							INPID_InputControl = "ScrewControl",
-							LINKID_DataType = "Number",
-							INP_MinScale = 0,
-							INP_Default = 1,
-							INP_MaxScale = 1,
 							LINKS_Name = "EndPos",
+							INP_Integer = false,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							INPID_InputControl = "ScrewControl",
+							INP_MinScale = 0,
+							INP_MaxScale = 1,
+							INP_Default = 1,
+						},
+						TimeOffset = {
+							LINKS_Name = "TimeOffset",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ScrewControl",
+							INP_Default = 0,
+							INP_Integer = true,
+							INP_MinScale = 1,
+							INP_MaxScale = 100,
+							ICS_ControlPage = "Controls",
 						}
 					}
 				},
@@ -225,7 +241,7 @@
 							Source = "Result",
 						},
 						Operator = Input { Value = 9, },
-						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart", },
+						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart -Rectangle1.TimeOffset", },
 					},
 				},
 				Calculation_TimeScale = Calculation {
@@ -260,10 +276,7 @@
 							SourceOp = "Rectangle1",
 							Source = "Mask",
 						},
-						Blend = Input {
-							Value = 0,
-							Expression = "iif(Rectangle1.Center.X < Rectangle1.EndPos, 1, 0)",
-						},
+						Blend = Input { Expression = "iif(Rectangle1.Center.X < Rectangle1.EndPos, 1, 0)", },
 						Filter = Input { Value = FuID { "Fast Gaussian" }, },
 						Input = Input {
 							SourceOp = "Text1",
