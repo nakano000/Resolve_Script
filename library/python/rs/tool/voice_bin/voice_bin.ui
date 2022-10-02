@@ -254,7 +254,7 @@
         <string>閉じる</string>
        </property>
        <property name="text">
-        <string>リビルド データ</string>
+        <string>Rebuild</string>
        </property>
       </widget>
      </item>
