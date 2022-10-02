@@ -23,6 +23,13 @@
 					Source = "n1",
 					Default = 0.25,
 				},
+				InputBarRatio = InstanceInput {
+					SourceOp = "Calculation_Height",
+					Source = "SecondOperand",
+					Name = "Bar",
+					Page = "Controls",
+					Default = 0.4,
+				},
 				Input1 = InstanceInput {
 					SourceOp = "sRectangle1",
 					Source = "ShapeSeparator",
@@ -55,6 +62,7 @@
 				InputBorder = InstanceInput {
 					SourceOp = "sOutline1",
 					Source = "Border",
+					Page = "Controls",
 					Default = 0,
 				},
 				Input13 = InstanceInput {
@@ -128,7 +136,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 0, -16.5 },
+				Pos = { 220, 82.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -144,6 +152,7 @@
 			},
 			Tools = ordered() {
 				sRectangle1 = sRectangle {
+					CtrlWShown = false,
 					Inputs = {
 						["Translate.X"] = Input {
 							SourceOp = "Expression_CenterX",
@@ -158,7 +167,7 @@
 							Source = "NumberResult",
 						},
 						Height = Input {
-							SourceOp = "Calculation2",
+							SourceOp = "Calculation_Height",
 							Source = "Result",
 						},
 						Angle = Input {
@@ -439,16 +448,30 @@
 						ShowPoint9 = Input { Value = 0, },
 					},
 				},
-				Calculation2 = Calculation {
+				Calculation_Height = Calculation {
 					CtrlWZoom = false,
+					NameSet = true,
 					Inputs = {
 						FirstOperand = Input {
 							SourceOp = "Expression_Size",
 							Source = "NumberResult",
 						},
 						Operator = Input { Value = 2, },
-						SecondOperand = Input { Value = 0.5, },
+						SecondOperand = Input { Value = 0.4, }
 					},
+					UserControls = ordered() {
+						SecondOperand = {
+							INP_MaxAllowed = 0.5,
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 0.5,
+							INP_MinScale = 0,
+							INP_MinAllowed = 0,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Calc",
+							LINKS_Name = "Second Operand"
+						}
+					}
 				},
 				Expression_Size = Expression {
 					CtrlWZoom = false,
@@ -550,8 +573,9 @@
 					ViewInfo = OperatorInfo { Pos = { -138, 34.2576 } },
 				},
 				sOutline1 = sOutline {
+					CtrlWShown = false,
 					Inputs = {
-					    Thickness = Input { Value = 0, },
+						Thickness = Input { Value = 0, },
 						JoinStyle = Input { Value = 2, },
 						CapStyle = Input { Value = 2, },
 						Input = Input {
@@ -563,13 +587,13 @@
 					UserControls = ordered() {
 						Border = {
 							LINKS_Name = "Border",
-							LINKID_DataType = "Number",
-							INPID_InputControl = "LabelControl",
-							INP_Default = 0,
 							INP_Integer = true,
 							LBLC_DropDownButton = true,
-							LBLC_NumInputs = 11,
 							ICS_ControlPage = "Controls",
+							LBLC_NumInputs = 11,
+							INPID_InputControl = "LabelControl",
+							LINKID_DataType = "Number",
+							INP_Default = 0,
 						}
 					}
 				},
@@ -701,6 +725,7 @@
 				sRender1 = sRender {
 					CtrlWShown = false,
 					Inputs = {
+						GlobalOut = Input { Value = 149, },
 						Width = Input {
 							SourceOp = "Publish4",
 							Source = "Value",
