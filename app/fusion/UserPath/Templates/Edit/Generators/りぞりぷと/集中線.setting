@@ -1,0 +1,811 @@
+{
+	Tools = ordered() {
+		Line = GroupOperator {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "EditTemplates:\\Generators\\りぞりぷと\\"
+					}
+				},
+			},
+			Inputs = ordered() {
+				InputColor = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Color",
+					Default = 1,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftRed",
+					Name = "Color",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftGreen",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftBlue",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Expression_Anim",
+					Source = "n1",
+					Page = "Controls",
+					Default = 3,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "Shape3D1",
+					Source = "SurfacePlaneInputs.Width",
+					Name = "幅",
+					Default = 1,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "CustomVertex3D1",
+					Source = "Number3",
+					Page = "Controls",
+					Default = 1,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "Duplicate3D1",
+					Source = "LastCopy",
+					ControlGroup = 4,
+					Default = 360,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "Calculation_JitterAngle",
+					Source = "SecondOperand",
+					Page = "Controls",
+					Default = 20,
+				},
+				InputJitter = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Jitter",
+					Default = 1,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "Duplicate3D1",
+					Source = "JitterTranslate.Y",
+					Name = "Jitter 距離",
+					Page = "Controls",
+					Default = 0.4,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "Duplicate3D1",
+					Source = "JitterRotate.Z",
+					Name = "Jitter 角度",
+					Page = "Controls",
+					Default = 5,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "CustomVertex3D1",
+					Source = "Number1",
+					Page = "Controls",
+					Default = 5,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "CustomVertex3D1",
+					Source = "Number2",
+					Page = "Controls",
+					Default = 0.2,
+				},
+				InputXf = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Transform",
+					Default = 1,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "Transform3D2",
+					Source = "Transform3DOp.Translate.X",
+					Page = "Controls",
+					Default = 0,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "Transform3D2",
+					Source = "Transform3DOp.Translate.Y",
+					Page = "Controls",
+					Default = 0,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "Transform3D2",
+					Source = "Transform3DOp.Scale.X",
+					Page = "Controls",
+					Default = 1,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "Transform3D2",
+					Source = "Transform3DOp.Scale.Y",
+					Page = "Controls",
+					Default = 1,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Background1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 495, 49.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 1226, 316.485, 613, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Background1 = Background {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "Dissolve1",
+							Source = "Output",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 1, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 550, 232.758 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						Transform = {
+							LINKS_Name = "Transform",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							INP_Default = 0,
+							INP_Integer = true,
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 4,
+						},
+						Jitter = {
+							LINKS_Name = "Jitter",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							INP_Default = 0,
+							INP_Integer = true,
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 4,
+						},
+						Color = {
+							LINKS_Name = "Color",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "LabelControl",
+							INP_Default = 0,
+							INP_Integer = true,
+							LBLC_DropDownButton = true,
+							LBLC_NumInputs = 3,
+						}
+					}
+				},
+				Dissolve1 = Dissolve {
+					Transitions = {
+						[0] = "DFTDissolve"
+					},
+					CtrlWShown = false,
+					Inputs = {
+						ProcessAlpha = Input { Value = 0, },
+						Mix = Input {
+							SourceOp = "Expression_Anim",
+							Source = "NumberResult",
+						},
+						Background = Input {
+							SourceOp = "Renderer3D1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Dissolve2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 440, 232.758 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Expression_Anim = Expression {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						NumberExpression = Input { Value = "floor(time / n1) % 3", },
+						NumberControls = Input { Value = 1, },
+						NameforNumber1 = Input { Value = "表示間隔(フレーム)", },
+						n1 = Input { Value = 3, },
+						ShowNumber2 = Input { Value = 0, },
+						ShowNumber3 = Input { Value = 0, },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						ShowPoint1 = Input { Value = 0, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+					UserControls = ordered() {
+						n1 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = true,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 10,
+							INP_Default = 3,
+							INP_MinScale = 1,
+							INP_MinAllowed = 1,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "表示間隔(フレーム)"
+						}
+					}
+				},
+				Shape3D1 = Shape3D {
+					CtrlWShown = false,
+					Inputs = {
+						["Transform3DOp.Translate.Y"] = Input { Value = 0.5, },
+						["MtlStdInputs.MaterialID"] = Input { Value = 1, },
+						["SurfacePlaneInputs.SizeLock"] = Input { Value = 0, },
+						["SurfacePlaneInputs.SubdivisionWidth"] = Input { Value = 1, },
+						["SurfacePlaneInputs.SubdivisionHeight"] = Input { Value = 1, },
+						["SurfacePlaneInputs.ObjectID.ObjectID"] = Input { Value = 1, }
+					},
+					ViewInfo = OperatorInfo { Pos = { -550, 232.758 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Duplicate3D1 = Duplicate3D {
+					CtrlWShown = false,
+					Inputs = {
+						TransformOrder = Input { Value = FuID { "STR" }, },
+						["Rotate.Z"] = Input {
+							SourceOp = "Calculation_JitterAngle",
+							Source = "Result",
+						},
+						PivotNest = Input { Value = 1, },
+						["JitterTranslate.Y"] = Input { Value = 0.4, },
+						["JitterRotate.Z"] = Input { Value = 5, },
+						PivotJitterNest = Input { Value = 1, },
+						n1 = Input { Value = 3, },
+						SceneInput = Input {
+							SourceOp = "Transform3D1",
+							Source = "Output",
+						},
+						LastCopy = Input { Value = 360, }
+					},
+					ViewInfo = OperatorInfo { Pos = { -165, 232.758 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						LastCopy = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = true,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 360,
+							INP_Default = 180,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							LINKS_Name = "線数",
+						}
+					}
+				},
+				Calculation_JitterAngle = Calculation {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						FirstOperand = Input { Value = 360, },
+						Operator = Input { Value = 3, },
+						SecondOperand = Input { Value = 20, },
+					},
+					UserControls = ordered() {
+						SecondOperand = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = true,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 20,
+							INP_Default = 20,
+							INP_MinScale = 1,
+							INP_MinAllowed = 1,
+							LINKID_DataType = "Number",
+							LINKS_Name = "束",
+						}
+					}
+				},
+				CustomVertex3D1 = CustomVertex3D {
+					CtrlWShown = false,
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Duplicate3D1",
+							Source = "Data3D",
+						},
+						["Position.Nest"] = Input { Value = 0, },
+						["Position.X"] = Input { Value = "px * i1", },
+						["Position.Y"] = Input { Value = "py * i1", },
+						["Normal.Nest"] = Input { Value = 1, },
+						["Point1.Nest"] = Input { Value = 0, },
+						LUT1 = Input {
+							SourceOp = "CustomVertex3D1LUT1",
+							Source = "Value",
+						},
+						LUT2 = Input {
+							SourceOp = "CustomVertex3D1LUT2",
+							Source = "Value",
+						},
+						LUT3 = Input {
+							SourceOp = "CustomVertex3D1LUT3",
+							Source = "Value",
+						},
+						LUT4 = Input {
+							SourceOp = "CustomVertex3D1LUT4",
+							Source = "Value",
+						},
+						Intermediate1 = Input { Value = "sin(atan(px/py) * n1)  * n2 + n3", },
+						NameForNumber1 = Input { Value = "波数", },
+						NameForNumber2 = Input { Value = "振幅", },
+						NameForNumber3 = Input { Value = "距離", },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowPoint1 = Input { Value = 0, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowImage2 = Input { Value = 0, },
+						ShowImage3 = Input { Value = 0, },
+						ShowLUT1 = Input { Value = 0, },
+						ShowLUT2 = Input { Value = 0, },
+						ShowLUT3 = Input { Value = 0, },
+						ShowLUT4 = Input { Value = 0, },
+						Number1 = Input { Value = 5, },
+						Number2 = Input { Value = 0.2, },
+						Number3 = Input { Value = 1, }
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 232.758 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						Number1 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = true,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 10,
+							INP_Default = 5,
+							INP_MinScale = 1,
+							INP_MinAllowed = 1,
+							LINKID_DataType = "Number",
+							LINKS_Name = "波数"
+						},
+						Number2 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 1,
+							INP_Default = 0.200000002980232,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							LINKS_Name = "振幅"
+						},
+						Number3 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 1,
+							INP_MinScale = 0,
+							INP_MinAllowed = 0,
+							LINKID_DataType = "Number",
+							LINKS_Name = "距離"
+						}
+					}
+				},
+				CustomVertex3D1LUT1 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 0, Blue = 0 },
+					CtrlWZoom = false,
+				},
+				CustomVertex3D1LUT2 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 204, Blue = 0 },
+					CtrlWZoom = false,
+				},
+				CustomVertex3D1LUT3 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 0, Blue = 204 },
+					CtrlWZoom = false,
+				},
+				CustomVertex3D1LUT4 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 204 },
+					CtrlWZoom = false,
+				},
+				Transform3D2 = Transform3D {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "CustomVertex3D1",
+							Source = "Output",
+						},
+						["Transform3DOp.ScaleLock"] = Input { Value = 0, },
+						["Transform3DOp.Scale.X"] = Input { Value = 1.5, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 232.758 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Renderer3D1 = Renderer3D {
+					CtrlWShown = false,
+					CustomData = {
+						ToolVersion = 2
+					},
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						Depth = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						SceneInput = Input {
+							SourceOp = "Transform3D2",
+							Source = "Output",
+						},
+						Reporting = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 330, 232.758 } },
+				},
+				Transform3D1 = Transform3D {
+					CtrlWShown = false,
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Bender3D1",
+							Source = "Output",
+						},
+						["Transform3DOp.Translate.Y"] = Input { Value = 1, },
+						["Transform3DOp.ScaleLock"] = Input { Value = 0, },
+						["Transform3DOp.Scale.Y"] = Input { Value = 50, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -330, 232.758 } },
+				},
+				Bender3D1 = Bender3D {
+					CtrlWShown = false,
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Shape3D1",
+							Source = "Output",
+						},
+						Bender = Input { Value = FuID { "Taper" }, },
+						Amount = Input { Value = -0.5, },
+						Center = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -440, 232.758 } },
+				},
+				Instance_Transform3D2_1 = Transform3D {
+					CtrlWShown = false,
+					SourceOp = "Transform3D2",
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Transform3D3_1",
+							Source = "Output",
+						},
+						["Transform3DOp.Translation"] = Input { },
+						["Transform3DOp.Rotation"] = Input { },
+						["Transform3DOp.PivotNest"] = Input { },
+						["Transform3DOp.ScaleNest"] = Input { },
+						["Transform3DOp.TargetNest"] = Input { },
+						["Transform3DOp.Import"] = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 34.7576 } },
+				},
+				Instance_Instance_Renderer3D1 = Renderer3D {
+					CtrlWShown = false,
+					CustomData = {
+						ToolVersion = 2
+					},
+					SourceOp = "Instance_Renderer3D1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						SceneInput = Input {
+							SourceOp = "Instance_Transform3D2_1",
+							Source = "Output",
+						},
+						Reporting = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+						["RendererSoftware.Channels.Nest"] = Input { },
+						["RendererSoftware.Lighting"] = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 330, 34.7576 } },
+				},
+				Dissolve2 = Dissolve {
+					Transitions = {
+						[0] = "DFTDissolve"
+					},
+					CtrlWShown = false,
+					Inputs = {
+						ProcessAlpha = Input { Value = 0, },
+						Mix = Input {
+							SourceOp = "Calculation_OffsetV",
+							Source = "Result",
+						},
+						Background = Input {
+							SourceOp = "Instance_Renderer3D1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Instance_Instance_Renderer3D1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 440, 133.758 } },
+				},
+				Calculation_OffsetV = Calculation {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "Expression_Anim",
+							Source = "NumberResult",
+						},
+						SecondOperand = Input { Value = -1, },
+					},
+				},
+				Transform3D3 = Transform3D {
+					CtrlWShown = false,
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Instance_CustomVertex3D1",
+							Source = "Output",
+						},
+						["Transform3DOp.Rotate.Z"] = Input { Value = 75, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, 133.758 } },
+				},
+				Transform3D3_1 = Transform3D {
+					CtrlWShown = false,
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Instance_CustomVertex3D1_1",
+							Source = "Output",
+						},
+						["Transform3DOp.Rotate.Z"] = Input { Value = 211, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, 34.7576 } },
+				},
+				Instance_Transform3D2 = Transform3D {
+					CtrlWShown = false,
+					SourceOp = "Transform3D2",
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Transform3D3",
+							Source = "Output",
+						},
+						["Transform3DOp.Translation"] = Input { },
+						["Transform3DOp.Rotation"] = Input { },
+						["Transform3DOp.PivotNest"] = Input { },
+						["Transform3DOp.ScaleNest"] = Input { },
+						["Transform3DOp.TargetNest"] = Input { },
+						["Transform3DOp.Import"] = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 133.758 } },
+				},
+				Instance_CustomVertex3D1 = CustomVertex3D {
+					CtrlWShown = false,
+					SourceOp = "CustomVertex3D1",
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Instance_Duplicate3D1",
+							Source = "Data3D",
+						},
+						["Position.Nest"] = Input { },
+						["Normal.Nest"] = Input { Value = 1, },
+						["VertexColor.Nest"] = Input { },
+						["TexCoord.Nest"] = Input { },
+						["EnvCoord.Nest"] = Input { },
+						["TangentU.Nest"] = Input { },
+						["TangentV.Nest"] = Input { },
+						["Velocity.Nest"] = Input { },
+						["Point1.Nest"] = Input { Value = 0, },
+						["Point2.Nest"] = Input { },
+						["Point3.Nest"] = Input { },
+						["Point4.Nest"] = Input { },
+						["Point5.Nest"] = Input { },
+						["Point6.Nest"] = Input { },
+						["Point7.Nest"] = Input { },
+						["Point8.Nest"] = Input { },
+						Image1 = Input { },
+						Image2 = Input { },
+						Image3 = Input { },
+						Randomize = Input { },
+						NumberControls = Input { },
+						PointControls = Input { },
+						ImageControls = Input { },
+						LUTControls = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 133.758 } },
+				},
+				Instance_Duplicate3D1_1 = Duplicate3D {
+					CtrlWShown = false,
+					SourceOp = "Duplicate3D1",
+					Inputs = {
+						["RectRgn.Translation"] = Input { },
+						["RectRgn.PivotNest"] = Input { },
+						["RectRgn.SizeNest"] = Input { },
+						["RectRgn.Rotation"] = Input { },
+						Translation = Input { },
+						Rotation = Input { },
+						PivotNest = Input { Value = 1, },
+						ScaleNest = Input { },
+						RandomSeed = Input { Value = 18470, },
+						Randomize = Input { },
+						TranslationJitter = Input { },
+						RotationJitter = Input { },
+						PivotJitterNest = Input { Value = 1, },
+						ScaleJitterNest = Input { },
+						RegionNest = Input { },
+						SceneInput = Input {
+							SourceOp = "Transform3D1",
+							Source = "Output",
+						},
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -165, 34.7576 } },
+				},
+				Instance_CustomVertex3D1_1 = CustomVertex3D {
+					CtrlWShown = false,
+					SourceOp = "CustomVertex3D1",
+					Inputs = {
+						SceneInput = Input {
+							SourceOp = "Instance_Duplicate3D1_1",
+							Source = "Data3D",
+						},
+						["Position.Nest"] = Input { },
+						["Normal.Nest"] = Input { Value = 1, },
+						["VertexColor.Nest"] = Input { },
+						["TexCoord.Nest"] = Input { },
+						["EnvCoord.Nest"] = Input { },
+						["TangentU.Nest"] = Input { },
+						["TangentV.Nest"] = Input { },
+						["Velocity.Nest"] = Input { },
+						["Point1.Nest"] = Input { Value = 0, },
+						["Point2.Nest"] = Input { },
+						["Point3.Nest"] = Input { },
+						["Point4.Nest"] = Input { },
+						["Point5.Nest"] = Input { },
+						["Point6.Nest"] = Input { },
+						["Point7.Nest"] = Input { },
+						["Point8.Nest"] = Input { },
+						Image1 = Input { },
+						Image2 = Input { },
+						Image3 = Input { },
+						Randomize = Input { },
+						NumberControls = Input { },
+						PointControls = Input { },
+						ImageControls = Input { },
+						LUTControls = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 34.7576 } },
+				},
+				Instance_Renderer3D1 = Renderer3D {
+					CtrlWShown = false,
+					CustomData = {
+						ToolVersion = 2
+					},
+					SourceOp = "Renderer3D1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						SceneInput = Input {
+							SourceOp = "Instance_Transform3D2",
+							Source = "Output",
+						},
+						Reporting = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+						["RendererSoftware.Channels.Nest"] = Input { },
+						["RendererSoftware.Lighting"] = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 330, 133.758 } },
+				},
+				Instance_Duplicate3D1 = Duplicate3D {
+					CtrlWShown = false,
+					SourceOp = "Duplicate3D1",
+					Inputs = {
+						["RectRgn.Translation"] = Input { },
+						["RectRgn.PivotNest"] = Input { },
+						["RectRgn.SizeNest"] = Input { },
+						["RectRgn.Rotation"] = Input { },
+						Translation = Input { },
+						Rotation = Input { },
+						PivotNest = Input { Value = 1, },
+						ScaleNest = Input { },
+						RandomSeed = Input { Value = 8860, },
+						Randomize = Input { },
+						TranslationJitter = Input { },
+						RotationJitter = Input { },
+						PivotJitterNest = Input { Value = 1, },
+						ScaleJitterNest = Input { },
+						RegionNest = Input { },
+						SceneInput = Input {
+							SourceOp = "Transform3D1",
+							Source = "Output",
+						},
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -165, 133.758 } },
+				}
+			},
+		}
+	}
+}
