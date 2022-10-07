@@ -10,30 +10,6 @@
 				},
 			},
 			Inputs = ordered() {
-				InputColor = InstanceInput {
-					SourceOp = "Background1",
-					Source = "Color",
-					Default = 1,
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Background1",
-					Source = "TopLeftRed",
-					Name = "Color",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Background1",
-					Source = "TopLeftGreen",
-					ControlGroup = 1,
-					Default = 1,
-				},
-				Input3 = InstanceInput {
-					SourceOp = "Background1",
-					Source = "TopLeftBlue",
-					ControlGroup = 1,
-					Default = 1,
-				},
 				Input5 = InstanceInput {
 					SourceOp = "Expression_Anim",
 					Source = "n1",
@@ -94,6 +70,30 @@
 					Source = "Number2",
 					Page = "Controls",
 					Default = 0.2,
+				},
+				InputColor = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Color",
+					Default = 1,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftRed",
+					Name = "Color",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftGreen",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftBlue",
+					ControlGroup = 1,
+					Default = 1,
 				},
 				InputXf = InstanceInput {
 					SourceOp = "Background1",
@@ -242,20 +242,6 @@
 						ShowPoint8 = Input { Value = 0, },
 						ShowPoint9 = Input { Value = 0, },
 					},
-					UserControls = ordered() {
-						n1 = {
-							INP_MaxAllowed = 1000000,
-							INP_Integer = true,
-							INPID_InputControl = "ScrewControl",
-							INP_MaxScale = 10,
-							INP_Default = 3,
-							INP_MinScale = 1,
-							INP_MinAllowed = 1,
-							LINKID_DataType = "Number",
-							ICS_ControlPage = "Controls",
-							LINKS_Name = "表示間隔(フレーム)"
-						}
-					}
 				},
 				Shape3D1 = Shape3D {
 					CtrlWShown = false,
@@ -291,19 +277,6 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -165, 232.758 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() {
-						LastCopy = {
-							INP_MaxAllowed = 1000000,
-							INP_Integer = true,
-							INPID_InputControl = "ScrewControl",
-							INP_MaxScale = 360,
-							INP_Default = 180,
-							INP_MinScale = 0,
-							INP_MinAllowed = -1000000,
-							LINKID_DataType = "Number",
-							LINKS_Name = "線数",
-						}
-					}
 				},
 				Calculation_JitterAngle = Calculation {
 					CtrlWZoom = false,
@@ -313,19 +286,6 @@
 						Operator = Input { Value = 3, },
 						SecondOperand = Input { Value = 20, },
 					},
-					UserControls = ordered() {
-						SecondOperand = {
-							INP_MaxAllowed = 1000000,
-							INP_Integer = true,
-							INPID_InputControl = "ScrewControl",
-							INP_MaxScale = 20,
-							INP_Default = 20,
-							INP_MinScale = 1,
-							INP_MinAllowed = 1,
-							LINKID_DataType = "Number",
-							LINKS_Name = "束",
-						}
-					}
 				},
 				CustomVertex3D1 = CustomVertex3D {
 					CtrlWShown = false,
@@ -384,40 +344,6 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { -55, 232.758 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-					UserControls = ordered() {
-						Number1 = {
-							INP_MaxAllowed = 1000000,
-							INP_Integer = true,
-							INPID_InputControl = "ScrewControl",
-							INP_MaxScale = 10,
-							INP_Default = 5,
-							INP_MinScale = 1,
-							INP_MinAllowed = 1,
-							LINKID_DataType = "Number",
-							LINKS_Name = "波数"
-						},
-						Number2 = {
-							INP_MaxAllowed = 1000000,
-							INP_Integer = false,
-							INPID_InputControl = "ScrewControl",
-							INP_MaxScale = 1,
-							INP_Default = 0.200000002980232,
-							INP_MinScale = 0,
-							INP_MinAllowed = -1000000,
-							LINKID_DataType = "Number",
-							LINKS_Name = "振幅"
-						},
-						Number3 = {
-							INP_MaxAllowed = 1000000,
-							INP_Integer = false,
-							INPID_InputControl = "ScrewControl",
-							INP_MaxScale = 1,
-							INP_MinScale = 0,
-							INP_MinAllowed = 0,
-							LINKID_DataType = "Number",
-							LINKS_Name = "距離"
-						}
-					}
 				},
 				CustomVertex3D1LUT1 = LUTBezier {
 					KeyColorSplines = {
@@ -806,6 +732,131 @@
 					ViewInfo = OperatorInfo { Pos = { -165, 133.758 } },
 				}
 			},
+			UserControls = ordered() {
+				Input5 = {
+					INP_MaxAllowed = 1000000,
+					INP_Integer = true,
+					INPID_InputControl = "ScrewControl",
+					INP_MaxScale = 10,
+					INP_Default = 3,
+					INP_MinScale = 1,
+					INP_MinAllowed = 1,
+					LINKID_DataType = "Number",
+					ICS_ControlPage = "Controls",
+					LINKS_Name = "表示間隔(フレーム)"
+				},
+				Input6 = {
+					LINKS_Name = "幅",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "SliderControl",
+					INP_Default = 1,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 10,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				Input13 = {
+					LINKS_Name = "距離",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ScrewControl",
+					INP_Default = 1,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = 0,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				Input7 = {
+					LINKS_Name = "線数",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ScrewControl",
+					INP_Default = 360,
+					INP_Integer = true,
+					INP_MinScale = 0,
+					INP_MaxScale = 360,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				Input10 = {
+					LINKS_Name = "束",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ScrewControl",
+					INP_Default = 20,
+					INP_Integer = true,
+					INP_MinScale = 1,
+					INP_MaxScale = 20,
+					INP_MinAllowed = 1,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				InputJitter = {
+					LINKS_Name = "Jitter",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "LabelControl",
+					INP_Default = 1,
+					INP_Integer = true,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					LBLC_DropDownButton = true,
+					LBLC_NumInputs = 4,
+					ICS_ControlPage = "Controls"
+				},
+				Input8 = {
+					LINKS_Name = "Jitter 距離",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ScrewControl",
+					INP_Default = 0.4,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 2,
+					INP_MinAllowed = 0,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				Input9 = {
+					LINKS_Name = "Jitter 角度",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ScrewControl",
+					INP_Default = 5,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 180,
+					INP_MinAllowed = 0,
+					INP_MaxAllowed = 1000000,
+					IC_Steps = 360,
+					ICS_ControlPage = "Controls"
+				},
+				Input11 = {
+					LINKS_Name = "波数",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ScrewControl",
+					INP_Default = 5,
+					INP_Integer = true,
+					INP_MinScale = 1,
+					INP_MaxScale = 10,
+					INP_MinAllowed = 1,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				Input12 = {
+					LINKS_Name = "振幅",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ScrewControl",
+					INP_Default = 0.2,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				}
+			}
 		}
 	}
 }
