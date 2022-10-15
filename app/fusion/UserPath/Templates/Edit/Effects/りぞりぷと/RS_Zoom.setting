@@ -1,0 +1,449 @@
+{
+	Tools = ordered() {
+		Zoom = GroupOperator {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\"
+					}
+				},
+			},
+			Inputs = ordered() {
+				Input6 = InstanceInput {
+					SourceOp = "CtrlExpression_main",
+					Source = "p1",
+				},
+				Input7 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Size",
+				},
+				Input8 = InstanceInput {
+					SourceOp = "Merge1",
+					Source = "Center",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "ShapeSeparator",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Width",
+					Default = 0.25,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Height",
+					Default = 0.25,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Angle",
+					Default = 0,
+				},
+				InputSP1 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "ShapeSeparator",
+				},
+				Input4 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "CornerRadius",
+					Default = 0,
+				},
+				InputSP2 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Border",
+				},
+				Input9 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "BorderWidth",
+					Default = 0.01,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "JoinStyle",
+					Name = "Border Style",
+					ControlGroup = 10,
+					Default = 2,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "CapStyle",
+					ControlGroup = 10,
+					Default = 1,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "WritePosition",
+					Default = 0,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "WriteLength",
+					Default = 1,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "ShapeSeparator",
+				},
+				Input15 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 14,
+					Default = 1,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Green",
+					ControlGroup = 14,
+					Default = 0.5,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Blue",
+					ControlGroup = 14,
+					Default = 0,
+				},
+				Input18 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "Blend",
+					Default = 1,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter1",
+					Source = "Input",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 385, -16.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 676, 439.394, 338, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				sRectangle1 = sRectangle {
+					Inputs = {
+						JoinStyle = Input { Value = 2, },
+						Width = Input { Value = 0.25, },
+						Height = Input { Value = 0.25, },
+						["Translate.X"] = Input {
+							SourceOp = "Expression1",
+							Source = "NumberResult",
+						},
+						["Translate.Y"] = Input {
+							SourceOp = "Expression2",
+							Source = "NumberResult",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -220, 115.5 } },
+					Colors = { TileColor = { R = 1, G = 0.5, B = 0 }, },
+					UserControls = ordered() {
+						Border = {
+							LINKS_Name = "Border",
+							INP_Integer = true,
+							LBLC_DropDownButton = true,
+							ICS_ControlPage = "Controls",
+							LBLC_NumInputs = 10,
+							INPID_InputControl = "LabelControl",
+							LINKID_DataType = "Number",
+							INP_Default = 0,
+						}
+					}
+				},
+				Expression1 = Expression {
+					CtrlWZoom = false,
+					Inputs = {
+						p1 = Input {
+							SourceOp = "CtrlExpression_main",
+							Source = "PointResult",
+						},
+						NumberExpression = Input { Value = "p1x - 0.5", },
+						ShowNumber1 = Input { Value = 0, },
+						ShowNumber2 = Input { Value = 0, },
+						ShowNumber3 = Input { Value = 0, },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+				},
+				CtrlExpression_main = Expression {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						NumberExpression = Input { Value = "n1", },
+						PointExpressionX = Input { Value = "p1x", },
+						PointExpressionY = Input { Value = "p1y", },
+						ShowNumber1 = Input { Value = 0, },
+						NameforNumber1 = Input { Value = "Angle", },
+						ShowNumber2 = Input { Value = 0, },
+						ShowNumber3 = Input { Value = 0, },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						PointControls = Input { Value = 1, },
+						NameforPoint1 = Input { Value = "Center", },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+					UserControls = ordered() {
+						n1 = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "ScrewControl",
+							INP_MaxScale = 360,
+							INP_Default = 0,
+							INPID_PreviewControl = "AngleControl",
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							INP_MinScale = 0,
+							ACID_Center = "p1",
+							LINKS_Name = "Angle"
+						}
+					}
+				},
+				Expression2 = Expression {
+					CtrlWZoom = false,
+					Inputs = {
+						p1 = Input {
+							SourceOp = "CtrlExpression_main",
+							Source = "PointResult",
+						},
+						n1 = Input {
+							SourceOp = "Publish4",
+							Source = "Value",
+						},
+						n2 = Input {
+							SourceOp = "Publish5",
+							Source = "Value",
+						},
+						NumberExpression = Input { Value = "(p1y -0.5) * n2 / n1", },
+						NumberControls = Input { Value = 1, },
+						NameforNumber1 = Input { Value = "Width", },
+						NameforNumber2 = Input { Value = "Height", },
+						ShowNumber3 = Input { Value = 0, },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						ShowNumber9 = Input { Value = 0, },
+						PointControls = Input { Value = 1, },
+						ShowPoint2 = Input { Value = 0, },
+						ShowPoint3 = Input { Value = 0, },
+						ShowPoint4 = Input { Value = 0, },
+						ShowPoint5 = Input { Value = 0, },
+						ShowPoint6 = Input { Value = 0, },
+						ShowPoint7 = Input { Value = 0, },
+						ShowPoint8 = Input { Value = 0, },
+						ShowPoint9 = Input { Value = 0, },
+					},
+				},
+				Publish4 = PublishNumber {
+					CtrlWZoom = false,
+					Inputs = {
+						Value = Input { Value = 1920, },
+					},
+				},
+				Publish5 = PublishNumber {
+					CtrlWZoom = false,
+					Inputs = {
+						Value = Input { Value = 1080, },
+					},
+				},
+				Transform1 = Transform {
+					Inputs = {
+						Pivot = Input {
+							SourceOp = "CtrlExpression_main",
+							Source = "PointResult",
+						},
+						Size = Input { Value = 1.5, },
+						Input = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, 214.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Merge3",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, 346.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Instance_sRectangle1 = sRectangle {
+					SourceOp = "sRectangle1",
+					Inputs = {
+						Solid = Input { Value = 0, },
+						BorderWidth = Input { Value = 0.01, },
+						CapStyle = Input { },
+						Red = Input { },
+						Green = Input { Value = 0.5, },
+						Blue = Input { Value = 0, },
+						Alpha = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -220, 16.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				sRender1 = sRender {
+					Inputs = {
+						Width = Input {
+							SourceOp = "Publish4",
+							Source = "Value",
+						},
+						Height = Input {
+							SourceOp = "Publish5",
+							Source = "Value",
+						},
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sRectangle1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 115.5 } },
+				},
+				Merge3 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge1_1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Instance_sRender1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, 115.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Merge1_1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "sRender1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+						Operator = Input { Value = FuID { "In" }, },
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 55, 115.5 } },
+				},
+				Instance_sRender1 = sRender {
+					SourceOp = "sRender1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						Input = Input {
+							SourceOp = "Instance_sRectangle1",
+							Source = "Output",
+						},
+						["ShapeRasterizer.Nest"] = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 16.5 } },
+				},
+				PipeRouter1 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Loader1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 0, 346.5 } },
+				}
+			},
+			UserControls = ordered() {
+				Input6 = {
+					INPID_PreviewControl = "CrosshairControl",
+					LINKID_DataType = "Point",
+					ICS_ControlPage = "Controls",
+					INPID_InputControl = "OffsetControl",
+					CHC_Style = "NormalCross",
+					LINKS_Name = "Center",
+				},
+				Input7 = {
+					INP_MaxAllowed = 1000000,
+					INP_Integer = false,
+					INPID_InputControl = "ScrewControl",
+					INP_MaxScale = 5,
+					INP_Default = 1.5,
+					INP_MinScale = 0,
+					INP_MinAllowed = 0,
+					LINKID_DataType = "Number",
+					ICS_ControlPage = "Controls",
+					ICD_Center = 1,
+					LINKS_Name = "Zoom"
+				},
+				Input8 = {
+					OFCD_DisplayXScale = 1,
+					LINKID_DataType = "Point",
+					ICS_ControlPage = "Controls",
+					OFCD_DisplayYScale = 1,
+					INPID_InputControl = "OffsetControl",
+					LINKS_Name = "Offset",
+				}
+			}
+		}
+	}
+}
