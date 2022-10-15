@@ -25,20 +25,24 @@
 				Input1 = InstanceInput {
 					SourceOp = "sRectangle1",
 					Source = "ShapeSeparator",
+					Page = "Controls",
 				},
 				Input2 = InstanceInput {
 					SourceOp = "sRectangle1",
 					Source = "Width",
+					Page = "Controls",
 					Default = 0.25,
 				},
 				Input3 = InstanceInput {
 					SourceOp = "sRectangle1",
 					Source = "Height",
+					Page = "Controls",
 					Default = 0.25,
 				},
 				Input5 = InstanceInput {
 					SourceOp = "sRectangle1",
 					Source = "Angle",
+					Page = "Controls",
 					Default = 0,
 				},
 				InputSP1 = InstanceInput {
@@ -114,7 +118,7 @@
 				MainInput1 = InstanceInput {
 					SourceOp = "PipeRouter1",
 					Source = "Input",
-				}
+				},
 			},
 			Outputs = {
 				MainOutput1 = InstanceOutput {
@@ -123,7 +127,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 275, -16.5 },
+				Pos = { 330, 49.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -139,6 +143,7 @@
 			},
 			Tools = ordered() {
 				sRectangle1 = sRectangle {
+					CtrlWShown = false,
 					Inputs = {
 						JoinStyle = Input { Value = 2, },
 						["Translate.X"] = Input {
@@ -156,14 +161,14 @@
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						Border = {
-							LINKS_Name = "Border",
+							INP_Default = 0,
 							INP_Integer = true,
 							LBLC_DropDownButton = true,
 							ICS_ControlPage = "Controls",
 							LBLC_NumInputs = 10,
-							INPID_InputControl = "LabelControl",
 							LINKID_DataType = "Number",
-							INP_Default = 0,
+							INPID_InputControl = "LabelControl",
+							LINKS_Name = "Border",
 						}
 					}
 				},
@@ -300,6 +305,7 @@
 					},
 				},
 				Transform1 = Transform {
+					CtrlWShown = false,
 					Inputs = {
 						Center = Input {
 							SourceOp = "Expression3",
@@ -319,6 +325,7 @@
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 				},
 				Merge1 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Background = Input {
 							SourceOp = "PipeRouter1",
@@ -372,6 +379,7 @@
 					ViewInfo = OperatorInfo { Pos = { -110, 115.5 } },
 				},
 				Merge3 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Background = Input {
 							SourceOp = "Merge1_1",
@@ -387,6 +395,7 @@
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 				},
 				Merge1_1 = Merge {
+					CtrlWShown = false,
 					Inputs = {
 						Background = Input {
 							SourceOp = "sRender1",
@@ -463,11 +472,61 @@
 					OFCD_DisplayXScale = 1,
 					LINKID_DataType = "Point",
 					ICS_ControlPage = "Controls",
-					OFCD_DisplayYScale = 1,
 					INPID_InputControl = "OffsetControl",
+					OFCD_DisplayYScale = 1,
 					LINKS_Name = "Offset",
+				},
+				Input1 = {
+					LINKS_Name = "",
+					LINKID_DataType = "Number",
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls",
+					INP_External = false,
+					INP_Passive = true
+				},
+				Input2 = {
+					LINKS_Name = "Width",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "SliderControl",
+					INP_Default = 0.25,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = 0,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				Input3 = {
+					LINKS_Name = "Height",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "SliderControl",
+					INP_Default = 0.25,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 1,
+					INP_MinAllowed = 0,
+					INP_MaxAllowed = 1000000,
+					ICS_ControlPage = "Controls"
+				},
+				Input5 = {
+					LINKS_Name = "Angle",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ScrewControl",
+					INPID_PreviewControl = "AngleControl",
+					INP_Default = 0,
+					INP_Integer = false,
+					INP_MinScale = 0,
+					INP_MaxScale = 360,
+					INP_MinAllowed = -1000000,
+					INP_MaxAllowed = 1000000,
+					ACID_Center = "Input6",
+					ICS_ControlPage = "Controls"
 				}
 			}
-		},
+		}
 	}
 }
