@@ -53,6 +53,7 @@
 				InputSP2 = InstanceInput {
 					SourceOp = "sRectangle1",
 					Source = "Border",
+					Page = "Controls",
 				},
 				Input9 = InstanceInput {
 					SourceOp = "Instance_sRectangle1",
@@ -122,7 +123,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 385, -16.5 },
+				Pos = { 275, -16.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -140,8 +141,6 @@
 				sRectangle1 = sRectangle {
 					Inputs = {
 						JoinStyle = Input { Value = 2, },
-						Width = Input { Value = 0.25, },
-						Height = Input { Value = 0.25, },
 						["Translate.X"] = Input {
 							SourceOp = "Expression1",
 							Source = "NumberResult",
@@ -150,9 +149,11 @@
 							SourceOp = "Expression2",
 							Source = "NumberResult",
 						},
+						Width = Input { Value = 0.25, },
+						Height = Input { Value = 0.25, },
 					},
 					ViewInfo = OperatorInfo { Pos = { -220, 115.5 } },
-					Colors = { TileColor = { R = 1, G = 0.5, B = 0 }, },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 					UserControls = ordered() {
 						Border = {
 							LINKS_Name = "Border",
@@ -275,6 +276,17 @@
 						ShowPoint9 = Input { Value = 0, },
 					},
 				},
+				Expression3 = Expression {
+					CtrlWZoom = false,
+					Inputs = {
+						p1 = Input {
+							SourceOp = "CtrlExpression_main",
+							Source = "PointResult",
+						},
+						PointExpressionX = Input { Value = "1 - p1x", },
+						PointExpressionY = Input { Value = "1 - p1y", },
+					},
+				},
 				Publish4 = PublishNumber {
 					CtrlWZoom = false,
 					Inputs = {
@@ -289,6 +301,10 @@
 				},
 				Transform1 = Transform {
 					Inputs = {
+						Center = Input {
+							SourceOp = "Expression3",
+							Source = "PointResult",
+						},
 						Pivot = Input {
 							SourceOp = "CtrlExpression_main",
 							Source = "PointResult",
@@ -318,6 +334,7 @@
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 				},
 				Instance_sRectangle1 = sRectangle {
+					CtrlWShown = false,
 					SourceOp = "sRectangle1",
 					Inputs = {
 						Solid = Input { Value = 0, },
@@ -336,6 +353,7 @@
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 				},
 				sRender1 = sRender {
+					CtrlWShown = false,
 					Inputs = {
 						Width = Input {
 							SourceOp = "Publish4",
@@ -378,12 +396,17 @@
 							SourceOp = "Transform1",
 							Source = "Output",
 						},
+						Center = Input {
+							SourceOp = "CtrlExpression_main",
+							Source = "PointResult",
+						},
 						Operator = Input { Value = FuID { "In" }, },
 						PerformDepthMerge = Input { Value = 0, },
 					},
 					ViewInfo = OperatorInfo { Pos = { 55, 115.5 } },
 				},
 				Instance_sRender1 = sRender {
+					CtrlWShown = false,
 					SourceOp = "sRender1",
 					Inputs = {
 						EffectMask = Input { },
@@ -404,6 +427,7 @@
 					ViewInfo = OperatorInfo { Pos = { -110, 16.5 } },
 				},
 				PipeRouter1 = PipeRouter {
+					CtrlWShown = false,
 					Inputs = {
 						Input = Input {
 							SourceOp = "Loader1",
@@ -444,6 +468,6 @@
 					LINKS_Name = "Offset",
 				}
 			}
-		}
+		},
 	}
 }
