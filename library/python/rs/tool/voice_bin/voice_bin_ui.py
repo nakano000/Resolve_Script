@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\voice_bin.ui' applies.
 #
-# Created: Sun Oct  2 15:46:46 2022
+# Created: Sat Oct 15 09:31:36 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -139,7 +139,6 @@ class Ui_Form(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.textTab), QtWidgets.QApplication.translate("Form", "テキスト+ 立ち絵", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("Form", "声フォルダ: ", None, -1))
         self.folderToolButton.setText(QtWidgets.QApplication.translate("Form", "...", None, -1))
-        self.rebuildButton.setToolTip(QtWidgets.QApplication.translate("Form", "閉じる", None, -1))
         self.rebuildButton.setText(QtWidgets.QApplication.translate("Form", "Rebuild", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("Form", "最小化", None, -1))
         self.minimizeButton.setText(QtWidgets.QApplication.translate("Form", "...", None, -1))
