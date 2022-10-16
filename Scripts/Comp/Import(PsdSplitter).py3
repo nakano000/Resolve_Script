@@ -92,6 +92,19 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
         'INP_Default': 1,
         'ICS_ControlPage': 'User',
     }
+    if name == 'Root':
+        user_controls['Refresh'] = {
+            'LINKS_Name': 'Refresh',
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'ButtonControl',
+            'INP_Integer': False,
+            'BTNCS_Execute': "comp:StartUndo('RS Refresh');"
+                             "local tool_list = comp:GetToolList(false, 'Fuse.RS_GlobalStart');"
+                             "for k,v in pairs(tool_list) do v:Refresh() end;"
+                             "comp:EndUndo(true)\n",
+            # 'ICS_ControlPage': 'Controls',
+            'ICS_ControlPage': 'User',
+        }
     xf.ConnectInput('Input', pre_node)
     uc = {'__flags': 2097152}  # 順番を保持するフラグ
     for k, v in reversed(list(user_controls.items())):
