@@ -1,6 +1,5 @@
 import sys
 from functools import partial
-from timecode import Timecode
 
 from PySide2.QtCore import (
     Qt,
