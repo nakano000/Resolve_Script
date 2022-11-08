@@ -31,10 +31,10 @@ from rs.core import (
     lab,
     util,
 )
+from rs.core.chara_data import CharaData
 from rs.gui import (
     appearance,
 )
-from rs.tool.voice_bin.chara_data import CharaData
 from rs.tool.voice_bin.voice_bin_ui import Ui_Form
 from rs.tool.voice_bin.chara_setting import MainWindow as CharaWindow
 
@@ -240,22 +240,18 @@ class Form(QWidget):
         txt_tree = self.ui.wavTreeView
         txt_model = txt_tree.model()
         txt_sel = txt_tree.selectionModel()
-        file_list = []
-        if len(created_lst) == 0:
-            file_list = p.pipe(
-                d.iterdir(),
-                p.filter(p.call.is_file()),
-                p.filter(lambda x: x.suffix in ['.wav']),
-                list,
-            )
-        else:
-            file_list = p.pipe(
-                created_lst,
-                p.map(lambda x: Path(x).parent.joinpath(Path(x).stem + '.wav')),
-                p.filter(p.call.is_file()),
-                dict.fromkeys,
-                list,
-            )
+        file_list = p.pipe(
+            d.iterdir(),
+            p.filter(p.call.is_file()),
+            p.filter(lambda x: x.suffix in ['.wav']),
+            list,
+        ) if len(created_lst) == 0 else p.pipe(
+            created_lst,
+            p.map(lambda x: Path(x).parent.joinpath(Path(x).stem + '.wav')),
+            p.filter(p.call.is_file()),
+            dict.fromkeys,
+            list,
+        )
 
         for f in file_list:
             QApplication.processEvents()
@@ -368,9 +364,9 @@ class Form(QWidget):
         progress_dialog.show()
         QApplication.processEvents()
         for f in p.pipe(
-            d.iterdir(),
-            p.filter(p.call.is_file()),
-            p.filter(lambda x: x.suffix in ['.srt', '.lua', '.setting']),
+                d.iterdir(),
+                p.filter(p.call.is_file()),
+                p.filter(lambda x: x.suffix in ['.srt', '.lua', '.setting']),
         ):
             f.unlink()
             QApplication.processEvents()

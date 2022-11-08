@@ -21,21 +21,17 @@ from PySide2.QtWidgets import (
 from rs.core import (
     config,
     pipe as p,
+    chara_data,
 )
-from rs.core.config import (
-    DataList,
+from rs.core.chara_data import (
+    CharaData,
+    CharaSetData,
 )
 from rs.gui import (
     appearance,
     basic_table,
 )
 from rs.tool.voice_bin.chara_setting_ui import Ui_MainWindow
-from rs.tool.voice_bin.chara_data import CharaData
-
-
-@dataclasses.dataclass
-class CharaSetData(config.Data):
-    chara_list: DataList = dataclasses.field(default_factory=lambda: DataList(CharaData))
 
 
 class Model(basic_table.Model):
@@ -73,9 +69,8 @@ class MainWindow(QMainWindow):
         self.ui.addButton.setStyleSheet(appearance.in_stylesheet)
 
         # config
-        config_dir = config.CONFIG_DIR.joinpath('VoiceBin')
-        config_dir.mkdir(parents=True, exist_ok=True)
-        self.config_file: Path = config_dir.joinpath('chara.json')
+        chara_data.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+        self.config_file: Path = chara_data.CONFIG_FILE
 
         self.template_file: Path = config.ROOT_PATH.joinpath('data', 'app', 'VoiceBin', 'chara.json')
         if not self.config_file.is_file():

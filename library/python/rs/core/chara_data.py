@@ -3,9 +3,14 @@ from pathlib import Path
 import dataclasses
 from typing import List
 
-from rs.core import config
+from rs.core import (
+    config,
+    pipe as p,
+)
 from rs.gui import basic_table
 
+CONFIG_DIR: Path  = config.CONFIG_DIR.joinpath('VoiceBin')
+CONFIG_FILE: Path = CONFIG_DIR.joinpath('chara.json')
 
 @dataclasses.dataclass
 class CharaData(basic_table.RowData):
@@ -37,8 +42,12 @@ class CharaData(basic_table.RowData):
         return ['トラック名', '正規表現', '色', '文字コード', 'アニメ タイプ', 'パラメータ名', 'settingファイル']
 
 
+@dataclasses.dataclass
+class CharaSetData(config.Data):
+    chara_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(CharaData))
+
+
 if __name__ == '__main__':
     c = CharaData()
     print(c._setting)
     print(c.setting_file)
-
