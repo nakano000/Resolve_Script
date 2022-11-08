@@ -9,8 +9,10 @@ from rs.core import (
 )
 from rs.gui import basic_table
 
-CONFIG_DIR: Path  = config.CONFIG_DIR.joinpath('VoiceBin')
+CONFIG_DIR: Path = config.CONFIG_DIR.joinpath('VoiceBin')
 CONFIG_FILE: Path = CONFIG_DIR.joinpath('chara.json')
+TEMPLATE_FILE: Path = config.DATA_PATH.joinpath('app', 'VoiceBin', 'chara.json')
+
 
 @dataclasses.dataclass
 class CharaData(basic_table.RowData):
@@ -45,6 +47,15 @@ class CharaData(basic_table.RowData):
 @dataclasses.dataclass
 class CharaSetData(config.Data):
     chara_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(CharaData))
+
+
+def get_chara_list():
+    f = CONFIG_FILE
+    if not f.is_file():
+        f = TEMPLATE_FILE
+    a = CharaSetData()
+    a.load(f)
+    return a.chara_list
 
 
 if __name__ == '__main__':

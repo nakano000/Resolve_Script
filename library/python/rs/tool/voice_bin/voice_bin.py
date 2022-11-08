@@ -1,7 +1,4 @@
-import chardet
 import dataclasses
-import re
-import soundfile
 import subprocess
 import sys
 from functools import partial
@@ -27,11 +24,8 @@ from watchdog.events import FileSystemEventHandler
 from rs.core import (
     config,
     pipe as p,
-    srt,
-    lab,
-    util,
+    voice_bin_process,
 )
-from rs.core.chara_data import CharaData
 from rs.gui import (
     appearance,
 )
@@ -81,44 +75,6 @@ class WatchdogEvent(FileSystemEventHandler):
         # print('deleted', src_path)
         if src_path.suffix.lower() in ['.wav', '.srt']:
             self.deleted_lst.append(str(src_path))
-
-
-def read_text(f: Path, c_code: str):
-    # 文字コード
-    _code = c_code.strip().lower()
-
-    if _code in ['auto', '']:
-        with open(f, 'rb') as _f:
-            content = _f.read()
-            char_code = chardet.detect(content)
-        enc: str = char_code['encoding']
-
-        if enc is None or enc.lower() not in [
-            'utf-8',
-            'utf-8-sig',
-            'utf-16',
-            'utf-16be',
-            'utf-16le',
-            'utf-32',
-            'utf-32be',
-            'utf-32le',
-            'cp932',
-            'shift_jis',
-        ]:
-            try:
-                t = content.decode(encoding='utf-8')
-            except:
-                t = content.decode(encoding='cp932')
-        else:
-            if enc.lower() == 'shift_jis':
-                enc = 'cp932'
-            t = content.decode(encoding=enc)
-    else:
-        t = f.read_text(encoding=_code)
-
-    # 改行コード
-    t = t.replace('\r\n', '\n')
-    return t
 
 
 class Form(QWidget):
@@ -253,94 +209,15 @@ class Form(QWidget):
             list,
         )
 
+        # main
         for f in file_list:
             QApplication.processEvents()
-            f: Path
-            txt_file = d.joinpath(f.stem + '.txt')
-            if not txt_file.is_file():
-                continue
-
-            srt_file = d.joinpath(f.stem + '.srt')
-            lab_file = d.joinpath(f.stem + '.lab')
-
-            lua_file = d.joinpath(f.stem + '.lua')
-            tatie_lua_file = d.joinpath(f.stem + '.tatie.lua')
-            setting_file = d.joinpath(f.stem + '.setting')
-
-            # flag
-            srt_exists = srt_file.is_file()
-            lua_exists = lua_file.is_file()
-            setting_exists = setting_file.is_file()
-            if srt_exists and lua_exists and setting_exists:
-                continue
-
-            # キャラクター設定
-            chara_data = CharaData()
-            for cd in self.chara_window.get_chara_list():
-                cd: CharaData
-                m = re.fullmatch(cd.reg_exp, f.stem)
-                if m is not None:
-                    chara_data = cd
-                    break
-
-            t = read_text(txt_file, chara_data.c_code)
-
-            # SRT
-            if not srt_exists:
-                wave_data, samplerate = soundfile.read(str(f))
-                _d: float = float(wave_data.shape[0]) / samplerate
-
-                srt_data = srt.Srt()
-
-                srt_data.subtitles.append(srt.Subtitle(0, _d, t))
-
-                srt_data.save(srt_file)
-                self.sel_wav = str(f)
-                self.sel_srt = str(srt_file)
-
-            # Text+
-            if not lua_exists:
-                lua = self.text_script_base % (
-                    t,
-                    chara_data.color,
-                    chara_data.track_name,
-                    str(chara_data.setting_file)
-                )
-                util.write_text(
-                    lua_file,
-                    lua,
-                )
-
-            # 立ち絵
-            if setting_exists:
-                continue
-            anim = ''
             data = self.get_data()
-            if chara_data.anim_type == 'open':
-                anim = lab.wav2anim(f, data.fps)
-            elif lab_file.is_file():
-                anim = lab.lab2anim(lab_file, data.fps)
+            if voice_bin_process.run(f, data.fps):
+                self.sel_wav = str(f)
+                self.sel_srt = str(d.joinpath(f.stem + '.srt'))
 
-            if anim != '':
-                util.write_text(
-                    setting_file,
-                    self.tatie_setting_base % (
-                        t.replace('\n', '\\n').replace('"', '\\"'),
-                        chara_data.anim_parameter,
-                        chara_data.anim_parameter,
-                        chara_data.anim_parameter,
-                        anim,
-                    ),
-                )
-                util.write_text(
-                    tatie_lua_file,
-                    self.tatie_script_base % (
-                        chara_data.color,
-                        chara_data.track_name,
-                        chara_data.anim_parameter,
-                        str(setting_file)
-                    ),
-                )
+        # update TreeView
         self.reset_tree()
         if self.sel_wav != '':
             sel.clearSelection()

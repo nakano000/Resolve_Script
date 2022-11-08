@@ -1,3 +1,10 @@
+Deprecated
+Pillow
+PySide2
+PySoundFile
+PyWavelets
+SoundFile
+StrEnum
 aggdraw
 appdirs
 attrs
@@ -9,7 +16,6 @@ charset-normalizer
 cycler
 dataclasses
 decorator
-Deprecated
 docopt
 idna
 imageio
@@ -24,16 +30,13 @@ networkx
 numba
 numpy
 packaging
-Pillow
 pooch
 psd-tools
+pyautogui
 pycparser
 pykakasi
 pyparsing
-PySide2
-PySoundFile
 python-dateutil
-PyWavelets
 requests
 resampy
 scikit-image
@@ -41,8 +44,6 @@ scikit-learn
 scipy
 shiboken2
 six
-SoundFile
-StrEnum
 threadpoolctl
 tifffile
 timecode

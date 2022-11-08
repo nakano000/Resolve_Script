@@ -72,7 +72,7 @@ class MainWindow(QMainWindow):
         chara_data.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
         self.config_file: Path = chara_data.CONFIG_FILE
 
-        self.template_file: Path = config.ROOT_PATH.joinpath('data', 'app', 'VoiceBin', 'chara.json')
+        self.template_file: Path = chara_data.TEMPLATE_FILE
         if not self.config_file.is_file():
             shutil.copyfile(self.template_file, self.config_file)
 
@@ -220,13 +220,6 @@ class MainWindow(QMainWindow):
         a = CharaSetData()
         a.chara_list.set_list(self.ui.tableView.model().to_list())
         return a
-
-    def get_chara_list(self):
-        if not self.config_file.is_file():
-            return []
-        a = self.get_data()
-        a.load(self.config_file)
-        return a.chara_list
 
     def open(self) -> None:
         if self.config_file.is_file():

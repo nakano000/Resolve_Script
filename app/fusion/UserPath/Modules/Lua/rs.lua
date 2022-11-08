@@ -1,6 +1,6 @@
 local m = {}
 
-function m.print()
+m.print = function()
     print("module01 print().")
 end
 
