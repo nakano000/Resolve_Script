@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\add_button\add_button.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\add_button\add_button.ui' applies.
 #
-# Created: Wed Nov  9 11:32:49 2022
+# Created: Fri Nov 11 07:53:22 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,13 +18,19 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
         self.refreshCheckBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.refreshCheckBox.setChecked(True)
         self.refreshCheckBox.setObjectName("refreshCheckBox")
         self.verticalLayout.addWidget(self.refreshCheckBox)
         self.loadCheckBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.loadCheckBox.setChecked(True)
         self.loadCheckBox.setObjectName("loadCheckBox")
         self.verticalLayout.addWidget(self.loadCheckBox)
         self.saveCheckBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.saveCheckBox.setChecked(True)
         self.saveCheckBox.setObjectName("saveCheckBox")
         self.verticalLayout.addWidget(self.saveCheckBox)
         spacerItem = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -49,6 +55,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "※MacroやGroupでは、上手く動かないようです。", None, -1))
         self.refreshCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Refresh:立ち絵用、リフレッシュボタンの追加", None, -1))
         self.loadCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "LoadSettings:ノードの読み込み用のボタンを追加", None, -1))
         self.saveCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "SaveSettings:ノードの保存用のボタンを追加", None, -1))

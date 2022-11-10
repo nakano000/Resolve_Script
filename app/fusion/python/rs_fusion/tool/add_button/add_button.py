@@ -59,8 +59,8 @@ class MainWindow(QMainWindow):
             self.lua_script,
             'AddButton(%s, %s, %s)' % (
                 str(self.ui.refreshCheckBox.isChecked()).lower(),
-                str(self.ui.refreshCheckBox.isChecked()).lower(),
-                str(self.ui.refreshCheckBox.isChecked()).lower(),
+                str(self.ui.loadCheckBox.isChecked()).lower(),
+                str(self.ui.saveCheckBox.isChecked()).lower(),
             ),
         ]))
 

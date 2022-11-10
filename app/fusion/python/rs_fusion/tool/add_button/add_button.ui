@@ -16,9 +16,19 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>※MacroやGroupでは、上手く動かないようです。</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QCheckBox" name="refreshCheckBox">
       <property name="text">
        <string>Refresh:立ち絵用、リフレッシュボタンの追加</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -27,12 +37,18 @@
       <property name="text">
        <string>LoadSettings:ノードの読み込み用のボタンを追加</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
     <item>
      <widget class="QCheckBox" name="saveCheckBox">
       <property name="text">
        <string>SaveSettings:ノードの保存用のボタンを追加</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
