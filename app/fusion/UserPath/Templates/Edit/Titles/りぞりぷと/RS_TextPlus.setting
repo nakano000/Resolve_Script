@@ -1,0 +1,114 @@
+{
+	Tools = ordered() {
+		Template = TextPlus {
+			CtrlWZoom = false,
+			Inputs = {
+				GlobalOut = Input { Value = 149, },
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				Font = Input { Value = "Meiryo", },
+				Style = Input { Value = "Bold", },
+				Size = Input { Value = 0.09, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				Filter = Input { Value = "StyledText\nWidth\nHeight\nUseFrameFormatSettings\nFilter", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, 49.5 } },
+			UserControls = ordered() {
+				SaveSettings = {
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = [[
+local node = self:GetTool()
+local path = fusion:RequestFile(
+    '',
+    node.Name .. '.setting',
+    {
+        FReqB_Saving = true,
+        FReqB_SeqGather = false,
+        FReqS_Filter = 'Settings File (*.setting)|*.setting',
+        FReqS_Title = 'Save Settings',
+    }
+)
+if path then
+    node:SaveSettings(comp:MapPath(path))
+    print('Save: ' .. comp:MapPath(path))
+end
+]],
+					LINKS_Name = "Save Settings",
+					ICS_ControlPage = "Tools",
+					LINKID_DataType = "Number",
+				},
+				LoadSettings = {
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = [[
+local function split(str, ts)
+    if ts == nil then
+        return {}
+    end
+    local t = {}
+    i = 1
+    for s in string.gmatch(str, "([^" .. ts .. "]+)") do
+        t[i] = s
+        i = i + 1
+    end
+    return t
+end
+local function getToolName(st)
+    for key, v in pairs(st['Tools']) do
+        if (type(v) == 'table') and (v['Inputs'] ~= nil) then
+            return key
+        end
+    end
+    return nil
+end
+
+local node = self:GetTool()
+local path = fusion:RequestFile(
+    '',
+    '',
+    {
+        FReqB_SeqGather = false,
+        FReqS_Filter = 'Settings File (*.setting)|*.setting',
+        FReqS_Title = 'Load Settings',
+    }
+)
+if path then
+    local st = node:SaveSettings()
+    local filter_list = split(node:GetInput("Filter"),'\n')
+    local f_st = bmd.readfile(comp:MapPath(path))
+    local f_name = getToolName(f_st)
+    if f_name == nil then return end
+    for i, key in ipairs(filter_list) do
+        f_st['Tools'][f_name]['Inputs'][key] = st['Tools'][node.Name]['Inputs'][key]
+        local tmp = f_st['Tools'][f_name]['Inputs'][key]
+        if (type(tmp) == 'table') and (tmp['SourceOp'] ~= nil) then
+            local src = tmp['SourceOp']
+            f_st['Tools'][src] = st['Tools'][src]
+        end
+    end
+    node:LoadSettings(f_st)
+    print('Load: ' .. comp:MapPath(path))
+end
+]],
+					LINKS_Name = "Load Settings",
+					ICS_ControlPage = "Tools",
+					LINKID_DataType = "Number",
+				},
+				Filter = {
+					LINKS_Name = "Filter",
+					LINKID_DataType = "Text",
+					INPID_InputControl = "TextEditControl",
+					TEC_Wrap = false,
+					TEC_ReadOnly = false,
+					ICS_ControlPage = "Tools",
+					INP_External = false,
+					INP_Passive = true,
+					INP_Default = "StyledText\nWidth\nHeight\nUseFrameFormatSettings\nFilter",
+				}
+			}
+		}
+	}
+}
