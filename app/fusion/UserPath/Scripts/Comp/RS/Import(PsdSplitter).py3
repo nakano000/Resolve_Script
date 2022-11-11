@@ -103,7 +103,7 @@ def add_node(pos_x, pos_y, size_x, size_y, data, name):
                              "for k,v in pairs(tool_list) do v:Refresh() end;"
                              "comp:EndUndo(true)\n",
             # 'ICS_ControlPage': 'Controls',
-            'ICS_ControlPage': 'User',
+            'ICS_ControlPage': 'Tools',
         }
     xf.ConnectInput('Input', pre_node)
     uc = {'__flags': 2097152}  # 順番を保持するフラグ
