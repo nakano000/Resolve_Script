@@ -20,7 +20,7 @@
 				VerticalJustificationNew = Input { Value = 3, },
 				HorizontalLeftCenterRight = Input { Value = -1, },
 				HorizontalJustificationNew = Input { Value = 3, },
-				Filter = Input { Value = "StyledText\nWidth\nHeight\nUseFrameFormatSettings\nFilter", },
+				Filter = Input { Value = "Width\nHeight\nUseFrameFormatSettings\nFilter", },
 				ElementShape2 = Input { Value = 2, },
 				Level2 = Input { Value = 0, },
 				Green2 = Input { Value = 1, },
@@ -118,7 +118,7 @@ end
 					ICS_ControlPage = "Tools",
 					INP_External = false,
 					INP_Passive = true,
-					INP_Default = "StyledText\nWidth\nHeight\nUseFrameFormatSettings\nFilter",
+					INP_Default = "Width\nHeight\nUseFrameFormatSettings\nFilter",
 				}
 			}
 		}
