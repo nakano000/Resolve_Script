@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\chara_setting.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\chara_setting.ui' applies.
 #
-# Created: Thu Jun 23 04:23:38 2022
+# Created: Tue Nov 15 05:15:29 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.tableView = QtWidgets.QTableView(self.centralwidget)
+        self.tableView = View(self.centralwidget)
         self.tableView.setWordWrap(False)
         self.tableView.setObjectName("tableView")
         self.tableView.horizontalHeader().setDefaultSectionSize(150)
@@ -86,3 +86,4 @@ class Ui_MainWindow(object):
         self.actionDelete.setText(QtWidgets.QApplication.translate("MainWindow", "Delete", None, -1))
         self.actionDelete.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Del", None, -1))
 
+from rs.gui.basic_table import View

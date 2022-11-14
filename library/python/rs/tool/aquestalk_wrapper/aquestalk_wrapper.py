@@ -5,33 +5,29 @@ from typing import (
 
 import dataclasses
 import re
-import soundfile
-import subprocess
 import sys
 from functools import partial
 from pathlib import Path
 
 from PySide2.QtCore import (
     Qt,
-    QDir,
     QItemSelectionModel,
     QModelIndex, QEvent, QThread,
 )
 from PySide2.QtWidgets import (
     QApplication,
     QFileDialog,
-    QFileSystemModel,
-    QWidget,
     QHeaderView,
-    QMainWindow, QItemDelegate, QLineEdit, QPlainTextEdit, QMenu, QStyledItemDelegate,
+    QMainWindow,
+    QPlainTextEdit,
+    QMenu,
+    QStyledItemDelegate,
 )
 from shiboken2 import shiboken2
 
 from rs.core import (
     config,
     pipe as p,
-    srt,
-    lab,
     util,
 )
 from rs.gui import (
@@ -201,14 +197,14 @@ class MainWindow(QMainWindow):
         self.ui.actionImport_From_Clipboard.triggered.connect(self.import_from_clipboard)
         self.ui.actionExit.triggered.connect(self.close)
 
-        self.ui.actionCopy.triggered.connect(self.copy)
-        self.ui.actionPaste.triggered.connect(self.paste)
         self.ui.actionEdit.triggered.connect(self.edit)
         self.ui.actionClear.triggered.connect(self.clear)
         self.ui.actionAdd.triggered.connect(self.add)
-        self.ui.actionDelete.triggered.connect(self.delete)
-        self.ui.actionUp.triggered.connect(self.up)
-        self.ui.actionDown.triggered.connect(self.down)
+        self.ui.actionCopy.triggered.connect(self.ui.tableView.copy)
+        self.ui.actionPaste.triggered.connect(self.ui.tableView.paste)
+        self.ui.actionDelete.triggered.connect(self.ui.tableView.delete)
+        self.ui.actionUp.triggered.connect(self.ui.tableView.up)
+        self.ui.actionDown.triggered.connect(self.ui.tableView.down)
 
         self.ui.actionPlay.triggered.connect(self.play_or_stop)
         self.ui.actionWav_Save.triggered.connect(self.wave_save)
@@ -231,7 +227,7 @@ class MainWindow(QMainWindow):
         self.player = aquestalk.Player()
         self.player.exe_path = c.exe_path.strip()
         self.player.data = p.pipe(
-            self.selected_rows(),
+            v.selected_rows(),
             p.map(m.get_row_data),
             p.map(lambda d: {
                 'chara': d.chara.strip(),
@@ -285,7 +281,7 @@ class MainWindow(QMainWindow):
         a = aquestalk.Player()
         a.exe_path = c.exe_path.strip()
         a.data = []
-        for row in self.selected_rows():
+        for row in v.selected_rows():
             d: VoiceData = m.get_row_data(row)
             chara = d.chara.strip()
             subtitle = d.subtitle.strip()
@@ -320,17 +316,6 @@ class MainWindow(QMainWindow):
         if len(a.data) == 0:
             return
         a.export()
-
-    def selected_rows(self) -> List[int]:
-        v = self.ui.tableView
-        sm = v.selectionModel()
-        return p.pipe(
-            sm.selectedIndexes(),
-            p.map(p.call.row()),
-            set,
-            list,
-            sorted,
-        )
 
     def edit(self):
         v = self.ui.tableView
@@ -392,141 +377,6 @@ class MainWindow(QMainWindow):
             d.chara = c.chara
             d.subtitle = line
             m.add_row_data(d)
-
-    def delete(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        for row in reversed(self.selected_rows()):
-            m.removeRow(row, QModelIndex())
-        sm.clearSelection()
-
-    def up(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        data_list = []
-        min_row = None
-        for row in reversed(self.selected_rows()):
-            if min_row is None:
-                min_row = row
-            min_row = min([row, min_row])
-            data_list.append(m.get_row_data(row))
-            m.removeRow(row, QModelIndex())
-        sm.clearSelection()
-        if min_row is not None:
-            if min_row == 0:
-                min_row = 1
-            m.insert_rows_data(min_row - 1, list(reversed(data_list)))
-            for i in range(len(data_list)):
-                index = m.index(min_row - 1 + i, 0, QModelIndex())
-                sm.select(index, QItemSelectionModel.Select)
-                sm.setCurrentIndex(index, QItemSelectionModel.Select)
-
-    def down(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        data_list = []
-        max_row = None
-        for row in reversed(self.selected_rows()):
-            if max_row is None:
-                max_row = row
-            max_row = max([row, max_row])
-            data_list.append(m.get_row_data(row))
-            m.removeRow(row, QModelIndex())
-        sm.clearSelection()
-        if max_row is not None:
-            m.insert_rows_data(max_row + 2 - len(data_list), list(reversed(data_list)))
-            for i in range(len(data_list)):
-                if max_row != m.rowCount() - 1:
-                    index = m.index(max_row + 2 - len(data_list) + i, 0, QModelIndex())
-                else:
-                    index = m.index(max_row - i, 0, QModelIndex())
-                sm.select(index, QItemSelectionModel.Select)
-                sm.setCurrentIndex(index, QItemSelectionModel.Select)
-
-    def select_rect(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        rows = p.pipe(
-            sm.selectedIndexes(),
-            p.map(p.call.row()),
-            set,
-            list,
-            sorted,
-        )
-        cols = p.pipe(
-            sm.selectedIndexes(),
-            p.map(p.call.column()),
-            set,
-            list,
-            sorted,
-        )
-        if len(rows) == 0 or len(cols) == 0:
-            return None, None, None, None
-        min_row = min(rows)
-        min_col = min(cols)
-        max_row = max(rows)
-        max_col = max(cols)
-        # select
-        sm.clearSelection()
-        for row in range(min_row, max_row + 1):
-            for col in range(min_col, max_col + 1):
-                index = m.index(row, col, QModelIndex())
-                sm.select(index, QItemSelectionModel.Select)
-        return min_row, max_row, min_col, max_col
-
-    def copy(self):
-        self.select_rect()
-        v = self.ui.tableView
-        m: Model = v.model()
-
-        min_row, max_row, min_col, max_col = self.select_rect()
-        if min_row is None:
-            return
-        lines = []
-        for row in range(min_row, max_row + 1):
-            lst = []
-            for col in range(min_col, max_col + 1):
-                index = m.index(row, col, QModelIndex())
-                s = str(m.get_value(index.row(), index.column())).replace('\n', '\\n')
-                lst.append(s)
-            lines.append('\t'.join(lst))
-        QApplication.clipboard().setText('\n'.join(lines))
-
-    def paste(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        ss: list = p.pipe(
-            QApplication.clipboard().text().splitlines(),
-            p.map(p.call.replace('\\n', '\n')),
-            p.map(p.call.split('\t')),
-            list,
-        )
-        if len(ss) == 0:
-            ss.append([''])
-        if len(ss) == 1 and len(ss[0]) == 1:
-            for i in sm.selectedIndexes():
-                m.setData(i, ss[0][0], Qt.EditRole)
-            return
-
-        c_row = v.currentIndex().row()
-        c_col = v.currentIndex().column()
-        if c_row < 0 or c_col < 0:
-            return
-        sm.clearSelection()
-        for src_row in range(len(ss)):
-            for src_col in range(len(ss[src_row])):
-                row = c_row + src_row
-                col = c_col + src_col
-                if row > m.rowCount() - 1 or col > m.columnCount() - 1:
-                    continue
-                index = m.index(row, col, QModelIndex())
-                m.setData(index, ss[src_row][src_col], Qt.EditRole)
-                sm.select(index, QItemSelectionModel.Select)
 
     def exeToolButton_clicked(self) -> None:
         w = self.ui.exeLineEdit

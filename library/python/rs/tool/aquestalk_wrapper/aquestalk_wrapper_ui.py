@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\aquestalk_wrapper\aquestalk_wrapper.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\aquestalk_wrapper\aquestalk_wrapper.ui' applies.
 #
-# Created: Sat Sep  3 10:33:03 2022
+# Created: Tue Nov 15 05:26:07 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,7 +50,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.exeToolButton)
         self.horizontalLayout_5.addLayout(self.horizontalLayout_3)
         self.verticalLayout.addLayout(self.horizontalLayout_5)
-        self.tableView = QtWidgets.QTableView(self.centralwidget)
+        self.tableView = View(self.centralwidget)
         self.tableView.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked|QtWidgets.QAbstractItemView.EditKeyPressed)
         self.tableView.setObjectName("tableView")
         self.verticalLayout.addWidget(self.tableView)
@@ -212,3 +212,4 @@ class Ui_MainWindow(object):
         self.actionImport_From_Clipboard.setText(QtWidgets.QApplication.translate("MainWindow", "Import From Clipboard", None, -1))
         self.actionImport_From_Clipboard.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+V", None, -1))
 
+from rs.gui.basic_table import View

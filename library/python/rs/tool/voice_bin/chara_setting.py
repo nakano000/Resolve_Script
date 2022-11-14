@@ -9,7 +9,6 @@ from typing import Any
 from PySide2.QtCore import (
     Qt,
     QModelIndex,
-    QItemSelectionModel,
 )
 from PySide2.QtWidgets import (
     QApplication,
@@ -98,11 +97,11 @@ class MainWindow(QMainWindow):
         self.ui.addButton.clicked.connect(self.add)
         self.ui.setButton.clicked.connect(self.save)
 
-        self.ui.actionCopy.triggered.connect(self.copy)
-        self.ui.actionPaste.triggered.connect(self.paste)
-        self.ui.actionDelete.triggered.connect(self.delete)
-        self.ui.actionUp.triggered.connect(self.up)
-        self.ui.actionDown.triggered.connect(self.down)
+        self.ui.actionCopy.triggered.connect(self.ui.tableView.copy)
+        self.ui.actionPaste.triggered.connect(self.ui.tableView.paste)
+        self.ui.actionDelete.triggered.connect(self.ui.tableView.delete)
+        self.ui.actionUp.triggered.connect(self.ui.tableView.up)
+        self.ui.actionDown.triggered.connect(self.ui.tableView.down)
 
     def add(self):
         m: Model = self.ui.tableView.model()
@@ -120,99 +119,6 @@ class MainWindow(QMainWindow):
         menu.addSeparator()
         menu.addAction(self.ui.actionDelete)
         menu.exec_(v.mapToGlobal(pos))
-
-    def copy(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        sel_list = sm.selectedIndexes()
-        if len(sel_list) != 0:
-            i: QModelIndex = sel_list[0]
-            s = str(m.get_value(i.row(), i.column()))
-            QApplication.clipboard().setText(s)
-
-    def paste(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-
-        s = QApplication.clipboard().text()
-        for i in sm.selectedIndexes():
-            m.setData(i, s, Qt.EditRole)
-
-    def delete(self):
-        v = self.ui.tableView
-        m = v.model()
-        sm = v.selectionModel()
-        for row in p.pipe(
-                sm.selectedIndexes(),
-                p.map(p.call.row()),
-                set,
-                list,
-                sorted,
-                reversed,
-        ):
-            m.removeRow(row, QModelIndex())
-        sm.clearSelection()
-
-    def up(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        data_list = []
-        min_row = None
-        for row in p.pipe(
-                sm.selectedIndexes(),
-                p.map(p.call.row()),
-                set,
-                list,
-                sorted,
-                reversed,
-        ):
-            if min_row is None:
-                min_row = row
-            min_row = min([row, min_row])
-            data_list.append(m.get_row_data(row))
-            m.removeRow(row, QModelIndex())
-        sm.clearSelection()
-        if min_row is not None:
-            if min_row == 0:
-                min_row = 1
-            m.insert_rows_data(min_row - 1, list(reversed(data_list)))
-            for i in range(len(data_list)):
-                index = m.index(min_row - 1 + i, 0, QModelIndex())
-                sm.select(index, QItemSelectionModel.Select)
-                sm.setCurrentIndex(index, QItemSelectionModel.Select)
-
-    def down(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        data_list = []
-        max_row = None
-        for row in p.pipe(
-                sm.selectedIndexes(),
-                p.map(p.call.row()),
-                set,
-                list,
-                sorted,
-                reversed,
-        ):
-            if max_row is None:
-                max_row = row
-            max_row = max([row, max_row])
-            data_list.append(m.get_row_data(row))
-            m.removeRow(row, QModelIndex())
-        sm.clearSelection()
-        if max_row is not None:
-            m.insert_rows_data(max_row + 2 - len(data_list), list(reversed(data_list)))
-            for i in range(len(data_list)):
-                if max_row != m.rowCount() - 1:
-                    index = m.index(max_row + 2 - len(data_list) + i, 0, QModelIndex())
-                else:
-                    index = m.index(max_row - i, 0, QModelIndex())
-                sm.select(index, QItemSelectionModel.Select)
-                sm.setCurrentIndex(index, QItemSelectionModel.Select)
 
     def set_data(self, a: CharaSetData):
         self.ui.tableView.model().set_data(a.chara_list)
