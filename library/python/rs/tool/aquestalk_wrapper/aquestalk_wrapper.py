@@ -198,8 +198,8 @@ class MainWindow(QMainWindow):
         self.ui.actionExit.triggered.connect(self.close)
 
         self.ui.actionEdit.triggered.connect(self.edit)
-        self.ui.actionClear.triggered.connect(self.clear)
         self.ui.actionAdd.triggered.connect(self.add)
+        self.ui.actionClear.triggered.connect(self.ui.tableView.clear)
         self.ui.actionCopy.triggered.connect(self.ui.tableView.copy)
         self.ui.actionPaste.triggered.connect(self.ui.tableView.paste)
         self.ui.actionDelete.triggered.connect(self.ui.tableView.delete)
@@ -320,14 +320,6 @@ class MainWindow(QMainWindow):
     def edit(self):
         v = self.ui.tableView
         v.edit(v.currentIndex())
-
-    def clear(self):
-        v = self.ui.tableView
-        m: Model = v.model()
-        sm = v.selectionModel()
-        for i in sm.selectedIndexes():
-            m.setData(i, '', Qt.EditRole)
-        return
 
     def contextMenu(self, pos):
         v = self.ui.tableView

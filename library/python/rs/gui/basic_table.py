@@ -316,6 +316,12 @@ class View(QTableView):
                 index = m.index(row, col, QModelIndex())
                 m.setData(index, ss[src_row][src_col], Qt.EditRole)
                 sm.select(index, QItemSelectionModel.Select)
+    def clear(self):
+        m: Model = self.model()
+        sm = self.selectionModel()
+        for i in sm.selectedIndexes():
+            m.setData(i, '', Qt.EditRole)
+        return
 
 
 if __name__ == '__main__':
