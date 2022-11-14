@@ -9,6 +9,7 @@ aggdraw
 appdirs
 attrs
 audioread
+budoux
 certifi
 cffi
 chardet

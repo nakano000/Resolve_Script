@@ -1,7 +1,15 @@
 import functools
 import platform
 import subprocess
+import unicodedata
+
 from pathlib import Path
+
+import budoux
+
+from rs.core import (
+    pipe as p,
+)
 
 
 class Singleton:
@@ -52,5 +60,33 @@ def open_directory(path: Path):
     subprocess.Popen(['explorer', str(path)])
 
 
+def get_char_width(c):
+    data = unicodedata.east_asian_width(c)
+    return 1 if data in ['Na', 'H'] else 2
+
+
+def get_str_width(s):
+    return p.pipe(
+        s,
+        p.map(get_char_width),
+        sum,
+    )
+
+
+def str2lines(s: str, width: int):
+    if width <= 0:
+        return s
+    parser = budoux.load_default_japanese_parser()
+    ss = parser.parse(s)
+    lines = ['']
+    for _s in ss:
+        if get_str_width(lines[-1] + _s) > width:
+            lines.append(_s)
+        else:
+            lines[-1] += _s
+    return '\n'.join(lines)
+
+
 if __name__ == '__main__':
-    pass
+    print(get_str_width('abcあいう'))
+    print(str2lines('今日は晴れています。', 10))

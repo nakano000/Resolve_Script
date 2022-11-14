@@ -89,7 +89,10 @@ def run(f: Path, fps):
             ch_data = cd
             break
 
-    t = read_text(txt_file, ch_data.c_code)
+    t = util.str2lines(
+        read_text(txt_file, ch_data.c_code),
+        ch_data.str_width * 2,
+    )
 
     # SRT
     if not srt_exists:

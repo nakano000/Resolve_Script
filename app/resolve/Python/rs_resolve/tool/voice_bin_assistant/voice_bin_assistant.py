@@ -4,8 +4,6 @@ import time
 
 from pathlib import Path
 
-import pyautogui
-import pygetwindow
 
 from PySide2.QtCore import (
     Qt,
@@ -54,6 +52,7 @@ def track_name2index(timeline, track_type, name):
 
 
 def get_resolve_window(pj_name):
+    import pygetwindow
     for t in pygetwindow.getAllTitles():
         if t.startswith('DaVinci Resolve') and t.endswith(pj_name):
             return pygetwindow.getWindowsWithTitle(t)[0]
@@ -184,6 +183,7 @@ class MainWindow(QMainWindow):
         a_m.setStringList(get_track_names(timeline, 'audio'))
 
     def import_wave(self) -> None:
+        import pyautogui
         filenames = QFileDialog.getOpenFileNames(
             self,
             'Open File',
@@ -236,6 +236,7 @@ class MainWindow(QMainWindow):
         self.add2log('Done!')
 
     def split_and_setup(self):
+        import pyautogui
         self.ui.logTextEdit.clear()
 
         # get data

@@ -21,6 +21,7 @@ class CharaData(basic_table.RowData):
     reg_exp: str = r'.+'
     color: str = 'None'
     c_code: str = 'auto'
+    str_width:int = 0
     anim_type: str = 'aiueo'
     anim_parameter: str = 'Anim'
     _setting: str = r'Preset\TextPlus\字幕_白.setting'
@@ -41,7 +42,7 @@ class CharaData(basic_table.RowData):
 
     @classmethod
     def toHeaderList(cls) -> List[str]:
-        return ['トラック名', '正規表現', '色', '文字コード', 'アニメ タイプ', 'パラメータ名', 'settingファイル']
+        return ['トラック名', '正規表現', '色', '文字コード', '字幕幅', 'アニメ タイプ', 'パラメータ名', 'settingファイル']
 
 
 @dataclasses.dataclass
