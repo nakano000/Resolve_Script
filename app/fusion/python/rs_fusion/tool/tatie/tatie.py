@@ -40,8 +40,34 @@ class ConfigData(config.Data):
     post_multiply: bool = False
     ctrl_type: int = 1
     ctrl_name: str = 'Select'
+    page_name: str = 'User'
     width: int = 1920
     height: int = 1080
+
+
+def uc_button(node_a, node_b, page, layer_name, width):
+    inp = node_a.FindMainInput(1)
+    if node_b is None:
+        lua = [
+            'local node = comp:FindTool("%s")' % node_a.Name,
+            'node.%s = nil' % inp.ID,
+        ]
+    else:
+        lua = [
+            'local _a = comp:FindTool("%s")' % node_a.Name,
+            'local _b = comp:FindTool("%s")' % node_b.Name,
+            '_a:ConnectInput("%s", _b)' % inp.ID,
+        ]
+    return {
+        'LINKS_Name': layer_name,
+        'LINKID_DataType': 'Number',
+        'INPID_InputControl': 'ButtonControl',
+        'INP_Integer': False,
+        'BTNCS_Execute': '\n'.join(lua),
+        'INP_External': False,
+        'ICS_ControlPage': page,
+        'ICD_Width': width,
+    }
 
 
 class MainWindow(QMainWindow):
@@ -91,6 +117,7 @@ class MainWindow(QMainWindow):
         self.ui.loaderButton.clicked.connect(self.make_loader)
         self.ui.margeButton.clicked.connect(self.marge)
         self.ui.switchButton.clicked.connect(self.switch_fuse)
+        self.ui.addButtonButton.clicked.connect(self.add_button)
         self.ui.closeButton.clicked.connect(self.close)
 
     def make_loader(self):
@@ -314,6 +341,58 @@ class MainWindow(QMainWindow):
         comp.Unlock()
         print('Done!')
 
+    def add_button(self):
+        resolve = self.fusion.GetResolve()
+        if resolve is not None and resolve.GetCurrentPage() != 'fusion':
+            QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
+            return
+        comp = self.fusion.CurrentComp
+        if comp is None:
+            QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
+            return
+
+        # tools
+        tools = list(comp.GetToolList(True).values())
+        if len(tools) == 0:
+            QMessageBox.warning(self, 'Warning', 'ノードを選択してください。')
+            return
+        flow = comp.CurrentFrame.FlowView
+        tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+
+        # data
+        data = self.get_data()
+
+        # undo
+        comp.Lock()
+        comp.StartUndo('RS Button')
+
+        # XF
+        _x, _y = flow.GetPosTable(tools[len(tools) - 1]).values()
+        xf = comp.AddTool('Transform', _x, _y + 4)
+        xf.SetAttrs({'TOOLS_Name': data.page_name + 'Selector'})
+        xf.ConnectInput('Input', tools[0])
+
+        # user_controls
+        user_controls = {}
+        for i, layer in enumerate(tools):
+            layer_name: str = layer.Name
+            if layer.ID == 'Loader':
+                layer_name = Path(layer.Clip[1]).stem.strip()
+            uc_name = 'N' + str(i).zfill(3) + '_' + layer.Name
+            user_controls[uc_name] = uc_button(xf, layer, data.page_name, layer_name, 1.0)
+
+        # xf
+        uc = {'__flags': 2097152}  # 順番を保持するフラグ
+        for k, v in list(user_controls.items()):
+            uc[k] = v
+        xf.UserControls = uc
+        xf.Refresh()
+
+        # end
+        comp.EndUndo(True)
+        comp.Unlock()
+        print('Done!')
+
     def new_config(self):
         return ConfigData()
 
@@ -321,6 +400,7 @@ class MainWindow(QMainWindow):
         self.ui.multiplyCheckBox.setChecked(c.post_multiply)
         self.button_group.button(c.ctrl_type).setChecked(True)
         self.ui.ctrlNameLineEdit.setText(c.ctrl_name)
+        self.ui.pageNameLineEdit.setText(c.page_name)
         self.ui.widthSpinBox.setValue(c.width)
         self.ui.heightSpinBox.setValue(c.height)
 
@@ -331,6 +411,9 @@ class MainWindow(QMainWindow):
         c.ctrl_name = self.ui.ctrlNameLineEdit.text().strip()
         if c.ctrl_name == '':
             c.ctrl_name = 'Select'
+        c.page_name = self.ui.pageNameLineEdit.text().strip()
+        if c.page_name == '':
+            c.page_name = 'User'
         c.width = self.ui.widthSpinBox.value()
         c.height = self.ui.heightSpinBox.value()
         return c

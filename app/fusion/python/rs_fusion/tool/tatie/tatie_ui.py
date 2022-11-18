@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\tatie\tatie.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\tatie\tatie.ui' applies.
 #
-# Created: Sun Sep 11 05:19:33 2022
+# Created: Fri Nov 18 08:00:52 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(460, 458)
+        MainWindow.resize(566, 524)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -117,10 +117,26 @@ class Ui_MainWindow(object):
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem5)
         self.verticalLayout_4.addWidget(self.groupBox_5)
+        self.groupBox_6 = QtWidgets.QGroupBox(self.centralwidget)
+        self.groupBox_6.setObjectName("groupBox_6")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.groupBox_6)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.label_4 = QtWidgets.QLabel(self.groupBox_6)
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout_6.addWidget(self.label_4)
+        self.pageNameLineEdit = QtWidgets.QLineEdit(self.groupBox_6)
+        self.pageNameLineEdit.setObjectName("pageNameLineEdit")
+        self.horizontalLayout_6.addWidget(self.pageNameLineEdit)
+        self.verticalLayout_5.addLayout(self.horizontalLayout_6)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_5.addItem(spacerItem6)
+        self.verticalLayout_4.addWidget(self.groupBox_6)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem6 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem6)
+        spacerItem7 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem7)
         self.loaderButton = QtWidgets.QPushButton(self.centralwidget)
         self.loaderButton.setMinimumSize(QtCore.QSize(100, 40))
         self.loaderButton.setObjectName("loaderButton")
@@ -133,8 +149,12 @@ class Ui_MainWindow(object):
         self.switchButton.setMinimumSize(QtCore.QSize(100, 40))
         self.switchButton.setObjectName("switchButton")
         self.horizontalLayout_2.addWidget(self.switchButton)
-        spacerItem7 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem7)
+        self.addButtonButton = QtWidgets.QPushButton(self.centralwidget)
+        self.addButtonButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.addButtonButton.setObjectName("addButtonButton")
+        self.horizontalLayout_2.addWidget(self.addButtonButton)
+        spacerItem8 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem8)
         self.closeButton = QtWidgets.QPushButton(self.centralwidget)
         self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
         self.closeButton.setObjectName("closeButton")
@@ -163,8 +183,11 @@ class Ui_MainWindow(object):
         self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "SwitchFuse", None, -1))
         self.openSiteButton.setText(QtWidgets.QApplication.translate("MainWindow", " ダウンロードページを開く ", None, -1))
         self.openFuseDirButton.setText(QtWidgets.QApplication.translate("MainWindow", " インストールフォルダを開く ", None, -1))
+        self.groupBox_6.setTitle(QtWidgets.QApplication.translate("MainWindow", "ボタン切り替え", None, -1))
+        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "ページ名", None, -1))
         self.loaderButton.setText(QtWidgets.QApplication.translate("MainWindow", "読み込み", None, -1))
         self.margeButton.setText(QtWidgets.QApplication.translate("MainWindow", "マージ", None, -1))
         self.switchButton.setText(QtWidgets.QApplication.translate("MainWindow", "SwitchFuse", None, -1))
+        self.addButtonButton.setText(QtWidgets.QApplication.translate("MainWindow", "ボタン切り替え", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
 
