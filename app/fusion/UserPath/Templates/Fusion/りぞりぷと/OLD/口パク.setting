@@ -6,142 +6,29 @@
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				},
 			},
 			Inputs = {
 				Input = Input {
-					SourceOp = "MouthAnim",
+					SourceOp = "Dissolve2",
 					Source = "Output",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 220, 82.5 } },
+			ViewInfo = OperatorInfo { Pos = { 440, -49.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 			UserControls = ordered() {
 				Anim = {
 					INP_Integer = true,
-					LINKS_Name = "Anim",
 					INPID_InputControl = "SliderControl",
+					LINKID_DataType = "Number",
 					INP_MinScale = 0,
-					LINKID_DataType = "Number",
-					INP_MaxScale = 6,
 					INP_Default = 0,
-					ICS_ControlPage = "口パク",
-				},
-				AnimOn = {
-					LINKS_Name = "AnimOn",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					INP_External = false,
-					ICD_Width =  0.5,
-					ICS_ControlPage = "口パク",
-					BTNCS_Execute = [[
-local node = comp:FindTool("MouthAnim")
-node:SetAttrs({TOOLB_PassThrough = false})
-]],
-				},
-				AnimOff = {
-					LINKS_Name = "AnimOff",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					INP_External = false,
-					ICD_Width =  0.5,
-					ICS_ControlPage = "口パク",
-					BTNCS_Execute = [[
-local node = comp:FindTool("MouthAnim")
-node:SetAttrs({TOOLB_PassThrough = true})
-]],
+					INP_MaxScale = 6,
+					LINKS_Name = "Anim",
 				}
 			}
-		},
-		MouthAnim = Dissolve {
-			Transitions = {
-				[0] = "DFTLumaRamp"
-			},
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
-					}
-				},
-			},
-			Inputs = {
-				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
-				Mix = Input {
-					Value = 0,
-					Expression = "iif(MouthCtrl.Anim < 1, 0, 1)",
-				},
-				Foreground = Input {
-					SourceOp = "DissolveN",
-					Source = "Output",
-				},
-				["DFTLumaRamp.Softness"] = Input { Value = 0, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 110, 82.499 } },
-		},
-		DissolveN = Dissolve {
-			Transitions = {
-				[0] = "DFTLumaRamp"
-			},
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
-					}
-				}
-			},
-			Inputs = {
-				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
-				Mix = Input {
-					Value = 0,
-					Expression = "iif(MouthCtrl.Anim < 2, 0, 1)",
-				},
-				Background = Input {
-					SourceOp = "N",
-					Source = "Output",
-				},
-				Foreground = Input {
-					SourceOp = "DissolveA",
-					Source = "Output",
-				},
-				["DFTLumaRamp.Softness"] = Input { Value = 0, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 0, 82.5 } },
-		},
-		DissolveA = Dissolve {
-			Transitions = {
-				[0] = "DFTLumaRamp"
-			},
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
-					}
-				}
-			},
-			Inputs = {
-				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
-				Mix = Input {
-					Value = 0,
-					Expression = "iif(MouthCtrl.Anim < 3, 0, 1)",
-				},
-				Background = Input {
-					SourceOp = "A",
-					Source = "Output",
-				},
-				Foreground = Input {
-					SourceOp = "DissolveI",
-					Source = "Output",
-				},
-				["DFTLumaRamp.Softness"] = Input { Value = 0, },
-			},
-			ViewInfo = OperatorInfo { Pos = { -110, 82.5 } },
 		},
 		DissolveI = Dissolve {
 			Transitions = {
@@ -151,7 +38,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -171,7 +58,92 @@ node:SetAttrs({TOOLB_PassThrough = true})
 				},
 				["DFTLumaRamp.Softness"] = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { -220, 82.5 } },
+			ViewInfo = OperatorInfo { Pos = { 0, -49.5 } },
+		},
+		DissolveA = Dissolve {
+			Transitions = {
+				[0] = "DFTLumaRamp"
+			},
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			Inputs = {
+				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+				Mix = Input {
+					Value = 0,
+					Expression = "iif(MouthCtrl.Anim < 3, 0, 1)",
+				},
+				Background = Input {
+					SourceOp = "A",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "DissolveI",
+					Source = "Output",
+				},
+				["DFTLumaRamp.Softness"] = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 110, -49.5 } },
+		},
+		DissolveN = Dissolve {
+			Transitions = {
+				[0] = "DFTLumaRamp"
+			},
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			Inputs = {
+				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+				Mix = Input {
+					Value = 0,
+					Expression = "iif(MouthCtrl.Anim < 2, 0, 1)",
+				},
+				Background = Input {
+					SourceOp = "N",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "DissolveA",
+					Source = "Output",
+				},
+				["DFTLumaRamp.Softness"] = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, -49.5 } },
+		},
+		Dissolve2 = Dissolve {
+			Transitions = {
+				[0] = "DFTLumaRamp"
+			},
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			Inputs = {
+				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
+				Mix = Input {
+					Value = 0,
+					Expression = "iif(MouthCtrl.Anim < 1, 0, 1)",
+				},
+				Foreground = Input {
+					SourceOp = "DissolveN",
+					Source = "Output",
+				},
+				["DFTLumaRamp.Softness"] = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, -49.501 } },
 		},
 		DissolveU = Dissolve {
 			Transitions = {
@@ -181,7 +153,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -201,7 +173,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 				},
 				["DFTLumaRamp.Softness"] = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { -330, 82.5 } },
+			ViewInfo = OperatorInfo { Pos = { -110, -49.5 } },
 		},
 		DissolveE = Dissolve {
 			Transitions = {
@@ -211,7 +183,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -231,73 +203,73 @@ node:SetAttrs({TOOLB_PassThrough = true})
 				},
 				["DFTLumaRamp.Softness"] = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { -440, 82.5 } },
-		},
-		N = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
-					}
-				}
-			},
-			ViewInfo = OperatorInfo { Pos = { 0, -16.5 } },
-		},
-		A = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
-					}
-				}
-			},
-			ViewInfo = OperatorInfo { Pos = { -110, -16.5 } },
-		},
-		I = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
-					}
-				}
-			},
-			ViewInfo = OperatorInfo { Pos = { -220, -16.5 } },
-		},
-		U = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
-					}
-				}
-			},
-			ViewInfo = OperatorInfo { Pos = { -330, -16.5 } },
-		},
-		E = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
-					}
-				}
-			},
-			ViewInfo = OperatorInfo { Pos = { -440, -16.5 } },
+			ViewInfo = OperatorInfo { Pos = { -220, -49.5 } },
 		},
 		O = Fuse.Wireless {
 			NameSet = true,
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				}
+				},
 			},
-			ViewInfo = OperatorInfo { Pos = { -550, 82.5 } },
+			ViewInfo = OperatorInfo { Pos = { -330, -49.5 } },
+		},
+		N = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, -148.5 } },
+		},
+		A = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 110, -148.5 } },
+		},
+		I = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 0, -148.5 } },
+		},
+		U = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { -110, -148.5 } },
+		},
+		E = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { -220, -148.5 } },
 		}
 	},
 	ActiveTool = "MouthCtrl"

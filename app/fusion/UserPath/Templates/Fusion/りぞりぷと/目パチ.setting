@@ -1,13 +1,74 @@
 {
 	Tools = ordered() {
-		Dissolve1 = Dissolve {
-			Transitions = {
-				[0] = "DFTLumaRamp"
-			},
+		EyeCtrl = Transform {
+			CtrlWZoom = false,
+			NameSet = true,
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+					}
+				},
+			},
+			Inputs = {
+				Input = Input {
+					SourceOp = "EyeBlink",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, 49.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+			UserControls = ordered() {
+				Blink = {
+					INP_MaxAllowed = 1000000,
+					INP_Integer = true,
+					INPID_InputControl = "SliderControl",
+					INP_MaxScale = 500,
+					INP_Default = 127,
+					INP_MinScale = 0,
+					INP_MinAllowed = -1000000,
+					LINKID_DataType = "Number",
+					INP_External = false,
+					LINKS_Name = "Blink",
+					ICS_ControlPage = "目パチ",
+				},
+				BlinkOn = {
+					LINKS_Name = "BlinkOn",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					INP_External = false,
+					ICD_Width =  0.5,
+					ICS_ControlPage = "目パチ",
+					BTNCS_Execute = [[
+local node = comp:FindTool("EyeBlink")
+node:SetAttrs({TOOLB_PassThrough = false})
+]],
+				},
+				BlinkOff = {
+					LINKS_Name = "BlinkOff",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					INP_External = false,
+					ICD_Width =  0.5,
+					ICS_ControlPage = "目パチ",
+					BTNCS_Execute = [[
+local node = comp:FindTool("EyeBlink")
+node:SetAttrs({TOOLB_PassThrough = true})
+]],
+				}
+			}
+		},
+		EyeBlink = Dissolve {
+			Transitions = {
+				[0] = "DFTLumaRamp"
+			},
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
 					}
 				},
 			},
@@ -15,7 +76,7 @@
 				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
 				Mix = Input {
 					Value = 0,
-					Expression = "iif(time % EyeCtrl.Blink  > EyeCtrl.Blink - 4, EyeCtrl.UseBlink, 0)",
+					Expression = "iif(time % EyeCtrl.Blink  > EyeCtrl.Blink - 4, 1, 0)",
 				},
 				Foreground = Input {
 					SourceOp = "Closed",
@@ -23,64 +84,18 @@
 				},
 				["DFTLumaRamp.Softness"] = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 110, 82.499 } },
+			ViewInfo = OperatorInfo { Pos = { 110, 49.499 } },
 		},
 		Closed = Fuse.Wireless {
 			NameSet = true,
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
 					}
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 0, 82.5 } },
-		},
-		EyeCtrl = Transform {
-			CtrlWZoom = false,
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-					}
-				},
-			},
-			Inputs = {
-				Input = Input {
-					SourceOp = "Dissolve1",
-					Source = "Output",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 220, 82.5 } },
-			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-			UserControls = ordered() {
-				UseBlink = {
-					INP_MaxAllowed = 1,
-					INP_Integer = true,
-					INPID_InputControl = "CheckboxControl",
-					INP_MaxScale = 1,
-					INP_Default = 1,
-					INP_MinScale = 0,
-					INP_MinAllowed = 0,
-					LINKID_DataType = "Number",
-					INP_External = false,
-					CBC_TriState = false,
-					LINKS_Name = "UseBlink",
-				},
-				Blink = {
-					LINKS_Name = "Blink",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "SliderControl",
-					INP_Default = 127,
-					INP_Integer = true,
-					INP_MinScale = 0,
-					INP_MaxScale = 500,
-					INP_MinAllowed = -1000000,
-					INP_MaxAllowed = 1000000,
-					INP_External = false,
 				}
-			}
+			},
+			ViewInfo = OperatorInfo { Pos = { 0, 49.5 } },
 		}
 	},
 	ActiveTool = "EyeCtrl"
