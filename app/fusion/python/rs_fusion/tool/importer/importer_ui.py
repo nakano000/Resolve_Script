@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui' applies.
 #
-# Created: Fri Nov 18 16:39:35 2022
+# Created: Sat Nov 19 03:39:13 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(345, 246)
+        MainWindow.resize(369, 264)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -51,6 +51,9 @@ class Ui_MainWindow(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
         self.verticalLayout_3.addLayout(self.horizontalLayout_4)
+        self.label = QtWidgets.QLabel(self.groupBox_3)
+        self.label.setObjectName("label")
+        self.verticalLayout_3.addWidget(self.label)
         self.verticalLayout_2.addWidget(self.groupBox_3)
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setObjectName("groupBox")
@@ -114,6 +117,7 @@ class Ui_MainWindow(object):
         self.groupBox_3.setTitle(QtWidgets.QApplication.translate("MainWindow", "立ち絵形式", None, -1))
         self.expRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "エクスプレッション", None, -1))
         self.connectRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "コネクション切り替え", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "※エクスプレッションが従来のものです。", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "拡張 (アニメーション スペース確保)", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "X", None, -1))
         self.xSpinBox.setSuffix(QtWidgets.QApplication.translate("MainWindow", " px", None, -1))

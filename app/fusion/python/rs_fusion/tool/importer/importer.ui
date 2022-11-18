@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>345</width>
-    <height>246</height>
+    <width>369</width>
+    <height>264</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,6 +84,13 @@
           </spacer>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>※エクスプレッションが従来のものです。</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
