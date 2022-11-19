@@ -6,7 +6,7 @@
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				},
 			},
@@ -15,6 +15,7 @@
 					SourceOp = "MouthAnim",
 					Source = "Output",
 				},
+				AnimStatus = Input { Value = "On", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 220, 82.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
@@ -35,11 +36,11 @@
 					INPID_InputControl = "ButtonControl",
 					INP_Integer = false,
 					INP_External = false,
-					ICD_Width =  0.5,
+					ICD_Width =  0.4,
 					ICS_ControlPage = "口パク",
 					BTNCS_Execute = [[
-local node = comp:FindTool("MouthAnim")
-node:SetAttrs({TOOLB_PassThrough = false})
+MouthAnim:SetAttrs({TOOLB_PassThrough = false})
+MouthCtrl.AnimStatus = "On"
 ]],
 				},
 				AnimOff = {
@@ -48,12 +49,24 @@ node:SetAttrs({TOOLB_PassThrough = false})
 					INPID_InputControl = "ButtonControl",
 					INP_Integer = false,
 					INP_External = false,
-					ICD_Width =  0.5,
+					ICD_Width =  0.4,
 					ICS_ControlPage = "口パク",
 					BTNCS_Execute = [[
-local node = comp:FindTool("MouthAnim")
-node:SetAttrs({TOOLB_PassThrough = true})
+MouthAnim:SetAttrs({TOOLB_PassThrough = true})
+MouthCtrl.AnimStatus = "Off"
 ]],
+				},
+				AnimStatus = {
+					TEC_ReadOnly = false,
+					ICS_ControlPage = "口パク",
+					INP_External = false,
+					LINKID_DataType = "Text",
+					TEC_Wrap = false,
+					TEC_ReadOnly = true,
+					INPID_InputControl = "TextEditControl",
+					TEC_Lines = 1,
+					ICD_Width =  0.2,
+					LINKS_Name = "",
 				}
 			}
 		},
@@ -65,7 +78,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				},
 			},
@@ -91,7 +104,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -121,7 +134,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -151,7 +164,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -181,7 +194,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -211,7 +224,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -238,7 +251,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -249,7 +262,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -260,7 +273,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -271,7 +284,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -282,7 +295,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
@@ -293,7 +306,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},

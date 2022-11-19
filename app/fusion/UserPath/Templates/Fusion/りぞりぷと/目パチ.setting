@@ -6,7 +6,7 @@
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				},
 			},
@@ -15,6 +15,7 @@
 					SourceOp = "EyeBlink",
 					Source = "Output",
 				},
+				EyeStatus = Input { Value = "On", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 220, 49.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
@@ -38,11 +39,11 @@
 					INPID_InputControl = "ButtonControl",
 					INP_Integer = false,
 					INP_External = false,
-					ICD_Width =  0.5,
+					ICD_Width =  0.4,
 					ICS_ControlPage = "目パチ",
 					BTNCS_Execute = [[
-local node = comp:FindTool("EyeBlink")
-node:SetAttrs({TOOLB_PassThrough = false})
+EyeBlink:SetAttrs({TOOLB_PassThrough = false})
+EyeCtrl.EyeStatus = "On"
 ]],
 				},
 				BlinkOff = {
@@ -51,12 +52,24 @@ node:SetAttrs({TOOLB_PassThrough = false})
 					INPID_InputControl = "ButtonControl",
 					INP_Integer = false,
 					INP_External = false,
-					ICD_Width =  0.5,
+					ICD_Width =  0.4,
 					ICS_ControlPage = "目パチ",
 					BTNCS_Execute = [[
-local node = comp:FindTool("EyeBlink")
-node:SetAttrs({TOOLB_PassThrough = true})
+EyeBlink:SetAttrs({TOOLB_PassThrough = true})
+EyeCtrl.EyeStatus = "Off"
 ]],
+				},
+				EyeStatus = {
+					TEC_ReadOnly = false,
+					ICS_ControlPage = "目パチ",
+					INP_External = false,
+					LINKID_DataType = "Text",
+					TEC_Wrap = false,
+					TEC_ReadOnly = true,
+					INPID_InputControl = "TextEditControl",
+					TEC_Lines = 1,
+					ICD_Width =  0.2,
+					LINKS_Name = "",
 				}
 			}
 		},
@@ -68,7 +81,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				},
 			},
@@ -91,7 +104,7 @@ node:SetAttrs({TOOLB_PassThrough = true})
 			CustomData = {
 				Path = {
 					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\OLD\\"
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
 				}
 			},
