@@ -135,6 +135,15 @@ class MainWindow(QMainWindow):
             bg.Depth = 1
             return xf, bg
 
+        def add_ld(pos_x, pos_y, path):
+            node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
+            node.Clip[1] = path
+            node.Loop[1] = 1
+            node.PostMultiplyByAlpha = 1 if ver < 10 else 0
+            node.GlobalIn = -1000
+            node.GlobalOut = -1000
+            return node
+
         def add_node_A(pos_x, pos_y, size_x, size_y, data, name):
             pos_x += 1
             xf, bg = add_xf_bg(pos_x, pos_y, size_x, size_y, name)
@@ -156,10 +165,7 @@ class MainWindow(QMainWindow):
                     node, _, pos_x = add_node_A(pos_x, pos_y, size_x, size_y, layer_data, layer_name)
                     set_x(mg, pos_x - 1)
                 else:
-                    node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
-                    node.Clip[1] = comp.ReverseMapPath(layer_data.replace('/', '\\'))
-                    node.Loop[1] = 1
-                    node.PostMultiplyByAlpha = 1 if ver < 10 else 0
+                    node = add_ld(pos_x, pos_y, comp.ReverseMapPath(layer_data.replace('/', '\\')))
                     pos_x += 1
                 mg.ConnectInput('Foreground', node)
                 mg.ConnectInput('Background', pre_node)
@@ -273,10 +279,7 @@ class MainWindow(QMainWindow):
                                                                 uc)
                     name_list += _name_list
                 else:
-                    node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
-                    node.Clip[1] = comp.ReverseMapPath(layer_data.replace('/', '\\'))
-                    node.Loop[1] = 1
-                    node.PostMultiplyByAlpha = 1 if ver < 10 else 0
+                    node = add_ld(pos_x, pos_y, comp.ReverseMapPath(layer_data.replace('/', '\\')))
 
                 # mg
                 if layer_name.startswith('*'):
