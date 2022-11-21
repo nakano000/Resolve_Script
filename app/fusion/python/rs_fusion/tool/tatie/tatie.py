@@ -164,6 +164,8 @@ class MainWindow(QMainWindow):
             node.Clip[1] = comp.ReverseMapPath(url.replace('/', '\\'))
             node.Loop[1] = 1
             node.PostMultiplyByAlpha = 1 if data.post_multiply else 0
+            node.GlobalIn = -1000
+            node.GlobalOut = -1000
 
             flow.Select(node)
             _x += 1
