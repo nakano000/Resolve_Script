@@ -45,7 +45,7 @@ class InputData(basic_table.RowData):
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
-    macro_name = 'MacroTool'
+    macro_name: str = 'MacroTool'
     use_group: bool = True
     main_output_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
     main_input_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
@@ -55,7 +55,6 @@ class ConfigData(config.Data):
 def get_new_model():
     m = QStandardItemModel()
     return m
-
 
 
 class Model(basic_table.Model):
@@ -363,6 +362,7 @@ class MainWindow(QMainWindow):
     def save_config(self) -> None:
         config.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
         c = self.get_data()
+        c.macro_name = 'MacroTool'
         c.main_output_list = config.DataList(InputData)
         c.main_input_list = config.DataList(InputData)
         c.input_list = config.DataList(InputData)
