@@ -1,6 +1,4 @@
-import json
 import sys
-from functools import partial
 from pathlib import Path
 from typing import List, Any
 
@@ -52,11 +50,6 @@ class ConfigData(config.Data):
     input_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
 
 
-def get_new_model():
-    m = QStandardItemModel()
-    return m
-
-
 class Model(basic_table.Model):
 
     def data(self, index: QModelIndex, role: int = Qt.DisplayRole) -> Any:
@@ -66,12 +59,6 @@ class Model(basic_table.Model):
 
             if role == Qt.EditRole:
                 return dataclasses.astuple(self._data[index.row()])[index.column()]
-
-    def flags(self, index: QModelIndex) -> Qt.ItemFlags:
-        if index.isValid():
-            return Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable
-
-        return Qt.NoItemFlags
 
 
 class MainWindow(QMainWindow):
@@ -98,14 +85,13 @@ class MainWindow(QMainWindow):
             table_v.setModel(Model(InputData))
 
         # config
-        self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
-        self.load_config()
+        self.set_data(ConfigData())
 
         # tree
         v = self.ui.treeView
         v.setHeaderHidden(True)
 
-        v.setModel(get_new_model())
+        v.setModel(QStandardItemModel())
 
         # style sheet
         self.ui.saveMacroButton.setStyleSheet(appearance.ex_stylesheet)
@@ -137,7 +123,7 @@ class MainWindow(QMainWindow):
 
         # setup
         v = self.ui.treeView
-        m = get_new_model()
+        m = QStandardItemModel()
         v.setModel(m)
         tools: dict = comp.GetToolList(True)
 
@@ -352,25 +338,6 @@ class MainWindow(QMainWindow):
         c.main_input_list.set_list(self.ui.mainInputTableView.model().to_list())
         c.input_list.set_list(self.ui.inputTableView.model().to_list())
         return c
-
-    def load_config(self) -> None:
-        c = ConfigData()
-        if self.config_file.is_file():
-            c.load(self.config_file)
-        self.set_data(c)
-
-    def save_config(self) -> None:
-        config.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
-        c = self.get_data()
-        c.macro_name = 'MacroTool'
-        c.main_output_list = config.DataList(InputData)
-        c.main_input_list = config.DataList(InputData)
-        c.input_list = config.DataList(InputData)
-        c.save(self.config_file)
-
-    def closeEvent(self, event):
-        self.save_config()
-        super().closeEvent(event)
 
 
 def run(fusion) -> None:
