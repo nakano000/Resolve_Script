@@ -3,7 +3,6 @@ def get_header(name: str, use_group: bool) -> str:
 {
 	Tools = ordered() {
 		['%s'] = %s {
-			CtrlWZoom = false,
 """ % (name, 'GroupOperator' if use_group else 'MacroOperator')
 
 
@@ -44,12 +43,26 @@ def get_output(lst) -> str:
 
 def get_footer():
     return """
+			ViewInfo = GroupInfo {
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true
+				},
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			CtrlWZoom = false,
 			Tools = ordered() {
 			}
 		}
 	}
 }
 """
+
 
 def get_save_script(path, name, text):
     lua = """
@@ -67,4 +80,3 @@ end
         '[[%s]],' % name,
         '[[%s]])' % text,
     ])
-
