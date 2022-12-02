@@ -1,6 +1,6 @@
-from PySide2.QtCore import Qt, QEvent
+from PySide2.QtCore import Qt
 from PySide2.QtGui import QKeySequence
-from PySide2.QtWidgets import QAction, QMenu, QStyledItemDelegate
+from PySide2.QtWidgets import QAction, QMenu
 
 from rs.gui import (
     basic_table,
