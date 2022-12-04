@@ -112,12 +112,12 @@ sudo ln -s libpython3.6m.so.1.0 libpython3.6.so.1.0
 sudo ldconfig
 ```
 #### python3に必要なライブラリを入れる。
-'りぞりぷと'を解凍したフォルダ内で
+りぞりぷと を解凍したフォルダ内で
 ```
 sudo pip3 install --upgrade pip
 pin3 install -r requirements.txt
 ```
-#### 'りぞりぷと'を立ち上げる
+#### りぞりぷと を立ち上げる
 ```
 python3 bin/launcher.py
 ```
