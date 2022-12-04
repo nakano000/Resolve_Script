@@ -30,6 +30,7 @@ APP_NAME = 'Youtubeチャプター'
 class ConfigData(config.Data):
     title: str = '目次'
     delimiter: str = '-'
+    is_niconico: bool = False
     color: str = 'Rose'
 
 
@@ -100,6 +101,7 @@ class MainWindow(QMainWindow):
         v = self.ui.chapterPlainTextEdit
         data = self.get_data()
         delim = (' %s ' % data.delimiter).replace('  ', ' ')
+        prefix = '#' if data.is_niconico else ''
 
         resolve = self.fusion.GetResolve()
         projectManager = resolve.GetProjectManager()
@@ -127,8 +129,8 @@ class MainWindow(QMainWindow):
                 if hour > 0:
                     tc = '%02d:%s' % (hour, tc)
                 if len(lst) == 1 and tc != '00:00':  # タイトルが入っているので  == 1
-                    lst.append('00:00' + delim)
-                lst.append(tc + delim + m[key]['name'])
+                    lst.append(prefix + '00:00' + delim)
+                lst.append(prefix + tc + delim + m[key]['name'])
 
         v.setPlainText('\n'.join(lst))
 
@@ -138,12 +140,15 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.titleLineEdit.setText(c.title)
         self.ui.delimiterLineEdit.setText(c.delimiter)
+        self.ui.niconicoCheckBox.setChecked(c.is_niconico)
         select(self.ui.markerListView, [c.color])
+
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.title = self.ui.titleLineEdit.text().strip()
         c.delimiter = self.ui.delimiterLineEdit.text().strip()
+        c.is_niconico = self.ui.niconicoCheckBox.isChecked()
 
         # c.color
         v = self.ui.markerListView

@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\youtube_chapter\youtube_chapter.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\youtube_chapter\youtube_chapter.ui' applies.
 #
-# Created: Tue Jul 19 12:05:04 2022
+# Created: Mon Dec  5 08:32:31 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(363, 371)
+        MainWindow.resize(465, 441)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -37,6 +37,9 @@ class Ui_MainWindow(object):
         self.delimiterLineEdit.setObjectName("delimiterLineEdit")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.delimiterLineEdit)
         self.verticalLayout_2.addLayout(self.formLayout)
+        self.niconicoCheckBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.niconicoCheckBox.setObjectName("niconicoCheckBox")
+        self.verticalLayout_2.addWidget(self.niconicoCheckBox)
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -90,6 +93,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "題名", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "区切り文字", None, -1))
+        self.niconicoCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "ニコニコ動画用に#を付ける", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "marker", None, -1))
         self.makeButton.setText(QtWidgets.QApplication.translate("MainWindow", "生成", None, -1))
         self.copyButton.setText(QtWidgets.QApplication.translate("MainWindow", "コピー", None, -1))

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>363</width>
-    <height>371</height>
+    <width>465</width>
+    <height>441</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,6 +42,13 @@
            <widget class="QLineEdit" name="delimiterLineEdit"/>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="niconicoCheckBox">
+          <property name="text">
+           <string>ニコニコ動画用に#を付ける</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QGroupBox" name="groupBox">
