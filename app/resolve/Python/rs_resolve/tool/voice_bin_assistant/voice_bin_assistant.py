@@ -4,7 +4,6 @@ import time
 
 from pathlib import Path
 
-
 from PySide2.QtCore import (
     Qt,
     QStringListModel,
@@ -81,10 +80,22 @@ def get_video_item(timeline, index):
     return None
 
 
+def get_text(item) -> str:
+    if item.GetFusionCompCount() == 0:
+        return ''
+    comp = item.GetFusionCompByIndex(1)
+    lst = comp.GetToolList(False, 'TextPlus')
+
+    if len(lst) == 0:
+        return ''
+    return lst[1].GetInput('StyledText')
+
+
 @dataclasses.dataclass
 class ConfigData(config.Data):
     import_wait: float = 0.1
     wave_offset: int = 15
+    refer_track: bool = False
 
     use_text_plus: bool = True
     use_tatie: bool = True
@@ -118,12 +129,15 @@ class MainWindow(QMainWindow):
         self.ui.importButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.tatieButton.setStyleSheet(appearance.in_stylesheet)
 
+        self.ui.copyTextButton.setStyleSheet(appearance.ex_stylesheet)
+
         # event
         self.ui.importButton.clicked.connect(self.import_wave)
         self.ui.tatieButton.clicked.connect(self.split_and_setup)
         self.ui.closeButton.clicked.connect(self.close)
 
         self.ui.updateTrackButton.clicked.connect(self.update_track)
+        self.ui.copyTextButton.clicked.connect(self.copy_text)
 
         #
         self.update_track()
@@ -131,6 +145,7 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.importWaitSpinBox.setValue(c.import_wait)
         self.ui.offsetSpinBox.setValue(c.wave_offset)
+        self.ui.referTrackCheckBox.setChecked(c.refer_track)
 
         self.ui.textPlusCheckBox.setChecked(c.use_text_plus)
         self.ui.tatieCheckBox.setChecked(c.use_tatie)
@@ -140,6 +155,7 @@ class MainWindow(QMainWindow):
         c = ConfigData()
         c.import_wait = self.ui.importWaitSpinBox.value()
         c.wave_offset = self.ui.offsetSpinBox.value()
+        c.refer_track = self.ui.referTrackCheckBox.isChecked()
 
         c.use_text_plus = self.ui.textPlusCheckBox.isChecked()
         c.use_tatie = self.ui.tatieCheckBox.isChecked()
@@ -182,8 +198,44 @@ class MainWindow(QMainWindow):
         v_m.setStringList(get_track_names(timeline, 'video'))
         a_m.setStringList(get_track_names(timeline, 'audio'))
 
+    def copy_text(self):
+        self.ui.logTextEdit.clear()
+
+        # get data
+        resolve = self.fusion.GetResolve()
+        projectManager = resolve.GetProjectManager()
+        project = projectManager.GetCurrentProject()
+        if project is None:
+            self.add2log('Projectが見付かりません。')
+            return
+        timeline = project.GetCurrentTimeline()
+        if timeline is None:
+            self.add2log('Timelineが見付かりません。')
+            return
+
+        index = get_index(timeline, 'video', self.ui.videoListView)
+
+        if index == 0:
+            self.add2log('選択したトラックが見付かりません。')
+            return
+
+        # text
+        frame = get_currentframe(timeline)
+        text = p.pipe(
+            timeline.GetItemListInTrack('video', index),
+            p.filter(lambda i: frame <= i.GetStart()),
+            p.map(get_text),
+            list,
+            '\n'.join,
+        )
+
+        # copy
+        QApplication.clipboard().setText(text)
+        self.add2log(text)
+
     def import_wave(self) -> None:
         import pyautogui
+        from collections import deque
         filenames = QFileDialog.getOpenFileNames(
             self,
             'Open File',
@@ -214,6 +266,21 @@ class MainWindow(QMainWindow):
         fps = get_fps(timeline)
         data = self.get_data()
 
+        # Queue
+        que = deque()
+        if data.refer_track:
+            index = get_index(timeline, 'video', self.ui.videoListView)
+            if index == 0:
+                self.add2log('選択したトラックが見付かりません。')
+                return
+            frame = get_currentframe(timeline)
+            p.pipe(
+                timeline.GetItemListInTrack('video', index),
+                p.filter(lambda i: frame <= i.GetStart()),
+                p.iter(lambda i: que.append(i.GetStart())),
+            )
+            timeline.SetCurrentTimecode(str(que.popleft()))
+
         # main
         for f in filenames:
             # make script
@@ -226,8 +293,11 @@ class MainWindow(QMainWindow):
                 w.activate()
                 pyautogui.hotkey('f10')
                 time.sleep(data.import_wait)
-                frame = get_currentframe(timeline)
-                timeline.SetCurrentTimecode(str(frame + data.wave_offset))
+                if len(que) == 0:
+                    frame = get_currentframe(timeline)
+                    timeline.SetCurrentTimecode(str(frame + data.wave_offset))
+                else:
+                    timeline.SetCurrentTimecode(str(que.popleft()))
                 self.add2log('Import: ' + str(f))
             else:
                 self.add2log('すでに使われています。スキップします。: ' + str(f))
