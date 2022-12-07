@@ -225,6 +225,7 @@ class MainWindow(QMainWindow):
             timeline.GetItemListInTrack('video', index),
             p.filter(lambda i: frame <= i.GetStart()),
             p.map(get_text),
+            p.map(p.call.replace('\n', '')),
             list,
             '\n'.join,
         )
