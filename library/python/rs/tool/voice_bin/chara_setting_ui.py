@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\chara_setting.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\chara_setting.ui' applies.
 #
-# Created: Tue Nov 15 05:15:29 2022
+# Created: Tue Dec 13 18:27:35 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(467, 435)
+        MainWindow.resize(470, 463)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -23,14 +23,22 @@ class Ui_MainWindow(object):
         self.tableView.setObjectName("tableView")
         self.tableView.horizontalHeader().setDefaultSectionSize(150)
         self.verticalLayout.addWidget(self.tableView)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setObjectName("label")
+        self.horizontalLayout_2.addWidget(self.label)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.addButton = QtWidgets.QPushButton(self.centralwidget)
         self.addButton.setMinimumSize(QtCore.QSize(100, 40))
         self.addButton.setObjectName("addButton")
         self.horizontalLayout.addWidget(self.addButton)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
         self.setButton = QtWidgets.QPushButton(self.centralwidget)
         self.setButton.setMinimumSize(QtCore.QSize(100, 40))
         self.setButton.setObjectName("setButton")
@@ -42,7 +50,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 467, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 470, 21))
         self.menubar.setObjectName("menubar")
         self.menuEdit = QtWidgets.QMenu(self.menubar)
         self.menuEdit.setObjectName("menuEdit")
@@ -71,6 +79,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
+        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "※出力済みの音声に適応するには、スクリプトのRebuildが必要です。", None, -1))
         self.addButton.setText(QtWidgets.QApplication.translate("MainWindow", "add", None, -1))
         self.setButton.setText(QtWidgets.QApplication.translate("MainWindow", "set", None, -1))
         self.cancelButton.setText(QtWidgets.QApplication.translate("MainWindow", "cancel", None, -1))

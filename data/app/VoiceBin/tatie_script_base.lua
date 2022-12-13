@@ -42,6 +42,7 @@ local function getCurrentFrame(timeline)
     end
     return f - drop_frames
 end
+
 local function getTrackIndexByName(timeline, name)
     local r = nil
     local cnt = timeline:GetTrackCount('video')
@@ -56,13 +57,12 @@ local function getTrackIndexByName(timeline, name)
     return r
 end
 
-local function getItemByTrackName_t(timeline, name)
+local function getItemByTrackName(timeline, name)
     local r = timeline:GetCurrentVideoItem()
-    local index = getTrackIndexByName(timeline, (name .. '_t'))
+    local index = getTrackIndexByName(timeline, name)
     if not index then
-        index = getTrackIndexByName(timeline, name)
-    end
-    if not index then
+        print('Track not found: ' .. name)
+        print('Currentを使います。')
         return r
     end
     local currentFrame = getCurrentFrame(timeline)
@@ -71,19 +71,12 @@ local function getItemByTrackName_t(timeline, name)
             return item
         end
     end
+    print('Item not found: ' .. name)
+    print('Currentを使います。')
     return r
 end
 
-local function getToolName(st)
-    for key, v in pairs(st['Tools']) do
-        if (type(v) == 'table') and (v['Inputs'] ~= nil) then
-            return key
-        end
-    end
-    return nil
-end
-
-local function setJimaku(txt, color, track_name, setting_path)
+local function setTatie(color, track_name, parameter_name, setting_path)
     local projectManager = resolve:GetProjectManager()
     local project = projectManager:GetCurrentProject()
     if not project then
@@ -95,7 +88,7 @@ local function setJimaku(txt, color, track_name, setting_path)
         print('Timelineが見付かりません。')
         return
     end
-    local textPlus = getItemByTrackName_t(timeline, track_name)
+    local textPlus = getItemByTrackName(timeline, track_name)
     if not textPlus then
         print('VideoItemが見付かりません。')
         return
@@ -107,47 +100,78 @@ local function setJimaku(txt, color, track_name, setting_path)
     end
 
     local comp = textPlus:GetFusionCompByIndex(1)
-
-    local lst = comp:GetToolList(false, 'TextPlus')
-    if not lst[1] then
-        print('TextPlus Nodeが見付かりません。')
+    local lst = comp:GetToolList(false)
+    local tool
+    local tool_filter = {
+        ['MacroOperator'] = true,
+        ['GroupOperator'] = true,
+    }
+    for i, t in ipairs(lst) do
+        if tool_filter[t.ID] and not t.ParentTool then
+            tool = t
+            break
+        end
+    end
+    if not tool then
+        print('Nodeが見付かりません。')
         return
     end
-
-    local tool = lst[1]
-
-    comp:StartUndo('RS Jimaku')
-    comp:Lock()
 
     -- setting
-    tool.StyledText = txt
-    tool.UseFrameFormatSettings = 0
-    tool.Width = tonumber(timeline:GetSetting('timelineResolutionWidth'))
-    tool.Height = tonumber(timeline:GetSetting('timelineResolutionHeight'))
-
-    local st = tool:SaveSettings()
+    local tool_lst = {}
+    tool_lst[#tool_lst + 1] = tool
+    local attr_filter = {
+        ['StyledText'] = true,
+        [parameter_name] = true,
+    }
+    for k, v in pairs(tool:SaveSettings()['Tools'][tool.Name]['Inputs']) do
+        if type(v) == 'table' and v['__ctor'] and v['__ctor'] == 'InstanceInput' then
+            if attr_filter[v['Source']] then
+                local _tool = comp:FindTool(v['SourceOp'])
+                tool_lst[#tool_lst + 1] = _tool
+            end
+        end
+    end
     local f_st = bmd.readfile(setting_path)
     if not f_st then
+        print('設定ファイルが見付かりません。')
         print(setting_path)
-        print('settingファイルの読み込みに失敗しました。')
         return
     end
-    local name = getToolName(f_st)
-    for i, key in pairs({ 'StyledText', 'UseFrameFormatSettings', 'Width', 'Height' }) do
-        f_st['Tools'][name]['Inputs'][key] = st['Tools'][tool.Name]['Inputs'][key]
+    local keys = f_st['Tools']['MouthAnimBezierSpline']['KeyFrames']
+    local new_keys = {}
+    local gs = comp:GetAttrs()['COMPN_GlobalStart']
+    for i, v in pairs(keys) do
+        local rh = v['RH']
+        local lh = v['LH']
+        if rh then
+            rh[1] = rh[1] + gs
+        end
+        if lh then
+            lh[1] = lh[1] + gs
+        end
+        new_keys[i + gs] = v
     end
-    tool:LoadSettings(f_st)
+    f_st['Tools']['MouthAnimBezierSpline']['KeyFrames'] = new_keys
+
+    -- set
+    comp:StartUndo('RS Tatie')
+    comp:Lock()
+    for i, t in pairs(tool_lst) do
+        t:LoadSettings(f_st)
+    end
     comp:Unlock()
     comp:EndUndo(true)
-
+    -- color
     if color ~= 'None' then
         textPlus:SetClipColor(color)
     end
-    print('Dane!(Text+)')
+    -- end
+    print('Dane!(立ち絵)')
 end
 
-setJimaku(
-        [[%s]],
+setTatie(
+        '%s',
         '%s',
         '%s',
         [[%s]]

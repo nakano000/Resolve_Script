@@ -96,13 +96,6 @@ class Form(QWidget):
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
 
-        text_script_base_file: Path = config.ROOT_PATH.joinpath('data', 'app', APP_NAME, 'text_script_base.txt')
-        self.text_script_base: str = text_script_base_file.read_text(encoding='utf-8')
-        tatie_script_base_file: Path = config.ROOT_PATH.joinpath('data', 'app', APP_NAME, 'tatie_script_base.txt')
-        self.tatie_script_base: str = tatie_script_base_file.read_text(encoding='utf-8')
-        tatie_setting_base_file: Path = config.ROOT_PATH.joinpath('data', 'app', APP_NAME, 'tatie_setting_base.txt')
-        self.tatie_setting_base: str = tatie_setting_base_file.read_text(encoding='utf-8')
-
         # window
         self.chara_window = CharaWindow(self)
 

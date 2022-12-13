@@ -14,8 +14,8 @@ from rs.core import (
 from rs.core.chara_data import CharaData
 
 SCRIPT_DIR: Path = config.ROOT_PATH.joinpath('data', 'app', 'VoiceBin')
-TEXT_SCRIPT_BASE: str = SCRIPT_DIR.joinpath('text_script_base.txt').read_text(encoding='utf-8')
-TATIE_SCRIPT_BASE: str = SCRIPT_DIR.joinpath('tatie_script_base.txt').read_text(encoding='utf-8')
+TEXT_SCRIPT_BASE: str = SCRIPT_DIR.joinpath('text_script_base.lua').read_text(encoding='utf-8')
+TATIE_SCRIPT_BASE: str = SCRIPT_DIR.joinpath('tatie_script_base.lua').read_text(encoding='utf-8')
 TATIE_SETTING_BASE: str = SCRIPT_DIR.joinpath('tatie_setting_base.txt').read_text(encoding='utf-8')
 
 
