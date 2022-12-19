@@ -39,6 +39,7 @@ APP_NAME = 'VoiceBin'
 class ConfigData(config.Data):
     voice_dir: str = ''
     fps: float = 30.0
+    tab_index: int = 0
 
 
 class WatchdogEvent(FileSystemEventHandler):
@@ -283,11 +284,13 @@ class Form(QWidget):
     def set_data(self, c: ConfigData):
         self.ui.folderLineEdit.setText(c.voice_dir)
         self.ui.fpsSpinBox.setValue(c.fps)
+        self.ui.tabWidget.setCurrentIndex(c.tab_index)
 
     def get_data(self) -> ConfigData:
         c = self.new_config()
         c.voice_dir = self.ui.folderLineEdit.text()
         c.fps = self.ui.fpsSpinBox.value()
+        c.tab_index = self.ui.tabWidget.currentIndex()
         return c
 
     def load_config(self) -> None:
