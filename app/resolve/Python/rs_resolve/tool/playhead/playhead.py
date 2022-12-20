@@ -11,11 +11,7 @@ from PySide2.QtCore import (
 )
 from PySide2.QtWidgets import (
     QApplication,
-    QFileDialog,
     QMainWindow, QComboBox,
-)
-from PySide2.QtGui import (
-    QColor,
 )
 
 from rs.core import (
@@ -24,12 +20,10 @@ from rs.core import (
 )
 from rs.gui import (
     appearance,
-    log,
 )
 
 from rs_resolve.core import (
     get_currentframe,
-    get_fps,
 )
 from rs_resolve.tool.playhead.playhead_ui import Ui_MainWindow
 
@@ -287,6 +281,3 @@ def run(fusion) -> None:
     window.show()
     sys.exit(app.exec_())
 
-
-if __name__ == '__main__':
-    run()
