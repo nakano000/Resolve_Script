@@ -11,7 +11,7 @@ from PySide2.QtCore import (
 )
 from PySide2.QtWidgets import (
     QApplication,
-    QMainWindow, QComboBox,
+    QMainWindow, QComboBox, QSpinBox,
 )
 
 from rs.core import (
@@ -104,25 +104,25 @@ class MainWindow(QMainWindow):
 
         self.ui.minimizeButton.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
 
-        self.ui.n01LeftButton.clicked.connect(partial(self.move_playhead, -self.ui.num01SpinBox.value()))
-        self.ui.n01RightButton.clicked.connect(partial(self.move_playhead, self.ui.num01SpinBox.value()))
-        self.ui.n02LeftButton.clicked.connect(partial(self.move_playhead, -self.ui.num02SpinBox.value()))
-        self.ui.n02RightButton.clicked.connect(partial(self.move_playhead, self.ui.num02SpinBox.value()))
+        self.ui.n01LeftButton.clicked.connect(partial(self.move_prev, self.ui.num01SpinBox))
+        self.ui.n01RightButton.clicked.connect(partial(self.move_next, self.ui.num01SpinBox))
+        self.ui.n02LeftButton.clicked.connect(partial(self.move_prev, self.ui.num02SpinBox))
+        self.ui.n02RightButton.clicked.connect(partial(self.move_next, self.ui.num02SpinBox))
 
         self.ui.vidioLeftButton.clicked.connect(partial(
-            self.move_to_pre_item, 'video', self.ui.videoComboBox
+            self.move_to_prev_item, 'video', self.ui.videoComboBox
         ))
         self.ui.vidioRightButton.clicked.connect(partial(
             self.move_to_next_item, 'video', self.ui.videoComboBox
         ))
         self.ui.audioLeftButton.clicked.connect(partial(
-            self.move_to_pre_item, 'audio', self.ui.audioComboBox
+            self.move_to_prev_item, 'audio', self.ui.audioComboBox
         ))
         self.ui.audioRightButton.clicked.connect(partial(
             self.move_to_next_item, 'audio', self.ui.audioComboBox
         ))
         self.ui.subtitleLeftButton.clicked.connect(partial(
-            self.move_to_pre_item, 'subtitle', self.ui.subtitleComboBox
+            self.move_to_prev_item, 'subtitle', self.ui.subtitleComboBox
         ))
         self.ui.subtitleRightButton.clicked.connect(partial(
             self.move_to_next_item, 'subtitle', self.ui.subtitleComboBox
@@ -167,7 +167,7 @@ class MainWindow(QMainWindow):
         timeline = project.GetCurrentTimeline()
         return timeline
 
-    def move_to_pre_item(self, track_type: str, w: QComboBox):
+    def move_to_prev_item(self, track_type: str, w: QComboBox):
         timeline = self.get_timeline()
         if timeline is None:
             return
@@ -211,6 +211,12 @@ class MainWindow(QMainWindow):
             return
 
         set_playhead(timeline, get_currentframe(timeline) + n)
+
+    def move_prev(self, w: QSpinBox):
+        self.move_playhead(-w.value())
+
+    def move_next(self, w: QSpinBox):
+        self.move_playhead(w.value())
 
     def set_start(self):
         timeline = self.get_timeline()
@@ -280,4 +286,3 @@ def run(fusion) -> None:
     window = MainWindow(fusion=fusion)
     window.show()
     sys.exit(app.exec_())
-
