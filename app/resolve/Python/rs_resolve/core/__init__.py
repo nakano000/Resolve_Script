@@ -31,6 +31,10 @@ def get_currentframe(timeline):
     return timecode2Frame(tc, fps)
 
 
+def set_currentframe(timeline, frame):
+    timeline.SetCurrentTimecode(str(frame))
+
+
 def get_fps(timeline):
     fps = int(timeline.GetSetting('timelineFrameRate'))
     float_fps = {
@@ -44,6 +48,12 @@ def get_fps(timeline):
     if fps in float_fps.keys():
         fps = float_fps[fps]
     return fps
+
+def track_name2index(timeline, track_type, name):
+    for i in range(1, timeline.GetTrackCount(track_type) + 1):
+        if timeline.GetTrackName(track_type, i) == name:
+            return i
+    return 0
 
 
 if __name__ == '__main__':

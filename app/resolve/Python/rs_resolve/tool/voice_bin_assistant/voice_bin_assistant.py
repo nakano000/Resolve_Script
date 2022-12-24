@@ -30,6 +30,7 @@ from rs.gui import (
 from rs_resolve.core import (
     get_currentframe,
     get_fps,
+    track_name2index,
 )
 from rs_resolve.tool.voice_bin_assistant.voice_bin_assistant_ui import Ui_MainWindow
 
@@ -41,13 +42,6 @@ def get_track_names(timeline, track_type):
     for i in range(1, timeline.GetTrackCount(track_type) + 1):
         r.append(timeline.GetTrackName(track_type, i))
     return r
-
-
-def track_name2index(timeline, track_type, name):
-    for i in range(1, timeline.GetTrackCount(track_type) + 1):
-        if timeline.GetTrackName(track_type, i) == name:
-            return i
-    return 0
 
 
 def get_resolve_window(pj_name):
