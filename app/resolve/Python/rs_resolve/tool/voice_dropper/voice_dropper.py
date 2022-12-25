@@ -393,7 +393,7 @@ class MainWindow(QMainWindow):
             send_hotkey(['ctrl', 'z'])
             # 音声トラックの選択
             select_audio_track(audio_index)
-            # text+クリップにスクリプトを実行
+            # クリップにスクリプトを実行
             self.fusion.Execute(lua_script)
             # 再生ヘッドの移動
             set_currentframe(timeline, current_frame + duration + data.offset)
