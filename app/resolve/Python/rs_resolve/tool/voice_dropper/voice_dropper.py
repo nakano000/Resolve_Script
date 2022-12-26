@@ -355,8 +355,8 @@ class MainWindow(QMainWindow):
             set_currentframe(timeline, clip.GetStart())
             send_hotkey(['y'])
             # 音声クリップの移動 work
-            send_hotkey(['ctrl', 'c'])
-            send_hotkey(['ctrl', 'z'])
+            send_hotkey(['ctrl', 'x'])
+            # send_hotkey(['ctrl', 'z'])
             set_currentframe(timeline, work_frame)
             send_hotkey(['ctrl', 'v'])
             # 音声トラックの選択解除
@@ -370,7 +370,7 @@ class MainWindow(QMainWindow):
             text_plus = media_pool.AppendToTimeline([{
                 'mediaPoolItem': text_template,
                 'startFrame': 0,
-                'endFrame': duration,
+                'endFrame': duration - 1,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
                 'mediaType': 1,
             }])[0]
             set_currentframe(timeline, text_plus.GetStart())
@@ -387,12 +387,10 @@ class MainWindow(QMainWindow):
             send_hotkey(['ctrl', 'v'])
             # クリップのリンク
             send_hotkey(['ctrl', 'alt', 'l'])
-            # 音声トラックを選択するために、適当な物を追加しUndo
-            set_currentframe(timeline, work_frame)
+            # 音声トラックの選択をリセットスルために、適当な物を追加しUndo
+            set_currentframe(timeline, work_frame + duration)
             timeline.InsertGeneratorIntoTimeline('Solid Color')
             send_hotkey(['ctrl', 'z'])
-            # 音声トラックの選択
-            select_audio_track(audio_index)
             # クリップにスクリプトを実行
             self.fusion.Execute(lua_script)
             # 再生ヘッドの移動
