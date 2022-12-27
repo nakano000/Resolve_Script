@@ -276,6 +276,7 @@ class MainWindow(QMainWindow):
             send_hotkey(['alt', str(index)])
 
         # main
+        resolve.OpenPage('edit')
         send_hotkey(['ctrl', '4'])
         send_hotkey(['ctrl', 'shift', 'a'])
         for f in p.pipe(

@@ -198,6 +198,9 @@ class MainWindow(QMainWindow):
 
         # get data
         resolve = self.fusion.GetResolve()
+        page = resolve.GetCurrentPage()
+        if page not in ['edit', 'cut']:
+            return
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
@@ -243,6 +246,9 @@ class MainWindow(QMainWindow):
 
         # get data
         resolve = self.fusion.GetResolve()
+        page = resolve.GetCurrentPage()
+        if page not in ['edit', 'cut']:
+            return
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
@@ -305,6 +311,9 @@ class MainWindow(QMainWindow):
 
         # get data
         resolve = self.fusion.GetResolve()
+        page = resolve.GetCurrentPage()
+        if page not in ['edit', 'cut']:
+            return
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
