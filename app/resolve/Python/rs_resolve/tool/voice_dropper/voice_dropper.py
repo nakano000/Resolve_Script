@@ -42,7 +42,6 @@ from rs.gui import (
 
 from rs_resolve.core import (
     get_currentframe,
-    get_fps,
     set_currentframe,
     track_name2index
 )
@@ -83,7 +82,6 @@ class ConfigData(config.Data):
     offset: int = 15
     video_index: int = 1
     audio_index: int = 1
-    make_script: bool = True
     use_chara: bool = True
 
 
@@ -252,7 +250,6 @@ class MainWindow(QMainWindow):
 
         # get data
         data = self.get_data()
-        fps = get_fps(timeline)
 
         # util
         def send_hotkey(key_list):
@@ -397,10 +394,6 @@ class MainWindow(QMainWindow):
             #
             self.add2log('Import: ' + str(f))
             #
-            if data.make_script:
-                voice_bin_process.run(Path(f), fps)
-                self.add2log('Make Script')
-            #
             self.add2log('')
         # end
         self.add2log('Done!')
@@ -422,7 +415,6 @@ class MainWindow(QMainWindow):
         self.ui.offsetSpinBox.setValue(c.offset)
         self.ui.videoIndexSpinBox.setValue(c.video_index)
         self.ui.audioIndexSpinBox.setValue(c.audio_index)
-        self.ui.makeScriptCheckBox.setChecked(c.make_script)
         self.ui.useCharaCheckBox.setChecked(c.use_chara)
 
     def get_data(self) -> ConfigData:
@@ -433,7 +425,6 @@ class MainWindow(QMainWindow):
         c.offset = self.ui.offsetSpinBox.value()
         c.video_index = self.ui.videoIndexSpinBox.value()
         c.audio_index = self.ui.audioIndexSpinBox.value()
-        c.make_script = self.ui.makeScriptCheckBox.isChecked()
         c.use_chara = self.ui.useCharaCheckBox.isChecked()
         return c
 

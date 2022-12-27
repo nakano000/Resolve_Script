@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui' applies.
 #
-# Created: Sun Dec 25 02:56:19 2022
+# Created: Tue Dec 27 12:04:49 2022
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -86,12 +86,9 @@ class Ui_MainWindow(object):
         self.audioIndexSpinBox.setMaximum(8)
         self.audioIndexSpinBox.setObjectName("audioIndexSpinBox")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.audioIndexSpinBox)
-        self.makeScriptCheckBox = QtWidgets.QCheckBox(self.groupBox)
-        self.makeScriptCheckBox.setObjectName("makeScriptCheckBox")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.makeScriptCheckBox)
         self.useCharaCheckBox = QtWidgets.QCheckBox(self.groupBox)
         self.useCharaCheckBox.setObjectName("useCharaCheckBox")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.useCharaCheckBox)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.useCharaCheckBox)
         self.verticalLayout_3.addWidget(self.groupBox)
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -148,7 +145,6 @@ class Ui_MainWindow(object):
         self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "間隔(フレーム)", None, -1))
         self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "ビデオトラック", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "オーディオトラック", None, -1))
-        self.makeScriptCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "VoiceBin用スクリプトを生成する", None, -1))
         self.useCharaCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "VoiceBinのキャラクター設定を使って配置", None, -1))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
         self.importButton.setText(QtWidgets.QApplication.translate("MainWindow", "import", None, -1))

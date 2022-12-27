@@ -157,13 +157,6 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QCheckBox" name="makeScriptCheckBox">
-         <property name="text">
-          <string>VoiceBin用スクリプトを生成する</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
         <widget class="QCheckBox" name="useCharaCheckBox">
          <property name="text">
           <string>VoiceBinのキャラクター設定を使って配置</string>
