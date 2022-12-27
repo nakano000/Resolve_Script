@@ -1,3 +1,5 @@
+from functools import partial
+
 import dataclasses
 import sys
 import time
@@ -91,8 +93,6 @@ class ConfigData(config.Data):
     wave_offset: int = 15
     refer_track: bool = False
 
-    use_text_plus: bool = True
-    use_tatie: bool = True
     tatie_wait: float = 2.0
 
 
@@ -107,7 +107,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(500, 800)
+        self.resize(380, 700)
         self.fusion = fusion
 
         # config
@@ -121,19 +121,24 @@ class MainWindow(QMainWindow):
 
         # style sheet
         self.ui.importButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.textPlusButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.tatieButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.textPlusTatieButton.setStyleSheet(appearance.in_stylesheet)
 
         self.ui.copyTextButton.setStyleSheet(appearance.ex_stylesheet)
 
         # event
         self.ui.importButton.clicked.connect(self.import_wave)
-        self.ui.tatieButton.clicked.connect(self.split_and_setup)
+        self.ui.textPlusButton.clicked.connect(partial(self.split_and_setup, True, False))
+        self.ui.tatieButton.clicked.connect(partial(self.split_and_setup, False, True))
+        self.ui.textPlusTatieButton.clicked.connect(partial(self.split_and_setup, True, True))
         self.ui.closeButton.clicked.connect(self.close)
 
         self.ui.updateTrackButton.clicked.connect(self.update_track)
         self.ui.copyTextButton.clicked.connect(self.copy_text)
 
         #
+        self.ui.closeButton.setFocus()
         self.update_track()
 
     def set_data(self, c: ConfigData):
@@ -141,8 +146,6 @@ class MainWindow(QMainWindow):
         self.ui.offsetSpinBox.setValue(c.wave_offset)
         self.ui.referTrackCheckBox.setChecked(c.refer_track)
 
-        self.ui.textPlusCheckBox.setChecked(c.use_text_plus)
-        self.ui.tatieCheckBox.setChecked(c.use_tatie)
         self.ui.tatieWaitSpinBox.setValue(c.tatie_wait)
 
     def get_data(self) -> ConfigData:
@@ -151,8 +154,6 @@ class MainWindow(QMainWindow):
         c.wave_offset = self.ui.offsetSpinBox.value()
         c.refer_track = self.ui.referTrackCheckBox.isChecked()
 
-        c.use_text_plus = self.ui.textPlusCheckBox.isChecked()
-        c.use_tatie = self.ui.tatieCheckBox.isChecked()
         c.tatie_wait = self.ui.tatieWaitSpinBox.value()
         return c
 
@@ -258,7 +259,6 @@ class MainWindow(QMainWindow):
             self.add2log('DaVinci ResolveのWindowが見付かりません。')
             return
 
-        fps = get_fps(timeline)
         data = self.get_data()
 
         # Queue
@@ -278,8 +278,7 @@ class MainWindow(QMainWindow):
 
         # main
         for f in filenames:
-            # make script
-            voice_bin_process.run(Path(f), fps)
+
             # import
             pool_item = mediapool.ImportMedia([f])[0]
             if pool_item.GetClipProperty('Usage') == '0':
@@ -300,7 +299,7 @@ class MainWindow(QMainWindow):
         # end
         self.add2log('Done!')
 
-    def split_and_setup(self):
+    def split_and_setup(self, use_text_plus: bool, use_tatie: bool) -> None:
         import pyautogui
         self.ui.logTextEdit.clear()
 
@@ -316,6 +315,7 @@ class MainWindow(QMainWindow):
             self.add2log('Timelineが見付かりません。')
             return
 
+        fps = get_fps(timeline)
         v_index = get_index(timeline, 'video', self.ui.videoListView)
         a_index = get_index(timeline, 'audio', self.ui.audioListView)
 
@@ -350,6 +350,9 @@ class MainWindow(QMainWindow):
             ef = min([item.GetEnd(), v_ef])
             cf = int((sf + ef) / 2)
             f = Path(item.GetMediaPoolItem().GetClipProperty('File Path'))
+            # make script
+            voice_bin_process.run(Path(f), fps)
+
             text_lua = f.parent.joinpath(f.stem + '.lua')
             tatie_lua = f.parent.joinpath(f.stem + '.tatie.lua')
             # split
@@ -363,9 +366,9 @@ class MainWindow(QMainWindow):
                 time.sleep(data.tatie_wait)
             # setup
             timeline.SetCurrentTimecode(str(cf))
-            if data.use_text_plus and text_lua.is_file():
+            if use_text_plus and text_lua.is_file():
                 self.fusion.Execute(text_lua.read_text(encoding='utf-8'))
-            if data.use_tatie and tatie_lua.is_file():
+            if use_tatie and tatie_lua.is_file():
                 self.fusion.Execute(tatie_lua.read_text(encoding='utf-8'))
             time.sleep(data.tatie_wait / 2.0)
 
@@ -382,7 +385,3 @@ def run(fusion) -> None:
     window = MainWindow(fusion=fusion)
     window.show()
     sys.exit(app.exec_())
-
-
-if __name__ == '__main__':
-    run()
