@@ -276,6 +276,8 @@ class MainWindow(QMainWindow):
             send_hotkey(['alt', str(index)])
 
         # main
+        send_hotkey(['ctrl', '4'])
+        send_hotkey(['ctrl', 'shift', 'a'])
         for f in p.pipe(
                 created_lst,
                 p.map(lambda x: Path(x).parent.joinpath(Path(x).stem + '.wav')),
