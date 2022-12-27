@@ -9,7 +9,6 @@ from pathlib import Path
 
 from PySide2.QtCore import (
     Qt,
-    QStringListModel,
     Signal,
 )
 from PySide2.QtWidgets import (
@@ -387,7 +386,7 @@ class MainWindow(QMainWindow):
             send_hotkey(['ctrl', 'v'])
             # クリップのリンク
             send_hotkey(['ctrl', 'alt', 'l'])
-            # 音声トラックの選択をリセットスルために、適当な物を追加しUndo
+            # 音声トラックの選択をリセットするために、適当な物を追加しUndo
             set_currentframe(timeline, work_frame + duration)
             timeline.InsertGeneratorIntoTimeline('Solid Color')
             send_hotkey(['ctrl', 'z'])
