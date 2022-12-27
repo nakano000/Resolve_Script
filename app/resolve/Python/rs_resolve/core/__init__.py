@@ -1,4 +1,4 @@
-COLOR_LIST = [
+MARKER_COLOR_LIST = [
     'Blue',
     'Cyan',
     'Green',
@@ -16,7 +16,24 @@ COLOR_LIST = [
     'Cocoa',
     'Cream',
 ]
-
+COLOR_LIST = [
+    'Orange',
+    'Apricot',
+    'Yellow',
+    'Lime',
+    'Olive',
+    'Green',
+    'Teal',
+    'Navy',
+    'Blue',
+    'Purple',
+    'Violet',
+    'Pink',
+    'Tan',
+    'Beige',
+    'Brown',
+    'Chocolate',
+]
 
 def timecode2Frame(tc: str, fps):
     int_fps = {

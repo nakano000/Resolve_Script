@@ -19,7 +19,7 @@ from rs.core import (
 from rs.gui import (
     appearance,
 )
-from rs_resolve.core import get_fps, COLOR_LIST
+from rs_resolve.core import get_fps, MARKER_COLOR_LIST
 
 from rs_resolve.tool.youtube_chapter.youtube_chapter_ui import Ui_MainWindow
 
@@ -64,7 +64,7 @@ class MainWindow(QMainWindow):
 
         # list view
         m = QStringListModel()
-        m.setStringList(COLOR_LIST)
+        m.setStringList(MARKER_COLOR_LIST)
         self.ui.markerListView.setModel(m)
 
         # config
