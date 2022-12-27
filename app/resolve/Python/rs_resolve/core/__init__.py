@@ -1,3 +1,23 @@
+COLOR_LIST = [
+    'Blue',
+    'Cyan',
+    'Green',
+    'Yellow',
+    'Red',
+    'Pink',
+    'Purple',
+    'Fuchsia',
+    'Rose',
+    'Lavender',
+    'Sky',
+    'Mint',
+    'Lemon',
+    'Sand',
+    'Cocoa',
+    'Cream',
+]
+
+
 def timecode2Frame(tc: str, fps):
     int_fps = {
         23: 24,
@@ -48,6 +68,7 @@ def get_fps(timeline):
     if fps in float_fps.keys():
         fps = float_fps[fps]
     return fps
+
 
 def track_name2index(timeline, track_type, name):
     for i in range(1, timeline.GetTrackCount(track_type) + 1):

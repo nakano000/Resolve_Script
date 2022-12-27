@@ -19,7 +19,7 @@ from rs.core import (
 from rs.gui import (
     appearance,
 )
-from rs_resolve.core import get_fps
+from rs_resolve.core import get_fps, COLOR_LIST
 
 from rs_resolve.tool.youtube_chapter.youtube_chapter_ui import Ui_MainWindow
 
@@ -64,24 +64,7 @@ class MainWindow(QMainWindow):
 
         # list view
         m = QStringListModel()
-        m.setStringList([
-            'Blue',
-            'Cyan',
-            'Green',
-            'Yellow',
-            'Red',
-            'Pink',
-            'Purple',
-            'Fuchsia',
-            'Rose',
-            'Lavender',
-            'Sky',
-            'Mint',
-            'Lemon',
-            'Sand',
-            'Cocoa',
-            'Cream',
-        ])
+        m.setStringList(COLOR_LIST)
         self.ui.markerListView.setModel(m)
 
         # config
@@ -142,7 +125,6 @@ class MainWindow(QMainWindow):
         self.ui.delimiterLineEdit.setText(c.delimiter)
         self.ui.niconicoCheckBox.setChecked(c.is_niconico)
         select(self.ui.markerListView, [c.color])
-
 
     def get_data(self) -> ConfigData:
         c = ConfigData()

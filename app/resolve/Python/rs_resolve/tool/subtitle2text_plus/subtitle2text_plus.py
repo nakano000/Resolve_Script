@@ -22,7 +22,7 @@ from rs.gui import (
 )
 
 from rs_resolve.core import (
-    get_currentframe,
+    get_currentframe, COLOR_LIST,
 )
 from rs_resolve.tool.subtitle2text_plus.subtitle2text_plus_ui import Ui_MainWindow
 
@@ -31,7 +31,8 @@ APP_NAME = 'Subtitle2TextPlus'
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
-    wait_time: float = 0.1
+    wait_time: float = 0.01
+    color: str = 'Blue'
 
 
 def get_track_names(timeline, track_type):
@@ -78,14 +79,17 @@ class MainWindow(QMainWindow):
         self.resize(150, 150)
         self.fusion = fusion
 
-        # config
-        self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
-        self.load_config()
-
         # combobox
         for w in [self.ui.videoComboBox, self.ui.subtitleComboBox]:
             m = QStringListModel()
             w.setModel(m)
+        m = QStringListModel(COLOR_LIST)
+        self.ui.colorComboBox.setModel(m)
+
+        # config
+        self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
+        self.load_config()
+
 
         # style sheet
         self.ui.updateButton.setStyleSheet(appearance.other_stylesheet)
@@ -170,7 +174,7 @@ class MainWindow(QMainWindow):
                         break
                     tool = lst[1]
                     tool.StyledText = text
-                    text_plus.SetClipColor('Blue')
+                    text_plus.SetClipColor(data.color)
                     break
 
         # end
@@ -202,10 +206,12 @@ class MainWindow(QMainWindow):
 
     def set_data(self, c: ConfigData):
         self.ui.waitTimeSpinBox.setValue(c.wait_time)
+        self.ui.colorComboBox.setCurrentText(c.color)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.wait_time = self.ui.waitTimeSpinBox.value()
+        c.color = self.ui.colorComboBox.currentText()
         return c
 
     def load_config(self) -> None:
