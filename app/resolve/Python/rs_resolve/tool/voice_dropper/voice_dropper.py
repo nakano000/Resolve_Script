@@ -354,7 +354,6 @@ class MainWindow(QMainWindow):
             send_hotkey(['y'])
             # 音声クリップの移動 work
             send_hotkey(['ctrl', 'x'])
-            # send_hotkey(['ctrl', 'z'])
             set_currentframe(timeline, work_frame)
             send_hotkey(['ctrl', 'v'])
             # 音声トラックの選択解除
