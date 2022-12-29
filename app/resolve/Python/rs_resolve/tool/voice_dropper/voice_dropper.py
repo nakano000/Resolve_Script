@@ -205,6 +205,7 @@ class MainWindow(QMainWindow):
         media_pool.AddSubFolder(root_folder, 'VoiceDropper')
 
     def directory_changed(self, s, created_lst):
+        time_sta = time.time()
         self.ui.logTextEdit.clear()
         if len(created_lst) == 0:
             return
@@ -291,7 +292,7 @@ class MainWindow(QMainWindow):
             QApplication.processEvents()
             self.add2log('処理中: %s' % f.name)
             current_frame = get_currentframe(timeline)
-            work_frame = timeline.GetEndFrame() + 30
+            work_frame = timeline.GetEndFrame()
 
             # キャラクター設定
             ch_data = CharaData()
@@ -341,26 +342,26 @@ class MainWindow(QMainWindow):
 
             # import
             mi = media_pool.ImportMedia(str(f))[0]
-
             # 音声クリップの仮挿入
-            clip = media_pool.AppendToTimeline([{'mediaPoolItem': mi}])[0]
+            clip = media_pool.AppendToTimeline([mi])[0]
             duration = clip.GetDuration()
             send_hotkey(['ctrl', 'z'])
             set_currentframe(timeline, current_frame)
             # 音声トラックの選択
             select_audio_track(audio_index)
             # 音声クリップの挿入
-            clip = media_pool.AppendToTimeline([{'mediaPoolItem': mi}])[0]
-            set_currentframe(timeline, clip.GetStart())
-            send_hotkey(['y'])
+            clip = media_pool.AppendToTimeline([mi])[0]
             # 音声クリップの移動 work
-            send_hotkey(['ctrl', 'x'])
-            set_currentframe(timeline, work_frame)
-            send_hotkey(['ctrl', 'v'])
+            if work_frame != clip.GetStart():
+                set_currentframe(timeline, clip.GetStart())
+                send_hotkey(['y'])
+                send_hotkey(['ctrl', 'x'])
+                set_currentframe(timeline, work_frame)
+                send_hotkey(['ctrl', 'v'])
             # 音声トラックの選択解除
             send_hotkey(['ctrl', 'alt', str(audio_index)])
             # text+クリップの仮挿入
-            media_pool.AppendToTimeline([{'mediaPoolItem': text_template}])
+            media_pool.AppendToTimeline([text_template])
             send_hotkey(['ctrl', 'z'])
             # videoトラックの選択
             select_video_track(video_index)
@@ -371,12 +372,13 @@ class MainWindow(QMainWindow):
                 'endFrame': duration - 1,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
                 'mediaType': 1,
             }])[0]
-            set_currentframe(timeline, text_plus.GetStart())
-            send_hotkey(['y'])
             # text+クリップの移動 work
-            send_hotkey(['ctrl', 'x'])
-            set_currentframe(timeline, work_frame)
-            send_hotkey(['ctrl', 'v'])
+            if work_frame != text_plus.GetStart():
+                set_currentframe(timeline, text_plus.GetStart())
+                send_hotkey(['y'])
+                send_hotkey(['ctrl', 'x'])
+                set_currentframe(timeline, work_frame)
+                send_hotkey(['ctrl', 'v'])
             # クリップの移動 current
             set_currentframe(timeline, work_frame)
             send_hotkey(['alt', 'y'])
@@ -398,7 +400,9 @@ class MainWindow(QMainWindow):
             #
             self.add2log('')
         # end
-        self.add2log('Done!')
+        time_end = time.time()
+        self.add2log('Done! %fs' % (time_end - time_sta))
+        print('Done! %fs' % (time_end - time_sta))
 
     def voiceDirToolButton_clicked(self) -> None:
         w = self.ui.voiceDirLineEdit
