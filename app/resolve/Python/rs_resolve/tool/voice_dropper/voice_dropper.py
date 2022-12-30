@@ -31,7 +31,7 @@ from rs.core import (
     pipe as p,
     voice_bin_process,
     util,
-    chara_data,
+    chara_data, fcp,
 )
 from rs.core.chara_data import CharaData
 
@@ -43,7 +43,8 @@ from rs.gui import (
 from rs_resolve.core import (
     get_currentframe,
     set_currentframe,
-    track_name2index
+    get_fps,
+    track_name2index,
 )
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
 
@@ -125,6 +126,10 @@ class MainWindow(QMainWindow):
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
+
+        tmp_dir = config.CONFIG_DIR.joinpath('tmp')
+        tmp_dir.mkdir(exist_ok=True)
+        self.temp_file: Path = tmp_dir.joinpath('timeline.xml')
 
         self.script_base: str = SCRIPT_DIR.joinpath('script_base.lua').read_text(encoding='utf-8')
 
@@ -292,7 +297,6 @@ class MainWindow(QMainWindow):
             QApplication.processEvents()
             self.add2log('処理中: %s' % f.name)
             current_frame = get_currentframe(timeline)
-            work_frame = timeline.GetEndFrame()
 
             # キャラクター設定
             ch_data = CharaData()
@@ -340,26 +344,23 @@ class MainWindow(QMainWindow):
                 ')',
             ])
 
+            # make timeline
+            fcp_timeline = fcp.Timeline(config.DATA_PATH.joinpath('app', 'VoiceDropper', 'Timeline.xml'))
+            fcp_timeline.set_name('tmp_' + f.stem)
+            fcp_timeline.set_fps(get_fps(timeline))
+            fcp_timeline.set_width(int(timeline.GetSetting('timelineResolutionWidth')))
+            fcp_timeline.set_height(int(timeline.GetSetting('timelineResolutionHeight')))
+            fcp_timeline.set_dropframe(timeline.GetSetting('timelineDropFrameTimecode' == '1'))
+            self.temp_file.write_text(str(fcp_timeline), encoding='utf-8')
+            tmp_timeline = media_pool.ImportTimelineFromFile(str(self.temp_file))
+
             # import
             mi = media_pool.ImportMedia(str(f))[0]
-            # 音声クリップの仮挿入
-            clip = media_pool.AppendToTimeline([mi])[0]
-            duration = clip.GetDuration()
-            send_hotkey(['ctrl', 'z'])
-            set_currentframe(timeline, current_frame)
             # 音声トラックの選択
             select_audio_track(audio_index)
             # 音声クリップの挿入
             clip = media_pool.AppendToTimeline([mi])[0]
-            # 音声クリップの移動 work
-            if work_frame != clip.GetStart():
-                set_currentframe(timeline, clip.GetStart())
-                send_hotkey(['y'])
-                send_hotkey(['ctrl', 'x'])
-                set_currentframe(timeline, work_frame)
-                send_hotkey(['ctrl', 'v'])
-            # 音声トラックの選択解除
-            send_hotkey(['ctrl', 'alt', str(audio_index)])
+            duration = clip.GetDuration()
             # text+クリップの仮挿入
             media_pool.AppendToTimeline([text_template])
             send_hotkey(['ctrl', 'z'])
@@ -372,37 +373,33 @@ class MainWindow(QMainWindow):
                 'endFrame': duration - 1,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
                 'mediaType': 1,
             }])[0]
-            # text+クリップの移動 work
-            if work_frame != text_plus.GetStart():
-                set_currentframe(timeline, text_plus.GetStart())
-                send_hotkey(['y'])
-                send_hotkey(['ctrl', 'x'])
-                set_currentframe(timeline, work_frame)
-                send_hotkey(['ctrl', 'v'])
-            # クリップの移動 current
-            set_currentframe(timeline, work_frame)
-            send_hotkey(['alt', 'y'])
-            send_hotkey(['ctrl', 'x'])
+            # リンク、コピー
+            send_hotkey(['ctrl', '4'])
+            set_currentframe(timeline, text_plus.GetStart())
+            send_hotkey(['ctrl', 'a'])
+            send_hotkey(['ctrl', 'alt', 'l'])
+            send_hotkey(['ctrl', 'c'])
+            # timeline変更、ペースト
+            project.SetCurrentTimeline(timeline)
+            send_hotkey(['ctrl', '4'])
             set_currentframe(timeline, current_frame)
             send_hotkey(['ctrl', 'v'])
-            # クリップのリンク
-            send_hotkey(['ctrl', 'alt', 'l'])
-            # 音声トラックの選択をリセットするために、適当な物を追加しUndo
-            set_currentframe(timeline, work_frame + duration)
-            timeline.InsertGeneratorIntoTimeline('Solid Color')
-            send_hotkey(['ctrl', 'z'])
+            set_currentframe(timeline, current_frame)
             # クリップにスクリプトを実行
             self.fusion.Execute(lua_script)
             # 再生ヘッドの移動
             set_currentframe(timeline, current_frame + duration + data.offset)
-            #
+
             self.add2log('Import: ' + str(f))
+            # 終了処理
+            media_pool.DeleteTimelines([tmp_timeline])
             #
             self.add2log('')
         # end
         time_end = time.time()
         self.add2log('Done! %fs' % (time_end - time_sta))
         print('Done! %fs' % (time_end - time_sta))
+
 
     def voiceDirToolButton_clicked(self) -> None:
         w = self.ui.voiceDirLineEdit
