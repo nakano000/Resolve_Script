@@ -352,7 +352,7 @@ class MainWindow(QMainWindow):
             fcp_timeline.set_fps(get_fps(timeline))
             fcp_timeline.set_width(int(timeline.GetSetting('timelineResolutionWidth')))
             fcp_timeline.set_height(int(timeline.GetSetting('timelineResolutionHeight')))
-            fcp_timeline.set_dropframe(timeline.GetSetting('timelineDropFrameTimecode' == '1'))
+            fcp_timeline.set_dropframe(timeline.GetSetting('timelineDropFrameTimecode') == '1')
             self.temp_file.write_text(str(fcp_timeline), encoding='utf-8')
             tmp_timeline = media_pool.ImportTimelineFromFile(str(self.temp_file))
 
