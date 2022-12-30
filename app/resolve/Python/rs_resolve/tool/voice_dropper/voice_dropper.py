@@ -131,6 +131,8 @@ class MainWindow(QMainWindow):
         tmp_dir.mkdir(exist_ok=True)
         self.temp_file: Path = tmp_dir.joinpath('timeline.xml')
 
+        self.xml = config.DATA_PATH.joinpath('app', 'VoiceDropper', 'Timeline.xml').read_text(encoding='utf-8')
+
         self.script_base: str = SCRIPT_DIR.joinpath('script_base.lua').read_text(encoding='utf-8')
 
         # watcher
@@ -345,7 +347,7 @@ class MainWindow(QMainWindow):
             ])
 
             # make timeline
-            fcp_timeline = fcp.Timeline(config.DATA_PATH.joinpath('app', 'VoiceDropper', 'Timeline.xml'))
+            fcp_timeline = fcp.Timeline(self.xml)
             fcp_timeline.set_name('tmp_' + f.stem)
             fcp_timeline.set_fps(get_fps(timeline))
             fcp_timeline.set_width(int(timeline.GetSetting('timelineResolutionWidth')))
@@ -375,7 +377,6 @@ class MainWindow(QMainWindow):
             }])[0]
             # リンク、コピー
             send_hotkey(['ctrl', '4'])
-            set_currentframe(timeline, text_plus.GetStart())
             send_hotkey(['ctrl', 'a'])
             send_hotkey(['ctrl', 'alt', 'l'])
             send_hotkey(['ctrl', 'c'])

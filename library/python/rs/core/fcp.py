@@ -3,10 +3,8 @@ import xml.etree.ElementTree as ET
 
 
 class Timeline(object):
-    def __init__(self, path):
-        self.path = path
-        self.tree = ET.parse(path)
-        self.root = self.tree.getroot()
+    def __init__(self, xml: str):
+        self.root = ET.fromstring(xml)
         self.seq = self.root.find('sequence')
         self.tics = self.seq.find('media').find('video').find('format').find('samplecharacteristics')
 
@@ -56,7 +54,7 @@ class Timeline(object):
 if __name__ == '__main__':
     from rs.core import config
 
-    fcp = Timeline(config.DATA_PATH.joinpath('app', 'VoiceDropper', 'Timeline.xml'))
+    fcp = Timeline(config.DATA_PATH.joinpath('app', 'VoiceDropper', 'Timeline.xml').read_text(encoding='utf-8'))
     fcp.set_name('test')
     fcp.set_fps(23.976)
     fcp.set_width(640)
