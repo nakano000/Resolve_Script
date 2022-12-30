@@ -369,7 +369,7 @@ class MainWindow(QMainWindow):
             # videoトラックの選択
             select_video_track(video_index)
             # text+クリップの挿入
-            text_plus = media_pool.AppendToTimeline([{
+            media_pool.AppendToTimeline([{
                 'mediaPoolItem': text_template,
                 'startFrame': 0,
                 'endFrame': duration - 1,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
@@ -400,7 +400,6 @@ class MainWindow(QMainWindow):
         time_end = time.time()
         self.add2log('Done! %fs' % (time_end - time_sta))
         print('Done! %fs' % (time_end - time_sta))
-
 
     def voiceDirToolButton_clicked(self) -> None:
         w = self.ui.voiceDirLineEdit
