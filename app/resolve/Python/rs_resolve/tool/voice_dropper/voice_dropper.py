@@ -341,7 +341,7 @@ class MainWindow(QMainWindow):
                 f'    "{ch_data.color}",',
                 f'    {video_index},',
                 f'    {audio_index},',
-                f'    {current_frame},',
+                f'    0,',
                 f'    [[{str(ch_data.setting_file)}]]',
                 ')',
             ])
@@ -369,12 +369,14 @@ class MainWindow(QMainWindow):
             # videoトラックの選択
             select_video_track(video_index)
             # text+クリップの挿入
-            media_pool.AppendToTimeline([{
+            text_plus = media_pool.AppendToTimeline([{
                 'mediaPoolItem': text_template,
                 'startFrame': 0,
                 'endFrame': duration - 1,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
                 'mediaType': 1,
             }])[0]
+            # クリップにスクリプトを実行
+            self.fusion.Execute(lua_script)
             # リンク、コピー
             send_hotkey(['ctrl', '4'])
             send_hotkey(['ctrl', 'a'])
@@ -385,9 +387,7 @@ class MainWindow(QMainWindow):
             send_hotkey(['ctrl', '4'])
             set_currentframe(timeline, current_frame)
             send_hotkey(['ctrl', 'v'])
-            set_currentframe(timeline, current_frame)
-            # クリップにスクリプトを実行
-            self.fusion.Execute(lua_script)
+
             # 再生ヘッドの移動
             set_currentframe(timeline, current_frame + duration + data.offset)
 
