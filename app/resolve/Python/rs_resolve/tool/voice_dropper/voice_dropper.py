@@ -60,21 +60,6 @@ def get_resolve_window(pj_name):
     return None
 
 
-def get_window(name):
-    for t in pygetwindow.getAllTitles():
-        if t == name:
-            return pygetwindow.getWindowsWithTitle(t)[0]
-    return None
-
-
-def get_video_item(timeline, index):
-    frame = get_currentframe(timeline)
-    for item in timeline.GetItemListInTrack('video', index):
-        if item.GetStart() <= frame < item.GetEnd():
-            return item
-    return None
-
-
 @dataclasses.dataclass
 class ConfigData(config.Data):
     voice_dir: str = ''
@@ -341,7 +326,6 @@ class MainWindow(QMainWindow):
                 f'    "{ch_data.color}",',
                 f'    {video_index},',
                 f'    {audio_index},',
-                f'    0,',
                 f'    [[{str(ch_data.setting_file)}]]',
                 ')',
             ])

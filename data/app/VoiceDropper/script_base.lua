@@ -1,13 +1,3 @@
-
-local function getItem(timeline, track_type, index, currentFrame)
-    for i, item in ipairs(timeline:GetItemListInTrack(track_type, index)) do
-        if item:GetStart() <= currentFrame and item:GetEnd() > currentFrame then
-            return item
-        end
-    end
-    return nil
-end
-
 local function getToolName(st)
     for key, v in pairs(st['Tools']) do
         if (type(v) == 'table') and (v['Inputs'] ~= nil) then
@@ -17,7 +7,7 @@ local function getToolName(st)
     return nil
 end
 
-local function setJimaku(txt, color, index, audio_index, currentFrame, setting_path)
+local function setJimaku(txt, color, index, audio_index, setting_path)
     local projectManager = resolve:GetProjectManager()
     local project = projectManager:GetCurrentProject()
     if not project then
@@ -29,16 +19,19 @@ local function setJimaku(txt, color, index, audio_index, currentFrame, setting_p
         print('Timelineが見付かりません。')
         return
     end
-    local textPlus = getItem(timeline,'video', index, currentFrame)
-    if not textPlus then
+    local videoItems = timeline:GetItemListInTrack('video', index)
+    if #videoItems == 0 then
         print('VideoItemが見付かりません。')
         return
     end
-    local wav = getItem(timeline,'audio', audio_index, currentFrame)
-    if not wav then
+    local textPlus = videoItems[1]
+
+    local audioItems = timeline:GetItemListInTrack('audio', audio_index)
+    if #audioItems == 0 then
         print('AudioItemが見付かりません。')
         return
     end
+    local wav = audioItems[1]
 
     if textPlus:GetFusionCompCount() == 0 then
         print('FusionCompが見付かりません。')
@@ -54,7 +47,6 @@ local function setJimaku(txt, color, index, audio_index, currentFrame, setting_p
     end
 
     local tool = lst[1]
-
 
     -- setting
     tool.StyledText = txt
