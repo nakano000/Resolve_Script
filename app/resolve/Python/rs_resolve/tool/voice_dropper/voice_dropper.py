@@ -81,7 +81,7 @@ class WatchdogEvent(FileSystemEventHandler):
         src_path = Path(event.src_path)
         # print('created', src_path)
         if src_path.suffix.lower() in ['.wav', ]:
-            self.created_lst.append(str(src_path))
+            self.created_lst.append(src_path)
 
     def on_modified(self, event):
         src_path = Path(event.src_path)
@@ -154,7 +154,14 @@ class MainWindow(QMainWindow):
         )[0]
 
         self.ui.logTextEdit.clear()
-        self.directory_changed(data.voice_dir, filenames)
+        self.directory_changed(
+            data.voice_dir,
+            p.pipe(
+                filenames,
+                p.map(Path),
+                list
+            )
+        )
 
     def set_status_label(self):
         w = self.ui.statusLabel
@@ -271,10 +278,8 @@ class MainWindow(QMainWindow):
         # main
         resolve.OpenPage('edit')
         send_hotkey(['ctrl', '4'])
-        send_hotkey(['ctrl', 'shift', 'a'])
         for f in p.pipe(
                 created_lst,
-                p.map(lambda x: Path(x).parent.joinpath(Path(x).stem + '.wav')),
                 p.filter(p.call.is_file()),
                 dict.fromkeys,
                 list,
