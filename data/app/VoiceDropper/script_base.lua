@@ -7,7 +7,7 @@ local function getToolName(st)
     return nil
 end
 
-local function setJimaku(txt, color, index, audio_index, setting_path)
+local function setJimaku(txt, index, setting_path)
     local projectManager = resolve:GetProjectManager()
     local project = projectManager:GetCurrentProject()
     if not project then
@@ -25,13 +25,6 @@ local function setJimaku(txt, color, index, audio_index, setting_path)
         return
     end
     local textPlus = videoItems[1]
-
-    local audioItems = timeline:GetItemListInTrack('audio', audio_index)
-    if #audioItems == 0 then
-        print('AudioItemが見付かりません。')
-        return
-    end
-    local wav = audioItems[1]
 
     if textPlus:GetFusionCompCount() == 0 then
         print('FusionCompが見付かりません。')
@@ -73,9 +66,5 @@ local function setJimaku(txt, color, index, audio_index, setting_path)
     comp:Unlock()
     comp:EndUndo(true)
 
-    if color ~= 'None' then
-        textPlus:SetClipColor(color)
-        wav:SetClipColor(color)
-    end
     print('Dane!(Import Voice, Text+)')
 end

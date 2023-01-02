@@ -44,7 +44,7 @@ from rs_resolve.core import (
     get_currentframe,
     set_currentframe,
     get_fps,
-    track_name2index,
+    track_name2index, COLOR_LIST,
 )
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
 
@@ -323,9 +323,7 @@ class MainWindow(QMainWindow):
                 self.script_base,
                 'setJimaku(',
                 f'    [[{t}]],',
-                f'    "{ch_data.color}",',
                 f'    {video_index},',
-                f'    {audio_index},',
                 f'    [[{str(ch_data.setting_file)}]]',
                 ')',
             ])
@@ -361,6 +359,9 @@ class MainWindow(QMainWindow):
             }])[0]
             # クリップにスクリプトを実行
             self.fusion.Execute(lua_script)
+            if ch_data.color in COLOR_LIST:
+                text_plus.SetClipColor(ch_data.color)
+                clip.SetClipColor(ch_data.color)
             # リンク、コピー
             send_hotkey(['ctrl', '4'])
             send_hotkey(['ctrl', 'a'])
