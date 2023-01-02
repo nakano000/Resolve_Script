@@ -257,15 +257,6 @@ class MainWindow(QMainWindow):
             pyautogui.hotkey(*key_list)
             time.sleep(data.wait_time)
 
-        def select_audio_track(index):
-            if timeline.GetTrackCount('audio') == 1:
-                send_hotkey(['ctrl', 'alt', str(index)])
-            elif index == 1:
-                send_hotkey(['ctrl', 'alt', '2'])
-            else:
-                send_hotkey(['ctrl', 'alt', '1'])
-            send_hotkey(['ctrl', 'alt', str(index)])
-
         def select_video_track(index):
             if timeline.GetTrackCount('video') == 1:
                 send_hotkey(['alt', str(index)])
@@ -346,7 +337,8 @@ class MainWindow(QMainWindow):
             # import
             mi = media_pool.ImportMedia(str(f))[0]
             # 音声トラックの選択
-            select_audio_track(audio_index)
+            if audio_index != 1:
+                send_hotkey(['ctrl', 'alt', str(audio_index)])
             # 音声クリップの挿入
             clip = media_pool.AppendToTimeline([mi])[0]
             duration = clip.GetDuration()
