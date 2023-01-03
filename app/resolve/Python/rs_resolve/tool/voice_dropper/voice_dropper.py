@@ -113,7 +113,7 @@ class MainWindow(QMainWindow):
         self.load_config()
 
         tmp_dir = config.CONFIG_DIR.joinpath('tmp')
-        tmp_dir.mkdir(exist_ok=True)
+        tmp_dir.mkdir(parents=True, exist_ok=True)
         self.temp_file: Path = tmp_dir.joinpath('timeline.xml')
 
         self.xml = config.DATA_PATH.joinpath('app', 'VoiceDropper', 'Timeline.xml').read_text(encoding='utf-8')
