@@ -30,18 +30,7 @@ def read_text(f: Path, c_code: str):
             char_code = chardet.detect(content)
         enc: str = char_code['encoding']
 
-        if enc is None or enc.lower() not in [
-            'utf-8',
-            'utf-8-sig',
-            'utf-16',
-            'utf-16be',
-            'utf-16le',
-            'utf-32',
-            'utf-32be',
-            'utf-32le',
-            'cp932',
-            'shift_jis',
-        ]:
+        if enc is None or enc.lower() not in config.ENCODING_LIST:
             try:
                 t = content.decode(encoding='utf-8')
             except:

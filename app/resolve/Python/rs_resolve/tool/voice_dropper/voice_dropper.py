@@ -45,7 +45,7 @@ from rs_resolve.core import (
     get_currentframe,
     set_currentframe,
     get_fps,
-    track_name2index, COLOR_LIST,
+    track_name2index,
 )
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
 
@@ -363,7 +363,7 @@ class MainWindow(QMainWindow):
             }])[0]
             # クリップにスクリプトを実行
             self.fusion.Execute(lua_script)
-            if ch_data.color in COLOR_LIST:
+            if ch_data.color in config.COLOR_LIST:
                 text_plus.SetClipColor(ch_data.color)
                 clip.SetClipColor(ch_data.color)
             # リンク、コピー

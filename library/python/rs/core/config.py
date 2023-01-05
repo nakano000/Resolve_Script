@@ -26,6 +26,57 @@ APPDATA_PATH = Path(os.path.expandvars('$APPDATA'))
 RESOLVE_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'DaVinci Resolve', 'Support', 'Fusion')
 FUSION_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'Fusion')
 
+ENCODING_LIST = [
+    'utf-8',
+    'utf-8-sig',
+    'utf-16',
+    'utf-16be',
+    'utf-16le',
+    'utf-32',
+    'utf-32be',
+    'utf-32le',
+    'cp932',
+    'shift_jis',
+]
+
+MARKER_COLOR_LIST = [
+    'Blue',
+    'Cyan',
+    'Green',
+    'Yellow',
+    'Red',
+    'Pink',
+    'Purple',
+    'Fuchsia',
+    'Rose',
+    'Lavender',
+    'Sky',
+    'Mint',
+    'Lemon',
+    'Sand',
+    'Cocoa',
+    'Cream',
+]
+
+COLOR_LIST = [
+    'Orange',
+    'Apricot',
+    'Yellow',
+    'Lime',
+    'Olive',
+    'Green',
+    'Teal',
+    'Navy',
+    'Blue',
+    'Purple',
+    'Violet',
+    'Pink',
+    'Tan',
+    'Beige',
+    'Brown',
+    'Chocolate',
+]
+
 
 def get_user_path(is_resolve: bool):
     return RESOLVE_USER_PATH if is_resolve else FUSION_USER_PATH

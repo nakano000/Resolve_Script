@@ -22,7 +22,7 @@ from rs.gui import (
 )
 
 from rs_resolve.core import (
-    get_currentframe, COLOR_LIST,
+    get_currentframe,
 )
 from rs_resolve.tool.subtitle2text_plus.subtitle2text_plus_ui import Ui_MainWindow
 
@@ -83,7 +83,7 @@ class MainWindow(QMainWindow):
         for w in [self.ui.videoComboBox, self.ui.subtitleComboBox]:
             m = QStringListModel()
             w.setModel(m)
-        m = QStringListModel(COLOR_LIST)
+        m = QStringListModel(config.COLOR_LIST)
         self.ui.colorComboBox.setModel(m)
 
         # config

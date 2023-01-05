@@ -8,13 +8,16 @@ from typing import Any
 
 from PySide2.QtCore import (
     Qt,
-    QModelIndex, QEvent,
+    QModelIndex,
 )
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
     QHeaderView,
-    QMenu, QStyledItemDelegate, QSpinBox, QComboBox, QAbstractItemView, QFileDialog,
+    QMenu,
+    QStyledItemDelegate,
+    QComboBox,
+    QFileDialog,
 )
 
 from rs.core import (
@@ -54,47 +57,15 @@ class ItemDelegate(QStyledItemDelegate):
     def __init__(self, parent):
         super().__init__(parent)
         self._parent = parent
-        self.color_list = [
-            'None',
-            #
-            'Orange',
-            'Apricot',
-            'Yellow',
-            'Lime',
-            'Olive',
-            'Green',
-            'Teal',
-            'Navy',
-            'Blue',
-            'Purple',
-            'Violet',
-            'Pink',
-            'Tan',
-            'Beige',
-            'Brown',
-            'Chocolate',
-        ]
+        self.color_list = ['None'] + config.COLOR_LIST
         self.anim_type_list = [
             'aiueo',
             'open',
         ]
-        self.code_list = [
-            'auto',
-            #
-            'utf-8',
-            'utf-8-sig',
-            'utf-16',
-            'utf-16be',
-            'utf-16le',
-            'utf-32',
-            'utf-32be',
-            'utf-32le',
-            'cp932',
-            'shift_jis',
-        ]
+        self.encoding_list = ['auto'] + config.ENCODING_LIST
         self.item_dict = {
             2: self.color_list,
-            3: self.code_list,
+            3: self.encoding_list,
             5: self.anim_type_list,
         }
 
