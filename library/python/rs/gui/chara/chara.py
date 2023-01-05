@@ -78,8 +78,23 @@ class ItemDelegate(QStyledItemDelegate):
             'aiueo',
             'open',
         ]
+        self.code_list = [
+            'auto',
+            #
+            'utf-8',
+            'utf-8-sig',
+            'utf-16',
+            'utf-16be',
+            'utf-16le',
+            'utf-32',
+            'utf-32be',
+            'utf-32le',
+            'cp932',
+            'shift_jis',
+        ]
         self.item_dict = {
             2: self.color_list,
+            3: self.code_list,
             5: self.anim_type_list,
         }
 
