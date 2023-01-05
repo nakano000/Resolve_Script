@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui' applies.
 #
-# Created: Tue Dec 27 12:04:49 2022
+# Created: Thu Jan  5 21:42:22 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -89,6 +89,14 @@ class Ui_MainWindow(object):
         self.useCharaCheckBox = QtWidgets.QCheckBox(self.groupBox)
         self.useCharaCheckBox.setObjectName("useCharaCheckBox")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.useCharaCheckBox)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem1)
+        self.charaButton = QtWidgets.QPushButton(self.groupBox)
+        self.charaButton.setObjectName("charaButton")
+        self.horizontalLayout_4.addWidget(self.charaButton)
+        self.formLayout.setLayout(5, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_4)
         self.verticalLayout_3.addWidget(self.groupBox)
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -116,8 +124,8 @@ class Ui_MainWindow(object):
         self.importButton.setMinimumSize(QtCore.QSize(80, 30))
         self.importButton.setObjectName("importButton")
         self.horizontalLayout.addWidget(self.importButton)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
         self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
         self.minimizeButton.setMinimumSize(QtCore.QSize(30, 30))
         self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)
@@ -146,6 +154,7 @@ class Ui_MainWindow(object):
         self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "ビデオトラック", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "オーディオトラック", None, -1))
         self.useCharaCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "VoiceBinのキャラクター設定を使って配置", None, -1))
+        self.charaButton.setText(QtWidgets.QApplication.translate("MainWindow", "キャラクター設定", None, -1))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
         self.importButton.setText(QtWidgets.QApplication.translate("MainWindow", "import", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))

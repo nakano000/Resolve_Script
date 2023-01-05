@@ -34,6 +34,7 @@ from rs.core import (
     chara_data, fcp,
 )
 from rs.core.chara_data import CharaData
+from rs.gui.chara.chara import MainWindow as CharaWindow
 
 from rs.gui import (
     appearance,
@@ -120,6 +121,9 @@ class MainWindow(QMainWindow):
 
         self.script_base: str = SCRIPT_DIR.joinpath('script_base.lua').read_text(encoding='utf-8')
 
+        # window
+        self.chara_window = CharaWindow(self)
+
         # watcher
         self.modified.connect(self.directory_changed, Qt.QueuedConnection)
         self.__observer = PollingObserver()
@@ -128,8 +132,11 @@ class MainWindow(QMainWindow):
         self.ui.startButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.stopButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.importButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.charaButton.setStyleSheet(appearance.ex_stylesheet)
 
         # event
+        self.ui.charaButton.clicked.connect(self.chara_window.show)
+
         self.ui.startButton.clicked.connect(self.start)
         self.ui.stopButton.clicked.connect(self.stop)
 

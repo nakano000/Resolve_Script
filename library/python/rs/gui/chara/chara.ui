@@ -35,15 +35,15 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
-          <height>20</height>
+          <height>0</height>
          </size>
         </property>
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="commentLabel">
         <property name="text">
-         <string>※出力済みの音声に適応するには、スクリプトのRebuildが必要です。</string>
+         <string/>
         </property>
        </widget>
       </item>

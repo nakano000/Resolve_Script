@@ -8,13 +8,13 @@ from typing import Any
 
 from PySide2.QtCore import (
     Qt,
-    QModelIndex,
+    QModelIndex, QEvent,
 )
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
     QHeaderView,
-    QMenu,
+    QMenu, QStyledItemDelegate, QSpinBox, QComboBox, QAbstractItemView, QFileDialog,
 )
 
 from rs.core import (
@@ -30,7 +30,7 @@ from rs.gui import (
     appearance,
     basic_table,
 )
-from rs.tool.voice_bin.chara_setting_ui import Ui_MainWindow
+from rs.gui.chara.chara_ui import Ui_MainWindow
 
 
 class Model(basic_table.Model):
@@ -50,6 +50,101 @@ class Model(basic_table.Model):
         return Qt.NoItemFlags
 
 
+class ItemDelegate(QStyledItemDelegate):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self._parent = parent
+        self.color_list = [
+            'None',
+            #
+            'Orange',
+            'Apricot',
+            'Yellow',
+            'Lime',
+            'Olive',
+            'Green',
+            'Teal',
+            'Navy',
+            'Blue',
+            'Purple',
+            'Violet',
+            'Pink',
+            'Tan',
+            'Beige',
+            'Brown',
+            'Chocolate',
+        ]
+        self.anim_type_list = [
+            'aiueo',
+            'open',
+        ]
+        self.item_dict = {
+            2: self.color_list,
+            5: self.anim_type_list,
+        }
+
+    def createEditor(self, parent, option, index):
+        if index.column() in self.item_dict.keys():
+            lst = self.item_dict[index.column()]
+            editor = QComboBox(parent)
+            editor.addItems(lst)
+            return editor
+        elif index.column() == 7:
+            editor = QFileDialog(parent)
+            editor.setWindowTitle('ファイル選択')
+            editor.setFileMode(QFileDialog.ExistingFile)
+            editor.setAcceptMode(QFileDialog.AcceptOpen)
+            editor.setOptions(QFileDialog.DontUseNativeDialog)
+            editor.setNameFilter('Setting File (*.setting)')
+            return editor
+        return super().createEditor(parent, option, index)
+
+    def updateEditorGeometry(self, editor, option, index):
+        if index.column() == 7:
+            pass
+            return
+        super().updateEditorGeometry(editor, option, index)
+
+    def setEditorData(self, editor, index):
+        if index.column() in self.item_dict.keys():
+            lst = self.item_dict[index.column()]
+            editor.blockSignals(True)
+            value = index.data(Qt.DisplayRole)
+            num = lst.index(value) if value in lst else 0
+            editor.setCurrentIndex(num)
+            editor.blockSignals(False)
+            return
+        elif index.column() == 7:
+            editor: QFileDialog
+            path = Path(index.data(Qt.DisplayRole))
+            if not path.is_absolute():
+                value = str(config.ROOT_PATH.joinpath(str(path)).parent)
+            else:
+                value = str(path.parent)
+
+            editor.setDirectory(value)
+            return
+        super().setEditorData(editor, index)
+
+    def setModelData(self, editor, model, index):
+        if index.column() in self.item_dict.keys():
+            value: str = editor.currentText()
+            model.setData(index, value, Qt.EditRole)
+            return
+        elif index.column() == 7:
+            editor: QFileDialog
+            files = editor.selectedFiles()
+            if len(files) != 0:
+                path = Path(files[0])
+                if str(path).lower().startswith(str(config.ROOT_PATH).lower()):
+                    value = str(path.relative_to(config.ROOT_PATH))
+                else:
+                    value = str(path)
+                model.setData(index, value, Qt.EditRole)
+            return
+        super().setModelData(editor, model, index)
+
+
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -61,7 +156,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             # | Qt.WindowStaysOnTopHint
         )
-        self.resize(900, 300)
+        self.resize(1100, 300)
 
         # style sheet
         self.ui.setButton.setStyleSheet(appearance.ex_stylesheet)
@@ -78,6 +173,7 @@ class MainWindow(QMainWindow):
         # table
         v = self.ui.tableView
         v.setModel(Model(CharaData))
+        v.setItemDelegate(ItemDelegate(self))
 
         hh = v.horizontalHeader()
         hh.setSectionResizeMode(0, QHeaderView.ResizeToContents)
@@ -91,6 +187,11 @@ class MainWindow(QMainWindow):
         v.setContextMenuPolicy(Qt.CustomContextMenu)
         v.customContextMenuRequested.connect(self.contextMenu)
 
+        v.setStyleSheet(
+            'QTableView::item::focus '
+            '{border: 2px solid white; '
+            'border-radius: 0px;border-bottom-right-radius: 0px;border-style: double;}'
+        )
         # event
 
         self.ui.cancelButton.clicked.connect(self.close)
@@ -120,7 +221,10 @@ class MainWindow(QMainWindow):
         menu.addAction(self.ui.actionDelete)
         menu.exec_(v.mapToGlobal(pos))
 
-    def set_data(self, a: CharaSetData):
+    def set_comment(self, comment: str) -> None:
+        self.ui.commentLabel.setText(comment)
+
+    def set_data(self, a: CharaSetData) -> None:
         self.ui.tableView.model().set_data(a.chara_list)
 
     def get_data(self) -> CharaSetData:

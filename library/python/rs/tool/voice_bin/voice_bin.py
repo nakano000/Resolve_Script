@@ -30,7 +30,7 @@ from rs.gui import (
     appearance,
 )
 from rs.tool.voice_bin.voice_bin_ui import Ui_Form
-from rs.tool.voice_bin.chara_setting import MainWindow as CharaWindow
+from rs.gui.chara.chara import MainWindow as CharaWindow
 
 APP_NAME = 'VoiceBin'
 
@@ -99,6 +99,7 @@ class Form(QWidget):
 
         # window
         self.chara_window = CharaWindow(self)
+        self.chara_window.set_comment('※出力済みの音声に適応するには、スクリプトのRebuildが必要です。')
 
         # button
         self.ui.dragButton.setStyleSheet(appearance.ex_stylesheet)

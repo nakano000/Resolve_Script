@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\chara_setting.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_bin\chara_setting.ui' applies.
+# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\gui\chara\chara.ui',
+# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\gui\chara\chara.ui' applies.
 #
-# Created: Tue Dec 13 18:27:35 2022
+# Created: Wed Jan  4 13:37:23 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,11 +25,12 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.tableView)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 0, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setObjectName("label")
-        self.horizontalLayout_2.addWidget(self.label)
+        self.commentLabel = QtWidgets.QLabel(self.centralwidget)
+        self.commentLabel.setText("")
+        self.commentLabel.setObjectName("commentLabel")
+        self.horizontalLayout_2.addWidget(self.commentLabel)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -79,7 +80,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "※出力済みの音声に適応するには、スクリプトのRebuildが必要です。", None, -1))
         self.addButton.setText(QtWidgets.QApplication.translate("MainWindow", "add", None, -1))
         self.setButton.setText(QtWidgets.QApplication.translate("MainWindow", "set", None, -1))
         self.cancelButton.setText(QtWidgets.QApplication.translate("MainWindow", "cancel", None, -1))
