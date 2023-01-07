@@ -29,9 +29,10 @@ import pygetwindow
 from rs.core import (
     config,
     pipe as p,
-    voice_bin_process,
     util,
-    chara_data, fcp,
+    chara_data,
+    fcp,
+    txt,
 )
 from rs.core.chara_data import CharaData
 from rs.gui.chara.chara import MainWindow as CharaWindow
@@ -89,12 +90,12 @@ class WatchdogEvent(FileSystemEventHandler):
         # print('modified', src_path)
         if src_path.is_dir():
             if len(self.created_lst) > 0:
-                self.modified.emit(str(src_path), self.created_lst.copy())
+                self.modified.emit(self.created_lst.copy())
                 self.created_lst.clear()
 
 
 class MainWindow(QMainWindow):
-    modified = Signal(str, list)
+    modified = Signal(list)
 
     def __init__(self, parent=None, fusion=None):
         super().__init__(parent)
@@ -162,7 +163,6 @@ class MainWindow(QMainWindow):
 
         self.ui.logTextEdit.clear()
         self.directory_changed(
-            data.voice_dir,
             p.pipe(
                 filenames,
                 p.map(Path),
@@ -210,7 +210,7 @@ class MainWindow(QMainWindow):
                 return
         media_pool.AddSubFolder(root_folder, 'VoiceDropper')
 
-    def directory_changed(self, s, created_lst):
+    def directory_changed(self, created_lst):
         time_sta = time.time()
         self.ui.logTextEdit.clear()
         if len(created_lst) == 0:
@@ -318,7 +318,7 @@ class MainWindow(QMainWindow):
 
             txt_file = f.parent.joinpath(f.stem + '.txt')
             t = util.str2lines(
-                voice_bin_process.read_text(txt_file, ch_data.c_code),
+                txt.read(txt_file, ch_data.c_code),
                 ch_data.str_width * 2,
             ) if txt_file.is_file() else ''
 

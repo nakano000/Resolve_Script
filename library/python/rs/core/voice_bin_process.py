@@ -10,6 +10,7 @@ from rs.core import (
     lab,
     util,
     chara_data,
+    txt,
 )
 from rs.core.chara_data import CharaData
 
@@ -17,34 +18,6 @@ SCRIPT_DIR: Path = config.ROOT_PATH.joinpath('data', 'app', 'VoiceBin')
 TEXT_SCRIPT_BASE: str = SCRIPT_DIR.joinpath('text_script_base.lua').read_text(encoding='utf-8')
 TATIE_SCRIPT_BASE: str = SCRIPT_DIR.joinpath('tatie_script_base.lua').read_text(encoding='utf-8')
 TATIE_SETTING_BASE: str = SCRIPT_DIR.joinpath('tatie_setting_base.txt').read_text(encoding='utf-8')
-
-
-def read_text(f: Path, c_code: str):
-    import chardet
-    # 文字コード
-    _code = c_code.strip().lower()
-
-    if _code in ['auto', '']:
-        with open(f, 'rb') as _f:
-            content = _f.read()
-            char_code = chardet.detect(content)
-        enc: str = char_code['encoding']
-
-        if enc is None or enc.lower() not in config.ENCODING_LIST:
-            try:
-                t = content.decode(encoding='utf-8')
-            except:
-                t = content.decode(encoding='cp932')
-        else:
-            if enc.lower() == 'shift_jis':
-                enc = 'cp932'
-            t = content.decode(encoding=enc)
-    else:
-        t = f.read_text(encoding=_code)
-
-    # 改行コード
-    t = t.replace('\r\n', '\n')
-    return t
 
 
 def run(f: Path, fps):
@@ -79,7 +52,7 @@ def run(f: Path, fps):
             break
 
     t = util.str2lines(
-        read_text(txt_file, ch_data.c_code),
+        txt.read(txt_file, ch_data.c_code),
         ch_data.str_width * 2,
     )
 
