@@ -157,21 +157,22 @@ class MainWindow(QMainWindow):
         conversion = kakasi.getConverter()
         lst = []
         for layer in group:
-            name: str = layer.name.translate(str.maketrans('*\\/:?"<>|', '-________', ''))
+            layer_name: str = layer.name.strip()
+            name: str = layer_name.translate(str.maketrans('*\\/:?"<>|', '-________', ''))
             if name[len(name) - 1].isdigit():
                 name += '_'
-            layer_name_en = ''.join(filter(str.isalnum, conversion.do(layer.name)))
+            layer_name_en = ''.join(filter(str.isalnum, conversion.do(layer_name)))
             if len(layer_name_en) == 0:
-                layer_name_en = ''.join(filter(lambda s: s not in '!@#$%^&*()-=+\\|`~[]{};\':",./<>?', layer.name))
+                layer_name_en = ''.join(filter(lambda s: s not in '!@#$%^&*()-=+\\|`~[]{};\':",./<>?', layer_name))
             if len(layer_name_en) == 0:
                 layer_name_en = 'none'
 
             if layer.is_group():
                 grp_dir = d.joinpath(name)
                 grp_dir.mkdir(parents=True, exist_ok=True)
-                self.add2log('Mkdir: %s => %s' % (layer.name, str(grp_dir).replace('\\', '/')))
+                self.add2log('Mkdir: %s => %s' % (layer_name, str(grp_dir).replace('\\', '/')))
                 dct = {
-                    'name': layer.name,
+                    'name': layer_name,
                     'name_en': layer_name_en,
                     'visible': layer.is_visible(),
                     'data': self.export_layer(size, grp_dir, layer),
@@ -184,7 +185,7 @@ class MainWindow(QMainWindow):
                 img_path = d.joinpath(name + '.png')
                 img.save(img_path)
                 dct = {
-                    'name': layer.name,
+                    'name': layer_name,
                     'name_en': layer_name_en,
                     'visible': layer.is_visible(),
                     'data': str(img_path).replace('\\', '/'),
