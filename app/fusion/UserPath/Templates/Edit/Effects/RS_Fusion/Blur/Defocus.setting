@@ -1,0 +1,19 @@
+{
+	Tools = ordered() {
+		Template = Defocus {
+			NameSet = true,
+			Inputs = {
+				Filter = Input { Value = 1, },
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+				Input = Input {
+					SourceOp = "MediaIn1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, -148.5 } },
+		}
+	}
+}

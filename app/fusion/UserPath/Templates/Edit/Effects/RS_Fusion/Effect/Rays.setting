@@ -1,0 +1,14 @@
+{
+	Tools = ordered() {
+		Template = Fuse.OCLRays {
+			NameSet = true,
+			Inputs = {
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Image",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 605, -115.5 } },
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	Tools = ordered() {
+		Template = Fuse.Duplicate {
+			NameSet = true,
+			Inputs = {
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Background",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 165, -115.5 } },
+		}
+	}
+}

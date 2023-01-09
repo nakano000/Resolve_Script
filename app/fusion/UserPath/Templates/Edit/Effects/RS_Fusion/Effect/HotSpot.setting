@@ -1,0 +1,118 @@
+{
+	Tools = ordered() {
+		Template = HotSpot {
+			NameSet = true,
+			Inputs = {
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+				AmbientLight = Input { Disabled = true, },
+				Red = Input {
+					SourceOp = "HotSpot1Red",
+					Source = "Value",
+				},
+				Green = Input {
+					SourceOp = "HotSpot1Green",
+					Source = "Value",
+				},
+				Blue = Input {
+					SourceOp = "HotSpot1Blue",
+					Source = "Value",
+				},
+				Alpha = Input {
+					SourceOp = "HotSpot1Alpha",
+					Source = "Value",
+				},
+				Mix = Input {
+					SourceOp = "HotSpot1Mix",
+					Source = "Value",
+				},
+				Radial = Input {
+					SourceOp = "HotSpot1Radial",
+					Source = "Value",
+				},
+				Length = Input {
+					SourceOp = "HotSpot1Length",
+					Source = "Value",
+				},
+				Input = Input {
+					SourceOp = "MediaIn1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 385, -115.5 } },
+		},
+		HotSpot1Red = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 255, Green = 0, Blue = 0 },
+			NameSet = true,
+		},
+		HotSpot1Green = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 0, Green = 255, Blue = 0 },
+			NameSet = true,
+		},
+		HotSpot1Blue = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 128, Green = 128, Blue = 255 },
+			NameSet = true,
+		},
+		HotSpot1Alpha = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 255, Green = 255, Blue = 0 },
+			NameSet = true,
+		},
+		HotSpot1Mix = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 255, Green = 255, Blue = 0 },
+			NameSet = true,
+		},
+		HotSpot1Radial = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 255, Green = 0, Blue = 255 },
+			NameSet = true,
+		},
+		HotSpot1Length = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 0, Green = 180, Blue = 255 },
+			CtrlWZoom = false,
+			NameSet = true,
+		}
+	}
+}
