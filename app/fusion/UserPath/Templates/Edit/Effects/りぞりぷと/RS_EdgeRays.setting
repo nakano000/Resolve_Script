@@ -85,6 +85,11 @@
 					Source = "Threshold",
 					Default = 0.8,
 				},
+				Input14 = InstanceInput {
+					SourceOp = "Merge1",
+					Source = "Gain",
+					Default = 0.5,
+				},
 				MainInput1 = InstanceInput {
 					SourceOp = "PipeRouter1",
 					Source = "Input",
@@ -262,6 +267,7 @@
 							Source = "Output",
 						},
 						PerformDepthMerge = Input { Value = 0, },
+						Gain = Input { Value = 0.5, },
 					},
 					ViewInfo = OperatorInfo { Pos = { 275, 313.5 } },
 				},
