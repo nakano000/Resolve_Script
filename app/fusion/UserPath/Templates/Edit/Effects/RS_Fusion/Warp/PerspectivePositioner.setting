@@ -1,0 +1,19 @@
+{
+	Tools = ordered() {
+		Template = PerspectivePositioner {
+			NameSet = true,
+			Inputs = {
+				MappingType = Input { Value = 1, },
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+				Input = Input {
+					SourceOp = "MediaIn1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 715, -115.5 } },
+		}
+	}
+}
