@@ -156,11 +156,14 @@ class MainWindow(QMainWindow):
         kakasi.setMode('J', 'a')
         conversion = kakasi.getConverter()
         lst = []
+        name_list = []
         for layer in group:
             layer_name: str = layer.name.strip()
+
             name: str = layer_name.translate(str.maketrans('*\\/:?"<>|', '-________', ''))
             if name[len(name) - 1].isdigit():
                 name += '_'
+
             layer_name_en = ''.join(filter(str.isalnum, conversion.do(layer_name)))
             if len(layer_name_en) == 0:
                 layer_name_en = ''.join(filter(lambda s: s not in '!@#$%^&*()-=+\\|`~[]{};\':",./<>?', layer_name))
@@ -182,6 +185,15 @@ class MainWindow(QMainWindow):
                 img = Image.new("RGBA", size, (0, 0, 0, 0))
                 if layer.topil() is not None:
                     img.paste(layer.topil(), layer.offset)
+
+                if name in name_list:  # 重複チェック
+                    _tmp_name = name + '_'
+                    for i in range(100):
+                        if _tmp_name not in name_list:
+                            break
+                        _tmp_name = name + '_' + str(i) + '_'
+                    name = _tmp_name
+
                 img_path = d.joinpath(name + '.png')
                 img.save(img_path)
                 dct = {
@@ -191,6 +203,7 @@ class MainWindow(QMainWindow):
                     'data': str(img_path).replace('\\', '/'),
                 }
                 lst.append(dct)
+                name_list.append(name)
                 self.add2log('Export: %s => %s' % (dct['name'], dct['data']))
         return lst
 
