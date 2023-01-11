@@ -96,6 +96,8 @@ class MainWindow(QMainWindow):
         self.load_config()
 
         # button
+        self.ui.openDirButton.setStyleSheet(appearance.other_stylesheet)
+        self.ui.openSampleButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.loaderButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.margeButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.switchButton.setStyleSheet(appearance.in_stylesheet)
@@ -109,6 +111,10 @@ class MainWindow(QMainWindow):
         self.ui.openDirButton.clicked.connect(partial(
             util.open_directory,
             config.RESOLVE_USER_PATH.joinpath('Templates', 'Edit', 'Generators'),
+        ))
+        self.ui.openSampleButton.clicked.connect(partial(
+            util.open_directory,
+            config.ROOT_PATH.joinpath('Templates', 'Edit', 'Generators'),
         ))
         user_path = config.get_user_path(self.fusion.GetResolve() is not None)
         self.ui.openFuseDirButton.clicked.connect(partial(
