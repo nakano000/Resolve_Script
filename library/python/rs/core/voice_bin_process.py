@@ -88,7 +88,7 @@ def run(f: Path, fps):
     if ch_data.anim_type.strip().lower() == 'open':
         anim = lab.wav2anim(f, fps)
     elif lab_file.is_file():
-        anim = lab.lab2anim(lab_file, fps)
+        anim = lab.lab2anim(lab_file, fps, ch_data.anim_type.strip().lower())
 
     if anim != '':
         util.write_text(

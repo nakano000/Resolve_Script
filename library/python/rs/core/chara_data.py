@@ -6,6 +6,7 @@ from typing import List
 from rs.core import (
     config,
     pipe as p,
+    anim,
 )
 from rs.gui import basic_table
 
@@ -22,7 +23,7 @@ class CharaData(basic_table.RowData):
     color: str = 'None'
     c_code: str = 'auto'
     str_width: int = 0
-    anim_type: str = 'aiueo'
+    anim_type: str = anim.Type.aiueo.value
     anim_parameter: str = 'Anim'
     _setting: str = r'Preset\TextPlus\字幕_白.setting'
 

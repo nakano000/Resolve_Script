@@ -1,7 +1,10 @@
 from pathlib import Path
 import numpy as np
 import librosa
-from rs.core import pipe as p
+from rs.core import (
+    anim,
+    pipe as p,
+)
 
 _NONE = 0
 _N = 1
@@ -10,6 +13,7 @@ _I = 3
 _U = 4
 _E = 5
 _O = 6
+_S = 7
 
 
 def sign2int(s: str):
@@ -27,14 +31,20 @@ def sign2int(s: str):
         return _O
     if s in ['N', 'cl']:
         return _N
-    return _E
+    return _S
+
+
+def sign2intE(s: str):
+    """子音はEとして扱う"""
+    n: int = sign2int(s)
+    if n == _S:
+        return _E
+    return n
 
 
 def dict2anim(dct) -> str:
     space = '\t\t\t\t'
     key01_block = '[%d] = { %s,'
-    # key02_block = ' LHrel = { %s, %s },'
-    # key03_block = ' RHrel = { %s, %s },'
     key02_block = ' LH = { %s, %s },'
     key03_block = ' RH = { %s, %s },'
     flagA_block = ' Flags = { Linear = true } }'
@@ -67,20 +77,36 @@ def dict2anim(dct) -> str:
     return space + (',\n' + space).join(key_list)
 
 
-def lab2anim(path: Path, fps) -> str:
+def lab2anim(path: Path, fps, anim_tpe) -> str:
     n = 10000000
+    func = sign2intE
+    if anim_tpe == anim.Type.aiueo2:
+        func = sign2int
+
+    # lab 読み込み
+    data = p.pipe(
+        path.read_text(encoding='utf-8-sig').split('\n'),
+        p.map(p.call.split(' ')),
+        p.filter(lambda x: len(x) == 3),
+        p.map(lambda x: {
+            's': round(int(x[0]) * fps / n),
+            'e': round(int(x[1]) * fps / n),
+            'sign': func(x[2]),
+        }),
+        list,
+    )
+
+    # 子音除去
+    pre_sign = _N
+    for i in reversed(range(len(data))):
+        if data[i]['sign'] == _S:
+            data[i]['sign'] = pre_sign
+        else:
+            pre_sign = data[i]['sign']
+
+    # dict 作成
     dct = {}
-    for d in p.pipe(
-            path.read_text(encoding='utf-8-sig').split('\n'),
-            p.map(p.call.split(' ')),
-            p.filter(lambda x: len(x) == 3),
-            p.map(lambda x: {
-                's': round(int(x[0]) * fps / n),
-                'e': round(int(x[1]) * fps / n),
-                'sign': sign2int(x[2]),
-            }),
-            list,
-    ):
+    for d in data:
         dct[d['s']] = d['sign']
         dct[d['e']] = _NONE
 
@@ -101,5 +127,20 @@ def wav2anim(path: Path, fps) -> str:
 
 
 if __name__ == '__main__':
-    setting = lab2anim(Path(r'\\qnap\PJ\youtube\test\out06\001_四国めたん（ノーマル）_おはようございます。.lab'), 30)
-    print(setting)
+    p.pipe(
+        lab2anim(
+            Path(r'\\qnap\PJ\youtube\test\out06\001_四国めたん（ノーマル）_おはようございます。.lab'),
+            30,
+            anim.Type.aiueo,
+        ),
+        print,
+    )
+    p.pipe(
+        lab2anim(
+            Path(r'\\qnap\PJ\youtube\test\out06\001_四国めたん（ノーマル）_おはようございます。.lab'),
+            30,
+            anim.Type.aiueo2,
+        ),
+        print,
+    )
+    print(anim.TYPE_LIST)

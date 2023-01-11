@@ -24,6 +24,7 @@ from rs.core import (
     config,
     pipe as p,
     chara_data,
+    anim,
 )
 from rs.core.chara_data import (
     CharaData,
@@ -58,15 +59,11 @@ class ItemDelegate(QStyledItemDelegate):
         super().__init__(parent)
         self._parent = parent
         self.color_list = ['None'] + config.COLOR_LIST
-        self.anim_type_list = [
-            'aiueo',
-            'open',
-        ]
         self.encoding_list = ['auto'] + config.ENCODING_LIST
         self.item_dict = {
             2: self.color_list,
             3: self.encoding_list,
-            5: self.anim_type_list,
+            5: anim.TYPE_LIST,
         }
 
     def createEditor(self, parent, option, index):
