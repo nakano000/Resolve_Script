@@ -20,6 +20,18 @@ TATIE_SCRIPT_BASE: str = SCRIPT_DIR.joinpath('tatie_script_base.lua').read_text(
 TATIE_SETTING_BASE: str = SCRIPT_DIR.joinpath('tatie_setting_base.txt').read_text(encoding='utf-8')
 
 
+def del_script(f: Path):
+    d = f.parent
+    srt_file = d.joinpath(f.stem + '.srt')
+    lua_file = d.joinpath(f.stem + '.lua')
+    tatie_lua_file = d.joinpath(f.stem + '.tatie.lua')
+    setting_file = d.joinpath(f.stem + '.setting')
+
+    for f in [srt_file, lua_file, tatie_lua_file, setting_file]:
+        if f.is_file():
+            f.unlink()
+
+
 def run(f: Path, fps):
     r = False
     #

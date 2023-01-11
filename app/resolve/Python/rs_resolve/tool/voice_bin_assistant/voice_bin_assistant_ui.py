@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_bin_assistant\voice_bin_assistant.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_bin_assistant\voice_bin_assistant.ui' applies.
 #
-# Created: Tue Dec 27 12:02:59 2022
+# Created: Wed Jan 11 23:14:56 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,6 +51,9 @@ class Ui_MainWindow(object):
         self.tatieWaitSpinBox.setObjectName("tatieWaitSpinBox")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.tatieWaitSpinBox)
         self.verticalLayout_4.addLayout(self.formLayout_2)
+        self.rebuildCheckBox = QtWidgets.QCheckBox(self.groupBox_3)
+        self.rebuildCheckBox.setObjectName("rebuildCheckBox")
+        self.verticalLayout_4.addWidget(self.rebuildCheckBox)
         self.verticalLayout_6.addWidget(self.groupBox_3)
         self.groupBox_6 = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -187,6 +190,7 @@ class Ui_MainWindow(object):
         self.referTrackCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "ビデオトラックを参照する", None, -1))
         self.groupBox_3.setTitle(QtWidgets.QApplication.translate("MainWindow", "TEXT+ 立ち絵", None, -1))
         self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "待ち時間", None, -1))
+        self.rebuildCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "毎回スクリプトを作る", None, -1))
         self.groupBox_6.setTitle(QtWidgets.QApplication.translate("MainWindow", "トラック選択", None, -1))
         self.groupBox_4.setTitle(QtWidgets.QApplication.translate("MainWindow", "ビデオ トラック", None, -1))
         self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "オーディオ トラック", None, -1))

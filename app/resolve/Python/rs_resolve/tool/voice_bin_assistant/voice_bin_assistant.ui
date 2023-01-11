@@ -71,6 +71,13 @@
          </item>
         </layout>
        </item>
+       <item>
+        <widget class="QCheckBox" name="rebuildCheckBox">
+         <property name="text">
+          <string>毎回スクリプトを作る</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>

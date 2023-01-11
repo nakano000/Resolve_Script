@@ -94,6 +94,7 @@ class ConfigData(config.Data):
     refer_track: bool = False
 
     tatie_wait: float = 2.0
+    rebuild_script: bool = True
 
 
 class MainWindow(QMainWindow):
@@ -147,6 +148,7 @@ class MainWindow(QMainWindow):
         self.ui.referTrackCheckBox.setChecked(c.refer_track)
 
         self.ui.tatieWaitSpinBox.setValue(c.tatie_wait)
+        self.ui.rebuildCheckBox.setChecked(c.rebuild_script)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
@@ -155,6 +157,7 @@ class MainWindow(QMainWindow):
         c.refer_track = self.ui.referTrackCheckBox.isChecked()
 
         c.tatie_wait = self.ui.tatieWaitSpinBox.value()
+        c.rebuild_script = self.ui.rebuildCheckBox.isChecked()
         return c
 
     def load_config(self) -> None:
@@ -360,7 +363,9 @@ class MainWindow(QMainWindow):
             cf = int((sf + ef) / 2)
             f = Path(item.GetMediaPoolItem().GetClipProperty('File Path'))
             # make script
-            voice_bin_process.run(Path(f), fps)
+            if data.rebuild_script:
+                voice_bin_process.del_script(f)
+            voice_bin_process.run(f, fps)
 
             text_lua = f.parent.joinpath(f.stem + '.lua')
             tatie_lua = f.parent.joinpath(f.stem + '.tatie.lua')
