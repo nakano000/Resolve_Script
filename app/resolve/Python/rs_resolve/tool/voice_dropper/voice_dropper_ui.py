@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui' applies.
 #
-# Created: Thu Jan  5 21:42:22 2023
+# Created: Sun Jan 15 14:02:45 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -88,7 +88,7 @@ class Ui_MainWindow(object):
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.audioIndexSpinBox)
         self.useCharaCheckBox = QtWidgets.QCheckBox(self.groupBox)
         self.useCharaCheckBox.setObjectName("useCharaCheckBox")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.useCharaCheckBox)
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.useCharaCheckBox)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -96,7 +96,10 @@ class Ui_MainWindow(object):
         self.charaButton = QtWidgets.QPushButton(self.groupBox)
         self.charaButton.setObjectName("charaButton")
         self.horizontalLayout_4.addWidget(self.charaButton)
-        self.formLayout.setLayout(5, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_4)
+        self.formLayout.setLayout(6, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_4)
+        self.makeTextCheckBox = QtWidgets.QCheckBox(self.groupBox)
+        self.makeTextCheckBox.setObjectName("makeTextCheckBox")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.makeTextCheckBox)
         self.verticalLayout_3.addWidget(self.groupBox)
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -153,8 +156,9 @@ class Ui_MainWindow(object):
         self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "間隔(フレーム)", None, -1))
         self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "ビデオトラック", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "オーディオトラック", None, -1))
-        self.useCharaCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "VoiceBinのキャラクター設定を使って配置", None, -1))
+        self.useCharaCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "キャラクター設定を使って配置", None, -1))
         self.charaButton.setText(QtWidgets.QApplication.translate("MainWindow", "キャラクター設定", None, -1))
+        self.makeTextCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "テキストファイルがなければ、クリップボードから作る", None, -1))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
         self.importButton.setText(QtWidgets.QApplication.translate("MainWindow", "import", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))

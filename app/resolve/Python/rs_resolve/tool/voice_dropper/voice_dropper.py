@@ -1,3 +1,4 @@
+import os
 import re
 from functools import partial
 
@@ -70,6 +71,7 @@ class ConfigData(config.Data):
     offset: int = 15
     video_index: int = 1
     audio_index: int = 1
+    make_text: bool = False
     use_chara: bool = True
 
 
@@ -317,6 +319,9 @@ class MainWindow(QMainWindow):
                 video_index = data.video_index
 
             txt_file = f.parent.joinpath(f.stem + '.txt')
+            if not txt_file.is_file() and data.make_text:
+                self.add2log('テキストファイルを作成します。')
+                txt_file.write_text(QApplication.clipboard().text(), encoding='utf-8-sig')
             t = util.str2lines(
                 txt.read(txt_file, ch_data.c_code),
                 ch_data.str_width * 2,
@@ -348,6 +353,13 @@ class MainWindow(QMainWindow):
                 send_hotkey(['ctrl', 'alt', str(audio_index)])
             # 音声クリップの挿入
             clip = media_pool.AppendToTimeline([mi])[0]
+            for i in range(100):
+                time.sleep(0.2)
+                if len(tmp_timeline.GetItemListInTrack('audio', audio_index)) == 0:
+                    mi.ReplaceClip(str(f))
+                    clip = media_pool.AppendToTimeline([mi])[0]
+                else:
+                    break
             duration = clip.GetDuration()
             # text+クリップの仮挿入
             media_pool.AppendToTimeline([text_template])
@@ -407,6 +419,7 @@ class MainWindow(QMainWindow):
         self.ui.offsetSpinBox.setValue(c.offset)
         self.ui.videoIndexSpinBox.setValue(c.video_index)
         self.ui.audioIndexSpinBox.setValue(c.audio_index)
+        self.ui.makeTextCheckBox.setChecked(c.make_text)
         self.ui.useCharaCheckBox.setChecked(c.use_chara)
 
     def get_data(self) -> ConfigData:
@@ -417,6 +430,7 @@ class MainWindow(QMainWindow):
         c.offset = self.ui.offsetSpinBox.value()
         c.video_index = self.ui.videoIndexSpinBox.value()
         c.audio_index = self.ui.audioIndexSpinBox.value()
+        c.make_text = self.ui.makeTextCheckBox.isChecked()
         c.use_chara = self.ui.useCharaCheckBox.isChecked()
         return c
 
