@@ -12,11 +12,11 @@
     Click "Right"
     Send '{Up}'
     Send '{Enter}'
-    Sleep 500
+    Sleep 250
     Click 100, 100
     Send '{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}{Tab}'
     Send '{Enter}'
-    Sleep 500
+    Sleep 250
     Send '{Enter}'
 }
 
