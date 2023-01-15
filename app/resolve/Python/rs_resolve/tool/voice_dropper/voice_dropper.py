@@ -68,6 +68,7 @@ class ConfigData(config.Data):
     voice_dir: str = ''
 
     wait_time: float = 0.001
+    time_out: int = 15
     offset: int = 15
     video_index: int = 1
     audio_index: int = 1
@@ -318,8 +319,6 @@ class MainWindow(QMainWindow):
                 self.add2log(f'ビデオトラック {data.video_index} を使います。')
                 video_index = data.video_index
 
-
-
             # make timeline
             fcp_timeline = fcp.Timeline(self.xml)
             fcp_timeline.set_name('tmp_' + f.stem)
@@ -330,28 +329,39 @@ class MainWindow(QMainWindow):
             self.temp_file.write_text(str(fcp_timeline), encoding='utf-8')
             tmp_timeline = media_pool.ImportTimelineFromFile(str(self.temp_file))
 
+            # time out 設定
+            step = 0.2
+            times = int(data.time_out / step)
             # import
             mi = None
             mi_list = media_pool.ImportMedia(str(f))
-            for i in range(100):
-                time.sleep(0.2)
+            for _ in range(times):
+                time.sleep(step)
                 if len(mi_list) > 0:
                     mi = mi_list[0]
                     break
                 else:
                     mi_list = media_pool.ImportMedia(str(f))
+            if mi is None:
+                self.add2log('音声ファイルのインポートに失敗しました。(タイムアウト)')
+                media_pool.DeleteTimelines([tmp_timeline])
+                continue
             # 音声トラックの選択
             if audio_index != 1:
                 send_hotkey(['ctrl', 'alt', str(audio_index)])
             # 音声クリップの挿入
             clip = media_pool.AppendToTimeline([mi])[0]
-            for i in range(100):
-                time.sleep(0.2)
+            for _ in range(times):
+                time.sleep(step)
                 if len(tmp_timeline.GetItemListInTrack('audio', audio_index)) == 0:
                     mi.ReplaceClip(str(f))
                     clip = media_pool.AppendToTimeline([mi])[0]
                 else:
                     break
+            if len(tmp_timeline.GetItemListInTrack('audio', audio_index)) == 0:
+                self.add2log('音声クリップの挿入に失敗しました。(タイムアウト)')
+                media_pool.DeleteTimelines([tmp_timeline])
+                continue
             duration = clip.GetDuration()
             # text+クリップの仮挿入
             media_pool.AppendToTimeline([text_template])
@@ -427,6 +437,7 @@ class MainWindow(QMainWindow):
         self.ui.voiceDirLineEdit.setText(c.voice_dir)
 
         self.ui.waitTimeSpinBox.setValue(c.wait_time)
+        self.ui.timeOutSpinBox.setValue(c.time_out)
         self.ui.offsetSpinBox.setValue(c.offset)
         self.ui.videoIndexSpinBox.setValue(c.video_index)
         self.ui.audioIndexSpinBox.setValue(c.audio_index)
@@ -438,6 +449,7 @@ class MainWindow(QMainWindow):
         c.voice_dir = self.ui.voiceDirLineEdit.text().strip()
 
         c.wait_time = self.ui.waitTimeSpinBox.value()
+        c.time_out = self.ui.timeOutSpinBox.value()
         c.offset = self.ui.offsetSpinBox.value()
         c.video_index = self.ui.videoIndexSpinBox.value()
         c.audio_index = self.ui.audioIndexSpinBox.value()
