@@ -318,23 +318,7 @@ class MainWindow(QMainWindow):
                 self.add2log(f'ビデオトラック {data.video_index} を使います。')
                 video_index = data.video_index
 
-            txt_file = f.parent.joinpath(f.stem + '.txt')
-            if not txt_file.is_file() and data.make_text:
-                self.add2log('テキストファイルを作成します。')
-                txt_file.write_text(QApplication.clipboard().text(), encoding='utf-8-sig')
-            t = util.str2lines(
-                txt.read(txt_file, ch_data.c_code),
-                ch_data.str_width * 2,
-            ) if txt_file.is_file() else ''
 
-            lua_script = '\n'.join([
-                self.script_base,
-                'setJimaku(',
-                f'    [[{t}]],',
-                f'    {video_index},',
-                f'    [[{str(ch_data.setting_file)}]]',
-                ')',
-            ])
 
             # make timeline
             fcp_timeline = fcp.Timeline(self.xml)
@@ -347,7 +331,15 @@ class MainWindow(QMainWindow):
             tmp_timeline = media_pool.ImportTimelineFromFile(str(self.temp_file))
 
             # import
-            mi = media_pool.ImportMedia(str(f))[0]
+            mi = None
+            mi_list = media_pool.ImportMedia(str(f))
+            for i in range(100):
+                time.sleep(0.2)
+                if len(mi_list) > 0:
+                    mi = mi_list[0]
+                    break
+                else:
+                    mi_list = media_pool.ImportMedia(str(f))
             # 音声トラックの選択
             if audio_index != 1:
                 send_hotkey(['ctrl', 'alt', str(audio_index)])
@@ -373,6 +365,25 @@ class MainWindow(QMainWindow):
                 'endFrame': duration - 1,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
                 'mediaType': 1,
             }])[0]
+            # text+用のテキストを読み込み
+            txt_file = f.parent.joinpath(f.stem + '.txt')
+            if not txt_file.is_file() and data.make_text:
+                self.add2log('テキストファイルを作成します。')
+                txt_file.write_text(QApplication.clipboard().text(), encoding='utf-8-sig')
+            t = util.str2lines(
+                txt.read(txt_file, ch_data.c_code),
+                ch_data.str_width * 2,
+            ) if txt_file.is_file() else ''
+
+            # lua scriptを作る
+            lua_script = '\n'.join([
+                self.script_base,
+                'setJimaku(',
+                f'    [[{t}]],',
+                f'    {video_index},',
+                f'    [[{str(ch_data.setting_file)}]]',
+                ')',
+            ])
             # クリップにスクリプトを実行
             self.fusion.Execute(lua_script)
             if ch_data.color in config.COLOR_LIST:
