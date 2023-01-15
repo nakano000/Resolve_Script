@@ -3,7 +3,7 @@
 
 ^Space::{
     SetKeyDelay 75, 25
-    SendEvent '^{a}{Tab}{Space}+{Tab}'
+    SendEvent '^{a}{Tab}{Space}'
 }
 
 ^LButton::{
