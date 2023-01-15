@@ -1,11 +1,13 @@
 ﻿#Requires AutoHotkey v2.0
 #HotIf WinActive("ahk_exe voicepeak.exe")
 
+; Ctrl-Space ブロック再生
 ^Space::{
     SetKeyDelay 75, 25
-    SendEvent '^{a}{Tab}{Space}'
+    SendEvent '^{a}{Tab}{Space}+{Tab}'
 }
 
+; Ctrl-Click 字幕コピー ブロック音声出力
 ^LButton::{
     Click
     Send '^{a}^{c}'
