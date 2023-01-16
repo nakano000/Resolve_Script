@@ -10,7 +10,9 @@
 ; Ctrl-Click 字幕コピー ブロック音声出力
 ^LButton::{
     Click
+    Sleep 100
     Send '^{a}^{c}'
+    Sleep 100
     Click "Right"
     Send '{Up}'
     Send '{Enter}'
