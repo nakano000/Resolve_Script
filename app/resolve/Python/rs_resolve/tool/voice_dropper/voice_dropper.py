@@ -331,38 +331,67 @@ class MainWindow(QMainWindow):
 
             # time out 設定
             step = 0.2
-            times = int(data.time_out / step)
+            start_time = time.time()
+            is_time_out = False
+
+            # ロック確認
+            while True:
+                if time.time() - start_time > data.time_out:
+                    is_time_out = True
+                    break
+                try:
+                    os.rename(str(f), str(f))
+                    break
+                except OSError:
+                    time.sleep(step)
+
+            if is_time_out:
+                self.add2log('タイムアウト:ファイルが計算中ため、処理をスキップします。')
+                media_pool.DeleteTimelines([tmp_timeline])
+                continue
+
             # import
             mi = None
             mi_list = media_pool.ImportMedia(str(f))
-            for _ in range(times):
-                time.sleep(step)
+            while True:
+                if time.time() - start_time > data.time_out:
+                    is_time_out = True
+                    break
                 if len(mi_list) > 0:
                     mi = mi_list[0]
                     break
                 else:
+                    time.sleep(step)
                     mi_list = media_pool.ImportMedia(str(f))
-            if mi is None:
-                self.add2log('音声ファイルのインポートに失敗しました。(タイムアウト)')
+
+            if is_time_out:
+                self.add2log('タイムアウト:音声ファイルのインポートに失敗しました。')
                 media_pool.DeleteTimelines([tmp_timeline])
                 continue
+
             # 音声トラックの選択
             if audio_index != 1:
                 send_hotkey(['ctrl', 'alt', str(audio_index)])
+
             # 音声クリップの挿入
             clip = media_pool.AppendToTimeline([mi])[0]
-            for _ in range(times):
+            while True:
+                if time.time() - start_time > data.time_out:
+                    is_time_out = True
+                    break
                 time.sleep(step)
                 if len(tmp_timeline.GetItemListInTrack('audio', audio_index)) == 0:
                     mi.ReplaceClip(str(f))
                     clip = media_pool.AppendToTimeline([mi])[0]
                 else:
                     break
-            if len(tmp_timeline.GetItemListInTrack('audio', audio_index)) == 0:
-                self.add2log('音声クリップの挿入に失敗しました。(タイムアウト)')
+
+            if is_time_out:
+                self.add2log('タイムアウト:音声クリップの挿入に失敗しました。')
                 media_pool.DeleteTimelines([tmp_timeline])
                 continue
             duration = clip.GetDuration()
+
             # text+クリップの仮挿入
             media_pool.AppendToTimeline([text_template])
             send_hotkey(['ctrl', 'z'])
