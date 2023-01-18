@@ -1,4 +1,3 @@
-import os.path
 from functools import partial
 
 import dataclasses
@@ -82,7 +81,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(250, 250)
+        self.resize(450, 250)
 
         self.fusion = fusion
         # button group
@@ -94,6 +93,9 @@ class MainWindow(QMainWindow):
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
+
+        # tab
+        self.ui.tabWidget.setCurrentIndex(0)
 
         # button
         self.ui.openDirButton.setStyleSheet(appearance.other_stylesheet)
@@ -123,18 +125,25 @@ class MainWindow(QMainWindow):
         ))
         self.ui.loaderButton.clicked.connect(self.make_loader)
         self.ui.margeButton.clicked.connect(self.marge)
+        self.ui.dissolveButton.clicked.connect(self.dissolve)
         self.ui.switchButton.clicked.connect(self.switch_fuse)
         self.ui.addButtonButton.clicked.connect(self.add_button)
         self.ui.closeButton.clicked.connect(self.close)
 
-    def make_loader(self):
+    def get_comp(self):
         resolve = self.fusion.GetResolve()
         if resolve is not None and resolve.GetCurrentPage() != 'fusion':
             QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
-            return
+            return None
         comp = self.fusion.CurrentComp
         if comp is None:
             QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
+            return None
+        return comp
+
+    def make_loader(self):
+        comp = self.get_comp()
+        if comp is None:
             return
 
         # data
@@ -181,20 +190,21 @@ class MainWindow(QMainWindow):
         comp.Unlock()
         print('Done!')
 
-    def switch_fuse(self):
-        resolve = self.fusion.GetResolve()
-        if resolve is not None and resolve.GetCurrentPage() != 'fusion':
-            QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
-            return
-        comp = self.fusion.CurrentComp
-        if comp is None:
-            QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
-            return
-
-        # tools
+    def get_tools(self, comp):
         tools = list(comp.GetToolList(True).values())
         if len(tools) == 0:
             QMessageBox.warning(self, 'Warning', 'ノードを選択してください。')
+            return None
+        return tools
+
+    def switch_fuse(self):
+        comp = self.get_comp()
+        if comp is None:
+            return
+
+        # tools
+        tools = self.get_tools(comp)
+        if tools is None:
             return
         if len(tools) > 64:
             QMessageBox.warning(self, 'Warning', '選択数を64個以下にしてください。')
@@ -222,7 +232,7 @@ class MainWindow(QMainWindow):
             'LINKS_Name': data.ctrl_name,
             'INP_Integer': True,
             'INP_Default': 0,
-            'ICS_ControlPage': 'User',
+            'ICS_ControlPage': data.page_name,
         }
         for i, layer in enumerate(tools):
             layer_name: str = layer.Name
@@ -245,20 +255,15 @@ class MainWindow(QMainWindow):
         print('Done!')
 
     def marge(self):
-        resolve = self.fusion.GetResolve()
-        if resolve is not None and resolve.GetCurrentPage() != 'fusion':
-            QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
-            return
-        comp = self.fusion.CurrentComp
+        comp = self.get_comp()
         if comp is None:
-            QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
             return
 
         # tools
-        tools = list(comp.GetToolList(True).values())
-        if len(tools) == 0:
-            QMessageBox.warning(self, 'Warning', 'ノードを選択してください。')
+        tools = self.get_tools(comp)
+        if tools is None:
             return
+
         flow = comp.CurrentFrame.FlowView
         tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
 
@@ -294,7 +299,7 @@ class MainWindow(QMainWindow):
                 'LINKS_Name': data.ctrl_name,
                 'INP_Integer': True,
                 'INP_Default': 0,
-                'ICS_ControlPage': 'User',
+                'ICS_ControlPage': data.page_name,
             }
         elif data.ctrl_type == CtrlID.SLIDER:
             ctrl_name = 'RS_Slider'
@@ -306,7 +311,7 @@ class MainWindow(QMainWindow):
                 'INP_Default': 0,
                 'INP_MinScale': 0,
                 'INP_MaxScale': len(tools) - 1,
-                'ICS_ControlPage': 'User',
+                'ICS_ControlPage': data.page_name,
             }
 
         for i, layer in enumerate(tools):
@@ -332,7 +337,7 @@ class MainWindow(QMainWindow):
                     'INP_Integer': True,
                     'CBC_TriState': False,
                     'INP_Default': 1,
-                    'ICS_ControlPage': 'User',
+                    'ICS_ControlPage': data.page_name,
                     # 'ICS_ControlPage': 'Controls',
                 }
                 mg.Blend.SetExpression('%s.%s' % (xf.Name, uc_name))
@@ -350,21 +355,93 @@ class MainWindow(QMainWindow):
         comp.Unlock()
         print('Done!')
 
-    def add_button(self):
-        resolve = self.fusion.GetResolve()
-        if resolve is not None and resolve.GetCurrentPage() != 'fusion':
-            QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
-            return
-        comp = self.fusion.CurrentComp
+    def dissolve(self):
+        comp = self.get_comp()
         if comp is None:
-            QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
             return
 
         # tools
-        tools = list(comp.GetToolList(True).values())
-        if len(tools) == 0:
-            QMessageBox.warning(self, 'Warning', 'ノードを選択してください。')
+        tools = self.get_tools(comp)
+        if tools is None:
             return
+
+        flow = comp.CurrentFrame.FlowView
+        tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+
+        # data
+        data = self.get_data()
+
+        # undo
+        comp.Lock()
+        comp.StartUndo('RS Dissolve')
+
+        # XF
+        _x, _y = flow.GetPosTable(tools[len(tools) - 1]).values()
+        xf = comp.AddTool('Transform', _x + 1, _y + 4)
+
+        pre_node = None
+
+        # user_controls
+        user_controls = {data.ctrl_name: {
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'SliderControl',
+            'LINKS_Name': data.ctrl_name,
+            'INP_Integer': False,
+            'INP_Default': 0,
+            'ICS_ControlPage': data.page_name,
+        }}
+
+        for i, layer in enumerate(tools):
+            if pre_node is None:
+                pre_node = layer
+                continue
+            num = len(tools) - i
+
+            _x, _y = flow.GetPosTable(layer).values()
+            dx = comp.AddTool('Dissolve', _x, _y + 4)
+            dx.ConnectInput('Foreground', pre_node)
+            dx.ConnectInput('Background', layer)
+
+            uc_name = 'Threshold_' + str(num).zfill(3)
+            user_controls[uc_name] = {
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'SliderControl',
+                'LINKS_Name': uc_name,
+                'INP_Integer': False,
+                'INP_Default': (1 / len(tools)) * num,
+                'ICS_ControlPage': data.page_name,
+            }
+            dx.Mix.SetExpression('iif(%s.%s >= %s.%s, 1, 0)' % (
+                xf.Name,
+                data.ctrl_name,
+                xf.Name,
+                uc_name,
+            ))
+            pre_node = dx
+
+        # xf
+        xf.ConnectInput('Input', pre_node)
+        uc = {'__flags': 2097152}  # 順番を保持するフラグ
+        for k, v in list(user_controls.items()):
+            uc[k] = v
+        xf.UserControls = uc
+        xf.Refresh()
+
+        # end
+        comp.EndUndo(True)
+        comp.Unlock()
+        print('Done!')
+
+    def add_button(self):
+        comp = self.get_comp()
+        if comp is None:
+            return
+
+        # tools
+        tools = self.get_tools(comp)
+        if tools is None:
+            return
+
         flow = comp.CurrentFrame.FlowView
         tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
 
@@ -402,9 +479,6 @@ class MainWindow(QMainWindow):
         comp.Unlock()
         print('Done!')
 
-    def new_config(self):
-        return ConfigData()
-
     def set_data(self, c: ConfigData):
         self.ui.multiplyCheckBox.setChecked(c.post_multiply)
         self.button_group.button(c.ctrl_type).setChecked(True)
@@ -414,7 +488,7 @@ class MainWindow(QMainWindow):
         self.ui.heightSpinBox.setValue(c.height)
 
     def get_data(self) -> ConfigData:
-        c = self.new_config()
+        c = ConfigData()
         c.post_multiply = self.ui.multiplyCheckBox.isChecked()
         c.ctrl_type = self.button_group.checkedId()
         c.ctrl_name = self.ui.ctrlNameLineEdit.text().strip()
@@ -428,7 +502,7 @@ class MainWindow(QMainWindow):
         return c
 
     def load_config(self) -> None:
-        c = self.new_config()
+        c = ConfigData()
         if self.config_file.is_file():
             c.load(self.config_file)
         self.set_data(c)
