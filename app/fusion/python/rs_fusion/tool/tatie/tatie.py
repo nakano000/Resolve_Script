@@ -102,6 +102,7 @@ class MainWindow(QMainWindow):
         self.ui.openSampleButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.loaderButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.margeButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.dissolveButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.switchButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.addButtonButton.setStyleSheet(appearance.in_stylesheet)
 
