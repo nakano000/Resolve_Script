@@ -1,4 +1,6 @@
+import os
 import re
+import time
 from pathlib import Path
 
 import soundfile
@@ -32,8 +34,26 @@ def del_script(f: Path):
             f.unlink()
 
 
-def run(f: Path, fps):
+def run(f: Path, fps, time_out=10.0):
     r = False
+    # time out 設定
+    step = 0.2
+    start_time = time.time()
+    is_time_out = False
+
+    # ロック確認
+    while True:
+        if time.time() - start_time > time_out:
+            is_time_out = True
+            break
+        try:
+            os.rename(str(f), str(f))
+            break
+        except OSError:
+            time.sleep(step)
+
+    if is_time_out:
+        return r
     #
     d = f.parent
     txt_file = d.joinpath(f.stem + '.txt')
