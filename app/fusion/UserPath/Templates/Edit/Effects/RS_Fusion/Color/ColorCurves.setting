@@ -1,0 +1,79 @@
+{
+	Tools = ordered() {
+		Template = ColorCurves {
+			PickColor = true,
+			NameSet = true,
+			Inputs = {
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+				Red = Input {
+					SourceOp = "ColorCurves1Red",
+					Source = "Value",
+				},
+				Green = Input {
+					SourceOp = "ColorCurves1Green",
+					Source = "Value",
+				},
+				Blue = Input {
+					SourceOp = "ColorCurves1Blue",
+					Source = "Value",
+				},
+				Alpha = Input {
+					SourceOp = "ColorCurves1Alpha",
+					Source = "Value",
+				},
+				NumberOfSamplesOnMatchCurve = Input { Value = 64, },
+				IgnoreTransparent = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 550, 16.5 } },
+			Tools = {
+				ColorCurves1Red = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 255, Green = 52, Blue = 52 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				ColorCurves1Green = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 255, Blue = 0 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				ColorCurves1Blue = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 68, Green = 68, Blue = 255 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				ColorCurves1Alpha = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 204 },
+					CtrlWZoom = false,
+					NameSet = true,
+				}
+			},
+		}
+	}
+}

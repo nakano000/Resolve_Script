@@ -1,0 +1,14 @@
+{
+	Tools = ordered() {
+		Template = AutoGain {
+			NameSet = true,
+			Inputs = {
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, 16.5 } },
+		}
+	}
+}

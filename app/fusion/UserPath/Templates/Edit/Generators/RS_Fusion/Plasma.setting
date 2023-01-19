@@ -1,0 +1,15 @@
+{
+	Tools = ordered() {
+		Template = Plasma {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 660, 49.5 } },
+		}
+	}
+}

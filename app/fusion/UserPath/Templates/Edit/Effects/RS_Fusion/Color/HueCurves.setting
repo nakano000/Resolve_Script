@@ -1,0 +1,205 @@
+{
+	Tools = ordered() {
+		Template = HueCurves {
+			NameSet = true,
+			Inputs = {
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+				Hue = Input {
+					SourceOp = "HueCurves1Hue",
+					Source = "Value",
+				},
+				Sat = Input {
+					SourceOp = "HueCurves1Sat",
+					Source = "Value",
+				},
+				Lum = Input {
+					SourceOp = "HueCurves1Lum",
+					Source = "Value",
+				},
+				Red = Input {
+					SourceOp = "HueCurves1Red",
+					Source = "Value",
+				},
+				Green = Input {
+					SourceOp = "HueCurves1Green",
+					Source = "Value",
+				},
+				Blue = Input {
+					SourceOp = "HueCurves1Blue",
+					Source = "Value",
+				},
+				RedSuppress = Input {
+					SourceOp = "HueCurves1Red1",
+					Source = "Value",
+				},
+				GreenSuppress = Input {
+					SourceOp = "HueCurves1Green1",
+					Source = "Value",
+				},
+				BlueSuppress = Input {
+					SourceOp = "HueCurves1Blue1",
+					Source = "Value",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 770, 16.5 } },
+			Tools = {
+				HueCurves1Hue = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 0, Blue = 204 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				HueCurves1Sat = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 0 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				HueCurves1Lum = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 204 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				HueCurves1Red = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 42, Blue = 42 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				HueCurves1Green = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 204, Blue = 0 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				HueCurves1Blue = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 54, Green = 54, Blue = 204 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				HueCurves1Red1 = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 102, Blue = 102 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				HueCurves1Green1 = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 102, Green = 204, Blue = 102 },
+					CtrlWZoom = false,
+					NameSet = true,
+				},
+				HueCurves1Blue1 = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 134, Green = 134, Blue = 204 },
+					CtrlWZoom = false,
+					NameSet = true,
+				}
+			},
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	Tools = ordered() {
+		Template = BrightnessContrast {
+			NameSet = true,
+			Inputs = {
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, 16.5 } },
+		}
+	}
+}

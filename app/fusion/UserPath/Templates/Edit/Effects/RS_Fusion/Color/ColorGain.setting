@@ -1,0 +1,36 @@
+{
+	Tools = ordered() {
+		Template = ColorGain {
+			NameSet = true,
+			Inputs = {
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+				ColorRanges = Input {
+					Value = ColorCurves {
+						Curves = {
+							{
+								Points = {
+									{ 0, 1 },
+									{ 0.125, 0.75 },
+									{ 0.375, 0.25 },
+									{ 0.5, 0 }
+								}
+							},
+							{
+								Points = {
+									{ 0.5, 0 },
+									{ 0.625, 0.25 },
+									{ 0.875, 0.75 },
+									{ 1, 1 }
+								}
+							}
+						}
+					},
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 660, 16.5 } },
+		}
+	}
+}
