@@ -334,7 +334,7 @@ class MainWindow(QMainWindow):
             start_time = time.time()
             is_time_out = False
 
-            # ロック確認
+            # ロック確認 VOICEPEAK用に出力待ち
             while True:
                 if time.time() - start_time > data.time_out:
                     is_time_out = True
@@ -372,6 +372,7 @@ class MainWindow(QMainWindow):
             # 音声トラックの選択
             if audio_index != 1:
                 send_hotkey(['ctrl', 'alt', str(audio_index)])
+            time.sleep(data.wait_time)
 
             # 音声クリップの挿入
             clip = media_pool.AppendToTimeline([mi])[0]
