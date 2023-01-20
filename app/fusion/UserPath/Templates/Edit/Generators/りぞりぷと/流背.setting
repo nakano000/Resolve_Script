@@ -1,0 +1,357 @@
+{
+	Tools = ordered() {
+		Ryuhai = GroupOperator {
+			Inputs = ordered() {
+				Input2 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Speed",
+					Default = 7.5,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "FastNoise1_1",
+					Source = "Speed",
+					Default = 15,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "ApplyBlank1",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Glow1",
+					Source = "XGlowSize",
+					Default = 0,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "ApplyBlank2",
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "Center",
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "Size",
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "Angle",
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "FlipHoriz",
+					ControlGroup = 7,
+					Default = 0,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "FlipVert",
+					ControlGroup = 7,
+					Default = 0,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "WheelHue1",
+					ControlGroup = 10,
+					Page = "Color",
+				},
+				Input12 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "WheelSaturation1",
+					ControlGroup = 10,
+					Default = 1,
+					Page = "Color",
+				},
+				Input13 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "WheelTintAngle1",
+					ControlGroup = 10,
+					Page = "Color",
+				},
+				Input14 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "WheelTintLength1",
+					ControlGroup = 10,
+					Page = "Color",
+				},
+				Input15 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "WheelRangeDummy1",
+					ControlGroup = 10,
+					Default = 0,
+					Page = "Color",
+				},
+				Input16 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "Hue1",
+					Name = "Hue",
+					Page = "Color",
+				},
+				Input17 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "Saturation1",
+					Name = "Saturation",
+					Default = 1,
+					Page = "Color",
+				},
+				Input18 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "ResetAllColorChanges",
+					Page = "Color",
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Glow1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Glow1 = Glow {
+					Inputs = {
+						Blend = Input { Value = 0.2, },
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						Alpha = Input { Value = 0, },
+						XGlowSize = Input { Value = 0, },
+						Input = Input {
+							SourceOp = "ColorCorrector1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1265, 379.5 } },
+				},
+				FastNoise1 = FastNoise {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Center = Input {
+							Value = { -20.5, 0.5 },
+							Expression = "Point(-time*Speed/comp:GetPrefs().Comp.FrameFormat.Rate, 0.5)",
+						},
+						LockXY = Input { Value = 0, },
+						XScale = Input { Value = 0.7, },
+						YScale = Input { Value = 90, },
+						Type = Input { Value = 1, },
+						Gradient = Input {
+							Value = Gradient {
+								Colors = {
+									[0.562189054726368] = { 0, 0, 0, 0 },
+									[0.651741293532338] = { 1, 1, 1, 1 }
+								}
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, -16.5 } },
+					UserControls = ordered() {
+						Speed = {
+							LINKS_Name = "Speed",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ScrewControl",
+							INP_Default = 7.5,
+							INP_Integer = false,
+							INP_MinScale = 0,
+							INP_MaxScale = 10,
+							ICS_ControlPage = "Controls",
+						}
+					}
+				},
+				FastNoise1_1 = FastNoise {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Center = Input {
+							Value = { -41, 0.5 },
+							Expression = "Point(-time*Speed/comp:GetPrefs().Comp.FrameFormat.Rate, 0.5)",
+						},
+						LockXY = Input { Value = 0, },
+						XScale = Input { Value = 0.3, },
+						YScale = Input { Value = 25, },
+						Type = Input { Value = 1, },
+						Gradient = Input {
+							Value = Gradient {
+								Colors = {
+									[0.651741293532338] = { 0, 0, 0, 0 },
+									[0.756218905472637] = { 1, 1, 1, 1 }
+								}
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 770, -16.5 } },
+					UserControls = ordered() {
+						Speed = {
+							LINKS_Name = "Speed",
+							LINKID_DataType = "Number",
+							INPID_InputControl = "ScrewControl",
+							INP_Default = 15,
+							INP_Integer = false,
+							INP_MinScale = 0,
+							INP_MaxScale = 10,
+							ICS_ControlPage = "Controls",
+						}
+					}
+				},
+				Merge3 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Scale1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, 379.5 } },
+				},
+				ColorCorrector1 = ColorCorrector {
+					Inputs = {
+						ColorRanges = Input {
+							Value = ColorCurves {
+								Curves = {
+									{
+										Points = {
+											{ 0, 1 },
+											{ 0.4, 0.2 },
+											{ 0.6, 0 },
+											{ 1, 0 }
+										}
+									},
+									{
+										Points = {
+											{ 0, 0 },
+											{ 0.4, 0 },
+											{ 0.6, 0.2 },
+											{ 1, 1 }
+										}
+									}
+								}
+							},
+						},
+						HistogramIgnoreTransparent = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "Merge3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1100, 379.5 } },
+				},
+				Scale1 = Scale {
+					CtrlWZoom = false,
+					Inputs = {
+						XSize = Input { Value = 1.2, },
+						HiQOnly = Input { Value = 0, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						Input = Input {
+							SourceOp = "Merge2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, 247.5 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Background2_1",
+							Source = "Output",
+						},
+						ApplyMode = Input { Value = FuID { "LinearLight" }, },
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 770, 247.5 } },
+				},
+				Background2_1 = Background {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "FastNoise1_1",
+							Source = "Output",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 0.8117647058824, },
+						TopLeftGreen = Input { Value = 0.8117647058824, },
+						TopLeftBlue = Input { Value = 0.8117647058824, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 770, 82.5 } },
+				},
+				Background2 = Background {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "FastNoise1",
+							Source = "Output",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 0.8117647058824, },
+						TopLeftGreen = Input { Value = 0.8117647058824, },
+						TopLeftBlue = Input { Value = 0.8117647058824, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, 82.5 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Background2",
+							Source = "Output",
+						},
+						ApplyMode = Input { Value = FuID { "VividLight" }, },
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 605, 247.5 } },
+				},
+				Background3 = Background {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftGreen = Input { Value = 0.176470592618, },
+						TopLeftBlue = Input { Value = 0.3333333432674, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 770, 379.5 } },
+				},
+				Background1 = Background {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Type = Input { Value = FuID { "Gradient" }, },
+						Start = Input { Value = { 0.5, 1 }, },
+						End = Input { Value = { 0.5, 0 }, },
+						Gradient = Input {
+							Value = Gradient {
+								Colors = {
+									[0.12] = { 0, 0.176470592617989, 0.333333343267441, 1 },
+									[0.5] = { 0.545098066329956, 0.901960790157318, 0.776470601558685, 1 },
+									[0.88] = { 0, 0.176470592617989, 0.333333343267441, 1 }
+								}
+							},
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 440, 247.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "Ryuhai"
+}
