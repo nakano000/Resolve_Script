@@ -111,14 +111,18 @@ class MainWindow(QMainWindow):
             util.open_url,
             'https://www.steakunderwater.com/VFXPedia/96.0.243.189/indexae7c.html',
         ))
-        self.ui.openDirButton.clicked.connect(self.open_install_dir)
+        self.ui.openDirButton.clicked.connect(partial(
+            self.open_dir,
+            config.RESOLVE_USER_PATH.joinpath('Templates', 'Edit', 'Generators'),
+        ))  # FusionでもResolveへ入れる。
+
         self.ui.openSampleButton.clicked.connect(partial(
-            util.open_directory,
+            self.open_dir,
             config.ROOT_PATH.joinpath('Templates', 'Edit', 'Generators'),
         ))
         user_path = config.get_user_path(self.fusion.GetResolve() is not None)
         self.ui.openFuseDirButton.clicked.connect(partial(
-            util.open_directory,
+            self.open_dir,
             user_path.joinpath('Fuses'),
         ))
         self.ui.loaderButton.clicked.connect(self.make_loader)
@@ -128,8 +132,7 @@ class MainWindow(QMainWindow):
         self.ui.addButtonButton.clicked.connect(self.add_button)
         self.ui.closeButton.clicked.connect(self.close)
 
-    def open_install_dir(self):
-        d = config.RESOLVE_USER_PATH.joinpath('Templates', 'Edit', 'Generators')
+    def open_dir(self, d):
         if d.is_dir():
             util.open_directory(d)
         else:
