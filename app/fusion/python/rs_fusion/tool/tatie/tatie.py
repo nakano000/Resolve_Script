@@ -111,10 +111,7 @@ class MainWindow(QMainWindow):
             util.open_url,
             'https://www.steakunderwater.com/VFXPedia/96.0.243.189/indexae7c.html',
         ))
-        self.ui.openDirButton.clicked.connect(partial(
-            util.open_directory,
-            config.RESOLVE_USER_PATH.joinpath('Templates', 'Edit', 'Generators'),
-        ))
+        self.ui.openDirButton.clicked.connect(self.open_install_dir)
         self.ui.openSampleButton.clicked.connect(partial(
             util.open_directory,
             config.ROOT_PATH.joinpath('Templates', 'Edit', 'Generators'),
@@ -130,6 +127,13 @@ class MainWindow(QMainWindow):
         self.ui.switchButton.clicked.connect(self.switch_fuse)
         self.ui.addButtonButton.clicked.connect(self.add_button)
         self.ui.closeButton.clicked.connect(self.close)
+
+    def open_install_dir(self):
+        d = config.RESOLVE_USER_PATH.joinpath('Templates', 'Edit', 'Generators')
+        if d.is_dir():
+            util.open_directory(d)
+        else:
+            QMessageBox.warning(self, f'Warning:  {str(d)}', f'ディレクトリが見つかりません。\n{str(d)}')
 
     def get_comp(self):
         resolve = self.fusion.GetResolve()
