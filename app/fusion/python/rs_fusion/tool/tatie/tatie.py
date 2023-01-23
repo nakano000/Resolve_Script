@@ -105,6 +105,7 @@ class MainWindow(QMainWindow):
         self.ui.dissolveButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.switchButton.setStyleSheet(appearance.in_stylesheet)
         self.ui.addButtonButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.addPoseToolsButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
         self.ui.openSiteButton.clicked.connect(partial(
