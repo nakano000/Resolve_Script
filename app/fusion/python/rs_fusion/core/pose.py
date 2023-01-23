@@ -57,13 +57,12 @@ def comment2json(comp):
         p.filter(lambda x: x.ID == 'Merge'),
         list,
     )
-    text = p.pipe(
+    data = p.pipe(
         tools,
         p.map(get_pair),
         list,
-        json.dumps,
     )
-    return text
+    return json.dumps(data, indent=4, ensure_ascii=False)
 
 
 def copy(comp):
