@@ -37,6 +37,7 @@ pyautogui
 pycparser
 pykakasi
 pyparsing
+pyperclip
 python-dateutil
 requests
 resampy

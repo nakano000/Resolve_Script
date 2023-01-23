@@ -126,6 +126,7 @@ class MainWindow(QMainWindow):
             user_path.joinpath('Fuses'),
         ))
         self.ui.loaderButton.clicked.connect(self.make_loader)
+        self.ui.addPoseToolsButton.clicked.connect(self.add_pose_tools)
         self.ui.margeButton.clicked.connect(self.marge)
         self.ui.dissolveButton.clicked.connect(self.dissolve)
         self.ui.switchButton.clicked.connect(self.switch_fuse)
@@ -138,10 +139,15 @@ class MainWindow(QMainWindow):
         else:
             QMessageBox.warning(self, f'Warning:  {str(d)}', f'ディレクトリが見つかりません。\n{str(d)}')
 
-    def get_comp(self):
+    def check_page(self):
         resolve = self.fusion.GetResolve()
         if resolve is not None and resolve.GetCurrentPage() != 'fusion':
             QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
+            return False
+        return True
+
+    def get_comp(self):
+        if not self.check_page():
             return None
         comp = self.fusion.CurrentComp
         if comp is None:
@@ -485,6 +491,79 @@ class MainWindow(QMainWindow):
         # end
         comp.EndUndo(True)
         comp.Unlock()
+        print('Done!')
+
+    def add_pose_tools(self):
+        comp = self.get_comp()
+        if comp is None:
+            return
+
+        # tool
+        tools = self.get_tools(comp)
+        if tools is None:
+            return
+        tool = tools[0]
+
+        # user_controls
+        page = 'Controls'
+        width = 0.5
+        user_controls = {
+            '__flags': 2097152,
+            'CopyPose': {
+                'LINKS_Name': 'Copy Pose',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'ButtonControl',
+                'INP_Integer': False,
+                'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.copy(comp)]])',
+                'INP_External': False,
+                'ICS_ControlPage': page,
+                'ICD_Width': width,
+            },
+            'PastePose': {
+                'LINKS_Name': 'Paste Pose',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'ButtonControl',
+                'INP_Integer': False,
+                'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.paste(comp)]])',
+                'INP_External': False,
+                'ICS_ControlPage': page,
+                'ICD_Width': width,
+            },
+            'SavePose': {
+                'LINKS_Name': 'Save Pose',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'ButtonControl',
+                'INP_Integer': False,
+                'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.save(comp, fu)]])',
+                'INP_External': False,
+                'ICS_ControlPage': page,
+                'ICD_Width': width,
+            },
+            'LoadPose': {
+                'LINKS_Name': 'Load Pose',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'ButtonControl',
+                'INP_Integer': False,
+                'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.load(comp, fu)]])',
+                'INP_External': False,
+                'ICS_ControlPage': page,
+                'ICD_Width': width,
+            },
+        }
+        # undo
+        comp.Lock()
+        comp.StartUndo('RS Button')
+
+        # set user_controls
+        tool.UserControls = user_controls
+        comp.Copy(tool)
+        tool.Delete()
+        comp.Paste()
+
+        # end
+        comp.EndUndo(True)
+        comp.Unlock()
+        QMessageBox.information(self, "Info", 'Done!')
         print('Done!')
 
     def set_data(self, c: ConfigData):

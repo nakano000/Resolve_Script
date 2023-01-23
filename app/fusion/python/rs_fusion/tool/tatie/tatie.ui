@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>405</width>
-    <height>506</height>
+    <width>422</width>
+    <height>584</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -74,6 +74,28 @@
          </property>
          <property name="text">
           <string>読み込み</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="title">
+       <string>立ち絵マクロ用</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <item>
+        <widget class="QPushButton" name="addPoseToolsButton">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>ポーズ関連ツール追加</string>
          </property>
         </widget>
        </item>
