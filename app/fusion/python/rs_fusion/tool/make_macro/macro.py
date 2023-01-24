@@ -20,8 +20,12 @@ def get_input(m_lst, lst) -> str:
         lines.append('				Input%d = InstanceInput {' % cnt)
         lines.append('					Source = "%s",' % d['id'])
         lines.append('					SourceOp = "%s",' % d['node'])
+        if d['name'] is not None:
+            lines.append('					Name = "%s",' % d['name'])
         if d['value'] is not None:
             lines.append('					Default = %s,' % d['value'])
+        if d['control_group'] is not None:
+            lines.append('					ControlGroup = %s,' % d['control_group'])
         lines.append('				},')
         cnt += 1
     lines.append('			},')

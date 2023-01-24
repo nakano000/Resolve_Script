@@ -1,4 +1,5 @@
 import sys
+from functools import partial
 from pathlib import Path
 from typing import List, Any
 
@@ -12,6 +13,7 @@ from PySide2.QtWidgets import (
     QApplication,
     QFileDialog,
     QMainWindow,
+    QHeaderView,
 )
 
 from rs.core import (
@@ -35,10 +37,11 @@ class InputData(basic_table.RowData):
     page: str = ''
     id: str = ''
     name: str = ''
+    control_group: int = 0
 
     @classmethod
     def toHeaderList(cls) -> List[str]:
-        return ['Node', 'Page', 'ID', 'Name']
+        return ['Node', 'Page', 'ID', 'Name', 'ControlGroup']
 
 
 @dataclasses.dataclass
@@ -72,7 +75,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(1100, 800)
+        self.resize(900, 600)
 
         self.fusion = fusion
 
@@ -83,6 +86,10 @@ class MainWindow(QMainWindow):
             self.ui.mainOutputTableView,
         ]:
             table_v.setModel(Model(InputData))
+            table_v.hideColumn(4)
+            h = table_v.horizontalHeader()
+            # h.setSectionResizeMode(0, QHeaderView.ResizeToContents)
+            h.setSectionResizeMode(1, QHeaderView.ResizeToContents)
 
         # config
         self.set_data(ConfigData())
@@ -103,6 +110,7 @@ class MainWindow(QMainWindow):
 
         self.ui.readButton.clicked.connect(self.read_node)
 
+        self.ui.minimizeButton.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.saveMacroButton.clicked.connect(self.save_macro, Qt.QueuedConnection)
 
@@ -127,7 +135,7 @@ class MainWindow(QMainWindow):
         v.setModel(m)
         tools: dict = comp.GetToolList(True)
 
-        def make_row(_node, _page, _id, _name, _type):
+        def make_row(_node, _page, _id, _name, _type, _control_group=0):
             size = 20 + len(_name) - util.get_str_width(_name)
             display = '%s <%s> %s' % (_name.ljust(size), _type, _id)
             return [
@@ -136,6 +144,7 @@ class MainWindow(QMainWindow):
                 QStandardItem(_page),
                 QStandardItem(_id),
                 QStandardItem(_name),
+                QStandardItem(str(_control_group)),
             ]
 
         # main
@@ -165,12 +174,16 @@ class MainWindow(QMainWindow):
                 if inp is None:
                     break
                 inp_id_list.append(inp.ID)
+                attrs = inp.GetAttrs()
+                name = inp.Name
+                if 'INPS_IC_Name' in attrs:
+                    name = attrs['INPS_IC_Name']
                 node.appendRow(make_row(
                     tool.Name,
                     '<Input>',
                     inp.ID,
-                    inp.Name,
-                    inp.GetAttrs()['INPS_DataType'],
+                    name,
+                    attrs['INPS_DataType'],
                 ))
                 i += 1
             # page
@@ -181,9 +194,16 @@ class MainWindow(QMainWindow):
                 page.setSelectable(False)
                 node.appendRow(page)
                 for inp in inp_dict.values():
-                    if inp.GetAttrs()['INPI_IC_ControlPage'] not in page_names.keys():
+                    attrs = inp.GetAttrs()
+                    name = inp.Name
+                    if 'INPS_IC_Name' in attrs:
+                        name = attrs['INPS_IC_Name']
+                    control_group = 0
+                    if 'INPI_IC_ControlGroup' in attrs:
+                        control_group = int(attrs['INPI_IC_ControlGroup'])
+                    if attrs['INPI_IC_ControlPage'] not in page_names.keys():
                         continue
-                    if page_name != page_names[inp.GetAttrs()['INPI_IC_ControlPage']]:
+                    if page_name != page_names[attrs['INPI_IC_ControlPage']]:
                         continue
                     if inp.ID in inp_id_list:  # Main Inputは追加しない
                         continue
@@ -191,8 +211,9 @@ class MainWindow(QMainWindow):
                         tool.Name,
                         page_name,
                         inp.ID,
-                        inp.Name,
-                        inp.GetAttrs()['INPS_DataType'],
+                        name,
+                        attrs['INPS_DataType'],
+                        control_group,
                     ))
         #
         v.expandAll()
@@ -216,14 +237,20 @@ class MainWindow(QMainWindow):
             r.page = src_m.data(i.siblingAtColumn(2))
             r.id = src_m.data(i.siblingAtColumn(3))
             r.name = src_m.data(i.siblingAtColumn(4))
+            r.control_group = int(src_m.data(i.siblingAtColumn(5)))
+            if r.control_group is None:
+                r.control_group = 0
             if r.node is None or r.id is None:
                 continue
             if r.page == '<Output>':
                 out_m.add_row_data(r)
+                out_v.scrollToBottom()
             elif r.page == '<Input>':
                 in_m.add_row_data(r)
+                in_v.scrollToBottom()
             else:
                 m.add_row_data(r)
+                v.scrollToBottom()
 
     def save_macro(self) -> None:
         resolve = self.fusion.GetResolve()
@@ -258,19 +285,43 @@ class MainWindow(QMainWindow):
                 'id': row.id,
                 'node': row.node,
             })
+
+        # control groupの最初の番号を取得
+        cg_offset_dict = {}
+        for row in m.to_list():
+            if row.node in cg_offset_dict:
+                if cg_offset_dict[row.node] >= row.control_group:
+                    continue
+            cg_offset_dict[row.node] = row.control_group
+        _pre_max = 0
+        for key in cg_offset_dict.keys():
+            _tmp = cg_offset_dict[key]
+            cg_offset_dict[key] = _pre_max
+            _pre_max += _tmp
+
+        # get input
         in_list = []
         for row in m.to_list():
             row: InputData
+            name = None
             value = None
+            control_group = None
+
             tool = comp.FindTool(row.node)
             if tool is not None:
                 _v = tool.GetInput(row.id)
                 if type(_v) == float:
                     value = _v
+            if row.id != row.name:
+                name = row.name
+            if row.control_group != 0:
+                control_group = row.control_group + cg_offset_dict[row.node]
             in_list.append({
                 'id': row.id,
                 'node': row.node,
+                'name': name,
                 'value': value,
+                'control_group': control_group
             })
 
         # save macro

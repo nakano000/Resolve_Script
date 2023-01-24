@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui' applies.
 #
-# Created: Sun Nov 20 20:30:08 2022
+# Created: Wed Jan 25 07:31:23 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
         self.treeView.setObjectName("treeView")
         self.horizontalLayout_5.addWidget(self.treeView)
         self.addNodeToolButton = QtWidgets.QToolButton(self.centralwidget)
-        self.addNodeToolButton.setMinimumSize(QtCore.QSize(40, 40))
+        self.addNodeToolButton.setMinimumSize(QtCore.QSize(30, 100))
         self.addNodeToolButton.setArrowType(QtCore.Qt.RightArrow)
         self.addNodeToolButton.setObjectName("addNodeToolButton")
         self.horizontalLayout_5.addWidget(self.addNodeToolButton)
@@ -79,17 +79,22 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.readButton = QtWidgets.QPushButton(self.centralwidget)
-        self.readButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.readButton.setMinimumSize(QtCore.QSize(80, 30))
         self.readButton.setObjectName("readButton")
         self.horizontalLayout_4.addWidget(self.readButton)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
         self.saveMacroButton = QtWidgets.QPushButton(self.centralwidget)
-        self.saveMacroButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.saveMacroButton.setMinimumSize(QtCore.QSize(80, 30))
         self.saveMacroButton.setObjectName("saveMacroButton")
         self.horizontalLayout_4.addWidget(self.saveMacroButton)
+        self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
+        self.minimizeButton.setMinimumSize(QtCore.QSize(30, 30))
+        self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)
+        self.minimizeButton.setObjectName("minimizeButton")
+        self.horizontalLayout_4.addWidget(self.minimizeButton)
         self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
         self.closeButton.setObjectName("closeButton")
         self.horizontalLayout_4.addWidget(self.closeButton)
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
@@ -121,6 +126,8 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Inputs", None, -1))
         self.readButton.setText(QtWidgets.QApplication.translate("MainWindow", "読み込み", None, -1))
         self.saveMacroButton.setText(QtWidgets.QApplication.translate("MainWindow", "save macro", None, -1))
+        self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
+        self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
         self.actionOpen.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
