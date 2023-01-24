@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui' applies.
 #
-# Created: Wed Jan 25 07:31:23 2023
+# Created: Wed Jan 25 08:27:15 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -88,6 +88,8 @@ class Ui_MainWindow(object):
         self.saveMacroButton.setMinimumSize(QtCore.QSize(80, 30))
         self.saveMacroButton.setObjectName("saveMacroButton")
         self.horizontalLayout_4.addWidget(self.saveMacroButton)
+        spacerItem1 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem1)
         self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
         self.minimizeButton.setMinimumSize(QtCore.QSize(30, 30))
         self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)

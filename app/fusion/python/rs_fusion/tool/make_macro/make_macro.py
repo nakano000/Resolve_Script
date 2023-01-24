@@ -237,9 +237,8 @@ class MainWindow(QMainWindow):
             r.page = src_m.data(i.siblingAtColumn(2))
             r.id = src_m.data(i.siblingAtColumn(3))
             r.name = src_m.data(i.siblingAtColumn(4))
-            r.control_group = int(src_m.data(i.siblingAtColumn(5)))
-            if r.control_group is None:
-                r.control_group = 0
+            if src_m.data(i.siblingAtColumn(5)) is not None:
+                r.control_group = int(src_m.data(i.siblingAtColumn(5)))
             if r.node is None or r.id is None:
                 continue
             if r.page == '<Output>':
