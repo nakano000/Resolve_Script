@@ -363,10 +363,11 @@ class MainWindow(QMainWindow):
                 self.set_data(a)
 
     def save_as_doc(self):
+        data = self.get_data()
         path, _ = QFileDialog.getSaveFileName(
             self,
             'Save File',
-            None,
+            data.macro_name + '.json',
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
