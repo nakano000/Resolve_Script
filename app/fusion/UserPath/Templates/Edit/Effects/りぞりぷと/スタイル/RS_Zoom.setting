@@ -1,0 +1,359 @@
+{
+	Tools = ordered() {
+		Zoom = GroupOperator {
+			CtrlWZoom = false,
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter1",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Scale1",
+					Source = "XSize",
+					Name = "Zoom",
+					Default = 1.5,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "ShapeSeparator",
+					Default = 0,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Center",
+				},
+				Input4 = InstanceInput {
+					SourceOp = "CalculationWidth",
+					Source = "FirstOperand",
+					Name = "Width",
+					Default = 0.25,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "CalculationHeight",
+					Source = "FirstOperand",
+					Name = "Height",
+					Default = 0.25,
+				},
+				Input00 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Angle",
+				},
+				Input6 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "CornerRadius",
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "sRectangle1",
+					Source = "Border",
+					Page = "Controls",
+					Default = 0,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "BorderWidth",
+					Default = 0.01,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Red",
+					Name = "Color",
+					ControlGroup = 3,
+					Default = 1,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Green",
+					ControlGroup = 3,
+					Default = 0.5,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Blue",
+					ControlGroup = 3,
+					Default = 0,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "Instance_sRectangle1",
+					Source = "Alpha",
+					ControlGroup = 3,
+					Default = 1,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "Merge2",
+					Source = "Blend",
+					Name = " Background",
+					Default = 1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 385, 16.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true
+				},
+				Size = { 674.008, 610.473, 283, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				sRectangle1 = sRectangle {
+					CtrlWShown = false,
+					Inputs = {
+						JoinStyle = Input { Value = 2, },
+						Width = Input {
+							SourceOp = "CalculationWidth",
+							Source = "Result",
+						},
+						Height = Input {
+							SourceOp = "CalculationHeight",
+							Source = "Result",
+						},
+						Border = Input { Value = 1, }
+					},
+					ViewInfo = OperatorInfo { Pos = { -220, 148.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+					UserControls = ordered() {
+						Border = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = true,
+							LBLC_DropDownButton = true,
+							INPID_InputControl = "LabelControl",
+							LBLC_NumInputs = 5,
+							INP_MaxScale = 1,
+							INP_Default = 0,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							INP_External = false,
+							INP_Passive = true,
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "Border"
+						}
+					}
+				},
+				sRender1 = sRender {
+					CtrlWShown = false,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Input = Input {
+							SourceOp = "sRectangle1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 148.5 } },
+				},
+				PipeRouter1 = PipeRouter {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "Crop1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = PipeRouterInfo { Pos = { -110, 379.5 } },
+				},
+				Instance_Transform1 = Transform {
+					CtrlWShown = false,
+					SourceOp = "Transform1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						TransformNest = Input { },
+						InvertTransform = Input { Value = 1, },
+						ReferenceSize = Input { },
+						Input = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 346.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Scale1 = Scale {
+					CtrlWShown = false,
+					Inputs = {
+						XSize = Input { Value = 1.5, },
+						HiQOnly = Input { Value = 0, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						Input = Input {
+							SourceOp = "Instance_Transform1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 247.5 } },
+				},
+				Merge1_1 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "sRender1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Scale1",
+							Source = "Output",
+						},
+						Operator = Input { Value = FuID { "In" }, },
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 148.5 } },
+				},
+				Instance_sRectangle1 = sRectangle {
+					CtrlWShown = false,
+					SourceOp = "sRectangle1",
+					Inputs = {
+						Solid = Input { Value = 0, },
+						BorderWidth = Input { Value = 0.01, },
+						CapStyle = Input { },
+						Red = Input { },
+						Green = Input { Value = 0.5, },
+						Blue = Input { Value = 0, },
+						Alpha = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -220, 49.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Instance_sRender1 = sRender {
+					CtrlWShown = false,
+					SourceOp = "sRender1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						Input = Input {
+							SourceOp = "Instance_sRectangle1",
+							Source = "Output",
+						},
+						["ShapeRasterizer.Nest"] = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 49.5 } },
+				},
+				Merge3 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge1_1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Instance_sRender1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 220, 148.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Transform1 = Transform {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "Merge3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 220, 346.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Merge1 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 220, 445.5 } },
+					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+				},
+				Background1 = Background {
+					CtrlWShown = false,
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -220, 445.5 } },
+				},
+				Merge2 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 445.5 } },
+				}
+			},
+		},
+		CalculationWidth = Calculation {
+			CtrlWZoom = false,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "C:\\work\\"
+					}
+				}
+			},
+			Inputs = {
+				FirstOperand = Input { Value = 0.25, },
+			},
+		},
+		CalculationHeight = Calculation {
+			CtrlWZoom = false,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "C:\\work\\"
+					}
+				}
+			},
+			Inputs = {
+				FirstOperand = Input { Value = 0.25, },
+			},
+		}
+	}
+}
