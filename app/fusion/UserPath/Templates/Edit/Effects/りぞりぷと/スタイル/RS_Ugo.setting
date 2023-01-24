@@ -1,0 +1,184 @@
+{
+	Tools = ordered() {
+		Ugo = GroupOperator {
+			CtrlWZoom = false,
+			Outputs = ordered() {
+				MainOutput1 = InstanceOutput {
+					Source = "Output",
+					SourceOp = "Displace1"
+				}
+			},
+			ViewInfo = GroupInfo {
+				Offset = { 0, 0 },
+				Scale = 1,
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					AutoSnap = true,
+					GridSnap = true
+				},
+				Direction = "Horizontal",
+				PipeStyle = "Direct"
+			},
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					Source = "Input",
+					SourceOp = "Displace1"
+				},
+				Input1 = InstanceInput {
+					Source = "XRefraction",
+					SourceOp = "Displace1",
+					Default = 0.01
+				},
+				Input2 = InstanceInput {
+					Source = "YRefraction",
+					SourceOp = "Displace1",
+					Default = 0.01
+				},
+				Input3 = InstanceInput {
+					Source = "LockXY",
+					SourceOp = "FastNoise1",
+					Default = 1
+				},
+				Input4 = InstanceInput {
+					Source = "XScale",
+					SourceOp = "FastNoise1",
+					Default = 3
+				},
+				Input5 = InstanceInput {
+					Source = "YScale",
+					SourceOp = "FastNoise1",
+					Default = 3
+				},
+				Input6 = InstanceInput {
+					Source = "SeetheRate",
+					SourceOp = "FastNoise1",
+					Default = 4
+				}
+			},
+			Tools = ordered() {
+				FastNoise1 = FastNoise {
+					CtrlWZoom = false,
+					ViewInfo = OperatorInfo { Pos = { 715, 49.5 } },
+					Inputs = {
+						XScale = Input { Value = 3 },
+						YScale = Input { Value = 3 },
+						GlobalOut = Input { Value = 149 },
+						Width = Input { Value = 1920 },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+						UseFrameFormatSettings = Input { Value = 1 },
+						Height = Input { Value = 1080 },
+						Contrast = Input { Value = 1.2 },
+						SeetheRate = Input { Value = 4 },
+						Color1Alpha = Input { Value = 1 }
+					}
+				},
+				CustomTool1 = Custom {
+					ViewInfo = OperatorInfo { Pos = { 880, 49.5 } },
+					Inputs = {
+						Image1 = Input {
+							Source = "Output",
+							SourceOp = "FastNoise1"
+						},
+						ProcessAlpha = Input { Value = 0 },
+						LUTIn1 = Input {
+							Source = "Value",
+							SourceOp = "CustomTool1LUTIn1"
+						},
+						LUTIn2 = Input {
+							Source = "Value",
+							SourceOp = "CustomTool1LUTIn2"
+						},
+						LUTIn3 = Input {
+							Source = "Value",
+							SourceOp = "CustomTool1LUTIn3"
+						},
+						LUTIn4 = Input {
+							Source = "Value",
+							SourceOp = "CustomTool1LUTIn4"
+						},
+						RedExpression = Input { Value = "r1 -0.5" },
+						GreenExpression = Input { Value = "g2 -0.5" },
+						Image2 = Input {
+							Source = "Output",
+							SourceOp = "Instance_FastNoise1"
+						},
+						BlueExpression = Input { Value = "b1 " },
+						ProcessBlue = Input { Value = 0 }
+					}
+				},
+				CustomTool1LUTIn1 = LUTBezier {
+					SplineColor = { Blue = 0, Green = 0, Red = 204 },
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, Flags = { Linear = true }, RH = { 0.333333333333333, 0.333333333333333 } },
+							{ 1, Flags = { Linear = true }, LH = { 0.666666666666667, 0.666666666666667 } }
+						}
+					}
+				},
+				CustomTool1LUTIn2 = LUTBezier {
+					SplineColor = { Blue = 0, Green = 204, Red = 0 },
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, Flags = { Linear = true }, RH = { 0.333333333333333, 0.333333333333333 } },
+							{ 1, Flags = { Linear = true }, LH = { 0.666666666666667, 0.666666666666667 } }
+						}
+					}
+				},
+				CustomTool1LUTIn3 = LUTBezier {
+					SplineColor = { Blue = 204, Green = 0, Red = 0 },
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, Flags = { Linear = true }, RH = { 0.333333333333333, 0.333333333333333 } },
+							{ 1, Flags = { Linear = true }, LH = { 0.666666666666667, 0.666666666666667 } }
+						}
+					}
+				},
+				CustomTool1LUTIn4 = LUTBezier {
+					CtrlWZoom = false,
+					SplineColor = { Blue = 204, Green = 204, Red = 204 },
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, Flags = { Linear = true }, RH = { 0.333333333333333, 0.333333333333333 } },
+							{ 1, Flags = { Linear = true }, LH = { 0.666666666666667, 0.666666666666667 } }
+						}
+					}
+				},
+				Displace1 = Displace {
+					ViewInfo = OperatorInfo { Pos = { 880, 148.5 } },
+					Inputs = {
+						YRefraction = Input { Value = 0.01 },
+						Foreground = Input {
+							Source = "Output",
+							SourceOp = "CustomTool1"
+						},
+						Type = Input { Value = 1 },
+						XRefraction = Input { Value = 0.01 }
+					}
+				},
+				Instance_FastNoise1 = FastNoise {
+					ViewInfo = OperatorInfo { Pos = { 715, -49.5 } },
+					SourceOp = "FastNoise1",
+					Inputs = {
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						NoiseNest = Input { },
+						Color1Nest = Input { },
+						Color2Nest = Input { },
+						GradientNest = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+						EffectMask = Input { },
+						NoiseBrightnessMap = Input { },
+						NoiseDetailMap = Input { },
+						Center = Input { Value = { 5, 5 } },
+						SettingsNest = Input { },
+						ImageNest = Input { }
+					}
+				}
+			}
+		}
+	}
+}
