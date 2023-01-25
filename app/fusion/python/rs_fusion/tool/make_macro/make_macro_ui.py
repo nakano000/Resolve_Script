@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui' applies.
 #
-# Created: Wed Jan 25 08:27:15 2023
+# Created: Wed Jan 25 09:09:57 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -111,6 +111,9 @@ class Ui_MainWindow(object):
         self.actionOpen.setObjectName("actionOpen")
         self.actionSave_As = QtWidgets.QAction(MainWindow)
         self.actionSave_As.setObjectName("actionSave_As")
+        self.actionNew = QtWidgets.QAction(MainWindow)
+        self.actionNew.setObjectName("actionNew")
+        self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave_As)
         self.menubar.addAction(self.menuFile.menuAction())
@@ -133,6 +136,10 @@ class Ui_MainWindow(object):
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
         self.actionOpen.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
+        self.actionOpen.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+O", None, -1))
         self.actionSave_As.setText(QtWidgets.QApplication.translate("MainWindow", "Save As", None, -1))
+        self.actionSave_As.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+S", None, -1))
+        self.actionNew.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
+        self.actionNew.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+N", None, -1))
 
 from rs_fusion.tool.make_macro.macro_table import View

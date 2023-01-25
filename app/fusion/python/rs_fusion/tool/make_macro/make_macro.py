@@ -114,6 +114,7 @@ class MainWindow(QMainWindow):
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.saveMacroButton.clicked.connect(self.save_macro, Qt.QueuedConnection)
 
+        self.ui.actionNew.triggered.connect(self.new_doc)
         self.ui.actionOpen.triggered.connect(self.open_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
 
@@ -346,6 +347,9 @@ class MainWindow(QMainWindow):
                     macro.get_footer(),
                 ]),
             ))
+
+    def new_doc(self):
+        self.set_data(ConfigData())
 
     def open_doc(self):
         path, _ = QFileDialog.getOpenFileName(
