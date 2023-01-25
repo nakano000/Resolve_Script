@@ -26,6 +26,12 @@ def get_input(m_lst, lst) -> str:
             lines.append('					Default = %s,' % d['value'])
         if d['control_group'] is not None:
             lines.append('					ControlGroup = %s,' % d['control_group'])
+        if d['option01'] != '':
+            lines.append('					%s,' % d['option01'])
+        if d['option02'] != '':
+            lines.append('					%s,' % d['option02'])
+        if d['option03'] != '':
+            lines.append('					%s,' % d['option03'])
         lines.append('				},')
         cnt += 1
     lines.append('			},')

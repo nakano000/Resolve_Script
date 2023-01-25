@@ -299,7 +299,8 @@ class View(QTableView):
             ss.append([''])
         if len(ss) == 1 and len(ss[0]) == 1:
             for i in sm.selectedIndexes():
-                m.setData(i, ss[0][0], Qt.EditRole)
+                if i.flags() & Qt.ItemIsEditable:
+                    m.setData(i, ss[0][0], Qt.EditRole)
             return
 
         c_row = self.currentIndex().row()
@@ -314,8 +315,10 @@ class View(QTableView):
                 if row > m.rowCount() - 1 or col > m.columnCount() - 1:
                     continue
                 index = m.index(row, col, QModelIndex())
-                m.setData(index, ss[src_row][src_col], Qt.EditRole)
+                if index.flags() & Qt.ItemIsEditable:
+                    m.setData(index, ss[src_row][src_col], Qt.EditRole)
                 sm.select(index, QItemSelectionModel.Select)
+
     def clear(self):
         m: Model = self.model()
         sm = self.selectionModel()

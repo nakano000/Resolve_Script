@@ -38,10 +38,13 @@ class InputData(basic_table.RowData):
     id: str = ''
     name: str = ''
     control_group: int = 0
+    option01: str = ''
+    option02: str = ''
+    option03: str = ''
 
     @classmethod
     def toHeaderList(cls) -> List[str]:
-        return ['Node', 'Page', 'ID', 'Name', 'ControlGroup']
+        return ['Node', 'Page', 'ID', 'Name', 'ControlGroup', 'Option01', 'Option02', 'Option03']
 
 
 @dataclasses.dataclass
@@ -63,6 +66,14 @@ class Model(basic_table.Model):
             if role == Qt.EditRole:
                 return dataclasses.astuple(self._data[index.row()])[index.column()]
 
+    def flags(self, index: QModelIndex) -> Qt.ItemFlags:
+        if index.isValid():
+            if index.column() not in [3, 5, 6, 7]:  # name,option以外は編集不可
+                return Qt.ItemIsEnabled | Qt.ItemIsSelectable
+            return Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable
+
+        return Qt.NoItemFlags
+
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None, fusion=None):
@@ -80,20 +91,31 @@ class MainWindow(QMainWindow):
         self.fusion = fusion
 
         # table
-        for table_v in [
+        for v in [
             self.ui.inputTableView,
             self.ui.mainInputTableView,
             self.ui.mainOutputTableView,
         ]:
-            table_v.setModel(Model(InputData))
-            table_v.hideColumn(4)
-            h = table_v.horizontalHeader()
+            v.setModel(Model(InputData))
+            v.hideColumn(4)
+            h = v.horizontalHeader()
             # h.setSectionResizeMode(0, QHeaderView.ResizeToContents)
             h.setSectionResizeMode(1, QHeaderView.ResizeToContents)
+        for v in [
+            self.ui.mainInputTableView,
+            self.ui.mainOutputTableView,
+        ]:
+            v.hideColumn(5)
+            v.hideColumn(6)
+            v.hideColumn(7)
 
         # config
         self.file = None
         self.new_doc()
+
+        # splitter
+        # self.ui.splitter.setStretchFactor(1, 1)
+        self.ui.splitter.setSizes([200, 300])
 
         # tree
         v = self.ui.treeView
@@ -330,7 +352,10 @@ class MainWindow(QMainWindow):
                 'node': row.node,
                 'name': name,
                 'value': value,
-                'control_group': control_group
+                'control_group': control_group,
+                'option01': row.option01.strip(),
+                'option02': row.option02.strip(),
+                'option03': row.option03.strip(),
             })
 
         # save macro
