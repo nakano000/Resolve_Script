@@ -57,8 +57,11 @@ def uc_button(node_a, node_b, page, layer_name, width, hide_list: list = []):
             'local _b = comp:FindTool("%s")' % node_b.Name,
             '_a:ConnectInput("%s", _b)' % inp.ID,
         ]
-        for x in hide_list:
-            lua.append('_a.%s:HideViewControls()' % x)
+        if len(hide_list) > 0:
+            lua.append('if _a.ParentTool then')
+            for x in hide_list:
+                lua.append('_a.%s:HideViewControls()' % x)
+            lua.append('end')
     return {
         'LINKS_Name': layer_name,
         'LINKID_DataType': 'Number',
