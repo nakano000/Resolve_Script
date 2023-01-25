@@ -44,7 +44,7 @@ class ConfigData(config.Data):
     height: int = 1080
 
 
-def uc_button(node_a, node_b, page, layer_name, width):
+def uc_button(node_a, node_b, page, layer_name, width, hide_list: list = []):
     inp = node_a.FindMainInput(1)
     if node_b is None:
         lua = [
@@ -57,6 +57,8 @@ def uc_button(node_a, node_b, page, layer_name, width):
             'local _b = comp:FindTool("%s")' % node_b.Name,
             '_a:ConnectInput("%s", _b)' % inp.ID,
         ]
+        for x in hide_list:
+            lua.append('_a.%s:HideViewControls()' % x)
     return {
         'LINKS_Name': layer_name,
         'LINKID_DataType': 'Number',
@@ -480,7 +482,15 @@ class MainWindow(QMainWindow):
             if layer.ID == 'Loader':
                 layer_name = Path(layer.Clip[1]).stem.strip()
             uc_name = 'N' + str(i).zfill(3) + '_' + layer.Name
-            user_controls[uc_name] = uc_button(xf, layer, data.page_name, layer_name, 1.0)
+            user_controls[uc_name] = uc_button(xf, layer, data.page_name, layer_name, 1.0, [
+                'Center',
+                'Pivot',
+                'Angle',
+                'Size',
+                'Aspect',
+                'XSize',
+                'YSize',
+            ])
 
         # xf
         uc = {'__flags': 2097152}  # 順番を保持するフラグ

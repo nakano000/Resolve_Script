@@ -2,7 +2,7 @@
 	Tools = ordered() {
 		["ぴょん"] = GroupOperator {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\" } }, },
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "Transform1",
@@ -34,7 +34,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 13750, 445.5 },
+				Pos = { -55, 313.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -64,7 +64,7 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", INPID_InputControl = "ScrewControl", INP_Default = 1, LINKS_Name = "speed", }, offset = { INP_Integer = true, INP_MinScale = 0, INPID_InputControl = "ScrewControl", LINKID_DataType = "Number", INP_Default = 0, INP_MaxScale = 500, LINKS_Name = "offset", } }
+					UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "speed", INPID_InputControl = "ScrewControl", INP_Default = 1, }, offset = { INP_Integer = true, LINKS_Name = "offset", INPID_InputControl = "ScrewControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 500, INP_Default = 0, } }
 				},
 				XYPath1 = XYPath {
 					ShowKeyPoints = false,
@@ -115,7 +115,7 @@
 		},
 		["ぽよ"] = GroupOperator {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\" } }, },
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "Transform",
@@ -146,7 +146,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 13585, 445.5 },
+				Pos = { -220, 313.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -178,7 +178,7 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { speed = { LINKID_DataType = "Number", INP_Integer = false, INP_MinAllowed = 0.00999999977648258, INPID_InputControl = "ScrewControl", ICS_ControlPage = "Controls", INP_Default = 1, INP_MinScale = 0.00999999977648258, LINKS_Name = "speed", } }
+					UserControls = ordered() { speed = { LINKS_Name = "speed", INP_Integer = false, INP_MinAllowed = 0.00999999977648258, LINKID_DataType = "Number", INP_MinScale = 0.00999999977648258, INPID_InputControl = "ScrewControl", ICS_ControlPage = "Controls", INP_Default = 1, } }
 				},
 				Calculation1 = Calculation {
 					CtrlWZoom = false,
@@ -218,14 +218,9 @@
 				}
 			},
 		},
-		["モーションなし"] = Transform {
-			CtrlWZoom = false,
-			NameSet = true,
-			ViewInfo = OperatorInfo { Pos = { 14135, 181.5 } },
-		},
 		["跳ねる"] = GroupOperator {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\" } }, },
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "Transform1_1",
@@ -250,7 +245,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 13915, 445.5 },
+				Pos = { 110, 313.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -291,13 +286,13 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Default = 0, LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "\nwidth", INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", LINKS_Name = "out", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Default = 0, INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "out", } }
 				}
 			},
 		},
 		["跳ねる_小"] = GroupOperator {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\" } }, },
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "Transform1_1_1",
@@ -322,7 +317,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 14080, 445.5 },
+				Pos = { 275, 313.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -363,13 +358,25 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Default = 0, LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_MinScale = 0, INP_Default = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_MinScale = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_Default = 0, INP_MaxScale = 1, LINKS_Name = "out", } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, } }
 				}
 			},
 		},
+		["モーションなし"] = Transform {
+			CtrlWZoom = false,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, -16.5 } },
+		},
 		["不安"] = GroupOperator {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\" } }, },
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "Transform1_2",
@@ -411,7 +418,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 14245, 445.5 },
+				Pos = { 440, 313.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -451,7 +458,7 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_MinScale = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", LINKS_Name = "x", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_MinScale = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", LINKS_Name = "y", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", LINKS_Name = "shake", }, in_out = { INP_MinScale = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", LINKS_Name = "in_out", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
+					UserControls = ordered() { x = { INP_MinScale = 0, INP_Default = 0.1, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_MinScale = 0, INP_Default = 0.1, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKS_Name = "shake", LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", }, in_out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "in_out", } }
 				},
 				KeyframeStretcher1 = KeyStretcherMod {
 					CtrlWZoom = false,
@@ -500,6 +507,98 @@
 				}
 			},
 		},
+		["モーションSelector"] = Transform {
+			Inputs = {
+				Input = Input {
+					SourceOp = "モーションなし",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, 544.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+			UserControls = ordered() {
+				["N000_モーションなし"] = {
+					LINKS_Name = "モーションなし",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"モーションなし\")\n_a:ConnectInput(\"Input\", _b)\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()",
+					INP_External = false,
+					ICS_ControlPage = "モーション",
+					ICD_Width = 1,
+				},
+				["N001_ぽよ"] = {
+					LINKS_Name = "ぽよ",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぽよ\")\n_a:ConnectInput(\"Input\", _b)\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()",
+					INP_External = false,
+					ICS_ControlPage = "モーション",
+					ICD_Width = 1,
+				},
+				["N002_ぴょん"] = {
+					LINKS_Name = "ぴょん",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぴょん\")\n_a:ConnectInput(\"Input\", _b)\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()",
+					INP_External = false,
+					ICS_ControlPage = "モーション",
+					ICD_Width = 1,
+				},
+				["N003_跳ねる"] = {
+					LINKS_Name = "跳ねる",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"跳ねる\")\n_a:ConnectInput(\"Input\", _b)\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()",
+					INP_External = false,
+					ICS_ControlPage = "モーション",
+					ICD_Width = 1,
+				},
+				["N004_跳ねる_小"] = {
+					LINKS_Name = "跳ねる_小",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"跳ねる_小\")\n_a:ConnectInput(\"Input\", _b)\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()",
+					INP_External = false,
+					ICS_ControlPage = "モーション",
+					ICD_Width = 1,
+				},
+				["N005_不安"] = {
+					LINKS_Name = "不安",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"不安\")\n_a:ConnectInput(\"Input\", _b)\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()",
+					INP_External = false,
+					ICS_ControlPage = "モーション",
+					ICD_Width = 1,
+				},
+				["N006_荒ぶる"] = {
+					LINKS_Name = "荒ぶる",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"荒ぶる\")\n_a:ConnectInput(\"Input\", _b)\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()",
+					INP_External = false,
+					ICS_ControlPage = "モーション",
+					ICD_Width = 1,
+				},
+				["N007_震え"] = {
+					LINKS_Name = "震え",
+					LINKID_DataType = "Number",
+					INPID_InputControl = "ButtonControl",
+					INP_Integer = false,
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"震え\")\n_a:ConnectInput(\"Input\", _b)\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()",
+					INP_External = false,
+					ICS_ControlPage = "モーション",
+					ICD_Width = 1,
+				}
+			}
+		},
 		ST_Text = TextPlus {
 			NameSet = true,
 			CustomData = {
@@ -531,104 +630,12 @@
 				Green2 = Input { Value = 0.3882352941176, },
 				Blue2 = Input { Value = 0.0549019607843, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 14355, 676.5 } },
+			ViewInfo = OperatorInfo { Pos = { 550, 544.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
-		},
-		["モーションSelector"] = Transform {
-			Inputs = {
-				Input = Input {
-					SourceOp = "モーションなし",
-					Source = "Output",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 14135, 676.5 } },
-			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-			UserControls = ordered() {
-				["N000_モーションなし"] = {
-					LINKS_Name = "モーションなし",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"モーションなし\")\n_a:ConnectInput(\"Input\", _b)",
-					INP_External = false,
-					ICS_ControlPage = "モーション",
-					ICD_Width = 1,
-				},
-				["N001_ぽよ"] = {
-					LINKS_Name = "ぽよ",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぽよ\")\n_a:ConnectInput(\"Input\", _b)",
-					INP_External = false,
-					ICS_ControlPage = "モーション",
-					ICD_Width = 1,
-				},
-				["N002_ぴょん"] = {
-					LINKS_Name = "ぴょん",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぴょん\")\n_a:ConnectInput(\"Input\", _b)",
-					INP_External = false,
-					ICS_ControlPage = "モーション",
-					ICD_Width = 1,
-				},
-				["N003_跳ねる"] = {
-					LINKS_Name = "跳ねる",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"跳ねる\")\n_a:ConnectInput(\"Input\", _b)",
-					INP_External = false,
-					ICS_ControlPage = "モーション",
-					ICD_Width = 1,
-				},
-				["N004_跳ねる_小"] = {
-					LINKS_Name = "跳ねる_小",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"跳ねる_小\")\n_a:ConnectInput(\"Input\", _b)",
-					INP_External = false,
-					ICS_ControlPage = "モーション",
-					ICD_Width = 1,
-				},
-				["N005_不安"] = {
-					LINKS_Name = "不安",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"不安\")\n_a:ConnectInput(\"Input\", _b)",
-					INP_External = false,
-					ICS_ControlPage = "モーション",
-					ICD_Width = 1,
-				},
-				["N006_荒ぶる"] = {
-					LINKS_Name = "荒ぶる",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"荒ぶる\")\n_a:ConnectInput(\"Input\", _b)",
-					INP_External = false,
-					ICS_ControlPage = "モーション",
-					ICD_Width = 1,
-				},
-				["N007_震え"] = {
-					LINKS_Name = "震え",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"震え\")\n_a:ConnectInput(\"Input\", _b)",
-					INP_External = false,
-					ICS_ControlPage = "モーション",
-					ICD_Width = 1,
-				}
-			}
 		},
 		["荒ぶる"] = GroupOperator {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\" } }, },
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "Transform1_2_1",
@@ -670,7 +677,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 14410, 445.5 },
+				Pos = { 605, 313.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -710,7 +717,7 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_Integer = false, INP_MinScale = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_Default = 0.1, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_Integer = false, INP_MinScale = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_Default = 0.1, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", LINKS_Name = "shake", }, in_out = { INP_Integer = false, INP_MinScale = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_Default = 0, INP_MaxScale = 1, LINKS_Name = "in_out", } }
+					UserControls = ordered() { x = { INP_Integer = false, LINKS_Name = "x", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_Integer = false, LINKS_Name = "y", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { LINKS_Name = "shake", INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", }, in_out = { INP_Integer = false, LINKS_Name = "in_out", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, } }
 				},
 				KeyframeStretcher1_1 = KeyStretcherMod {
 					CtrlWZoom = false,
@@ -761,7 +768,7 @@
 		},
 		["震え"] = GroupOperator {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\" } }, },
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "Transform1_3",
@@ -790,7 +797,7 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 14575, 445.5 },
+				Pos = { 770, 313.5 },
 				Flags = {
 					AllowPan = false,
 					ForceAll = true,
@@ -834,7 +841,7 @@
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 29.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Default = 0, LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "\nwidth", INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", LINKS_Name = "out", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INPID_InputControl = "CheckboxControl", INP_Default = 0, LINKS_Name = "Y", } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Default = 0, INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "out", }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Y", INPID_InputControl = "CheckboxControl", INP_Default = 0, } }
 				}
 			},
 		},
@@ -858,7 +865,7 @@
 				},
 				PerformDepthMerge = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 14355, 841.5 } },
+			ViewInfo = OperatorInfo { Pos = { 550, 709.5 } },
 		},
 		ST_MergeB = Merge {
 			NameSet = true,
@@ -867,7 +874,7 @@
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Background = Input {
@@ -880,7 +887,7 @@
 				},
 				PerformDepthMerge = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 14135, 841.5 } },
+			ViewInfo = OperatorInfo { Pos = { 330, 709.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 		},
 		ST_Background = Background {
@@ -900,7 +907,7 @@
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				TopLeftAlpha = Input { Value = 0, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 13915, 841.5 } },
+			ViewInfo = OperatorInfo { Pos = { 110, 709.5 } },
 		}
 	},
 	ActiveTool = "モーションなし"
