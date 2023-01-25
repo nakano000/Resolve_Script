@@ -126,6 +126,7 @@ class MainWindow(QMainWindow):
 
     def clear_tree(self) -> None:
         self.ui.treeView.setModel(QStandardItemModel())
+
     def read_node(self) -> None:
         resolve = self.fusion.GetResolve()
         if resolve and resolve.GetCurrentPage() != 'fusion':
@@ -294,7 +295,7 @@ class MainWindow(QMainWindow):
                 'node': row.node,
             })
 
-        # control groupの最初の番号を取得
+        # control groupの数字が被らないようにNode毎にoffsetを設定
         cg_offset_dict = {}
         for row in m.to_list():
             if row.node in cg_offset_dict:
