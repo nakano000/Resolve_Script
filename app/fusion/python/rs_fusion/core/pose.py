@@ -37,6 +37,9 @@ def apply(comp, lst):
             if fg is None:
                 continue
         mg.ConnectInput('Foreground', fg)
+        mg.Center.HideViewControls()
+        mg.Angle.HideViewControls()
+        mg.Size.HideViewControls()
     comp.EndUndo(True)
     comp.Unlock()
 

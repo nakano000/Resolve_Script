@@ -112,6 +112,9 @@ class MainWindow(QMainWindow):
                     'local mg = comp:FindTool("%s")' % mg.Name,
                     'local node = comp:FindTool("%s")' % node.Name,
                     'mg:ConnectInput("Foreground", node)',
+                    'mg.Center:HideViewControls()',
+                    'mg.Angle:HideViewControls()',
+                    'mg.Size:HideViewControls()',
                 ]
             return {
                 'LINKS_Name': layer_name,
