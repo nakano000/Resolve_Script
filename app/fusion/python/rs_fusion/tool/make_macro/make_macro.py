@@ -403,7 +403,7 @@ class MainWindow(QMainWindow):
         path, _ = QFileDialog.getSaveFileName(
             self,
             'Save File',
-            data.macro_name + '.json',
+            data.macro_name + '.json' if self.file is None else str(self.file),
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
