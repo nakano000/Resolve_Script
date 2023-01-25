@@ -92,7 +92,8 @@ class MainWindow(QMainWindow):
             h.setSectionResizeMode(1, QHeaderView.ResizeToContents)
 
         # config
-        self.set_data(ConfigData())
+        self.file = None
+        self.new_doc()
 
         # tree
         v = self.ui.treeView
@@ -102,6 +103,7 @@ class MainWindow(QMainWindow):
 
         # style sheet
         self.ui.saveMacroButton.setStyleSheet(appearance.ex_stylesheet)
+
         self.ui.readButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.addNodeToolButton.setStyleSheet(appearance.in_stylesheet)
 
@@ -112,10 +114,12 @@ class MainWindow(QMainWindow):
 
         self.ui.minimizeButton.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
         self.ui.closeButton.clicked.connect(self.close)
-        self.ui.saveMacroButton.clicked.connect(self.save_macro, Qt.QueuedConnection)
+        self.ui.saveMacroButton.clicked.connect(partial(self.save_macro, False), Qt.QueuedConnection)
+        self.ui.saveMacroFromJSONButton.clicked.connect(partial(self.save_macro, True), Qt.QueuedConnection)
 
         self.ui.actionNew.triggered.connect(self.new_doc)
         self.ui.actionOpen.triggered.connect(self.open_doc)
+        self.ui.actionSave.triggered.connect(self.save_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
 
     def read_node(self) -> None:
@@ -252,7 +256,7 @@ class MainWindow(QMainWindow):
                 m.add_row_data(r)
                 v.scrollToBottom()
 
-    def save_macro(self) -> None:
+    def save_macro(self, use_json_path: bool) -> None:
         resolve = self.fusion.GetResolve()
         if resolve and resolve.GetCurrentPage() != 'fusion':
             print('Fusion Pageで実行してください。')
@@ -325,15 +329,22 @@ class MainWindow(QMainWindow):
             })
 
         # save macro
-        path, _ = QFileDialog.getSaveFileName(
-            self,
-            'Save File',
-            str(config.RESOLVE_USER_PATH.joinpath(
+        if use_json_path and self.file is not None:
+            _tmp_path = str(self.file.parent.joinpath(
+                self.file.stem + '.setting',
+            ))
+        else:
+            _tmp_name = data.macro_name if self.file is None else self.file.stem
+            _tmp_path = str(config.RESOLVE_USER_PATH.joinpath(
                 'Templates',
                 'Edit',
                 'Generators',
-                data.macro_name + '.setting',
-            )),
+                _tmp_name + '.setting',
+            ))
+        path, _ = QFileDialog.getSaveFileName(
+            self,
+            'Save File',
+            _tmp_path,
             'Setting File (*.setting);;All File (*.*)'
         )
         if path != '':
@@ -349,13 +360,22 @@ class MainWindow(QMainWindow):
             ))
 
     def new_doc(self):
+        self.setWindowTitle(APP_NAME)
         self.set_data(ConfigData())
+        self.ui.saveMacroFromJSONButton.setEnabled(False)
+        self.ui.saveMacroFromJSONButton.setStyleSheet(None)
+
+    def file_update(self, path: Path):
+        self.file = path
+        self.setWindowTitle(APP_NAME + ' - ' + str(path))
+        self.ui.saveMacroFromJSONButton.setEnabled(True)
+        self.ui.saveMacroFromJSONButton.setStyleSheet(appearance.ex_stylesheet)
 
     def open_doc(self):
         path, _ = QFileDialog.getOpenFileName(
             self,
             'Open File',
-            None,
+            None if self.file is None else str(self.file.parent),
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
@@ -364,6 +384,14 @@ class MainWindow(QMainWindow):
                 a = self.get_data()
                 a.load(file_path)
                 self.set_data(a)
+                self.file_update(file_path)
+
+    def save_doc(self):
+        if self.file is None:
+            self.save_as_doc()
+        else:
+            a = self.get_data()
+            a.save(self.file)
 
     def save_as_doc(self):
         data = self.get_data()
@@ -377,6 +405,7 @@ class MainWindow(QMainWindow):
             file_path = Path(path)
             a = self.get_data()
             a.save(file_path)
+            self.file_update(file_path)
 
     def set_data(self, c: ConfigData):
         self.ui.nameLineEdit.setText(c.macro_name)

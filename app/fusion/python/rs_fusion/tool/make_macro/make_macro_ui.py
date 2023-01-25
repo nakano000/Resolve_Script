@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui' applies.
 #
-# Created: Wed Jan 25 09:09:57 2023
+# Created: Wed Jan 25 10:41:19 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -84,6 +84,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.readButton)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setObjectName("label_2")
+        self.horizontalLayout_4.addWidget(self.label_2)
+        self.saveMacroFromJSONButton = QtWidgets.QPushButton(self.centralwidget)
+        self.saveMacroFromJSONButton.setMinimumSize(QtCore.QSize(80, 30))
+        self.saveMacroFromJSONButton.setObjectName("saveMacroFromJSONButton")
+        self.horizontalLayout_4.addWidget(self.saveMacroFromJSONButton)
         self.saveMacroButton = QtWidgets.QPushButton(self.centralwidget)
         self.saveMacroButton.setMinimumSize(QtCore.QSize(80, 30))
         self.saveMacroButton.setObjectName("saveMacroButton")
@@ -113,8 +120,11 @@ class Ui_MainWindow(object):
         self.actionSave_As.setObjectName("actionSave_As")
         self.actionNew = QtWidgets.QAction(MainWindow)
         self.actionNew.setObjectName("actionNew")
+        self.actionSave = QtWidgets.QAction(MainWindow)
+        self.actionSave.setObjectName("actionSave")
         self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
+        self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
         self.menubar.addAction(self.menuFile.menuAction())
 
@@ -130,7 +140,9 @@ class Ui_MainWindow(object):
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "Main Inputs", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Inputs", None, -1))
         self.readButton.setText(QtWidgets.QApplication.translate("MainWindow", "読み込み", None, -1))
-        self.saveMacroButton.setText(QtWidgets.QApplication.translate("MainWindow", "save macro", None, -1))
+        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Save Macro:", None, -1))
+        self.saveMacroFromJSONButton.setText(QtWidgets.QApplication.translate("MainWindow", "JSONと同じ場所に保存", None, -1))
+        self.saveMacroButton.setText(QtWidgets.QApplication.translate("MainWindow", "Resoleve用に保存", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
         self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
@@ -141,5 +153,7 @@ class Ui_MainWindow(object):
         self.actionSave_As.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+S", None, -1))
         self.actionNew.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
         self.actionNew.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+N", None, -1))
+        self.actionSave.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
+        self.actionSave.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+S", None, -1))
 
 from rs_fusion.tool.make_macro.macro_table import View
