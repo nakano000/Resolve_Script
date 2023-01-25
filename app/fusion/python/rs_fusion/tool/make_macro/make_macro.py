@@ -105,12 +105,14 @@ class MainWindow(QMainWindow):
         self.ui.saveMacroButton.setStyleSheet(appearance.ex_stylesheet)
 
         self.ui.readButton.setStyleSheet(appearance.other_stylesheet)
+        self.ui.clearButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.addNodeToolButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
         self.ui.addNodeToolButton.clicked.connect(self.add_row)
 
         self.ui.readButton.clicked.connect(self.read_node)
+        self.ui.clearButton.clicked.connect(self.clear_tree)
 
         self.ui.minimizeButton.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
         self.ui.closeButton.clicked.connect(self.close)
@@ -122,6 +124,8 @@ class MainWindow(QMainWindow):
         self.ui.actionSave.triggered.connect(self.save_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
 
+    def clear_tree(self) -> None:
+        self.ui.treeView.setModel(QStandardItemModel())
     def read_node(self) -> None:
         resolve = self.fusion.GetResolve()
         if resolve and resolve.GetCurrentPage() != 'fusion':

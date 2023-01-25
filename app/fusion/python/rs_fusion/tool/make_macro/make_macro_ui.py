@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\make_macro\make_macro.ui' applies.
 #
-# Created: Wed Jan 25 10:41:19 2023
+# Created: Wed Jan 25 10:51:15 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -82,6 +82,10 @@ class Ui_MainWindow(object):
         self.readButton.setMinimumSize(QtCore.QSize(80, 30))
         self.readButton.setObjectName("readButton")
         self.horizontalLayout_4.addWidget(self.readButton)
+        self.clearButton = QtWidgets.QPushButton(self.centralwidget)
+        self.clearButton.setMinimumSize(QtCore.QSize(80, 30))
+        self.clearButton.setObjectName("clearButton")
+        self.horizontalLayout_4.addWidget(self.clearButton)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -140,6 +144,7 @@ class Ui_MainWindow(object):
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "Main Inputs", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Inputs", None, -1))
         self.readButton.setText(QtWidgets.QApplication.translate("MainWindow", "読み込み", None, -1))
+        self.clearButton.setText(QtWidgets.QApplication.translate("MainWindow", "クリア", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Save Macro:", None, -1))
         self.saveMacroFromJSONButton.setText(QtWidgets.QApplication.translate("MainWindow", "JSONと同じ場所に保存", None, -1))
         self.saveMacroButton.setText(QtWidgets.QApplication.translate("MainWindow", "Resoleve用に保存", None, -1))
