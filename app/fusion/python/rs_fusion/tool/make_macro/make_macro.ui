@@ -26,7 +26,7 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QTreeView" name="treeView">
@@ -56,7 +56,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1,1,2">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -175,7 +175,7 @@
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Save Macro:</string>
+         <string>Make Macro:</string>
         </property>
        </widget>
       </item>
