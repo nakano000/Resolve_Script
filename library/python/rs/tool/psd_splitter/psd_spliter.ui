@@ -75,6 +75,13 @@
          </item>
         </layout>
        </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="useCp932CheckBox">
+         <property name="text">
+          <string>強制的に、文字コード cp932 を使う</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>

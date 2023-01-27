@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\psd_splitter\psd_spliter.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\psd_splitter\psd_spliter.ui' applies.
 #
-# Created: Sun Jun 12 08:58:17 2022
+# Created: Fri Jan 27 17:38:16 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -53,6 +53,9 @@ class Ui_MainWindow(object):
         self.dstToolButton.setObjectName("dstToolButton")
         self.horizontalLayout.addWidget(self.dstToolButton)
         self.formLayout.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
+        self.useCp932CheckBox = QtWidgets.QCheckBox(self.groupBox)
+        self.useCp932CheckBox.setObjectName("useCp932CheckBox")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.useCp932CheckBox)
         self.verticalLayout_2.addWidget(self.groupBox)
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
@@ -116,6 +119,7 @@ class Ui_MainWindow(object):
         self.srcToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "出力先", None, -1))
         self.dstToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
+        self.useCp932CheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "強制的に、文字コード cp932 を使う", None, -1))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
         self.splitButton.setText(QtWidgets.QApplication.translate("MainWindow", "split", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))

@@ -1,3 +1,4 @@
+import chardet
 import dataclasses
 import json
 import sys
@@ -38,6 +39,7 @@ APP_NAME = 'PsdSplitter'
 class ConfigData(config.Data):
     src_dir: str = ''
     dst_dir: str = ''
+    use_cp932: bool = False
 
 
 class MainWindow(QMainWindow):
@@ -75,11 +77,13 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.srcLineEdit.setText(c.src_dir)
         self.ui.dstLineEdit.setText(c.dst_dir)
+        self.ui.useCp932CheckBox.setChecked(c.use_cp932)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.src_dir = self.ui.srcLineEdit.text()
         c.dst_dir = self.ui.dstLineEdit.text()
+        c.use_cp932 = self.ui.useCp932CheckBox.isChecked()
 
         return c
 
@@ -159,9 +163,10 @@ class MainWindow(QMainWindow):
         name_list = []
         for layer in group:
             layer_name: str = layer.name.strip()
-
             name: str = layer_name.translate(str.maketrans('*\\/:?"<>|', '-________', ''))
-            if name[len(name) - 1].isdigit():
+            if name == '':
+                name = '_none_'
+            if name[-1].isdigit():
                 name += '_'
 
             layer_name_en = ''.join(filter(str.isalnum, conversion.do(layer_name)))
@@ -233,8 +238,14 @@ class MainWindow(QMainWindow):
             return
 
         self.add2log('')  # new line
-
-        psd = PSDImage.open(src_file)
+        if not data.use_cp932:
+            psd = PSDImage.open(src_file)
+        else:
+            try:
+                psd = PSDImage.open(src_file, encoding='cp932')
+            except UnicodeDecodeError:
+                self.add2log('[ERROR]CP932でエンコードされていません。', log.ERROR_COLOR)
+                return
         out_dir = dst_dir.joinpath(src_file.stem)
         out_dir.mkdir(parents=True, exist_ok=True)
         self.add2log('Mkdir: %s => %s' % (src_file.stem, str(out_dir).replace('\\', '/')))
