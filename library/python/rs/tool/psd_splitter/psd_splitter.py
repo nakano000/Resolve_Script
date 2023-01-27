@@ -1,4 +1,3 @@
-import chardet
 import dataclasses
 import json
 import sys
