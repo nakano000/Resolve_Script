@@ -5318,7 +5318,7 @@
 							Source = "Output",
 						},
 						Open = Input { Value = -1, },
-						Threshold_003 = Input { Value = 0.6, },
+						Threshold_003 = Input { Value = 0.3, },
 						Threshold_002 = Input { Value = 0.1, },
 						Threshold_001 = Input { Value = 0, },
 					},
