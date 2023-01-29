@@ -194,8 +194,6 @@ class Model(QAbstractTableModel):
 
     def setData(self, index: QModelIndex, value, role=Qt.EditRole):
         if role == Qt.EditRole:
-            row = index.row()
-            col = index.column()
             self.undo_stack.push(SetDataCommand(self, index, value))
             return True
         return False

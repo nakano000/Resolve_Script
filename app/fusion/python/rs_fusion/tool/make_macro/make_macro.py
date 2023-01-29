@@ -1,7 +1,6 @@
 import sys
 from functools import partial
 from pathlib import Path
-from typing import List, Any
 
 import dataclasses
 from PySide2.QtCore import (
@@ -23,28 +22,12 @@ from rs.core import (
 )
 from rs.gui import (
     appearance,
-    basic_table,
 )
+from rs_fusion.tool.make_macro.macro_table import InputData, Model
 from rs_fusion.tool.make_macro import macro
 from rs_fusion.tool.make_macro.make_macro_ui import Ui_MainWindow
 
 APP_NAME = 'MakeMacro'
-
-
-@dataclasses.dataclass
-class InputData(basic_table.RowData):
-    node: str = ''
-    page: str = ''
-    id: str = ''
-    name: str = ''
-    control_group: int = 0
-    option01: str = ''
-    option02: str = ''
-    option03: str = ''
-
-    @classmethod
-    def toHeaderList(cls) -> List[str]:
-        return ['Node', 'Page', 'ID', 'Name', 'ControlGroup', 'Option01', 'Option02', 'Option03']
 
 
 @dataclasses.dataclass
@@ -54,25 +37,6 @@ class ConfigData(config.Data):
     main_output_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
     main_input_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
     input_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
-
-
-class Model(basic_table.Model):
-
-    def data(self, index: QModelIndex, role: int = Qt.DisplayRole) -> Any:
-        if index.isValid():
-            if role == Qt.DisplayRole:
-                return dataclasses.astuple(self._data[index.row()])[index.column()]
-
-            if role == Qt.EditRole:
-                return dataclasses.astuple(self._data[index.row()])[index.column()]
-
-    def flags(self, index: QModelIndex) -> Qt.ItemFlags:
-        if index.isValid():
-            if index.column() not in [3, 5, 6, 7]:  # name,option以外は編集不可
-                return Qt.ItemIsEnabled | Qt.ItemIsSelectable
-            return Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable
-
-        return Qt.NoItemFlags
 
 
 class MainWindow(QMainWindow):
@@ -96,7 +60,6 @@ class MainWindow(QMainWindow):
             self.ui.mainInputTableView,
             self.ui.mainOutputTableView,
         ]:
-            v.setModel(Model(InputData))
             v.hideColumn(4)
             h = v.horizontalHeader()
             # h.setSectionResizeMode(0, QHeaderView.ResizeToContents)
@@ -131,6 +94,10 @@ class MainWindow(QMainWindow):
         self.ui.addNodeToolButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
+        self.ui.inputTableView.model().undo_stack.cleanChanged.connect(self.set_title)
+        self.ui.mainInputTableView.model().undo_stack.cleanChanged.connect(self.set_title)
+        self.ui.mainOutputTableView.model().undo_stack.cleanChanged.connect(self.set_title)
+
         self.ui.addNodeToolButton.clicked.connect(self.add_row)
 
         self.ui.readButton.clicked.connect(self.read_node)
@@ -145,6 +112,23 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.open_doc)
         self.ui.actionSave.triggered.connect(self.save_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
+
+    def undo_stack_clear(self):
+        self.ui.inputTableView.model().undo_stack.clear()
+        self.ui.mainInputTableView.model().undo_stack.clear()
+        self.ui.mainOutputTableView.model().undo_stack.clear()
+
+    def undo_stack_set_clean(self):
+        self.ui.inputTableView.model().undo_stack.setClean()
+        self.ui.mainInputTableView.model().undo_stack.setClean()
+        self.ui.mainOutputTableView.model().undo_stack.setClean()
+
+    def undo_stack_is_clean(self) -> bool:
+        return (
+                self.ui.inputTableView.model().undo_stack.isClean()
+                and self.ui.mainInputTableView.model().undo_stack.isClean()
+                and self.ui.mainOutputTableView.model().undo_stack.isClean()
+        )
 
     def clear_tree(self) -> None:
         self.ui.treeView.setModel(QStandardItemModel())
@@ -262,6 +246,11 @@ class MainWindow(QMainWindow):
         in_m = in_v.model()
         out_v = self.ui.mainOutputTableView
         out_m = out_v.model()
+        # main
+        rows = []
+        in_rows = []
+        out_rows = []
+        # get selected rows
         for i in src_sm.selectedRows(0):
             i: QModelIndex
             r = InputData()
@@ -274,14 +263,30 @@ class MainWindow(QMainWindow):
             if r.node is None or r.id is None:
                 continue
             if r.page == '<Output>':
-                out_m.add_row_data(r)
-                out_v.scrollToBottom()
+                out_rows.append(r)
             elif r.page == '<Input>':
-                in_m.add_row_data(r)
-                in_v.scrollToBottom()
+                in_rows.append(r)
             else:
+                rows.append(r)
+        # add row
+        if len(rows) > 0:
+            m.undo_stack.beginMacro('Add Row')
+            for r in rows:
                 m.add_row_data(r)
-                v.scrollToBottom()
+            m.undo_stack.endMacro()
+            v.scrollToBottom()
+        if len(in_rows) > 0:
+            in_m.undo_stack.beginMacro('Add Row')
+            for r in in_rows:
+                in_m.add_row_data(r)
+            in_m.undo_stack.endMacro()
+            in_v.scrollToBottom()
+        if len(out_rows) > 0:
+            out_m.undo_stack.beginMacro('Add Row')
+            for r in out_rows:
+                out_m.add_row_data(r)
+            out_m.undo_stack.endMacro()
+            out_v.scrollToBottom()
 
     def save_macro(self, use_json_path: bool) -> None:
         resolve = self.fusion.GetResolve()
@@ -389,17 +394,25 @@ class MainWindow(QMainWindow):
                 ]),
             ))
 
+    def set_title(self):
+        if self.file is None:
+            self.setWindowTitle('%s' % APP_NAME)
+        else:
+            star = '*' if self.undo_stack_is_clean() is False else ''
+            self.setWindowTitle('%s - %s%s' % (APP_NAME, self.file, star))
+
     def new_doc(self):
-        self.setWindowTitle(APP_NAME)
         self.set_data(ConfigData())
         self.ui.saveMacroFromJSONButton.setEnabled(False)
         self.ui.saveMacroFromJSONButton.setStyleSheet(None)
+        self.undo_stack_clear()
+        self.set_title()
 
     def file_update(self, path: Path):
         self.file = path
-        self.setWindowTitle(APP_NAME + ' - ' + str(path))
         self.ui.saveMacroFromJSONButton.setEnabled(True)
         self.ui.saveMacroFromJSONButton.setStyleSheet(appearance.ex_stylesheet)
+        self.set_title()
 
     def open_doc(self):
         path, _ = QFileDialog.getOpenFileName(
@@ -414,6 +427,7 @@ class MainWindow(QMainWindow):
                 a = self.get_data()
                 a.load(file_path)
                 self.set_data(a)
+                self.undo_stack_clear()
                 self.file_update(file_path)
 
     def save_doc(self):
@@ -422,6 +436,8 @@ class MainWindow(QMainWindow):
         else:
             a = self.get_data()
             a.save(self.file)
+            self.undo_stack_set_clean()
+            self.set_title()
 
     def save_as_doc(self):
         data = self.get_data()
@@ -435,6 +451,7 @@ class MainWindow(QMainWindow):
             file_path = Path(path)
             a = self.get_data()
             a.save(file_path)
+            self.undo_stack_set_clean()
             self.file_update(file_path)
 
     def set_data(self, c: ConfigData):
