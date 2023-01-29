@@ -159,9 +159,11 @@ class MainWindow(QMainWindow):
         v.customContextMenuRequested.connect(self.contextMenu)
 
         v.setStyleSheet(
-            'QTableView::item::focus {border: 2px solid white;'
-            ' border-radius: 0px;border-bottom-right-radius:'
-            ' 0px;border-style: double;}'
+            'QTableView::item::focus {'
+            ' border: 2px solid white;'
+            ' border-radius: 0px;'
+            ' border-bottom-right-radius: 0px;'
+            ' border-style: double;}'
         )
 
         self.new_doc()
