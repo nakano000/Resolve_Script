@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\gui\chara\chara.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\gui\chara\chara.ui' applies.
 #
-# Created: Wed Jan  4 13:37:23 2023
+# Created: Sun Jan 29 19:08:33 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -66,6 +66,13 @@ class Ui_MainWindow(object):
         self.actionDown.setObjectName("actionDown")
         self.actionDelete = QtWidgets.QAction(MainWindow)
         self.actionDelete.setObjectName("actionDelete")
+        self.actionRedo = QtWidgets.QAction(MainWindow)
+        self.actionRedo.setObjectName("actionRedo")
+        self.actionUndo = QtWidgets.QAction(MainWindow)
+        self.actionUndo.setObjectName("actionUndo")
+        self.menuEdit.addAction(self.actionUndo)
+        self.menuEdit.addAction(self.actionRedo)
+        self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionCopy)
         self.menuEdit.addAction(self.actionPaste)
         self.menuEdit.addSeparator()
@@ -94,5 +101,9 @@ class Ui_MainWindow(object):
         self.actionDown.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Alt+Down", None, -1))
         self.actionDelete.setText(QtWidgets.QApplication.translate("MainWindow", "Delete", None, -1))
         self.actionDelete.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Del", None, -1))
+        self.actionRedo.setText(QtWidgets.QApplication.translate("MainWindow", "Redo", None, -1))
+        self.actionRedo.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+Z", None, -1))
+        self.actionUndo.setText(QtWidgets.QApplication.translate("MainWindow", "Undo", None, -1))
+        self.actionUndo.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Z", None, -1))
 
-from rs.gui.basic_table import View
+from rs.gui.table import View

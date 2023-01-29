@@ -8,7 +8,7 @@ from rs.core import (
     pipe as p,
     anim,
 )
-from rs.gui import basic_table
+from rs.gui import table
 
 CONFIG_DIR: Path = config.CONFIG_DIR.joinpath('VoiceBin')
 CONFIG_FILE: Path = CONFIG_DIR.joinpath('chara.json')
@@ -16,7 +16,7 @@ TEMPLATE_FILE: Path = config.DATA_PATH.joinpath('app', 'VoiceBin', 'chara.json')
 
 
 @dataclasses.dataclass
-class CharaData(basic_table.RowData):
+class CharaData(table.RowData):
     # reg_exp: str = r'^\d+_ずんだもん.+'
     track_name: str = ''
     reg_exp: str = r'.+'

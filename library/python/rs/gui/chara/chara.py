@@ -1,6 +1,5 @@
 import shutil
 
-import dataclasses
 import sys
 
 from pathlib import Path
@@ -32,20 +31,20 @@ from rs.core.chara_data import (
 )
 from rs.gui import (
     appearance,
-    basic_table,
+    table,
 )
 from rs.gui.chara.chara_ui import Ui_MainWindow
 
 
-class Model(basic_table.Model):
+class Model(table.Model):
 
     def data(self, index: QModelIndex, role: int = Qt.DisplayRole) -> Any:
         if index.isValid():
             if role == Qt.DisplayRole:
-                return dataclasses.astuple(self._data[index.row()])[index.column()]
+                return self.get_value(index.row(), index.column())
 
             if role == Qt.EditRole:
-                return dataclasses.astuple(self._data[index.row()])[index.column()]
+                return self.get_value(index.row(), index.column())
 
     def flags(self, index: QModelIndex) -> Qt.ItemFlags:
         if index.isValid():
@@ -181,6 +180,8 @@ class MainWindow(QMainWindow):
         self.ui.addButton.clicked.connect(self.add)
         self.ui.setButton.clicked.connect(self.save)
 
+        self.ui.actionUndo.triggered.connect(self.ui.tableView.undo)
+        self.ui.actionRedo.triggered.connect(self.ui.tableView.redo)
         self.ui.actionCopy.triggered.connect(self.ui.tableView.copy)
         self.ui.actionPaste.triggered.connect(self.ui.tableView.paste)
         self.ui.actionDelete.triggered.connect(self.ui.tableView.delete)
@@ -195,6 +196,9 @@ class MainWindow(QMainWindow):
     def contextMenu(self, pos):
         v = self.ui.tableView
         menu = QMenu(v)
+        menu.addAction(self.ui.actionUndo)
+        menu.addAction(self.ui.actionRedo)
+        menu.addSeparator()
         menu.addAction(self.ui.actionCopy)
         menu.addAction(self.ui.actionPaste)
         menu.addSeparator()
@@ -220,6 +224,7 @@ class MainWindow(QMainWindow):
             a = self.get_data()
             a.load(self.config_file)
             self.set_data(a)
+            self.ui.tableView.model().undo_stack.clear()
 
     def save(self) -> None:
         a = self.get_data()
