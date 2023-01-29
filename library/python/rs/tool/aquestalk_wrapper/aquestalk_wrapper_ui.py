@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\aquestalk_wrapper\aquestalk_wrapper.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\aquestalk_wrapper\aquestalk_wrapper.ui' applies.
 #
-# Created: Tue Nov 15 05:26:07 2022
+# Created: Mon Jan 30 05:00:35 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -136,6 +136,10 @@ class Ui_MainWindow(object):
         self.actionClear.setObjectName("actionClear")
         self.actionImport_From_Clipboard = QtWidgets.QAction(MainWindow)
         self.actionImport_From_Clipboard.setObjectName("actionImport_From_Clipboard")
+        self.actionUndo = QtWidgets.QAction(MainWindow)
+        self.actionUndo.setObjectName("actionUndo")
+        self.actionRedo = QtWidgets.QAction(MainWindow)
+        self.actionRedo.setObjectName("actionRedo")
         self.menuFaile.addAction(self.actionNew)
         self.menuFaile.addAction(self.actionOpen)
         self.menuFaile.addSeparator()
@@ -145,6 +149,9 @@ class Ui_MainWindow(object):
         self.menuFaile.addAction(self.actionImport_From_Clipboard)
         self.menuFaile.addSeparator()
         self.menuFaile.addAction(self.actionExit)
+        self.menuEdit.addAction(self.actionUndo)
+        self.menuEdit.addAction(self.actionRedo)
+        self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionEdit)
         self.menuEdit.addAction(self.actionClear)
         self.menuEdit.addSeparator()
@@ -211,5 +218,9 @@ class Ui_MainWindow(object):
         self.actionClear.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Del", None, -1))
         self.actionImport_From_Clipboard.setText(QtWidgets.QApplication.translate("MainWindow", "Import From Clipboard", None, -1))
         self.actionImport_From_Clipboard.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+V", None, -1))
+        self.actionUndo.setText(QtWidgets.QApplication.translate("MainWindow", "Undo", None, -1))
+        self.actionUndo.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Z", None, -1))
+        self.actionRedo.setText(QtWidgets.QApplication.translate("MainWindow", "Redo", None, -1))
+        self.actionRedo.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+Z", None, -1))
 
-from rs.gui.basic_table import View
+from rs.gui.table import View

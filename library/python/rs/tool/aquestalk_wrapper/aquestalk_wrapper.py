@@ -1,12 +1,10 @@
 from typing import (
     List,
-    Any,
 )
 
 import dataclasses
 import re
 import sys
-from functools import partial
 from pathlib import Path
 
 from PySide2.QtCore import (
@@ -28,11 +26,10 @@ from shiboken2 import shiboken2
 from rs.core import (
     config,
     pipe as p,
-    util,
 )
 from rs.gui import (
     appearance,
-    basic_table,
+    table,
 )
 
 from rs.tool.aquestalk_wrapper import aquestalk
@@ -49,7 +46,7 @@ class ConfigData(config.Data):
 
 
 @dataclasses.dataclass
-class VoiceData(basic_table.RowData):
+class VoiceData(table.RowData):
     chara: str = ''
     subtitle: str = ''
     pronunciation: str = ''
@@ -65,20 +62,8 @@ class VoiceDataset(config.Data):
     voice_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(VoiceData))
 
 
-class Model(basic_table.Model):
-    def data(self, index: QModelIndex, role: int = Qt.DisplayRole) -> Any:
-        if index.isValid():
-            if role == Qt.DisplayRole:
-                return dataclasses.astuple(self._data[index.row()])[index.column()]
-
-            if role == Qt.EditRole:
-                return dataclasses.astuple(self._data[index.row()])[index.column()]
-
-    def flags(self, index: QModelIndex) -> Qt.ItemFlags:
-        if index.isValid():
-            return Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable
-
-        return Qt.NoItemFlags
+class Model(table.Model):
+    pass
 
 
 class ItemDelegate(QStyledItemDelegate):
@@ -159,6 +144,7 @@ class MainWindow(QMainWindow):
         v = self.ui.tableView
         v.setModel(Model(VoiceData))
         v.setItemDelegate(ItemDelegate(self))
+        self.undo_stack = v.model().undo_stack
 
         h = v.horizontalHeader()
         h.setSectionResizeMode(1, QHeaderView.Stretch)
@@ -173,7 +159,9 @@ class MainWindow(QMainWindow):
         v.customContextMenuRequested.connect(self.contextMenu)
 
         v.setStyleSheet(
-            'QTableView::item::focus {border: 2px solid white; border-radius: 0px;border-bottom-right-radius: 0px;border-style: double;}'
+            'QTableView::item::focus {border: 2px solid white;'
+            ' border-radius: 0px;border-bottom-right-radius:'
+            ' 0px;border-style: double;}'
         )
 
         self.new_doc()
@@ -181,6 +169,7 @@ class MainWindow(QMainWindow):
         self.player_thread = None
         self.player = None
         # event
+        self.undo_stack.cleanChanged.connect(self.set_title)
 
         self.ui.folderToolButton.clicked.connect(self.folderToolButton_clicked)
         self.ui.exeToolButton.clicked.connect(self.exeToolButton_clicked)
@@ -196,6 +185,9 @@ class MainWindow(QMainWindow):
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
         self.ui.actionImport_From_Clipboard.triggered.connect(self.import_from_clipboard)
         self.ui.actionExit.triggered.connect(self.close)
+
+        self.ui.actionUndo.triggered.connect(self.undo_stack.undo)
+        self.ui.actionRedo.triggered.connect(self.undo_stack.redo)
 
         self.ui.actionEdit.triggered.connect(self.edit)
         self.ui.actionAdd.triggered.connect(self.add)
@@ -213,7 +205,8 @@ class MainWindow(QMainWindow):
         if self.file is None:
             self.setWindowTitle('%s' % APP_NAME)
         else:
-            self.setWindowTitle('%s  %s' % (APP_NAME, str(self.file)))
+            star = '*' if self.ui.tableView.model().undo_stack.isClean() is False else ''
+            self.setWindowTitle('%s - %s%s' % (APP_NAME, self.file, star))
 
     def play(self):
         self.stop()
@@ -292,7 +285,7 @@ class MainWindow(QMainWindow):
             name = '%03d_%s_%s' % (
                 row + 1,
                 chara,
-                re.sub(r'[\\|/|:|?|.|"|<|>|\|]', '', text)[:9],
+                re.sub(r'[\\/:*?."<>|]', '', text)[:9],
             )
             wav_file = Path(c.voice_dir).joinpath(name + '.wav')
             if wav_file.is_file():
@@ -324,6 +317,9 @@ class MainWindow(QMainWindow):
     def contextMenu(self, pos):
         v = self.ui.tableView
         menu = QMenu(v)
+        menu.addAction(self.ui.actionUndo)
+        menu.addAction(self.ui.actionRedo)
+        menu.addSeparator()
         menu.addAction(self.ui.actionEdit)
         menu.addAction(self.ui.actionClear)
         menu.addSeparator()
@@ -407,6 +403,7 @@ class MainWindow(QMainWindow):
         m: Model = v.model()
         m.clear()
         self.add()
+        self.undo_stack.clear()
         self.set_title()
 
     def open_doc(self):
@@ -427,6 +424,7 @@ class MainWindow(QMainWindow):
                 self.set_data(a)
                 # self.add2log('Open: %s' % str(file_path))
                 self.file = str(file_path)
+                self.undo_stack.clear()
                 self.set_title()
 
     def save_doc(self):
@@ -436,6 +434,8 @@ class MainWindow(QMainWindow):
         file_path = Path(self.file)
         a = self.get_data()
         a.save(file_path)
+        self.undo_stack.setClean()
+        self.set_title()
 
     def save_as_doc(self):
         dir_path = ''
@@ -453,6 +453,7 @@ class MainWindow(QMainWindow):
             a.save(file_path)
             # self.add2log('Save: %s' % str(file_path))
             self.file = str(file_path)
+            self.undo_stack.setClean()
             self.set_title()
 
     def set_config(self, c: ConfigData):

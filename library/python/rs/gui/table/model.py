@@ -161,6 +161,9 @@ class Model(QAbstractTableModel):
     def to_list(self):
         return self.data_list.to_list()
 
+    def clear(self):
+        self.undo_stack.push(SetDataListCommand(self, config.DataList(self.row_cls)))
+
     def set_data(self, data_list: config.DataList):
         self.undo_stack.push(SetDataListCommand(self, data_list))
 

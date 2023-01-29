@@ -53,47 +53,52 @@ class View(QTableView):
         m: Model = self.model()
         sm = self.selectionModel()
         data_list = []
-        min_row = None
+        selected_rows = self.selected_rows()
+        if len(selected_rows) == 0:
+            return
+        min_row = selected_rows[0]
+        # start
         m.undo_stack.beginMacro('Up')
-        for row in reversed(self.selected_rows()):
-            if min_row is None:
-                min_row = row
-            min_row = min([row, min_row])
+        # remove selected rows
+        for row in reversed(selected_rows):
             data_list.append(m.get_row_data(row))
             m.removeRow(row, QModelIndex())
         sm.clearSelection()
-        if min_row is not None:
-            if min_row == 0:
-                min_row = 1
-            m.insert_rows_data(min_row - 1, list(reversed(data_list)))
-            for i in range(len(data_list)):
-                index = m.index(min_row - 1 + i, 0, QModelIndex())
-                sm.select(index, QItemSelectionModel.Select)
-                sm.setCurrentIndex(index, QItemSelectionModel.Select)
+        # insert selected rows
+        target_row = max(min_row - 1, 0)
+        m.insert_rows_data(target_row, list(reversed(data_list)))
+        # select
+        for i in range(len(data_list)):
+            index = m.index(target_row + i, 0, QModelIndex())
+            sm.select(index, QItemSelectionModel.Select)
+            sm.setCurrentIndex(index, QItemSelectionModel.Select)
+        # end
         m.undo_stack.endMacro()
 
     def down(self):
         m: Model = self.model()
         sm = self.selectionModel()
         data_list = []
-        max_row = None
+        selected_rows = self.selected_rows()
+        if len(selected_rows) == 0:
+            return
+        max_row = selected_rows[-1]
+        # start
         m.undo_stack.beginMacro('Down')
-        for row in reversed(self.selected_rows()):
-            if max_row is None:
-                max_row = row
-            max_row = max([row, max_row])
+        # remove selected rows
+        for row in reversed(selected_rows):
             data_list.append(m.get_row_data(row))
             m.removeRow(row, QModelIndex())
         sm.clearSelection()
-        if max_row is not None:
-            m.insert_rows_data(max_row + 2 - len(data_list), list(reversed(data_list)))
-            for i in range(len(data_list)):
-                if max_row != m.rowCount() - 1:
-                    index = m.index(max_row + 2 - len(data_list) + i, 0, QModelIndex())
-                else:
-                    index = m.index(max_row - i, 0, QModelIndex())
-                sm.select(index, QItemSelectionModel.Select)
-                sm.setCurrentIndex(index, QItemSelectionModel.Select)
+        # insert selected rows
+        target_row = min(max_row + 2 - len(data_list), m.rowCount())
+        m.insert_rows_data(target_row, list(reversed(data_list)))
+        # select
+        for i in range(len(data_list)):
+            index = m.index(target_row + i, 0, QModelIndex())
+            sm.select(index, QItemSelectionModel.Select)
+            sm.setCurrentIndex(index, QItemSelectionModel.Select)
+        # end
         m.undo_stack.endMacro()
 
     def select_rect(self):
