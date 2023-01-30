@@ -39,6 +39,21 @@ class ConfigData(config.Data):
     input_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
 
 
+def get_modifiers(tools):
+    modifiers = {}
+    for tool in tools:
+        for inp in tool.GetInputList().values():
+            outp = inp.GetConnectedOutput()
+            if outp is None:
+                continue
+            x = outp.GetTool()
+            if x.GetAttrs()['TOOLB_Visible']:
+                continue
+            modifiers[x.Name] = x
+            modifiers.update(get_modifiers([x]))
+    return modifiers
+
+
 class MainWindow(QMainWindow):
     def __init__(self, parent=None, fusion=None):
         super().__init__(parent)
@@ -50,7 +65,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(900, 600)
+        self.resize(900, 700)
 
         self.fusion = fusion
 
@@ -149,7 +164,13 @@ class MainWindow(QMainWindow):
         v = self.ui.treeView
         m = QStandardItemModel()
         v.setModel(m)
-        tools: dict = comp.GetToolList(True)
+        tools = comp.GetToolList(True)
+        src = []
+        for tool in tools.values():
+            src.append(tool)
+            modifiers = get_modifiers([tool])
+            for mod in modifiers.values():
+                src.append(mod)
 
         def make_row(_node, _page, _id, _name, _type, _control_group=0):
             size = 20 + len(_name) - util.get_str_width(_name)
@@ -164,7 +185,7 @@ class MainWindow(QMainWindow):
             ]
 
         # main
-        for tool in tools.values():
+        for tool in src:
             node = QStandardItem(tool.Name)
             node.setSelectable(False)
             m.appendRow(node)
@@ -189,18 +210,19 @@ class MainWindow(QMainWindow):
                 inp = tool.FindMainInput(i)
                 if inp is None:
                     break
-                inp_id_list.append(inp.ID)
                 attrs = inp.GetAttrs()
                 name = inp.Name
                 if 'INPS_IC_Name' in attrs:
                     name = attrs['INPS_IC_Name']
-                node.appendRow(make_row(
-                    tool.Name,
-                    '<Input>',
-                    inp.ID,
-                    name,
-                    attrs['INPS_DataType'],
-                ))
+                if tool.GetAttrs()['TOOLB_Visible']:
+                    node.appendRow(make_row(
+                        tool.Name,
+                        '<Input>',
+                        inp.ID,
+                        name,
+                        attrs['INPS_DataType'],
+                    ))
+                    inp_id_list.append(inp.ID)
                 i += 1
             # page
             page_names: dict = tool.GetControlPageNames()
