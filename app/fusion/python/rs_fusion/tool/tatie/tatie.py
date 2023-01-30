@@ -140,10 +140,17 @@ class MainWindow(QMainWindow):
         self.ui.closeButton.clicked.connect(self.close)
 
     def open_dir(self, d):
-        if d.is_dir():
-            util.open_directory(d)
-        else:
-            QMessageBox.warning(self, f'Warning:  {str(d)}', f'ディレクトリが見つかりません。\n{str(d)}')
+        if not d.is_dir():
+            r = QMessageBox.warning(
+                self,
+                f'Warning:  {str(d)}', f'ディレクトリが見つかりません。\n{str(d)}\n作成しますか？',
+                QMessageBox.Yes | QMessageBox.No
+            )
+            if r == QMessageBox.Yes:
+                d.mkdir(parents=True, exist_ok=True)
+            else:
+                return
+        util.open_directory(d)
 
     def check_page(self):
         resolve = self.fusion.GetResolve()
