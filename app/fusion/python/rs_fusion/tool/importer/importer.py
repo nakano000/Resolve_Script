@@ -18,7 +18,6 @@ from PySide2.QtWidgets import (
 from rs.core import (
     config,
     pipe as p,
-    util,
 )
 from rs.gui import (
     appearance,
@@ -278,8 +277,9 @@ class MainWindow(QMainWindow):
 
                 # add loader
                 if type(layer_data) is list:
-                    node, _, pos_x, uc, _name_list = add_node_B(pos_x, pos_y, size_x, size_y, layer_data, layer_name,
-                                                                uc)
+                    node, _, pos_x, uc, _name_list = add_node_B(
+                        pos_x, pos_y, size_x, size_y, layer_data, layer_name, uc
+                    )
                     name_list += _name_list
                 else:
                     node = add_ld(pos_x, pos_y, comp.ReverseMapPath(layer_data.replace('/', '\\')))
