@@ -326,7 +326,7 @@ class MainWindow(QMainWindow):
 
             #
             if use_label:
-                user_controls['Grp_' + name] = {
+                user_controls['Grp_' + xf.Name] = {
                     'LINKS_Name': name.replace('!', '').replace('*', ''),
                     'LINKID_DataType': 'Number',
                     'INPID_InputControl': 'LabelControl',
