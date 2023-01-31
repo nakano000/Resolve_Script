@@ -190,6 +190,10 @@ class Model(QAbstractTableModel):
             row = index.row()
             col = index.column()
             return self.get_value(row, col)
+        if role == Qt.EditRole:
+            row = index.row()
+            col = index.column()
+            return self.get_value(row, col)
         return None
 
     def setData(self, index: QModelIndex, value, role=Qt.EditRole):

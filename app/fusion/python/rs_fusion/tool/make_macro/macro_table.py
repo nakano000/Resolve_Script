@@ -3,7 +3,7 @@ from typing import List
 import dataclasses
 from PySide2.QtCore import Qt, QModelIndex
 from PySide2.QtGui import QKeySequence
-from PySide2.QtWidgets import QAction, QMenu
+from PySide2.QtWidgets import QAction, QMenu, QStyledItemDelegate
 
 from rs.gui import (
     table,
@@ -23,7 +23,13 @@ class InputData(table.RowData):
 
     @classmethod
     def toHeaderList(cls) -> List[str]:
-        return ['Node', 'Page', 'ID', 'Name', 'ControlGroup', 'Option01', 'Option02', 'Option03']
+        return ['Node', 'Page', 'ID', 'Name', 'CtrlGrp', 'Option01', 'Option02', 'Option03']
+
+
+class ItemDelegate(QStyledItemDelegate):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self._parent = parent
 
 
 class Model(table.Model):
@@ -40,7 +46,14 @@ class View(table.View):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setModel(Model(InputData))
+        self.setItemDelegate(ItemDelegate(self))
+        self.setStyleSheet(
+            'QTableView::item::focus '
+            '{border: 2px solid white; '
+            'border-radius: 0px;border-bottom-right-radius: 0px;border-style: double;}'
+        )
 
+        # context menu
         self.setContextMenuPolicy(Qt.CustomContextMenu)
         self.customContextMenuRequested.connect(self.contextMenu)
         # action

@@ -75,14 +75,14 @@ class MainWindow(QMainWindow):
             self.ui.mainInputTableView,
             self.ui.mainOutputTableView,
         ]:
-            v.hideColumn(4)
             h = v.horizontalHeader()
-            # h.setSectionResizeMode(0, QHeaderView.ResizeToContents)
             h.setSectionResizeMode(1, QHeaderView.ResizeToContents)
+            h.setSectionResizeMode(4, QHeaderView.ResizeToContents)
         for v in [
             self.ui.mainInputTableView,
             self.ui.mainOutputTableView,
         ]:
+            v.hideColumn(4)
             v.hideColumn(5)
             v.hideColumn(6)
             v.hideColumn(7)
