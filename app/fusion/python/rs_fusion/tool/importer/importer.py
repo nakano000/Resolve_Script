@@ -30,6 +30,7 @@ APP_NAME = '読み込み(PsdSplitter用)'
 class TatieStyle(IntEnum):
     EXPRESSION = 0
     CONNECTION = 1
+    CONNECTION_LABEL = 2
 
 
 @dataclasses.dataclass
@@ -212,6 +213,8 @@ class MainWindow(QMainWindow):
                 'LBLC_DropDownButton': True,
                 'LBLC_NumInputs': len(user_controls),
                 'INP_Default': 1,
+                'INP_External': False,
+                'INP_Passive': True,
                 'ICS_ControlPage': 'User',
             }
             if name == 'Root':
@@ -244,7 +247,7 @@ class MainWindow(QMainWindow):
             bg.Width = dct['x'] + sp_x
             bg.Height = dct['y'] + sp_y
 
-        def add_node_B(pos_x, pos_y, size_x, size_y, data, name, uc):
+        def add_node_B(pos_x, pos_y, size_x, size_y, data, name, uc, use_label):
             pos_x += 1
             xf, bg = add_xf_bg(pos_x, pos_y, size_x, size_y, name)
             pos_x += 1
@@ -267,7 +270,10 @@ class MainWindow(QMainWindow):
             # main
             pre_node = bg
             a_mg = None
+            page_name = 'ポーズ' if use_label else xf.Name
             name_list = []
+            user_controls = {}
+            uc_list = []
             for i, layer in enumerate(_data):
                 layer_name: str = layer['name']
                 layer_name_en: str = layer['name_en']
@@ -277,9 +283,10 @@ class MainWindow(QMainWindow):
 
                 # add loader
                 if type(layer_data) is list:
-                    node, _, pos_x, uc, _name_list = add_node_B(
-                        pos_x, pos_y, size_x, size_y, layer_data, layer_name, uc
+                    node, _, pos_x, _uc, _name_list = add_node_B(
+                        pos_x, pos_y, size_x, size_y, layer_data, layer_name, {}, use_label
                     )
+                    uc_list.append(_uc)
                     name_list += _name_list
                 else:
                     node = add_ld(pos_x, pos_y, comp.ReverseMapPath(layer_data.replace('/', '\\')))
@@ -297,7 +304,9 @@ class MainWindow(QMainWindow):
                         a_mg.ConnectInput('Foreground', node)
                     pre_node = a_mg
                     if not layer_name.startswith('!'):
-                        uc[uc_name + str(pos_x)] = uc_button(a_mg, node, xf.Name, layer_name, 1.0)
+                        user_controls[uc_name + str(pos_x)] = uc_button(
+                            a_mg, node, page_name, layer_name, 1.0
+                        )
                 else:
                     mg = comp.AddTool('Merge', pos_x * X_OFFSET, (pos_y + 1) * Y_OFFSET)
                     mg.SetAttrs({'TOOLS_Name': layer_name + '_MG'})
@@ -307,20 +316,39 @@ class MainWindow(QMainWindow):
                         mg.ConnectInput('Foreground', node)
                     pre_node = mg
                     if not layer_name.startswith('!'):
-                        uc[uc_name + '_hide_' + str(pos_x)] = uc_button(mg, None, xf.Name, layer_name + ' hide', 0.5)
-                        uc[uc_name + '_show_' + str(pos_x)] = uc_button(mg, node, xf.Name, layer_name + ' show', 0.5)
+                        user_controls[uc_name + '_hide_' + str(pos_x)] = uc_button(
+                            mg, None, page_name, layer_name + ' hide', 0.5
+                        )
+                        user_controls[uc_name + '_show_' + str(pos_x)] = uc_button(
+                            mg, node, page_name, layer_name + ' show', 0.5
+                        )
                 pos_x += 1
 
             #
+            if use_label:
+                user_controls['Grp_' + name] = {
+                    'LINKS_Name': name.replace('!', '').replace('*', ''),
+                    'LINKID_DataType': 'Number',
+                    'INPID_InputControl': 'LabelControl',
+                    'LBLC_DropDownButton': True,
+                    'LBLC_NumInputs': len(user_controls),
+                    'INP_Default': 1,
+                    'INP_External': False,
+                    'INP_Passive': True,
+                    'ICS_ControlPage': page_name,
+                }
+            for _uc in uc_list:
+                uc.update(_uc)
+            uc.update(user_controls)
             pos_x -= 1
             xf.ConnectInput('Input', pre_node)
             set_x(xf, pos_x)
 
             return xf, bg, pos_x, uc, name_list
 
-        def make_B(dct, sp_x, sp_y):
+        def make_B(dct, sp_x, sp_y, use_label):
             # main
-            xf, bg, _, _uc, name_list = add_node_B(0, 0, dct['x'], dct['y'], dct['data'], dct['name'], {})
+            xf, bg, _, _uc, name_list = add_node_B(0, 0, dct['x'], dct['y'], dct['data'], dct['name'], {}, use_label)
 
             # xf
             uc = {'__flags': 2097152}  # 順番を保持するフラグ
@@ -344,8 +372,10 @@ class MainWindow(QMainWindow):
         json_data = json.loads(json_path.read_text(encoding='utf-8'))
         if c.style == TatieStyle.EXPRESSION:
             make_A(json_data, c.space_x, c.space_y)
+        elif c.style == TatieStyle.CONNECTION:
+            make_B(json_data, c.space_x, c.space_y, False)
         else:
-            make_B(json_data, c.space_x, c.space_y)
+            make_B(json_data, c.space_x, c.space_y, True)
         comp.EndUndo(True)
         comp.Unlock()
         QMessageBox.information(self, "Info", 'Done!')
@@ -366,8 +396,10 @@ class MainWindow(QMainWindow):
         self.ui.jsonLineEdit.setText(c.json_path)
         if c.style == TatieStyle.EXPRESSION:
             self.ui.expRadioButton.setChecked(True)
-        else:
+        elif c.style == TatieStyle.CONNECTION:
             self.ui.connectRadioButton.setChecked(True)
+        else:
+            self.ui.connectLabelRadioButton.setChecked(True)
         self.ui.xSpinBox.setValue(c.space_x)
         self.ui.ySpinBox.setValue(c.space_y)
 
@@ -376,8 +408,10 @@ class MainWindow(QMainWindow):
         c.json_path = self.ui.jsonLineEdit.text()
         if self.ui.expRadioButton.isChecked():
             c.style = TatieStyle.EXPRESSION
-        else:
+        elif self.ui.connectRadioButton.isChecked():
             c.style = TatieStyle.CONNECTION
+        else:
+            c.style = TatieStyle.CONNECTION_LABEL
         c.space_x = self.ui.xSpinBox.value()
         c.space_y = self.ui.ySpinBox.value()
 

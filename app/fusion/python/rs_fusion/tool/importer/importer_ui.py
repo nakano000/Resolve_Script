@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui' applies.
 #
-# Created: Sat Nov 19 03:39:13 2022
+# Created: Tue Jan 31 23:24:20 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(369, 264)
+        MainWindow.resize(293, 302)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -40,17 +40,15 @@ class Ui_MainWindow(object):
         self.groupBox_3.setObjectName("groupBox_3")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.groupBox_3)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.expRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
         self.expRadioButton.setObjectName("expRadioButton")
-        self.horizontalLayout_4.addWidget(self.expRadioButton)
+        self.verticalLayout_3.addWidget(self.expRadioButton)
         self.connectRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
         self.connectRadioButton.setObjectName("connectRadioButton")
-        self.horizontalLayout_4.addWidget(self.connectRadioButton)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_4)
+        self.verticalLayout_3.addWidget(self.connectRadioButton)
+        self.connectLabelRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
+        self.connectLabelRadioButton.setObjectName("connectLabelRadioButton")
+        self.verticalLayout_3.addWidget(self.connectLabelRadioButton)
         self.label = QtWidgets.QLabel(self.groupBox_3)
         self.label.setObjectName("label")
         self.verticalLayout_3.addWidget(self.label)
@@ -89,12 +87,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.ySpinBox)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.verticalLayout_2.addWidget(self.groupBox)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem1)
+        spacerItem = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem2)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem1)
         self.importButton = QtWidgets.QPushButton(self.centralwidget)
         self.importButton.setMinimumSize(QtCore.QSize(100, 40))
         self.importButton.setObjectName("importButton")
@@ -116,7 +114,8 @@ class Ui_MainWindow(object):
         self.jsonToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.groupBox_3.setTitle(QtWidgets.QApplication.translate("MainWindow", "立ち絵形式", None, -1))
         self.expRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "エクスプレッション", None, -1))
-        self.connectRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "コネクション切り替え", None, -1))
+        self.connectRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "コネクション切り替え(Page)", None, -1))
+        self.connectLabelRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "コネクション切り替え(Label)", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "※エクスプレッションが従来のものです。", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "拡張 (アニメーション スペース確保)", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "X", None, -1))
