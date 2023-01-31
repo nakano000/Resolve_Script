@@ -67,7 +67,7 @@ def get_resolve_window(pj_name):
 class ConfigData(config.Data):
     voice_dir: str = ''
 
-    wait_time: float = 0.001
+    wait_time: float = 0.015
     time_out: int = 15
     offset: int = 15
     video_index: int = 1

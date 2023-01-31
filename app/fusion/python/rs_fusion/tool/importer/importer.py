@@ -36,7 +36,7 @@ class TatieStyle(IntEnum):
 @dataclasses.dataclass
 class ConfigData(config.Data):
     json_path: str = ''
-    style: TatieStyle = TatieStyle.CONNECTION
+    style: TatieStyle = TatieStyle.CONNECTION_LABEL
     space_x: int = 400
     space_y: int = 600
 
