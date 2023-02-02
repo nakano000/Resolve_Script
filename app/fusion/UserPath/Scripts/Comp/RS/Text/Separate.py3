@@ -1,3 +1,8 @@
+import string
+
+import unicodedata
+
+
 def make_bg(name, x, y):
     return bmd.readstring("""{
     Tools = ordered() {
@@ -80,9 +85,13 @@ def make_instance(instance_name, source_name, s, e, x, y):
 
 
 def separate():
+    x_step = 110
+    y_step = 100
+
     tool_list: dict = comp.GetToolList(True, 'TextPlus')
+
     comp.Lock()
-    comp.StartUndo('RS Paste Instance')
+    comp.StartUndo('RS Text Separate')
     for v in tool_list.values():
         txt = v.GetInput('StyledText')
         if txt == '':
@@ -90,8 +99,6 @@ def separate():
         step = 1 / len(txt)
         st = v.SaveSettings()
         pos = st['Tools'][v.Name]['ViewInfo']['Pos']
-        x_step = 110
-        y_step = 100
 
         # make background
         bg_name = 'Background1'
@@ -103,6 +110,12 @@ def separate():
         st['Tools'][bg_name] = bg_st['Tools'][bg_name]
         prev = bg_name
         for i, c in enumerate(txt):
+            c = c.strip()
+            if c == '':
+                continue
+            if unicodedata.east_asian_width(c) not in 'FWA':
+                if c not in string.ascii_letters + string.digits:
+                    c = '_'
             # make instance
             inst_name = 'Instance' + v.Name + '_' + str(i) + '_' + c
             inst_st = make_instance(
