@@ -92,6 +92,7 @@ def separate():
 
     comp.Lock()
     comp.StartUndo('RS Text Separate')
+
     for v in tool_list.values():
         txt = v.GetInput('StyledText')
         if txt == '':
@@ -115,7 +116,7 @@ def separate():
                 continue
             if unicodedata.east_asian_width(c) not in 'FWA':
                 if c not in string.ascii_letters + string.digits:
-                    c = '_'
+                    c = ''
             # make instance
             inst_name = 'Instance' + v.Name + '_' + str(i) + '_' + c
             inst_st = make_instance(
