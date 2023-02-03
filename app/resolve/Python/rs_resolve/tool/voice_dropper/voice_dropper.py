@@ -320,7 +320,7 @@ class MainWindow(QMainWindow):
                 video_index = data.video_index
 
             # make timeline
-            self.add2log('Timeline: Start')
+            self.add2log('TMP TL: Start')
             tmp_tl_name = '_tmp_VoiceDropper_' + f.stem
             fcp_timeline = fcp.Timeline(self.xml)
             fcp_timeline.set_name(tmp_tl_name)
@@ -340,7 +340,7 @@ class MainWindow(QMainWindow):
             if tmp_timeline is None:
                 self.add2log('作業用Timelineの作成に失敗しました。')
                 continue
-            self.add2log(f'Timeline: {tmp_timeline.GetName()}')
+            self.add2log(f'TMP TL: {tmp_timeline.GetName()}')
 
             # time out 設定
             step = 0.2
@@ -383,7 +383,7 @@ class MainWindow(QMainWindow):
                 media_pool.DeleteTimelines([tmp_timeline])
                 continue
 
-            self.add2log('Timeline: audio clip')
+            self.add2log('TMP TL: audio clip')
             # 音声トラックの選択
             if audio_index != 1:
                 send_hotkey(['ctrl', 'alt', str(audio_index)])
@@ -407,9 +407,9 @@ class MainWindow(QMainWindow):
                 media_pool.DeleteTimelines([tmp_timeline])
                 continue
             duration = clip.GetDuration()
-            self.add2log('Timeline: audio clip insert')
+            self.add2log('TMP TL: audio clip insert')
 
-            self.add2log('Timeline: text clip')
+            self.add2log('TMP TL: text clip')
             # text+クリップの仮挿入
             media_pool.AppendToTimeline([text_template])
             send_hotkey(['ctrl', 'z'])
@@ -422,9 +422,9 @@ class MainWindow(QMainWindow):
                 'endFrame': duration - 1,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
                 'mediaType': 1,
             }])[0]
-            self.add2log('Timeline: text clip insert')
+            self.add2log('TMP TL: text clip insert')
 
-            self.add2log('Timeline: lua script')
+            self.add2log('TMP TL: lua script')
             # text+用のテキストを読み込み
             txt_file = f.parent.joinpath(f.stem + '.txt')
             if not txt_file.is_file() and data.make_text:
@@ -449,8 +449,8 @@ class MainWindow(QMainWindow):
             if ch_data.color in config.COLOR_LIST:
                 text_plus.SetClipColor(ch_data.color)
                 clip.SetClipColor(ch_data.color)
-            self.add2log('Timeline: lua script done')
-            self.add2log('Timeline: copy and paste')
+            self.add2log('TMP TL: lua script done')
+            self.add2log('TMP TL: copy and paste')
             # リンク、コピー
             send_hotkey(['ctrl', '4'])
             send_hotkey(['ctrl', 'a'])
@@ -461,7 +461,7 @@ class MainWindow(QMainWindow):
             send_hotkey(['ctrl', '4'])
             set_currentframe(timeline, current_frame)
             send_hotkey(['ctrl', 'v'])
-            self.add2log('Timeline: copy and paste done')
+            self.add2log('TMP TL: copy and paste done')
 
             # 再生ヘッドの移動
             set_currentframe(timeline, current_frame + duration + data.offset)
@@ -469,7 +469,7 @@ class MainWindow(QMainWindow):
             self.add2log('Import: ' + str(f))
             # 終了処理
             media_pool.DeleteTimelines([tmp_timeline])
-            self.add2log('Timeline: delete')
+            self.add2log('TMP TL: delete')
             #
             self.add2log('')
         # end
