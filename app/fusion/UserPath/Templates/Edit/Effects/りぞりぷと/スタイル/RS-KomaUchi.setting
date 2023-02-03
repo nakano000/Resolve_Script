@@ -1,0 +1,96 @@
+{
+	Tools = ordered() {
+		Koma = GroupOperator {
+			Tools = ordered() {
+				TimeStretcher1 = TimeStretcher {
+					ViewInfo = OperatorInfo { Pos = { 275, 82.5 } },
+					Inputs = {
+						InterpolateBetweenFrames = Input { Value = 0 },
+						SourceTime = Input {
+							Value = 50,
+							Expression = "math.max(time - (time % Frame), comp.GlobalStart)"
+						},
+						SampleSpread = Input { Disabled = true }
+					},
+					UserControls = ordered() {
+						Frame = {
+							INP_MaxAllowed = 1000000,
+							INP_MinAllowed = 1,
+							INP_MaxScale = 10,
+							INPID_InputControl = "ScrewControl",
+							INP_Default = 2,
+							ICS_ControlPage = "Controls",
+							LINKID_DataType = "Number",
+							LINKS_Name = "Frame",
+							INP_MinScale = 1,
+							INP_Integer = true
+						}
+					},
+					CtrlWZoom = false
+				},
+				Merge1CenterXYPath1Y = BezierSpline {
+					CtrlWZoom = false,
+					NameSet = true,
+					KeyFrames = {
+						[-100] = { 0.5, Flags = { Linear = true } }
+					},
+					SplineColor = { Green = 255, Blue = 0, Red = 0 }
+				},
+				Merge1CenterXYPath1X = BezierSpline {
+					CtrlWZoom = false,
+					NameSet = true,
+					KeyFrames = {
+						[0] = { 0, RH = { 33.3333, 0 } },
+						[100] = { 1, LH = { 66.6667, 1 } }
+					},
+					SplineColor = { Green = 0, Blue = 0, Red = 255 }
+				},
+				XYPath1 = XYPath {
+					DrawMode = "ModifyOnly",
+					CtrlWZoom = false,
+					Inputs = {
+						Y = Input {
+							Source = "Value",
+							SourceOp = "Merge1CenterXYPath1Y"
+						},
+						X = Input {
+							Source = "Value",
+							SourceOp = "Merge1CenterXYPath1X"
+						}
+					},
+					ShowKeyPoints = false
+				}
+			},
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					Source = "Input",
+					SourceOp = "TimeStretcher1"
+				},
+				Input1 = InstanceInput {
+					Source = "Frame",
+					Default = 2,
+					SourceOp = "TimeStretcher1"
+				}
+			},
+			Outputs = ordered() {
+				MainOutput1 = InstanceOutput {
+					Source = "Output",
+					SourceOp = "TimeStretcher1"
+				}
+			},
+			ViewInfo = GroupInfo {
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					AutoSnap = true,
+					GridSnap = true
+				},
+				Offset = { 0, 0 }
+			},
+			CtrlWZoom = false
+		}
+	}
+}
