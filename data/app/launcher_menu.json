@@ -48,5 +48,10 @@
     "name": "DiskCache",
     "path": "bin/disk_cache.py",
     "ss": "utility"
+  },
+    {
+    "name": "Characters",
+    "path": "bin/characters.py",
+    "ss": "utility"
   }
 ]

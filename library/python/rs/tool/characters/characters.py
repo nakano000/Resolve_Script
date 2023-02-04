@@ -1,22 +1,18 @@
-import json
 import sys
 from PySide2.QtCore import (
     Qt,
 )
 from PySide2.QtWidgets import (
     QApplication,
-    QFileDialog,
     QMainWindow,
-    QMessageBox,
 )
 
 from rs.gui import (
     appearance,
 )
-from rs_fusion.tool.characters.characters_ui import Ui_MainWindow
+from rs.tool.characters.characters_ui import Ui_MainWindow
 
 APP_NAME = '文字 コピペ用'
-
 
 
 class MainWindow(QMainWindow):
