@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>486</width>
-    <height>548</height>
+    <width>848</width>
+    <height>378</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -452,6 +452,149 @@
             </property>
            </widget>
           </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>古イタリア文字</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout" stretch="8,1">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_24">
+              <property name="styleSheet">
+               <string notr="true">font: 9pt &quot;Segoe UI Historic&quot;;</string>
+              </property>
+              <property name="text">
+               <string>𐌀𐌁𐌂𐌃𐌄𐌅𐌆𐌇𐌈𐌉𐌊𐌋𐌌𐌍𐌎𐌏𐌐𐌑𐌒𐌓𐌔𐌕𐌖𐌗𐌘𐌙𐌚𐌛𐌜𐌝𐌞𐌟𐌠𐌡𐌢𐌣</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_25">
+              <property name="styleSheet">
+               <string notr="true">font: 9pt &quot;Segoe UI Historic&quot;;</string>
+              </property>
+              <property name="text">
+               <string>𐌭𐌮𐌯</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>リュキア文字</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QLineEdit" name="lineEdit_26">
+            <property name="styleSheet">
+             <string notr="true">font: 9pt &quot;Segoe UI Historic&quot;</string>
+            </property>
+            <property name="text">
+             <string>𐊀𐊁𐊂𐊃𐊄𐊅𐊆𐊇𐊈𐊉𐊊𐊋𐊌𐊍𐊎𐊏𐊐𐊑𐊒𐊓𐊔𐊕𐊖𐊗𐊘𐊙𐊚𐊛𐊜</string>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>フェニキア文字</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="8,1">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_27">
+              <property name="font">
+               <font>
+                <family>Segoe UI Historic</family>
+                <pointsize>9</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 9pt &quot;Segoe UI Historic&quot;;</string>
+              </property>
+              <property name="text">
+               <string>𐤀𐤁𐤂𐤃𐤄𐤅𐤆𐤇𐤈𐤉𐤊𐤋𐤌𐤍𐤎𐤏𐤐𐤑𐤒𐤓𐤔𐤕𐤖𐤗𐤘𐤙𐤚𐤛</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_28">
+              <property name="styleSheet">
+               <string notr="true">font: 9pt &quot;Segoe UI Historic&quot;;</string>
+              </property>
+              <property name="text">
+               <string>𐤟</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>古代ペルシア文字</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,1">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_29">
+              <property name="styleSheet">
+               <string notr="true">font: 9pt &quot;Segoe UI Historic&quot;;</string>
+              </property>
+              <property name="text">
+               <string>𐎠𐎡𐎢𐎣𐎤𐎥𐎦𐎧𐎨𐎩𐎪𐎫𐎬𐎭𐎮𐎯𐎰𐎱𐎲𐎳𐎴𐎵𐎶𐎷𐎸𐎹𐎺𐎻𐎼𐎽𐎾𐎿𐏀𐏁𐏂𐏃</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_30">
+              <property name="styleSheet">
+               <string notr="true">font: 9pt &quot;Segoe UI Historic&quot;;</string>
+              </property>
+              <property name="text">
+               <string>𐏈𐏉𐏊𐏋𐏌𐏍𐏎𐏏𐏐𐏑𐏒𐏓𐏔𐏕</string>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
          </layout>
         </item>
         <item>
@@ -470,7 +613,7 @@
         <item>
          <widget class="QLabel" name="label_17">
           <property name="text">
-           <string>※ルーン文字は Segoe UI Historic 等で表示出来ます。</string>
+           <string>※ 後半の文字は Segoe UI Historic で表示しています。</string>
           </property>
          </widget>
         </item>
@@ -492,10 +635,14 @@
           <property name="font">
            <font>
             <family>Segoe UI Historic</family>
+            <pointsize>21</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">font-family: &quot;Segoe UI Historic&quot;;</string>
+           <string notr="true">font: 21pt &quot;Segoe UI Historic&quot;;</string>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -516,10 +663,14 @@
           <property name="font">
            <font>
             <family>Segoe UI Historic</family>
+            <pointsize>21</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">font-family: &quot;Segoe UI Historic&quot;;</string>
+           <string notr="true">font: 21pt &quot;Segoe UI Historic&quot;;</string>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -554,10 +705,14 @@
           <property name="font">
            <font>
             <family>Segoe UI Historic</family>
+            <pointsize>36</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">font-family: &quot;Segoe UI Historic&quot;;</string>
+           <string notr="true">font: 36pt &quot;Segoe UI Historic&quot;;</string>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -578,10 +733,14 @@
           <property name="font">
            <font>
             <family>Segoe UI Historic</family>
+            <pointsize>36</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">font-family: &quot;Segoe UI Historic&quot;;</string>
+           <string notr="true">font: 36pt &quot;Segoe UI Historic&quot;;</string>
           </property>
           <property name="readOnly">
            <bool>true</bool>
