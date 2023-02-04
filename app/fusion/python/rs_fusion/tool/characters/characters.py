@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(900, 400)
+        self.resize(600, 400)
 
 
 def run() -> None:
