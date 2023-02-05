@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>653</width>
-    <height>468</height>
+    <width>511</width>
+    <height>460</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,12 +20,9 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <property name="usesScrollButtons">
-       <bool>false</bool>
-      </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>数字</string>
+        <string>数字、記号</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
@@ -160,6 +157,43 @@
            <widget class="QLineEdit" name="lineEdit_8">
             <property name="text">
              <string>㊀㊁㊂㊃㊄㊅㊆㊇㊈㊉</string>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_29">
+            <property name="text">
+             <string>全角記号</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QLineEdit" name="lineEdit_33">
+            <property name="styleSheet">
+             <string notr="true">font: 12pt &quot;メイリオ&quot;;</string>
+            </property>
+            <property name="text">
+             <string>　、。，．・：；？！゛゜´｀¨＾￣＿ヽヾゝゞ〃仝々〆</string>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_30">
+            <property name="text">
+             <string>半角記号</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QLineEdit" name="lineEdit_44">
+            <property name="text">
+             <string>!&quot;#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~</string>
             </property>
             <property name="readOnly">
              <bool>true</bool>
