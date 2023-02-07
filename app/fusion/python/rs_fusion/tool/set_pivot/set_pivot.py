@@ -30,6 +30,15 @@ class H(enum.Enum):
     E = 2
 
 
+class Align(enum.Enum):
+    L = 0
+    VC = 1
+    R = 2
+    T = 3
+    HC = 4
+    B = 5
+
+
 class MainWindow(QMainWindow):
 
     def __init__(self, parent=None, fusion=None):
@@ -87,8 +96,43 @@ class MainWindow(QMainWindow):
         self.ui.setButton.clicked.connect(
             functools.partial(self.set_pivot, None, None)
         )
+        # align
+        self.ui.alignLButton.clicked.connect(
+            functools.partial(self.align_pivot, Align.L)
+        )
+        self.ui.alignVCButton.clicked.connect(
+            functools.partial(self.align_pivot, Align.VC)
+        )
+        self.ui.alignRButton.clicked.connect(
+            functools.partial(self.align_pivot, Align.R)
+        )
+        self.ui.alignTButton.clicked.connect(
+            functools.partial(self.align_pivot, Align.T)
+        )
+        self.ui.alignHCButton.clicked.connect(
+            functools.partial(self.align_pivot, Align.HC)
+        )
+        self.ui.alignBButton.clicked.connect(
+            functools.partial(self.align_pivot, Align.B)
+        )
+        # ui
+        self.ui.xIsLockCheckBox.stateChanged.connect(self.x_lock_changed)
+        self.ui.yIsLockCheckBox.stateChanged.connect(self.y_lock_changed)
+        #
         self.ui.minimizeButton.clicked.connect(functools.partial(self.setWindowState, Qt.WindowMinimized))
         self.ui.closeButton.clicked.connect(self.close)
+
+    def x_lock_changed(self):
+        self.ui.xLineEdit.setEnabled(not self.ui.xIsLockCheckBox.isChecked())
+        self.ui.alignRButton.setEnabled(not self.ui.xIsLockCheckBox.isChecked())
+        self.ui.alignVCButton.setEnabled(not self.ui.xIsLockCheckBox.isChecked())
+        self.ui.alignLButton.setEnabled(not self.ui.xIsLockCheckBox.isChecked())
+
+    def y_lock_changed(self):
+        self.ui.yLineEdit.setEnabled(not self.ui.yIsLockCheckBox.isChecked())
+        self.ui.alignTButton.setEnabled(not self.ui.yIsLockCheckBox.isChecked())
+        self.ui.alignHCButton.setEnabled(not self.ui.yIsLockCheckBox.isChecked())
+        self.ui.alignBButton.setEnabled(not self.ui.yIsLockCheckBox.isChecked())
 
     def set_pivot(self, v: V, h: H) -> None:
         resolve = self.fusion.GetResolve()
@@ -101,6 +145,9 @@ class MainWindow(QMainWindow):
         if comp is None:
             print('コンポジションが見付かりません。')
             return
+
+        x_attr = 'TOOLI_ImageWidth'
+        y_attr = 'TOOLI_ImageHeight'
 
         tools = comp.GetToolList(True)
 
@@ -124,8 +171,6 @@ class MainWindow(QMainWindow):
             if inp is None:
                 continue
             attr = tool.GetAttrs()
-            x_attr = 'TOOLI_ImageWidth'
-            y_attr = 'TOOLI_ImageHeight'
             if x_attr not in attr.keys() or y_attr not in attr.keys():
                 continue
 
@@ -156,6 +201,84 @@ class MainWindow(QMainWindow):
                 2: pvt[2] if self.ui.yIsLockCheckBox.isChecked() else y,
             }
 
+        comp.EndUndo(True)
+        comp.Unlock()
+
+    def align_pivot(self, align: Align) -> None:
+        resolve = self.fusion.GetResolve()
+        if resolve and resolve.GetCurrentPage() != 'fusion':
+            print('Fusion Pageで実行してください。')
+            return
+
+        # comp check
+        comp = self.fusion.CurrentComp
+        if comp is None:
+            print('コンポジションが見付かりません。')
+            return
+
+        x_attr = 'TOOLI_ImageWidth'
+        y_attr = 'TOOLI_ImageHeight'
+
+        tools = comp.GetToolList(True)
+        # get DoD
+        dod = None
+        for tool in tools.values():
+            pvt = tool.GetInput('Pivot')
+            if pvt is None:
+                continue
+
+            if dod is None:
+                dod = {1: pvt[1], 2: pvt[2], 3: pvt[1], 4: pvt[2]}
+            dod[1] = min(dod[1], pvt[1])
+            dod[2] = min(dod[2], pvt[2])
+            dod[3] = max(dod[3], pvt[1])
+            dod[4] = max(dod[4], pvt[2])
+        if dod is None:
+            return
+        # input
+        comp.Lock()
+        comp.StartUndo('RS Set Pivot')
+        for tool in tools.values():
+            pvt = tool.GetInput('Pivot')
+            if pvt is None:
+                continue
+
+            attr = tool.GetAttrs()
+            if x_attr not in attr.keys() or y_attr not in attr.keys():
+                continue
+            x_size = attr[x_attr]
+            y_size = attr[y_attr]
+
+            if align == Align.L:
+                tool.Pivot = {
+                    1: dod[1],
+                    2: pvt[2],
+                }
+            elif align == Align.R:
+                tool.Pivot = {
+                    1: dod[3],
+                    2: pvt[2],
+                }
+            elif align == Align.T:
+                tool.Pivot = {
+                    1: pvt[1],
+                    2: dod[4],
+                }
+            elif align == Align.B:
+                tool.Pivot = {
+                    1: pvt[1],
+                    2: dod[2],
+                }
+            elif align == Align.VC:
+                tool.Pivot = {
+                    1: (dod[1] + dod[3]) / 2,
+                    2: pvt[2],
+                }
+            elif align == Align.HC:
+                tool.Pivot = {
+                    1: pvt[1],
+                    2: (dod[2] + dod[4]) / 2,
+                }
         comp.EndUndo(True)
         comp.Unlock()
 
