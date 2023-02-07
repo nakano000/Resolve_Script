@@ -1,6 +1,14 @@
 {
 	Tools = ordered() {
 		Outline = GroupOperator {
+			CtrlWZoom = false,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "EditTemplates:\\Effects\\りぞりぷと\\スタイル\\"
+					}
+				},
+			},
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "PipeRouter1",
@@ -36,7 +44,7 @@
 					SourceOp = "Merge80",
 					Source = "Blend",
 					Default = 1,
-				},
+				}
 			},
 			Outputs = {
 				MainOutput1 = InstanceOutput {
@@ -44,14 +52,27 @@
 					Source = "Output",
 				}
 			},
-			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			ViewInfo = GroupInfo {
+				Pos = { 1430, -1567.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					AutoSnap = true
+				},
+				Size = { 612.938, 272.147, 306.469, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
 			Tools = ordered() {
 				PipeRouter1 = PipeRouter {
-					ViewInfo = PipeRouterInfo { Pos = { 4125, 643.5 } },
+					CtrlWShown = false,
+					ViewInfo = PipeRouterInfo { Pos = { -82.9688, 29.2576 } },
 				},
 				ChannelBooleans1 = ChannelBoolean {
 					Inputs = {
-						ClippingMode = Input { Value = FuID { "Frame" }, },
 						ToRed = Input { Value = 15, },
 						ToBlue = Input { Value = 15, },
 						ToAlpha = Input { Value = 16, },
@@ -64,7 +85,7 @@
 							Source = "Mask",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 4125, 808.5 } },
+					ViewInfo = OperatorInfo { Pos = { -82.9688, 194.258 } },
 				},
 				Bitmap1 = BitmapMask {
 					Inputs = {
@@ -80,10 +101,11 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 3960, 808.5 } },
+					ViewInfo = OperatorInfo { Pos = { -247.969, 194.258 } },
 				},
 				DeltaKeyer1 = DeltaKeyer {
 					Inputs = {
+						ClippingMode = Input { Value = FuID { "None" }, },
 						BackgroundRed = Input { Value = 0, },
 						BackgroundGreen = Input { Value = 1, },
 						BackgroundBlue = Input { Value = 0, },
@@ -123,11 +145,10 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 4290, 808.5 } },
+					ViewInfo = OperatorInfo { Pos = { 82.0312, 194.258 } },
 					Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 				},
 				Merge80 = Merge {
-					CtrlWZoom = false,
 					Inputs = {
 						Background = Input {
 							SourceOp = "PipeRouter1",
@@ -139,10 +160,9 @@
 						},
 						PerformDepthMerge = Input { Value = 0, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 4455, 808.5 } },
+					ViewInfo = OperatorInfo { Pos = { 247.031, 194.258 } },
 				}
 			},
 		}
-	},
-	ActiveTool = "Outline"
+	}
 }
