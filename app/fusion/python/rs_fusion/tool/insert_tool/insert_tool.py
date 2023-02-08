@@ -85,7 +85,6 @@ class MainWindow(QMainWindow):
         self.ui.closeButton.clicked.connect(self.close)
 
         #
-        self.ui.lineEdit.setFocus()
 
     def select_first(self):
         self.selection_model.select(self.proxy_model.index(0, 0), self.selection_model.ClearAndSelect)
@@ -122,6 +121,10 @@ class MainWindow(QMainWindow):
             return
         txt = self.model.data(self.proxy_model.mapToSource(indexes[0]), Qt.DisplayRole)
         op.insert(comp, self.dct[txt])
+
+    def show(self) -> None:
+        super().show()
+        self.ui.lineEdit.setFocus()
 
 
 def run(fusion) -> None:
