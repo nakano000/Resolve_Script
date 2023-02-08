@@ -87,7 +87,8 @@ class MainWindow(QMainWindow):
         #
 
     def select_first(self):
-        self.selection_model.select(self.proxy_model.index(0, 0), self.selection_model.ClearAndSelect)
+        self.selection_model.clearSelection()
+        self.selection_model.select(self.proxy_model.index(0, 0), self.selection_model.SelectCurrent)
 
     def select_up(self):
         indexes = self.selection_model.selectedIndexes()
