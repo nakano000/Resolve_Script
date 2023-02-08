@@ -23,6 +23,8 @@ from rs.core import (
 from rs.gui import (
     appearance,
 )
+
+from rs_fusion.core import operator as op
 from rs_fusion.tool.tatie.tatie_ui import Ui_MainWindow
 
 APP_NAME = '立ち絵アシスタント'
@@ -175,46 +177,7 @@ class MainWindow(QMainWindow):
 
         # data
         data = self.get_data()
-
-        flow = comp.CurrentFrame.FlowView
-        _x = -32768  # 自動的に配置する
-        _y = -32768
-
-        # Files
-        urls, _ = QFileDialog.getOpenFileNames(
-            caption="画像選択",
-            filter="music(*.dpx *.exr *.j2c *.jpg *.png *.tga *.tif)")
-        if not urls:
-            return
-
-        # undo
-        comp.Lock()
-        comp.StartUndo('RS Loader')
-
-        # deselect
-        for n in comp.GetToolList(False):
-            flow.Select(n, False)
-
-        # import
-        for url in urls:
-            node = comp.AddTool('Loader', _x, _y)
-            if _x == -32768:
-                _x, _y = flow.GetPosTable(node).values()
-                _x = int(_x)
-                _y = int(_y)
-                flow.SetPos(node, _x, _y)
-            node.Clip[1] = comp.ReverseMapPath(url.replace('/', '\\'))
-            node.Loop[1] = 1
-            node.PostMultiplyByAlpha = 1 if data.post_multiply else 0
-            node.GlobalIn = -1000
-            node.GlobalOut = -1000
-
-            flow.Select(node)
-            _x += 1
-
-        # end
-        comp.EndUndo(True)
-        comp.Unlock()
+        op.loader(comp, data.post_multiply)
         print('Done!')
 
     def get_tools(self, comp):
@@ -303,11 +266,11 @@ class MainWindow(QMainWindow):
 
         # XF
         _x, _y = flow.GetPosTable(tools[len(tools) - 1]).values()
-        xf = comp.AddTool('Transform', _x + 1, _y + 4)
+        xf = comp.AddTool('Transform', round(_x) + 1, round(_y) + 4)
 
         # BG
         _x, _y = flow.GetPosTable(tools[0]).values()
-        bg = comp.AddTool('Background', _x - 1, _y + 4)
+        bg = comp.AddTool('Background', round(_x) - 1, round(_y) + 4)
         bg.UseFrameFormatSettings = 0
         bg.Width = data.width
         bg.Height = data.height
@@ -346,7 +309,7 @@ class MainWindow(QMainWindow):
             if layer.ID == 'Loader':
                 layer_name = Path(layer.Clip[1]).stem.strip()
             _x, _y = flow.GetPosTable(layer).values()
-            mg = comp.AddTool('Merge', _x, _y + 4)
+            mg = comp.AddTool('Merge', round(_x), round(_y) + 4)
             mg.ConnectInput('Foreground', layer)
             mg.ConnectInput('Background', pre_node)
             if data.ctrl_type == CtrlID.COMBOBOX:
