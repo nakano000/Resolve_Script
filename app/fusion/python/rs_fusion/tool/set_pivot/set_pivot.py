@@ -243,12 +243,6 @@ class MainWindow(QMainWindow):
             if pvt is None:
                 continue
 
-            attr = tool.GetAttrs()
-            if x_attr not in attr.keys() or y_attr not in attr.keys():
-                continue
-            x_size = attr[x_attr]
-            y_size = attr[y_attr]
-
             if align == Align.L:
                 tool.Pivot = {
                     1: dod[1],

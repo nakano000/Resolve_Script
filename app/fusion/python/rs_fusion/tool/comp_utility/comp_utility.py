@@ -28,6 +28,7 @@ from rs_fusion.core import operator as op
 from rs_fusion.tool.comp_utility.comp_utility_ui import Ui_MainWindow
 from rs_fusion.tool.set_pivot import MainWindow as PivotWindow
 from rs_fusion.tool.insert_tool import MainWindow as InsertWindow
+from rs_fusion.tool.copy_tool import MainWindow as CopyWindow
 
 APP_NAME = 'CompUtility'
 
@@ -53,6 +54,7 @@ class MainWindow(QMainWindow):
         # window
         pivot_window = PivotWindow(fusion=self.fusion)
         insert_window = InsertWindow(fusion=self.fusion)
+        copy_window = CopyWindow(fusion=self.fusion)
 
         # menu
         lst = [
@@ -60,6 +62,7 @@ class MainWindow(QMainWindow):
             ('MERGE', self.merge),
             ('INSERT', insert_window.show),
             ('PIVOT', pivot_window.show),
+            ('COPY PARAM', copy_window.show),
         ]
         b = self.ui.toolButton
         menu = QMenu(b)

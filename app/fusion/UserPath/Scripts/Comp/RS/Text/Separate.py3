@@ -94,7 +94,7 @@ def separate():
     comp.StartUndo('RS Text Separate')
 
     for v in tool_list.values():
-        txt = v.GetInput('StyledText')
+        txt = v.GetInput('StyledText', comp.CurrentTime)
         if txt == '':
             continue
         step = 1 / len(txt)

@@ -8,7 +8,8 @@ from PySide2.QtCore import (
 from PySide2.QtGui import QKeySequence
 from PySide2.QtWidgets import (
     QApplication,
-    QMainWindow, QAction,
+    QMainWindow,
+    QAction,
 )
 
 from rs.gui import (

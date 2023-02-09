@@ -1,4 +1,10 @@
+from pathlib import Path
+from collections import OrderedDict
+
 from PySide2.QtWidgets import QFileDialog
+from rs.core import (
+    pipe as p,
+)
 
 
 def loader(comp, use_post_multiply=False):
@@ -100,3 +106,99 @@ def insert(comp, node_id):
         # end
     comp.EndUndo(True)
     comp.Unlock()
+
+
+def get_modifiers(tool, param_list=None):
+    modifiers = {}
+    for inp in tool.GetInputList().values():
+        if param_list is not None and inp.ID not in param_list:
+            continue
+        outp = inp.GetConnectedOutput()
+        if outp is None:
+            continue
+        x = outp.GetTool()
+        if x.GetAttrs()['TOOLB_Visible']:
+            continue
+        modifiers[x.Name] = x
+        modifiers.update(get_modifiers(x))
+    return modifiers
+
+
+def ordered_dict_to_dict(org_dict):
+    dct = dict(org_dict)
+    for k, v in dct.items():
+        if isinstance(v, dict):
+            dct[k] = ordered_dict_to_dict(v)
+    if isinstance(org_dict, OrderedDict):
+        dct['__flags'] = 2097152
+    return dct
+
+
+def copy(comp, src_tool_name, param_list=None, sift_step=0):
+    # tools
+    src_tool = comp.FindTool(src_tool_name)
+    if src_tool is None:
+        return
+    tools = list(comp.GetToolList(True, src_tool.ID).values())
+    if len(tools) < 1:
+        return
+
+    flow = comp.CurrentFrame.FlowView
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+
+    comp.Lock()
+    comp.StartUndo('RS Copy Param')
+    # main
+    cnt = 0
+    for tool in tools:
+        modifiers = get_modifiers(src_tool, param_list)
+        st = ordered_dict_to_dict(src_tool.SaveSettings())
+
+        # animation shift
+        splines = []
+        for modifier in modifiers.values():
+            if modifier.ID == 'BezierSpline':
+                splines.append(modifier.Name)
+        for node in st['Tools'].keys():
+            if node in splines:
+                keys = st['Tools'][node]['KeyFrames']
+                new_keys = {}
+                for frame in keys:
+                    key = keys[frame]
+                    if 'RH' in key.keys():
+                        key['RH'][1] += cnt * sift_step
+                    if 'LH' in key.keys():
+                        key['LH'][1] += cnt * sift_step
+                    new_keys[frame + cnt * sift_step] = keys[frame]
+                st['Tools'][node]['KeyFrames'] = new_keys
+        cnt += 1
+
+        # all param
+        if param_list is None:
+            # apply
+            tool.LoadSettings(st)
+            continue
+
+        # selected param
+        dst_st = ordered_dict_to_dict(tool.SaveSettings())
+        # set param
+        for param in param_list:
+            if param in st['Tools'][src_tool.Name]['Inputs']:
+                dst_st['Tools'][tool.Name]['Inputs'][param] = st['Tools'][src_tool.Name]['Inputs'][param]
+            else:
+                dst_st['Tools'][tool.Name]['Inputs'].pop(param, None)
+        # set modifiers
+        for other in st['Tools'].keys():
+            if other in modifiers.keys():
+                dst_st['Tools'][other] = st['Tools'][other]
+        # apply
+        tool.LoadSettings(dst_st)
+
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+if __name__ == '__main__':
+    # print(isinstance(OrderedDict(), dict))
+    # print(isinstance({}, OrderedDict))
+    pass
