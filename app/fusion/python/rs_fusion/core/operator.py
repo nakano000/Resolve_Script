@@ -26,8 +26,6 @@ def loader(comp, use_post_multiply=False):
 
     # deselect
     flow.Select()
-    # for n in comp.GetToolList(False):
-    #     flow.Select(n, False)
 
     # import
     for url in urls:
