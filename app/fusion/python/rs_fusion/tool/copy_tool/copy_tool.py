@@ -163,13 +163,16 @@ class MainWindow(QMainWindow):
         if len(param_list) == 0:
             param_list = None
 
-        step = self.ui.stepLineEdit.text()
-        if step in ['', '+', '-']:
-            self.ui.stepLineEdit.setText(str(0))
-            step = 0
-        else:
-            step = int(step)
-        op.copy(comp, self.tool_name, param_list, step)
+        def to_int(_str):
+            if _str in ['', '+', '-']:
+                return 0
+            return int(_str)
+
+        step = to_int(self.ui.stepLineEdit.text())
+        jitter_inf = to_int(self.ui.jitterInfLineEdit.text())
+        jitter_sup = to_int(self.ui.jitterSupLineEdit.text())
+
+        op.copy(comp, self.tool_name, param_list, step, jitter_inf, jitter_sup)
 
     def show(self) -> None:
         super().show()

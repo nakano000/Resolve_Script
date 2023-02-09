@@ -1,24 +1,16 @@
 import sys
-from functools import partial
-from pathlib import Path
 
 from PySide2.QtCore import (
     Qt,
 )
-from PySide2.QtGui import (
-    QColor,
-)
+
 from PySide2.QtWidgets import (
     QApplication,
-    QFileDialog,
-    QMainWindow, QMenu, QAction, QMessageBox,
+    QMainWindow,
+    QMenu,
+    QAction,
 )
 
-from rs.core import (
-    config,
-    pipe as p,
-    util,
-)
 from rs.gui import (
     appearance,
 )

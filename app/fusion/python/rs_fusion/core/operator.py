@@ -1,5 +1,6 @@
 from pathlib import Path
 from collections import OrderedDict
+import random
 
 from PySide2.QtWidgets import QFileDialog
 from rs.core import (
@@ -134,7 +135,7 @@ def ordered_dict_to_dict(org_dict):
     return dct
 
 
-def copy(comp, src_tool_name, param_list=None, sift_step=0):
+def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter_sup=0):
     # tools
     src_tool = comp.FindTool(src_tool_name)
     if src_tool is None:
@@ -163,13 +164,15 @@ def copy(comp, src_tool_name, param_list=None, sift_step=0):
             if node in splines:
                 keys = st['Tools'][node]['KeyFrames']
                 new_keys = {}
+                jitter = random.randint(jitter_inf, jitter_sup)
+                frame_offset = cnt * sift_step + jitter
                 for frame in keys:
                     key = keys[frame]
                     if 'RH' in key.keys():
-                        key['RH'][1] += cnt * sift_step
+                        key['RH'][1] += frame_offset
                     if 'LH' in key.keys():
-                        key['LH'][1] += cnt * sift_step
-                    new_keys[frame + cnt * sift_step] = keys[frame]
+                        key['LH'][1] += frame_offset
+                    new_keys[frame + frame_offset] = keys[frame]
                 st['Tools'][node]['KeyFrames'] = new_keys
         cnt += 1
 
