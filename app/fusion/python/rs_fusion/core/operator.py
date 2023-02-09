@@ -25,8 +25,9 @@ def loader(comp, use_post_multiply=False):
     comp.StartUndo('RS Loader')
 
     # deselect
-    for n in comp.GetToolList(False):
-        flow.Select(n, False)
+    flow.Select()
+    # for n in comp.GetToolList(False):
+    #     flow.Select(n, False)
 
     # import
     for url in urls:
@@ -65,6 +66,7 @@ def merge(comp):
 
     pre_node = None
 
+    flow.Select()
     for tool in tools:
         if pre_node is None:
             pre_node = tool
@@ -74,6 +76,7 @@ def merge(comp):
         mg.ConnectInput('Foreground', tool)
         mg.ConnectInput('Background', pre_node)
         pre_node = mg
+        flow.Select(mg)
     # end
     comp.EndUndo(True)
     comp.Unlock()
@@ -91,9 +94,12 @@ def insert(comp, node_id):
     # undo
     comp.Lock()
     comp.StartUndo('RS Insert')
+
+    flow.Select()
     for tool in tools:
         _x, _y = flow.GetPosTable(tool).values()
         node = comp.AddTool(node_id, round(_x), round(_y) + 4)
+        flow.Select(node)
         outp = tool.FindMainOutput(1)
         if outp is None:
             continue
