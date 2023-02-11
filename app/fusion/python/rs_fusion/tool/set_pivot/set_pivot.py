@@ -154,13 +154,13 @@ class MainWindow(QMainWindow):
         comp.Lock()
         comp.StartUndo('RS Set Pivot')
         for tool in tools.values():
-            pvt = tool.GetInput('Pivot')
+            pvt = tool.GetInput('Pivot', comp.CurrentTime)
             if pvt is None:
                 continue
 
             # input number
             if None in [v, h]:
-                tool.Pivot = {
+                tool.Pivot[comp.CurrentTime] = {
                     1: pvt[1] if self.ui.xIsLockCheckBox.isChecked() else float(self.ui.xLineEdit.text()),
                     2: pvt[2] if self.ui.yIsLockCheckBox.isChecked() else float(self.ui.yLineEdit.text()),
                 }
@@ -196,7 +196,7 @@ class MainWindow(QMainWindow):
             elif v == V.N:
                 y = dod[4] / y_size
 
-            tool.Pivot = {
+            tool.Pivot[comp.CurrentTime] = {
                 1: pvt[1] if self.ui.xIsLockCheckBox.isChecked() else x,
                 2: pvt[2] if self.ui.yIsLockCheckBox.isChecked() else y,
             }
@@ -223,7 +223,7 @@ class MainWindow(QMainWindow):
         # get DoD
         dod = None
         for tool in tools.values():
-            pvt = tool.GetInput('Pivot')
+            pvt = tool.GetInput('Pivot',comp.CurrentTime)
             if pvt is None:
                 continue
 
@@ -239,37 +239,37 @@ class MainWindow(QMainWindow):
         comp.Lock()
         comp.StartUndo('RS Set Pivot')
         for tool in tools.values():
-            pvt = tool.GetInput('Pivot')
+            pvt = tool.GetInput('Pivot', comp.CurrentTime)
             if pvt is None:
                 continue
 
             if align == Align.L:
-                tool.Pivot = {
+                tool.Pivot[comp.CurrentTime] = {
                     1: dod[1],
                     2: pvt[2],
                 }
             elif align == Align.R:
-                tool.Pivot = {
+                tool.Pivot[comp.CurrentTime] = {
                     1: dod[3],
                     2: pvt[2],
                 }
             elif align == Align.T:
-                tool.Pivot = {
+                tool.Pivot[comp.CurrentTime] = {
                     1: pvt[1],
                     2: dod[4],
                 }
             elif align == Align.B:
-                tool.Pivot = {
+                tool.Pivot[comp.CurrentTime] = {
                     1: pvt[1],
                     2: dod[2],
                 }
             elif align == Align.VC:
-                tool.Pivot = {
+                tool.Pivot[comp.CurrentTime] = {
                     1: (dod[1] + dod[3]) / 2,
                     2: pvt[2],
                 }
             elif align == Align.HC:
-                tool.Pivot = {
+                tool.Pivot[comp.CurrentTime] = {
                     1: pvt[1],
                     2: (dod[2] + dod[4]) / 2,
                 }

@@ -367,7 +367,7 @@ class MainWindow(QMainWindow):
 
             tool = comp.FindTool(row.node)
             if tool is not None:
-                _v = tool.GetInput(row.id)
+                _v = tool.GetInput(row.id, comp.CurrentTime)
                 if type(_v) == float:
                     value = _v
             if row.id != row.name:
