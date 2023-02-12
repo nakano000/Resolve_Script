@@ -216,6 +216,8 @@ def background(comp, padding_x=0, padding_y=0, is_square=False):
 
     x_attr = 'TOOLI_ImageWidth'
     y_attr = 'TOOLI_ImageHeight'
+    comp_x = comp.GetPrefs("Comp.FrameFormat.Width")
+    comp_y = comp.GetPrefs("Comp.FrameFormat.Height")
 
     # undo
     comp.Lock()
@@ -249,14 +251,12 @@ def background(comp, padding_x=0, padding_y=0, is_square=False):
             continue
         x_size = attrs[x_attr]
         y_size = attrs[y_attr]
-        print(outp, x_size, y_size)
         if None in (outp, x_size, y_size):
-            print('None')
             continue
+        bg.UseFrameFormatSettings = int(comp_x == x_size and comp_y == y_size)
         bg.Width = x_size
         bg.Height = y_size
         dod = outp.GetDoD()
-        print(dod)
         if dod is None:
             dod = {1: 0, 2: 0, 3: x_size, 4: y_size}
         mask.Center = {
