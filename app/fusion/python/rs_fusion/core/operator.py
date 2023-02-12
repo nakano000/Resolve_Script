@@ -205,6 +205,61 @@ def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter
     comp.Unlock()
 
 
+def background(comp, padding_x=0, padding_y=0, is_square=False):
+    # tools
+    tools = list(comp.GetToolList(True).values())
+    if len(tools) < 1:
+        return
+
+    flow = comp.CurrentFrame.FlowView
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+
+    x_attr = 'TOOLI_ImageWidth'
+    y_attr = 'TOOLI_ImageHeight'
+
+    # undo
+    comp.Lock()
+    comp.StartUndo('RS BG')
+
+    flow.Select()
+    for tool in tools:
+        _x, _y = flow.GetPosTable(tool).values()
+        mask = comp.AddTool('RectangleMask', round(_x) - 2, round(_y) + 4)
+        bg = comp.AddTool('Background', round(_x) - 1, round(_y) + 4)
+        mg = comp.AddTool('Merge', round(_x), round(_y) + 4)
+        mg.ConnectInput('Foreground', tool)
+        mg.ConnectInput('Background', bg)
+        bg.ConnectInput('EffectMask', mask)
+        flow.Select(mask)
+        flow.Select(bg)
+        flow.Select(mg)
+        attrs = tool.GetAttrs()
+        if x_attr not in attrs.keys() or y_attr not in attrs.keys():
+            continue
+        x_size = attrs[x_attr]
+        y_size = attrs[y_attr]
+        if None in (tool.Output, x_size, y_size):
+            continue
+        bg.Width = x_size
+        bg.Height = y_size
+        dod = tool.Output.GetDoD()
+        if dod is None:
+            dod = {1: 0, 2: 0, 3: x_size, 4: y_size}
+        mask.Center = {
+            1: (dod[1] + dod[3]) / (2 * x_size),
+            2: (dod[2] + dod[4]) / (2 * y_size),
+        }
+        _w = dod[3] - dod[1] + (padding_x * 2)
+        _h = dod[4] - dod[2] + (padding_y * 2)
+        if is_square:
+            _w = max(_w, _h)
+            _h = _w
+        mask.Width = _w / x_size
+        mask.Height = _h / y_size
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
 if __name__ == '__main__':
     # print(isinstance(OrderedDict(), dict))
     # print(isinstance({}, OrderedDict))

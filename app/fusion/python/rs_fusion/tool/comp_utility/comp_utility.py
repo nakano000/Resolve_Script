@@ -21,6 +21,7 @@ from rs_fusion.tool.comp_utility.comp_utility_ui import Ui_MainWindow
 from rs_fusion.tool.set_pivot import MainWindow as PivotWindow
 from rs_fusion.tool.insert_tool import MainWindow as InsertWindow
 from rs_fusion.tool.copy_tool import MainWindow as CopyWindow
+from rs_fusion.tool.bg_tool import MainWindow as BgWindow
 
 APP_NAME = 'CompUtility'
 
@@ -44,17 +45,19 @@ class MainWindow(QMainWindow):
         self.fusion = fusion
 
         # window
-        pivot_window = PivotWindow(fusion=self.fusion)
-        insert_window = InsertWindow(fusion=self.fusion)
-        copy_window = CopyWindow(fusion=self.fusion)
+        self.pivot_window = None
+        self.insert_window = None
+        self.copy_window = None
+        self.bg_window = None
 
         # menu
         lst = [
             ('STILL IMAGE', self.load),
             ('MERGE', self.merge),
-            ('INSERT', insert_window.show),
-            ('PIVOT', pivot_window.show),
-            ('COPY PARAM', copy_window.show),
+            ('INSERT', self.insert_tool),
+            ('PIVOT', self.pivot_tool),
+            ('COPY PARAM', self.copy_tool),
+            ('BG', self.bg_tool),
         ]
         b = self.ui.toolButton
         menu = QMenu(b)
@@ -93,11 +96,25 @@ class MainWindow(QMainWindow):
             return
         op.merge(comp)
 
-    def insert(self):
-        comp = self.get_comp()
-        if comp is None:
-            return
-        op.insert(comp, 'Transform')
+    def insert_tool(self):
+        if self.insert_window is None:
+            self.insert_window = InsertWindow(fusion=self.fusion)
+        self.insert_window.show()
+
+    def pivot_tool(self):
+        if self.pivot_window is None:
+            self.pivot_window = PivotWindow(fusion=self.fusion)
+        self.pivot_window.show()
+
+    def copy_tool(self):
+        if self.copy_window is None:
+            self.copy_window = CopyWindow(fusion=self.fusion)
+        self.copy_window.show()
+
+    def bg_tool(self):
+        if self.bg_window is None:
+            self.bg_window = BgWindow(fusion=self.fusion)
+        self.bg_window.show()
 
 
 def run(fusion) -> None:
