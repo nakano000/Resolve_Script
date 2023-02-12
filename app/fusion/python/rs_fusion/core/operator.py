@@ -224,25 +224,39 @@ def background(comp, padding_x=0, padding_y=0, is_square=False):
     flow.Select()
     for tool in tools:
         _x, _y = flow.GetPosTable(tool).values()
+        # add
         mask = comp.AddTool('RectangleMask', round(_x) - 2, round(_y) + 4)
         bg = comp.AddTool('Background', round(_x) - 1, round(_y) + 4)
         mg = comp.AddTool('Merge', round(_x), round(_y) + 4)
-        mg.ConnectInput('Foreground', tool)
-        mg.ConnectInput('Background', bg)
-        bg.ConnectInput('EffectMask', mask)
         flow.Select(mask)
         flow.Select(bg)
         flow.Select(mg)
+
+        # connect
+        outp = tool.FindMainOutput(1)
+        if outp is not None:
+            inputs = outp.GetConnectedInputs()
+            for i in inputs.values():
+                i.ConnectTo(mg.Output)
+
+        mg.ConnectInput('Foreground', tool)
+        mg.ConnectInput('Background', bg)
+        bg.ConnectInput('EffectMask', mask)
+
+        # set param
         attrs = tool.GetAttrs()
         if x_attr not in attrs.keys() or y_attr not in attrs.keys():
             continue
         x_size = attrs[x_attr]
         y_size = attrs[y_attr]
-        if None in (tool.Output, x_size, y_size):
+        print(outp, x_size, y_size)
+        if None in (outp, x_size, y_size):
+            print('None')
             continue
         bg.Width = x_size
         bg.Height = y_size
-        dod = tool.Output.GetDoD()
+        dod = outp.GetDoD()
+        print(dod)
         if dod is None:
             dod = {1: 0, 2: 0, 3: x_size, 4: y_size}
         mask.Center = {
