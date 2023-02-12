@@ -18,10 +18,6 @@ from rs.gui import (
 from rs_fusion.core import operator as op
 
 from rs_fusion.tool.comp_utility.comp_utility_ui import Ui_MainWindow
-from rs_fusion.tool.set_pivot import MainWindow as PivotWindow
-from rs_fusion.tool.insert_tool import MainWindow as InsertWindow
-from rs_fusion.tool.copy_tool import MainWindow as CopyWindow
-from rs_fusion.tool.bg_tool import MainWindow as BgWindow
 
 APP_NAME = 'CompUtility'
 
@@ -97,21 +93,25 @@ class MainWindow(QMainWindow):
         op.merge(comp)
 
     def insert_tool(self):
+        from rs_fusion.tool.insert_tool import MainWindow as InsertWindow
         if self.insert_window is None:
             self.insert_window = InsertWindow(fusion=self.fusion)
         self.insert_window.show()
 
     def pivot_tool(self):
+        from rs_fusion.tool.set_pivot import MainWindow as PivotWindow
         if self.pivot_window is None:
             self.pivot_window = PivotWindow(fusion=self.fusion)
         self.pivot_window.show()
 
     def copy_tool(self):
+        from rs_fusion.tool.copy_tool import MainWindow as CopyWindow
         if self.copy_window is None:
             self.copy_window = CopyWindow(fusion=self.fusion)
         self.copy_window.show()
 
     def bg_tool(self):
+        from rs_fusion.tool.bg_tool import MainWindow as BgWindow
         if self.bg_window is None:
             self.bg_window = BgWindow(fusion=self.fusion)
         self.bg_window.show()
