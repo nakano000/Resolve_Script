@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
         self.insert_window = None
         self.copy_window = None
         self.bg_window = None
+        self.color_window = None
 
         # menu
         lst = [
@@ -54,6 +55,7 @@ class MainWindow(QMainWindow):
             ('PIVOT', self.pivot_tool),
             ('COPY PARAM', self.copy_tool),
             ('BG', self.bg_tool),
+            ('COLOR', self.color_tool),
         ]
         b = self.ui.toolButton
         menu = QMenu(b)
@@ -115,6 +117,12 @@ class MainWindow(QMainWindow):
         if self.bg_window is None:
             self.bg_window = BgWindow(fusion=self.fusion)
         self.bg_window.show()
+
+    def color_tool(self):
+        from rs_fusion.tool.color_tool import MainWindow as ColorWindow
+        if self.color_window is None:
+            self.color_window = ColorWindow(fusion=self.fusion)
+        self.color_window.show()
 
 
 def run(fusion) -> None:

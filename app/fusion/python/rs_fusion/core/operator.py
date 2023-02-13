@@ -149,6 +149,7 @@ def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter
         return
 
     flow = comp.CurrentFrame.FlowView
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
     tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
 
     comp.Lock()
@@ -270,6 +271,46 @@ def background(comp, padding_x=0, padding_y=0, is_square=False):
             _h = _w
         mask.Width = _w / x_size
         mask.Height = _h / y_size
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+def apply_color(comp, color_list, is_random=False):
+    # tools
+    tools = list(comp.GetToolList(True).values())
+    if len(tools) < 1:
+        return
+
+    flow = comp.CurrentFrame.FlowView
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+    if is_random:
+        random.shuffle(tools)
+
+    color_attrs = [
+        ['TopLeftRed', 'TopLeftGreen', 'TopLeftBlue'],
+        ['Red1', 'Green1', 'Blue1'],
+        ['Red', 'Green', 'Blue'],
+    ]
+
+    # undo
+    comp.Lock()
+    comp.StartUndo('RS Color')
+
+    cnt = 0
+    for tool in tools:
+        color_attr = None
+        for c in color_attrs:
+            if tool.GetInput(c[0], comp.CurrentTime) is not None:
+                color_attr = c
+                break
+        if color_attr is None:
+            continue
+        color = color_list[cnt % len(color_list)]
+        for i in range(3):
+            tool.SetInput(color_attr[i], color[i], comp.CurrentTime)
+
+        cnt += 1
     comp.EndUndo(True)
     comp.Unlock()
 
