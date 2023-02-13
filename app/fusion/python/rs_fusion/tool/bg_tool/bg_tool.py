@@ -44,16 +44,16 @@ class MainWindow(QMainWindow):
         self.ui.paddingYSpinBox.setValue(100)
 
         # button
-        self.ui.addButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.insertButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
-        self.ui.addButton.clicked.connect(self.add)
+        self.ui.insertButton.clicked.connect(self.insert)
         self.ui.minimizeButton.clicked.connect(functools.partial(self.setWindowState, Qt.WindowMinimized))
         self.ui.closeButton.clicked.connect(self.close)
 
         #
 
-    def add(self):
+    def insert(self):
         resolve = self.fusion.GetResolve()
         if resolve is not None and resolve.GetCurrentPage() != 'fusion':
             return

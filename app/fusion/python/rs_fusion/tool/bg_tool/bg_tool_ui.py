@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\bg_tool\bg_tool.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\bg_tool\bg_tool.ui' applies.
 #
-# Created: Sun Feb 12 14:58:29 2023
+# Created: Mon Feb 13 12:56:34 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -45,10 +45,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSpacing(2)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.addButton = QtWidgets.QPushButton(self.centralwidget)
-        self.addButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.addButton.setObjectName("addButton")
-        self.horizontalLayout.addWidget(self.addButton)
+        self.insertButton = QtWidgets.QPushButton(self.centralwidget)
+        self.insertButton.setMinimumSize(QtCore.QSize(80, 30))
+        self.insertButton.setObjectName("insertButton")
+        self.horizontalLayout.addWidget(self.insertButton)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Padding", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "X", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Y", None, -1))
-        self.addButton.setText(QtWidgets.QApplication.translate("MainWindow", "add", None, -1))
+        self.insertButton.setText(QtWidgets.QApplication.translate("MainWindow", "insert", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
         self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.closeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "閉じる", None, -1))
