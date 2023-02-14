@@ -51,6 +51,9 @@ class MainWindow(QMainWindow):
 
         self.fusion = fusion
 
+        self.def_dir = config.CONFIG_DIR.joinpath('color_tool')
+        self.def_dir.mkdir(parents=True, exist_ok=True)
+
         # table
         v = self.ui.tableView
         m: Model = v.model()
@@ -203,7 +206,7 @@ class MainWindow(QMainWindow):
         path, _ = QFileDialog.getOpenFileName(
             self,
             'Open File',
-            None if self.file is None else str(self.file.parent),
+            str(self.def_dir) if self.file is None else str(self.file.parent),
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
@@ -228,7 +231,7 @@ class MainWindow(QMainWindow):
         path, _ = QFileDialog.getSaveFileName(
             self,
             'Save File',
-            'color.json' if self.file is None else str(self.file),
+            str(self.def_dir.joinpath('color.json')) if self.file is None else str(self.file),
             'JSON File (*.json);;All File (*.*)'
         )
         if path != '':
