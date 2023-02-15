@@ -101,7 +101,7 @@ class MainWindow(QMainWindow):
         self.insert_window.show()
 
     def pivot_tool(self):
-        from rs_fusion.tool.set_pivot import MainWindow as PivotWindow
+        from rs_fusion.tool.pivot_tool import MainWindow as PivotWindow
         if self.pivot_window is None:
             self.pivot_window = PivotWindow(fusion=self.fusion)
         self.pivot_window.show()

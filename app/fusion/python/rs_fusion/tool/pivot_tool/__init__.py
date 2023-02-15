@@ -1,4 +1,4 @@
-from .set_pivot import (
+from .pivot_tool import (
     run,
     MainWindow,
 )

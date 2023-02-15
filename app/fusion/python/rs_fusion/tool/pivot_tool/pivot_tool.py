@@ -13,9 +13,9 @@ from PySide2.QtWidgets import (
 from rs.gui import (
     appearance,
 )
-from rs_fusion.tool.set_pivot.set_pivot_ui import Ui_MainWindow
+from rs_fusion.tool.pivot_tool.pivot_tool_ui import Ui_MainWindow
 
-APP_NAME = 'SetPivot'
+APP_NAME = 'PivotTool'
 
 
 class V(enum.Enum):
