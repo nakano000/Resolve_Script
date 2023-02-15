@@ -6,7 +6,6 @@ from pathlib import Path
 import dataclasses
 from PySide2.QtCore import (
     Qt,
-    QModelIndex,
 )
 from PySide2.QtGui import QColor
 from PySide2.QtWidgets import (
