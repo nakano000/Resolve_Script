@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\copy_tool\copy_tool.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\copy_tool\copy_tool.ui' applies.
 #
-# Created: Thu Feb  9 17:03:24 2023
+# Created: Wed Feb 15 17:09:54 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,6 +23,20 @@ class Ui_MainWindow(object):
         self.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.treeView.setObjectName("treeView")
         self.verticalLayout.addWidget(self.treeView)
+        self.groupBox_3 = QtWidgets.QGroupBox(self.centralwidget)
+        self.groupBox_3.setObjectName("groupBox_3")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.groupBox_3)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.l2rRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
+        self.l2rRadioButton.setChecked(True)
+        self.l2rRadioButton.setObjectName("l2rRadioButton")
+        self.horizontalLayout_3.addWidget(self.l2rRadioButton)
+        self.randomRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
+        self.randomRadioButton.setObjectName("randomRadioButton")
+        self.horizontalLayout_3.addWidget(self.randomRadioButton)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem)
+        self.verticalLayout.addWidget(self.groupBox_3)
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setObjectName("groupBox")
         self.formLayout = QtWidgets.QFormLayout(self.groupBox)
@@ -56,8 +70,8 @@ class Ui_MainWindow(object):
         self.setButton.setMinimumSize(QtCore.QSize(80, 30))
         self.setButton.setObjectName("setButton")
         self.horizontalLayout_4.addWidget(self.setButton)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem1)
         self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
         self.minimizeButton.setMinimumSize(QtCore.QSize(30, 30))
         self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)
@@ -75,6 +89,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
+        self.groupBox_3.setTitle(QtWidgets.QApplication.translate("MainWindow", "Oder", None, -1))
+        self.l2rRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "LtoR", None, -1))
+        self.randomRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "random", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Animation Shift", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Step", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Jitter", None, -1))

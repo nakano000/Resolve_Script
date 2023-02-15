@@ -139,18 +139,20 @@ def ordered_dict_to_dict(org_dict):
     return dct
 
 
-def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter_sup=0):
+def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter_sup=0, is_random=False):
     # tools
     src_tool = comp.FindTool(src_tool_name)
     if src_tool is None:
         return
-    tools = list(comp.GetToolList(True, src_tool.ID).values())
+    tools = list(comp.GetToolList(True).values())
     if len(tools) < 1:
         return
 
     flow = comp.CurrentFrame.FlowView
     tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
     tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+    if is_random:
+        random.shuffle(tools)
 
     comp.Lock()
     comp.StartUndo('RS Copy Param')

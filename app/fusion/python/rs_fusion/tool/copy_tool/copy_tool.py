@@ -172,7 +172,15 @@ class MainWindow(QMainWindow):
         jitter_inf = to_int(self.ui.jitterInfLineEdit.text())
         jitter_sup = to_int(self.ui.jitterSupLineEdit.text())
 
-        op.copy(comp, self.tool_name, param_list, step, jitter_inf, jitter_sup)
+        op.copy(
+            comp,
+            self.tool_name,
+            param_list=param_list,
+            sift_step=step,
+            jitter_inf=jitter_inf,
+            jitter_sup=jitter_sup,
+            is_random=self.ui.randomRadioButton.isChecked(),
+        )
 
     def show(self) -> None:
         super().show()
