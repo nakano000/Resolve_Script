@@ -103,38 +103,28 @@ class MainWindow(QMainWindow):
         node = QStandardItem(tool.Name)
         node.setSelectable(False)
         m.appendRow(node)
-        # in
-        i = 1
-        while True:
-            inp = tool.FindMainInput(i)
-            if inp is None:
-                break
-            attrs = inp.GetAttrs()
-            name = inp.Name
-            if 'INPS_IC_Name' in attrs:
-                name = attrs['INPS_IC_Name']
-            i += 1
-            # page
-            page_names: dict = tool.GetControlPageNames()
-            inp_dict: dict = tool.GetInputList()
-            for page_name in page_names.values():
-                page = QStandardItem(page_name)
-                page.setSelectable(False)
-                node.appendRow(page)
-                for inp in inp_dict.values():
-                    attrs = inp.GetAttrs()
-                    name = inp.Name
-                    if 'INPS_IC_Name' in attrs:
-                        name = attrs['INPS_IC_Name']
-                    if attrs['INPI_IC_ControlPage'] not in page_names.keys():
-                        continue
-                    if page_name != page_names[attrs['INPI_IC_ControlPage']]:
-                        continue
-                    page.appendRow(make_row(
-                        inp.ID,
-                        name,
-                        attrs['INPS_DataType'],
-                    ))
+
+        # page
+        page_names: dict = tool.GetControlPageNames()
+        inp_dict: dict = tool.GetInputList()
+        for page_name in page_names.values():
+            page = QStandardItem(page_name)
+            page.setSelectable(False)
+            node.appendRow(page)
+            for inp in inp_dict.values():
+                attrs = inp.GetAttrs()
+                name = inp.Name
+                if 'INPS_IC_Name' in attrs:
+                    name = attrs['INPS_IC_Name']
+                if attrs['INPI_IC_ControlPage'] not in page_names.keys():
+                    continue
+                if page_name != page_names[attrs['INPI_IC_ControlPage']]:
+                    continue
+                page.appendRow(make_row(
+                    inp.ID,
+                    name,
+                    attrs['INPS_DataType'],
+                ))
         #
         v.expandAll()
 
