@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
         self.copy_window = None
         self.bg_window = None
         self.color_window = None
+        self.center_window = None
 
         # menu
         lst = [
@@ -53,6 +54,7 @@ class MainWindow(QMainWindow):
             ('MERGE', self.merge),
             ('INSERT', self.insert_tool),
             ('PIVOT', self.pivot_tool),
+            ('CENTER', self.center_tool),
             ('COPY PARAM', self.copy_tool),
             ('BG', self.bg_tool),
             ('COLOR', self.color_tool),
@@ -123,6 +125,12 @@ class MainWindow(QMainWindow):
         if self.color_window is None:
             self.color_window = ColorWindow(fusion=self.fusion)
         self.color_window.show()
+
+    def center_tool(self):
+        from rs_fusion.tool.center_tool import MainWindow as CenterWindow
+        if self.center_window is None:
+            self.center_window = CenterWindow(fusion=self.fusion)
+        self.center_window.show()
 
 
 def run(fusion) -> None:

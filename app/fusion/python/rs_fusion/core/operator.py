@@ -1,3 +1,4 @@
+import enum
 from pathlib import Path
 from collections import OrderedDict
 import random
@@ -313,6 +314,254 @@ def apply_color(comp, color_list, is_random=False):
             tool.SetInput(color_attr[i], color[i], comp.CurrentTime)
 
         cnt += 1
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+class AlignType(enum.Enum):
+    L = 0
+    C = 1
+    R = 2
+
+
+class AlignType2D(enum.Enum):
+    L = 0
+    VC = 1
+    R = 2
+    T = 3
+    HC = 4
+    B = 5
+
+
+def align(comp, attr_id: str, align_type: AlignType):
+    tools = comp.GetToolList(True)
+    if len(tools) < 2:
+        return
+    # get range
+    min_v = max_v = None
+    for tool in tools.values():
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        if min_v is None:
+            min_v = max_v = _v
+        min_v = min(min_v, _v)
+        max_v = max(max_v, _v)
+
+    # main
+    comp.Lock()
+    comp.StartUndo('RS Align')
+    for tool in tools.values():
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+
+        if align_type == AlignType.L:
+            tool.SetInput(attr_id, min_v, comp.CurrentTime)
+        elif align_type == AlignType.R:
+            tool.SetInput(attr_id, max_v, comp.CurrentTime)
+        elif align_type == AlignType.C:
+            tool.SetInput(attr_id, (min_v + max_v) / 2, comp.CurrentTime)
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+def align2d(comp, attr_id: str, align_type: AlignType2D):
+    tools = comp.GetToolList(True)
+    if len(tools) < 2:
+        return
+
+    # get range
+    min_x = min_y = max_x = max_y = None
+    for tool in tools.values():
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        if min_x is None:
+            min_x = _v[1]
+            min_y = _v[2]
+            max_x = _v[1]
+            max_y = _v[2]
+        min_x = min(min_x, _v[1])
+        min_y = min(min_y, _v[2])
+        max_x = max(max_x, _v[1])
+        max_y = max(max_y, _v[2])
+
+    # main
+    comp.Lock()
+    comp.StartUndo('RS Align')
+    for tool in tools.values():
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+
+        if align_type == AlignType2D.L:
+            tool.SetInput(attr_id, {
+                1: min_x,
+                2: _v[2],
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.R:
+            tool.SetInput(attr_id, {
+                1: max_x,
+                2: _v[2],
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.T:
+            tool.SetInput(attr_id, {
+                1: _v[1],
+                2: max_y,
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.B:
+            tool.SetInput(attr_id, {
+                1: _v[1],
+                2: min_y,
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.VC:
+            tool.SetInput(attr_id, {
+                1: (min_x + max_x) / 2,
+                2: _v[2],
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.HC:
+            tool.SetInput(attr_id, {
+                1: _v[1],
+                2: (min_y + max_y) / 2,
+            }, comp.CurrentTime)
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+def distribute2d(comp, attr_id: str, is_x=True, is_random=False):
+    tools = list(comp.GetToolList(True).values())
+    if len(tools) < 3:
+        return
+
+    flow = comp.CurrentFrame.FlowView
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+    if is_random:
+        random.shuffle(tools)
+
+    # get range
+    min_x = min_y = max_x = max_y = None
+    cnt = 0  # 有効なノードの数
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        if min_x is None:
+            min_x = _v[1]
+            min_y = _v[2]
+            max_x = _v[1]
+            max_y = _v[2]
+        min_x = min(min_x, _v[1])
+        min_y = min(min_y, _v[2])
+        max_x = max(max_x, _v[1])
+        max_y = max(max_y, _v[2])
+        cnt += 1
+
+    # main
+    comp.Lock()
+    comp.StartUndo('RS Distribute')
+    x_step = (max_x - min_x) / (cnt - 1)
+    y_step = (max_y - min_y) / (cnt - 1)
+    offset = 0
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+
+        if is_x:
+            tool.SetInput(attr_id, {
+                1: min_x + offset,
+                2: _v[2],
+            }, comp.CurrentTime)
+            offset += x_step
+        else:
+            tool.SetInput(attr_id, {
+                1: _v[1],
+                2: min_y + offset,
+            }, comp.CurrentTime)
+            offset += y_step
+
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+def set_value2d(comp, attr_id: str, x, y, x_step, y_step, lock_x=False, lock_y=False, is_abs=True, is_random=False):
+    tools = list(comp.GetToolList(True).values())
+    if len(tools) < 1:
+        return
+
+    flow = comp.CurrentFrame.FlowView
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+    if is_random:
+        random.shuffle(tools)
+    comp.Lock()
+    comp.StartUndo('RS Set Value')
+    x_offset = 0
+    y_offset = 0
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        if lock_x:
+            _x = _v[1]
+        else:
+            _x = x + x_offset
+            if not is_abs:
+                _x += _v[1]
+        if lock_y:
+            _y = _v[2]
+        else:
+            _y = y + y_offset
+            if not is_abs:
+                _y += _v[2]
+
+        tool.SetInput(attr_id, {
+            1: _x,
+            2: _y,
+        }, comp.CurrentTime)
+        x_offset += x_step
+        y_offset += y_step
+
+    comp.EndUndo(True)
+    comp.Unlock()
+
+def random_value2d(
+        comp, attr_id: str, x_inf, y_inf, x_suo, y_sup, lock_x=False, lock_y=False, is_abs=True, is_random=False):
+    tools = list(comp.GetToolList(True).values())
+    if len(tools) < 1:
+        return
+
+    flow = comp.CurrentFrame.FlowView
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+    if is_random:
+        random.shuffle(tools)
+    comp.Lock()
+    comp.StartUndo('RS Random Value')
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        if lock_x:
+            _x = _v[1]
+        else:
+            _x = random.uniform(x_inf, x_suo)
+            if not is_abs:
+                _x += _v[1]
+        if lock_y:
+            _y = _v[2]
+        else:
+            _y = random.uniform(y_inf, y_sup)
+            if not is_abs:
+                _y += _v[2]
+
+        tool.SetInput(attr_id, {
+            1: _x,
+            2: _y,
+        }, comp.CurrentTime)
+
     comp.EndUndo(True)
     comp.Unlock()
 

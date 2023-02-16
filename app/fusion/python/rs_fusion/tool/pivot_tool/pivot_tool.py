@@ -13,6 +13,9 @@ from PySide2.QtWidgets import (
 from rs.gui import (
     appearance,
 )
+from rs_fusion.core import (
+    operator as op,
+)
 from rs_fusion.tool.pivot_tool.pivot_tool_ui import Ui_MainWindow
 
 APP_NAME = 'PivotTool'
@@ -28,15 +31,6 @@ class H(enum.Enum):
     W = 0
     C = 1
     E = 2
-
-
-class Align(enum.Enum):
-    L = 0
-    VC = 1
-    R = 2
-    T = 3
-    HC = 4
-    B = 5
 
 
 class MainWindow(QMainWindow):
@@ -98,22 +92,22 @@ class MainWindow(QMainWindow):
         )
         # align
         self.ui.alignLButton.clicked.connect(
-            functools.partial(self.align_pivot, Align.L)
+            functools.partial(self.align_pivot, op.AlignType2D.L)
         )
         self.ui.alignVCButton.clicked.connect(
-            functools.partial(self.align_pivot, Align.VC)
+            functools.partial(self.align_pivot, op.AlignType2D.VC)
         )
         self.ui.alignRButton.clicked.connect(
-            functools.partial(self.align_pivot, Align.R)
+            functools.partial(self.align_pivot, op.AlignType2D.R)
         )
         self.ui.alignTButton.clicked.connect(
-            functools.partial(self.align_pivot, Align.T)
+            functools.partial(self.align_pivot, op.AlignType2D.T)
         )
         self.ui.alignHCButton.clicked.connect(
-            functools.partial(self.align_pivot, Align.HC)
+            functools.partial(self.align_pivot, op.AlignType2D.HC)
         )
         self.ui.alignBButton.clicked.connect(
-            functools.partial(self.align_pivot, Align.B)
+            functools.partial(self.align_pivot, op.AlignType2D.B)
         )
         # ui
         self.ui.xIsLockCheckBox.stateChanged.connect(self.x_lock_changed)
@@ -204,7 +198,7 @@ class MainWindow(QMainWindow):
         comp.EndUndo(True)
         comp.Unlock()
 
-    def align_pivot(self, align: Align) -> None:
+    def align_pivot(self, align_type: op.AlignType2D) -> None:
         resolve = self.fusion.GetResolve()
         if resolve and resolve.GetCurrentPage() != 'fusion':
             print('Fusion Pageで実行してください。')
@@ -215,66 +209,7 @@ class MainWindow(QMainWindow):
         if comp is None:
             print('コンポジションが見付かりません。')
             return
-
-        x_attr = 'TOOLI_ImageWidth'
-        y_attr = 'TOOLI_ImageHeight'
-
-        tools = comp.GetToolList(True)
-        # get DoD
-        dod = None
-        for tool in tools.values():
-            pvt = tool.GetInput('Pivot',comp.CurrentTime)
-            if pvt is None:
-                continue
-
-            if dod is None:
-                dod = {1: pvt[1], 2: pvt[2], 3: pvt[1], 4: pvt[2]}
-            dod[1] = min(dod[1], pvt[1])
-            dod[2] = min(dod[2], pvt[2])
-            dod[3] = max(dod[3], pvt[1])
-            dod[4] = max(dod[4], pvt[2])
-        if dod is None:
-            return
-        # input
-        comp.Lock()
-        comp.StartUndo('RS Set Pivot')
-        for tool in tools.values():
-            pvt = tool.GetInput('Pivot', comp.CurrentTime)
-            if pvt is None:
-                continue
-
-            if align == Align.L:
-                tool.Pivot[comp.CurrentTime] = {
-                    1: dod[1],
-                    2: pvt[2],
-                }
-            elif align == Align.R:
-                tool.Pivot[comp.CurrentTime] = {
-                    1: dod[3],
-                    2: pvt[2],
-                }
-            elif align == Align.T:
-                tool.Pivot[comp.CurrentTime] = {
-                    1: pvt[1],
-                    2: dod[4],
-                }
-            elif align == Align.B:
-                tool.Pivot[comp.CurrentTime] = {
-                    1: pvt[1],
-                    2: dod[2],
-                }
-            elif align == Align.VC:
-                tool.Pivot[comp.CurrentTime] = {
-                    1: (dod[1] + dod[3]) / 2,
-                    2: pvt[2],
-                }
-            elif align == Align.HC:
-                tool.Pivot[comp.CurrentTime] = {
-                    1: pvt[1],
-                    2: (dod[2] + dod[4]) / 2,
-                }
-        comp.EndUndo(True)
-        comp.Unlock()
+        op.align2d(comp, 'Pivot', align_type)
 
 
 def run(fusion) -> None:
