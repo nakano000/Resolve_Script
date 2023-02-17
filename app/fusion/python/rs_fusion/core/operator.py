@@ -1,12 +1,20 @@
 import enum
-from pathlib import Path
 from collections import OrderedDict
 import random
 
 from PySide2.QtWidgets import QFileDialog
-from rs.core import (
-    pipe as p,
-)
+
+
+def get_tools(comp, min_size, is_random=False):
+    tools = list(comp.GetToolList(True).values())
+    if len(tools) < min_size:
+        return None
+    flow = comp.CurrentFrame.FlowView
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
+    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
+    if is_random:
+        random.shuffle(tools)
+    return tools
 
 
 def loader(comp, use_post_multiply=False):
@@ -51,13 +59,11 @@ def loader(comp, use_post_multiply=False):
 
 
 def merge(comp):
-    # tools
-    tools = list(comp.GetToolList(True).values())
-    if len(tools) < 2:
+    tools = get_tools(comp, 2, False)
+    if tools is None:
         return
 
     flow = comp.CurrentFrame.FlowView
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
 
     # undo
     comp.Lock()
@@ -82,13 +88,11 @@ def merge(comp):
 
 
 def insert(comp, node_id):
-    # tools
-    tools = list(comp.GetToolList(True).values())
-    if len(tools) < 1:
+    tools = get_tools(comp, 1, False)
+    if tools is None:
         return
 
     flow = comp.CurrentFrame.FlowView
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
 
     # undo
     comp.Lock()
@@ -145,15 +149,9 @@ def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter
     src_tool = comp.FindTool(src_tool_name)
     if src_tool is None:
         return
-    tools = list(comp.GetToolList(True).values())
-    if len(tools) < 1:
+    tools = get_tools(comp, 1, is_random)
+    if tools is None:
         return
-
-    flow = comp.CurrentFrame.FlowView
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
-    if is_random:
-        random.shuffle(tools)
 
     comp.Lock()
     comp.StartUndo('RS Copy Param')
@@ -210,13 +208,11 @@ def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter
 
 
 def background(comp, padding_x=0, padding_y=0, is_square=False):
-    # tools
-    tools = list(comp.GetToolList(True).values())
-    if len(tools) < 1:
+    tools = get_tools(comp, 1, False)
+    if tools is None:
         return
 
     flow = comp.CurrentFrame.FlowView
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
 
     x_attr = 'TOOLI_ImageWidth'
     y_attr = 'TOOLI_ImageHeight'
@@ -279,16 +275,9 @@ def background(comp, padding_x=0, padding_y=0, is_square=False):
 
 
 def apply_color(comp, color_list, is_random=False):
-    # tools
-    tools = list(comp.GetToolList(True).values())
-    if len(tools) < 1:
+    tools = get_tools(comp, 1, is_random)
+    if tools is None:
         return
-
-    flow = comp.CurrentFrame.FlowView
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
-    if is_random:
-        random.shuffle(tools)
 
     color_attrs = [
         ['TopLeftRed', 'TopLeftGreen', 'TopLeftBlue'],
@@ -334,12 +323,12 @@ class AlignType2D(enum.Enum):
 
 
 def align(comp, attr_id: str, align_type: AlignType):
-    tools = comp.GetToolList(True)
-    if len(tools) < 2:
+    tools = get_tools(comp, 2, False)
+    if tools is None:
         return
     # get range
     min_v = max_v = None
-    for tool in tools.values():
+    for tool in tools:
         _v = tool.GetInput(attr_id, comp.CurrentTime)
         if _v is None:
             continue
@@ -351,7 +340,7 @@ def align(comp, attr_id: str, align_type: AlignType):
     # main
     comp.Lock()
     comp.StartUndo('RS Align')
-    for tool in tools.values():
+    for tool in tools:
         _v = tool.GetInput(attr_id, comp.CurrentTime)
         if _v is None:
             continue
@@ -367,13 +356,13 @@ def align(comp, attr_id: str, align_type: AlignType):
 
 
 def align2d(comp, attr_id: str, align_type: AlignType2D):
-    tools = comp.GetToolList(True)
-    if len(tools) < 2:
+    tools = get_tools(comp, 2, False)
+    if tools is None:
         return
 
     # get range
     min_x = min_y = max_x = max_y = None
-    for tool in tools.values():
+    for tool in tools:
         _v = tool.GetInput(attr_id, comp.CurrentTime)
         if _v is None:
             continue
@@ -390,7 +379,7 @@ def align2d(comp, attr_id: str, align_type: AlignType2D):
     # main
     comp.Lock()
     comp.StartUndo('RS Align')
-    for tool in tools.values():
+    for tool in tools:
         _v = tool.GetInput(attr_id, comp.CurrentTime)
         if _v is None:
             continue
@@ -429,16 +418,44 @@ def align2d(comp, attr_id: str, align_type: AlignType2D):
     comp.Unlock()
 
 
-def distribute2d(comp, attr_id: str, is_x=True, is_random=False):
-    tools = list(comp.GetToolList(True).values())
-    if len(tools) < 3:
+def distribute(comp, attr_id: str, is_random=False):
+    tools = get_tools(comp, 3, is_random)
+    if tools is None:
         return
 
-    flow = comp.CurrentFrame.FlowView
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
-    if is_random:
-        random.shuffle(tools)
+    # get range
+    min_v = max_v = None
+    cnt = 0  # 有効なノードの数
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        if min_v is None:
+            min_v = max_v = _v
+        min_v = min(min_v, _v)
+        max_v = max(max_v, _v)
+        cnt += 1
+
+    # undo
+    comp.Lock()
+    comp.StartUndo('RS Distribute')
+    step = (max_v - min_v) / (cnt - 1)
+    offset = 0
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        tool.SetInput(attr_id, min_v + offset, comp.CurrentTime)
+        offset += step
+
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+def distribute2d(comp, attr_id: str, is_x=True, is_random=False):
+    tools = get_tools(comp, 3, is_random)
+    if tools is None:
+        return
 
     # get range
     min_x = min_y = max_x = max_y = None
@@ -486,16 +503,31 @@ def distribute2d(comp, attr_id: str, is_x=True, is_random=False):
     comp.Unlock()
 
 
-def set_value2d(comp, attr_id: str, x, y, x_step, y_step, lock_x=False, lock_y=False, is_abs=True, is_random=False):
-    tools = list(comp.GetToolList(True).values())
-    if len(tools) < 1:
+def set_value(comp, attr_id: str, value, step, is_abs=True, is_random=False):
+    tools = get_tools(comp, 1, is_random)
+    if tools is None:
         return
+    comp.Lock()
+    comp.StartUndo('RS Set Value')
+    offset = 0
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        _value = value + offset
+        if not is_abs:
+            _value += _v
 
-    flow = comp.CurrentFrame.FlowView
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
-    if is_random:
-        random.shuffle(tools)
+        tool.SetInput(attr_id, _value, comp.CurrentTime)
+        offset += step
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+def set_value2d(comp, attr_id: str, x, y, x_step, y_step, lock_x=False, lock_y=False, is_abs=True, is_random=False):
+    tools = get_tools(comp, 1, is_random)
+    if tools is None:
+        return
     comp.Lock()
     comp.StartUndo('RS Set Value')
     x_offset = 0
@@ -527,17 +559,34 @@ def set_value2d(comp, attr_id: str, x, y, x_step, y_step, lock_x=False, lock_y=F
     comp.EndUndo(True)
     comp.Unlock()
 
-def random_value2d(
-        comp, attr_id: str, x_inf, y_inf, x_suo, y_sup, lock_x=False, lock_y=False, is_abs=True, is_random=False):
-    tools = list(comp.GetToolList(True).values())
-    if len(tools) < 1:
-        return
 
-    flow = comp.CurrentFrame.FlowView
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[1])
-    tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
-    if is_random:
-        random.shuffle(tools)
+def random_value(comp, attr_id: str, inf, sup, is_abs=True, is_random=False):
+    tools = get_tools(comp, 1, is_random)
+    if tools is None:
+        return
+    comp.Lock()
+    comp.StartUndo('RS Random Value')
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        _value = random.uniform(inf, sup)
+        if not is_abs:
+            _value += _v
+
+        tool.SetInput(attr_id, _value, comp.CurrentTime)
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+def random_value2d(
+        comp, attr_id: str,
+        x_inf, y_inf, x_suo, y_sup,
+        lock_x=False, lock_y=False,
+        is_abs=True, is_random=False):
+    tools = get_tools(comp, 1, is_random)
+    if tools is None:
+        return
     comp.Lock()
     comp.StartUndo('RS Random Value')
     for tool in tools:
@@ -567,6 +616,4 @@ def random_value2d(
 
 
 if __name__ == '__main__':
-    # print(isinstance(OrderedDict(), dict))
-    # print(isinstance({}, OrderedDict))
     pass
