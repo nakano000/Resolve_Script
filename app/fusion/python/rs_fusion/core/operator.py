@@ -87,6 +87,23 @@ def merge(comp):
     comp.Unlock()
 
 
+def get_main_input(tool, out_data_type):
+    attr_filter = [out_data_type]
+    if out_data_type == 'Image':
+        attr_filter.append('MtlGraph3D')
+
+    i = 1
+    while True:
+        inp = tool.FindMainInput(i)
+        if inp is None:
+            break
+        in_data_type = inp.GetAttrs()['INPS_DataType']
+        if in_data_type in attr_filter:
+            return inp
+        i += 1
+    return tool.FindMainInput(1)
+
+
 def insert(comp, node_id):
     tools = get_tools(comp, 1, False)
     if tools is None:
@@ -106,7 +123,8 @@ def insert(comp, node_id):
         outp = tool.FindMainOutput(1)
         if outp is None:
             continue
-        inp = node.FindMainInput(1)
+        out_data_type = outp.GetAttrs()['OUTS_DataType']
+        inp = get_main_input(node, out_data_type)
         if inp is None:
             continue
         inp.ConnectTo(tool.Output)
