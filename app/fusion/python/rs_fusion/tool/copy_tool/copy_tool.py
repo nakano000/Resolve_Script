@@ -4,14 +4,12 @@ from PySide2.QtCore import (
     Qt,
 )
 from PySide2.QtGui import (
-    QKeySequence,
     QStandardItemModel,
     QStandardItem, QIntValidator,
 )
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
-    QAction,
 )
 
 from rs.core import util
