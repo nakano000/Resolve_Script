@@ -42,12 +42,14 @@ class MainWindow(QMainWindow):
         self.fusion = fusion
         self.tool_name = None
         #
-        self.ui.stepLineEdit.setText(str(0))
-        self.ui.jitterInfLineEdit.setText(str(0))
-        self.ui.jitterSupLineEdit.setText(str(0))
-        self.ui.stepLineEdit.setValidator(QIntValidator())
-        self.ui.jitterInfLineEdit.setValidator(QIntValidator())
-        self.ui.jitterSupLineEdit.setValidator(QIntValidator())
+        for w in [
+            self.ui.offsetLineEdit,
+            self.ui.stepLineEdit,
+            self.ui.jitterInfLineEdit,
+            self.ui.jitterSupLineEdit,
+        ]:
+            w.setText(str(0))
+            w.setValidator(QIntValidator())
 
         # tree
         v = self.ui.treeView
@@ -158,6 +160,7 @@ class MainWindow(QMainWindow):
                 return 0
             return int(_str)
 
+        offset = to_int(self.ui.offsetLineEdit.text())
         step = to_int(self.ui.stepLineEdit.text())
         jitter_inf = to_int(self.ui.jitterInfLineEdit.text())
         jitter_sup = to_int(self.ui.jitterSupLineEdit.text())
@@ -166,6 +169,7 @@ class MainWindow(QMainWindow):
             comp,
             self.tool_name,
             param_list=param_list,
+            offset=offset,
             sift_step=step,
             jitter_inf=jitter_inf,
             jitter_sup=jitter_sup,

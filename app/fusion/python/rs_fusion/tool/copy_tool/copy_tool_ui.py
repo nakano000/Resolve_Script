@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\copy_tool\copy_tool.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\copy_tool\copy_tool.ui' applies.
 #
-# Created: Wed Feb 15 17:09:54 2023
+# Created: Sat Feb 18 17:59:12 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,13 +43,13 @@ class Ui_MainWindow(object):
         self.formLayout.setObjectName("formLayout")
         self.label = QtWidgets.QLabel(self.groupBox)
         self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label)
         self.stepLineEdit = QtWidgets.QLineEdit(self.groupBox)
         self.stepLineEdit.setObjectName("stepLineEdit")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.stepLineEdit)
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.stepLineEdit)
         self.label_2 = QtWidgets.QLabel(self.groupBox)
         self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.jitterInfLineEdit = QtWidgets.QLineEdit(self.groupBox)
@@ -58,7 +58,13 @@ class Ui_MainWindow(object):
         self.jitterSupLineEdit = QtWidgets.QLineEdit(self.groupBox)
         self.jitterSupLineEdit.setObjectName("jitterSupLineEdit")
         self.horizontalLayout.addWidget(self.jitterSupLineEdit)
-        self.formLayout.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
+        self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
+        self.label_3 = QtWidgets.QLabel(self.groupBox)
+        self.label_3.setObjectName("label_3")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_3)
+        self.offsetLineEdit = QtWidgets.QLineEdit(self.groupBox)
+        self.offsetLineEdit.setObjectName("offsetLineEdit")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.offsetLineEdit)
         self.verticalLayout.addWidget(self.groupBox)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
@@ -95,6 +101,7 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Animation Shift", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Step", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Jitter", None, -1))
+        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "Offset", None, -1))
         self.sourceButton.setText(QtWidgets.QApplication.translate("MainWindow", "source", None, -1))
         self.setButton.setText(QtWidgets.QApplication.translate("MainWindow", "set", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))

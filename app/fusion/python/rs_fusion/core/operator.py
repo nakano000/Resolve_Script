@@ -162,7 +162,7 @@ def ordered_dict_to_dict(org_dict):
     return dct
 
 
-def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter_sup=0, is_random=False):
+def copy(comp, src_tool_name, param_list=None, offset=0, sift_step=0, jitter_inf=0, jitter_sup=0, is_random=False):
     # tools
     src_tool = comp.FindTool(src_tool_name)
     if src_tool is None:
@@ -189,7 +189,7 @@ def copy(comp, src_tool_name, param_list=None, sift_step=0, jitter_inf=0, jitter
                 keys = st['Tools'][node]['KeyFrames']
                 new_keys = {}
                 jitter = random.randint(jitter_inf, jitter_sup)
-                frame_offset = cnt * sift_step + jitter
+                frame_offset = cnt * sift_step + jitter + offset
                 for frame in keys:
                     key = keys[frame]
                     if 'RH' in key.keys():
