@@ -1,0 +1,540 @@
+{
+	Tools = ordered() {
+		LightWrap = GroupOperator {
+			ViewInfo = GroupInfo {
+				Flags = {
+					GridSnap = true,
+					AllowPan = false,
+					ForceAll = true,
+					AutoSnap = true
+				},
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Offset = { 0, 0 },
+				Scale = 1
+			},
+			Tools = ordered() {
+				Instance_Background1_1 = Background {
+					ViewInfo = OperatorInfo { Pos = { 440, -82.5 } },
+					CtrlWZoom = false,
+					NameSet = true,
+					SourceOp = "Background1",
+					Inputs = {
+						ApplyMaskInverted = Input { },
+						FitMask = Input { },
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						BackgroundNest = Input { },
+						TopLeftRed = Input { },
+						TopLeftGreen = Input { },
+						TopLeftBlue = Input { },
+						TopLeftAlpha = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+						EffectMask = Input {
+							SourceOp = "Merge6",
+							Source = "Output"
+						},
+						SettingsNest = Input { }
+					}
+				},
+				Merge3 = Merge {
+					ViewInfo = OperatorInfo { Pos = { 440, 49.5 } },
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge6",
+							Source = "Output"
+						},
+						Foreground = Input {
+							SourceOp = "Instance_Background1_1",
+							Source = "Output"
+						},
+						PerformDepthMerge = Input { Value = 0 },
+						ApplyMode = Input { Value = FuID { "Multiply" } },
+						Blend = Input { Value = 0.2 }
+					},
+					UserControls = ordered() {
+						Shade = {
+							LBLC_DropDownButton = true,
+							INP_Default = 1,
+							INP_External = false,
+							INP_Passive = true,
+							LINKID_DataType = "Number",
+							LINKS_Name = "Shade",
+							INPID_InputControl = "LabelControl",
+							INP_Integer = true,
+							LBLC_NumInputs = 4
+						}
+					}
+				},
+				Background1 = Background {
+					ViewInfo = OperatorInfo { Pos = { -55, 214.5 } },
+					Inputs = {
+						ApplyMaskInverted = Input { Value = 1 },
+						Height = Input { Value = 1080 },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+						Width = Input { Value = 1920 },
+						EffectMask = Input {
+							SourceOp = "Merge6",
+							Source = "Output"
+						},
+						UseFrameFormatSettings = Input { Value = 1 }
+					},
+					NameSet = true
+				},
+				Instance_Background1_2 = Background {
+					ViewInfo = OperatorInfo { Pos = { -165, -181.5 } },
+					NameSet = true,
+					SourceOp = "Background1",
+					Inputs = {
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						BackgroundNest = Input { },
+						TopLeftRed = Input { },
+						TopLeftGreen = Input { },
+						TopLeftBlue = Input { },
+						TopLeftAlpha = Input { Value = 0 },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+						EffectMask = Input { },
+						SettingsNest = Input { }
+					}
+				},
+				Merge6 = Merge {
+					ViewInfo = OperatorInfo { Pos = { -55, -82.5 } },
+					Inputs = {
+						PerformDepthMerge = Input { Value = 0 },
+						Background = Input {
+							SourceOp = "Instance_Background1_2",
+							Source = "Output"
+						}
+					}
+				},
+				Instance_Background1 = Background {
+					ViewInfo = OperatorInfo { Pos = { 55, 82.5 } },
+					NameSet = true,
+					SourceOp = "Background1",
+					Inputs = {
+						ImageNest = Input { },
+						["Gamut.ColorSpaceNest"] = Input { },
+						["Gamut.GammaSpaceNest"] = Input { },
+						BackgroundNest = Input { },
+						TopLeftRed = Input { Value = 1 },
+						TopLeftGreen = Input { Value = 1 },
+						TopLeftBlue = Input { Value = 1 },
+						TopLeftAlpha = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+						EffectMask = Input {
+							SourceOp = "Merge6",
+							Source = "Output"
+						},
+						SettingsNest = Input { }
+					}
+				},
+				Merge4 = Merge {
+					ViewInfo = OperatorInfo { Pos = { 110, 214.5 } },
+					Inputs = {
+						Foreground = Input {
+							SourceOp = "Instance_Background1",
+							Source = "Output"
+						},
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output"
+						},
+						PerformDepthMerge = Input { Value = 0 },
+						Blend = Input { Value = 0 }
+					},
+					UserControls = ordered() {
+						Light = {
+							LBLC_DropDownButton = true,
+							INP_Default = 1,
+							INP_External = false,
+							INP_Passive = true,
+							LINKID_DataType = "Number",
+							LINKS_Name = "Light",
+							INPID_InputControl = "LabelControl",
+							INP_Integer = true,
+							LBLC_NumInputs = 4
+						}
+					}
+				},
+				Merge1 = Merge {
+					ViewInfo = OperatorInfo { Pos = { 275, 214.5 } },
+					Inputs = {
+						ApplyMaskInverted = Input { Value = 1 },
+						Background = Input {
+							SourceOp = "Merge4",
+							Source = "Output"
+						},
+						PerformDepthMerge = Input { Value = 0 },
+						ClampCoverage = Input { Value = 0 },
+						EffectMask = Input {
+							SourceOp = "Merge6",
+							Source = "Output"
+						},
+						Gain = Input { Value = 0 }
+					},
+					UserControls = ordered() {
+						BG = {
+							LBLC_DropDownButton = true,
+							INP_Default = 1,
+							INP_External = false,
+							INP_Passive = true,
+							LINKID_DataType = "Number",
+							LINKS_Name = "BG",
+							INPID_InputControl = "LabelControl",
+							INP_Integer = true,
+							LBLC_NumInputs = 1
+						}
+					}
+				},
+				Blur1 = Blur {
+					ViewInfo = OperatorInfo { Pos = { 440, 214.5 } },
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" } },
+						XBlurSize = Input { Value = 10 },
+						Input = Input {
+							SourceOp = "Merge1",
+							Source = "Output"
+						}
+					}
+				},
+				Merge2 = Merge {
+					ViewInfo = OperatorInfo { Pos = { 605, 214.5 } },
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge3",
+							Source = "Output"
+						},
+						Operator = Input { Value = FuID { "Atop" } },
+						Foreground = Input {
+							SourceOp = "Blur1",
+							Source = "Output"
+						},
+						Gain = Input { Value = 0 },
+						PerformDepthMerge = Input { Value = 0 }
+					}
+				},
+				Shake1_1 = Shake {
+					Inputs = {
+						XMaximum = Input {
+							Expression = "Transform1_2_1.x",
+							Value = 0.1
+						},
+						YMinimum = Input {
+							Expression = "-Transform1_2_1.y",
+							Value = -0.1
+						},
+						Smoothness = Input { Value = 1.5 },
+						LockXY = Input { Value = 0 },
+						XMinimum = Input {
+							Expression = "-Transform1_2_1.x",
+							Value = -0.1
+						},
+						YMaximum = Input {
+							Expression = "Transform1_2_1.y",
+							Value = 0.1
+						}
+					},
+					CtrlWZoom = false,
+					Faster = true
+				},
+				KeyframeStretcher1_1 = KeyStretcherMod {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "KeyframeStretcher1_1Keyframes",
+							Source = "Value"
+						},
+						StretchStart = Input { Value = 10 },
+						StretchEnd = Input { Value = 110 }
+					},
+					CtrlWZoom = false
+				},
+				KeyframeStretcher1_1Keyframes = BezierSpline {
+					CtrlWZoom = false,
+					NameSet = true,
+					SplineColor = { Red = 193, Green = 106, Blue = 231 },
+					KeyFrames = {
+						[0] = { 0, Flags = { Linear = true }, RH = { 3.33333333333333, 0 } },
+						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
+						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
+					}
+				},
+				Shake1 = Shake {
+					Inputs = {
+						XMaximum = Input {
+							Expression = "Transform1_2.x",
+							Value = 0.1
+						},
+						YMinimum = Input {
+							Expression = "-Transform1_2.y",
+							Value = -0.1
+						},
+						Smoothness = Input { Value = 2 },
+						LockXY = Input { Value = 0 },
+						XMinimum = Input {
+							Expression = "-Transform1_2.x",
+							Value = -0.1
+						},
+						YMaximum = Input {
+							Expression = "Transform1_2.y",
+							Value = 0.1
+						}
+					},
+					CtrlWZoom = false,
+					Faster = true
+				},
+				KeyframeStretcher1 = KeyStretcherMod {
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "KeyframeStretcher1Keyframes",
+							Source = "Value"
+						},
+						StretchStart = Input { Value = 10 },
+						StretchEnd = Input { Value = 110 }
+					},
+					CtrlWZoom = false
+				},
+				KeyframeStretcher1Keyframes = BezierSpline {
+					CtrlWZoom = false,
+					NameSet = true,
+					SplineColor = { Red = 193, Green = 106, Blue = 231 },
+					KeyFrames = {
+						[0] = { 0, Flags = { Linear = true }, RH = { 3.33333333333333, 0 } },
+						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
+						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
+					}
+				},
+				XYPath1 = XYPath {
+					CtrlWZoom = false,
+					ShowKeyPoints = false,
+					DrawMode = "ModifyOnly",
+					Inputs = {
+						X = Input { Value = 0.5 },
+						Y = Input {
+							SourceOp = "Calculation1_1",
+							Source = "Result"
+						}
+					}
+				},
+				Calculation1_1 = Calculation {
+					Inputs = {
+						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart - Transform1.offset" },
+						FirstOperand = Input {
+							SourceOp = "Calculation2_1",
+							Source = "Result"
+						},
+						SecondOperand = Input { Value = 0.5 }
+					},
+					CtrlWZoom = false
+				},
+				Calculation2_1 = Calculation {
+					Inputs = {
+						FirstOperandTimeScale = Input { Expression = "Transform1.speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate" },
+						FirstOperand = Input {
+							SourceOp = "CalculationonCalculationonXYPath1YFirstOperand",
+							Source = "Value"
+						},
+						Operator = Input { Value = 2 },
+						SecondOperand = Input { Value = 0.5 }
+					},
+					CtrlWZoom = false
+				},
+				CalculationonCalculationonXYPath1YFirstOperand = BezierSpline {
+					CtrlWZoom = false,
+					NameSet = true,
+					SplineColor = { Red = 0, Green = 255, Blue = 0 },
+					KeyFrames = {
+						[0] = { 0, Flags = { Linear = true }, RH = { 4.65, 0.225 } },
+						[17] = { 0, LH = { 12.4, 0.214 }, RH = { 19.6825406677053, 0.0439451976698349 } },
+						[25] = { 0.000999999999999557, LH = { 23.6, 0.0269999999999996 }, RH = { 27.6, 0.025 } },
+						[30] = { 0, LH = { 28.4282452630596, 0 } }
+					}
+				},
+				Calculation1 = Calculation {
+					Inputs = {
+						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart" },
+						FirstOperand = Input {
+							SourceOp = "Calculation2",
+							Source = "Result"
+						},
+						SecondOperand = Input { Value = 1 }
+					},
+					CtrlWZoom = false
+				},
+				Calculation2 = Calculation {
+					Inputs = {
+						FirstOperandTimeScale = Input { Expression = "Transform.speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate" },
+						FirstOperand = Input {
+							SourceOp = "CalculationonCalculation1FirstOperand",
+							Source = "Value"
+						},
+						Operator = Input { Value = 2 },
+						SecondOperand = Input { Value = 0.8 }
+					},
+					CtrlWZoom = false
+				},
+				CalculationonCalculation1FirstOperand = BezierSpline {
+					CtrlWZoom = false,
+					NameSet = true,
+					SplineColor = { Red = 210, Green = 105, Blue = 30 },
+					KeyFrames = {
+						[0] = { 0, Flags = { Linear = true }, RH = { 1, 0 } },
+						[3] = { 0.0800000000000001, LH = { 2, 0.0800000000000001 }, RH = { 4.66666666666667, 0.0800000000000001 } },
+						[8] = { -0.0489999999999999, LH = { 6.33333333333333, -0.0489999999999999 }, RH = { 9.33333333333333, -0.0489999999999999 } },
+						[12] = { 0.03, LH = { 10.6666666666667, 0.03 }, RH = { 13.3333333333333, 0.03 } },
+						[16] = { -0.00700000000000001, LH = { 14.6666666666667, -0.00700000000000001 }, RH = { 16.6666666666667, -0.00700000000000001 } },
+						[18] = { 0.004, LH = { 17.3333333333333, 0.004 }, RH = { 18.6666666666667, 0.004 } },
+						[20] = { 0, LH = { 19.3333333333333, 0 } }
+					}
+				}
+			},
+			Outputs = ordered() {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge2",
+					Source = "Output"
+				}
+			},
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Merge1",
+					Source = "Foreground",
+					Name = "Background",
+				},
+				MainInput2 = InstanceInput {
+					SourceOp = "Merge6",
+					Source = "Foreground"
+				},
+				Input1 = InstanceInput {
+					Name = "Blur Size",
+					Source = "XBlurSize",
+					SourceOp = "Blur1",
+					Default = 10
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Merge2",
+					Source = "Blend",
+					Default = 1
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Merge1",
+					Source = "BG",
+					Default = 1
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Merge1",
+					Source = "Blend",
+					Default = 1
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Merge4",
+					Source = "Light",
+					Default = 1
+				},
+				Input6 = InstanceInput {
+					Name = "Color",
+					ControlGroup = 1,
+					Source = "TopLeftRed",
+					SourceOp = "Instance_Background1",
+					Default = 1
+				},
+				Input7 = InstanceInput {
+					Name = "Top Left Green",
+					ControlGroup = 1,
+					Source = "TopLeftGreen",
+					SourceOp = "Instance_Background1",
+					Default = 1
+				},
+				Input8 = InstanceInput {
+					Name = "Top Left Blue",
+					ControlGroup = 1,
+					Source = "TopLeftBlue",
+					SourceOp = "Instance_Background1",
+					Default = 1
+				},
+				Input9 = InstanceInput {
+					SourceOp = "Merge4",
+					Source = "Blend",
+					Default = 0
+				},
+				Input10 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "Shade",
+					Default = 1
+				},
+				Input11 = InstanceInput {
+					Name = "Color",
+					ControlGroup = 2,
+					Source = "TopLeftRed",
+					SourceOp = "Instance_Background1_1",
+					Default = 0
+				},
+				Input12 = InstanceInput {
+					Name = "Top Left Green",
+					ControlGroup = 2,
+					Source = "TopLeftGreen",
+					SourceOp = "Instance_Background1_1",
+					Default = 0
+				},
+				Input13 = InstanceInput {
+					Name = "Top Left Blue",
+					ControlGroup = 2,
+					Source = "TopLeftBlue",
+					SourceOp = "Instance_Background1_1",
+					Default = 0
+				},
+				Input14 = InstanceInput {
+					SourceOp = "Merge3",
+					Source = "Blend",
+					Default = 0.2
+				},
+				Input15 = InstanceInput {
+					Name = "Image",
+					Source = "ImageNest",
+					SourceOp = "Background1",
+					Page = "Image",
+					Default = 1
+				},
+				Input16 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Width",
+					Default = 1920
+				},
+				Input17 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Height",
+					Default = 1080
+				},
+				Input18 = InstanceInput {
+					Name = "Pixel Aspect",
+					Source = "PixelAspect",
+					SourceOp = "Background1"
+				},
+				Input19 = InstanceInput {
+					Name = "Use Frame Format Settings",
+					Source = "UseFrameFormatSettings",
+					SourceOp = "Background1",
+					Default = 1
+				},
+				Input20 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Depth",
+					Default = 0
+				}
+			},
+			CtrlWZoom = false
+		}
+	}
+}
