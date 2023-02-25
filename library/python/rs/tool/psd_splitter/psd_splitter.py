@@ -186,9 +186,19 @@ class MainWindow(QMainWindow):
                 }
                 lst.append(dct)
             else:
+                layer_offset = layer.offset
+                layer_size = layer.size
+                data_window = [
+                    layer_offset[0],
+                    layer_offset[1],
+                    layer_offset[0] + layer_size[0] - 1,
+                    layer_offset[1] + layer_size[1] - 1,
+                ]
+
                 img = Image.new("RGBA", size, (0, 0, 0, 0))
+
                 if layer.topil() is not None:
-                    img.paste(layer.topil(), layer.offset)
+                    img.paste(layer.topil(), layer_offset)
 
                 if name in name_list:  # 重複チェック
                     _tmp_name = name + '_'
@@ -205,6 +215,7 @@ class MainWindow(QMainWindow):
                     'name_en': layer_name_en,
                     'visible': layer.is_visible(),
                     'data': str(img_path).replace('\\', '/'),
+                    'data_window': data_window,
                 }
                 lst.append(dct)
                 name_list.append(name)
