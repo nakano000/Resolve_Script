@@ -256,6 +256,7 @@ class MainWindow(QMainWindow):
                     'name': 'Root',
                     'x': psd.size[0],
                     'y': psd.size[1],
+                    'directory': str(out_dir).replace('\\', '/'),
                     'data': self.export_layer(psd.size, out_dir, psd),
                 },
                 indent=2,
