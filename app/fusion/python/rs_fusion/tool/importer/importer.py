@@ -415,9 +415,6 @@ class MainWindow(QMainWindow):
         self.ui.importButton.clicked.connect(self.import_json, Qt.QueuedConnection)
 
     def import_json(self) -> None:
-        X_OFFSET = 1
-        Y_OFFSET = 4
-
         resolve = self.fusion.GetResolve()
         if resolve and resolve.GetCurrentPage() != 'fusion':
             print('Fusion Pageで実行してください。')
@@ -428,8 +425,6 @@ class MainWindow(QMainWindow):
         if comp is None:
             print('コンポジションが見付かりません。')
             return
-        flow = comp.CurrentFrame.FlowView
-
         ver = self.fusion.Version
 
         # main
