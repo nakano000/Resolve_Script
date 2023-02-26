@@ -118,7 +118,7 @@ class Importer:
             node.SetAttrs({'TOOLS_Name': name})
         return node
 
-    def get_bg(self, pos_x, pos_y):
+    def add_bg(self, pos_x, pos_y):
         bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
         bg.UseFrameFormatSettings = 0
         bg.Width = self.size_x
@@ -127,7 +127,7 @@ class Importer:
         bg.Depth = 1
         return bg
 
-    def get_big_bg(self, pos_x, pos_y):
+    def add_big_bg(self, pos_x, pos_y):
         bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
         bg.UseFrameFormatSettings = 0
         bg.Width = self.size_x + self.config_data.space_x
@@ -142,9 +142,9 @@ class Importer:
         xf = self.comp.AddTool('Transform', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
         xf.SetAttrs({'TOOLS_Name': name})
         if name == 'Root':
-            bg = self.get_big_bg(pos_x, pos_y - 1)
+            bg = self.add_big_bg(pos_x, pos_y - 1)
         else:
-            bg = self.get_bg(pos_x, pos_y - 1)
+            bg = self.add_bg(pos_x, pos_y - 1)
         return xf, bg
 
     def add_ld(self, pos_x, pos_y, path: str):
