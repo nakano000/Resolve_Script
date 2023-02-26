@@ -930,5 +930,5 @@
 			ViewInfo = OperatorInfo { Pos = { 550, 775.5 } },
 		}
 	},
-	ActiveTool = "モーションSelector"
+	ActiveTool = "モーションなし"
 }

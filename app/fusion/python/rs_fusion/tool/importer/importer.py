@@ -41,6 +41,339 @@ class ConfigData(config.Data):
     space_y: int = 600
 
 
+class Importer:
+    def __init__(self, comp, fusion_ver, config_data: ConfigData, json_path: Path):
+        self.comp = comp
+        self.flow = comp.CurrentFrame.FlowView
+        self.config_data = config_data
+        self.json_path = json_path
+
+        self.json_data = None
+        self.size_x = 0
+        self.size_y = 0
+
+        self.fusion_ver = fusion_ver
+
+        self.X_OFFSET = 1
+        self.Y_OFFSET = 4
+
+    def load_json(self):
+        with open(self.json_path, 'r', encoding='utf-8') as f:
+            self.json_data = json.load(f)
+            self.size_x = self.json_data['x']
+            self.size_y = self.json_data['y']
+
+    def set_x(self, node, x):
+        _x, _y = self.flow.GetPosTable(node).values()
+        self.flow.SetPos(node, x * self.X_OFFSET, _y)
+
+    @staticmethod
+    def set_orange(node):
+        node.TileColor = {
+            '__flags': 256,
+            'R': 0.92156862745098,
+            'G': 0.431372549019608,
+            'B': 0,
+        }
+
+    @staticmethod
+    def uc_button(mg, node, page, layer_name, width):
+        if node is None:
+            lua = [
+                'local mg = comp:FindTool("%s")' % mg.Name,
+                'mg.Foreground = nil',
+            ]
+        else:
+            lua = [
+                'local mg = comp:FindTool("%s")' % mg.Name,
+                'local node = comp:FindTool("%s")' % node.Name,
+                'mg:ConnectInput("Foreground", node)',
+                'mg.Center:HideViewControls()',
+                'mg.Angle:HideViewControls()',
+                'mg.Size:HideViewControls()',
+            ]
+        return {
+            'LINKS_Name': layer_name,
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'ButtonControl',
+            'INP_Integer': False,
+            'BTNCS_Execute': '\n'.join(lua),
+            'INP_External': False,
+            'ICS_ControlPage': page,
+            'ICD_Width': width,
+        }
+
+    def add_set_dod(self, pos_x, pos_y, name, data_window):
+        node = self.comp.AddTool('SetDomain', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        node.SetAttrs({'TOOLS_Name': name})
+        node.Mode = 'Set'
+        node.Left = data_window[0] / self.size_x
+        node.Bottom = data_window[1] / self.size_y
+        node.Right = data_window[2] / self.size_x
+        node.Top = data_window[3] / self.size_y
+        if name is not None:
+            node.SetAttrs({'TOOLS_Name': name})
+        return node
+
+    def get_bg(self, pos_x, pos_y):
+        bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        bg.UseFrameFormatSettings = 0
+        bg.Width = self.size_x
+        bg.Height = self.size_y
+        bg.TopLeftAlpha = 0
+        bg.Depth = 1
+        return bg
+
+    def get_big_bg(self, pos_x, pos_y):
+        bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
+        bg.UseFrameFormatSettings = 0
+        bg.Width = self.size_x + self.config_data.space_x
+        bg.Height = self.size_y + self.config_data.space_y
+        bg.TopLeftAlpha = 0
+        bg.Depth = 1
+        node = self.add_set_dod(pos_x, pos_y, None, [0, 0, 0, 0])
+        node.ConnectInput('Input', bg)
+        return node
+
+    def add_xf_bg(self, pos_x, pos_y, name):
+        xf = self.comp.AddTool('Transform', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        xf.SetAttrs({'TOOLS_Name': name})
+        if name == 'Root':
+            bg = self.get_big_bg(pos_x, pos_y - 1)
+        else:
+            bg = self.get_bg(pos_x, pos_y - 1)
+        return xf, bg
+
+    def add_ld(self, pos_x, pos_y, path):
+        node = self.comp.AddTool('Loader', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        node.Clip[1] = path
+        node.Loop[1] = 1
+        node.PostMultiplyByAlpha = 1 if self.fusion_ver < 10 else 0
+        node.GlobalIn = -1000
+        node.GlobalOut = -1000
+        return node
+
+    def add_node_A(self, pos_x, pos_y, data, name):
+        pos_x += 1
+        xf, bg = self.add_xf_bg(pos_x, pos_y, name)
+        pos_x += 1
+        pos_y -= 2
+
+        # main
+        user_controls = {}
+        cb_name = ''
+        cb_cnt: int = 0
+        pre_node = bg
+        for i, layer in enumerate(data):
+            layer_name: str = layer['name']
+            layer_name_en: str = layer['name_en']
+            visible: bool = layer['visible']
+            layer_data = layer['data']
+
+            mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y + 1) * self.Y_OFFSET)
+            if type(layer_data) is list:
+                node, pos_x = self.add_node_A(pos_x, pos_y, layer_data, layer_name)
+                self.set_x(mg, pos_x - 1)
+            else:
+                node = self.add_ld(pos_x, pos_y, self.comp.ReverseMapPath(layer_data.replace('/', '\\')))
+                # if 'data_window' in layer:
+                #     _node = self.add_set_dod(pos_x, pos_y + 1, layer_name, layer['data_window'])
+                #     _node.ConnectInput('Input', node)
+                #     node = _node
+                pos_x += 1
+            mg.ConnectInput('Foreground', node)
+            mg.ConnectInput('Background', pre_node)
+            if layer_name.startswith('*'):
+                if cb_name == '':
+                    cb_name = 'N' + str(i).zfill(3)
+                    user_controls[cb_name] = {
+                        'LINKID_DataType': 'Number',
+                        'INPID_InputControl': 'ComboControl',
+                        'LINKS_Name': name if name != 'Root' else 'Select',
+                        'INP_Integer': True,
+                        'INP_Default': 0,
+                        'ICS_ControlPage': 'User',
+                    }
+                dct = user_controls[cb_name]
+                dct[cb_cnt + 1] = {'CCS_AddString': '%s' % layer_name}
+                if visible:
+                    dct['INP_Default'] = cb_cnt
+                mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (xf.Name, cb_name, cb_cnt))
+                cb_cnt += 1
+            else:
+                uc_name = 'N' + str(i).zfill(3) + '_' + layer_name_en
+                user_controls[uc_name] = {
+                    'LINKID_DataType': 'Number',
+                    'INPID_InputControl': 'CheckboxControl',
+                    'LINKS_Name': layer_name,
+                    'INP_Integer': True,
+                    'CBC_TriState': False,
+                    'INP_Default': 1 if visible else 0,
+                    'ICS_ControlPage': 'User',
+                    # 'ICS_ControlPage': 'Controls',
+                }
+                mg.Blend.SetExpression('%s.%s' % (xf.Name, uc_name))
+
+            pre_node = mg
+
+        # user control
+        user_controls['Grp_' + name] = {
+            'LINKS_Name': name,
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'LabelControl',
+            'LBLC_DropDownButton': True,
+            'LBLC_NumInputs': len(user_controls),
+            'INP_Default': 1,
+            'INP_External': False,
+            'INP_Passive': True,
+            'ICS_ControlPage': 'User',
+        }
+        if name == 'Root':
+            user_controls['Refresh'] = {
+                'LINKS_Name': 'Refresh',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'ButtonControl',
+                'INP_Integer': False,
+                'BTNCS_Execute': "comp:StartUndo('RS Refresh');"
+                                 "local tool_list = comp:GetToolList(false, 'Fuse.RS_GlobalStart');"
+                                 "for k,v in pairs(tool_list) do v:Refresh() end;"
+                                 "comp:EndUndo(true)\n",
+                'ICS_ControlPage': 'Tools',
+            }
+        xf.ConnectInput('Input', pre_node)
+        uc = {'__flags': 2097152}  # 順番を保持するフラグ
+        for k, v in reversed(list(user_controls.items())):
+            uc[k] = v
+        xf.UserControls = uc
+        xf = xf.Refresh()
+
+        #
+        self.set_x(xf, pos_x - 1)
+        self.set_orange(xf)
+        return xf, pos_x
+
+    def add_node_B(self, pos_x, pos_y, data, name, uc, use_label):
+        pos_x += 1
+        xf, bg = self.add_xf_bg(pos_x, pos_y, name)
+        pos_x += 1
+        pos_y -= 2
+
+        # data sort
+        a_data = []
+        b_data = []
+        c_data = []
+        for layer in data:
+            if layer['name'].startswith('*'):
+                b_data.append(layer)
+            else:
+                if len(b_data) == 0:
+                    a_data.append(layer)
+                else:
+                    c_data.append(layer)
+        _data = a_data + b_data + c_data
+
+        # main
+        pre_node = bg
+        a_mg = None
+        page_name = 'ポーズ' if use_label else xf.Name
+        name_list = []
+        user_controls = {}
+        uc_list = []
+        for i, layer in enumerate(_data):
+            layer_name: str = layer['name']
+            layer_name_en: str = layer['name_en']
+            visible: bool = layer['visible']
+            layer_data = layer['data']
+            uc_name = 'N' + str(i).zfill(3) + '_' + layer_name_en
+
+            # add loader
+            if type(layer_data) is list:
+                node, pos_x, _uc, _name_list = self.add_node_B(
+                    pos_x, pos_y, layer_data, layer_name, {}, use_label
+                )
+                uc_list.append(_uc)
+                name_list += _name_list
+            else:
+                node = self.add_ld(pos_x, pos_y, self.comp.ReverseMapPath(layer_data.replace('/', '\\')))
+                # if 'data_window' in layer:
+                #     _node = self.add_set_dod(pos_x, pos_y + 1, layer_name, layer['data_window'])
+                #     _node.ConnectInput('Input', node)
+                #     node = _node
+            # mg
+            if layer_name.startswith('*'):
+                if a_mg is None:
+                    a_mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y + 1) * self.Y_OFFSET)
+                    a_mg.SetAttrs({'TOOLS_Name': xf.Name + '_MG'})
+                    a_mg.ConnectInput('Background', pre_node)
+                    name_list.append(a_mg.Name)
+                else:
+                    self.set_x(a_mg, pos_x)
+                if visible or a_mg.Foreground.GetConnectedOutput() is None:
+                    a_mg.ConnectInput('Foreground', node)
+                pre_node = a_mg
+                if not layer_name.startswith('!'):
+                    user_controls[uc_name + str(pos_x)] = self.uc_button(
+                        a_mg, node, page_name, layer_name, 1.0
+                    )
+            else:
+                mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y + 1) * self.Y_OFFSET)
+                mg.SetAttrs({'TOOLS_Name': layer_name + '_MG'})
+                name_list.append(mg.Name)
+                mg.ConnectInput('Background', pre_node)
+                if visible or layer_name.startswith('!'):
+                    mg.ConnectInput('Foreground', node)
+                pre_node = mg
+                if not layer_name.startswith('!'):
+                    user_controls[uc_name + '_hide_' + str(pos_x)] = self.uc_button(
+                        mg, None, page_name, layer_name + ' hide', 0.5
+                    )
+                    user_controls[uc_name + '_show_' + str(pos_x)] = self.uc_button(
+                        mg, node, page_name, layer_name + ' show', 0.5
+                    )
+            pos_x += 1
+
+        #
+        if use_label:
+            user_controls['Grp_' + xf.Name] = {
+                'LINKS_Name': name.replace('!', '').replace('*', ''),
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'LabelControl',
+                'LBLC_DropDownButton': True,
+                'LBLC_NumInputs': len(user_controls),
+                'INP_Default': 1,
+                'INP_External': False,
+                'INP_Passive': True,
+                'ICS_ControlPage': page_name,
+            }
+        for _uc in uc_list:
+            uc.update(_uc)
+        uc.update(user_controls)
+        pos_x -= 1
+        xf.ConnectInput('Input', pre_node)
+        self.set_x(xf, pos_x)
+
+        return xf, pos_x, uc, name_list
+
+    def make(self):
+        c = self.config_data
+        self.load_json()
+        if c.style == TatieStyle.EXPRESSION:
+            self.add_node_A(0, 0, self.json_data['data'], self.json_data['name'])
+        else:
+            use_label = c.style == TatieStyle.CONNECTION_LABEL
+            xf, _, _uc, name_list = self.add_node_B(0, 0, self.json_data['data'], self.json_data['name'], {}, use_label)
+
+            # xf
+            uc = {'__flags': 2097152}  # 順番を保持するフラグ
+            for k, v in reversed(list(_uc.items())):
+                uc[k] = v
+            xf.UserControls = uc
+            xf = xf.Refresh()
+            self.set_orange(xf)
+
+            xf.Comments = '\n'.join(reversed(name_list))
+
+
 class MainWindow(QMainWindow):
     def __init__(self, parent=None, fusion=None):
         super().__init__(parent)
@@ -88,294 +421,13 @@ class MainWindow(QMainWindow):
 
         ver = self.fusion.Version
 
-        # func
-        def set_x(node, x):
-            _x, _y = flow.GetPosTable(node).values()
-            flow.SetPos(node, x * X_OFFSET, _y)
-
-        def set_orange(node):
-            node.TileColor = {
-                '__flags': 256,
-                'R': 0.92156862745098,
-                'G': 0.431372549019608,
-                'B': 0,
-            }
-
-        def uc_button(mg, node, page, layer_name, width):
-            if node is None:
-                lua = [
-                    'local mg = comp:FindTool("%s")' % mg.Name,
-                    'mg.Foreground = nil',
-                ]
-            else:
-                lua = [
-                    'local mg = comp:FindTool("%s")' % mg.Name,
-                    'local node = comp:FindTool("%s")' % node.Name,
-                    'mg:ConnectInput("Foreground", node)',
-                    'mg.Center:HideViewControls()',
-                    'mg.Angle:HideViewControls()',
-                    'mg.Size:HideViewControls()',
-                ]
-            return {
-                'LINKS_Name': layer_name,
-                'LINKID_DataType': 'Number',
-                'INPID_InputControl': 'ButtonControl',
-                'INP_Integer': False,
-                'BTNCS_Execute': '\n'.join(lua),
-                'INP_External': False,
-                'ICS_ControlPage': page,
-                'ICD_Width': width,
-            }
-
-        def add_xf_bg(pos_x, pos_y, size_x, size_y, name):
-            xf = comp.AddTool('Transform', pos_x * X_OFFSET, pos_y * Y_OFFSET)
-            xf.SetAttrs({'TOOLS_Name': name})
-            bg = comp.AddTool('Background', pos_x * X_OFFSET, (pos_y - 1) * Y_OFFSET)
-            bg.UseFrameFormatSettings = 0
-            bg.Width = size_x
-            bg.Height = size_y
-            bg.TopLeftAlpha = 0
-            bg.Depth = 1
-            return xf, bg
-
-        def add_ld(pos_x, pos_y, path):
-            node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
-            node.Clip[1] = path
-            node.Loop[1] = 1
-            node.PostMultiplyByAlpha = 1 if ver < 10 else 0
-            node.GlobalIn = -1000
-            node.GlobalOut = -1000
-            return node
-
-        def add_node_A(pos_x, pos_y, size_x, size_y, data, name):
-            pos_x += 1
-            xf, bg = add_xf_bg(pos_x, pos_y, size_x, size_y, name)
-            pos_x += 1
-            pos_y -= 2
-
-            # main
-            user_controls = {}
-            cb_name = ''
-            cb_cnt: int = 0
-            pre_node = bg
-            for i, layer in enumerate(data):
-                layer_name: str = layer['name']
-                layer_name_en: str = layer['name_en']
-                visible: bool = layer['visible']
-                layer_data = layer['data']
-                mg = comp.AddTool('Merge', pos_x * X_OFFSET, (pos_y + 1) * Y_OFFSET)
-                if type(layer_data) is list:
-                    node, _, pos_x = add_node_A(pos_x, pos_y, size_x, size_y, layer_data, layer_name)
-                    set_x(mg, pos_x - 1)
-                else:
-                    node = add_ld(pos_x, pos_y, comp.ReverseMapPath(layer_data.replace('/', '\\')))
-                    pos_x += 1
-                mg.ConnectInput('Foreground', node)
-                mg.ConnectInput('Background', pre_node)
-                if layer_name.startswith('*'):
-                    if cb_name == '':
-                        cb_name = 'N' + str(i).zfill(3)
-                        user_controls[cb_name] = {
-                            'LINKID_DataType': 'Number',
-                            'INPID_InputControl': 'ComboControl',
-                            'LINKS_Name': name if name != 'Root' else 'Select',
-                            'INP_Integer': True,
-                            'INP_Default': 0,
-                            'ICS_ControlPage': 'User',
-                        }
-                    dct = user_controls[cb_name]
-                    dct[cb_cnt + 1] = {'CCS_AddString': '%s' % layer_name}
-                    if visible:
-                        dct['INP_Default'] = cb_cnt
-                    mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (xf.Name, cb_name, cb_cnt))
-                    cb_cnt += 1
-                else:
-                    uc_name = 'N' + str(i).zfill(3) + '_' + layer_name_en
-                    user_controls[uc_name] = {
-                        'LINKID_DataType': 'Number',
-                        'INPID_InputControl': 'CheckboxControl',
-                        'LINKS_Name': layer_name,
-                        'INP_Integer': True,
-                        'CBC_TriState': False,
-                        'INP_Default': 1 if visible else 0,
-                        'ICS_ControlPage': 'User',
-                        # 'ICS_ControlPage': 'Controls',
-                    }
-                    mg.Blend.SetExpression('%s.%s' % (xf.Name, uc_name))
-
-                pre_node = mg
-
-            # user control
-            user_controls['Grp_' + name] = {
-                'LINKS_Name': name,
-                'LINKID_DataType': 'Number',
-                'INPID_InputControl': 'LabelControl',
-                'LBLC_DropDownButton': True,
-                'LBLC_NumInputs': len(user_controls),
-                'INP_Default': 1,
-                'INP_External': False,
-                'INP_Passive': True,
-                'ICS_ControlPage': 'User',
-            }
-            if name == 'Root':
-                user_controls['Refresh'] = {
-                    'LINKS_Name': 'Refresh',
-                    'LINKID_DataType': 'Number',
-                    'INPID_InputControl': 'ButtonControl',
-                    'INP_Integer': False,
-                    'BTNCS_Execute': "comp:StartUndo('RS Refresh');"
-                                     "local tool_list = comp:GetToolList(false, 'Fuse.RS_GlobalStart');"
-                                     "for k,v in pairs(tool_list) do v:Refresh() end;"
-                                     "comp:EndUndo(true)\n",
-                    'ICS_ControlPage': 'Tools',
-                }
-            xf.ConnectInput('Input', pre_node)
-            uc = {'__flags': 2097152}  # 順番を保持するフラグ
-            for k, v in reversed(list(user_controls.items())):
-                uc[k] = v
-            xf.UserControls = uc
-            xf = xf.Refresh()
-
-            #
-            set_x(xf, pos_x - 1)
-            set_orange(xf)
-            return xf, bg, pos_x
-
-        def make_A(dct, sp_x, sp_y):
-            _, bg, _ = add_node_A(0, 0, dct['x'], dct['y'], dct['data'], dct['name'])
-            # bg
-            bg.Width = dct['x'] + sp_x
-            bg.Height = dct['y'] + sp_y
-
-        def add_node_B(pos_x, pos_y, size_x, size_y, data, name, uc, use_label):
-            pos_x += 1
-            xf, bg = add_xf_bg(pos_x, pos_y, size_x, size_y, name)
-            pos_x += 1
-            pos_y -= 2
-
-            # data sort
-            a_data = []
-            b_data = []
-            c_data = []
-            for layer in data:
-                if layer['name'].startswith('*'):
-                    b_data.append(layer)
-                else:
-                    if len(b_data) == 0:
-                        a_data.append(layer)
-                    else:
-                        c_data.append(layer)
-            _data = a_data + b_data + c_data
-
-            # main
-            pre_node = bg
-            a_mg = None
-            page_name = 'ポーズ' if use_label else xf.Name
-            name_list = []
-            user_controls = {}
-            uc_list = []
-            for i, layer in enumerate(_data):
-                layer_name: str = layer['name']
-                layer_name_en: str = layer['name_en']
-                visible: bool = layer['visible']
-                layer_data = layer['data']
-                uc_name = 'N' + str(i).zfill(3) + '_' + layer_name_en
-
-                # add loader
-                if type(layer_data) is list:
-                    node, _, pos_x, _uc, _name_list = add_node_B(
-                        pos_x, pos_y, size_x, size_y, layer_data, layer_name, {}, use_label
-                    )
-                    uc_list.append(_uc)
-                    name_list += _name_list
-                else:
-                    node = add_ld(pos_x, pos_y, comp.ReverseMapPath(layer_data.replace('/', '\\')))
-
-                # mg
-                if layer_name.startswith('*'):
-                    if a_mg is None:
-                        a_mg = comp.AddTool('Merge', pos_x * X_OFFSET, (pos_y + 1) * Y_OFFSET)
-                        a_mg.SetAttrs({'TOOLS_Name': xf.Name + '_MG'})
-                        a_mg.ConnectInput('Background', pre_node)
-                        name_list.append(a_mg.Name)
-                    else:
-                        set_x(a_mg, pos_x)
-                    if visible or a_mg.Foreground.GetConnectedOutput() is None:
-                        a_mg.ConnectInput('Foreground', node)
-                    pre_node = a_mg
-                    if not layer_name.startswith('!'):
-                        user_controls[uc_name + str(pos_x)] = uc_button(
-                            a_mg, node, page_name, layer_name, 1.0
-                        )
-                else:
-                    mg = comp.AddTool('Merge', pos_x * X_OFFSET, (pos_y + 1) * Y_OFFSET)
-                    mg.SetAttrs({'TOOLS_Name': layer_name + '_MG'})
-                    name_list.append(mg.Name)
-                    mg.ConnectInput('Background', pre_node)
-                    if visible or layer_name.startswith('!'):
-                        mg.ConnectInput('Foreground', node)
-                    pre_node = mg
-                    if not layer_name.startswith('!'):
-                        user_controls[uc_name + '_hide_' + str(pos_x)] = uc_button(
-                            mg, None, page_name, layer_name + ' hide', 0.5
-                        )
-                        user_controls[uc_name + '_show_' + str(pos_x)] = uc_button(
-                            mg, node, page_name, layer_name + ' show', 0.5
-                        )
-                pos_x += 1
-
-            #
-            if use_label:
-                user_controls['Grp_' + xf.Name] = {
-                    'LINKS_Name': name.replace('!', '').replace('*', ''),
-                    'LINKID_DataType': 'Number',
-                    'INPID_InputControl': 'LabelControl',
-                    'LBLC_DropDownButton': True,
-                    'LBLC_NumInputs': len(user_controls),
-                    'INP_Default': 1,
-                    'INP_External': False,
-                    'INP_Passive': True,
-                    'ICS_ControlPage': page_name,
-                }
-            for _uc in uc_list:
-                uc.update(_uc)
-            uc.update(user_controls)
-            pos_x -= 1
-            xf.ConnectInput('Input', pre_node)
-            set_x(xf, pos_x)
-
-            return xf, bg, pos_x, uc, name_list
-
-        def make_B(dct, sp_x, sp_y, use_label):
-            # main
-            xf, bg, _, _uc, name_list = add_node_B(0, 0, dct['x'], dct['y'], dct['data'], dct['name'], {}, use_label)
-
-            # xf
-            uc = {'__flags': 2097152}  # 順番を保持するフラグ
-            for k, v in reversed(list(_uc.items())):
-                uc[k] = v
-            xf.UserControls = uc
-            xf = xf.Refresh()
-            set_orange(xf)
-
-            xf.Comments = '\n'.join(reversed(name_list))
-
-            # bg
-            bg.Width = dct['x'] + sp_x
-            bg.Height = dct['y'] + sp_y
-
         # main
         c = self.get_data()
         comp.Lock()
         comp.StartUndo('RS Import')
         json_path: Path = Path(comp.MapPath(c.json_path))
-        json_data = json.loads(json_path.read_text(encoding='utf-8'))
-        if c.style == TatieStyle.EXPRESSION:
-            make_A(json_data, c.space_x, c.space_y)
-        elif c.style == TatieStyle.CONNECTION:
-            make_B(json_data, c.space_x, c.space_y, False)
-        else:
-            make_B(json_data, c.space_x, c.space_y, True)
+        importer = Importer(comp, ver, self.get_data(), json_path)
+        importer.make()
         comp.EndUndo(True)
         comp.Unlock()
         QMessageBox.information(self, "Info", 'Done!')
