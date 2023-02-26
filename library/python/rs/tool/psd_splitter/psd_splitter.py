@@ -190,9 +190,9 @@ class MainWindow(QMainWindow):
                 layer_size = layer.size
                 data_window = [
                     layer_offset[0],
-                    layer_offset[1],
+                    size[1] - (layer_offset[1] + layer_size[1] - 1),
                     layer_offset[0] + layer_size[0] - 1,
-                    layer_offset[1] + layer_size[1] - 1,
+                    size[1] - layer_offset[1],
                 ]
 
                 img = Image.new("RGBA", size, (0, 0, 0, 0))
