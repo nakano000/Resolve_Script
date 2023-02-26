@@ -49,6 +49,7 @@ class Importer:
         self.json_path = json_path
 
         self.json_data = None
+        self.dir = None
         self.size_x = 0
         self.size_y = 0
 
@@ -62,6 +63,8 @@ class Importer:
             self.json_data = json.load(f)
             self.size_x = self.json_data['x']
             self.size_y = self.json_data['y']
+            if 'directory' in self.json_data:
+                self.dir = Path(self.json_data['directory'])
 
     def set_x(self, node, x):
         _x, _y = self.flow.GetPosTable(node).values()
@@ -144,9 +147,17 @@ class Importer:
             bg = self.get_bg(pos_x, pos_y - 1)
         return xf, bg
 
-    def add_ld(self, pos_x, pos_y, path):
+    def add_ld(self, pos_x, pos_y, path: str):
+        if self.dir is not None:
+            # json file 基準で相対パスに画像がある場合
+            _path = self.json_path.parent.joinpath(
+                Path(path).relative_to(self.dir)
+            )
+            if _path.is_file():
+                path = str(_path)
+
         node = self.comp.AddTool('Loader', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
-        node.Clip[1] = path
+        node.Clip[1] = self.comp.ReverseMapPath(path.replace('/', '\\'))
         node.Loop[1] = 1
         node.PostMultiplyByAlpha = 1 if self.fusion_ver < 10 else 0
         node.GlobalIn = -1000
@@ -175,7 +186,7 @@ class Importer:
                 node, pos_x = self.add_node_A(pos_x, pos_y, layer_data, layer_name)
                 self.set_x(mg, pos_x - 1)
             else:
-                node = self.add_ld(pos_x, pos_y, self.comp.ReverseMapPath(layer_data.replace('/', '\\')))
+                node = self.add_ld(pos_x, pos_y, layer_data)
                 # if 'data_window' in layer:
                 #     _node = self.add_set_dod(pos_x, pos_y + 1, layer_name, layer['data_window'])
                 #     _node.ConnectInput('Input', node)
@@ -294,7 +305,7 @@ class Importer:
                 uc_list.append(_uc)
                 name_list += _name_list
             else:
-                node = self.add_ld(pos_x, pos_y, self.comp.ReverseMapPath(layer_data.replace('/', '\\')))
+                node = self.add_ld(pos_x, pos_y, layer_data)
                 # if 'data_window' in layer:
                 #     _node = self.add_set_dod(pos_x, pos_y + 1, layer_name, layer['data_window'])
                 #     _node.ConnectInput('Input', node)
