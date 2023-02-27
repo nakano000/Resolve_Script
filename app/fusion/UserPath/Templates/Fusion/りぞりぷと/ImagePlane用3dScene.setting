@@ -1,0 +1,81 @@
+{
+	Tools = ordered() {
+		Renderer3D1 = Renderer3D {
+			CustomData = { ToolVersion = 2, },
+			Inputs = {
+				["RendererOpenGL.AntiAliasing.Presets.Aux.Multisampling.HighQuality.SampleCount"] = Input { Value = 3, },
+				["RendererOpenGL.AntiAliasing.Presets.Color.Supersampling.HighQuality.RateY"] = Input { Value = 3, },
+				["RendererOpenGL.AntiAliasing.Presets.Aux.Supersampling.HighQuality.RateX"] = Input { Value = 3, },
+				["RendererOpenGL.AntiAliasing.Presets.Color.Multisampling.HighQuality.SampleCount"] = Input { Value = 3, },
+				["RendererOpenGL.Channels.Nest"] = Input { Value = 1, },
+				["RendererOpenGL.AntiAliasing.Channels.RGBA.HighQuality.Enable"] = Input { Value = 1, },
+				["RendererOpenGL.AntiAliasing.Presets.Color.Multisampling.LowQuality.SampleCount"] = Input { Value = 2, },
+				["RendererOpenGL.AntiAliasing.Presets.Color.Supersampling.HighQuality.RateX"] = Input { Value = 3, },
+				["RendererOpenGL.AntiAliasing.Presets.Aux.Supersampling.HighQuality.RateY"] = Input { Value = 3, },
+				["RendererOpenGL.AccumQuality"] = Input { Value = 32, },
+				["RendererOpenGL.AntiAliasing.Presets.Aux.Multisampling.LowQuality.SampleCount"] = Input { Value = 2, },
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				SceneInput = Input {
+					SourceOp = "Scene",
+					Source = "Output",
+				},
+				CameraSelector = Input { Value = FuID { "camera1" }, },
+				["RendererSoftware.Channels.Nest"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 1100, -247.5 } },
+		},
+		Scene = Merge3D {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				SceneInput1 = Input {
+					SourceOp = "Transform3D1",
+					Source = "Output",
+				},
+				SceneInput2 = Input {
+					SourceOp = "Elements",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 990, -247.5 } },
+		},
+		Elements = Merge3D {
+			NameSet = true,
+			ViewInfo = OperatorInfo { Pos = { 990, -346.5 } },
+		},
+		Transform3D1 = Transform3D {
+			Inputs = {
+				SceneInput = Input {
+					SourceOp = "camera1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 880, -247.5 } },
+		},
+		camera1 = Camera3D {
+			Locked = true,
+			Inputs = {
+				["Transform3DOp.Translate.Z"] = Input { Value = 1.38880300521851, },
+				PerspFarClip = Input { Value = 10000, },
+				AovType = Input { Value = 1, },
+				AoV = Input { Value = 39.5976796690875, },
+				FLength = Input { Value = 50, },
+				PlaneOfFocus = Input { Value = 1.388803, },
+				["Stereo.Mode"] = Input { Value = FuID { "OffAxis" }, },
+				FilmBack = Input { Value = 1, },
+				FilmGate = Input { Value = FuID { "User" }, },
+				ApertureW = Input { Value = 1.41732, },
+				ApertureH = Input { Value = 0.94488, },
+				ResolutionGateFit = Input { Value = FuID { "Width" }, },
+				ControlVis = Input { Value = 1, },
+				["SurfacePlaneInputs.ObjectID.ObjectID"] = Input { Value = 7, },
+				["MtlStdInputs.MaterialID"] = Input { Value = 7, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 770, -247.5 } },
+		}
+	},
+	ActiveTool = "Scene"
+}
