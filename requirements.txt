@@ -1,5 +1,6 @@
 Deprecated
 Pillow
+OpenEXR
 PySide2
 PySoundFile
 PyWavelets
