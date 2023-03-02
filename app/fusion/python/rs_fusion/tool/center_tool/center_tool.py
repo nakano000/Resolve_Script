@@ -6,7 +6,8 @@ from PySide2.QtCore import (
 from PySide2.QtGui import QDoubleValidator
 from PySide2.QtWidgets import (
     QApplication,
-    QMainWindow, QLineEdit,
+    QMainWindow,
+    QLineEdit,
 )
 
 from rs.gui import (
@@ -130,15 +131,27 @@ class MainWindow(QMainWindow):
         comp = self.get_comp()
         if comp is None:
             return
-
-        op.align2d(comp, 'Center', align_type)
+        if self.ui.useDodCheckBox.isChecked():
+            op.align_dod(self.fusion, comp, 'Center', align_type, self.ui.useCanvasCheckBox.isChecked())
+        else:
+            op.align2d(comp, 'Center', align_type, self.ui.useCanvasCheckBox.isChecked())
 
     def distribute_center(self, is_x) -> None:
         comp = self.get_comp()
         if comp is None:
             return
-
-        op.distribute2d(comp, 'Center', is_x, self.ui.randomRadioButton.isChecked())
+        if self.ui.useDodCheckBox.isChecked():
+            op.distribute_dod(
+                self.fusion, comp, 'Center', is_x,
+                self.ui.randomRadioButton.isChecked(),
+                self.ui.useCanvasCheckBox.isChecked(),
+            )
+        else:
+            op.distribute2d(
+                comp, 'Center', is_x,
+                self.ui.randomRadioButton.isChecked(),
+                self.ui.useCanvasCheckBox.isChecked(),
+            )
 
     def set_center(self, lock_x, lock_y) -> None:
         comp = self.get_comp()

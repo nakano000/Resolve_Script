@@ -4,6 +4,10 @@ import random
 
 from PySide2.QtWidgets import QFileDialog
 
+from rs.core import (
+    pipe as p,
+)
+
 
 def get_tools(comp, min_size, is_random=False):
     tools = list(comp.GetToolList(True).values())
@@ -373,7 +377,7 @@ def align(comp, attr_id: str, align_type: AlignType):
     comp.Unlock()
 
 
-def align2d(comp, attr_id: str, align_type: AlignType2D):
+def align2d(comp, attr_id: str, align_type: AlignType2D, use_canvas=False):
     tools = get_tools(comp, 2, False)
     if tools is None:
         return
@@ -394,6 +398,11 @@ def align2d(comp, attr_id: str, align_type: AlignType2D):
         max_x = max(max_x, _v[1])
         max_y = max(max_y, _v[2])
 
+    if use_canvas:
+        min_x = 0.0
+        min_y = 0.0
+        max_x = 1.0
+        max_y = 1.0
     # main
     comp.Lock()
     comp.StartUndo('RS Align')
@@ -436,6 +445,128 @@ def align2d(comp, attr_id: str, align_type: AlignType2D):
     comp.Unlock()
 
 
+def align_dod(fusion, comp, attr_id: str, align_type: AlignType2D, use_canvas=False):
+    tools = get_tools(comp, 2, False)
+    if tools is None:
+        return
+
+    x_attr = 'TOOLI_ImageWidth'
+    y_attr = 'TOOLI_ImageHeight'
+    mask_list = p.pipe(
+        fusion.GetRegList(fusion.CT_Mask).values(),
+        p.map(lambda x: x.ID),
+        list
+    )
+    # get range
+    min_x = min_y = max_x = max_y = None
+    data = []
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        attrs = tool.GetAttrs()
+        if x_attr not in attrs.keys() or y_attr not in attrs.keys():
+            continue
+        x_size = attrs[x_attr]
+        y_size = attrs[y_attr]
+        if None in (x_size, y_size):
+            continue
+
+        if tool.ID in mask_list:
+            outp = tool.FindMainOutput(1)
+            if outp is None:
+                continue
+
+            dod = outp.GetDoD()
+            if dod is None:
+                continue
+            dod[1] = dod[1] / x_size - (_v[1] - 0.5)
+            dod[2] = dod[2] / y_size - (_v[2] - 0.5)
+            dod[3] = dod[3] / x_size - (_v[1] - 0.5)
+            dod[4] = dod[4] / y_size - (_v[2] - 0.5)
+        else:
+            inp = tool.FindMainInput(1)
+            if tool.ID == 'Merge':
+                inp = tool.Foreground
+            if inp is None:
+                continue
+            outp = inp.GetConnectedOutput()
+            if outp is None:
+                continue
+
+            dod = outp.GetDoD()
+            if dod is None:
+                continue
+            dod[1] = dod[1] / x_size
+            dod[2] = dod[2] / y_size
+            dod[3] = dod[3] / x_size
+            dod[4] = dod[4] / y_size
+
+        if min_x is None:
+            min_x = dod[1] + _v[1] - 0.5
+            min_y = dod[2] + _v[2] - 0.5
+            max_x = dod[3] + _v[1] - 0.5
+            max_y = dod[4] + _v[2] - 0.5
+        min_x = min(min_x, dod[1] + _v[1] - 0.5)
+        min_y = min(min_y, dod[2] + _v[2] - 0.5)
+        max_x = max(max_x, dod[3] + _v[1] - 0.5)
+        max_y = max(max_y, dod[4] + _v[2] - 0.5)
+        data.append({
+            'tool': tool,
+            'dod': dod,
+            'value': _v,
+        })
+
+    if len(data) < 2:
+        return
+
+    if use_canvas:
+        min_x = 0.0
+        min_y = 0.0
+        max_x = 1.0
+        max_y = 1.0
+    # main
+    comp.Lock()
+    comp.StartUndo('RS Align')
+    for d in data:
+        tool = d['tool']
+        dod = d['dod']
+        _v = d['value']
+
+        if align_type == AlignType2D.L:
+            tool.SetInput(attr_id, {
+                1: min_x - dod[1] + 0.5,
+                2: _v[2],
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.R:
+            tool.SetInput(attr_id, {
+                1: max_x - dod[3] + 0.5,
+                2: _v[2],
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.T:
+            tool.SetInput(attr_id, {
+                1: _v[1],
+                2: max_y - dod[4] + 0.5,
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.B:
+            tool.SetInput(attr_id, {
+                1: _v[1],
+                2: min_y - dod[2] + 0.5,
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.VC:
+            tool.SetInput(attr_id, {
+                1: (min_x + max_x - (dod[1] + dod[3])) / 2 + 0.5,
+                2: _v[2],
+            }, comp.CurrentTime)
+        elif align_type == AlignType2D.HC:
+            tool.SetInput(attr_id, {
+                1: _v[1],
+                2: (min_y + max_y - (dod[2] + dod[4])) / 2 + 0.5,
+            }, comp.CurrentTime)
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
 def distribute(comp, attr_id: str, is_random=False):
     tools = get_tools(comp, 3, is_random)
     if tools is None:
@@ -470,7 +601,7 @@ def distribute(comp, attr_id: str, is_random=False):
     comp.Unlock()
 
 
-def distribute2d(comp, attr_id: str, is_x=True, is_random=False):
+def distribute2d(comp, attr_id: str, is_x=True, is_random=False, use_canvas=False):
     tools = get_tools(comp, 3, is_random)
     if tools is None:
         return
@@ -493,6 +624,11 @@ def distribute2d(comp, attr_id: str, is_x=True, is_random=False):
         max_y = max(max_y, _v[2])
         cnt += 1
 
+    if use_canvas:
+        min_x = 0.0
+        min_y = 0.0
+        max_x = 1.0
+        max_y = 1.0
     # main
     comp.Lock()
     comp.StartUndo('RS Distribute')
@@ -516,6 +652,120 @@ def distribute2d(comp, attr_id: str, is_x=True, is_random=False):
                 2: min_y + offset,
             }, comp.CurrentTime)
             offset += y_step
+
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
+def distribute_dod(fusion, comp, attr_id: str, is_x=True, is_random=False, use_canvas=False):
+    tools = get_tools(comp, 3, is_random)
+    if tools is None:
+        return
+
+    x_attr = 'TOOLI_ImageWidth'
+    y_attr = 'TOOLI_ImageHeight'
+    mask_list = p.pipe(
+        fusion.GetRegList(fusion.CT_Mask).values(),
+        p.map(lambda x: x.ID),
+        list
+    )
+    # get range
+    min_x = min_y = max_x = max_y = None
+    data = []
+    length_x = 0
+    length_y = 0
+
+    for tool in tools:
+        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        if _v is None:
+            continue
+        attrs = tool.GetAttrs()
+        if x_attr not in attrs.keys() or y_attr not in attrs.keys():
+            continue
+        x_size = attrs[x_attr]
+        y_size = attrs[y_attr]
+        if None in (x_size, y_size):
+            continue
+
+        if tool.ID in mask_list:
+            outp = tool.FindMainOutput(1)
+            if outp is None:
+                continue
+
+            dod = outp.GetDoD()
+            if dod is None:
+                continue
+            dod[1] = dod[1] / x_size - (_v[1] - 0.5)
+            dod[2] = dod[2] / y_size - (_v[2] - 0.5)
+            dod[3] = dod[3] / x_size - (_v[1] - 0.5)
+            dod[4] = dod[4] / y_size - (_v[2] - 0.5)
+        else:
+            inp = tool.FindMainInput(1)
+            if tool.ID == 'Merge':
+                inp = tool.Foreground
+            if inp is None:
+                continue
+            outp = inp.GetConnectedOutput()
+            if outp is None:
+                continue
+
+            dod = outp.GetDoD()
+            if dod is None:
+                continue
+            dod[1] = dod[1] / x_size
+            dod[2] = dod[2] / y_size
+            dod[3] = dod[3] / x_size
+            dod[4] = dod[4] / y_size
+        if min_x is None:
+            min_x = dod[1] + _v[1] - 0.5
+            min_y = dod[2] + _v[2] - 0.5
+            max_x = dod[3] + _v[1] - 0.5
+            max_y = dod[4] + _v[2] - 0.5
+        min_x = min(min_x, dod[1] + _v[1] - 0.5)
+        min_y = min(min_y, dod[2] + _v[2] - 0.5)
+        max_x = max(max_x, dod[3] + _v[1] - 0.5)
+        max_y = max(max_y, dod[4] + _v[2] - 0.5)
+        data.append({
+            'tool': tool,
+            'dod': dod,
+            'value': _v,
+        })
+        length_x += dod[3] - dod[1]
+        length_y += dod[4] - dod[2]
+
+    if len(data) < 3:
+        return
+
+    if use_canvas:
+        min_x = 0.0
+        min_y = 0.0
+        max_x = 1.0
+        max_y = 1.0
+    # main
+    comp.Lock()
+    comp.StartUndo('RS Distribute')
+    x_step = ((max_x - min_x) - length_x) / (len(data) - 1)
+    y_step = ((max_y - min_y) - length_y) / (len(data) - 1)
+    offset_x = min_x
+    offset_y = min_y
+
+    for d in data:
+        tool = d['tool']
+        dod = d['dod']
+        _v = d['value']
+
+        if is_x:
+            tool.SetInput(attr_id, {
+                1: offset_x - dod[1] + 0.5,
+                2: _v[2],
+            }, comp.CurrentTime)
+            offset_x += (dod[3] - dod[1]) + x_step
+        else:
+            tool.SetInput(attr_id, {
+                1: _v[1],
+                2: offset_y - dod[2] + 0.5,
+            }, comp.CurrentTime)
+            offset_y += (dod[4] - dod[2]) + y_step
 
     comp.EndUndo(True)
     comp.Unlock()
