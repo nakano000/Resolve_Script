@@ -7,7 +7,6 @@ from PySide2.QtGui import QDoubleValidator
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
-    QLineEdit,
 )
 
 from rs.gui import (
