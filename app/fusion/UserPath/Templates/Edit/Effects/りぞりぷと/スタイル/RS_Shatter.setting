@@ -1,0 +1,490 @@
+{
+	Tools = ordered() {
+		Shatter = GroupOperator {
+			ViewInfo = GroupInfo {
+				Offset = { 0, 0 },
+				Flags = {
+					GridSnap = true,
+					AllowPan = false,
+					ForceAll = true,
+					AutoSnap = true
+				},
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1
+			},
+			CtrlWZoom = false,
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "AlembicMesh3D1",
+					Source = "MaterialInput"
+				},
+				Input1 = InstanceInput {
+					SourceOp = "AlembicMesh3D1",
+					Source = "Filename"
+				},
+				Input2 = InstanceInput {
+					Default = 0,
+					Name = "Dump File",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Dump"
+				},
+				Input3 = InstanceInput {
+					Default = 0,
+					Name = "Ref Time",
+					SourceOp = "UVMap3D1",
+					Source = "RefTime"
+				},
+				Input4 = InstanceInput {
+					Source = "Reporting",
+					SourceOp = "Renderer3D1",
+					Default = 0
+				},
+				Input5 = InstanceInput {
+					Default = 1,
+					Name = "Report Warnings",
+					SourceOp = "Renderer3D1",
+					Source = "ReportWarningsToConsole"
+				},
+				Input6 = InstanceInput {
+					Default = 1,
+					Name = "Report Errors",
+					SourceOp = "Renderer3D1",
+					Source = "ReportErrorsToConsole"
+				},
+				Input7 = InstanceInput {
+					Default = 1,
+					Name = "Abort on Warning",
+					SourceOp = "Renderer3D1",
+					Source = "AbortOnWarning"
+				},
+				Input8 = InstanceInput {
+					Default = 1,
+					Name = "Abort on Error",
+					SourceOp = "Renderer3D1",
+					Source = "AbortOnError"
+				},
+				Input9 = InstanceInput {
+					Source = "RendererType",
+					SourceOp = "Renderer3D1",
+					Name = "Renderer Type"
+				},
+				Input10 = InstanceInput {
+					Default = 0,
+					Name = "Output Channels",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.Nest"
+				},
+				Input11 = InstanceInput {
+					Default = 1,
+					Name = "RGBA",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.RGBA"
+				},
+				Input12 = InstanceInput {
+					Default = 0,
+					Name = "Z",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.Z"
+				},
+				Input13 = InstanceInput {
+					Default = 0,
+					Name = "Coverage",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.Coverage"
+				},
+				Input14 = InstanceInput {
+					Default = 0,
+					Name = "Background Color",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.BgColor"
+				},
+				Input15 = InstanceInput {
+					Default = 0,
+					Name = "Normal",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.Normal"
+				},
+				Input16 = InstanceInput {
+					Default = 0,
+					Name = "Texture Coordinates",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.TexCoord0"
+				},
+				Input17 = InstanceInput {
+					Default = 0,
+					Name = "Object ID",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.ObjectID"
+				},
+				Input18 = InstanceInput {
+					Default = 0,
+					Name = "Material ID",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.MaterialID"
+				},
+				Input19 = InstanceInput {
+					Default = 0,
+					Name = "World Position",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.WorldCoord"
+				},
+				Input20 = InstanceInput {
+					Default = 0,
+					Name = "Vector",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.Vector"
+				},
+				Input21 = InstanceInput {
+					Default = 0,
+					Name = "Back Vector",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Channels.BackVector"
+				},
+				Input22 = InstanceInput {
+					Default = 1,
+					Name = "Lighting",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.Lighting"
+				},
+				Input23 = InstanceInput {
+					Default = 1,
+					Name = "Lighting",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.LightingEnabled"
+				},
+				Input24 = InstanceInput {
+					Default = 0,
+					Name = "Shadows",
+					SourceOp = "Renderer3D1",
+					Source = "RendererSoftware.ShadowsEnabled"
+				},
+				Input25 = InstanceInput {
+					Default = 1,
+					Name = "Transform3DOp",
+					Page = "Transform",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Nest"
+				},
+				Input26 = InstanceInput {
+					Default = 1,
+					Name = "Translation",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Translation"
+				},
+				Input27 = InstanceInput {
+					Default = 0,
+					Name = "X",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Translate.X"
+				},
+				Input28 = InstanceInput {
+					Default = 0,
+					Name = "Y",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Translate.Y"
+				},
+				Input29 = InstanceInput {
+					Default = 0,
+					Name = "Z",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Translate.Z"
+				},
+				Input30 = InstanceInput {
+					Default = 1,
+					Name = "Rotation",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Rotation"
+				},
+				Input31 = InstanceInput {
+					Source = "Transform3DOp.Rotate.RotOrder",
+					SourceOp = "AlembicMesh3D1",
+					Name = "Order"
+				},
+				Input32 = InstanceInput {
+					Default = 0,
+					Name = "X",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Rotate.X"
+				},
+				Input33 = InstanceInput {
+					Default = 0,
+					Name = "Y",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Rotate.Y"
+				},
+				Input34 = InstanceInput {
+					Default = 0,
+					Name = "Z",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Rotate.Z"
+				},
+				Input35 = InstanceInput {
+					Default = 0,
+					Name = "Pivot",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.PivotNest"
+				},
+				Input36 = InstanceInput {
+					Default = 0,
+					Name = "X",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Pivot.X"
+				},
+				Input37 = InstanceInput {
+					Default = 0,
+					Name = "Y",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Pivot.Y"
+				},
+				Input38 = InstanceInput {
+					Default = 0,
+					Name = "Z",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Pivot.Z"
+				},
+				Input39 = InstanceInput {
+					Default = 0,
+					Name = "Scale",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.ScaleNest"
+				},
+				Input40 = InstanceInput {
+					Default = 1,
+					Name = "Lock X/Y/Z",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.ScaleLock"
+				},
+				Input41 = InstanceInput {
+					Default = 1,
+					Name = "Scale",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Scale.X"
+				},
+				Input42 = InstanceInput {
+					Default = 1,
+					Name = "Y",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Scale.Y"
+				},
+				Input43 = InstanceInput {
+					Default = 1,
+					Name = "Z",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Scale.Z"
+				},
+				Input44 = InstanceInput {
+					Default = 0,
+					Name = "Use Target",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.UseTarget"
+				},
+				Input45 = InstanceInput {
+					Default = 1,
+					Name = "Target",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.TargetNest"
+				},
+				Input46 = InstanceInput {
+					Default = 0,
+					Name = "X",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Target.X"
+				},
+				Input47 = InstanceInput {
+					Default = 0,
+					Name = "Y",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Target.Y"
+				},
+				Input48 = InstanceInput {
+					Default = 0,
+					Name = "Z",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Target.Z"
+				},
+				Input49 = InstanceInput {
+					Default = 0,
+					Name = "Invert Transform",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.InvertTransform"
+				},
+				Input50 = InstanceInput {
+					Default = 0,
+					Name = "Import Transform…",
+					SourceOp = "AlembicMesh3D1",
+					Source = "Transform3DOp.Import"
+				}
+			},
+			Tools = ordered() {
+				DirectionalLight1 = LightDirectional {
+					Inputs = {
+						Intensity = Input { Value = 0.8 },
+						["ShadowLightInputs3D.Nest"] = Input { Value = 1 },
+						["ShadowLightInputs3D.ShadowsEnabled"] = Input { Value = 1 }
+					},
+					ViewInfo = OperatorInfo { Pos = { 770, 247.5 } }
+				},
+				camera1 = Camera3D {
+					ViewInfo = OperatorInfo { Pos = { 660, 346.5 } },
+					Inputs = {
+						FilmBack = Input { Value = 1 },
+						FilmGate = Input { Value = FuID { "HD" } },
+						["MtlStdInputs.MaterialID"] = Input { Value = 7 },
+						ApertureW = Input { Value = 0.3775 },
+						ApertureH = Input { Value = 0.2123 },
+						ResolutionGateFit = Input { Value = FuID { "Width" } },
+						ControlVis = Input { Value = 1 },
+						["Transform3DOp.Translate.Z"] = Input { Value = 1.38880300521851 },
+						PerspFarClip = Input { Value = 10000 },
+						AovType = Input { Value = 1 },
+						AoV = Input { Value = 39.59768 },
+						FLength = Input { Value = 13.3173876252158 },
+						PlaneOfFocus = Input { Value = 1.388803 },
+						["Stereo.Mode"] = Input { Value = FuID { "OffAxis" } },
+						["SurfacePlaneInputs.ObjectID.ObjectID"] = Input { Value = 7 }
+					},
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					},
+					Locked = true
+				},
+				UVMap3D1 = UVMap {
+					Inputs = {
+						MapMode = Input { Value = FuID { "Camera" } },
+						CameraSelector = Input { Value = FuID { "camera1" } },
+						LockUVs = Input { Value = 1 },
+						["Size.X"] = Input { Value = 1 },
+						["Size.Y"] = Input { Value = 0.5625 },
+						["Size.Z"] = Input { Value = 1 },
+						SceneInput = Input {
+							SourceOp = "AlembicMesh3D1",
+							Source = "Output"
+						},
+						Orientation = Input { Value = 2 },
+						CameraInput = Input {
+							SourceOp = "camera1",
+							Source = "Output"
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 660, 148.5 } }
+				},
+				AmbientLight1 = LightAmbient {
+					Inputs = {
+						Intensity = Input { Value = 0.2 }
+					},
+					ViewInfo = OperatorInfo { Pos = { 935, 247.5 } }
+				},
+				Elements = Merge3D {
+					ViewInfo = OperatorInfo { Pos = { 935, 148.5 } },
+					NameSet = true,
+					Inputs = {
+						SceneInput1 = Input {
+							SourceOp = "DirectionalLight1",
+							Source = "Output"
+						},
+						SceneInput2 = Input {
+							SourceOp = "UVMap3D1",
+							Source = "Output"
+						},
+						SceneInput3 = Input {
+							SourceOp = "AmbientLight1",
+							Source = "Output"
+						}
+					},
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					}
+				},
+				Scene = Merge3D {
+					ViewInfo = OperatorInfo { Pos = { 1045, 346.5 } },
+					NameSet = true,
+					Inputs = {
+						SceneInput1 = Input {
+							SourceOp = "camera1",
+							Source = "Output"
+						},
+						SceneInput2 = Input {
+							SourceOp = "Elements",
+							Source = "Output"
+						}
+					},
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						}
+					}
+				},
+				Renderer3D1 = Renderer3D {
+					ViewInfo = OperatorInfo { Pos = { 1155, 346.5 } },
+					CtrlWZoom = false,
+					Inputs = {
+						GlobalOut = Input { Value = 60 },
+						["RendererOpenGL.AntiAliasing.Presets.Aux.Multisampling.HighQuality.SampleCount"] = Input { Value = 3 },
+						["RendererOpenGL.AntiAliasing.Presets.Color.Supersampling.HighQuality.RateY"] = Input { Value = 3 },
+						["RendererOpenGL.AntiAliasing.Presets.Aux.Supersampling.HighQuality.RateX"] = Input { Value = 3 },
+						["RendererOpenGL.AntiAliasing.Presets.Color.Multisampling.HighQuality.SampleCount"] = Input { Value = 3 },
+						["RendererOpenGL.AntiAliasing.Presets.Aux.Multisampling.LowQuality.SampleCount"] = Input { Value = 2 },
+						["RendererOpenGL.AntiAliasing.Presets.Aux.Supersampling.HighQuality.RateY"] = Input { Value = 3 },
+						["RendererOpenGL.AntiAliasing.Channels.RGBA.HighQuality.Enable"] = Input { Value = 1 },
+						Height = Input { Value = 1080 },
+						["RendererOpenGL.AntiAliasing.Presets.Color.Supersampling.HighQuality.RateX"] = Input { Value = 3 },
+						Width = Input { Value = 1920 },
+						["RendererOpenGL.Channels.Nest"] = Input { Value = 1 },
+						UseFrameFormatSettings = Input { Value = 1 },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+						CameraSelector = Input { Value = FuID { "camera1" } },
+						["RendererSoftware.LightingEnabled"] = Input { Value = 1 },
+						SceneInput = Input {
+							SourceOp = "Scene",
+							Source = "Output"
+						},
+						["RendererOpenGL.AccumQuality"] = Input { Value = 32 },
+						["RendererOpenGL.AntiAliasing.Presets.Color.Multisampling.LowQuality.SampleCount"] = Input { Value = 2 }
+					},
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+							}
+						},
+						ToolVersion = 2
+					}
+				},
+				AlembicMesh3D1 = SurfaceAlembicMesh {
+					Inputs = {
+						["Transform3DOp.ScaleNest"] = Input { Value = 0 },
+						Filename = Input { Value = "Templates:\\abc\\RS_Shatter\\shatter.abc" },
+						["Visibility.Nest"] = Input { Value = 1 },
+						["Lighting.Nest"] = Input { Value = 1 },
+						["Matte.Nest"] = Input { Value = 1 },
+						["BlendMode.Nest"] = Input { Value = 1 },
+						["Controls.Nest"] = Input { Value = 1 },
+						["ObjectID.ObjectID"] = Input { Value = 2 },
+						["MtlStdInputs.Specular.Nest"] = Input { Value = 1 },
+						["MtlStdInputs.Specular.Intensity"] = Input { Value = 0 },
+						["MtlStdInputs.MaterialIDNest"] = Input { Value = 1 },
+						["MtlStdInputs.MaterialID"] = Input { Value = 2 }
+					},
+					ViewInfo = OperatorInfo { Pos = { 495, 148.5 } }
+				}
+			},
+			Outputs = ordered() {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Renderer3D1",
+					Source = "Output"
+				}
+			}
+		}
+	}
+}
