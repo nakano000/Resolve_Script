@@ -90,7 +90,7 @@
 						["Matte.Nest"] = Input { Value = 1 },
 						["BlendMode.Nest"] = Input { Value = 1 },
 						["Controls.Nest"] = Input { Value = 1 },
-						Filename = Input { Value = "Templates:\\abc\\RS_Shatter\\shatter.abc" },
+						Filename = Input { Value = "Templates:\\abc\\RS_Shatter\\ShatterA.abc" },
 						["MtlStdInputs.Specular.Nest"] = Input { Value = 1 },
 						["MtlStdInputs.Specular.Intensity"] = Input { Value = 0 },
 						["MtlStdInputs.MaterialIDNest"] = Input { Value = 1 },
