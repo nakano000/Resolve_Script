@@ -415,8 +415,6 @@ class MainWindow(QMainWindow):
             p.map(lambda x: x.Name),
             set,
         )
-        print(selection_set)
-        print(node_set)
         if node_set.issubset(selection_set) is False:
             title = '確認'
             text = '選択されているノードに、入力ノードが含まれていません。\nMacroを作りますか？'
