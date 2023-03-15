@@ -18,7 +18,7 @@ from PySide2.QtWidgets import (
 from rs.core import (
     config,
     pipe as p,
-    util,
+    util, lang,
 )
 from rs.gui import (
     appearance,
@@ -68,6 +68,9 @@ class MainWindow(QMainWindow):
         self.resize(900, 700)
 
         self.fusion = fusion
+
+        # translate
+        self.translate()
 
         # table
         for v in [
@@ -127,6 +130,16 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.open_doc)
         self.ui.actionSave.triggered.connect(self.save_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
+
+    def translate(self) -> None:
+        lang_code: lang.Code = lang.load()
+        if lang_code == lang.Code.en:
+            self.ui.saveMacroButton.setText('For Resolve')
+            self.ui.saveMacroFromJSONButton.setText('JSON file location')
+            self.ui.readButton.setText('read')
+            self.ui.clearButton.setText('clear')
+            self.ui.useGroupCheckBox.setText('Save as Group')
+
 
     def undo_stack_clear(self):
         self.ui.inputTableView.model().undo_stack.clear()

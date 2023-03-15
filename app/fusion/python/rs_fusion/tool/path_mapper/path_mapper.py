@@ -1,16 +1,17 @@
 import sys
 import functools
 from PySide2.QtCore import (
-    Qt,
+    Qt, QLocale,
 )
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
     QMessageBox,
+    QActionGroup,
 )
 
 from rs.core import (
-    pipe as p,
+    pipe as p, lang,
 )
 from rs.gui import (
     appearance,
@@ -32,9 +33,12 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(100, 100)
+        self.resize(140, 100)
 
         self.fusion = fusion
+
+        # translate
+        self.translate()
 
         # button
         self.ui.applyButton.setStyleSheet(appearance.in_stylesheet)
@@ -48,6 +52,13 @@ class MainWindow(QMainWindow):
             functools.partial(self.pathmap, False)
         )
         self.ui.closeButton.clicked.connect(self.close)
+
+    def translate(self) -> None:
+        lang_code: lang.Code = lang.load()
+        if lang_code == lang.Code.en:
+            self.ui.applyButton.setText('apply')
+            self.ui.removeButton.setText('remove')
+            self.ui.closeButton.setText('close')
 
     def pathmap(self, use_pathmap: bool) -> None:
         resolve = self.fusion.GetResolve()

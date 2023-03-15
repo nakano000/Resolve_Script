@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>118</width>
-    <height>150</height>
+    <width>98</width>
+    <height>120</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <widget class="QPushButton" name="applyButton">
       <property name="minimumSize">
        <size>
-        <width>100</width>
-        <height>40</height>
+        <width>80</width>
+        <height>30</height>
        </size>
       </property>
       <property name="text">
@@ -32,8 +32,8 @@
      <widget class="QPushButton" name="removeButton">
       <property name="minimumSize">
        <size>
-        <width>100</width>
-        <height>40</height>
+        <width>80</width>
+        <height>30</height>
        </size>
       </property>
       <property name="text">
@@ -45,8 +45,8 @@
      <widget class="QPushButton" name="closeButton">
       <property name="minimumSize">
        <size>
-        <width>100</width>
-        <height>40</height>
+        <width>80</width>
+        <height>30</height>
        </size>
       </property>
       <property name="text">
@@ -56,6 +56,30 @@
     </item>
    </layout>
   </widget>
+  <action name="actionauto">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>auto</string>
+   </property>
+  </action>
+  <action name="actionja">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>ja</string>
+   </property>
+  </action>
+  <action name="actionen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>en</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
