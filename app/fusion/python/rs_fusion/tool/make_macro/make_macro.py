@@ -70,6 +70,7 @@ class MainWindow(QMainWindow):
         self.fusion = fusion
 
         # translate
+        self.lang_code: lang.Code = lang.load()
         self.translate()
 
         # table
@@ -132,14 +133,12 @@ class MainWindow(QMainWindow):
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
 
     def translate(self) -> None:
-        lang_code: lang.Code = lang.load()
-        if lang_code == lang.Code.en:
+        if self.lang_code == lang.Code.en:
             self.ui.saveMacroButton.setText('For Resolve')
             self.ui.saveMacroFromJSONButton.setText('JSON file location')
             self.ui.readButton.setText('read')
             self.ui.clearButton.setText('clear')
             self.ui.useGroupCheckBox.setText('Save as Group')
-
 
     def undo_stack_clear(self):
         self.ui.inputTableView.model().undo_stack.clear()
@@ -161,16 +160,29 @@ class MainWindow(QMainWindow):
     def clear_tree(self) -> None:
         self.ui.treeView.setModel(QStandardItemModel())
 
-    def read_node(self) -> None:
+    def get_comp(self):
         resolve = self.fusion.GetResolve()
         if resolve and resolve.GetCurrentPage() != 'fusion':
-            print('Fusion Pageで実行してください。')
-            return
+            if self.lang_code == lang.Code.en:
+                print('Please run on Fusion Page.')
+            else:
+                print('Fusion Pageで実行してください。')
+            return None
 
         # comp check
         comp = self.fusion.CurrentComp
         if comp is None:
-            print('コンポジションが見付かりません。')
+            if self.lang_code == lang.Code.en:
+                print('Composition not found.')
+            else:
+                print('コンポジションが見付かりません。')
+            return None
+
+        return comp
+
+    def read_node(self) -> None:
+        comp = self.get_comp()
+        if comp is None:
             return
 
         # setup
@@ -324,16 +336,10 @@ class MainWindow(QMainWindow):
             out_v.scrollToBottom()
 
     def save_macro(self, use_json_path: bool) -> None:
-        resolve = self.fusion.GetResolve()
-        if resolve and resolve.GetCurrentPage() != 'fusion':
-            print('Fusion Pageで実行してください。')
+        comp = self.get_comp()
+        if comp is None:
             return
 
-        # comp check
-        comp = self.fusion.CurrentComp
-        if comp is None:
-            print('コンポジションが見付かりません。')
-            return
         # table
         v = self.ui.inputTableView
         m: Model = v.model()
