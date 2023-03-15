@@ -2,7 +2,7 @@ Composition {
 	CurrentTime = 0,
 	RenderRange = { 0, 1000 },
 	GlobalRange = { 0, 1000 },
-	CurrentID = 154,
+	CurrentID = 292,
 	HiQ = true,
 	PlaybackUpdateMode = 0,
 	Version = "Fusion Studio 18.1.3 build 7",
@@ -16,6 +16,292 @@ Composition {
 	OutputClips = {
 	},
 	Tools = {
+		Loader18 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-えあー.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2750, -1072.5 } },
+		},
+		Loader37 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-目そらし.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 3740, -1402.5 } },
+		},
+		Loader20 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-んむ.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2970, -1072.5 } },
+		},
+		Loader42 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!眉\\-怒り眉.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2365, -511.5 } },
+		},
+		Loader29 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-・・.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2860, -1402.5 } },
+		},
+		Loader32 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-にっこり.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 3190, -1402.5 } },
+		},
+		Loader28 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-(ず・　・だ).png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2750, -1402.5 } },
+		},
+		Loader4 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!右腕\\-頭こつん.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 385, -511.5 } },
+		},
+		Loader33 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-ウインク.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 3300, -1402.5 } },
+		},
+		Loader6 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!右腕\\-手を挙げる.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 605, -511.5 } },
+		},
+		Loader43 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!眉\\-上がり眉.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2475, -511.5 } },
+		},
 		Loader12 = Loader {
 			Clips = {
 				Clip {
@@ -68,11 +354,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 1815, -511.5 } },
 		},
-		Loader9 = Loader {
+		Loader39 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!左腕\\-弓.png",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-基本2_.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -92,267 +378,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 1155, -511.5 } },
-		},
-		Loader5 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!右腕\\-横.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 495, -511.5 } },
-		},
-		Loader8 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!左腕\\-口元に指.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 1045, -511.5 } },
-		},
-		Loader16 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-ぺろり.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2530, -1072.5 } },
-		},
-		Loader18 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-えあー.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2750, -1072.5 } },
-		},
-		Loader38 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-カメラ目線.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3850, -1402.5 } },
-		},
-		Loader41 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!眉\\-困り眉.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2255, -511.5 } },
-		},
-		Loader43 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!眉\\-上がり眉.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2475, -511.5 } },
-		},
-		Loader42 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!眉\\-怒り眉.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2365, -511.5 } },
-		},
-		Loader23 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-ん.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3300, -1072.5 } },
-		},
-		Loader17 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-じゅるり.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2640, -1072.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3960, -1402.5 } },
 		},
 		Loader15 = Loader {
 			Clips = {
@@ -380,11 +406,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2420, -1072.5 } },
 		},
-		Loader6 = Loader {
+		Loader31 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!右腕\\-手を挙げる.png",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-〇〇.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -404,13 +430,13 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 605, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3080, -1402.5 } },
 		},
-		Loader4 = Loader {
+		Loader8 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!右腕\\-頭こつん.png",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!左腕\\-口元に指.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -430,7 +456,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 385, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 1045, -511.5 } },
 		},
 		Loader10 = Loader {
 			Clips = {
@@ -458,84 +484,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 1265, -511.5 } },
 		},
-		Loader19 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-あえ.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2860, -1072.5 } },
-		},
-		Loader28 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-(ず・　・だ).png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2750, -1402.5 } },
-		},
-		Loader30 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-__.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2970, -1402.5 } },
-		},
 		Loader36 = Loader {
 			Clips = {
 				Clip {
@@ -562,11 +510,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3630, -1402.5 } },
 		},
-		Loader39 = Loader {
+		Loader23 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-基本2_.png",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-ん.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -586,215 +534,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3960, -1402.5 } },
-		},
-		Loader32 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-にっこり.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3190, -1402.5 } },
-		},
-		Loader33 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-ウインク.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3300, -1402.5 } },
-		},
-		Loader37 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-目そらし.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3740, -1402.5 } },
-		},
-		Loader35 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-ジト目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3520, -1402.5 } },
-		},
-		Loader31 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-〇〇.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3080, -1402.5 } },
-		},
-		Loader29 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-・・.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2860, -1402.5 } },
-		},
-		Loader27 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-(ず・　・だ)_flipx.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2640, -1402.5 } },
-		},
-		Loader2 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\-サイド髪跳ね.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 385, -247.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3300, -1072.5 } },
 		},
 		Loader46 = Loader {
 			Clips = {
@@ -822,11 +562,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3025, -247.5 } },
 		},
-		Loader20 = Loader {
+		Loader38 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-んむ.png",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-カメラ目線.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -846,7 +586,241 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 2970, -1072.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3850, -1402.5 } },
+		},
+		Loader2 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\-サイド髪跳ね.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 385, -247.5 } },
+		},
+		Loader30 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-__.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2970, -1402.5 } },
+		},
+		Loader41 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!眉\\-困り眉.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2255, -511.5 } },
+		},
+		Loader9 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!左腕\\-弓.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 1155, -511.5 } },
+		},
+		Loader45 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\汗.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2915, -247.5 } },
+		},
+		Loader35 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-ジト目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 3520, -1402.5 } },
+		},
+		Loader19 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-あえ.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2860, -1072.5 } },
+		},
+		Loader17 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-じゅるり.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2640, -1072.5 } },
+		},
+		Loader5 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!右腕\\-横.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, -511.5 } },
 		},
 		Loader1 = Loader {
 			Clips = {
@@ -1003,32 +977,6 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
 			ViewInfo = OperatorInfo { Pos = { 2585, -511.5 } },
-		},
-		Loader45 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\汗.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2915, -247.5 } },
 		},
 		Loader26 = Loader {
 			Clips = {
@@ -1212,6 +1160,263 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3410, -1402.5 } },
 		},
+		Loader16 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!口\\-ぺろり.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2530, -1072.5 } },
+		},
+		Loader27 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\東北ずん子立ち絵素材2.0\\!目\\-(ず・　・だ)_flipx.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2640, -1402.5 } },
+		},
+		["荒ぶる"] = GroupOperator {
+			NameSet = true,
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_2_1",
+					Source = "Input",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Shake1_1",
+					Source = "RandomSeed",
+					Width = 1,
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Shake1_1",
+					Source = "Randomize",
+					Width = 0.385,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Shake1_1",
+					Source = "Smoothness",
+					Default = 10,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_2_1",
+					Source = "x",
+					Name = "X",
+					Default = 0.1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_2_1",
+					Source = "y",
+					Name = "Y",
+					Default = 0.1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_2_1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 4345, 544.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_2_1 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.502997744173508, 0.497908177638071 },
+							Expression = "Point(0.5, 0.5) + shake * in_out",
+						},
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						x = Input { Value = 0.03, },
+						y = Input { Value = 0.03, },
+						shake = Input {
+							SourceOp = "Shake1_1",
+							Source = "Position",
+						},
+						in_out = Input {
+							SourceOp = "KeyframeStretcher1_1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { x = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", LINKS_Name = "shake", }, in_out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "in_out", } }
+				},
+				KeyframeStretcher1_1 = KeyStretcherMod {
+					CtrlWZoom = false,
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "KeyStretcheronTransform1_2_1Keyframes",
+							Source = "Value",
+						},
+						StretchStart = Input { Value = 10, },
+						StretchEnd = Input { Value = 110, },
+					},
+				},
+				KeyStretcheronTransform1_2_1Keyframes = BezierSpline {
+					SplineColor = { Red = 193, Green = 106, Blue = 231 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
+						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
+						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
+					}
+				},
+				Shake1_1 = Shake {
+					Faster = true,
+					CtrlWZoom = false,
+					Inputs = {
+						Smoothness = Input { Value = 1.5, },
+						LockXY = Input { Value = 0, },
+						XMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1_2_1.x",
+						},
+						XMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1_2_1.x",
+						},
+						YMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1_2_1.y",
+						},
+						YMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1_2_1.y",
+						},
+					},
+				}
+			},
+		},
+		["跳ねる"] = GroupOperator {
+			NameSet = true,
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_1",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_1",
+					Source = "speed",
+					MinScale = 0.0010000000475,
+					Default = 2,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_1",
+					Source = "amplitude",
+					Default = 0.1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 3850, 544.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_1 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.5, 0.595105651629515 },
+							Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
+						},
+						ReferenceSize = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						bound = Input {
+							Value = 0.951056516295154,
+							Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
+						},
+						speed = Input { Value = 2, },
+						amplitude = Input { Value = 0.08, },
+						out = Input {
+							Value = 59,
+							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
+				}
+			},
+		},
 		["ぴょん"] = GroupOperator {
 			NameSet = true,
 			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
@@ -1276,7 +1481,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "speed", INPID_InputControl = "ScrewControl", INP_Default = 1, }, offset = { INP_Integer = true, LINKS_Name = "offset", INPID_InputControl = "ScrewControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 500, INP_Default = 0, } }
+					UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 1, INPID_InputControl = "ScrewControl", LINKS_Name = "speed", }, offset = { INP_Integer = true, INP_Default = 0, INPID_InputControl = "ScrewControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 500, LINKS_Name = "offset", } }
 				},
 				XYPath1 = XYPath {
 					ShowKeyPoints = false,
@@ -1390,7 +1595,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { speed = { LINKS_Name = "speed", INP_Integer = false, INP_MinAllowed = 0.00999999977648258, LINKID_DataType = "Number", INP_MinScale = 0.00999999977648258, INPID_InputControl = "ScrewControl", ICS_ControlPage = "Controls", INP_Default = 1, } }
+					UserControls = ordered() { speed = { INP_Default = 1, INP_Integer = false, INP_MinAllowed = 0.00999999977648258, LINKID_DataType = "Number", ICS_ControlPage = "Controls", INPID_InputControl = "ScrewControl", INP_MinScale = 0.00999999977648258, LINKS_Name = "speed", } }
 				},
 				Calculation1 = Calculation {
 					CtrlWZoom = false,
@@ -1430,415 +1635,168 @@ Composition {
 				}
 			},
 		},
-		["跳ねる"] = GroupOperator {
+		ST_Background = Background {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_1",
-					Source = "Input",
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_1",
-					Source = "speed",
-					MinScale = 0.0010000000475,
-					Default = 2,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_1",
-					Source = "amplitude",
-					Default = 0.1,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_1",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 3850, 544.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 107.433, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_1 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.5, 0.595105651629515 },
-							Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
-						},
-						ReferenceSize = Input { Value = 1, },
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						bound = Input {
-							Value = 0.951056516295154,
-							Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
-						},
-						speed = Input { Value = 2, },
-						amplitude = Input { Value = 0.08, },
-						out = Input {
-							Value = 59,
-							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Default = 0, INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "out", } }
-				}
-			},
-		},
-		["跳ねる_小"] = GroupOperator {
-			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_1_1",
-					Source = "Input",
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_1_1",
-					Source = "speed",
-					MinScale = 0.0010000000475,
-					Default = 2,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_1_1",
-					Source = "amplitude",
-					Default = 0.1,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_1_1",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 4015, 544.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 107.433, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_1_1 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.5, 0.595105651629515 },
-							Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
-						},
-						ReferenceSize = Input { Value = 1, },
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						bound = Input {
-							Value = 0.951056516295154,
-							Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
-						},
-						speed = Input { Value = 2, },
-						amplitude = Input { Value = 0.02, },
-						out = Input {
-							Value = 59,
-							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, } }
-				}
-			},
-		},
-		["不安"] = GroupOperator {
-			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_2",
-					Source = "Input",
-				},
-				Input3 = InstanceInput {
-					SourceOp = "Shake1",
-					Source = "RandomSeed",
-					Width = 1,
-					Default = 0,
-				},
-				Input4 = InstanceInput {
-					SourceOp = "Shake1",
-					Source = "Randomize",
-					Width = 0.385,
-				},
-				Input5 = InstanceInput {
-					SourceOp = "Shake1",
-					Source = "Smoothness",
-					Default = 10,
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_2",
-					Source = "x",
-					Name = "X",
-					Default = 0.1,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_2",
-					Source = "y",
-					Name = "Y",
-					Default = 0.1,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_2",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 4180, 544.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 107.433, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_2 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.502997744173508, 0.497908177638071 },
-							Expression = "Point(0.5, 0.5) + shake * in_out",
-						},
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						x = Input { Value = 0.01, },
-						y = Input { Value = 0.01, },
-						shake = Input {
-							SourceOp = "Shake1",
-							Source = "Position",
-						},
-						in_out = Input {
-							SourceOp = "KeyframeStretcher1",
-							Source = "Result",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_MinScale = 0, INP_Default = 0.1, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_MinScale = 0, INP_Default = 0.1, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKS_Name = "shake", LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", }, in_out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "in_out", } }
-				},
-				KeyframeStretcher1 = KeyStretcherMod {
-					CtrlWZoom = false,
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "KeyStretcheronTransform1_2Keyframes",
-							Source = "Value",
-						},
-						StretchStart = Input { Value = 10, },
-						StretchEnd = Input { Value = 110, },
-					},
-				},
-				KeyStretcheronTransform1_2Keyframes = BezierSpline {
-					SplineColor = { Red = 193, Green = 106, Blue = 231 },
-					CtrlWZoom = false,
-					KeyFrames = {
-						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
-						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
-						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
-						[120] = { 0, LH = { 116.666666666667, 0 } }
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
-				Shake1 = Shake {
-					Faster = true,
-					CtrlWZoom = false,
-					Inputs = {
-						Smoothness = Input { Value = 2, },
-						LockXY = Input { Value = 0, },
-						XMinimum = Input {
-							Value = -0.1,
-							Expression = "-Transform1_2.x",
-						},
-						XMaximum = Input {
-							Value = 0.1,
-							Expression = "Transform1_2.x",
-						},
-						YMinimum = Input {
-							Value = -0.1,
-							Expression = "-Transform1_2.y",
-						},
-						YMaximum = Input {
-							Value = 0.1,
-							Expression = "Transform1_2.y",
-						},
-					},
 				}
 			},
+			Inputs = {
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				Depth = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				TopLeftAlpha = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 3740, 940.5 } },
 		},
-		["荒ぶる"] = GroupOperator {
+		ST_SetDomain = SetDomain {
 			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_2_1",
-					Source = "Input",
-				},
-				Input3 = InstanceInput {
-					SourceOp = "Shake1_1",
-					Source = "RandomSeed",
-					Width = 1,
-					Default = 0,
-				},
-				Input4 = InstanceInput {
-					SourceOp = "Shake1_1",
-					Source = "Randomize",
-					Width = 0.385,
-				},
-				Input5 = InstanceInput {
-					SourceOp = "Shake1_1",
-					Source = "Smoothness",
-					Default = 10,
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_2_1",
-					Source = "x",
-					Name = "X",
-					Default = 0.1,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_2_1",
-					Source = "y",
-					Name = "Y",
-					Default = 0.1,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_2_1",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 4345, 544.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 107.433, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_2_1 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.502997744173508, 0.497908177638071 },
-							Expression = "Point(0.5, 0.5) + shake * in_out",
-						},
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						x = Input { Value = 0.03, },
-						y = Input { Value = 0.03, },
-						shake = Input {
-							SourceOp = "Shake1_1",
-							Source = "Position",
-						},
-						in_out = Input {
-							SourceOp = "KeyframeStretcher1_1",
-							Source = "Result",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_Integer = false, LINKS_Name = "x", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_Integer = false, LINKS_Name = "y", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { LINKS_Name = "shake", INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", }, in_out = { INP_Integer = false, LINKS_Name = "in_out", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, } }
-				},
-				KeyframeStretcher1_1 = KeyStretcherMod {
-					CtrlWZoom = false,
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "KeyStretcheronTransform1_2_1Keyframes",
-							Source = "Value",
-						},
-						StretchStart = Input { Value = 10, },
-						StretchEnd = Input { Value = 110, },
-					},
-				},
-				KeyStretcheronTransform1_2_1Keyframes = BezierSpline {
-					SplineColor = { Red = 193, Green = 106, Blue = 231 },
-					CtrlWZoom = false,
-					KeyFrames = {
-						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
-						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
-						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
-						[120] = { 0, LH = { 116.666666666667, 0 } }
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
-				Shake1_1 = Shake {
-					Faster = true,
-					CtrlWZoom = false,
-					Inputs = {
-						Smoothness = Input { Value = 1.5, },
-						LockXY = Input { Value = 0, },
-						XMinimum = Input {
-							Value = -0.1,
-							Expression = "-Transform1_2_1.x",
-						},
-						XMaximum = Input {
-							Value = 0.1,
-							Expression = "Transform1_2_1.x",
-						},
-						YMinimum = Input {
-							Value = -0.1,
-							Expression = "-Transform1_2_1.y",
-						},
-						YMaximum = Input {
-							Value = 0.1,
-							Expression = "Transform1_2_1.y",
-						},
-					},
 				}
 			},
+			Inputs = {
+				Mode = Input { Value = FuID { "Set" }, },
+				Right = Input { Value = 0, },
+				Top = Input { Value = 0, },
+				Input = Input {
+					SourceOp = "ST_Background",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 3905, 940.5 } },
+		},
+		["モーションSelector"] = Transform {
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			Inputs = {
+				Input = Input {
+					SourceOp = "モーションなし",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 4070, 742.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+			UserControls = ordered() {
+				["N000_モーションなし"] = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"モーションなし\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					ICS_ControlPage = "モーション",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "モーションなし",
+				},
+				["N001_ぽよ"] = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぽよ\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					ICS_ControlPage = "モーション",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "ぽよ",
+				},
+				["N002_ぴょん"] = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぴょん\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					ICS_ControlPage = "モーション",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "ぴょん",
+				},
+				["N003_跳ねる"] = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"跳ねる\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					ICS_ControlPage = "モーション",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "跳ねる",
+				},
+				["N004_跳ねる_小"] = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"跳ねる_小\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					ICS_ControlPage = "モーション",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "跳ねる_小",
+				},
+				["N005_不安"] = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"不安\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					ICS_ControlPage = "モーション",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "不安",
+				},
+				["N006_荒ぶる"] = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"荒ぶる\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					ICS_ControlPage = "モーション",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "荒ぶる",
+				},
+				["N007_震え"] = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"震え\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					ICS_ControlPage = "モーション",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "震え",
+				}
+			}
+		},
+		ST_MergeB = Merge {
+			CtrlWZoom = false,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			Inputs = {
+				Background = Input {
+					SourceOp = "ST_SetDomain",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "モーションSelector",
+					Source = "Output",
+				},
+				Center = Input { Value = { 0.8, 0.1 }, },
+				PerformDepthMerge = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 4070, 940.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 		},
 		["震え"] = GroupOperator {
 			NameSet = true,
@@ -1915,48 +1873,81 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 29.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Default = 0, INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "out", }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Y", INPID_InputControl = "CheckboxControl", INP_Default = 0, } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
 				}
 			},
 		},
-		ST_Background = Background {
+		["跳ねる_小"] = GroupOperator {
 			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-					}
-				}
-			},
-			Inputs = {
-				Width = Input { Value = 1920, },
-				Height = Input { Value = 1080, },
-				UseFrameFormatSettings = Input { Value = 1, },
-				Depth = Input { Value = 1, },
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				TopLeftAlpha = Input { Value = 0, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3740, 940.5 } },
-		},
-		ST_SetDomain = SetDomain {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-					}
-				}
-			},
-			Inputs = {
-				Mode = Input { Value = FuID { "Set" }, },
-				Right = Input { Value = 0, },
-				Top = Input { Value = 0, },
-				Input = Input {
-					SourceOp = "ST_Background",
-					Source = "Output",
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_1_1",
+					Source = "Input",
 				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_1_1",
+					Source = "speed",
+					MinScale = 0.0010000000475,
+					Default = 2,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_1_1",
+					Source = "amplitude",
+					Default = 0.1,
+				}
 			},
-			ViewInfo = OperatorInfo { Pos = { 3905, 940.5 } },
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_1_1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 4015, 544.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_1_1 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.5, 0.595105651629515 },
+							Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
+						},
+						ReferenceSize = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						bound = Input {
+							Value = 0.951056516295154,
+							Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
+						},
+						speed = Input { Value = 2, },
+						amplitude = Input { Value = 0.02, },
+						out = Input {
+							Value = 59,
+							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "out", } }
+				}
+			},
 		},
 		Background1 = Background {
 			Inputs = {
@@ -2148,40 +2139,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 1650, -115.5 } },
 			Tools = {
-				HueCurves1Hue = LUTBezier {
-					SmoothEndsTransition = true,
-					KeyColorSplines = {
-						[0] = {
-							[0] = { 1.19259259259259, RH = { 0.333, 1.19259259259259 } },
-							[1] = { 1, LH = { 0.623233578312219, 1 }, RH = { 1.333, 1 } },
-							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
-							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
-							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
-							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
-							[6] = { 1.19259259259259, LH = { 5.667, 1.19259259259259 } }
-						}
-					},
-					SplineColor = { Red = 204, Green = 0, Blue = 204 },
-					CtrlWZoom = false,
-					NameSet = true,
-				},
-				HueCurves1Sat = LUTBezier {
-					SmoothEndsTransition = true,
-					KeyColorSplines = {
-						[0] = {
-							[0] = { 0.807407407407407, RH = { 0.333, 0.807407407407407 } },
-							[1] = { 1, LH = { 0.564668849552461, 1 }, RH = { 1.333, 1 } },
-							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
-							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
-							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
-							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
-							[6] = { 0.807407407407407, LH = { 5.667, 0.807407407407407 } }
-						}
-					},
-					SplineColor = { Red = 204, Green = 204, Blue = 0 },
-					CtrlWZoom = false,
-					NameSet = true,
-				},
 				HueCurves1Lum = LUTBezier {
 					SmoothEndsTransition = true,
 					KeyColorSplines = {
@@ -2197,75 +2154,6 @@ Composition {
 					},
 					SplineColor = { Red = 204, Green = 204, Blue = 204 },
 					CtrlWZoom = false,
-					NameSet = true,
-				},
-				HueCurves1Red = LUTBezier {
-					SmoothEndsTransition = true,
-					KeyColorSplines = {
-						[0] = {
-							[0] = { 1, RH = { 0.333, 1 } },
-							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
-							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
-							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
-							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
-							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
-							[6] = { 1, LH = { 5.667, 1 } }
-						}
-					},
-					SplineColor = { Red = 204, Green = 42, Blue = 42 },
-					CtrlWZoom = false,
-					NameSet = true,
-				},
-				HueCurves1Green = LUTBezier {
-					SmoothEndsTransition = true,
-					KeyColorSplines = {
-						[0] = {
-							[0] = { 1, RH = { 0.333, 1 } },
-							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
-							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
-							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
-							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
-							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
-							[6] = { 1, LH = { 5.667, 1 } }
-						}
-					},
-					SplineColor = { Red = 0, Green = 204, Blue = 0 },
-					CtrlWZoom = false,
-					NameSet = true,
-				},
-				HueCurves1Blue = LUTBezier {
-					SmoothEndsTransition = true,
-					KeyColorSplines = {
-						[0] = {
-							[0] = { 1, RH = { 0.333, 1 } },
-							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
-							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
-							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
-							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
-							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
-							[6] = { 1, LH = { 5.667, 1 } }
-						}
-					},
-					SplineColor = { Red = 54, Green = 54, Blue = 204 },
-					CtrlWZoom = false,
-					NameSet = true,
-				},
-				HueCurves1Red1 = LUTBezier {
-					SmoothEndsTransition = true,
-					KeyColorSplines = {
-						[0] = {
-							[0] = { 1, RH = { 0.333, 1 } },
-							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
-							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
-							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
-							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
-							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
-							[6] = { 1, LH = { 5.667, 1 } }
-						}
-					},
-					SplineColor = { Red = 204, Green = 102, Blue = 102 },
-					CtrlWZoom = false,
-					NameSet = true,
 				},
 				HueCurves1Green1 = LUTBezier {
 					SmoothEndsTransition = true,
@@ -2282,7 +2170,38 @@ Composition {
 					},
 					SplineColor = { Red = 102, Green = 204, Blue = 102 },
 					CtrlWZoom = false,
-					NameSet = true,
+				},
+				HueCurves1Sat = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0.807407407407407, RH = { 0.333, 0.807407407407407 } },
+							[1] = { 1, LH = { 0.564668849552461, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 0.807407407407407, LH = { 5.667, 0.807407407407407 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 0 },
+					CtrlWZoom = false,
+				},
+				HueCurves1Red1 = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 102, Blue = 102 },
+					CtrlWZoom = false,
 				},
 				HueCurves1Blue1 = LUTBezier {
 					SmoothEndsTransition = true,
@@ -2299,7 +2218,70 @@ Composition {
 					},
 					SplineColor = { Red = 134, Green = 134, Blue = 204 },
 					CtrlWZoom = false,
-					NameSet = true,
+				},
+				HueCurves1Blue = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 54, Green = 54, Blue = 204 },
+					CtrlWZoom = false,
+				},
+				HueCurves1Red = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 42, Blue = 42 },
+					CtrlWZoom = false,
+				},
+				HueCurves1Green = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1, RH = { 0.333, 1 } },
+							[1] = { 1, LH = { 0.667, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1, LH = { 5.667, 1 } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 204, Blue = 0 },
+					CtrlWZoom = false,
+				},
+				HueCurves1Hue = LUTBezier {
+					SmoothEndsTransition = true,
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 1.19259259259259, RH = { 0.333, 1.19259259259259 } },
+							[1] = { 1, LH = { 0.623233578312219, 1 }, RH = { 1.333, 1 } },
+							[2] = { 1, LH = { 1.667, 1 }, RH = { 2.333, 1 } },
+							[3] = { 1, LH = { 2.667, 1 }, RH = { 3.333, 1 } },
+							[4] = { 1, LH = { 3.667, 1 }, RH = { 4.333, 1 } },
+							[5] = { 1, LH = { 4.667, 1 }, RH = { 5.333, 1 } },
+							[6] = { 1.19259259259259, LH = { 5.667, 1.19259259259259 } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 0, Blue = 204 },
+					CtrlWZoom = false,
 				}
 			},
 		},
@@ -2424,7 +2406,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -2465,7 +2447,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -2487,7 +2469,7 @@ Composition {
 			},
 			Inputs = {
 				Input = Input {
-					SourceOp = "Loader22",
+					SourceOp = "Loader26",
 					Source = "Output",
 				},
 			},
@@ -2497,18 +2479,7 @@ Composition {
 			NameSet = true,
 			Inputs = {
 				Input = Input {
-					SourceOp = "Loader21",
-					Source = "Output",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 3410, -775.5 } },
-		},
-		Transform2 = Transform {
-			Inputs = {
-				Pivot = Input { Value = { 0.479080440317471, 0.727027874181194 }, },
-				Size = Input { Value = 0.65, },
-				Input = Input {
-					SourceOp = "M02",
+					SourceOp = "Loader22",
 					Source = "Output",
 				},
 			},
@@ -2527,7 +2498,7 @@ Composition {
 		Transform2_1 = Transform {
 			Inputs = {
 				Pivot = Input { Value = { 0.479080440317471, 0.727027874181194 }, },
-				Size = Input { Value = 0.85, },
+				Size = Input { Value = 0.8, },
 				Input = Input {
 					SourceOp = "M03",
 					Source = "Output",
@@ -2542,7 +2513,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -2559,7 +2530,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -2594,10 +2565,7 @@ Composition {
 				[0] = "DFTDissolve"
 			},
 			Inputs = {
-				Mix = Input {
-					Value = 0,
-					Expression = "iif(MouthCtrlB.Open >= MouthCtrlB.Threshold_004, 1, 0)",
-				},
+				Mix = Input { Expression = "iif(MouthCtrlB.Open >= MouthCtrlB.Threshold_004, 1, 0)", },
 				Background = Input {
 					SourceOp = "Transform2_1",
 					Source = "Output",
@@ -2619,7 +2587,7 @@ Composition {
 					Expression = "iif(MouthCtrlB.Open >= MouthCtrlB.Threshold_003, 1, 0)",
 				},
 				Background = Input {
-					SourceOp = "Transform2",
+					SourceOp = "M02",
 					Source = "Output",
 				},
 				Foreground = Input {
@@ -2634,10 +2602,7 @@ Composition {
 				[0] = "DFTDissolve"
 			},
 			Inputs = {
-				Mix = Input {
-					Value = 0,
-					Expression = "iif(MouthCtrlB.Open >= MouthCtrlB.Threshold_002, 1, 0)",
-				},
+				Mix = Input { Expression = "iif(MouthCtrlB.Open >= MouthCtrlB.Threshold_002, 1, 0)", },
 				Background = Input {
 					SourceOp = "M01",
 					Source = "Output",
@@ -2670,6 +2635,7 @@ Composition {
 			ViewInfo = OperatorInfo { Pos = { 3630, -577.5 } },
 		},
 		MouthCtrlB = Transform {
+			CtrlWZoom = false,
 			NameSet = true,
 			Inputs = {
 				Input = Input {
@@ -2677,10 +2643,10 @@ Composition {
 					Source = "Output",
 				},
 				Open = Input { Value = -1, },
-				Threshold_005 = Input { Value = 0.55, },
-				Threshold_004 = Input { Value = 0.4, },
-				Threshold_003 = Input { Value = 0.25, },
-				Threshold_002 = Input { Value = 0.1, },
+				Threshold_005 = Input { Value = 0.8, },
+				Threshold_004 = Input { Value = 0.6, },
+				Threshold_003 = Input { Value = 0.4, },
+				Threshold_002 = Input { Value = 0.2, },
 				Threshold_001 = Input { Value = 0, },
 			},
 			ViewInfo = OperatorInfo { Pos = { 3630, -379.5 } },
@@ -2689,50 +2655,50 @@ Composition {
 				Open = {
 					INP_Integer = false,
 					INPID_InputControl = "SliderControl",
-					LINKS_Name = "Open",
-					LINKID_DataType = "Number",
-					ICS_ControlPage = "口パク",
 					INP_Default = 0,
+					ICS_ControlPage = "口パク",
+					LINKID_DataType = "Number",
+					LINKS_Name = "Open",
 				},
 				Threshold_005 = {
 					INP_Integer = false,
 					INPID_InputControl = "SliderControl",
-					LINKS_Name = "Threshold_005",
-					LINKID_DataType = "Number",
-					ICS_ControlPage = "口パク",
 					INP_Default = 0.833333333333333,
+					ICS_ControlPage = "口パク",
+					LINKID_DataType = "Number",
+					LINKS_Name = "Threshold_005",
 				},
 				Threshold_004 = {
 					INP_Integer = false,
 					INPID_InputControl = "SliderControl",
-					LINKS_Name = "Threshold_004",
-					LINKID_DataType = "Number",
-					ICS_ControlPage = "口パク",
 					INP_Default = 0.666666666666667,
+					ICS_ControlPage = "口パク",
+					LINKID_DataType = "Number",
+					LINKS_Name = "Threshold_004",
 				},
 				Threshold_003 = {
 					INP_Integer = false,
 					INPID_InputControl = "SliderControl",
-					LINKS_Name = "Threshold_003",
-					LINKID_DataType = "Number",
-					ICS_ControlPage = "口パク",
 					INP_Default = 0.5,
+					ICS_ControlPage = "口パク",
+					LINKID_DataType = "Number",
+					LINKS_Name = "Threshold_003",
 				},
 				Threshold_002 = {
 					INP_Integer = false,
 					INPID_InputControl = "SliderControl",
-					LINKS_Name = "Threshold_002",
-					LINKID_DataType = "Number",
-					ICS_ControlPage = "口パク",
 					INP_Default = 0.333333333333333,
+					ICS_ControlPage = "口パク",
+					LINKID_DataType = "Number",
+					LINKS_Name = "Threshold_002",
 				},
 				Threshold_001 = {
 					INP_Integer = false,
 					INPID_InputControl = "SliderControl",
-					LINKS_Name = "Threshold_001",
-					LINKID_DataType = "Number",
-					ICS_ControlPage = "口パク",
 					INP_Default = 0.166666666666667,
+					ICS_ControlPage = "口パク",
+					LINKID_DataType = "Number",
+					LINKS_Name = "Threshold_001",
 				}
 			}
 		},
@@ -2789,7 +2755,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -2807,7 +2773,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -2827,7 +2793,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
@@ -2861,6 +2827,7 @@ Composition {
 					SourceOp = "EyeBlink",
 					Source = "Output",
 				},
+				Blink = Input { Value = 151, },
 				EyeStatus = Input { Value = "On", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 4070, -379.5 } },
@@ -2905,10 +2872,10 @@ Composition {
 					TEC_Lines = 1,
 					INP_External = false,
 					LINKID_DataType = "Text",
-					TEC_Wrap = false,
-					TEC_ReadOnly = true,
-					INPID_InputControl = "TextEditControl",
 					LINKS_Name = "",
+					INPID_InputControl = "TextEditControl",
+					TEC_ReadOnly = true,
+					TEC_Wrap = false,
 				}
 			}
 		},
@@ -2948,551 +2915,551 @@ Composition {
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 			UserControls = ordered() {
 				Grp_Root = {
-					LINKS_Name = "Root",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "LabelControl",
 					LBLC_DropDownButton = true,
+					INPID_InputControl = "LabelControl",
 					LBLC_NumInputs = 6,
 					INP_Default = 1,
 					INP_External = false,
+					LINKID_DataType = "Number",
 					INP_Passive = true,
 					ICS_ControlPage = "ポーズ",
+					LINKS_Name = "Root",
 				},
 				N010_namida_show_59 = {
-					LINKS_Name = "涙 show",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"涙_MG\")\nlocal node = comp:FindTool(\"Loader46\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 0.5,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"涙_MG\")\nlocal node = comp:FindTool(\"Loader46\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "涙 show",
 				},
 				N010_namida_hide_59 = {
-					LINKS_Name = "涙 hide",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"涙_MG\")\nmg.Foreground = nil",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 0.5,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"涙_MG\")\nmg.Foreground = nil",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "涙 hide",
 				},
 				N009_ase_show_58 = {
-					LINKS_Name = "汗 show",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"汗_MG\")\nlocal node = comp:FindTool(\"Loader45\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 0.5,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"汗_MG\")\nlocal node = comp:FindTool(\"Loader45\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "汗 show",
 				},
 				N009_ase_hide_58 = {
-					LINKS_Name = "汗 hide",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"汗_MG\")\nmg.Foreground = nil",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 0.5,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"汗_MG\")\nmg.Foreground = nil",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "汗 hide",
 				},
 				N002_saidokamikihon4 = {
-					LINKS_Name = "*サイド髪基本",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"Root_MG\")\nlocal node = comp:FindTool(\"Loader3\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"Root_MG\")\nlocal node = comp:FindTool(\"Loader3\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*サイド髪基本",
 				},
 				N001_saidokamihane3 = {
-					LINKS_Name = "*サイド髪跳ね",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"Root_MG\")\nlocal node = comp:FindTool(\"Loader2\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"Root_MG\")\nlocal node = comp:FindTool(\"Loader2\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*サイド髪跳ね",
 				},
 				["Grp_眉"] = {
-					LINKS_Name = "眉",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "LabelControl",
 					LBLC_DropDownButton = true,
+					INPID_InputControl = "LabelControl",
 					LBLC_NumInputs = 4,
 					INP_Default = 1,
 					INP_External = false,
+					LINKID_DataType = "Number",
 					INP_Passive = true,
 					ICS_ControlPage = "ポーズ",
+					LINKS_Name = "眉",
 				},
 				N003_futsuumayu57 = {
-					LINKS_Name = "*普通眉",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"眉_MG\")\nlocal node = comp:FindTool(\"Loader44\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"眉_MG\")\nlocal node = comp:FindTool(\"Loader44\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*普通眉",
 				},
 				N002_agarimayu56 = {
-					LINKS_Name = "*上がり眉",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"眉_MG\")\nlocal node = comp:FindTool(\"Loader43\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"眉_MG\")\nlocal node = comp:FindTool(\"Loader43\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*上がり眉",
 				},
 				N001_ikarimayu55 = {
-					LINKS_Name = "*怒り眉",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"眉_MG\")\nlocal node = comp:FindTool(\"Loader42\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"眉_MG\")\nlocal node = comp:FindTool(\"Loader42\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*怒り眉",
 				},
 				N000_komarimayu54 = {
-					LINKS_Name = "*困り眉",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"眉_MG\")\nlocal node = comp:FindTool(\"Loader41\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"眉_MG\")\nlocal node = comp:FindTool(\"Loader41\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*困り眉",
 				},
 				["Grp_目"] = {
-					LINKS_Name = "目",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "LabelControl",
 					LBLC_DropDownButton = true,
+					INPID_InputControl = "LabelControl",
 					LBLC_NumInputs = 14,
 					INP_Default = 1,
 					INP_External = false,
+					LINKID_DataType = "Number",
 					INP_Passive = true,
 					ICS_ControlPage = "ポーズ",
+					LINKS_Name = "目",
 				},
 				N013_kihon51 = {
-					LINKS_Name = "*基本",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader40\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader40\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*基本",
 				},
 				N012_kihon250 = {
-					LINKS_Name = "*基本2",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader39\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader39\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*基本2",
 				},
 				N011_kameramesen49 = {
-					LINKS_Name = "*カメラ目線",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader38\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader38\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*カメラ目線",
 				},
 				N010_mesorashi48 = {
-					LINKS_Name = "*目そらし",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader37\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader37\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*目そらし",
 				},
 				N009_uemuki47 = {
-					LINKS_Name = "*上むき",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader36\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader36\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*上むき",
 				},
 				N008_jitome46 = {
-					LINKS_Name = "*ジト目",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader35\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader35\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*ジト目",
 				},
 				N007_tojime45 = {
-					LINKS_Name = "*閉じ目",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader34\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader34\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*閉じ目",
 				},
 				N006_uinku44 = {
-					LINKS_Name = "*ウインク",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader33\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader33\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*ウインク",
 				},
 				N005_nikkori43 = {
-					LINKS_Name = "*にっこり",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader32\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader32\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*にっこり",
 				},
 				["N004_〇〇42"] = {
-					LINKS_Name = "*〇〇",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader31\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader31\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*〇〇",
 				},
 				N003_none41 = {
-					LINKS_Name = "*><",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader30\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader30\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*><",
 				},
 				["N002_・・40"] = {
-					LINKS_Name = "*・・",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader29\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader29\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*・・",
 				},
 				N001_zuda39 = {
-					LINKS_Name = "*(ず・　・だ)",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader28\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader28\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*(ず・　・だ)",
 				},
 				N000_zudaflipx38 = {
-					LINKS_Name = "*(ず・　・だ):flipx",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader27\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"目_MG\")\nlocal node = comp:FindTool(\"Loader27\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*(ず・　・だ):flipx",
 				},
 				["Grp_口"] = {
-					LINKS_Name = "口",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "LabelControl",
 					LBLC_DropDownButton = true,
+					INPID_InputControl = "LabelControl",
 					LBLC_NumInputs = 12,
 					INP_Default = 1,
 					INP_External = false,
+					LINKID_DataType = "Number",
 					INP_Passive = true,
 					ICS_ControlPage = "ポーズ",
+					LINKS_Name = "口",
 				},
 				N011_hohoemi35 = {
-					LINKS_Name = "*ほほえみ",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader26\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader26\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*ほほえみ",
 				},
 				N010_aha34 = {
-					LINKS_Name = "*あは",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader25\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader25\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*あは",
 				},
 				N009_ahaa33 = {
-					LINKS_Name = "*あはー",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader24\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader24\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*あはー",
 				},
 				N008_n32 = {
-					LINKS_Name = "*ん",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader23\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader23\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*ん",
 				},
 				N007_o31 = {
-					LINKS_Name = "*お",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader22\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader22\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*お",
 				},
 				N006_ooo30 = {
-					LINKS_Name = "*おおー",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader21\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader21\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*おおー",
 				},
 				N005_nmu29 = {
-					LINKS_Name = "*んむ",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader20\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader20\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*んむ",
 				},
 				N004_ae28 = {
-					LINKS_Name = "*あえ",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader19\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader19\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*あえ",
 				},
 				N003_eaa27 = {
-					LINKS_Name = "*えあー",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader18\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader18\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*えあー",
 				},
 				N002_jururi26 = {
-					LINKS_Name = "*じゅるり",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader17\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader17\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*じゅるり",
 				},
 				N001_perori25 = {
-					LINKS_Name = "*ぺろり",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader16\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader16\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*ぺろり",
 				},
 				["N000_ω24"] = {
-					LINKS_Name = "*ω",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader15\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"口_MG\")\nlocal node = comp:FindTool(\"Loader15\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*ω",
 				},
 				["Grp_ほっぺ"] = {
-					LINKS_Name = "ほっぺ",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "LabelControl",
 					LBLC_DropDownButton = true,
+					INPID_InputControl = "LabelControl",
 					LBLC_NumInputs = 3,
 					INP_Default = 1,
 					INP_External = false,
+					LINKID_DataType = "Number",
 					INP_Passive = true,
 					ICS_ControlPage = "ポーズ",
+					LINKS_Name = "ほっぺ",
 				},
 				N002_hoppekihon21 = {
-					LINKS_Name = "*ほっぺ基本",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"ほっぺ_MG\")\nlocal node = comp:FindTool(\"Loader14\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"ほっぺ_MG\")\nlocal node = comp:FindTool(\"Loader14\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*ほっぺ基本",
 				},
 				N001_hoppeakame20 = {
-					LINKS_Name = "*ほっぺ赤め",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"ほっぺ_MG\")\nlocal node = comp:FindTool(\"Loader13\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"ほっぺ_MG\")\nlocal node = comp:FindTool(\"Loader13\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*ほっぺ赤め",
 				},
 				N000_sekimen19 = {
-					LINKS_Name = "*赤面",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"ほっぺ_MG\")\nlocal node = comp:FindTool(\"Loader12\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"ほっぺ_MG\")\nlocal node = comp:FindTool(\"Loader12\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*赤面",
 				},
 				["Grp_左腕"] = {
-					LINKS_Name = "左腕",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "LabelControl",
 					LBLC_DropDownButton = true,
+					INPID_InputControl = "LabelControl",
 					LBLC_NumInputs = 4,
 					INP_Default = 1,
 					INP_External = false,
+					LINKID_DataType = "Number",
 					INP_Passive = true,
 					ICS_ControlPage = "ポーズ",
+					LINKS_Name = "左腕",
 				},
 				N003_kihon16 = {
-					LINKS_Name = "*基本",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"左腕_MG\")\nlocal node = comp:FindTool(\"Loader11\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"左腕_MG\")\nlocal node = comp:FindTool(\"Loader11\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*基本",
 				},
 				N002_tewoageru15 = {
-					LINKS_Name = "*手を挙げる",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"左腕_MG\")\nlocal node = comp:FindTool(\"Loader10\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"左腕_MG\")\nlocal node = comp:FindTool(\"Loader10\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*手を挙げる",
 				},
 				N001_yumi14 = {
-					LINKS_Name = "*弓",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"左腕_MG\")\nlocal node = comp:FindTool(\"Loader9\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"左腕_MG\")\nlocal node = comp:FindTool(\"Loader9\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*弓",
 				},
 				N000_kuchimotoniyubi13 = {
-					LINKS_Name = "*口元に指",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"左腕_MG\")\nlocal node = comp:FindTool(\"Loader8\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"左腕_MG\")\nlocal node = comp:FindTool(\"Loader8\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*口元に指",
 				},
 				["Grp_右腕"] = {
-					LINKS_Name = "右腕",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "LabelControl",
 					LBLC_DropDownButton = true,
+					INPID_InputControl = "LabelControl",
 					LBLC_NumInputs = 4,
 					INP_Default = 1,
 					INP_External = false,
+					LINKID_DataType = "Number",
 					INP_Passive = true,
 					ICS_ControlPage = "ポーズ",
+					LINKS_Name = "右腕",
 				},
 				N003_kihon10 = {
-					LINKS_Name = "*基本",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"右腕_MG\")\nlocal node = comp:FindTool(\"Loader7\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"右腕_MG\")\nlocal node = comp:FindTool(\"Loader7\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*基本",
 				},
 				N002_tewoageru9 = {
-					LINKS_Name = "*手を挙げる",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"右腕_MG\")\nlocal node = comp:FindTool(\"Loader6\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"右腕_MG\")\nlocal node = comp:FindTool(\"Loader6\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*手を挙げる",
 				},
 				N001_yoko8 = {
-					LINKS_Name = "*横",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"右腕_MG\")\nlocal node = comp:FindTool(\"Loader5\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"右腕_MG\")\nlocal node = comp:FindTool(\"Loader5\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*横",
 				},
 				N000_atamakotsun7 = {
-					LINKS_Name = "*頭こつん",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
-					INP_Integer = false,
-					BTNCS_Execute = "local mg = comp:FindTool(\"右腕_MG\")\nlocal node = comp:FindTool(\"Loader4\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
-					INP_External = false,
-					ICS_ControlPage = "ポーズ",
 					ICD_Width = 1,
+					INP_Integer = false,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local mg = comp:FindTool(\"右腕_MG\")\nlocal node = comp:FindTool(\"Loader4\")\nmg:ConnectInput(\"Foreground\", node)\nmg.Center:HideViewControls()\nmg.Angle:HideViewControls()\nmg.Size:HideViewControls()",
+					ICS_ControlPage = "ポーズ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "*頭こつん",
 				}
 			}
 		},
@@ -3513,129 +3480,138 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 4070, 214.5 } },
 		},
-		["モーションSelector"] = Transform {
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-					}
-				},
-			},
-			Inputs = {
-				Input = Input {
-					SourceOp = "モーションなし",
-					Source = "Output",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 4070, 742.5 } },
-			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-			UserControls = ordered() {
-				["N000_モーションなし"] = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					INP_External = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"モーションなし\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
-					ICS_ControlPage = "モーション",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "モーションなし",
-				},
-				["N001_ぽよ"] = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					INP_External = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぽよ\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
-					ICS_ControlPage = "モーション",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "ぽよ",
-				},
-				["N002_ぴょん"] = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					INP_External = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぴょん\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
-					ICS_ControlPage = "モーション",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "ぴょん",
-				},
-				["N003_跳ねる"] = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					INP_External = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"跳ねる\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
-					ICS_ControlPage = "モーション",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "跳ねる",
-				},
-				["N004_跳ねる_小"] = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					INP_External = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"跳ねる_小\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
-					ICS_ControlPage = "モーション",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "跳ねる_小",
-				},
-				["N005_不安"] = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					INP_External = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"不安\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
-					ICS_ControlPage = "モーション",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "不安",
-				},
-				["N006_荒ぶる"] = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					INP_External = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"荒ぶる\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
-					ICS_ControlPage = "モーション",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "荒ぶる",
-				},
-				["N007_震え"] = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					INP_External = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"震え\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
-					ICS_ControlPage = "モーション",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "震え",
-				}
-			}
-		},
-		ST_MergeB = Merge {
-			CtrlWZoom = false,
+		["不安"] = GroupOperator {
 			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } } },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_2",
+					Source = "Input",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "RandomSeed",
+					Width = 1,
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "Randomize",
+					Width = 0.385,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "Smoothness",
+					Default = 10,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_2",
+					Source = "x",
+					Name = "X",
+					Default = 0.1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_2",
+					Source = "y",
+					Name = "Y",
+					Default = 0.1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 4180, 544.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_2 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.502997744173508, 0.497908177638071 },
+							Expression = "Point(0.5, 0.5) + shake * in_out",
+						},
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						x = Input { Value = 0.01, },
+						y = Input { Value = 0.01, },
+						shake = Input {
+							SourceOp = "Shake1",
+							Source = "Position",
+						},
+						in_out = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { x = { INP_MinScale = 0, LINKS_Name = "x", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_MinScale = 0, LINKS_Name = "y", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", LINKS_Name = "shake", }, in_out = { INP_MinScale = 0, LINKS_Name = "in_out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
+				},
+				KeyframeStretcher1 = KeyStretcherMod {
+					CtrlWZoom = false,
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "KeyStretcheronTransform1_2Keyframes",
+							Source = "Value",
+						},
+						StretchStart = Input { Value = 10, },
+						StretchEnd = Input { Value = 110, },
+					},
+				},
+				KeyStretcheronTransform1_2Keyframes = BezierSpline {
+					SplineColor = { Red = 193, Green = 106, Blue = 231 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
+						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
+						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
 					}
 				},
+				Shake1 = Shake {
+					Faster = true,
+					CtrlWZoom = false,
+					Inputs = {
+						Smoothness = Input { Value = 2, },
+						LockXY = Input { Value = 0, },
+						XMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1_2.x",
+						},
+						XMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1_2.x",
+						},
+						YMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1_2.y",
+						},
+						YMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1_2.y",
+						},
+					},
+				}
 			},
-			Inputs = {
-				Background = Input {
-					SourceOp = "ST_SetDomain",
-					Source = "Output",
-				},
-				Foreground = Input {
-					SourceOp = "モーションSelector",
-					Source = "Output",
-				},
-				Center = Input { Value = { 0.8, 0.1 }, },
-				PerformDepthMerge = Input { Value = 0, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 4070, 940.5 } },
-			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
 		}
 	},
 	Frames = {
@@ -3649,62 +3625,62 @@ Composition {
 			Width = 1920,
 			Height = 1104,
 			ZoneInfo = {
-				AuxRight = { Expanded = true },
-				Right = { Expanded = true, },
-				Left = { Expanded = false, },
-				AuxLeft = { Expanded = true },
+				["!Right"] = {
+				},
 				["!Left"] = {
 				},
-				["!Right"] = {
-				}
+				AuxLeft = { Expanded = true },
+				Right = { Expanded = true, },
+				Left = { Expanded = false, },
+				AuxRight = { Expanded = true }
 			},
 			ViewInfo = {
-				Keyframes = { Show = false, },
-				LayoutStrip = { Show = true, RatioX = 100, },
-				Inspector = { Show = true, RatioX = 100, RatioY = 1, },
-				Effects = { Show = true, Adjust = false, RatioX = 1, RatioY = 100, MRU = 1 },
-				Viewer2 = { Show = true, RatioX = 0.99906976744186, RatioY = 0.01, },
-				Comments = { Show = false },
-				Clips = { Show = false, },
-				ActionStrip = { Show = true, RatioX = 100, },
-				Time = { Show = true, RatioX = 100, },
-				MediaPool = { Show = false, },
-				Nodes = { Show = true, RatioX = 1, RatioY = 100, },
-				Metadata = { Show = false, },
-				Viewer1 = { Show = true, RatioX = 1.00093023255814, RatioY = 0.01, },
-				Spline = { Show = false, },
-				OuterColumns = {
-					RatioX = 100,
-					RatioY = 1,
-				},
-				OuterLeft = {
-				},
-				CenterSplit = {
-					RatioX = 1,
+				Viewer1 = { Show = true, RatioY = 0.01, RatioX = 1.00093023255814, },
+				InnerLeft = {
 					RatioY = 100,
-				},
-				OuterRight = {
 					PixelX = 420,
-					RatioY = 100,
-				},
-				InnerColumns = {
-					RatioX = 100,
-					RatioY = 1.68509378084896,
 				},
 				MainSplit = {
 					RatioX = 100,
 					RatioY = 1.31490621915104,
 				},
-				InnerLeft = {
-					PixelX = 420,
+				CenterSplit = {
+					RatioX = 1,
 					RatioY = 100,
 				},
+				Viewer2 = { Show = true, RatioY = 0.01, RatioX = 0.99906976744186, },
+				Comments = { Show = false },
+				Time = { Show = true, RatioX = 100, },
+				InnerColumns = {
+					RatioX = 100,
+					RatioY = 1.68509378084896,
+				},
+				Keyframes = { Show = false, },
+				LayoutStrip = { Show = true, RatioX = 100, },
+				Inspector = { Show = true, RatioY = 1, RatioX = 100, },
+				ActionStrip = { Show = true, RatioX = 100, },
 				InnerRight = {
+				},
+				OuterColumns = {
+					RatioX = 100,
+					RatioY = 1,
+				},
+				Effects = { Show = true, Adjust = false, RatioY = 100, MRU = 1, RatioX = 1, },
+				Clips = { Show = false, },
+				Metadata = { Show = false, },
+				OuterLeft = {
 				},
 				ViewerSplit = {
 					RatioX = 100,
 					RatioY = 1,
-				}
+				},
+				Nodes = { Show = true, RatioY = 100, RatioX = 1, },
+				OuterRight = {
+					RatioY = 100,
+					PixelX = 420,
+				},
+				MediaPool = { Show = false, },
+				Spline = { Show = false, }
 			},
 			Views = ordered() {
 				Effects = MultiView {
@@ -3729,8 +3705,8 @@ Composition {
 						NavigatorSize = { 200, 140 },
 						Direction = "Horizontal",
 						PipeStyle = "Direct",
-						RootScale = 0.125,
-						RootOffset = { 389.613, 884.846 }
+						RootScale = 0.191445,
+						RootOffset = { -942.816, 1070.65 }
 					}
 				},
 				Keyframes = MultiView {
@@ -3750,7 +3726,7 @@ Composition {
 						KeyFrameView = {
 							Position = { Left = 232, Bottom = 320 },
 							ScaleX = 2.14424951267057,
-							OffsetX = -49.317738791423,
+							OffsetX = -51.4619883040936,
 							OffsetY = 0,
 							AutoScaling = "scroll",
 							AutoSnapTo = "frame",
@@ -3894,53 +3870,18 @@ Composition {
 	},
 	Prefs = {
 		Comp = {
-			Paths = {
-				EnableReverseMapping = true,
-				Map = {
-				}
-			},
-			Network = {
-				SlaveMemOverride = true,
-			},
-			FlowView = {
-				ForceAll = true,
-				RemoveRouters = false,
-				GridSnap = true,
-			},
-			LastFile = "C:\\work\\ShatterB.abc",
 			Interactive = {
 				Proxy = {
-					Auto = true,
-				},
-			},
-			FrameFormat = {
-				GuideRatio = 1.77777777777778,
-			},
-			Preview = {
-				HiQ = false,
-			},
-			AVI = {
-				Preview = {
-					DataCheck = true,
-					Key = 15,
-					Quality = 75,
-					DataRate = 300,
-					KeyCheck = true,
-					Handler = 1668707181
+					Auto = true
 				},
 			},
 			Memory = {
 				FramesAtOnce = 1,
 			},
 			Views = {
-				Defaults = {
-					OpToolbar = {
-						Size = 1
-					}
-				},
 				RightView = {
 					Viewer = {
-						ScaleMode = 1,
+						ScaleMode = 1
 					},
 				},
 				LeftView = {
@@ -3950,21 +3891,56 @@ Composition {
 				},
 				View1 = {
 				},
-			},
-			Import = {
-				OMF = {
-					FlowFormat = 0
+				Defaults = {
+					OpToolbar = {
+						Size = 1
+					},
 				},
 			},
-			Cluster = {
-				SlaveClasses = "all",
+			Preview = {
+				HiQ = false,
 			},
-			QuickTime = {
+			Network = {
+				SlaveMemOverride = true,
+			},
+			Paths = {
+				Map = {
+				},
+				EnableReverseMapping = true
+			},
+			FrameFormat = {
+				GuideRatio = 1.77777777777778,
+			},
+			LastFile = "C:\\work\\ShatterB.abc",
+			AVI = {
+				Preview = {
+					DataCheck = true,
+					Key = 15,
+					Handler = 1668707181,
+					KeyCheck = true,
+					DataRate = 300,
+					Quality = 75
+				}
 			},
 			Tweaks = {
 				OpenCL = {
 					Enable = 2,
 					Caching = 2
+				}
+			},
+			Cluster = {
+				SlaveClasses = "all"
+			},
+			FlowView = {
+				ForceAll = true,
+				GridSnap = true,
+				RemoveRouters = false
+			},
+			QuickTime = {
+			},
+			Import = {
+				OMF = {
+					FlowFormat = 0
 				}
 			}
 		}
