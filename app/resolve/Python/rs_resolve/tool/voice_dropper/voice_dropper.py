@@ -348,6 +348,7 @@ class MainWindow(QMainWindow):
             is_time_out = False
 
             # ロック確認 VOICEPEAK用に出力待ち
+            self.add2log('waveファイルチェック:  START')
             while True:
                 if time.time() - start_time > data.time_out:
                     is_time_out = True
