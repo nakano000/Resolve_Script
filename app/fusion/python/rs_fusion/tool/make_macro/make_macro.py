@@ -12,7 +12,7 @@ from PySide2.QtWidgets import (
     QApplication,
     QFileDialog,
     QMainWindow,
-    QHeaderView,
+    QHeaderView, QMessageBox,
 )
 
 from rs.core import (
@@ -164,18 +164,18 @@ class MainWindow(QMainWindow):
         resolve = self.fusion.GetResolve()
         if resolve and resolve.GetCurrentPage() != 'fusion':
             if self.lang_code == lang.Code.en:
-                print('Please run on Fusion Page.')
+                QMessageBox.warning(self, 'Warning', 'Please run in Fusion Page.')
             else:
-                print('Fusion Pageで実行してください。')
+                QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
             return None
 
         # comp check
         comp = self.fusion.CurrentComp
         if comp is None:
             if self.lang_code == lang.Code.en:
-                print('Composition not found.')
+                QMessageBox.warning(self, 'Warning', 'Composition not found.')
             else:
-                print('コンポジションが見付かりません。')
+                QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
             return None
 
         return comp
@@ -350,18 +350,22 @@ class MainWindow(QMainWindow):
 
         # get data
         data = self.get_data()
+        node_set = set()
         output_list = []
         for row in out_m.to_list():
             output_list.append({
                 'id': row.id,
                 'node': row.node,
             })
+            node_set.add(row.node)
+
         main_in_list = []
         for row in in_m.to_list():
             main_in_list.append({
                 'id': row.id,
                 'node': row.node,
             })
+            node_set.add(row.node)
 
         # control groupの数字が被らないようにNode毎にoffsetを設定
         cg_offset_dict = {}
@@ -403,6 +407,28 @@ class MainWindow(QMainWindow):
                 'option02': row.option02.strip(),
                 'option03': row.option03.strip(),
             })
+            node_set.add(row.node)
+
+        # check selected node
+        selection_set = p.pipe(
+            comp.GetToolList(True).values(),
+            p.map(lambda x: x.Name),
+            set,
+        )
+        print(selection_set)
+        print(node_set)
+        if node_set.issubset(selection_set) is False:
+            title = '確認'
+            text = '選択されているノードに、入力ノードが含まれていません。\nMacroを作りますか？'
+            if self.lang_code == lang.Code.en:
+                title = 'Confirm'
+                text = 'The selected nodes do not include the input nodes.\nDo you want to create a macro?'
+            ret = QMessageBox.question(self, title, text, QMessageBox.Yes, QMessageBox.No)
+
+            if ret == QMessageBox.Yes:
+                pass
+            elif ret == QMessageBox.No:
+                return
 
         # save macro
         if use_json_path and self.file is not None:
