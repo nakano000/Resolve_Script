@@ -1,13 +1,12 @@
 import sys
 import functools
 from PySide2.QtCore import (
-    Qt, QLocale,
+    Qt,
 )
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
     QMessageBox,
-    QActionGroup,
 )
 
 from rs.core import (
@@ -38,6 +37,7 @@ class MainWindow(QMainWindow):
         self.fusion = fusion
 
         # translate
+        self.lang_code: lang.Code = lang.load()
         self.translate()
 
         # button
@@ -54,8 +54,7 @@ class MainWindow(QMainWindow):
         self.ui.closeButton.clicked.connect(self.close)
 
     def translate(self) -> None:
-        lang_code: lang.Code = lang.load()
-        if lang_code == lang.Code.en:
+        if self.lang_code == lang.Code.en:
             self.ui.applyButton.setText('apply')
             self.ui.removeButton.setText('remove')
             self.ui.closeButton.setText('close')
@@ -63,11 +62,17 @@ class MainWindow(QMainWindow):
     def pathmap(self, use_pathmap: bool) -> None:
         resolve = self.fusion.GetResolve()
         if resolve is not None and resolve.GetCurrentPage() != 'fusion':
-            QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
+            if self.lang_code == lang.Code.en:
+                QMessageBox.warning(self, 'Warning', 'Please run in Fusion Page.')
+            else:
+                QMessageBox.warning(self, 'Warning', 'Fusion Pageで実行してください。')
             return
         comp = self.fusion.CurrentComp
         if comp is None:
-            QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
+            if self.lang_code == lang.Code.en:
+                QMessageBox.warning(self, 'Warning', 'Composition not found.')
+            else:
+                QMessageBox.warning(self, 'Warning', 'コンポジションが見付かりません。')
             return
 
         undo_name = 'RS Path Map' if use_pathmap else 'RS Path Unmap'
