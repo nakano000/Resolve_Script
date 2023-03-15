@@ -12,17 +12,20 @@ from PySide2.QtWidgets import (
     QSizePolicy,
     QSpacerItem,
     QVBoxLayout,
-    QWidget, QHBoxLayout, QToolButton,
+    QWidget, QHBoxLayout, QToolButton, QMenu, QAction,
 )
 
 from rs.core import (
     config,
+    lang,
     pipe as p,
 )
 from rs.gui import appearance
+from rs.gui.lang.lang import MainWindow as LangWindow
 from rs.gui.script_button import ScriptButton
 
 APP_NAME = 'りぞりぷと'
+APP_NAME_EN = 'RIZORIPUTO'
 __version__ = '1.7.6'
 
 MENU_JSON = config.ROOT_PATH.joinpath('data', 'app', 'launcher_menu.json')
@@ -37,23 +40,43 @@ SS_DICT = {
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('%s  其ノ%s' % (APP_NAME, __version__))
+        self.set_title()
         self.setWindowFlags(
             Qt.Window
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(200, 10)
+        self.resize(180, 10)
+
+        # lang window
+        self.lang_window = LangWindow(self)
 
         # button
+        self.option_button = QToolButton(self)
+        self.option_button.setText('⁝')
+        self.option_button.setToolTip('option')
+        self.option_button.setMinimumHeight(30)
+        self.option_button.setMinimumWidth(30)
+        self.option_button.setPopupMode(QToolButton.InstantPopup)
         self.close_button = QPushButton('close', self)
-        self.close_button.setMinimumHeight(40)
-        self.close_button.setToolTip('閉じる')
+        self.close_button.setMinimumHeight(30)
+        self.close_button.setToolTip('close')
         self.minimize_button = QToolButton(self)
         self.minimize_button.setArrowType(Qt.DownArrow)
-        self.minimize_button.setMinimumHeight(40)
-        self.minimize_button.setMinimumWidth(40)
-        self.minimize_button.setToolTip('最小化')
+        self.minimize_button.setMinimumHeight(30)
+        self.minimize_button.setMinimumWidth(30)
+        self.minimize_button.setToolTip('minimize')
+
+        # menu
+        lst = [
+            ('Lang', self.lang_window.show),
+        ]
+        menu = QMenu(self.option_button)
+        for x in lst:
+            act = QAction(x[0], self.option_button)
+            act.triggered.connect(x[1])
+            menu.addAction(act)
+        self.option_button.setMenu(menu)
 
         # layout
         lo = QVBoxLayout()
@@ -73,6 +96,7 @@ class MainWindow(QWidget):
             QSpacerItem(10, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
         )
         lo2 = QHBoxLayout()
+        lo2.addWidget(self.option_button)
         lo2.addWidget(self.minimize_button)
         lo2.addWidget(self.close_button)
         lo.addLayout(lo2)
@@ -80,6 +104,14 @@ class MainWindow(QWidget):
         # event
         self.close_button.clicked.connect(self.close)
         self.minimize_button.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
+        self.lang_window.ui.setButton.clicked.connect(self.set_title)
+
+    def set_title(self):
+        lang_code: lang.Code = lang.load()
+        title = '%s  其ノ%s' % (APP_NAME, __version__)
+        if lang_code == lang.Code.en:
+            title = '%s  %s' % (APP_NAME_EN, __version__)
+        self.setWindowTitle(title)
 
 
 def run() -> None:
