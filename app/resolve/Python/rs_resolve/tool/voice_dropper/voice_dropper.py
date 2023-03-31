@@ -218,21 +218,30 @@ class MainWindow(QMainWindow):
         self.ui.logTextEdit.clear()
         if len(created_lst) == 0:
             return
+        use_watchdog = self.__observer.is_alive()
+        if use_watchdog:
+            self.stop()
         resolve = self.fusion.GetResolve()
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
             self.add2log('Projectが見付かりません。')
+            if use_watchdog:
+                self.start()
             return
         media_pool = project.GetMediaPool()
         timeline = project.GetCurrentTimeline()
         if timeline is None:
             self.add2log('Timelineが見付かりません。')
+            if use_watchdog:
+                self.start()
             return
 
         w = get_resolve_window(project.GetName())
         if w is None:
             self.add2log('DaVinci ResolveのWindowが見付かりません。')
+            if use_watchdog:
+                self.start()
             return
         if util.IS_WIN:
             self.setWindowState(Qt.WindowMinimized)  # windowsの場合、最小化しないとウィンドウがactiveにならないので、
@@ -252,9 +261,13 @@ class MainWindow(QMainWindow):
 
         if dropper_folder is None:
             self.add2log('MediaPool VoiceDropperフォルダにtext+が見付かりません。')
+            if use_watchdog:
+                self.start()
             return
         if len(dropper_folder.GetClipList()) == 0:
             self.add2log('MediaPool VoiceDropperフォルダにtext+が見付かりません。')
+            if use_watchdog:
+                self.start()
             return
         text_template = dropper_folder.GetClipList()[0]
 
@@ -474,6 +487,8 @@ class MainWindow(QMainWindow):
             #
             self.add2log('')
         # end
+        if use_watchdog:
+            self.start()
         time_end = time.time()
         self.add2log('Done! %fs' % (time_end - time_sta))
         print('Done! %fs' % (time_end - time_sta))
