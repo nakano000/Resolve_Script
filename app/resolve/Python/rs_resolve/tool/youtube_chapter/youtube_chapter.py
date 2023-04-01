@@ -15,6 +15,7 @@ from PySide2.QtWidgets import (
 from rs.core import (
     config,
     pipe as p,
+    lang,
 )
 from rs.gui import (
     appearance,
@@ -24,6 +25,7 @@ from rs_resolve.core import get_fps
 from rs_resolve.tool.youtube_chapter.youtube_chapter_ui import Ui_MainWindow
 
 APP_NAME = 'Youtubeチャプター'
+APP_NAME_EN = 'YoutubeChapter'
 
 
 @dataclasses.dataclass
@@ -53,7 +55,6 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setWindowTitle('%s' % APP_NAME)
         self.setWindowFlags(
             Qt.Window
             | Qt.WindowCloseButtonHint
@@ -61,6 +62,11 @@ class MainWindow(QMainWindow):
         )
         self.resize(450, 450)
         self.fusion = fusion
+
+        # translate
+        self.lang_code: lang.Code = lang.load()
+        self.setWindowTitle('%s' % (APP_NAME if self.lang_code == lang.Code.ja else APP_NAME_EN))
+        self.translate()
 
         # list view
         m = QStringListModel()
@@ -80,6 +86,15 @@ class MainWindow(QMainWindow):
         self.ui.copyButton.clicked.connect(self.copy)
         self.ui.closeButton.clicked.connect(self.close)
 
+    def translate(self) -> None:
+        if self.lang_code == lang.Code.en:
+            self.ui.titleLabel.setText('title')
+            self.ui.delimiterLabel.setText('delimiter')
+            self.ui.niconicoCheckBox.setText('add # for niconico')
+            self.ui.makeButton.setText('make')
+            self.ui.copyButton.setText('copy')
+            self.ui.closeButton.setText('close')
+
     def make(self):
         v = self.ui.chapterPlainTextEdit
         data = self.get_data()
@@ -91,12 +106,18 @@ class MainWindow(QMainWindow):
 
         project = projectManager.GetCurrentProject()
         if project is None:
-            v.setPlainText('Projectが見付かりません。')
+            if self.lang_code == lang.Code.en:
+                v.setPlainText('Project not found.')
+            else:
+                v.setPlainText('Projectが見付かりません。')
             return
 
         timeline = project.GetCurrentTimeline()
         if timeline is None:
-            v.setPlainText('Timelineが見付かりません。')
+            if self.lang_code == lang.Code.en:
+                v.setPlainText('Timeline not found.')
+            else:
+                v.setPlainText('Timelineが見付かりません。')
             return
 
         fps = get_fps(timeline)
@@ -142,6 +163,8 @@ class MainWindow(QMainWindow):
 
     def load_config(self) -> None:
         c = ConfigData()
+        if self.lang_code == lang.Code.en:
+            c.title = 'Chapter'
         if self.config_file.is_file():
             c.load(self.config_file)
         self.set_data(c)

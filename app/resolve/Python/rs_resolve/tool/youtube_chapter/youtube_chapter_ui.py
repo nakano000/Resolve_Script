@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\youtube_chapter\youtube_chapter.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\youtube_chapter\youtube_chapter.ui' applies.
 #
-# Created: Mon Dec  5 08:32:31 2022
+# Created: Sat Apr  1 11:55:04 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,15 +24,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
+        self.titleLabel = QtWidgets.QLabel(self.centralwidget)
+        self.titleLabel.setObjectName("titleLabel")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.titleLabel)
         self.titleLineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.titleLineEdit.setObjectName("titleLineEdit")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.titleLineEdit)
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)
+        self.delimiterLabel = QtWidgets.QLabel(self.centralwidget)
+        self.delimiterLabel.setObjectName("delimiterLabel")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.delimiterLabel)
         self.delimiterLineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.delimiterLineEdit.setObjectName("delimiterLineEdit")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.delimiterLineEdit)
@@ -70,17 +70,17 @@ class Ui_MainWindow(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.makeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.makeButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.makeButton.setMinimumSize(QtCore.QSize(80, 30))
         self.makeButton.setObjectName("makeButton")
         self.horizontalLayout.addWidget(self.makeButton)
         self.copyButton = QtWidgets.QPushButton(self.centralwidget)
-        self.copyButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.copyButton.setMinimumSize(QtCore.QSize(80, 30))
         self.copyButton.setObjectName("copyButton")
         self.horizontalLayout.addWidget(self.copyButton)
         spacerItem1 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
+        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
         self.closeButton.setObjectName("closeButton")
         self.horizontalLayout.addWidget(self.closeButton)
         self.verticalLayout_3.addLayout(self.horizontalLayout)
@@ -91,8 +91,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "題名", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "区切り文字", None, -1))
+        self.titleLabel.setText(QtWidgets.QApplication.translate("MainWindow", "題名", None, -1))
+        self.delimiterLabel.setText(QtWidgets.QApplication.translate("MainWindow", "区切り文字", None, -1))
         self.niconicoCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "ニコニコ動画用に#を付ける", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "marker", None, -1))
         self.makeButton.setText(QtWidgets.QApplication.translate("MainWindow", "生成", None, -1))
