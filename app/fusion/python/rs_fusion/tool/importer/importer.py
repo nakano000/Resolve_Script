@@ -22,6 +22,7 @@ from rs.core import (
 from rs.gui import (
     appearance,
 )
+from rs_fusion.core import pose
 from rs_fusion.tool.importer.importer_ui import Ui_MainWindow
 
 APP_NAME = '読み込み(PsdSplitter用)'
@@ -375,7 +376,8 @@ class Importer:
             xf, _, _uc, name_list = self.add_node_B(0, 0, self.json_data['data'], self.json_data['name'], {}, use_label)
 
             # xf
-            uc = {'__flags': 2097152}  # 順番を保持するフラグ
+            # uc = {'__flags': 2097152}  # 順番を保持するフラグ
+            uc = pose.get_uc(None)
             for k, v in reversed(list(_uc.items())):
                 uc[k] = v
             xf.UserControls = uc
