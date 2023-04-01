@@ -16,6 +16,46 @@
   "main_input_list": [],
   "input_list": [
     {
+      "node": "Root",
+      "page": "User",
+      "id": "CopyPose",
+      "name": "Copy Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "PastePose",
+      "name": "Paste Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "SavePose",
+      "name": "Save Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "LoadPose",
+      "name": "Load Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
       "node": "ST_MergeB",
       "page": "Merge",
       "id": "Center",

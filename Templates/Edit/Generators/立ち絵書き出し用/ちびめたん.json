@@ -16,6 +16,46 @@
   "main_input_list": [],
   "input_list": [
     {
+      "node": "Root",
+      "page": "User",
+      "id": "CopyPose",
+      "name": "Copy Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "PastePose",
+      "name": "Paste Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "SavePose",
+      "name": "Save Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "LoadPose",
+      "name": "Load Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
       "node": "ST_MergeB",
       "page": "Merge",
       "id": "Center",
@@ -238,7 +278,7 @@
     {
       "node": "Root",
       "page": "ポーズ",
-      "id": "Grp_!眉",
+      "id": "Grp_眉",
       "name": "眉",
       "control_group": 0,
       "option01": "",
@@ -328,7 +368,7 @@
     {
       "node": "Root",
       "page": "ポーズ",
-      "id": "Grp_!目",
+      "id": "Grp_目",
       "name": "目",
       "control_group": 0,
       "option01": "",
@@ -428,7 +468,7 @@
     {
       "node": "Root",
       "page": "ポーズ",
-      "id": "Grp_*目セット",
+      "id": "Grp_目セット",
       "name": "目セット",
       "control_group": 0,
       "option01": "",
@@ -458,7 +498,7 @@
     {
       "node": "Root",
       "page": "ポーズ",
-      "id": "Grp_!黒目",
+      "id": "Grp_黒目",
       "name": "黒目",
       "control_group": 0,
       "option01": "",
@@ -498,7 +538,7 @@
     {
       "node": "Root",
       "page": "ポーズ",
-      "id": "Grp_!口",
+      "id": "Grp_口",
       "name": "口",
       "control_group": 0,
       "option01": "",
@@ -698,7 +738,7 @@
     {
       "node": "Root",
       "page": "ポーズ",
-      "id": "Grp_!顔色",
+      "id": "Grp_顔色",
       "name": "顔色",
       "control_group": 0,
       "option01": "",
@@ -788,7 +828,7 @@
     {
       "node": "Root",
       "page": "ポーズ",
-      "id": "Grp_!右腕",
+      "id": "Grp_右腕",
       "name": "右腕",
       "control_group": 0,
       "option01": "",
@@ -868,7 +908,7 @@
     {
       "node": "Root",
       "page": "ポーズ",
-      "id": "Grp_!左腕",
+      "id": "Grp_左腕",
       "name": "左腕",
       "control_group": 0,
       "option01": "",
