@@ -9,7 +9,6 @@ from PySide2.QtCore import (
 )
 from PySide2.QtWidgets import (
     QApplication,
-    QFileDialog,
     QMainWindow,
     QMessageBox,
     QButtonGroup,
@@ -24,7 +23,10 @@ from rs.gui import (
     appearance,
 )
 
-from rs_fusion.core import operator as op
+from rs_fusion.core import (
+    operator as op,
+    pose,
+)
 from rs_fusion.tool.tatie.tatie_ui import Ui_MainWindow
 
 APP_NAME = '立ち絵アシスタント'
@@ -489,51 +491,7 @@ class MainWindow(QMainWindow):
         tool = tools[0]
 
         # user_controls
-        page = 'Controls'
-        width = 0.5
-        user_controls = {
-            '__flags': 2097152,
-            'CopyPose': {
-                'LINKS_Name': 'Copy Pose',
-                'LINKID_DataType': 'Number',
-                'INPID_InputControl': 'ButtonControl',
-                'INP_Integer': False,
-                'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.copy(comp)]])',
-                'INP_External': False,
-                'ICS_ControlPage': page,
-                'ICD_Width': width,
-            },
-            'PastePose': {
-                'LINKS_Name': 'Paste Pose',
-                'LINKID_DataType': 'Number',
-                'INPID_InputControl': 'ButtonControl',
-                'INP_Integer': False,
-                'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.paste(comp)]])',
-                'INP_External': False,
-                'ICS_ControlPage': page,
-                'ICD_Width': width,
-            },
-            'SavePose': {
-                'LINKS_Name': 'Save Pose',
-                'LINKID_DataType': 'Number',
-                'INPID_InputControl': 'ButtonControl',
-                'INP_Integer': False,
-                'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.save(comp, fu)]])',
-                'INP_External': False,
-                'ICS_ControlPage': page,
-                'ICD_Width': width,
-            },
-            'LoadPose': {
-                'LINKS_Name': 'Load Pose',
-                'LINKID_DataType': 'Number',
-                'INPID_InputControl': 'ButtonControl',
-                'INP_Integer': False,
-                'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.load(comp, fu)]])',
-                'INP_External': False,
-                'ICS_ControlPage': page,
-                'ICD_Width': width,
-            },
-        }
+        user_controls = pose.get_uc('Controls')
         # undo
         comp.Lock()
         comp.StartUndo('RS Button')

@@ -127,3 +127,50 @@ def load(comp, fusion):
         return
     if isinstance(lst, list):
         apply(comp, lst)
+
+
+def get_uc(page):
+    width = 0.5
+    return {
+        '__flags': 2097152,
+        'CopyPose': {
+            'LINKS_Name': 'Copy Pose',
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'ButtonControl',
+            'INP_Integer': False,
+            'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.copy(comp)]])',
+            'INP_External': False,
+            'ICS_ControlPage': page,
+            'ICD_Width': width,
+        },
+        'PastePose': {
+            'LINKS_Name': 'Paste Pose',
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'ButtonControl',
+            'INP_Integer': False,
+            'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.paste(comp)]])',
+            'INP_External': False,
+            'ICS_ControlPage': page,
+            'ICD_Width': width,
+        },
+        'SavePose': {
+            'LINKS_Name': 'Save Pose',
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'ButtonControl',
+            'INP_Integer': False,
+            'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.save(comp, fu)]])',
+            'INP_External': False,
+            'ICS_ControlPage': page,
+            'ICD_Width': width,
+        },
+        'LoadPose': {
+            'LINKS_Name': 'Load Pose',
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'ButtonControl',
+            'INP_Integer': False,
+            'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.load(comp, fu)]])',
+            'INP_External': False,
+            'ICS_ControlPage': page,
+            'ICD_Width': width,
+        },
+    }
