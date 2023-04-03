@@ -3,9 +3,9 @@ import functools
 from PySide2.QtCore import (
     Qt,
     QStringListModel,
-    QSortFilterProxyModel,
+    QSortFilterProxyModel, QEvent,
 )
-from PySide2.QtGui import QKeySequence
+from PySide2.QtGui import QKeySequence, QKeyEvent
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -73,43 +73,36 @@ class MainWindow(QMainWindow):
         down_action.triggered.connect(self.select_down)
         self.addAction(down_action)
 
+        return_action = QAction(self)
+        return_action.setShortcut(QKeySequence(Qt.Key_Return))
+        return_action.setShortcutContext(Qt.ApplicationShortcut)
+        return_action.triggered.connect(self.insert)
+        self.addAction(return_action)
+
         # button
         self.ui.insertButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
         self.ui.lineEdit.textChanged.connect(pm.setFilterFixedString)
         self.ui.lineEdit.textChanged.connect(self.select_first)
-        self.ui.lineEdit.returnPressed.connect(self.insert)
         #
         self.ui.insertButton.clicked.connect(self.insert)
         self.ui.minimizeButton.clicked.connect(functools.partial(self.setWindowState, Qt.WindowMinimized))
         self.ui.closeButton.clicked.connect(self.close)
 
         #
+        self.select_first()
 
     def select_first(self):
         self.selection_model.clearSelection()
         self.selection_model.select(self.proxy_model.index(0, 0), self.selection_model.SelectCurrent)
+        self.ui.listView.keyPressEvent(QKeyEvent(QEvent.KeyPress, Qt.Key_Up, Qt.NoModifier))
 
     def select_up(self):
-        indexes = self.selection_model.selectedIndexes()
-        if len(indexes) == 0:
-            self.select_first()
-            return
-        index = indexes[0]
-        row = index.row()
-        if row > 0:
-            self.selection_model.select(self.proxy_model.index(row - 1, 0), self.selection_model.SelectCurrent)
+        self.ui.listView.keyPressEvent(QKeyEvent(QEvent.KeyPress, Qt.Key_Up, Qt.NoModifier))
 
     def select_down(self):
-        indexes = self.selection_model.selectedIndexes()
-        if len(indexes) == 0:
-            self.select_first()
-            return
-        index = indexes[0]
-        row = index.row()
-        if row < self.proxy_model.rowCount() - 1:
-            self.selection_model.select(self.proxy_model.index(row + 1, 0), self.selection_model.SelectCurrent)
+        self.ui.listView.keyPressEvent(QKeyEvent(QEvent.KeyPress, Qt.Key_Down, Qt.NoModifier))
 
     def insert(self):
         resolve = self.fusion.GetResolve()
