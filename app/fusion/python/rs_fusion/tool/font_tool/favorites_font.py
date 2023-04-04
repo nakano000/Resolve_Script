@@ -12,9 +12,7 @@ from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
     QMenu,
-    QStyledItemDelegate,
-    QComboBox,
-    QFileDialog, QAction,
+    QAction,
 )
 
 from rs.core import (
@@ -30,23 +28,6 @@ from rs_fusion.tool.font_tool.favorites_font_ui import Ui_MainWindow
 @dataclasses.dataclass
 class ConfigData(config.Data):
     favorites: List[str] = dataclasses.field(default_factory=list)
-
-
-# class ItemDelegate(QStyledItemDelegate):
-#     def __init__(self, parent):
-#         super().__init__(parent)
-#         self._parent = parent
-#         self.favorites = []
-#
-#     def paint(self, painter, option, index):
-#         if option.text in self.favorites:
-#             option.text = f'●{option.text}'
-#         super().paint(painter, option, index)
-#
-#     def sizeHint(self, option, index):
-#         if option.text in self.favorites:
-#             option.text = f'●{option.text}'
-#         return super().sizeHint(option, index)
 
 
 class Model(QStringListModel):
