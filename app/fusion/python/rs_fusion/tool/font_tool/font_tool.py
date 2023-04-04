@@ -29,9 +29,7 @@ from PySide2.QtWidgets import (
 )
 
 from rs.core import (
-    config,
     pipe as p,
-    util,
 )
 from rs.gui import (
     appearance,
@@ -91,17 +89,6 @@ class ItemDelegate(QStyledItemDelegate):
             sample_text = 'Sample Text'
         txt = '%s&nbsp;&nbsp;&nbsp;<font face="%s" size=4>%s</font>' % (text, text, sample_text)
         self.doc.setHtml(txt)
-
-
-class ProgressDialog(QDialog):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.setWindowTitle('Progress')
-        lo = QVBoxLayout()
-        bar = QProgressBar(self)
-        bar.setRange(0, 0)
-        lo.addWidget(bar)
-        self.setLayout(lo)
 
 
 class MainWindow(QMainWindow):
@@ -265,11 +252,7 @@ class MainWindow(QMainWindow):
                 break
 
     def show(self) -> None:
-        w = ProgressDialog(self)
-        w.show()
-        QApplication.processEvents()
         super().show()
-        w.close()
         self.ui.sampleLineEdit.setFocus()
 
 
