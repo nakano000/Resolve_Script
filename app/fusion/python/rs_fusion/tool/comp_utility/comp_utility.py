@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
         self.copy_window = None
         self.bg_window = None
         self.color_window = None
+        self.font_window = None
         self.center_window = None
         self.number_window = None
 
@@ -60,6 +61,7 @@ class MainWindow(QMainWindow):
             ('COPY PARAM', self.copy_tool),
             ('BG', self.bg_tool),
             ('COLOR', self.color_tool),
+            ('FONT', self.font_tool),
         ]
         b = self.ui.toolButton
         menu = QMenu(b)
@@ -127,6 +129,12 @@ class MainWindow(QMainWindow):
         if self.color_window is None:
             self.color_window = ColorWindow(fusion=self.fusion)
         self.color_window.show()
+
+    def font_tool(self):
+        from rs_fusion.tool.font_tool import MainWindow as FontWindow
+        if self.font_window is None:
+            self.font_window = FontWindow(fusion=self.fusion)
+        self.font_window.show()
 
     def center_tool(self):
         from rs_fusion.tool.center_tool import MainWindow as CenterWindow

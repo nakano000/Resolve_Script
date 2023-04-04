@@ -329,6 +329,26 @@ def apply_color(comp, color_list, is_random=False):
     comp.Unlock()
 
 
+def apply_font(comp, font_name, font_style):
+    tools = get_tools(comp, 1, False)
+    if tools is None:
+        return
+
+    # undo
+    comp.Lock()
+    comp.StartUndo('RS Font')
+
+    for tool in tools:
+        if tool.ID not in ['TextPlus', 'Text3D']:
+            continue
+
+        tool.SetInput('Font', font_name, comp.CurrentTime)
+        tool.SetInput('Style', font_style, comp.CurrentTime)
+
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
 class AlignType(enum.Enum):
     L = 0
     C = 1
