@@ -1,9 +1,7 @@
 import functools
 import sys
-from functools import partial
 from pathlib import Path
 
-import dataclasses
 from PySide2.QtCore import (
     Qt,
 )

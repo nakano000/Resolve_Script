@@ -1,23 +1,16 @@
 import sys
 
-from pathlib import Path
 from typing import List
-import dataclasses
 from PySide2.QtCore import (
     Qt,
-    QModelIndex,
-    QStringListModel,
 )
 from PySide2.QtGui import QStandardItemModel, QStandardItem
 from PySide2.QtWidgets import (
     QApplication,
     QMainWindow,
-    QMenu,
-    QAction,
 )
 
 from rs.core import (
-    config,
     pipe as p, util,
 )
 from rs.gui import (
@@ -138,9 +131,6 @@ class MainWindow(QMainWindow):
                 name = inp.Name
                 if 'INPS_IC_Name' in attrs:
                     name = attrs['INPS_IC_Name']
-                control_group = 0
-                if 'INPI_IC_ControlGroup' in attrs:
-                    control_group = int(attrs['INPI_IC_ControlGroup'])
                 if attrs['INPI_IC_ControlPage'] not in page_names.keys():
                     continue
                 if page_name != page_names[attrs['INPI_IC_ControlPage']]:
