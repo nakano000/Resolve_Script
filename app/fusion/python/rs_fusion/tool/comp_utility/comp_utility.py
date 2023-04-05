@@ -47,6 +47,7 @@ class MainWindow(QMainWindow):
         self.bg_window = None
         self.color_window = None
         self.font_window = None
+        self.paste_window = None
         self.center_window = None
         self.number_window = None
 
@@ -62,6 +63,7 @@ class MainWindow(QMainWindow):
             ('BG', self.bg_tool),
             ('COLOR', self.color_tool),
             ('FONT', self.font_tool),
+            ('PASTE SETTING', self.paste_tool),
         ]
         b = self.ui.toolButton
         menu = QMenu(b)
@@ -135,6 +137,12 @@ class MainWindow(QMainWindow):
         if self.font_window is None:
             self.font_window = FontWindow(fusion=self.fusion)
         self.font_window.show()
+
+    def paste_tool(self):
+        from rs_fusion.tool.paste_tool import MainWindow as PasteWindow
+        if self.paste_window is None:
+            self.paste_window = PasteWindow(fusion=self.fusion)
+        self.paste_window.show()
 
     def center_tool(self):
         from rs_fusion.tool.center_tool import MainWindow as CenterWindow

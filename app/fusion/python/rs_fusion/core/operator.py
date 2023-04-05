@@ -234,6 +234,45 @@ def copy(comp, src_tool_name, param_list=None, offset=0, sift_step=0, jitter_inf
     comp.Unlock()
 
 
+def paste_setting(comp, text, param_list, use_refresh=False):
+    tools = get_tools(comp, 1, False)
+    if tools is None:
+        return
+    _st = ordered_dict_to_dict(bmd.readstring(text))
+    if _st is None:
+        return
+    if 'Tools' not in _st.keys():
+        return
+    src_name = None
+    for k in _st['Tools'].keys():
+        if type(_st['Tools'][k]) == dict and 'Inputs' in _st['Tools'][k].keys():
+            src_name = k
+            break
+    if src_name is None:
+        return
+
+    comp.Lock()
+    comp.StartUndo('RS Paste Setting')
+    # main
+    for tool in tools:
+        st = ordered_dict_to_dict(bmd.readstring(text))
+
+        dst_st = ordered_dict_to_dict(tool.SaveSettings())
+        # set param
+        for param in param_list:
+            if param in dst_st['Tools'][tool.Name]['Inputs']:
+                st['Tools'][src_name]['Inputs'][param] = dst_st['Tools'][tool.Name]['Inputs'][param]
+            else:
+                st['Tools'][src_name]['Inputs'].pop(param, None)
+
+        if use_refresh:
+            tool = tool.Refresh()
+        tool.LoadSettings(st)
+
+    comp.EndUndo(True)
+    comp.Unlock()
+
+
 def background(comp, padding_x=0, padding_y=0, is_square=False):
     tools = get_tools(comp, 1, False)
     if tools is None:
