@@ -1,3 +1,4 @@
+import decimal
 import enum
 from collections import OrderedDict
 import random
@@ -7,6 +8,10 @@ from PySide2.QtWidgets import QFileDialog
 from rs.core import (
     pipe as p,
 )
+
+
+def to_int(value):
+    return int(decimal.Decimal(str(value)).quantize(decimal.Decimal('0'), rounding=decimal.ROUND_HALF_UP))
 
 
 def get_tools(comp, min_size, is_random=False):
@@ -45,8 +50,8 @@ def loader(comp, use_post_multiply=False):
         node = comp.AddTool('Loader', _x, _y)
         if _x == -32768:
             _x, _y = flow.GetPosTable(node).values()
-            _x = int(_x)
-            _y = int(_y)
+            _x = to_int(_x)
+            _y = to_int(_y)
             flow.SetPos(node, _x, _y)
         node.Clip[1] = comp.ReverseMapPath(url.replace('/', '\\'))
         node.Loop[1] = 1
@@ -81,7 +86,7 @@ def merge(comp):
             pre_node = tool
             continue
         _x, _y = flow.GetPosTable(tool).values()
-        mg = comp.AddTool('Merge', round(_x), round(_y) + 4)
+        mg = comp.AddTool('Merge', to_int(_x), to_int(_y) + 4)
         mg.ConnectInput('Foreground', tool)
         mg.ConnectInput('Background', pre_node)
         pre_node = mg
@@ -122,7 +127,7 @@ def insert(comp, node_id):
     flow.Select()
     for tool in tools:
         _x, _y = flow.GetPosTable(tool).values()
-        node = comp.AddTool(node_id, round(_x), round(_y) + 4)
+        node = comp.AddTool(node_id, to_int(_x), to_int(_y) + 4)
         flow.Select(node)
         outp = tool.FindMainOutput(1)
         if outp is None:
