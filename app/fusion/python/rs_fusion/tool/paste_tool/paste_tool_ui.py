@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\paste_tool\paste_tool.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\paste_tool\paste_tool.ui' applies.
 #
-# Created: Thu Apr  6 00:21:11 2023
+# Created: Thu Apr  6 09:41:05 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,9 +43,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.loadButton)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.verticalLayout_2.addWidget(self.groupBox)
-        self.useRefreshCheckBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.useRefreshCheckBox.setObjectName("useRefreshCheckBox")
-        self.verticalLayout_2.addWidget(self.useRefreshCheckBox)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSpacing(2)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -76,7 +73,6 @@ class Ui_MainWindow(object):
         self.nodeButton.setText(QtWidgets.QApplication.translate("MainWindow", "node", None, -1))
         self.saveButton.setText(QtWidgets.QApplication.translate("MainWindow", "save", None, -1))
         self.loadButton.setText(QtWidgets.QApplication.translate("MainWindow", "load", None, -1))
-        self.useRefreshCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "refresh", None, -1))
         self.pasteButton.setText(QtWidgets.QApplication.translate("MainWindow", "paste", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
         self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))

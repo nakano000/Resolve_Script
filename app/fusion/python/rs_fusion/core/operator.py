@@ -234,7 +234,7 @@ def copy(comp, src_tool_name, param_list=None, offset=0, sift_step=0, jitter_inf
     comp.Unlock()
 
 
-def paste_setting(comp, text, param_list, use_refresh=False):
+def paste_setting(comp, text, param_list):
     tools = get_tools(comp, 1, False)
     if tools is None:
         return
@@ -265,7 +265,7 @@ def paste_setting(comp, text, param_list, use_refresh=False):
             else:
                 st['Tools'][src_name]['Inputs'].pop(param, None)
 
-        if use_refresh:
+        if tool.ID not in ['GroupOperator', 'MacroOperator']:
             tool = tool.Refresh()
         tool.LoadSettings(st)
 

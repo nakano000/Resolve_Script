@@ -84,13 +84,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QCheckBox" name="useRefreshCheckBox">
-      <property name="text">
-       <string>refresh</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
        <number>2</number>

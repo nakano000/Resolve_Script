@@ -110,7 +110,6 @@ class MainWindow(QMainWindow):
             comp,
             text,
             lst,
-            self.ui.useRefreshCheckBox.isChecked(),
         )
 
 
