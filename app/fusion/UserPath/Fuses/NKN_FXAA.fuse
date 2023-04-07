@@ -1,3 +1,10 @@
+--[[
+下記を参考に書きました。
+https://github.com/baldavenger/DCTLs/blob/master/DCTL_OFX/FXAA_OFX.dctl
+
+私の他のファイルと違い、このファイルは、元のファイルと同じGPL-3.0 licenseで公開します。
+]]--
+
 FuRegisterClass("NKN_FXAA", CT_Tool, {
     REGS_Category = "NKN",
     REGS_OpIconString = "NKNFXAA",
@@ -217,7 +224,7 @@ function Create()
         LINKID_DataType = "Image",
         LINK_Main = 1,
     })
-        inSpanMax = self:AddInput("Strength", "Strength", {
+    inSpanMax = self:AddInput("Strength", "Strength", {
         LINKID_DataType = "Number",
         INP_Integer = true,
         INPID_InputControl = "SliderControl",
