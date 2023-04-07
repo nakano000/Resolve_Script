@@ -6,10 +6,10 @@ FuRegisterClass("NKN_FXAA", CT_Tool, {
     REG_NoBlendCtrls = false,
     REG_NoObjMatCtrls = true,
     REG_NoMotionBlurCtrls = true,
-    REG_SupportsDoD = true,
+    --REG_SupportsDoD = true,
     REG_Fuse_NoEdit = true,
-    --REG_Fuse_NoReload = true,
-    REG_Fuse_NoReload = false,
+    REG_Fuse_NoReload = true,
+    --REG_Fuse_NoReload = false,
     REG_Version = 0.1,
 })
 
