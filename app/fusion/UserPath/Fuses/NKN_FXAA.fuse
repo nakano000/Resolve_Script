@@ -1,0 +1,264 @@
+FuRegisterClass("NKN_FXAA", CT_Tool, {
+    REGS_Category = "NKN",
+    REGS_OpIconString = "NKNFXAA",
+    REGS_OpDescription = "FXAA",
+    REG_OpNoMask = true,
+    REG_NoBlendCtrls = false,
+    REG_NoObjMatCtrls = true,
+    REG_NoMotionBlurCtrls = true,
+    REG_SupportsDoD = true,
+    REG_Fuse_NoEdit = true,
+    --REG_Fuse_NoReload = true,
+    REG_Fuse_NoReload = false,
+    REG_Version = 0.1,
+})
+
+FXAAParams = [[
+    int spanMax;
+    int srcsize[2];
+]]
+
+FXAASource = [[
+#define FXAA_REDUCE_MIN   (1.0f / 128.0f)
+#define FXAA_REDUCE_MUL   (1.0f / 8.0f)
+
+__DEVICE__ float FXAA_SPAN_MAX = 0.0f;
+
+__DEVICE__ float2 add_f2_f(float2 A, float B)
+{
+    float2 C;
+    C.x = A.x + B;
+    C.y = A.y + B;
+    return C;
+}
+
+__DEVICE__ float2 add_f2_f2(float2 A, float2 B)
+{
+    float2 C;
+    C.x = A.x + B.x;
+    C.y = A.y + B.y;
+    return C;
+}
+
+__DEVICE__ float3 add_f3_f3(float3 A, float3 B)
+{
+    float3 C;
+    C.x = A.x + B.x;
+    C.y = A.y + B.y;
+    C.z = A.z + B.z;
+    return C;
+}
+
+__DEVICE__ float2 Max(float2 A, float2 B)
+{
+    float2 C;
+    C.x = _fmaxf(A.x, B.x);
+    C.y = _fmaxf(A.y, B.y);
+    return C;
+}
+
+__DEVICE__ float2 Min(float2 A, float2 B)
+{
+    float2 C;
+    C.x = _fminf(A.x, B.x);
+    C.y = _fminf(A.y, B.y);
+    return C;
+}
+
+__DEVICE__ float2 multi_f2_f(float2 A, float B)
+{
+    float2 C;
+    C.x = A.x * B;
+    C.y = A.y * B;
+    return C;
+}
+__DEVICE__ float2 multi_f2_f2(float2 A, float2 B)
+{
+    float2 C;
+    C.x = A.x * B.x;
+    C.y = A.y * B.y;
+    return C;
+}
+
+__DEVICE__ float3 multi_f_f3(float A, float3 B)
+{
+    float3 C;
+    C.x = A * B.x;
+    C.y = A * B.y;
+    C.z = A * B.z;
+    return C;
+}
+
+__DEVICE__ float3 multi_f3_f(float3 A, float B)
+{
+    float3 C;
+    C.x = A.x * B;
+    C.y = A.y * B;
+    C.z = A.z * B;
+    return C;
+}
+
+__DEVICE__ float DOT(float3 A, float3 B)
+{
+    float C = A.x * B.x + A.y * B.y + A.z * B.z;
+    return C;
+}
+
+__DEVICE__ float3 Texture(
+    __TEXTURE2D__ src,
+    float2 resolution, float2 uv
+)
+{
+    resolution = add_f2_f(resolution, 1.0f);
+    float4 col = _tex2DVec4(src, int(uv.x * resolution.x), int(uv.y * resolution.y));
+    return to_float3(col.x, col.y, col.z);
+}
+
+__DEVICE__ float3 fxaa(
+    __TEXTURE2D__ src,
+    float2 fragCoord, float2 resolution,
+    float2 v_rgbNW, float2 v_rgbNE,
+    float2 v_rgbSW, float2 v_rgbSE,
+    float2 v_rgbM
+)
+{
+    float3 color;
+    float3 rgbNW = Texture(src, resolution, v_rgbNW);
+    float3 rgbNE = Texture(src, resolution, v_rgbNE);
+    float3 rgbSW = Texture(src, resolution, v_rgbSW);
+    float3 rgbSE = Texture(src, resolution, v_rgbSE);
+    float3 texColor = Texture(src, resolution, v_rgbM);
+    float3 rgbM  = texColor;
+    float3 luma = to_float3(0.299f, 0.587f, 0.114f);
+    float lumaNW = DOT(rgbNW, luma);
+    float lumaNE = DOT(rgbNE, luma);
+    float lumaSW = DOT(rgbSW, luma);
+    float lumaSE = DOT(rgbSE, luma);
+    float lumaM  = DOT(rgbM,  luma);
+    float lumaMin = _fminf(lumaM, _fminf(_fminf(lumaNW, lumaNE), _fminf(lumaSW, lumaSE)));
+    float lumaMax = _fmaxf(lumaM, _fmaxf(_fmaxf(lumaNW, lumaNE), _fmaxf(lumaSW, lumaSE)));
+
+    float2 dir;
+    dir.x = -((lumaNW + lumaNE) - (lumaSW + lumaSE));
+    dir.y =  ((lumaNW + lumaSW) - (lumaNE + lumaSE));
+
+    float dirReduce = _fmaxf((lumaNW + lumaNE + lumaSW + lumaSE) *
+                          (0.25f * FXAA_REDUCE_MUL), FXAA_REDUCE_MIN);
+
+    float2 inverseVP = to_float2(1.0f / resolution.x, 1.0f / resolution.y);
+
+    float rcpDirMin = 1.0f / (_fminf(_fabs(dir.x), _fabs(dir.y)) + dirReduce);
+    dir = multi_f2_f2(Min(to_float2(FXAA_SPAN_MAX, FXAA_SPAN_MAX),
+              Max(to_float2(-FXAA_SPAN_MAX, -FXAA_SPAN_MAX),
+              multi_f2_f(dir, rcpDirMin))), inverseVP);
+
+    float3 rgbA = multi_f_f3(0.5f, add_f3_f3(
+        Texture(src, resolution, add_f2_f2(multi_f2_f2(fragCoord, inverseVP), multi_f2_f(dir, (1.0f / 3.0f - 0.5f)))),
+        Texture(src, resolution, add_f2_f2(multi_f2_f2(fragCoord, inverseVP), multi_f2_f(dir, (2.0f / 3.0f - 0.5f))))));
+
+    float3 rgbB = add_f3_f3(multi_f3_f(rgbA, 0.5f), multi_f_f3(0.25f, add_f3_f3(
+        Texture(src, resolution, add_f2_f2(multi_f2_f2(fragCoord, inverseVP), multi_f2_f(dir, -0.5f))),
+        Texture(src, resolution, add_f2_f2(multi_f2_f2(fragCoord, inverseVP), multi_f2_f(dir, 0.5f))))));
+
+    float lumaB = DOT(rgbB, luma);
+    if ((lumaB < lumaMin) || (lumaB > lumaMax))
+        color = rgbA;
+    else
+        color = rgbB;
+    return color;
+}
+
+__DEVICE__ float3 apply(
+        __TEXTURE2D__ src,
+        float2 fragCoord,
+        float2 resolution
+)
+{
+    //compute the Texture coords
+    float2 inverseVP = make_float2(1.0f / resolution.x, 1.0f / resolution.y);
+    float2 v_rgbNW = multi_f2_f2(add_f2_f2(fragCoord, to_float2(-1.0f, -1.0f)), inverseVP);
+    float2 v_rgbNE = multi_f2_f2(add_f2_f2(fragCoord, to_float2(1.0f, -1.0f)), inverseVP);
+    float2 v_rgbSW = multi_f2_f2(add_f2_f2(fragCoord, to_float2(-1.0f, 1.0f)), inverseVP);
+    float2 v_rgbSE = multi_f2_f2(add_f2_f2(fragCoord, to_float2(1.0f, 1.0f)), inverseVP);
+    float2 v_rgbM = multi_f2_f2(fragCoord, inverseVP);
+
+    //compute FXAA
+    return fxaa(src, fragCoord, resolution, v_rgbNW, v_rgbNE, v_rgbSW, v_rgbSE, v_rgbM);
+}
+
+__KERNEL__ void FXAAKernel(
+    __CONSTANTREF__ FXAAParams *params,
+    __TEXTURE2D__ src,
+    __TEXTURE2D_WRITE__ dst
+)
+{
+    DEFINE_KERNEL_ITERATORS_XY(x, y)
+    float2 uv;
+    uv.x = (float)x;
+    uv.y = (float)y;
+    float2 resolution;
+    resolution.x = (float)params->srcsize[0];
+    resolution.y = (float)params->srcsize[0];
+
+    FXAA_SPAN_MAX = (float)params->spanMax;
+
+    float3 rgb =  apply(src, uv, resolution);
+
+    float4 col = _tex2DVec4(src, x, y);
+    col.x = rgb.x;
+    col.y = rgb.y;
+    col.z = rgb.z;
+    _tex2DVec4Write(dst, x, y, col);
+}
+]]
+
+function Create()
+    InImage = self:AddInput("Input", "Input", {
+        LINKID_DataType = "Image",
+        LINK_Main = 1,
+    })
+        inSpanMax = self:AddInput("Strength", "Strength", {
+        LINKID_DataType = "Number",
+        INP_Integer = true,
+        INPID_InputControl = "SliderControl",
+        LINKS_Name = "Strength",
+        INP_MinScale = 1,
+        INP_MinAllowed = 1,
+        INP_MaxScale = 16,
+        INP_MaxAllowed = 16,
+        INP_Default = 8,
+    })
+    OutImage = self:AddOutput("Output", "Output", {
+        LINKID_DataType = "Image",
+        LINK_Main = 1,
+    })
+
+end
+
+function Process(req)
+    local img = InImage:GetValue(req)
+    local out = Image({ IMG_Like = img })
+    local spanMax = inSpanMax:GetValue(req).Value
+
+    local node = DVIPComputeNode(req,
+            "FXAAKernel", FXAASource,
+            "FXAAParams", FXAAParams)
+    if node then
+        local params = node:GetParamBlock(FXAAParams)
+
+        params.srcsize[0] = out.DataWindow:Width()
+        params.srcsize[1] = out.DataWindow:Height()
+        params.spanMax = spanMax
+
+        node:SetParamBlock(params)
+
+        node:AddInput("src", img)
+        node:AddOutput("dst", out)
+
+        node:RunSession(req)
+    else
+        out = nil
+    end
+
+    OutImage:Set(req, out)
+end

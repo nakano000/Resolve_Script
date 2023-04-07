@@ -1,0 +1,112 @@
+FuRegisterClass("NKN_Posterize", CT_Tool, {
+    REGS_Category = "NKN",
+    REGS_OpIconString = "NKNPOS",
+    REGS_OpDescription = "Posterize",
+    REG_OpNoMask = true,
+    REG_NoBlendCtrls = false,
+    REG_NoObjMatCtrls = true,
+    REG_NoMotionBlurCtrls = true,
+    REG_SupportsDoD = true,
+    REG_Fuse_NoEdit = true,
+    REG_Fuse_NoReload = true,
+    --REG_Fuse_NoReload = false,
+    REG_Version = 0.1,
+})
+
+PosterizeParams = [[
+    float step;
+]]
+
+PosterizeSource = [[
+__DEVICE__ float posterize(float value, float step)
+{
+    return _floorf(value * step) * (1.0f / (step - 1.0f));
+}
+
+__KERNEL__ void BlackKernel(
+    __CONSTANTREF__ PosterizeParams *params,
+    __TEXTURE2D__ src,
+    __TEXTURE2D_WRITE__ dst
+)
+{
+    DEFINE_KERNEL_ITERATORS_XY(x, y)
+    float4 col = _tex2DVec4(src, x, y);
+    float4 col2 = to_float4(
+        0.0f,
+        0.0f,
+        0.0f,
+        col.w
+    );
+    _tex2DVec4Write(dst, x, y, col2);
+}
+
+__KERNEL__ void PosterizeKernel(
+    __CONSTANTREF__ PosterizeParams *params,
+    __TEXTURE2D__ src,
+    __TEXTURE2D_WRITE__ dst
+)
+{
+    DEFINE_KERNEL_ITERATORS_XY(x, y)
+    float4 col = _tex2DVec4(src, x, y);
+    float4 col2 = to_float4(
+        posterize(col.x, params->step),
+        posterize(col.y, params->step),
+        posterize(col.z, params->step),
+        col.w
+    );
+    _tex2DVec4Write(dst, x, y, col2);
+}
+]]
+
+function Create()
+    InImage = self:AddInput("Input", "Input", {
+        LINKID_DataType = "Image",
+        LINK_Main = 1,
+    })
+    inStep = self:AddInput("Step", "Step", {
+        LINKID_DataType = "Number",
+        INPID_InputControl = "SliderControl",
+        LINKS_Name = "Step",
+        INP_MinScale = 1,
+        INP_MaxScale = 10,
+        INP_Default = 5,
+    })
+
+    OutImage = self:AddOutput("Output", "Output", {
+        LINKID_DataType = "Image",
+        LINK_Main = 1,
+    })
+
+end
+
+function Process(req)
+    local img = InImage:GetValue(req)
+    local out = Image({ IMG_Like = img })
+    local step = inStep:GetValue(req).Value
+    local node = nil
+    if step <= 1 then
+        node = DVIPComputeNode(req,
+                "BlackKernel", PosterizeSource,
+                "PosterizeParams", PosterizeParams)
+    else
+        node = DVIPComputeNode(req,
+                "PosterizeKernel", PosterizeSource,
+                "PosterizeParams", PosterizeParams)
+    end
+    if node then
+        local params = node:GetParamBlock(PosterizeParams)
+
+        params.step = step
+
+        node:SetParamBlock(params)
+
+        node:AddInput("src", img)
+        node:AddOutput("dst", out)
+
+        node:RunSession(req)
+    else
+        out = nil
+    end
+
+    OutImage:Set(req, out)
+end
