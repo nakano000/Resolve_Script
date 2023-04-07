@@ -2,6 +2,8 @@ FuRegisterClass("NKN_Posterize", CT_Tool, {
     REGS_Category = "NKN",
     REGS_OpIconString = "NKNPOS",
     REGS_OpDescription = "Posterize",
+    REGS_Company = "Yoshio Nakano",
+    REGS_URL = "https://github.com/nakano000",
     REG_OpNoMask = true,
     REG_NoBlendCtrls = false,
     REG_NoObjMatCtrls = true,
