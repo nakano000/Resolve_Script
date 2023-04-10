@@ -77,7 +77,7 @@ def dict2anim(dct) -> str:
     return space + (',\n' + space).join(key_list)
 
 
-def lab2anim(path: Path, fps, anim_tpe) -> str:
+def lab2anim(path: Path, fps, anim_tpe, offset: int = 0) -> str:
     n = 10000000
     func = sign2intE
     if anim_tpe == anim.Type.aiueo2:
@@ -89,8 +89,8 @@ def lab2anim(path: Path, fps, anim_tpe) -> str:
         p.map(p.call.split(' ')),
         p.filter(lambda x: len(x) == 3),
         p.map(lambda x: {
-            's': round(int(x[0]) * fps / n),
-            'e': round(int(x[1]) * fps / n),
+            's': offset + round(int(x[0]) * fps / n),
+            'e': offset + round(int(x[1]) * fps / n),
             'sign': func(x[2]),
         }),
         list,
@@ -113,7 +113,7 @@ def lab2anim(path: Path, fps, anim_tpe) -> str:
     return dict2anim(dct)
 
 
-def wav2anim(path: Path, fps) -> str:
+def wav2anim(path: Path, fps, offset: int = 0) -> str:
     y, sr = librosa.load(str(path))
     rms = librosa.feature.rms(y=y)
     m = rms.max() + 0.001
@@ -122,7 +122,7 @@ def wav2anim(path: Path, fps) -> str:
     frame = np.round(times * fps)
     dct = {}
     for i, v in enumerate(frame):
-        dct[int(v)] = rms_n[0][i]
+        dct[int(v) + offset] = rms_n[0][i]
     return dict2anim(dct)
 
 

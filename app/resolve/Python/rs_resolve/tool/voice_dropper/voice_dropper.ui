@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>379</width>
-    <height>469</height>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -254,6 +254,19 @@
         </property>
         <property name="text">
          <string>import</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="lipSyncButton">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>口パク</string>
         </property>
        </widget>
       </item>

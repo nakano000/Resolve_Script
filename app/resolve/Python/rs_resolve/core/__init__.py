@@ -1,5 +1,3 @@
-
-
 def timecode2Frame(tc: str, fps):
     int_fps = {
         23: 24,
@@ -57,6 +55,15 @@ def track_name2index(timeline, track_type, name):
         if timeline.GetTrackName(track_type, i) == name:
             return i
     return 0
+
+
+def get_item(timeline, track_type, index, frame=None):
+    if frame is None:
+        frame = get_currentframe(timeline)
+    for item in timeline.GetItemListInTrack(track_type, index):
+        if item.GetStart() <= frame < item.GetEnd():
+            return item
+    return None
 
 
 if __name__ == '__main__':

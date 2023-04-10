@@ -1,0 +1,39 @@
+{
+	Tools = ordered() {
+		Ctrl =  PipeRouter {
+			CtrlWZoom = false,
+			Inputs = {
+				%s = Input {
+					SourceOp = "MouthAnimBezierSpline",
+					Source = "Value",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 55, 214.5 } },
+			UserControls = ordered() {
+				StyledText = {
+					TEC_ReadOnly = false,
+					LINKID_DataType = "Text",
+					TEC_Wrap = false,
+					INPID_InputControl = "TextEditControl",
+					LINKS_Name = "StyledText",
+				},
+				%s = {
+					INP_Integer = true,
+					INP_Default = 0,
+					INPID_InputControl = "SliderControl",
+					INP_MinScale = 0,
+					LINKID_DataType = "Number",
+					INP_MaxScale = 6,
+					LINKS_Name = "%s",
+				}
+			}
+		},
+		MouthAnimBezierSpline = BezierSpline {
+			SplineColor = { Red = 8, Green = 156, Blue = 231 },
+			CtrlWZoom = false,
+			KeyFrames = {
+%s
+			}
+		}
+	},
+}

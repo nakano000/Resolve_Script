@@ -1,6 +1,5 @@
 import decimal
 import enum
-from collections import OrderedDict
 import random
 
 from PySide2.QtWidgets import QFileDialog
@@ -8,6 +7,7 @@ from PySide2.QtWidgets import QFileDialog
 from rs.core import (
     pipe as p,
 )
+from rs_fusion.core import ordered_dict_to_dict
 
 
 def to_int(value):
@@ -159,16 +159,6 @@ def get_modifiers(tool, param_list=None):
         modifiers[x.Name] = x
         modifiers.update(get_modifiers(x))
     return modifiers
-
-
-def ordered_dict_to_dict(org_dict):
-    dct = dict(org_dict)
-    for k, v in dct.items():
-        if isinstance(v, dict):
-            dct[k] = ordered_dict_to_dict(v)
-    if isinstance(org_dict, OrderedDict):
-        dct['__flags'] = 2097152
-    return dct
 
 
 def copy(comp, src_tool_name, param_list=None, offset=0, sift_step=0, jitter_inf=0, jitter_sup=0, is_random=False):

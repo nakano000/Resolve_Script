@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui' applies.
 #
-# Created: Sun Jan 15 19:54:47 2023
+# Created: Sun Apr  9 13:35:51 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(379, 469)
+        MainWindow.resize(379, 487)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -134,6 +134,10 @@ class Ui_MainWindow(object):
         self.importButton.setMinimumSize(QtCore.QSize(80, 30))
         self.importButton.setObjectName("importButton")
         self.horizontalLayout.addWidget(self.importButton)
+        self.lipSyncButton = QtWidgets.QPushButton(self.centralwidget)
+        self.lipSyncButton.setMinimumSize(QtCore.QSize(80, 30))
+        self.lipSyncButton.setObjectName("lipSyncButton")
+        self.horizontalLayout.addWidget(self.lipSyncButton)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
         self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
@@ -169,6 +173,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(QtWidgets.QApplication.translate("MainWindow", "タイムアウト(秒)", None, -1))
         self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
         self.importButton.setText(QtWidgets.QApplication.translate("MainWindow", "import", None, -1))
+        self.lipSyncButton.setText(QtWidgets.QApplication.translate("MainWindow", "口パク", None, -1))
         self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
         self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.closeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "閉じる", None, -1))

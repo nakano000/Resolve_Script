@@ -43,13 +43,17 @@ from rs.gui import (
     log,
 )
 
+from rs_fusion.core import ordered_dict_to_dict
 from rs_resolve.core import (
     get_currentframe,
     set_currentframe,
     get_fps,
     track_name2index,
+    get_item,
 )
+
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
+from rs_resolve.tool.voice_dropper.lip_sync_window import MainWindow as LipSyncWindow
 
 APP_NAME = 'Voice Dropper'
 
@@ -127,6 +131,7 @@ class MainWindow(QMainWindow):
 
         # window
         self.chara_window = CharaWindow(self)
+        self.lip_sync_window = LipSyncWindow(self, self.fusion)
 
         # watcher
         self.modified.connect(self.directory_changed, Qt.QueuedConnection)
@@ -136,6 +141,7 @@ class MainWindow(QMainWindow):
         self.ui.startButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.stopButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.importButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.lipSyncButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.charaButton.setStyleSheet(appearance.ex_stylesheet)
 
         # event
@@ -145,6 +151,9 @@ class MainWindow(QMainWindow):
         self.ui.stopButton.clicked.connect(self.stop)
 
         self.ui.importButton.clicked.connect(self.import_wave)
+        self.ui.lipSyncButton.clicked.connect(self.lip_sync_window.show)
+        self.lip_sync_window.ui.applyButton.clicked.connect(self.lip_sync)
+
         self.ui.minimizeButton.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
         self.ui.closeButton.clicked.connect(self.close)
 
@@ -493,6 +502,147 @@ class MainWindow(QMainWindow):
         time_end = time.time()
         self.add2log('Done! %fs' % (time_end - time_sta))
         print('Done! %fs' % (time_end - time_sta))
+
+    def lip_sync(self):
+        self.ui.logTextEdit.clear()
+
+        resolve = self.fusion.GetResolve()
+        projectManager = resolve.GetProjectManager()
+        project = projectManager.GetCurrentProject()
+        if project is None:
+            self.add2log('Projectが見付かりません。')
+        timeline = project.GetCurrentTimeline()
+        if timeline is None:
+            self.add2log('Timelineが見付かりません。')
+            return
+
+        fps = get_fps(timeline)
+        v_index = self.lip_sync_window.get_video_track_index(timeline)
+        a_index = self.lip_sync_window.get_audio_track_index(timeline)
+
+        if v_index == 0 or a_index == 0:
+            self.add2log('選択したトラックが見付かりません。')
+            return
+
+        v_item = get_item(timeline, 'video', v_index)
+        if v_item is None:
+            self.add2log('ビデオクリップが見付かりません。')
+            return
+        v_sf = v_item.GetStart()
+        v_ef = v_item.GetEnd()
+
+        audio_items = []
+        for item in timeline.GetItemListInTrack('audio', a_index):
+            if item.GetStart() < v_ef and v_sf < item.GetEnd():
+                audio_items.append(item)
+
+        w = get_resolve_window(project.GetName())
+        if w is None:
+            self.add2log('DaVinci ResolveのWindowが見付かりません。')
+            return
+        if util.IS_WIN:
+            self.setWindowState(Qt.WindowMinimized)  # windowsの場合、最小化しないとウィンドウがactiveにならないので、
+            self.setWindowState(Qt.WindowActive)  # 最小化してからactiveにする
+
+        # main
+        self.add2log('Start')
+        # config
+        from rs.core import lab
+
+        tatie_wait = self.lip_sync_window.get_data().wait
+
+        setting_base: str = config.ROOT_PATH.joinpath(
+            'data', 'app', 'VoiceDropper', 'setting_base.txt'
+        ).read_text(encoding='utf-8')
+        for item in audio_items:
+            sf = max([item.GetStart(), v_sf])
+            ef = min([item.GetEnd(), v_ef])
+            cf = int((sf + ef) / 2)
+            f = Path(item.GetMediaPoolItem().GetClipProperty('File Path'))
+            lab_file = f.parent.joinpath(f.stem + '.lab')
+            self.add2log('wav: ' + str(f))
+
+            # キャラクター設定
+            ch_data = CharaData()
+            for cd in chara_data.get_chara_list():
+                cd: CharaData
+                m = re.fullmatch(cd.reg_exp, f.stem)
+                if m is not None:
+                    ch_data = cd
+                    break
+
+            # split
+            self.add2log('Cut Clip: Start')
+            w.activate()
+            pyautogui.hotkey('ctrl', 'shift', 'a')
+            for n in [sf, ef]:
+                timeline.SetCurrentTimecode(str(n))
+                w.activate()
+                pyautogui.hotkey('ctrl', 'b')
+                time.sleep(tatie_wait)
+            self.add2log('Cut Clip: Done')
+
+            # get Macro Tool
+            tatie_clip = get_item(timeline, 'video', v_index, cf)
+            if tatie_clip is None:
+                self.add2log('立ち絵ビデオクリップが見付かりません。')
+                continue
+            if tatie_clip.GetFusionCompCount() == 0:
+                self.add2log('Fusion Compが見付かりません。')
+                continue
+            comp = tatie_clip.GetFusionCompByIndex(1)
+            tools = p.pipe(
+                comp.GetToolList(False).values(),
+                p.filter(lambda x: x.ID in ['MacroOperator', 'GroupOperator']),
+                p.filter(lambda x: x.ParentTool is None),
+                list,
+            )
+            if len(tools) == 0:
+                self.add2log('MacroまたはGroupが見付かりません。')
+                continue
+            tool = tools[0]
+
+            # get anim
+            self.add2log('Load Anim: Start')
+            anim = ''
+            offset = comp.GetAttrs()['COMPN_GlobalStart']
+            if ch_data.anim_type.strip().lower() == 'open':
+                anim = lab.wav2anim(f, fps, offset)
+            elif lab_file.is_file():
+                anim = lab.lab2anim(lab_file, fps, ch_data.anim_type.strip().lower(), offset)
+
+            st = ordered_dict_to_dict(bmd.readstring(setting_base % (
+                ch_data.anim_parameter,
+                ch_data.anim_parameter,
+                ch_data.anim_parameter,
+                anim,
+            )))
+            if st is None:
+                self.add2log('アニメーションの読み込みに失敗しました。')
+                continue
+            self.add2log('Load Anim: Done')
+
+            # get anim tool list
+            tool_list = [tool]
+            for v in tool.SaveSettings()['Tools'][tool.Name]['Inputs'].values():
+                if isinstance(v, dict) and '__ctor' in v.keys():
+                    if v['__ctor'] == 'InstanceInput':
+                        tool_list.append(comp.FindTool(v['SourceOp']))
+
+            # set Lip Sync
+            self.add2log('Apply Anim: Start')
+            comp.StartUndo('RS Lip Sync')
+            comp.Lock()
+            for t in tool_list:
+                t.LoadSettings(st)
+            comp.Unlock()
+            comp.EndUndo(True)
+            self.add2log('Apply Anim: Done')
+
+            # set color
+            tatie_clip.SetClipColor(ch_data.color)
+        self.add2log('')
+        self.add2log('Done!')
 
     def voiceDirToolButton_clicked(self) -> None:
         w = self.ui.voiceDirLineEdit
