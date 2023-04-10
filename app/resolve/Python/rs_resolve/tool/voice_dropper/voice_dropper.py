@@ -352,14 +352,17 @@ class MainWindow(QMainWindow):
             if not self.temp_file.is_file():
                 self.add2log('Temporary Fileの作成に失敗しました。')
                 continue
+            time.sleep(step)
             self.add2log('TMP TL: Create Temporary File: Done')
 
             for i in range(1, project.GetTimelineCount() + 1):
                 tl = project.GetTimelineByIndex(i)
                 if tl.GetName() == tmp_tl_name:
                     media_pool.DeleteTimelines([tl])
+            time.sleep(step)
             self.add2log('TMP TL: Import Temporary File: Start')
             tmp_timeline = media_pool.ImportTimelineFromFile(str(self.temp_file))
+            time.sleep(step)
             if tmp_timeline is None:
                 self.add2log('作業用Timelineの作成に失敗しました。')
                 continue
