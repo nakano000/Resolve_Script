@@ -40,6 +40,8 @@ class ConfigData(config.Data):
     style: TatieStyle = TatieStyle.CONNECTION_LABEL
     space_x: int = 400
     space_y: int = 600
+    is_normal: bool = False
+    use_dod: bool = True
 
 
 class Importer:
@@ -147,6 +149,19 @@ class Importer:
         else:
             bg = self.add_bg(pos_x, pos_y - 1)
         return xf, bg
+
+    def add_xf_bg_c(self, pos_x, pos_y, name):
+        xf = self.comp.AddTool('Transform', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        xf.SetAttrs({'TOOLS_Name': name})
+        bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 2) * self.Y_OFFSET)
+        bg.UseFrameFormatSettings = 0
+        bg.Width = self.size_x
+        bg.Height = self.size_y
+        bg.TopLeftAlpha = 0
+        bg.Depth = 1
+        node = self.add_set_dod(pos_x, pos_y - 1, None, [0, 0, 0, 0])
+        node.ConnectInput('Input', bg)
+        return xf, node
 
     def add_ld(self, pos_x, pos_y, path: str):
         if self.dir is not None:
@@ -366,25 +381,65 @@ class Importer:
 
         return xf, pos_x, uc, name_list
 
+    def add_node_C(self, pos_x, pos_y, data, name, use_dod):
+        pos_x += 1
+        xf, bg = self.add_xf_bg_c(pos_x, pos_y, name)
+        pos_x += 1
+        pos_y -= 4
+
+        # main
+        pre_node = bg
+        for i, layer in enumerate(data):
+            layer_name: str = layer['name']
+            visible: bool = layer['visible']
+            layer_data = layer['data']
+
+            mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y + 3) * self.Y_OFFSET)
+            if type(layer_data) is list:
+                node, pos_x = self.add_node_C(pos_x, pos_y, layer_data, layer_name, use_dod)
+                self.set_x(mg, pos_x - 1)
+            else:
+                node = self.add_ld(pos_x, pos_y, layer_data)
+                if 'data_window' in layer and use_dod:
+                    _node = self.add_set_dod(pos_x, pos_y + 1, layer_name, layer['data_window'])
+                    _node.ConnectInput('Input', node)
+                    node = _node
+                pos_x += 1
+            mg.ConnectInput('Foreground', node)
+            mg.ConnectInput('Background', pre_node)
+            mg.Blend = 1 if visible else 0
+
+            pre_node = mg
+
+        xf.ConnectInput('Input', pre_node)
+        #
+        self.set_x(xf, pos_x - 1)
+        return xf, pos_x
+
     def make(self):
         c = self.config_data
         self.load_json()
-        if c.style == TatieStyle.EXPRESSION:
-            self.add_node_A(0, 0, self.json_data['data'], self.json_data['name'])
+        if c.is_normal:
+            self.add_node_C(0, 0, self.json_data['data'], self.json_data['name'], c.use_dod)
         else:
-            use_label = c.style == TatieStyle.CONNECTION_LABEL
-            xf, _, _uc, name_list = self.add_node_B(0, 0, self.json_data['data'], self.json_data['name'], {}, use_label)
+            if c.style == TatieStyle.EXPRESSION:
+                self.add_node_A(0, 0, self.json_data['data'], self.json_data['name'])
+            else:
+                use_label = c.style == TatieStyle.CONNECTION_LABEL
+                xf, _, _uc, name_list = self.add_node_B(
+                    0, 0, self.json_data['data'], self.json_data['name'], {}, use_label
+                )
 
-            # xf
-            # uc = {'__flags': 2097152}  # 順番を保持するフラグ
-            uc = pose.get_uc(None)
-            for k, v in reversed(list(_uc.items())):
-                uc[k] = v
-            xf.UserControls = uc
-            xf = xf.Refresh()
-            self.set_orange(xf)
+                # xf
+                # uc = {'__flags': 2097152}  # 順番を保持するフラグ
+                uc = pose.get_uc(None)
+                for k, v in reversed(list(_uc.items())):
+                    uc[k] = v
+                xf.UserControls = uc
+                xf = xf.Refresh()
+                self.set_orange(xf)
 
-            xf.Comments = '\n'.join(reversed(name_list))
+                xf.Comments = '\n'.join(reversed(name_list))
 
 
 class MainWindow(QMainWindow):
@@ -463,6 +518,9 @@ class MainWindow(QMainWindow):
         self.ui.xSpinBox.setValue(c.space_x)
         self.ui.ySpinBox.setValue(c.space_y)
 
+        self.ui.tabWidget.setCurrentIndex(1 if c.is_normal else 0)
+        self.ui.useDodCheckBox.setChecked(c.use_dod)
+
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.json_path = self.ui.jsonLineEdit.text()
@@ -474,6 +532,9 @@ class MainWindow(QMainWindow):
             c.style = TatieStyle.CONNECTION_LABEL
         c.space_x = self.ui.xSpinBox.value()
         c.space_y = self.ui.ySpinBox.value()
+
+        c.is_normal = self.ui.tabWidget.currentIndex() == 1
+        c.use_dod = self.ui.useDodCheckBox.isChecked()
 
         return c
 
