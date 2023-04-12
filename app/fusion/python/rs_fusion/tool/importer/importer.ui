@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>269</width>
-    <height>336</height>
+    <height>396</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,6 +91,29 @@
               <string>※エクスプレッションが従来のものです。</string>
              </property>
             </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="title">
+           <string>コネクション切り替え式オプション</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>通常ボタン サイズ</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="btnSizeSpinBox"/>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>

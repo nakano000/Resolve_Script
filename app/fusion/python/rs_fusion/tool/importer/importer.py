@@ -38,6 +38,7 @@ class TatieStyle(IntEnum):
 class ConfigData(config.Data):
     json_path: str = ''
     style: TatieStyle = TatieStyle.CONNECTION_LABEL
+    btn_size: float = 0.25
     space_x: int = 400
     space_y: int = 600
     is_normal: bool = False
@@ -305,6 +306,7 @@ class Importer:
         page_name = 'ポーズ' if use_label else xf.Name
         name_list = []
         user_controls = {}
+        user_controls2 = {}
         uc_list = []
         for i, layer in enumerate(_data):
             layer_name: str = layer['name']
@@ -340,7 +342,7 @@ class Importer:
                 pre_node = a_mg
                 if not layer_name.startswith('!'):
                     user_controls[uc_name + str(pos_x)] = self.uc_button(
-                        a_mg, node, page_name, layer_name, 1.0
+                        a_mg, node, page_name, layer_name, self.config_data.btn_size
                     )
             else:
                 mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y + 1) * self.Y_OFFSET)
@@ -351,15 +353,17 @@ class Importer:
                     mg.ConnectInput('Foreground', node)
                 pre_node = mg
                 if not layer_name.startswith('!'):
-                    user_controls[uc_name + '_hide_' + str(pos_x)] = self.uc_button(
+                    user_controls2[uc_name + '_hide_' + str(pos_x)] = self.uc_button(
                         mg, None, page_name, layer_name + ' hide', 0.5
                     )
-                    user_controls[uc_name + '_show_' + str(pos_x)] = self.uc_button(
+                    user_controls2[uc_name + '_show_' + str(pos_x)] = self.uc_button(
                         mg, node, page_name, layer_name + ' show', 0.5
                     )
             pos_x += 1
 
         #
+        for k, v in user_controls2.items():
+            user_controls[k] = v
         if use_label:
             user_controls['Grp_' + xf.Name] = {
                 'LINKS_Name': name.replace('!', '').replace('*', ''),
@@ -515,6 +519,9 @@ class MainWindow(QMainWindow):
             self.ui.connectRadioButton.setChecked(True)
         else:
             self.ui.connectLabelRadioButton.setChecked(True)
+
+        self.ui.btnSizeSpinBox.setValue(c.btn_size)
+
         self.ui.xSpinBox.setValue(c.space_x)
         self.ui.ySpinBox.setValue(c.space_y)
 
@@ -530,6 +537,9 @@ class MainWindow(QMainWindow):
             c.style = TatieStyle.CONNECTION
         else:
             c.style = TatieStyle.CONNECTION_LABEL
+
+        c.btn_size = self.ui.btnSizeSpinBox.value()
+
         c.space_x = self.ui.xSpinBox.value()
         c.space_y = self.ui.ySpinBox.value()
 

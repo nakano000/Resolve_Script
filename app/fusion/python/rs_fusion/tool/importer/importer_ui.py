@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui' applies.
 #
-# Created: Wed Apr 12 01:38:29 2023
+# Created: Thu Apr 13 00:17:25 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(269, 336)
+        MainWindow.resize(269, 396)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -59,6 +59,20 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.verticalLayout_3.addWidget(self.label)
         self.verticalLayout_2.addWidget(self.groupBox_3)
+        self.groupBox_4 = QtWidgets.QGroupBox(self.tab)
+        self.groupBox_4.setObjectName("groupBox_4")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.groupBox_4)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.label_5 = QtWidgets.QLabel(self.groupBox_4)
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayout_4.addWidget(self.label_5)
+        self.btnSizeSpinBox = QtWidgets.QDoubleSpinBox(self.groupBox_4)
+        self.btnSizeSpinBox.setObjectName("btnSizeSpinBox")
+        self.horizontalLayout_4.addWidget(self.btnSizeSpinBox)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_4)
+        self.verticalLayout_2.addWidget(self.groupBox_4)
         self.groupBox = QtWidgets.QGroupBox(self.tab)
         self.groupBox.setObjectName("groupBox")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
@@ -136,6 +150,8 @@ class Ui_MainWindow(object):
         self.connectRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "コネクション切り替え(Page)", None, -1))
         self.connectLabelRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "コネクション切り替え(Label)", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "※エクスプレッションが従来のものです。", None, -1))
+        self.groupBox_4.setTitle(QtWidgets.QApplication.translate("MainWindow", "コネクション切り替え式オプション", None, -1))
+        self.label_5.setText(QtWidgets.QApplication.translate("MainWindow", "通常ボタン サイズ", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "拡張 (アニメーション スペース確保)", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "X", None, -1))
         self.xSpinBox.setSuffix(QtWidgets.QApplication.translate("MainWindow", " px", None, -1))
