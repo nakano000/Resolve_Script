@@ -74,6 +74,7 @@ class ConfigData(config.Data):
     wait_time: float = 0.015
     time_out: int = 15
     offset: int = 15
+    extend: int = 0
     video_index: int = 1
     audio_index: int = 1
     make_text: bool = False
@@ -444,7 +445,7 @@ class MainWindow(QMainWindow):
             text_plus = media_pool.AppendToTimeline([{
                 'mediaPoolItem': text_template,
                 'startFrame': 0,
-                'endFrame': duration - 1,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
+                'endFrame': duration - 1 + data.extend,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
                 'mediaType': 1,
             }])[0]
             self.add2log('TMP TL: Insert Text Clip: Done')
@@ -489,7 +490,7 @@ class MainWindow(QMainWindow):
             self.add2log('TMP TL: Copy and Paste: Done')
 
             # 再生ヘッドの移動
-            set_currentframe(timeline, current_frame + duration + data.offset)
+            set_currentframe(timeline, current_frame + duration + data.offset + data.extend)
 
             self.add2log('Import: ' + str(f))
             # 終了処理
@@ -660,6 +661,7 @@ class MainWindow(QMainWindow):
         self.ui.waitTimeSpinBox.setValue(c.wait_time)
         self.ui.timeOutSpinBox.setValue(c.time_out)
         self.ui.offsetSpinBox.setValue(c.offset)
+        self.ui.extendSpinBox.setValue(c.extend)
         self.ui.videoIndexSpinBox.setValue(c.video_index)
         self.ui.audioIndexSpinBox.setValue(c.audio_index)
         self.ui.makeTextCheckBox.setChecked(c.make_text)
@@ -672,6 +674,7 @@ class MainWindow(QMainWindow):
         c.wait_time = self.ui.waitTimeSpinBox.value()
         c.time_out = self.ui.timeOutSpinBox.value()
         c.offset = self.ui.offsetSpinBox.value()
+        c.extend = self.ui.extendSpinBox.value()
         c.video_index = self.ui.videoIndexSpinBox.value()
         c.audio_index = self.ui.audioIndexSpinBox.value()
         c.make_text = self.ui.makeTextCheckBox.isChecked()
