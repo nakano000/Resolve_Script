@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui' applies.
 #
-# Created: Wed Apr 12 23:17:12 2023
+# Created: Wed Apr 12 23:47:14 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -111,6 +111,7 @@ class Ui_MainWindow(object):
         self.label_6.setObjectName("label_6")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_6)
         self.extendSpinBox = QtWidgets.QSpinBox(self.groupBox)
+        self.extendSpinBox.setMaximum(999999999)
         self.extendSpinBox.setObjectName("extendSpinBox")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.extendSpinBox)
         self.verticalLayout_3.addWidget(self.groupBox)
