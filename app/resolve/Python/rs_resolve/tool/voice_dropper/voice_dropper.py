@@ -280,6 +280,21 @@ class MainWindow(QMainWindow):
         # get data
         data = self.get_data()
 
+        # temp file
+        self.add2log('Create Temporary File: Start')
+        tmp_tl_base_name = '_tmp_VoiceDropper_'
+        fcp_timeline = fcp.Timeline(self.xml)
+        fcp_timeline.set_name(tmp_tl_base_name)
+        fcp_timeline.set_fps(get_fps(timeline))
+        fcp_timeline.set_width(int(timeline.GetSetting('timelineResolutionWidth')))
+        fcp_timeline.set_height(int(timeline.GetSetting('timelineResolutionHeight')))
+        fcp_timeline.set_dropframe(timeline.GetSetting('timelineDropFrameTimecode') == '1')
+        self.temp_file.write_text(str(fcp_timeline), encoding='utf-8')
+        if not self.temp_file.is_file():
+            self.add2log('Temporary Fileの作成に失敗しました。')
+            return
+        self.add2log('Create Temporary File: Done')
+
         # util
         def send_hotkey(key_list):
             w.activate()
@@ -340,29 +355,22 @@ class MainWindow(QMainWindow):
 
             # make timeline
             self.add2log('TMP TL: Start')
-
-            self.add2log('TMP TL: Create Temporary File: Start')
-            tmp_tl_name = '_tmp_VoiceDropper_' + f.stem
-            fcp_timeline = fcp.Timeline(self.xml)
-            fcp_timeline.set_name(tmp_tl_name)
-            fcp_timeline.set_fps(get_fps(timeline))
-            fcp_timeline.set_width(int(timeline.GetSetting('timelineResolutionWidth')))
-            fcp_timeline.set_height(int(timeline.GetSetting('timelineResolutionHeight')))
-            fcp_timeline.set_dropframe(timeline.GetSetting('timelineDropFrameTimecode') == '1')
-            self.temp_file.write_text(str(fcp_timeline), encoding='utf-8')
-            if not self.temp_file.is_file():
-                self.add2log('Temporary Fileの作成に失敗しました。')
-                continue
-            self.add2log('TMP TL: Create Temporary File: Done')
-
+            self.add2log('TMP TL: Clean Up: Start')
+            tmp_tl_name = tmp_tl_base_name + f.stem
             for i in range(1, project.GetTimelineCount() + 1):
                 tl = project.GetTimelineByIndex(i)
                 if tl.GetName() == tmp_tl_name:
                     media_pool.DeleteTimelines([tl])
+            self.add2log('TMP TL: Clean Up: Done')
             self.add2log('TMP TL: Import Temporary File: Start')
             time.sleep(data.wait_time)
 
-            tmp_timeline = media_pool.ImportTimelineFromFile(str(self.temp_file))
+            tmp_timeline = media_pool.ImportTimelineFromFile(
+                str(self.temp_file),
+                {
+                    'timelineName': tmp_tl_name,
+                },
+            )
 
             time.sleep(data.wait_time)
 
