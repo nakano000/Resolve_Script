@@ -233,6 +233,32 @@ class MainWindow(QMainWindow):
         if use_watchdog:
             self.start()
 
+    def get_tmp_timeline(self, project, timeline):
+        media_pool = project.GetMediaPool()
+
+        tmp_tl_name = '_tmp_VoiceDropper_' + timeline.GetName()
+        r = None
+        for i in range(1, project.GetTimelineCount() + 1):
+            tl = project.GetTimelineByIndex(i)
+            if tl.GetName() == tmp_tl_name:
+                r = tl
+                break
+        if r is None:
+            self.add2log('Create Temporary File: Start')
+            fcp_timeline = fcp.Timeline(self.xml)
+            fcp_timeline.set_name(tmp_tl_name)
+            fcp_timeline.set_fps(get_fps(timeline))
+            fcp_timeline.set_width(int(timeline.GetSetting('timelineResolutionWidth')))
+            fcp_timeline.set_height(int(timeline.GetSetting('timelineResolutionHeight')))
+            fcp_timeline.set_dropframe(timeline.GetSetting('timelineDropFrameTimecode') == '1')
+            self.temp_file.write_text(str(fcp_timeline), encoding='utf-8')
+            self.add2log('Create Temporary File: Done')
+            self.add2log('Import Temporary File: Start')
+            r = media_pool.ImportTimelineFromFile(str(self.temp_file))
+            self.add2log('Import Temporary File: Done')
+            project.SetCurrentTimeline(timeline)
+        return r
+
     def voice_drop(self, created_lst):
         time_sta = time.time()
         self.ui.logTextEdit.clear()
@@ -280,20 +306,8 @@ class MainWindow(QMainWindow):
         # get data
         data = self.get_data()
 
-        # temp file
-        self.add2log('Create Temporary File: Start')
-        tmp_tl_base_name = '_tmp_VoiceDropper_'
-        fcp_timeline = fcp.Timeline(self.xml)
-        fcp_timeline.set_name(tmp_tl_base_name)
-        fcp_timeline.set_fps(get_fps(timeline))
-        fcp_timeline.set_width(int(timeline.GetSetting('timelineResolutionWidth')))
-        fcp_timeline.set_height(int(timeline.GetSetting('timelineResolutionHeight')))
-        fcp_timeline.set_dropframe(timeline.GetSetting('timelineDropFrameTimecode') == '1')
-        self.temp_file.write_text(str(fcp_timeline), encoding='utf-8')
-        if not self.temp_file.is_file():
-            self.add2log('Temporary Fileの作成に失敗しました。')
-            return
-        self.add2log('Create Temporary File: Done')
+        # temp timeline
+        tmp_timeline = self.get_tmp_timeline(project, timeline)
 
         # util
         def send_hotkey(key_list):
@@ -309,6 +323,15 @@ class MainWindow(QMainWindow):
             else:
                 send_hotkey(['alt', '1'])
             send_hotkey(['alt', str(index)])
+
+        def select_audio_track(index):
+            if timeline.GetTrackCount('audio') == 1:
+                send_hotkey(['ctrl', 'alt', str(index)])
+            elif index == 1:
+                send_hotkey(['ctrl', 'alt', '2'])
+            else:
+                send_hotkey(['ctrl', 'alt', '1'])
+            send_hotkey(['ctrl', 'alt', str(index)])
 
         # main
         resolve.OpenPage('edit')
@@ -355,32 +378,6 @@ class MainWindow(QMainWindow):
 
             # make timeline
             self.add2log('TMP TL: Start')
-            tmp_tl_name = tmp_tl_base_name + f.stem
-
-            # clean up
-            self.add2log('TMP TL: Clean Up: Start')
-            for i in range(1, project.GetTimelineCount() + 1):
-                tl = project.GetTimelineByIndex(i)
-                if tl.GetName() == tmp_tl_name:
-                    media_pool.DeleteTimelines([tl])
-                    time.sleep(data.wait_time)
-            self.add2log('TMP TL: Clean Up: Done')
-
-            # import tmp file
-            self.add2log('TMP TL: Import Temporary File: Start')
-            tmp_timeline = media_pool.ImportTimelineFromFile(
-                str(self.temp_file),
-                {
-                    'timelineName': tmp_tl_name,
-                },
-            )
-            time.sleep(data.wait_time)
-
-            if tmp_timeline is None:
-                self.add2log('作業用Timelineの作成に失敗しました。')
-                continue
-            self.add2log(f'TMP TL: {tmp_timeline.GetName()}')
-            self.add2log('TMP TL: Import Temporary File: Done')
 
             # time out 設定
             step = 0.2
@@ -401,7 +398,6 @@ class MainWindow(QMainWindow):
 
             if is_time_out:
                 self.add2log('タイムアウト:ファイルが計算中ため、処理をスキップします。')
-                media_pool.DeleteTimelines([tmp_timeline])
                 continue
             self.add2log('waveファイルチェック:  OK')
 
@@ -421,17 +417,23 @@ class MainWindow(QMainWindow):
 
             if is_time_out:
                 self.add2log('タイムアウト:音声ファイルのインポートに失敗しました。')
-                media_pool.DeleteTimelines([tmp_timeline])
                 continue
-
             self.add2log('TMP TL:Insert Audio Clip: Start')
+
+            # setup
+            project.SetCurrentTimeline(tmp_timeline)
+            set_currentframe(tmp_timeline, 0)
+            send_hotkey(['ctrl', '4'])
+            send_hotkey(['ctrl', 'a'])
+            send_hotkey(['backspace'])
+
             # 音声トラックの選択
-            if audio_index != 1:
-                send_hotkey(['ctrl', 'alt', str(audio_index)])
-            time.sleep(data.wait_time)
+            select_audio_track(audio_index)
 
             # 音声クリップの挿入
+
             clip = media_pool.AppendToTimeline([mi])[0]
+            time.sleep(data.wait_time)
             while True:
                 if time.time() - start_time > data.time_out:
                     is_time_out = True
@@ -445,7 +447,6 @@ class MainWindow(QMainWindow):
 
             if is_time_out:
                 self.add2log('タイムアウト:音声クリップの挿入に失敗しました。')
-                media_pool.DeleteTimelines([tmp_timeline])
                 continue
             duration = clip.GetDuration()
             self.add2log('TMP TL: Insert Audio Clip: Done')
@@ -496,7 +497,7 @@ class MainWindow(QMainWindow):
             send_hotkey(['ctrl', '4'])
             send_hotkey(['ctrl', 'a'])
             send_hotkey(['ctrl', 'alt', 'l'])
-            send_hotkey(['ctrl', 'c'])
+            send_hotkey(['ctrl', 'x'])
             # timeline変更、ペースト
             project.SetCurrentTimeline(timeline)
             send_hotkey(['ctrl', '4'])
@@ -505,13 +506,14 @@ class MainWindow(QMainWindow):
             self.add2log('TMP TL: Copy and Paste: Done')
 
             # 再生ヘッドの移動
+            time.sleep(data.wait_time)
+            print(current_frame)
+            print(duration + data.offset + data.extend)
             set_currentframe(timeline, current_frame + duration + data.offset + data.extend)
+            print(get_currentframe(timeline))
 
             self.add2log('Import: ' + str(f))
-            # 終了処理
-            self.add2log('TMP TL: Clean Up: Start')
-            media_pool.DeleteTimelines([tmp_timeline])
-            self.add2log('TMP TL: Clean Up: Done')
+
             #
             self.add2log('')
         # end
