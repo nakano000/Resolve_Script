@@ -1,0 +1,114 @@
+{
+	Tools = ordered() {
+		GradientMap = GroupOperator {
+			CtrlWZoom = false,
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Bitmap1",
+					Source = "Image"
+				},
+				Input1 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Start"
+				},
+				Input2 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "End"
+				},
+				Input3 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Gradient"
+				},
+				Input4 = InstanceInput {
+					Name = "Interpolation Space",
+					SourceOp = "FastNoise1",
+					Default = 0,
+					Source = "GradientInterpolationMethod"
+				},
+				Input5 = InstanceInput {
+					Name = "Image",
+					SourceOp = "FastNoise1",
+					Default = 1,
+					Source = "ImageNest"
+				},
+				Input6 = InstanceInput {
+					Source = "Width",
+					SourceOp = "FastNoise1",
+					Default = 1920
+				},
+				Input7 = InstanceInput {
+					Source = "Height",
+					SourceOp = "FastNoise1",
+					Default = 1080
+				},
+				Input8 = InstanceInput {
+					Name = "Pixel Aspect",
+					SourceOp = "FastNoise1",
+					Source = "PixelAspect"
+				},
+				Input9 = InstanceInput {
+					Name = "Use Frame Format Settings",
+					SourceOp = "FastNoise1",
+					Default = 1,
+					Source = "UseFrameFormatSettings"
+				},
+				Input10 = InstanceInput {
+					Name = "Fit Input",
+					SourceOp = "Bitmap1",
+					Source = "FitInput"
+				}
+			},
+			ViewInfo = GroupInfo {
+				Offset = { 0, 0 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Flags = {
+					GridSnap = true,
+					AllowPan = false,
+					ForceAll = true,
+					AutoSnap = true
+				},
+				Scale = 1
+			},
+			Outputs = ordered() {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "FastNoise1",
+					Source = "Output"
+				}
+			},
+			Tools = ordered() {
+				FastNoise1 = FastNoise {
+					Inputs = {
+						Repeat = Input { Value = 1 },
+						NoiseBrightnessMap = Input {
+							SourceOp = "Bitmap1",
+							Source = "Mask"
+						},
+						Offset = Input { Value = 0.5 },
+						Height = Input { Value = 1080 },
+						Width = Input { Value = 1920 },
+						UseFrameFormatSettings = Input { Value = 1 },
+						Type = Input { Value = 1 },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+						Detail = Input { Value = 0 },
+						Brightness = Input { Value = 1 }
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, 16.5 } }
+				},
+				Bitmap1 = BitmapMask {
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" } },
+						Channel = Input { Value = FuID { "Luminance" } },
+						MaskWidth = Input { Value = 1920 },
+						MaskHeight = Input { Value = 1080 },
+						PixelAspect = Input { Value = { 1, 1 } },
+						ClippingMode = Input { Value = FuID { "None" } },
+						FitInput = Input { Value = FuID { "Outside" } }
+					},
+					ViewInfo = OperatorInfo { Pos = { 220, 16.5 } },
+					CtrlWZoom = false
+				}
+			}
+		}
+	}
+}

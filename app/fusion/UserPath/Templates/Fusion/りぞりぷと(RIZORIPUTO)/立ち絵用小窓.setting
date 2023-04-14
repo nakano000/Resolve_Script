@@ -1,0 +1,459 @@
+{
+	Tools = ordered() {
+		Komado = GroupOperator {
+			Outputs = ordered() {
+				MainOutput1 = InstanceOutput {
+					Source = "Output",
+					SourceOp = "Merge3"
+				}
+			},
+			ViewInfo = GroupInfo {
+				Offset = { 0, 0 },
+				Direction = "Horizontal",
+				Flags = {
+					ForceAll = true,
+					AutoSnap = true,
+					GridSnap = true,
+					AllowPan = false
+				},
+				PipeStyle = "Direct",
+				Scale = 1
+			},
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					Name = "Object",
+					Source = "Input",
+					SourceOp = "PipeRouter1"
+				},
+				MainInput2 = InstanceInput {
+					Name = "Base",
+					Source = "Input",
+					SourceOp = "Transform2"
+				},
+				MainInput3 = InstanceInput {
+					Name = "Border",
+					Source = "Input",
+					SourceOp = "Instance_Transform2"
+				},
+				Input1 = InstanceInput {
+					Source = "Center",
+					SourceOp = "Transform2"
+				},
+				Input2 = InstanceInput {
+					Source = "Pivot",
+					SourceOp = "Transform2"
+				},
+				Input3 = InstanceInput {
+					Name = "Use Size and Aspect",
+					Default = 1,
+					Source = "UseSizeAndAspect",
+					SourceOp = "Transform2"
+				},
+				Input4 = InstanceInput {
+					Source = "Size",
+					SourceOp = "Transform2",
+					Default = 1
+				},
+				Input5 = InstanceInput {
+					Source = "Aspect",
+					SourceOp = "Transform2",
+					Default = 1
+				},
+				Input6 = InstanceInput {
+					Name = "X Size",
+					Default = 1,
+					Source = "XSize",
+					SourceOp = "Transform2"
+				},
+				Input7 = InstanceInput {
+					Name = "Y Size",
+					Default = 1,
+					Source = "YSize",
+					SourceOp = "Transform2"
+				},
+				Input8 = InstanceInput {
+					Source = "Angle",
+					SourceOp = "Transform2",
+					Default = 0
+				},
+				Input9 = InstanceInput {
+					Name = "Flip Horizontal",
+					ControlGroup = 1,
+					Default = 0,
+					Source = "FlipHoriz",
+					SourceOp = "Transform2"
+				},
+				Input10 = InstanceInput {
+					Name = "Flip Vertical",
+					ControlGroup = 1,
+					Default = 0,
+					Source = "FlipVert",
+					SourceOp = "Transform2"
+				},
+				Input11 = InstanceInput {
+					Source = "Mask",
+					SourceOp = "Rectangle1",
+					Default = 0
+				},
+				Input12 = InstanceInput {
+					Source = "Center",
+					SourceOp = "Rectangle1"
+				},
+				Input13 = InstanceInput {
+					Source = "Width",
+					SourceOp = "Rectangle1",
+					Default = 10
+				},
+				Input14 = InstanceInput {
+					Source = "Height",
+					SourceOp = "Rectangle1",
+					Default = 1
+				},
+				Input15 = InstanceInput {
+					Name = "Corner Radius",
+					Default = 0,
+					Source = "CornerRadius",
+					SourceOp = "Rectangle1"
+				},
+				Input16 = InstanceInput {
+					Source = "Angle",
+					SourceOp = "Rectangle1",
+					Default = 0
+				}
+			},
+			CtrlWZoom = false,
+			Tools = ordered() {
+				Calculation1 = Calculation {
+					Inputs = {
+						SecondOperand = Input { Value = 1 },
+						FirstOperand = Input {
+							Source = "Result",
+							SourceOp = "Calculation2"
+						},
+						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart" }
+					},
+					CtrlWZoom = false
+				},
+				Calculation2 = Calculation {
+					Inputs = {
+						Operator = Input { Value = 2 },
+						SecondOperand = Input { Value = 0.8 },
+						FirstOperand = Input {
+							Source = "Value",
+							SourceOp = "CalculationonCalculationonTransformAspectFirstOperand"
+						},
+						FirstOperandTimeScale = Input { Expression = "Transform.speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate" }
+					},
+					CtrlWZoom = false
+				},
+				CalculationonCalculationonTransformAspectFirstOperand = BezierSpline {
+					CtrlWZoom = false,
+					SplineColor = { Green = 105, Blue = 30, Red = 210 },
+					KeyFrames = {
+						[0] = { 0, RH = { 1, 0 }, Flags = { Linear = true } },
+						[3] = { 0.0800000000000001, RH = { 4.66666666666667, 0.0800000000000001 }, LH = { 2, 0.0800000000000001 } },
+						[8] = { -0.0489999999999999, RH = { 9.33333333333333, -0.0489999999999999 }, LH = { 6.33333333333333, -0.0489999999999999 } },
+						[12] = { 0.03, RH = { 13.3333333333333, 0.03 }, LH = { 10.6666666666667, 0.03 } },
+						[16] = { -0.00700000000000001, RH = { 16.6666666666667, -0.00700000000000001 }, LH = { 14.6666666666667, -0.00700000000000001 } },
+						[18] = { 0.004, RH = { 18.6666666666667, 0.004 }, LH = { 17.3333333333333, 0.004 } },
+						[20] = { 0, LH = { 19.3333333333333, 0 } }
+					}
+				},
+				Shake1_1 = Shake {
+					Faster = true,
+					Inputs = {
+						YMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1_2_1.y"
+						},
+						Smoothness = Input { Value = 1.5 },
+						LockXY = Input { Value = 0 },
+						XMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1_2_1.x"
+						},
+						XMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1_2_1.x"
+						},
+						YMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1_2_1.y"
+						}
+					},
+					CtrlWZoom = false
+				},
+				KeyframeStretcher1_1 = KeyStretcherMod {
+					Inputs = {
+						StretchStart = Input { Value = 10 },
+						StretchEnd = Input { Value = 110 },
+						Keyframes = Input {
+							Source = "Value",
+							SourceOp = "KeyStretcheronTransform1_2_1Keyframes"
+						}
+					},
+					CtrlWZoom = false
+				},
+				KeyStretcheronTransform1_2_1Keyframes = BezierSpline {
+					CtrlWZoom = false,
+					SplineColor = { Green = 106, Blue = 231, Red = 193 },
+					KeyFrames = {
+						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
+						[10] = { 1, RH = { 43.3333333333333, 1 }, LH = { 6.66666666666667, 1 } },
+						[110] = { 1, RH = { 113.333333333333, 1 }, LH = { 76.6666666666667, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
+					}
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Operator = Input { Value = FuID { "Under" } },
+						Foreground = Input {
+							Source = "Output",
+							SourceOp = "Merge4"
+						},
+						PerformDepthMerge = Input { Value = 0 },
+						Background = Input {
+							Source = "Output",
+							SourceOp = "ChannelBooleans2"
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 10285, 1237.5 } }
+				},
+				Merge3 = Merge {
+					Inputs = {
+						PerformDepthMerge = Input { Value = 0 },
+						Background = Input {
+							Source = "Output",
+							SourceOp = "Merge1"
+						},
+						ApplyMaskInverted = Input { Value = 1 },
+						Foreground = Input {
+							Source = "Output",
+							SourceOp = "Instance_Transform2"
+						},
+						EffectMask = Input {
+							Source = "Mask",
+							SourceOp = "Rectangle1"
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 10285, 1336.5 } }
+				},
+				PipeRouter1 = PipeRouter {
+					ViewInfo = PipeRouterInfo { Pos = { 10112.4169921875, 918.821838378906 } }
+				},
+				ChannelBooleans1 = ChannelBoolean {
+					Inputs = {
+						ToBlue = Input { Value = 15 },
+						ToAlpha = Input { Value = 15 },
+						Background = Input {
+							Source = "Output",
+							SourceOp = "PipeRouter1"
+						},
+						ToRed = Input { Value = 15 },
+						ToGreen = Input { Value = 15 }
+					},
+					ViewInfo = OperatorInfo { Pos = { 9735, 1006.5 } }
+				},
+				Transform2 = Transform {
+					ViewInfo = OperatorInfo { Pos = { 9405, 1237.5 } }
+				},
+				Instance_Transform2 = Transform {
+					Inputs = {
+						SettingsNest = Input { },
+						TransformNest = Input { },
+						ReferenceSize = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						Input = Input { },
+						EndRenderScripts = Input { },
+						EffectMask = Input { },
+						StartRenderScripts = Input { }
+					},
+					ViewInfo = OperatorInfo { Pos = { 9405, 1369.5 } },
+					SourceOp = "Transform2"
+				},
+				Merge4 = Merge {
+					Inputs = {
+						PerformDepthMerge = Input { Value = 0 },
+						Foreground = Input {
+							Source = "Output",
+							SourceOp = "Instance_Transform2"
+						},
+						Background = Input {
+							Source = "Output",
+							SourceOp = "Transform2"
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 9570, 1237.5 } }
+				},
+				Merge2 = Merge {
+					Inputs = {
+						PerformDepthMerge = Input { Value = 0 },
+						Foreground = Input {
+							Source = "Output",
+							SourceOp = "Merge4"
+						},
+						Background = Input {
+							Source = "Output",
+							SourceOp = "ChannelBooleans1"
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 9735, 1138.5 } }
+				},
+				Bitmap1 = BitmapMask {
+					Inputs = {
+						MaskHeight = Input { Value = 1080 },
+						PixelAspect = Input { Value = { 1, 1 } },
+						ClippingMode = Input { Value = FuID { "None" } },
+						EffectMask = Input {
+							Source = "Mask",
+							SourceOp = "Rectangle1"
+						},
+						Filter = Input { Value = FuID { "Fast Gaussian" } },
+						Image = Input {
+							Source = "Output",
+							SourceOp = "Merge2"
+						},
+						MaskWidth = Input { Value = 1920 }
+					},
+					ViewInfo = OperatorInfo { Pos = { 9900, 1138.5 } }
+				},
+				ChannelBooleans2 = ChannelBoolean {
+					Inputs = {
+						ToBlue = Input { Value = 15 },
+						ToAlpha = Input { Value = 30 },
+						Background = Input {
+							Source = "Output",
+							SourceOp = "PipeRouter1"
+						},
+						EffectMask = Input {
+							Source = "Mask",
+							SourceOp = "Bitmap1"
+						},
+						ApplyMaskInverted = Input { Value = 1 },
+						ToRed = Input { Value = 15 },
+						ToGreen = Input { Value = 15 }
+					},
+					ViewInfo = OperatorInfo { Pos = { 10285, 1138.5 } }
+				},
+				Rectangle1 = RectangleMask {
+					ViewInfo = OperatorInfo { Pos = { 9900, 1039.5 } },
+					Inputs = {
+						MaskHeight = Input { Value = 1080 },
+						PixelAspect = Input { Value = { 1, 1 } },
+						ClippingMode = Input { Value = FuID { "None" } },
+						Center = Input { Value = { 0.5, 1.5 } },
+						Width = Input { Value = 10 },
+						Filter = Input { Value = FuID { "Fast Gaussian" } },
+						Height = Input { Value = 1 },
+						MaskWidth = Input { Value = 1920 }
+					},
+					UserControls = ordered() {
+						Mask = {
+							INP_Default = 0,
+							INP_External = false,
+							LBLC_DropDownButton = true,
+							INPID_InputControl = "LabelControl",
+							LINKID_DataType = "Number",
+							LINKS_Name = "Mask",
+							INP_Passive = true,
+							INP_Integer = true,
+							LBLC_NumInputs = 5
+						}
+					},
+					CtrlWZoom = false
+				},
+				XYPath1 = XYPath {
+					DrawMode = "ModifyOnly",
+					Inputs = {
+						Y = Input {
+							Source = "Result",
+							SourceOp = "Calculation1_1"
+						},
+						X = Input { Value = 0.5 }
+					},
+					CtrlWZoom = false,
+					ShowKeyPoints = false
+				},
+				Calculation1_1 = Calculation {
+					Inputs = {
+						SecondOperand = Input { Value = 0.5 },
+						FirstOperand = Input {
+							Source = "Result",
+							SourceOp = "Calculation2_1"
+						},
+						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart - Transform1.offset" }
+					},
+					CtrlWZoom = false
+				},
+				Calculation2_1 = Calculation {
+					Inputs = {
+						Operator = Input { Value = 2 },
+						SecondOperand = Input { Value = 0.5 },
+						FirstOperand = Input {
+							Source = "Value",
+							SourceOp = "CalculationonCalculationonTransform1CenterXYPath1YFirstOperand"
+						},
+						FirstOperandTimeScale = Input { Expression = "Transform1.speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate" }
+					},
+					CtrlWZoom = false
+				},
+				CalculationonCalculationonTransform1CenterXYPath1YFirstOperand = BezierSpline {
+					CtrlWZoom = false,
+					SplineColor = { Green = 255, Blue = 0, Red = 0 },
+					KeyFrames = {
+						[0] = { 0, RH = { 4.65, 0.225 }, Flags = { Linear = true } },
+						[17] = { 0, RH = { 19.6825406677053, 0.0439451976698349 }, LH = { 12.4, 0.214 } },
+						[25] = { 0.000999999999999557, RH = { 27.6, 0.025 }, LH = { 23.6, 0.0269999999999996 } },
+						[30] = { 0, LH = { 28.4282452630596, 0 } }
+					}
+				},
+				Shake1 = Shake {
+					Faster = true,
+					Inputs = {
+						YMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1_2.y"
+						},
+						Smoothness = Input { Value = 2 },
+						LockXY = Input { Value = 0 },
+						XMinimum = Input {
+							Value = -0.1,
+							Expression = "-Transform1_2.x"
+						},
+						XMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1_2.x"
+						},
+						YMaximum = Input {
+							Value = 0.1,
+							Expression = "Transform1_2.y"
+						}
+					},
+					CtrlWZoom = false
+				},
+				KeyframeStretcher1 = KeyStretcherMod {
+					Inputs = {
+						StretchStart = Input { Value = 10 },
+						StretchEnd = Input { Value = 110 },
+						Keyframes = Input {
+							Source = "Value",
+							SourceOp = "KeyStretcheronTransform1_2Keyframes"
+						}
+					},
+					CtrlWZoom = false
+				},
+				KeyStretcheronTransform1_2Keyframes = BezierSpline {
+					CtrlWZoom = false,
+					SplineColor = { Green = 106, Blue = 231, Red = 193 },
+					KeyFrames = {
+						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
+						[10] = { 1, RH = { 43.3333333333333, 1 }, LH = { 6.66666666666667, 1 } },
+						[110] = { 1, RH = { 113.333333333333, 1 }, LH = { 76.6666666666667, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
+					}
+				}
+			}
+		}
+	}
+}
