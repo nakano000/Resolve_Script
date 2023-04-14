@@ -355,23 +355,25 @@ class MainWindow(QMainWindow):
 
             # make timeline
             self.add2log('TMP TL: Start')
-            self.add2log('TMP TL: Clean Up: Start')
             tmp_tl_name = tmp_tl_base_name + f.stem
+
+            # clean up
+            self.add2log('TMP TL: Clean Up: Start')
             for i in range(1, project.GetTimelineCount() + 1):
                 tl = project.GetTimelineByIndex(i)
                 if tl.GetName() == tmp_tl_name:
                     media_pool.DeleteTimelines([tl])
+                    time.sleep(data.wait_time)
             self.add2log('TMP TL: Clean Up: Done')
-            self.add2log('TMP TL: Import Temporary File: Start')
-            time.sleep(data.wait_time)
 
+            # import tmp file
+            self.add2log('TMP TL: Import Temporary File: Start')
             tmp_timeline = media_pool.ImportTimelineFromFile(
                 str(self.temp_file),
                 {
                     'timelineName': tmp_tl_name,
                 },
             )
-
             time.sleep(data.wait_time)
 
             if tmp_timeline is None:
