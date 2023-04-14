@@ -360,7 +360,12 @@ class MainWindow(QMainWindow):
                 if tl.GetName() == tmp_tl_name:
                     media_pool.DeleteTimelines([tl])
             self.add2log('TMP TL: Import Temporary File: Start')
+            time.sleep(data.wait_time)
+
             tmp_timeline = media_pool.ImportTimelineFromFile(str(self.temp_file))
+
+            time.sleep(data.wait_time)
+
             if tmp_timeline is None:
                 self.add2log('作業用Timelineの作成に失敗しました。')
                 continue
