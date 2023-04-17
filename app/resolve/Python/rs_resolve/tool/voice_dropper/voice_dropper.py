@@ -656,7 +656,9 @@ class MainWindow(QMainWindow):
             comp.StartUndo('RS Lip Sync')
             comp.Lock()
             for t in tool_list:
+                comment = t.GetInput('Comments', comp.CurrentTime)
                 t.LoadSettings(st)
+                t.SetInput('Comments', comment, comp.CurrentTime)
             comp.Unlock()
             comp.EndUndo(True)
             self.add2log('Apply Anim: Done')
