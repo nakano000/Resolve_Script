@@ -245,6 +245,7 @@ class MainWindow(QMainWindow):
                 break
         if r is None:
             self.add2log('Create Temporary File: Start')
+            current_frame = get_currentframe(timeline)
             fcp_timeline = fcp.Timeline(self.xml)
             fcp_timeline.set_name(tmp_tl_name)
             fcp_timeline.set_fps(get_fps(timeline))
@@ -255,8 +256,12 @@ class MainWindow(QMainWindow):
             self.add2log('Create Temporary File: Done')
             self.add2log('Import Temporary File: Start')
             r = media_pool.ImportTimelineFromFile(str(self.temp_file))
+            if r is None:
+                self.add2log('Import Temporary File: Fail')
+                return None
             self.add2log('Import Temporary File: Done')
             project.SetCurrentTimeline(timeline)
+            set_currentframe(timeline, current_frame)
         return r
 
     def voice_drop(self, created_lst):
@@ -308,6 +313,8 @@ class MainWindow(QMainWindow):
 
         # temp timeline
         tmp_timeline = self.get_tmp_timeline(project, timeline)
+        if tmp_timeline is None:
+            return
 
         # util
         def send_hotkey(key_list):
@@ -507,10 +514,7 @@ class MainWindow(QMainWindow):
 
             # 再生ヘッドの移動
             time.sleep(data.wait_time)
-            print(current_frame)
-            print(duration + data.offset + data.extend)
             set_currentframe(timeline, current_frame + duration + data.offset + data.extend)
-            print(get_currentframe(timeline))
 
             self.add2log('Import: ' + str(f))
 
