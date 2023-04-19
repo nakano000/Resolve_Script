@@ -1,0 +1,104 @@
+{
+	Tools = ordered() {
+		RS_MouthAIUEO = Fuse.RS_MouthAIUEO {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				N = Input {
+					SourceOp = "N",
+					Source = "Output",
+				},
+				A = Input {
+					SourceOp = "A",
+					Source = "Output",
+				},
+				I = Input {
+					SourceOp = "I",
+					Source = "Output",
+				},
+				U = Input {
+					SourceOp = "U",
+					Source = "Output",
+				},
+				E = Input {
+					SourceOp = "E",
+					Source = "Output",
+				},
+				O = Input {
+					SourceOp = "O",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 990, 49.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+			Version = 1
+		},
+		N = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 880, 49.5 } },
+		},
+		A = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 770, 49.5 } },
+		},
+		I = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 660, 49.5 } },
+		},
+		U = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 550, 49.5 } },
+		},
+		E = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 440, 49.5 } },
+		},
+		O = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, 49.5 } },
+		}
+	},
+	ActiveTool = "RS_MouthAIUEO"
+}

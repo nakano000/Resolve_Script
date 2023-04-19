@@ -1,0 +1,79 @@
+{
+	Tools = ordered() {
+		M05 = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, 49.5 } },
+		},
+		M04 = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, 49.5 } },
+		},
+		M03 = Fuse.Wireless {
+			NameSet = true,
+			ViewInfo = OperatorInfo { Pos = { 440, 49.5 } },
+		},
+		RS_MouthOpen = Fuse.RS_MouthOpen {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				M01 = Input {
+					SourceOp = "M01",
+					Source = "Output",
+				},
+				M02 = Input {
+					SourceOp = "M02",
+					Source = "Output",
+				},
+				M04 = Input {
+					SourceOp = "M03",
+					Source = "Output",
+				},
+				M05 = Input {
+					SourceOp = "M04",
+					Source = "Output",
+				},
+				M06 = Input {
+					SourceOp = "M05",
+					Source = "Output",
+				},
+				Threshold01 = Input { Value = 0.1, },
+				Threshold02 = Input { Value = 0.25, },
+				Threshold03 = Input { Value = 0.4, },
+				Threshold04 = Input { Value = 0.55, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 770, 49.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+			Version = 1
+		},
+		M01 = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 660, 49.5 } },
+		},
+		M02 = Fuse.Wireless {
+			NameSet = true,
+			ViewInfo = OperatorInfo { Pos = { 550, 49.5 } },
+		}
+	},
+	ActiveTool = "RS_MouthOpen"
+}
