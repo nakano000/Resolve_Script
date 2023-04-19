@@ -1,0 +1,143 @@
+FuRegisterClass("RS_MouthOpen", CT_Tool, {
+    REGS_Category = "りぞりぷと",
+    REGS_OpIconString = "RSMO",
+    REGS_OpDescription = "Open",
+    REGS_Company = "RIZORIPUTO",
+    REGS_URL = "https://github.com/nakano000",
+    REG_OpNoMask = true,
+    REG_NoBlendCtrls = true,
+    REG_NoObjMatCtrls = true,
+    REG_NoMotionBlurCtrls = true,
+    REG_SupportsDoD = false,
+    REG_Fuse_NoEdit = true,
+    REG_Fuse_NoReload = true,
+    --REG_Fuse_NoReload = false,
+    REG_Version = 1.0,
+})
+
+function Create()
+    InImage = self:AddInput("Input", "Input", {
+        LINKID_DataType = "Image",
+        LINK_Main = 1,
+    })
+
+    InImg01 = self:AddInput("M01", "M01", {
+        LINKID_DataType = "Image",
+        LINK_Main = 2,
+    })
+    InImg02 = self:AddInput("M02", "M02", {
+        LINKID_DataType = "Image",
+        LINK_Main = 3,
+    })
+    InImg03 = self:AddInput("M03", "M04", {
+        LINKID_DataType = "Image",
+        LINK_Main = 4,
+    })
+    InImg04 = self:AddInput("M05", "M05", {
+        LINKID_DataType = "Image",
+        LINK_Main = 5,
+    })
+    InImg05 = self:AddInput("M06", "M06", {
+        LINKID_DataType = "Image",
+        LINK_Main = 6,
+    })
+    inOpen = self:AddInput("Open", "Open", {
+        LINKID_DataType = "Number",
+        INPID_InputControl = "SliderControl",
+        LINKS_Name = "Open",
+        INP_MinScale = -1,
+        INP_MinAllowed = -1,
+        INP_MaxScale = 1,
+        INP_MaxAllowed = 1,
+        INP_Default = -1.0,
+        ICS_ControlPage = "口パク",
+
+    })
+    inThreshold01 = self:AddInput("Threshold01", "Threshold01", {
+        LINKID_DataType = "Number",
+        INPID_InputControl = "SliderControl",
+        LINKS_Name = "Threshold01",
+        INP_MinScale = 0,
+        INP_MinAllowed = 0,
+        INP_MaxScale = 1,
+        INP_MaxAllowed = 1,
+        INP_Default = 0.2,
+        INP_External = false,
+        ICS_ControlPage = "口パク",
+    })
+    inThreshold02 = self:AddInput("Threshold02", "Threshold02", {
+        LINKID_DataType = "Number",
+        INPID_InputControl = "SliderControl",
+        LINKS_Name = "Threshold02",
+        INP_MinScale = 0,
+        INP_MinAllowed = 0,
+        INP_MaxScale = 1,
+        INP_MaxAllowed = 1,
+        INP_Default = 0.4,
+        INP_External = false,
+        ICS_ControlPage = "口パク",
+    })
+    inThreshold03 = self:AddInput("Threshold03", "Threshold03", {
+        LINKID_DataType = "Number",
+        INPID_InputControl = "SliderControl",
+        LINKS_Name = "Threshold03",
+        INP_MinScale = 0,
+        INP_MinAllowed = 0,
+        INP_MaxScale = 1,
+        INP_MaxAllowed = 1,
+        INP_Default = 0.6,
+        INP_External = false,
+        ICS_ControlPage = "口パク",
+    })
+    inThreshold04 = self:AddInput("Threshold04", "Threshold04", {
+        LINKID_DataType = "Number",
+        INPID_InputControl = "SliderControl",
+        LINKS_Name = "Threshold04",
+        INP_MinScale = 0,
+        INP_MinAllowed = 0,
+        INP_MaxScale = 1,
+        INP_MaxAllowed = 1,
+        INP_Default = 0.8,
+        INP_External = false,
+        ICS_ControlPage = "口パク",
+    })
+    OutImage = self:AddOutput("Output", "Output", {
+        LINKID_DataType = "Image",
+        LINK_Main = 1,
+    })
+
+end
+
+function Process(req)
+    local anim = inOpen:GetValue(req).Value
+    local threshold01 = inThreshold01:GetValue(req).Value
+    local threshold02 = inThreshold02:GetValue(req).Value
+    local threshold03 = inThreshold03:GetValue(req).Value
+    local threshold04 = inThreshold04:GetValue(req).Value
+
+    if anim < 0.0 then
+        local img = InImage:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < threshold01 then
+        local img = InImg01:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < threshold02 then
+        local img = InImg02:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < threshold03 then
+        local img = InImg03:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < threshold04 then
+        local img = InImg04:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    else
+        local img = InImg05:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    end
+end

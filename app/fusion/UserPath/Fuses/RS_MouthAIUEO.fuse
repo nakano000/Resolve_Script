@@ -1,0 +1,98 @@
+FuRegisterClass("RS_MouthAIUEO", CT_Tool, {
+    REGS_Category = "りぞりぷと",
+    REGS_OpIconString = "RSMA",
+    REGS_OpDescription = "AIUEO",
+    REGS_Company = "RIZORIPUTO",
+    REGS_URL = "https://github.com/nakano000",
+    REG_OpNoMask = true,
+    REG_NoBlendCtrls = true,
+    REG_NoObjMatCtrls = true,
+    REG_NoMotionBlurCtrls = true,
+    REG_SupportsDoD = false,
+    REG_Fuse_NoEdit = true,
+    REG_Fuse_NoReload = true,
+    --REG_Fuse_NoReload = false,
+    REG_Version = 1.0,
+})
+
+function Create()
+    InImage = self:AddInput("Input", "Input", {
+        LINKID_DataType = "Image",
+        LINK_Main = 1,
+    })
+
+    InN = self:AddInput("N", "N", {
+        LINKID_DataType = "Image",
+        LINK_Main = 2,
+    })
+    InA = self:AddInput("A", "A", {
+        LINKID_DataType = "Image",
+        LINK_Main = 3,
+    })
+    InI = self:AddInput("I", "I", {
+        LINKID_DataType = "Image",
+        LINK_Main = 4,
+    })
+    InU = self:AddInput("U", "U", {
+        LINKID_DataType = "Image",
+        LINK_Main = 5,
+    })
+    InE = self:AddInput("E", "E", {
+        LINKID_DataType = "Image",
+        LINK_Main = 6,
+    })
+    InO = self:AddInput("O", "O", {
+        LINKID_DataType = "Image",
+        LINK_Main = 7,
+    })
+    inAnim = self:AddInput("Anim", "Anim", {
+        LINKID_DataType = "Number",
+        INP_Integer = true,
+        INPID_InputControl = "SliderControl",
+        LINKS_Name = "Anim",
+        INP_MinScale = 0,
+        INP_MinAllowed = 0,
+        INP_MaxScale = 6,
+        INP_MaxAllowed = 6,
+        INP_Default = 0,
+        ICS_ControlPage = "口パク",
+    })
+    OutImage = self:AddOutput("Output", "Output", {
+        LINKID_DataType = "Image",
+        LINK_Main = 1,
+    })
+
+end
+
+function Process(req)
+    local anim = inAnim:GetValue(req).Value
+    if anim < 1 then
+        img = InImage:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < 2 then
+        img = InN:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < 3 then
+        img = InA:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < 4 then
+        img = InI:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < 5 then
+        img = InU:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    elseif anim < 6 then
+        img = InE:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    else
+        img = InO:GetValue(req)
+        OutImage:Set(req, img)
+        return
+    end
+end
