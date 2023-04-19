@@ -596,6 +596,7 @@ class MainWindow(QMainWindow):
             # split
             self.add2log('Cut Clip: Start')
             w.activate()
+            pyautogui.hotkey('ctrl', '4')
             pyautogui.hotkey('ctrl', 'shift', 'a')
             for n in [sf, ef]:
                 timeline.SetCurrentTimecode(str(n))
