@@ -916,46 +916,6 @@
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
-      "page": "目パチ",
-      "id": "Blink",
-      "name": "Blink",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeCtrl",
-      "page": "目パチ",
-      "id": "BlinkOn",
-      "name": "BlinkOn",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeCtrl",
-      "page": "目パチ",
-      "id": "BlinkOff",
-      "name": "BlinkOff",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeCtrl",
-      "page": "目パチ",
-      "id": "EyeStatus",
-      "name": "",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
       "node": "MouthCtrl",
       "page": "口パク",
       "id": "Anim",
@@ -1000,6 +960,86 @@
       "page": "口パク",
       "id": "Open",
       "name": "Open",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeCtrl",
+      "page": "目パチ",
+      "id": "Blink",
+      "name": "Blink",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeCtrl",
+      "page": "目パチ",
+      "id": "Close",
+      "name": "Close",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeCtrl",
+      "page": "目パチ",
+      "id": "Apply",
+      "name": "Apply",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeCtrl",
+      "page": "目パチ",
+      "id": "at00",
+      "name": "ボタンを押さないと反映されません。",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeCtrl",
+      "page": "目パチ",
+      "id": "sp00",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeCtrl",
+      "page": "目パチ",
+      "id": "BlinkOn",
+      "name": "BlinkOn",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeCtrl",
+      "page": "目パチ",
+      "id": "BlinkOff",
+      "name": "BlinkOff",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeCtrl",
+      "page": "目パチ",
+      "id": "EyeStatus",
+      "name": "",
       "control_group": 0,
       "option01": "",
       "option02": "",
