@@ -1,5 +1,43 @@
 {
 	Tools = ordered() {
+		EyeBlink = Dissolve {
+			Transitions = {
+				[0] = "DFTDissolve"
+			},
+			NameSet = true,
+			Inputs = {
+				Mix = Input {
+					SourceOp = "EyeBlinkBackgroundForeground",
+					Source = "Value",
+				},
+				Foreground = Input {
+					SourceOp = "Closed",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, -16.5 } },
+		},
+		EyeBlinkBackgroundForeground = BezierSpline {
+			SplineColor = { Red = 16, Green = 164, Blue = 235 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+				[0] = { 0, RH = { 41, 0 }, Flags = { Linear = true, Loop = true, PreLoop = true } },
+				[123] = { 1, LH = { 123, 0.666666666666667 }, RH = { 124, 1 }, Flags = { StepIn = true } },
+				[127] = { 0, LH = { 127, 0.333333333333333 }, Flags = { StepIn = true, Loop = true, PreLoop = true } }
+			}
+		},
+		Closed = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, -16.5 } },
+		},
 		EyeCtrl = Transform {
 			CtrlWZoom = false,
 			NameSet = true,
@@ -17,98 +55,100 @@
 				},
 				EyeStatus = Input { Value = "On", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 220, 49.5 } },
+			ViewInfo = OperatorInfo { Pos = { 440, -16.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 			UserControls = ordered() {
 				Blink = {
 					INP_MaxAllowed = 1000000,
 					INP_Integer = true,
-					INPID_InputControl = "SliderControl",
+					ICS_ControlPage = "目パチ",
 					INP_MaxScale = 500,
 					INP_Default = 127,
 					INP_MinScale = 0,
-					INP_MinAllowed = -1000000,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					INP_MinAllowed = 0,
+					INPID_InputControl = "SliderControl",
+					LINKS_Name = "Blink"
+				},
+				Close = {
+					INP_Integer = true,
+					INPID_InputControl = "SliderControl",
+					INP_MaxScale = 10,
+					INP_Default = 4,
+					INP_MinScale = 0,
+					INP_MinAllowed = 0,
 					LINKID_DataType = "Number",
 					INP_External = false,
-					LINKS_Name = "Blink",
+					INP_Passive = true,
 					ICS_ControlPage = "目パチ",
+					LINKS_Name = "Close",
+				},
+				Apply = {
+					ICD_Width = 0.5,
+					INP_Integer = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = [[
+local tool = comp:FindTool('EyeCtrl')
+comp:Execute('!Py3: from rs_fusion.core.eye_blink import apply;apply(comp,' .. tostring(tool:GetInput('Blink')) .. ','  .. tostring(tool:GetInput('Close')) .. ')')
+]],
+					ICS_ControlPage = "目パチ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "Apply",
+				},
+				at00 = {
+					ICD_Width = 0.5,
+					INP_Integer = false,
+					LBLC_DropDownButton = false,
+					INPID_InputControl = "LabelControl",
+					INP_External = false,
+					LINKID_DataType = "Number",
+					INP_Passive = true,
+					ICS_ControlPage = "目パチ",
+					LINKS_Name = "ボタンを押さないと反映されません。",
+				},
+				sp00 = {
+					LINKID_DataType = "Number",
+					INP_Integer = false,
+					LBLC_DropDownButton = false,
+					ICS_ControlPage = "目パチ",
+					INPID_InputControl = "LabelControl",
+					INP_Passive = true,
+					INP_External = false,
+					LINKS_Name = "",
 				},
 				BlinkOn = {
-					LINKS_Name = "BlinkOn",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
+					ICD_Width = 0.4,
 					INP_Integer = false,
 					INP_External = false,
-					ICD_Width =  0.4,
+					INPID_InputControl = "ButtonControl",
+					BTNCS_Execute = "EyeBlink:SetAttrs({TOOLB_PassThrough = false})\nEyeCtrl.EyeStatus = \"On\"\n",
+					LINKID_DataType = "Number",
 					ICS_ControlPage = "目パチ",
-					BTNCS_Execute = [[
-EyeBlink:SetAttrs({TOOLB_PassThrough = false})
-EyeCtrl.EyeStatus = "On"
-]],
+					LINKS_Name = "BlinkOn",
 				},
 				BlinkOff = {
-					LINKS_Name = "BlinkOff",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "ButtonControl",
+					ICD_Width = 0.4,
 					INP_Integer = false,
 					INP_External = false,
-					ICD_Width =  0.4,
+					INPID_InputControl = "ButtonControl",
+					BTNCS_Execute = "EyeBlink:SetAttrs({TOOLB_PassThrough = true})\nEyeCtrl.EyeStatus = \"Off\"\n",
+					LINKID_DataType = "Number",
 					ICS_ControlPage = "目パチ",
-					BTNCS_Execute = [[
-EyeBlink:SetAttrs({TOOLB_PassThrough = true})
-EyeCtrl.EyeStatus = "Off"
-]],
+					LINKS_Name = "BlinkOff",
 				},
 				EyeStatus = {
-					TEC_ReadOnly = false,
+					ICD_Width = 0.2,
 					ICS_ControlPage = "目パチ",
+					TEC_Lines = 1,
 					INP_External = false,
 					LINKID_DataType = "Text",
 					TEC_Wrap = false,
 					TEC_ReadOnly = true,
 					INPID_InputControl = "TextEditControl",
-					TEC_Lines = 1,
-					ICD_Width =  0.2,
 					LINKS_Name = "",
 				}
 			}
-		},
-		EyeBlink = Dissolve {
-			Transitions = {
-				[0] = "DFTLumaRamp"
-			},
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-					}
-				},
-			},
-			Inputs = {
-				Operation = Input { Value = FuID { "DFTLumaRamp" }, },
-				Mix = Input {
-					Value = 0,
-					Expression = "iif(time % EyeCtrl.Blink  > EyeCtrl.Blink - 4, 1, 0)",
-				},
-				Foreground = Input {
-					SourceOp = "Closed",
-					Source = "Output",
-				},
-				["DFTLumaRamp.Softness"] = Input { Value = 0, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 110, 49.499 } },
-		},
-		Closed = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
-					}
-				}
-			},
-			ViewInfo = OperatorInfo { Pos = { 0, 49.5 } },
 		}
 	},
 	ActiveTool = "EyeCtrl"
