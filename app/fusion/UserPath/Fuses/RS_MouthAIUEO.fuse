@@ -1,7 +1,7 @@
 FuRegisterClass("RS_MouthAIUEO", CT_Tool, {
     REGS_Category = "りぞりぷと",
     REGS_OpIconString = "RSMA",
-    REGS_OpDescription = "AIUEO",
+    REGS_OpDescription = "AIUEO v1.1",
     REGS_Company = "RIZORIPUTO",
     REGS_URL = "https://github.com/nakano000",
     REG_OpNoMask = true,
@@ -12,7 +12,7 @@ FuRegisterClass("RS_MouthAIUEO", CT_Tool, {
     REG_Fuse_NoEdit = true,
     REG_Fuse_NoReload = true,
     --REG_Fuse_NoReload = false,
-    REG_Version = 1.0,
+    REG_Version = 1.1,
 })
 
 function Create()
@@ -23,26 +23,44 @@ function Create()
 
     InN = self:AddInput("N", "N", {
         LINKID_DataType = "Image",
+        INP_Required = false,
+        INP_SendRequest = false,
+        INP_DoNotifyChanged = true,
         LINK_Main = 2,
     })
     InA = self:AddInput("A", "A", {
         LINKID_DataType = "Image",
+        INP_Required = false,
+        INP_SendRequest = false,
+        INP_DoNotifyChanged = true,
         LINK_Main = 3,
     })
     InI = self:AddInput("I", "I", {
         LINKID_DataType = "Image",
+        INP_Required = false,
+        INP_SendRequest = false,
+        INP_DoNotifyChanged = true,
         LINK_Main = 4,
     })
     InU = self:AddInput("U", "U", {
         LINKID_DataType = "Image",
+        INP_Required = false,
+        INP_SendRequest = false,
+        INP_DoNotifyChanged = true,
         LINK_Main = 5,
     })
     InE = self:AddInput("E", "E", {
         LINKID_DataType = "Image",
+        INP_Required = false,
+        INP_SendRequest = false,
+        INP_DoNotifyChanged = true,
         LINK_Main = 6,
     })
     InO = self:AddInput("O", "O", {
         LINKID_DataType = "Image",
+        INP_Required = false,
+        INP_SendRequest = false,
+        INP_DoNotifyChanged = true,
         LINK_Main = 7,
     })
     inAnim = self:AddInput("Anim", "Anim", {
@@ -67,31 +85,31 @@ end
 function Process(req)
     local anim = inAnim:GetValue(req).Value
     if anim < 1 then
-        img = InImage:GetValue(req)
+        local img = InImage:GetValue(req)
         OutImage:Set(req, img)
         return
     elseif anim < 2 then
-        img = InN:GetValue(req)
+        local img = InN:GetSource(req.Time, req:GetFlags())
         OutImage:Set(req, img)
         return
     elseif anim < 3 then
-        img = InA:GetValue(req)
+        local img = InA:GetSource(req.Time, req:GetFlags())
         OutImage:Set(req, img)
         return
     elseif anim < 4 then
-        img = InI:GetValue(req)
+        local img = InI:GetSource(req.Time, req:GetFlags())
         OutImage:Set(req, img)
         return
     elseif anim < 5 then
-        img = InU:GetValue(req)
+        local img = InU:GetSource(req.Time, req:GetFlags())
         OutImage:Set(req, img)
         return
     elseif anim < 6 then
-        img = InE:GetValue(req)
+        local img = InE:GetSource(req.Time, req:GetFlags())
         OutImage:Set(req, img)
         return
     else
-        img = InO:GetValue(req)
+        local img = InO:GetSource(req.Time, req:GetFlags())
         OutImage:Set(req, img)
         return
     end
