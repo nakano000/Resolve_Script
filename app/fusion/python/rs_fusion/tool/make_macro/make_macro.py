@@ -404,18 +404,30 @@ class MainWindow(QMainWindow):
             p.map(lambda x: x.Name),
             set,
         )
-        selection_modifiers = get_modifiers(selection_tools)
-        for modifier_name in selection_modifiers.keys():
-            selection_set.add(modifier_name)
+        # selection_modifiers = get_modifiers(selection_tools)
+        # for modifier_name in selection_modifiers.keys():
+        #     selection_set.add(modifier_name)
         # check selected node
-        if node_set.issubset(selection_set) is False:
+        modifiers = set()
+        for node in node_set:
+            tool = comp.FindTool(node)
+            if tool is None:
+                continue
+            if tool.GetAttrs()['TOOLB_Visible']:
+                continue
+            modifiers.add(node)
+        tool_set = node_set.difference(modifiers)
+        if tool_set.issubset(selection_set) is False:
             no_selection_set = node_set.difference(selection_set)
+            no_sel_tool_set = no_selection_set.difference(modifiers)
+            no_sel_mod_set = no_selection_set.intersection(modifiers)
             title = '確認'
             text = '選択されているノードに、入力ノードが含まれていません。\nMacroを作りますか？'
             if self.lang_code == lang.Code.en:
                 title = 'Confirm'
                 text = 'The selected nodes do not include the input nodes.\nDo you want to create a macro?'
-            text += '\n\n' + str(no_selection_set)
+            text += '\n\ntool\n' + str(no_sel_tool_set)
+            # text += '\n\nmodifier\n' + str(no_sel_mod_set)
             ret = QMessageBox.question(self, title, text, QMessageBox.Yes, QMessageBox.No)
 
             if ret == QMessageBox.Yes:
