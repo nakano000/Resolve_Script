@@ -409,11 +409,13 @@ class MainWindow(QMainWindow):
             selection_set.add(modifier_name)
         # check selected node
         if node_set.issubset(selection_set) is False:
+            no_selection_set = node_set.difference(selection_set)
             title = '確認'
             text = '選択されているノードに、入力ノードが含まれていません。\nMacroを作りますか？'
             if self.lang_code == lang.Code.en:
                 title = 'Confirm'
                 text = 'The selected nodes do not include the input nodes.\nDo you want to create a macro?'
+            text += '\n\n' + str(no_selection_set)
             ret = QMessageBox.question(self, title, text, QMessageBox.Yes, QMessageBox.No)
 
             if ret == QMessageBox.Yes:
