@@ -397,12 +397,17 @@ class MainWindow(QMainWindow):
             })
             node_set.add(row.node)
 
-        # check selected node
+        # selected set
+        selection_tools = comp.GetToolList(True).values()
         selection_set = p.pipe(
-            comp.GetToolList(True).values(),
+            selection_tools,
             p.map(lambda x: x.Name),
             set,
         )
+        selection_modifiers = get_modifiers(selection_tools)
+        for modifier_name in selection_modifiers.keys():
+            selection_set.add(modifier_name)
+        # check selected node
         if node_set.issubset(selection_set) is False:
             title = '確認'
             text = '選択されているノードに、入力ノードが含まれていません。\nMacroを作りますか？'
