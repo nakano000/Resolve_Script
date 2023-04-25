@@ -44,6 +44,7 @@ class MainWindow(QMainWindow):
         self.pivot_window = None
         self.insert_window = None
         self.copy_window = None
+        self.bake_window = None
         self.bg_window = None
         self.color_window = None
         self.font_window = None
@@ -60,6 +61,7 @@ class MainWindow(QMainWindow):
             ('CENTER', self.center_tool),
             ('NUMBER', self.number_tool),
             ('COPY PARAM', self.copy_tool),
+            ('BAKE PARAM', self.bake_tool),
             ('BG', self.bg_tool),
             ('COLOR', self.color_tool),
             ('FONT', self.font_tool),
@@ -119,6 +121,12 @@ class MainWindow(QMainWindow):
         if self.copy_window is None:
             self.copy_window = CopyWindow(fusion=self.fusion)
         self.copy_window.show()
+
+    def bake_tool(self):
+        from rs_fusion.tool.bake_tool import MainWindow as BakeWindow
+        if self.bake_window is None:
+            self.bake_window = BakeWindow(fusion=self.fusion)
+        self.bake_window.show()
 
     def bg_tool(self):
         from rs_fusion.tool.bg_tool import MainWindow as BgWindow

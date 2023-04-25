@@ -23,6 +23,9 @@ from rs.core import (
 from rs.gui import (
     appearance,
 )
+
+from rs_fusion.core import get_modifiers
+
 from rs_fusion.tool.make_macro.macro_table import InputData, Model
 from rs_fusion.tool.make_macro import macro
 from rs_fusion.tool.make_macro.make_macro_ui import Ui_MainWindow
@@ -37,21 +40,6 @@ class ConfigData(config.Data):
     main_output_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
     main_input_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
     input_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
-
-
-def get_modifiers(tools):
-    modifiers = {}
-    for tool in tools:
-        for inp in tool.GetInputList().values():
-            outp = inp.GetConnectedOutput()
-            if outp is None:
-                continue
-            x = outp.GetTool()
-            if x.GetAttrs()['TOOLB_Visible']:
-                continue
-            modifiers[x.Name] = x
-            modifiers.update(get_modifiers([x]))
-    return modifiers
 
 
 class MainWindow(QMainWindow):
