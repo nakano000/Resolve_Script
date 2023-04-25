@@ -37,7 +37,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(200, 600)
+        self.resize(200, 500)
 
         self.fusion = fusion
 
@@ -50,6 +50,8 @@ class MainWindow(QMainWindow):
         #
         self.ui.sfSpinBox.setValue(0)
         self.ui.efSpinBox.setValue(200)
+        self.ui.connectedCheckBox.setChecked(True)
+        self.ui.expressionCheckBox.setChecked(True)
 
         # button
         self.ui.bakeButton.setStyleSheet(appearance.in_stylesheet)
@@ -134,6 +136,11 @@ class MainWindow(QMainWindow):
                         continue
                     if not attrs['INPB_External']:
                         continue
+                    if self.ui.connectedCheckBox.isChecked() or self.ui.expressionCheckBox.isChecked():
+                        is_connected = attrs['INPB_Connected'] and self.ui.connectedCheckBox.isChecked()
+                        use_expression = inp.GetExpression() is not None and self.ui.expressionCheckBox.isChecked()
+                        if not (is_connected or use_expression):
+                            continue
                     page.appendRow(make_row(
                         tool.Name,
                         inp.ID,
