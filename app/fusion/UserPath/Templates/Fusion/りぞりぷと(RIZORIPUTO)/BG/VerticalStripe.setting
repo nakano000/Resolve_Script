@@ -1,0 +1,209 @@
+{
+	Tools = ordered() {
+		Mrg_D = Merge {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				Background = Input {
+					SourceOp = "Mrg_C",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "Xf_E",
+					Source = "Output",
+				},
+				PerformDepthMerge = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 605, 214.5 } },
+		},
+		Mrg_C = Merge {
+			NameSet = true,
+			Inputs = {
+				Background = Input {
+					SourceOp = "Mrg_B",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "Xf_D",
+					Source = "Output",
+				},
+				PerformDepthMerge = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, 214.5 } },
+		},
+		Xf_D = Transform {
+			NameSet = true,
+			Inputs = {
+				Center = Input { Value = { 0.7, 0.5 }, },
+				Input = Input {
+					SourceOp = "BG_D",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, 82.5 } },
+		},
+		Xf_E = Transform {
+			NameSet = true,
+			Inputs = {
+				Center = Input { Value = { 0.9, 0.5 }, },
+				Input = Input {
+					SourceOp = "BG_E",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 605, 82.5 } },
+		},
+		Xf_C = Transform {
+			NameSet = true,
+			Inputs = {
+				Input = Input {
+					SourceOp = "BG_C",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 385, 82.5 } },
+		},
+		Mrg_B = Merge {
+			NameSet = true,
+			Inputs = {
+				Background = Input {
+					SourceOp = "Mrg_A",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "Xf_C",
+					Source = "Output",
+				},
+				PerformDepthMerge = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 385, 214.5 } },
+		},
+		Xf_B = Transform {
+			NameSet = true,
+			Inputs = {
+				Center = Input { Value = { 0.3, 0.5 }, },
+				Input = Input {
+					SourceOp = "BG_B",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 275, 82.5 } },
+		},
+		Mrg_A = Merge {
+			NameSet = true,
+			Inputs = {
+				Background = Input {
+					SourceOp = "Xf_A",
+					Source = "Output",
+				},
+				Foreground = Input {
+					SourceOp = "Xf_B",
+					Source = "Output",
+				},
+				PerformDepthMerge = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 275, 214.5 } },
+		},
+		BG_C = Background {
+			NameSet = true,
+			Inputs = {
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				EffectMask = Input {
+					SourceOp = "Rct_A",
+					Source = "Mask",
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 385, -49.5 } },
+		},
+		BG_B = Background {
+			NameSet = true,
+			Inputs = {
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				TopLeftRed = Input { Value = 1, },
+				TopLeftGreen = Input { Value = 1, },
+				TopLeftBlue = Input { Value = 1, },
+				EffectMask = Input {
+					SourceOp = "Rct_A",
+					Source = "Mask",
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 275, -49.5 } },
+		},
+		BG_E = Background {
+			NameSet = true,
+			Inputs = {
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				EffectMask = Input {
+					SourceOp = "Rct_A",
+					Source = "Mask",
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 605, -49.5 } },
+		},
+		BG_D = Background {
+			NameSet = true,
+			Inputs = {
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				TopLeftRed = Input { Value = 1, },
+				TopLeftGreen = Input { Value = 1, },
+				TopLeftBlue = Input { Value = 1, },
+				EffectMask = Input {
+					SourceOp = "Rct_A",
+					Source = "Mask",
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, -49.5 } },
+		},
+		BG_A = Background {
+			NameSet = true,
+			Inputs = {
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				EffectMask = Input {
+					SourceOp = "Rct_A",
+					Source = "Mask",
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 165, -49.5 } },
+		},
+		Xf_A = Transform {
+			NameSet = true,
+			Inputs = {
+				Center = Input { Value = { 0.1, 0.5 }, },
+				Input = Input {
+					SourceOp = "BG_A",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 165, 82.5 } },
+		},
+		Rct_A = RectangleMask {
+			NameSet = true,
+			Inputs = {
+				Filter = Input { Value = FuID { "Fast Gaussian" }, },
+				MaskWidth = Input { Value = 1920, },
+				MaskHeight = Input { Value = 1080, },
+				PixelAspect = Input { Value = { 1, 1 }, },
+				ClippingMode = Input { Value = FuID { "None" }, },
+				Width = Input { Value = 0.2, },
+				Height = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 385, -181.5 } },
+		}
+	},
+	ActiveTool = "Mrg_D"
+}
