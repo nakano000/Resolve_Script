@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\voice_dropper.ui' applies.
 #
-# Created: Wed Apr 12 23:47:14 2023
+# Created: Wed Apr 26 21:54:07 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_4)
         self.videoIndexSpinBox = QtWidgets.QSpinBox(self.groupBox)
         self.videoIndexSpinBox.setMinimum(1)
-        self.videoIndexSpinBox.setMaximum(8)
+        self.videoIndexSpinBox.setMaximum(50)
         self.videoIndexSpinBox.setObjectName("videoIndexSpinBox")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.videoIndexSpinBox)
         self.label = QtWidgets.QLabel(self.groupBox)
@@ -90,7 +90,7 @@ class Ui_MainWindow(object):
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label)
         self.audioIndexSpinBox = QtWidgets.QSpinBox(self.groupBox)
         self.audioIndexSpinBox.setMinimum(1)
-        self.audioIndexSpinBox.setMaximum(8)
+        self.audioIndexSpinBox.setMaximum(50)
         self.audioIndexSpinBox.setObjectName("audioIndexSpinBox")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.audioIndexSpinBox)
         self.makeTextCheckBox = QtWidgets.QCheckBox(self.groupBox)

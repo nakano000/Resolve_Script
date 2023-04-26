@@ -233,7 +233,17 @@ class MainWindow(QMainWindow):
         if use_watchdog:
             self.start()
 
-    def get_tmp_timeline(self, project, timeline):
+    def setup_track(self, timeline, video_index, audio_index):
+        video_size = timeline.GetTrackCount('video')
+        audio_size = timeline.GetTrackCount('audio')
+        if video_index > video_size:
+            for i in range(video_index - video_size):
+                timeline.AddTrack('video')
+        if audio_index > audio_size:
+            for i in range(audio_index - audio_size):
+                timeline.AddTrack('audio', 'stereo')
+
+    def get_tmp_timeline(self, project, timeline, video_index, audio_index):
         media_pool = project.GetMediaPool()
 
         tmp_tl_name = '_tmp_VoiceDropper_' + timeline.GetName()
@@ -244,24 +254,23 @@ class MainWindow(QMainWindow):
                 r = tl
                 break
         if r is None:
-            self.add2log('Create Temporary File: Start')
             current_frame = get_currentframe(timeline)
-            fcp_timeline = fcp.Timeline(self.xml)
-            fcp_timeline.set_name(tmp_tl_name)
-            fcp_timeline.set_fps(get_fps(timeline))
-            fcp_timeline.set_width(int(timeline.GetSetting('timelineResolutionWidth')))
-            fcp_timeline.set_height(int(timeline.GetSetting('timelineResolutionHeight')))
-            fcp_timeline.set_dropframe(timeline.GetSetting('timelineDropFrameTimecode') == '1')
-            self.temp_file.write_text(str(fcp_timeline), encoding='utf-8')
-            self.add2log('Create Temporary File: Done')
-            self.add2log('Import Temporary File: Start')
-            r = media_pool.ImportTimelineFromFile(str(self.temp_file))
+
+            self.add2log('Create Temporary Timeline: Start')
+            r = media_pool.CreateEmptyTimeline(tmp_tl_name)
             if r is None:
-                self.add2log('Import Temporary File: Fail')
                 return None
-            self.add2log('Import Temporary File: Done')
+            r.SetSetting('timelineResolutionWidth', timeline.GetSetting('timelineResolutionWidth'))
+            r.SetSetting('timelineResolutionHeight', timeline.GetSetting('timelineResolutionHeight'))
+            r.SetSetting('timelineFrameRate', timeline.GetSetting('timelineFrameRate'))
+            r.SetSetting('timelineDropFrameTimecode', timeline.GetSetting('timelineDropFrameTimecode'))
+
+            self.add2log('Create Temporary Timeline: Done')
             project.SetCurrentTimeline(timeline)
             set_currentframe(timeline, current_frame)
+        # track setup
+        self.setup_track(r, video_index, audio_index)
+
         return r
 
     def voice_drop(self, created_lst):
@@ -312,33 +321,12 @@ class MainWindow(QMainWindow):
         data = self.get_data()
 
         # temp timeline
-        tmp_timeline = self.get_tmp_timeline(project, timeline)
-        if tmp_timeline is None:
-            return
 
         # util
         def send_hotkey(key_list):
             w.activate()
             pyautogui.hotkey(*key_list)
             time.sleep(data.wait_time)
-
-        def select_video_track(index):
-            if timeline.GetTrackCount('video') == 1:
-                send_hotkey(['alt', str(index)])
-            elif index == 1:
-                send_hotkey(['alt', '2'])
-            else:
-                send_hotkey(['alt', '1'])
-            send_hotkey(['alt', str(index)])
-
-        def select_audio_track(index):
-            if timeline.GetTrackCount('audio') == 1:
-                send_hotkey(['ctrl', 'alt', str(index)])
-            elif index == 1:
-                send_hotkey(['ctrl', 'alt', '2'])
-            else:
-                send_hotkey(['ctrl', 'alt', '1'])
-            send_hotkey(['ctrl', 'alt', str(index)])
 
         # main
         resolve.OpenPage('edit')
@@ -374,17 +362,7 @@ class MainWindow(QMainWindow):
                 if data.use_chara else
                 data.video_index
             )
-            if audio_index < 1 or audio_index > 8:
-                self.add2log(f'音声トラック名 {ch_data.track_name}_a が1〜8の範囲で見付かりません。')
-                self.add2log(f'音声トラック {data.audio_index} を使います。')
-                audio_index = data.audio_index
-            if video_index < 1 or video_index > 8:
-                self.add2log(f'ビデオトラック名 {ch_data.track_name}_t が1〜8の範囲で見付かりません。')
-                self.add2log(f'ビデオトラック {data.video_index} を使います。')
-                video_index = data.video_index
-
-            # make timeline
-            self.add2log('TMP TL: Start')
+            self.setup_track(timeline, video_index, audio_index)
 
             # time out 設定
             step = 0.2
@@ -428,18 +406,22 @@ class MainWindow(QMainWindow):
             self.add2log('TMP TL:Insert Audio Clip: Start')
 
             # setup
+            tmp_timeline = self.get_tmp_timeline(project, timeline, video_index, audio_index)
+            if tmp_timeline is None:
+                self.add2log('作業用タイムラインの設定に失敗しました。')
+                continue
             project.SetCurrentTimeline(tmp_timeline)
             set_currentframe(tmp_timeline, 0)
             send_hotkey(['ctrl', '4'])
             send_hotkey(['ctrl', 'a'])
             send_hotkey(['backspace'])
 
-            # 音声トラックの選択
-            select_audio_track(audio_index)
-
             # 音声クリップの挿入
-
-            clip = media_pool.AppendToTimeline([mi])[0]
+            audio_info = {
+                "mediaPoolItem": mi,
+                "trackIndex": audio_index,
+            }
+            clip = media_pool.AppendToTimeline([audio_info])[0]
             time.sleep(data.wait_time)
             while True:
                 if time.time() - start_time > data.time_out:
@@ -448,7 +430,7 @@ class MainWindow(QMainWindow):
                 time.sleep(step)
                 if len(tmp_timeline.GetItemListInTrack('audio', audio_index)) == 0:
                     mi.ReplaceClip(str(f))
-                    clip = media_pool.AppendToTimeline([mi])[0]
+                    clip = media_pool.AppendToTimeline([audio_info])[0]
                 else:
                     break
 
@@ -459,16 +441,12 @@ class MainWindow(QMainWindow):
             self.add2log('TMP TL: Insert Audio Clip: Done')
 
             self.add2log('TMP TL: Insert Text Clip: Start')
-            # text+クリップの仮挿入
-            media_pool.AppendToTimeline([text_template])
-            send_hotkey(['ctrl', 'z'])
-            # videoトラックの選択
-            select_video_track(video_index)
-            # text+クリップの挿入
+
             text_plus = media_pool.AppendToTimeline([{
                 'mediaPoolItem': text_template,
                 'startFrame': 0,
                 'endFrame': duration - 1 + data.extend,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
+                "trackIndex": video_index,
                 'mediaType': 1,
             }])[0]
             self.add2log('TMP TL: Insert Text Clip: Done')
@@ -500,10 +478,11 @@ class MainWindow(QMainWindow):
                 clip.SetClipColor(ch_data.color)
             self.add2log('TMP TL: Run Lua Script: Done')
             self.add2log('TMP TL: Copy and Paste: Start')
-            # リンク、コピー
+            # リンク
+            tmp_timeline.SetClipsLinked([text_plus, clip], True)
+            # コピー
             send_hotkey(['ctrl', '4'])
             send_hotkey(['ctrl', 'a'])
-            send_hotkey(['ctrl', 'alt', 'l'])
             send_hotkey(['ctrl', 'x'])
             # timeline変更、ペースト
             project.SetCurrentTimeline(timeline)
