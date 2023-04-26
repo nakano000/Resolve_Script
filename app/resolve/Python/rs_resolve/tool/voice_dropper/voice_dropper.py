@@ -32,7 +32,6 @@ from rs.core import (
     pipe as p,
     util,
     chara_data,
-    fcp,
     txt,
 )
 from rs.core.chara_data import CharaData
@@ -243,36 +242,6 @@ class MainWindow(QMainWindow):
             for i in range(audio_index - audio_size):
                 timeline.AddTrack('audio', 'stereo')
 
-    def get_tmp_timeline(self, project, timeline, video_index, audio_index):
-        media_pool = project.GetMediaPool()
-
-        tmp_tl_name = '_tmp_VoiceDropper_' + timeline.GetName()
-        r = None
-        for i in range(1, project.GetTimelineCount() + 1):
-            tl = project.GetTimelineByIndex(i)
-            if tl.GetName() == tmp_tl_name:
-                r = tl
-                break
-        if r is None:
-            current_frame = get_currentframe(timeline)
-
-            self.add2log('Create Temporary Timeline: Start')
-            r = media_pool.CreateEmptyTimeline(tmp_tl_name)
-            if r is None:
-                return None
-            r.SetSetting('timelineResolutionWidth', timeline.GetSetting('timelineResolutionWidth'))
-            r.SetSetting('timelineResolutionHeight', timeline.GetSetting('timelineResolutionHeight'))
-            r.SetSetting('timelineFrameRate', timeline.GetSetting('timelineFrameRate'))
-            r.SetSetting('timelineDropFrameTimecode', timeline.GetSetting('timelineDropFrameTimecode'))
-
-            self.add2log('Create Temporary Timeline: Done')
-            project.SetCurrentTimeline(timeline)
-            set_currentframe(timeline, current_frame)
-        # track setup
-        self.setup_track(r, video_index, audio_index)
-
-        return r
-
     def voice_drop(self, created_lst):
         time_sta = time.time()
         self.ui.logTextEdit.clear()
@@ -288,14 +257,6 @@ class MainWindow(QMainWindow):
         if timeline is None:
             self.add2log('Timelineが見付かりません。')
             return
-
-        w = get_resolve_window(project.GetName())
-        if w is None:
-            self.add2log('DaVinci ResolveのWindowが見付かりません。')
-            return
-        if util.IS_WIN:
-            self.setWindowState(Qt.WindowMinimized)  # windowsの場合、最小化しないとウィンドウがactiveにならないので、
-            self.setWindowState(Qt.WindowActive)  # 最小化してからactiveにする
 
         root_folder = media_pool.GetRootFolder()
         dropper_folder = None
@@ -320,17 +281,8 @@ class MainWindow(QMainWindow):
         # get data
         data = self.get_data()
 
-        # temp timeline
-
-        # util
-        def send_hotkey(key_list):
-            w.activate()
-            pyautogui.hotkey(*key_list)
-            time.sleep(data.wait_time)
-
         # main
         resolve.OpenPage('edit')
-        send_hotkey(['ctrl', '4'])
         for f in p.pipe(
                 created_lst,
                 p.filter(p.call.is_file()),
@@ -362,6 +314,12 @@ class MainWindow(QMainWindow):
                 if data.use_chara else
                 data.video_index
             )
+            if get_item(timeline, 'video', video_index, current_frame) is not None:
+                self.add2log('Videoトラックに既にアイテムが存在します。')
+                return
+            if get_item(timeline, 'audio', audio_index, current_frame) is not None:
+                self.add2log('Audioトラックに既にアイテムが存在します。')
+                return
             self.setup_track(timeline, video_index, audio_index)
 
             # time out 設定
@@ -403,24 +361,15 @@ class MainWindow(QMainWindow):
             if is_time_out:
                 self.add2log('タイムアウト:音声ファイルのインポートに失敗しました。')
                 continue
-            self.add2log('TMP TL:Insert Audio Clip: Start')
-
-            # setup
-            tmp_timeline = self.get_tmp_timeline(project, timeline, video_index, audio_index)
-            if tmp_timeline is None:
-                self.add2log('作業用タイムラインの設定に失敗しました。')
-                continue
-            project.SetCurrentTimeline(tmp_timeline)
-            set_currentframe(tmp_timeline, 0)
-            send_hotkey(['ctrl', '4'])
-            send_hotkey(['ctrl', 'a'])
-            send_hotkey(['backspace'])
+            self.add2log('Insert Audio Clip: Start')
 
             # 音声クリップの挿入
             audio_info = {
                 "mediaPoolItem": mi,
                 "trackIndex": audio_index,
+                "recordFrame": current_frame,
             }
+            _audio_track_cnt = len(timeline.GetItemListInTrack('audio', audio_index))
             clip = media_pool.AppendToTimeline([audio_info])[0]
             time.sleep(data.wait_time)
             while True:
@@ -428,7 +377,7 @@ class MainWindow(QMainWindow):
                     is_time_out = True
                     break
                 time.sleep(step)
-                if len(tmp_timeline.GetItemListInTrack('audio', audio_index)) == 0:
+                if len(timeline.GetItemListInTrack('audio', audio_index)) == _audio_track_cnt:
                     mi.ReplaceClip(str(f))
                     clip = media_pool.AppendToTimeline([audio_info])[0]
                 else:
@@ -438,20 +387,24 @@ class MainWindow(QMainWindow):
                 self.add2log('タイムアウト:音声クリップの挿入に失敗しました。')
                 continue
             duration = clip.GetDuration()
-            self.add2log('TMP TL: Insert Audio Clip: Done')
+            self.add2log('Insert Audio Clip: Done')
 
-            self.add2log('TMP TL: Insert Text Clip: Start')
+            self.add2log('Insert Text Clip: Start')
 
             text_plus = media_pool.AppendToTimeline([{
                 'mediaPoolItem': text_template,
                 'startFrame': 0,
                 'endFrame': duration - 1 + data.extend,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
-                "trackIndex": video_index,
+                'trackIndex': video_index,
                 'mediaType': 1,
+                'recordFrame': current_frame,
             }])[0]
-            self.add2log('TMP TL: Insert Text Clip: Done')
+            if text_plus is None:
+                self.add2log('Insert Text Clip: Failed')
+                continue
+            self.add2log('Insert Text Clip: Done')
 
-            self.add2log('TMP TL: Run Lua Script: Start')
+            self.add2log('Text Setup : Start')
             # text+用のテキストを読み込み
             txt_file = f.parent.joinpath(f.stem + '.txt')
             if not txt_file.is_file() and data.make_text:
@@ -461,38 +414,43 @@ class MainWindow(QMainWindow):
                 txt.read(txt_file, ch_data.c_code),
                 ch_data.str_width * 2,
             ) if txt_file.is_file() else ''
+            # comp
+            if text_plus.GetFusionCompCount() == 0:
+                self.add2log('FusionCompが見付かりません。')
+                continue
+            comp = text_plus.GetFusionCompByIndex(1)
 
-            # lua scriptを作る
-            lua_script = '\n'.join([
-                self.script_base,
-                'setJimaku(',
-                f'    [[{t}]],',
-                f'    {video_index},',
-                f'    [[{str(ch_data.setting_file)}]]',
-                ')',
-            ])
-            # クリップにスクリプトを実行
-            self.fusion.Execute(lua_script)
+            # tool
+            lst = list(comp.GetToolList(False, 'TextPlus').values())
+            if len(lst) == 0:
+                self.add2log('Text+が見付かりません。')
+                continue
+            tool = lst[0]
+
+            # settings
+            st = ordered_dict_to_dict(bmd.readfile(str(ch_data.setting_file)))
+            if st is None:
+                self.add2log('settingファイルの読み込みに失敗しました。')
+                continue
+
+            # apply
+            comp.StartUndo('RS Jimaku')
+            comp.Lock()
+            tool.LoadSettings(st)
+            tool.StyledText = t
+            tool.UseFrameFormatSettings = 0
+            tool.Width = int(timeline.GetSetting('timelineResolutionWidth'))
+            tool.Height = int(timeline.GetSetting('timelineResolutionHeight'))
+            comp.Unlock()
+            comp.EndUndo(True)
+
             if ch_data.color in config.COLOR_LIST:
                 text_plus.SetClipColor(ch_data.color)
                 clip.SetClipColor(ch_data.color)
-            self.add2log('TMP TL: Run Lua Script: Done')
-            self.add2log('TMP TL: Copy and Paste: Start')
+            self.add2log('Text Setup: Done')
             # リンク
-            tmp_timeline.SetClipsLinked([text_plus, clip], True)
-            # コピー
-            send_hotkey(['ctrl', '4'])
-            send_hotkey(['ctrl', 'a'])
-            send_hotkey(['ctrl', 'x'])
-            # timeline変更、ペースト
-            project.SetCurrentTimeline(timeline)
-            send_hotkey(['ctrl', '4'])
-            set_currentframe(timeline, current_frame)
-            send_hotkey(['ctrl', 'v'])
-            self.add2log('TMP TL: Copy and Paste: Done')
+            timeline.SetClipsLinked([text_plus, clip], True)
 
-            # 再生ヘッドの移動
-            time.sleep(data.wait_time)
             set_currentframe(timeline, current_frame + duration + data.offset + data.extend)
 
             self.add2log('Import: ' + str(f))
@@ -502,7 +460,6 @@ class MainWindow(QMainWindow):
         # end
         time_end = time.time()
         self.add2log('Done! %fs' % (time_end - time_sta))
-        print('Done! %fs' % (time_end - time_sta))
 
     def lip_sync(self):
         self.ui.logTextEdit.clear()
