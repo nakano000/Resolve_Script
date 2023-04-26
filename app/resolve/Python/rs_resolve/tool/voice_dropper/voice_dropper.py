@@ -314,13 +314,13 @@ class MainWindow(QMainWindow):
                 if data.use_chara else
                 data.video_index
             )
+            self.setup_track(timeline, video_index, audio_index)
             if get_item(timeline, 'video', video_index, current_frame) is not None:
                 self.add2log('Videoトラックに既にアイテムが存在します。')
                 return
             if get_item(timeline, 'audio', audio_index, current_frame) is not None:
                 self.add2log('Audioトラックに既にアイテムが存在します。')
                 return
-            self.setup_track(timeline, video_index, audio_index)
 
             # time out 設定
             step = 0.2
