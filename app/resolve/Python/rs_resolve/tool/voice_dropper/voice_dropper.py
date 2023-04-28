@@ -49,6 +49,7 @@ from rs_resolve.core import (
     get_fps,
     track_name2index,
     get_item,
+    get_track_item_count,
 )
 
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
@@ -296,24 +297,15 @@ class MainWindow(QMainWindow):
             current_frame = get_currentframe(timeline)
 
             # キャラクター設定
-            ch_data = CharaData()
-            for cd in chara_data.get_chara_list():
-                cd: CharaData
-                m = re.fullmatch(cd.reg_exp, f.stem)
-                if m is not None:
-                    ch_data = cd
-                    break
+            ch_data = chara_data.from_file(f)
 
-            audio_index = (
-                track_name2index(timeline, 'audio', ch_data.track_name + '_a')
-                if data.use_chara else
-                data.audio_index
-            )
-            video_index = (
-                track_name2index(timeline, 'video', ch_data.track_name + '_t')
-                if data.use_chara else
-                data.video_index
-            )
+            audio_index = track_name2index(timeline, 'audio', ch_data.track_name + '_a')
+            if audio_index == 0 or not data.use_chara:
+                audio_index = data.audio_index
+            video_index = track_name2index(timeline, 'video', ch_data.track_name + '_t')
+            if video_index == 0 or not data.use_chara:
+                video_index = data.video_index
+
             self.setup_track(timeline, video_index, audio_index)
             if get_item(timeline, 'video', video_index, current_frame) is not None:
                 self.add2log('Videoトラックに既にアイテムが存在します。')
@@ -369,7 +361,8 @@ class MainWindow(QMainWindow):
                 "trackIndex": audio_index,
                 "recordFrame": current_frame,
             }
-            _audio_track_cnt = len(timeline.GetItemListInTrack('audio', audio_index))
+            # _audio_track_cnt = len(timeline.GetItemListInTrack('audio', audio_index))
+            _audio_track_cnt = get_track_item_count(timeline, 'audio', audio_index)
             clip = media_pool.AppendToTimeline([audio_info])[0]
             time.sleep(data.wait_time)
             while True:
@@ -377,7 +370,7 @@ class MainWindow(QMainWindow):
                     is_time_out = True
                     break
                 time.sleep(step)
-                if len(timeline.GetItemListInTrack('audio', audio_index)) == _audio_track_cnt:
+                if get_track_item_count(timeline, 'audio', audio_index) == _audio_track_cnt:
                     mi.ReplaceClip(str(f))
                     clip = media_pool.AppendToTimeline([audio_info])[0]
                 else:

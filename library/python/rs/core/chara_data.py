@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import dataclasses
@@ -67,6 +68,17 @@ def get_chara_list():
     a = CharaSetData()
     a.load(f)
     return a.chara_list
+
+
+def from_file(f: Path) -> CharaData:
+    ch_data = CharaData()
+    for cd in get_chara_list():
+        cd: CharaData
+        m = re.fullmatch(cd.reg_exp, f.stem)
+        if m is not None:
+            ch_data = cd
+            break
+    return ch_data
 
 
 if __name__ == '__main__':

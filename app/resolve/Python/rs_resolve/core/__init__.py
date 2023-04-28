@@ -60,10 +60,20 @@ def track_name2index(timeline, track_type, name):
 def get_item(timeline, track_type, index, frame=None):
     if frame is None:
         frame = get_currentframe(timeline)
+    lst = timeline.GetItemListInTrack(track_type, index)
+    if lst is None:
+        return None
     for item in timeline.GetItemListInTrack(track_type, index):
         if item.GetStart() <= frame < item.GetEnd():
             return item
     return None
+
+
+def get_track_item_count(timeline, track_type, index):
+    lst = timeline.GetItemListInTrack(track_type, index)
+    if lst is None:
+        return 0
+    return len(lst)
 
 
 if __name__ == '__main__':
