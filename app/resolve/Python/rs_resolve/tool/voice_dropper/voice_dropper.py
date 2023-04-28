@@ -1,3 +1,4 @@
+import json
 import os
 from functools import partial
 
@@ -41,7 +42,7 @@ from rs.gui import (
     log,
 )
 
-from rs_fusion.core import ordered_dict_to_dict
+from rs_fusion.core import ordered_dict_to_dict, pose
 from rs_resolve.core import (
     get_currentframe,
     set_currentframe,
@@ -565,7 +566,6 @@ class MainWindow(QMainWindow):
         for item in audio_items:
             sf = max([item.GetStart(), v_sf])
             ef = min([item.GetEnd(), v_ef])
-            cf = int((sf + ef) / 2)
             f = Path(item.GetMediaPoolItem().GetClipProperty('File Path'))
             lab_file = f.parent.joinpath(f.stem + '.lab')
             self.add2log('wav: ' + str(f))
@@ -577,7 +577,7 @@ class MainWindow(QMainWindow):
             self.cut_clip(w, timeline, sf, ef, data.wait)
 
             # get Macro Tool
-            tatie_clip = get_item(timeline, 'video', v_index, cf)
+            tatie_clip = get_item(timeline, 'video', v_index, sf)
             if tatie_clip is None:
                 self.add2log('立ち絵ビデオクリップが見付かりません。')
                 continue
@@ -637,6 +637,20 @@ class MainWindow(QMainWindow):
 
             # set color
             tatie_clip.SetClipColor(ch_data.color)
+
+            # set pose
+            pf = Path(ch_data.pose_file)
+            if pf.is_file():
+                self.add2log('Apply Pose: Start')
+                text = pf.read_text(encoding='utf-8')
+                try:
+                    lst = json.loads(text)
+                except json.JSONDecodeError:
+                    self.add2log('Invalid JSON')
+                    continue
+                if isinstance(lst, list):
+                    pose.apply(comp, lst)
+                    self.add2log('Apply Pose: Done')
 
         # track unlock
         if data.use_auto_lock:

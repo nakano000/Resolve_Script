@@ -71,18 +71,21 @@ class ItemDelegate(QStyledItemDelegate):
             editor = QComboBox(parent)
             editor.addItems(lst)
             return editor
-        elif index.column() == 7:
+        elif index.column() in [7, 8]:
             editor = QFileDialog(parent)
             editor.setWindowTitle('ファイル選択')
             editor.setFileMode(QFileDialog.ExistingFile)
             editor.setAcceptMode(QFileDialog.AcceptOpen)
             editor.setOptions(QFileDialog.DontUseNativeDialog)
-            editor.setNameFilter('Setting File (*.setting)')
+            if index.column() == 7:
+                editor.setNameFilter('JSON File (*.json)')
+            else:
+                editor.setNameFilter('Setting File (*.setting)')
             return editor
         return super().createEditor(parent, option, index)
 
     def updateEditorGeometry(self, editor, option, index):
-        if index.column() == 7:
+        if index.column() in [7, 8]:
             pass
             return
         super().updateEditorGeometry(editor, option, index)
@@ -96,7 +99,7 @@ class ItemDelegate(QStyledItemDelegate):
             editor.setCurrentIndex(num)
             editor.blockSignals(False)
             return
-        elif index.column() == 7:
+        elif index.column() in [7, 8]:
             editor: QFileDialog
             path = Path(index.data(Qt.DisplayRole))
             if not path.is_absolute():
@@ -113,7 +116,7 @@ class ItemDelegate(QStyledItemDelegate):
             value: str = editor.currentText()
             model.setData(index, value, Qt.EditRole)
             return
-        elif index.column() == 7:
+        elif index.column() in [7, 8]:
             editor: QFileDialog
             files = editor.selectedFiles()
             if len(files) != 0:
@@ -138,7 +141,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             # | Qt.WindowStaysOnTopHint
         )
-        self.resize(1100, 300)
+        self.resize(1200, 300)
 
         # style sheet
         self.ui.setButton.setStyleSheet(appearance.ex_stylesheet)
@@ -164,12 +167,14 @@ class MainWindow(QMainWindow):
         hh.setSectionResizeMode(4, QHeaderView.ResizeToContents)
         hh.setSectionResizeMode(5, QHeaderView.ResizeToContents)
         hh.setSectionResizeMode(6, QHeaderView.ResizeToContents)
-        hh.setSectionResizeMode(7, QHeaderView.Stretch)
+        hh.setSectionResizeMode(7, QHeaderView.ResizeToContents)
+        hh.setSectionResizeMode(8, QHeaderView.Stretch)
 
         v.setContextMenuPolicy(Qt.CustomContextMenu)
         v.customContextMenuRequested.connect(self.contextMenu)
 
         v.setStyleSheet(
+            'QHeaderView {background-color: #333333; color: #cccccc; font-size: 12px;}'
             'QTableView::item::focus '
             '{border: 2px solid white; '
             'border-radius: 0px;border-bottom-right-radius: 0px;border-style: double;}'
@@ -184,6 +189,7 @@ class MainWindow(QMainWindow):
         self.ui.actionRedo.triggered.connect(self.ui.tableView.redo)
         self.ui.actionCopy.triggered.connect(self.ui.tableView.copy)
         self.ui.actionPaste.triggered.connect(self.ui.tableView.paste)
+        self.ui.actionClear.triggered.connect(self.ui.tableView.clear)
         self.ui.actionDelete.triggered.connect(self.ui.tableView.delete)
         self.ui.actionUp.triggered.connect(self.ui.tableView.up)
         self.ui.actionDown.triggered.connect(self.ui.tableView.down)
@@ -201,6 +207,7 @@ class MainWindow(QMainWindow):
         menu.addSeparator()
         menu.addAction(self.ui.actionCopy)
         menu.addAction(self.ui.actionPaste)
+        menu.addAction(self.ui.actionClear)
         menu.addSeparator()
         menu.addAction(self.ui.actionUp)
         menu.addAction(self.ui.actionDown)

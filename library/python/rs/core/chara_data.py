@@ -26,6 +26,7 @@ class CharaData(table.RowData):
     str_width: int = 0
     anim_type: str = anim.Type.aiueo.value
     anim_parameter: str = 'Anim'
+    _pose: str = ''
     _setting: str = r'Preset\TextPlus\字幕_白.setting'
 
     @property
@@ -42,6 +43,20 @@ class CharaData(table.RowData):
         else:
             self._setting = str(path)
 
+    @property
+    def pose_file(self) -> Path:
+        path = Path(self._pose)
+        if not path.is_absolute():
+            return config.ROOT_PATH.joinpath(str(path))
+        return path
+
+    @pose_file.setter
+    def pose_file(self, path: Path):
+        if str(path).lower().startswith(str(config.ROOT_PATH).lower()):
+            self._pose = str(path.relative_to(config.ROOT_PATH))
+        else:
+            self._pose = str(path)
+
     @classmethod
     def toHeaderList(cls) -> List[str]:
         return [
@@ -52,6 +67,7 @@ class CharaData(table.RowData):
             ' 字幕幅 ',
             ' 口パク タイプ ',
             ' 口パク パラメータ名 ',
+            ' 口パク poseファイル ',
             ' settingファイル ',
         ]
 
