@@ -60,6 +60,7 @@ def get_index(timeline, track_type, v):
 @dataclasses.dataclass
 class ConfigData(config.Data):
     wait: float = 2.0
+    use_auto_lock: bool = True
 
 
 class MainWindow(QMainWindow):
@@ -116,10 +117,12 @@ class MainWindow(QMainWindow):
 
     def set_data(self, c: ConfigData):
         self.ui.tatieWaitSpinBox.setValue(c.wait)
+        self.ui.autoLockCheckBox.setChecked(c.use_auto_lock)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.wait = self.ui.tatieWaitSpinBox.value()
+        c.use_auto_lock = self.ui.autoLockCheckBox.isChecked()
         return c
 
     def get_video_track_index(self, timeline):

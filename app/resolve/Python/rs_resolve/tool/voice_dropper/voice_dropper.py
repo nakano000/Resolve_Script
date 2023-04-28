@@ -70,7 +70,6 @@ def get_resolve_window(pj_name):
 class ConfigData(config.Data):
     voice_dir: str = ''
 
-    wait_time: float = 0.015
     time_out: int = 15
     offset: int = 15
     extend: int = 0
@@ -114,7 +113,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(450, 650)
+        self.resize(350, 650)
         self.fusion = fusion
 
         # config
@@ -543,11 +542,26 @@ class MainWindow(QMainWindow):
         # config
         from rs.core import lab
 
-        tatie_wait = self.lip_sync_window.get_data().wait
-
+        data = self.lip_sync_window.get_data()
         setting_base: str = config.ROOT_PATH.joinpath(
             'data', 'app', 'VoiceDropper', 'setting_base.txt'
         ).read_text(encoding='utf-8')
+
+        # track lock
+        track_type_list = ['video', 'audio', 'subtitle']
+        _lock_state = {}
+        for track_type in track_type_list:
+            _lock_state[track_type] = {}
+        if data.use_auto_lock:
+            for track_type in track_type_list:
+                for i in range(1, timeline.GetTrackCount(track_type) + 1):
+                    _lock_state[track_type][i] = timeline.GetIsTrackLocked(track_type, i)
+                    if i == v_index and track_type == 'video':
+                        timeline.SetTrackLock(track_type, i, False)
+                    else:
+                        timeline.SetTrackLock(track_type, i, True)
+
+        # main loop
         for item in audio_items:
             sf = max([item.GetStart(), v_sf])
             ef = min([item.GetEnd(), v_ef])
@@ -560,7 +574,7 @@ class MainWindow(QMainWindow):
             ch_data = chara_data.from_file(f)
 
             # split
-            self.cut_clip(w, timeline, sf, ef, tatie_wait)
+            self.cut_clip(w, timeline, sf, ef, data.wait)
 
             # get Macro Tool
             tatie_clip = get_item(timeline, 'video', v_index, cf)
@@ -623,6 +637,14 @@ class MainWindow(QMainWindow):
 
             # set color
             tatie_clip.SetClipColor(ch_data.color)
+
+        # track unlock
+        if data.use_auto_lock:
+            for track_type in track_type_list:
+                for i in range(1, timeline.GetTrackCount(track_type) + 1):
+                    timeline.SetTrackLock(track_type, i, _lock_state[track_type][i])
+
+        # log
         self.add2log('')
         self.add2log('Done!')
 
@@ -639,7 +661,6 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.voiceDirLineEdit.setText(c.voice_dir)
 
-        self.ui.waitTimeSpinBox.setValue(c.wait_time)
         self.ui.timeOutSpinBox.setValue(c.time_out)
         self.ui.offsetSpinBox.setValue(c.offset)
         self.ui.extendSpinBox.setValue(c.extend)
@@ -652,7 +673,6 @@ class MainWindow(QMainWindow):
         c = ConfigData()
         c.voice_dir = self.ui.voiceDirLineEdit.text().strip()
 
-        c.wait_time = self.ui.waitTimeSpinBox.value()
         c.time_out = self.ui.timeOutSpinBox.value()
         c.offset = self.ui.offsetSpinBox.value()
         c.extend = self.ui.extendSpinBox.value()

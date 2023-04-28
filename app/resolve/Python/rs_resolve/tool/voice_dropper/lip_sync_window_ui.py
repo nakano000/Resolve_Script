@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\lip_sync_window.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\lip_sync_window.ui' applies.
 #
-# Created: Mon Apr 10 06:16:45 2023
+# Created: Fri Apr 28 22:57:50 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,6 +27,9 @@ class Ui_MainWindow(object):
         self.tatieWaitSpinBox.setObjectName("tatieWaitSpinBox")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.tatieWaitSpinBox)
         self.verticalLayout.addLayout(self.formLayout_2)
+        self.autoLockCheckBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.autoLockCheckBox.setObjectName("autoLockCheckBox")
+        self.verticalLayout.addWidget(self.autoLockCheckBox)
         self.groupBox_6 = QtWidgets.QGroupBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -118,6 +121,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
         self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "wait time", None, -1))
+        self.autoLockCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Auto Lock", None, -1))
         self.groupBox_4.setTitle(QtWidgets.QApplication.translate("MainWindow", "Video Track", None, -1))
         self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "Audio Track", None, -1))
         self.updateTrackButton.setText(QtWidgets.QApplication.translate("MainWindow", "update", None, -1))

@@ -30,6 +30,13 @@
      </layout>
     </item>
     <item>
+     <widget class="QCheckBox" name="autoLockCheckBox">
+      <property name="text">
+       <string>Auto Lock</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QGroupBox" name="groupBox_6">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
