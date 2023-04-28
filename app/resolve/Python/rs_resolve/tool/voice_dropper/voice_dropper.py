@@ -1,5 +1,4 @@
 import os
-import re
 from functools import partial
 
 import dataclasses
@@ -233,7 +232,8 @@ class MainWindow(QMainWindow):
         if use_watchdog:
             self.start()
 
-    def setup_track(self, timeline, video_index, audio_index):
+    @staticmethod
+    def setup_track(timeline, video_index, audio_index):
         video_size = timeline.GetTrackCount('video')
         audio_size = timeline.GetTrackCount('audio')
         if video_index > video_size:
@@ -242,6 +242,110 @@ class MainWindow(QMainWindow):
         if audio_index > audio_size:
             for i in range(audio_index - audio_size):
                 timeline.AddTrack('audio', 'stereo')
+
+    def wave_check(self, f, start_time, step, time_out) -> bool:
+        self.add2log('waveファイルチェック:  Start')
+        while True:
+            if time.time() - start_time > time_out:
+                self.add2log('タイムアウト:ファイルが計算中ため、処理をスキップします。')
+                return False
+            try:
+                os.rename(str(f), str(f))
+                break
+            except OSError:
+                time.sleep(step)
+
+        self.add2log('waveファイルチェック:  OK')
+        return True
+
+    def import_wave2mp3(self, media_pool, f: Path, start_time, step, time_out):
+        mi_list = media_pool.ImportMedia(str(f))
+        while True:
+            if time.time() - start_time > time_out:
+                self.add2log('タイムアウト:音声ファイルのインポートに失敗しました。')
+                return None
+            if len(mi_list) > 0:
+                break
+            else:
+                time.sleep(step)
+                mi_list = media_pool.ImportMedia(str(f))
+
+        return mi_list[0]
+
+    def insert_audio_clip(
+            self, media_pool, timeline,
+            mi, f: Path, audio_index: int, record_frame: int,
+            start_time, step, time_out
+    ):
+        self.add2log('Insert Audio Clip: Start')
+        audio_info = {
+            "mediaPoolItem": mi,
+            "trackIndex": audio_index,
+            "recordFrame": record_frame,
+        }
+        _cnt = get_track_item_count(timeline, 'audio', audio_index)
+        clip = media_pool.AppendToTimeline([audio_info])[0]
+        while True:
+            if time.time() - start_time > time_out:
+                self.add2log('タイムアウト:音声クリップの挿入に失敗しました。')
+                return None
+            time.sleep(step)
+            if get_track_item_count(timeline, 'audio', audio_index) == _cnt:
+                mi.ReplaceClip(str(f))
+                clip = media_pool.AppendToTimeline([audio_info])[0]
+            else:
+                break
+
+        self.add2log('Insert Audio Clip: Done')
+        return clip
+
+    def setup_text_plus(
+            self, clip,
+            ch_data: CharaData, txt_file: Path,
+            width: int, height: int,
+            make_text: bool
+    ) -> bool:
+        self.add2log('Text Setup: Start')
+        # text+用のテキストを読み込み
+        if not txt_file.is_file() and make_text:
+            self.add2log('テキストファイルを作成します。')
+            txt_file.write_text(QApplication.clipboard().text(), encoding='utf-8-sig')
+        t = util.str2lines(
+            txt.read(txt_file, ch_data.c_code),
+            ch_data.str_width * 2,
+        ) if txt_file.is_file() else ''
+
+        # comp
+        if clip.GetFusionCompCount() == 0:
+            self.add2log('FusionCompが見付かりません。')
+            return False
+        comp = clip.GetFusionCompByIndex(1)
+
+        # tool
+        lst = list(comp.GetToolList(False, 'TextPlus').values())
+        if len(lst) == 0:
+            self.add2log('Text+が見付かりません。')
+            return False
+        tool = lst[0]
+
+        # settings
+        st = ordered_dict_to_dict(bmd.readfile(str(ch_data.setting_file)))
+        if st is None:
+            self.add2log('settingファイルの読み込みに失敗しました。')
+            return False
+
+        # apply
+        comp.StartUndo('RS Jimaku')
+        comp.Lock()
+        tool.LoadSettings(st)
+        tool.StyledText = t
+        tool.UseFrameFormatSettings = 0
+        tool.Width = width
+        tool.Height = height
+        comp.Unlock()
+        comp.EndUndo(True)
+        self.add2log('Text Setup: Done')
+        return True
 
     def voice_drop(self, created_lst):
         time_sta = time.time()
@@ -299,6 +403,7 @@ class MainWindow(QMainWindow):
             # キャラクター設定
             ch_data = chara_data.from_file(f)
 
+            # トラック
             audio_index = track_name2index(timeline, 'audio', ch_data.track_name + '_a')
             if audio_index == 0 or not data.use_chara:
                 audio_index = data.audio_index
@@ -317,71 +422,28 @@ class MainWindow(QMainWindow):
             # time out 設定
             step = 0.2
             start_time = time.time()
-            is_time_out = False
 
             # ロック確認 VOICEPEAK用に出力待ち
-            self.add2log('waveファイルチェック:  START')
-            while True:
-                if time.time() - start_time > data.time_out:
-                    is_time_out = True
-                    break
-                try:
-                    os.rename(str(f), str(f))
-                    break
-                except OSError:
-                    time.sleep(step)
-
-            if is_time_out:
-                self.add2log('タイムアウト:ファイルが計算中ため、処理をスキップします。')
+            if not self.wave_check(f, start_time, step, data.time_out):
                 continue
-            self.add2log('waveファイルチェック:  OK')
 
             # import
-            mi = None
-            mi_list = media_pool.ImportMedia(str(f))
-            while True:
-                if time.time() - start_time > data.time_out:
-                    is_time_out = True
-                    break
-                if len(mi_list) > 0:
-                    mi = mi_list[0]
-                    break
-                else:
-                    time.sleep(step)
-                    mi_list = media_pool.ImportMedia(str(f))
-
-            if is_time_out:
-                self.add2log('タイムアウト:音声ファイルのインポートに失敗しました。')
+            mi = self.import_wave2mp3(media_pool, f, start_time, step, data.time_out)
+            if mi is None:
                 continue
-            self.add2log('Insert Audio Clip: Start')
 
             # 音声クリップの挿入
-            audio_info = {
-                "mediaPoolItem": mi,
-                "trackIndex": audio_index,
-                "recordFrame": current_frame,
-            }
-            # _audio_track_cnt = len(timeline.GetItemListInTrack('audio', audio_index))
-            _audio_track_cnt = get_track_item_count(timeline, 'audio', audio_index)
-            clip = media_pool.AppendToTimeline([audio_info])[0]
-            time.sleep(data.wait_time)
-            while True:
-                if time.time() - start_time > data.time_out:
-                    is_time_out = True
-                    break
-                time.sleep(step)
-                if get_track_item_count(timeline, 'audio', audio_index) == _audio_track_cnt:
-                    mi.ReplaceClip(str(f))
-                    clip = media_pool.AppendToTimeline([audio_info])[0]
-                else:
-                    break
-
-            if is_time_out:
-                self.add2log('タイムアウト:音声クリップの挿入に失敗しました。')
+            clip = self.insert_audio_clip(
+                media_pool, timeline,
+                mi, f, audio_index, current_frame,
+                start_time, step, data.time_out,
+            )
+            if clip is None:
                 continue
-            duration = clip.GetDuration()
-            self.add2log('Insert Audio Clip: Done')
 
+            duration = clip.GetDuration()
+
+            # Text+の挿入
             self.add2log('Insert Text Clip: Start')
 
             text_plus = media_pool.AppendToTimeline([{
@@ -397,62 +459,43 @@ class MainWindow(QMainWindow):
                 continue
             self.add2log('Insert Text Clip: Done')
 
-            self.add2log('Text Setup : Start')
-            # text+用のテキストを読み込み
-            txt_file = f.parent.joinpath(f.stem + '.txt')
-            if not txt_file.is_file() and data.make_text:
-                self.add2log('テキストファイルを作成します。')
-                txt_file.write_text(QApplication.clipboard().text(), encoding='utf-8-sig')
-            t = util.str2lines(
-                txt.read(txt_file, ch_data.c_code),
-                ch_data.str_width * 2,
-            ) if txt_file.is_file() else ''
-            # comp
-            if text_plus.GetFusionCompCount() == 0:
-                self.add2log('FusionCompが見付かりません。')
-                continue
-            comp = text_plus.GetFusionCompByIndex(1)
-
-            # tool
-            lst = list(comp.GetToolList(False, 'TextPlus').values())
-            if len(lst) == 0:
-                self.add2log('Text+が見付かりません。')
-                continue
-            tool = lst[0]
-
-            # settings
-            st = ordered_dict_to_dict(bmd.readfile(str(ch_data.setting_file)))
-            if st is None:
-                self.add2log('settingファイルの読み込みに失敗しました。')
+            # Text+の設定
+            if not self.setup_text_plus(
+                    text_plus,
+                    ch_data,
+                    f.parent.joinpath(f.stem + '.txt'),
+                    int(timeline.GetSetting('timelineResolutionWidth')),
+                    int(timeline.GetSetting('timelineResolutionHeight')),
+                    data.make_text,
+            ):
                 continue
 
-            # apply
-            comp.StartUndo('RS Jimaku')
-            comp.Lock()
-            tool.LoadSettings(st)
-            tool.StyledText = t
-            tool.UseFrameFormatSettings = 0
-            tool.Width = int(timeline.GetSetting('timelineResolutionWidth'))
-            tool.Height = int(timeline.GetSetting('timelineResolutionHeight'))
-            comp.Unlock()
-            comp.EndUndo(True)
-
+            # カラー、リンク、プレイヘッド
             if ch_data.color in config.COLOR_LIST:
                 text_plus.SetClipColor(ch_data.color)
                 clip.SetClipColor(ch_data.color)
-            self.add2log('Text Setup: Done')
-            # リンク
             timeline.SetClipsLinked([text_plus, clip], True)
 
             set_currentframe(timeline, current_frame + duration + data.offset + data.extend)
 
+            # log
             self.add2log('Import: ' + str(f))
-
-            #
             self.add2log('')
         # end
         time_end = time.time()
         self.add2log('Done! %fs' % (time_end - time_sta))
+
+    def cut_clip(self, w, timeline, sf, ef, wait):
+        self.add2log('Cut Clip: Start')
+        w.activate()
+        pyautogui.hotkey('ctrl', '4')
+        pyautogui.hotkey('ctrl', 'shift', 'a')
+        for n in [sf, ef]:
+            set_currentframe(timeline, n)
+            w.activate()
+            pyautogui.hotkey('ctrl', 'b')
+            time.sleep(wait)
+        self.add2log('Cut Clip: Done')
 
     def lip_sync(self):
         self.ui.logTextEdit.clear()
@@ -514,25 +557,10 @@ class MainWindow(QMainWindow):
             self.add2log('wav: ' + str(f))
 
             # キャラクター設定
-            ch_data = CharaData()
-            for cd in chara_data.get_chara_list():
-                cd: CharaData
-                m = re.fullmatch(cd.reg_exp, f.stem)
-                if m is not None:
-                    ch_data = cd
-                    break
+            ch_data = chara_data.from_file(f)
 
             # split
-            self.add2log('Cut Clip: Start')
-            w.activate()
-            pyautogui.hotkey('ctrl', '4')
-            pyautogui.hotkey('ctrl', 'shift', 'a')
-            for n in [sf, ef]:
-                timeline.SetCurrentTimecode(str(n))
-                w.activate()
-                pyautogui.hotkey('ctrl', 'b')
-                time.sleep(tatie_wait)
-            self.add2log('Cut Clip: Done')
+            self.cut_clip(w, timeline, sf, ef, tatie_wait)
 
             # get Macro Tool
             tatie_clip = get_item(timeline, 'video', v_index, cf)
