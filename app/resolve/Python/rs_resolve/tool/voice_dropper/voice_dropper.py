@@ -617,10 +617,11 @@ class MainWindow(QMainWindow):
             self.add2log('Load Anim: Done')
 
             # get anim tool list
-            tool_list = [tool]
+            _pram = ch_data.anim_parameter
+            tool_list = []
             for v in tool.SaveSettings()['Tools'][tool.Name]['Inputs'].values():
                 if isinstance(v, dict) and '__ctor' in v.keys():
-                    if v['__ctor'] == 'InstanceInput':
+                    if v['__ctor'] == 'InstanceInput' and v['Source'] in [_pram]:
                         tool_list.append(comp.FindTool(v['SourceOp']))
 
             # set Lip Sync
@@ -628,9 +629,10 @@ class MainWindow(QMainWindow):
             comp.StartUndo('RS Lip Sync')
             comp.Lock()
             for t in tool_list:
-                comment = t.GetInput('Comments', comp.CurrentTime)
-                t.LoadSettings(st)
-                t.SetInput('Comments', comment, comp.CurrentTime)
+                o_st = t.SaveSettings()
+                o_st['Tools']['MouthAnimBezierSpline'] = st['Tools']['MouthAnimBezierSpline']
+                o_st['Tools'][t.Name]['Inputs'][_pram] = st['Tools']['Ctrl']['Inputs'][_pram]
+                t.LoadSettings(o_st)
             comp.Unlock()
             comp.EndUndo(True)
             self.add2log('Apply Anim: Done')
