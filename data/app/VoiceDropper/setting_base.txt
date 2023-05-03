@@ -10,13 +10,6 @@
 			},
 			ViewInfo = OperatorInfo { Pos = { 55, 214.5 } },
 			UserControls = ordered() {
-				StyledText = {
-					TEC_ReadOnly = false,
-					LINKID_DataType = "Text",
-					TEC_Wrap = false,
-					INPID_InputControl = "TextEditControl",
-					LINKS_Name = "StyledText",
-				},
 				%s = {
 					INP_Integer = true,
 					INP_Default = 0,
