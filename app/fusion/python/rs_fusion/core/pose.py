@@ -8,38 +8,45 @@ from rs.core import (
 )
 
 
-def get_foreground(mg):
-    output = mg.Foreground.GetConnectedOutput()
+def get_connected(node):
+    if node.ID == 'Merge':
+        output = node.Foreground.GetConnectedOutput()
+    else:
+        output = node.Input.GetConnectedOutput()
     if output is None:
         return None
     return output.GetTool()
 
 
-def get_pair(mg):
-    fg = get_foreground(mg)
-    fg_name = fg.Name if fg is not None else None
-    return [mg.Name, fg_name]
+def get_pair(node):
+    connected = get_connected(node)
+    connected_name = connected.Name if connected is not None else None
+    return [node.Name, connected_name]
 
 
 def apply(comp, lst):
     comp.Lock()
     comp.StartUndo('RS Pose')
     for x in lst:
-        mg_name = x[0]
-        fg_name = x[1]
-        mg = comp.FindTool(mg_name)
-        if mg is None or mg.ID != 'Merge':
+        node_name = x[0]
+        connected_name = x[1]
+        node = comp.FindTool(node_name)
+        if node is None or node.ID not in ['Merge', 'Transform']:
             continue
-        if fg_name is None:
-            fg = None
+        if connected_name is None:
+            connected = None
         else:
-            fg = comp.FindTool(fg_name)
-            if fg is None:
+            connected = comp.FindTool(connected_name)
+            if connected is None:
                 continue
-        mg.ConnectInput('Foreground', fg)
-        mg.Center.HideViewControls()
-        mg.Angle.HideViewControls()
-        mg.Size.HideViewControls()
+        if node.ID == 'Merge':
+            parm = 'Foreground'
+        else:
+            parm = 'Input'
+        node.ConnectInput(parm, connected)
+        node.Center.HideViewControls()
+        node.Angle.HideViewControls()
+        node.Size.HideViewControls()
     comp.EndUndo(True)
     comp.Unlock()
 
@@ -57,7 +64,7 @@ def comment2json(comp):
         p.filter(lambda x: x != ''),
         p.map(lambda x: comp.FindTool(x)),
         p.filter(lambda x: x is not None),
-        p.filter(lambda x: x.ID == 'Merge'),
+        p.filter(lambda x: x.ID in ['Merge', 'Transform']),
         list,
     )
     data = p.pipe(
