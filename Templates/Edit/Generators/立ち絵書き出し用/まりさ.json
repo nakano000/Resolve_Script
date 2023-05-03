@@ -1,0 +1,1649 @@
+{
+  "macro_name": "Marisa",
+  "use_group": true,
+  "main_output_list": [
+    {
+      "node": "ST_MergeB",
+      "page": "<Output>",
+      "id": "Output",
+      "name": "Output",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    }
+  ],
+  "main_input_list": [],
+  "input_list": [
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "CopyPose",
+      "name": "Copy Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "PastePose",
+      "name": "Paste Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "SavePose",
+      "name": "Save Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "LoadPose",
+      "name": "Load Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "ST_MergeB",
+      "page": "Merge",
+      "id": "Center",
+      "name": "Center",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "ST_MergeB",
+      "page": "Merge",
+      "id": "Size",
+      "name": "Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "ST_MergeB",
+      "page": "Merge",
+      "id": "Angle",
+      "name": "Angle",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "ST_MergeB",
+      "page": "Merge",
+      "id": "FlipHoriz",
+      "name": "Flip Horizontal",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "ST_MergeB",
+      "page": "Merge",
+      "id": "FlipVert",
+      "name": "Flip Vertical",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N000_モーションなし",
+      "name": "モーションなし",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N001_ぽよ",
+      "name": "ぽよ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N002_ぴょん",
+      "name": "ぴょん",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N003_跳ねる",
+      "name": "跳ねる",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N004_跳ねる_小",
+      "name": "跳ねる_小",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N005_不安",
+      "name": "不安",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N006_荒ぶる",
+      "name": "荒ぶる",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N007_震え",
+      "name": "震え",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_FRONT",
+      "name": "前",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Prev_Btn_FRONT",
+      "name": "PREV",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Next_Btn_FRONT",
+      "name": "NEXT",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Preview_FRONT",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FRONT_01m1_Button",
+      "name": "01m1",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FRONT_01m2_Button",
+      "name": "01m2",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FRONT_02m1_Button",
+      "name": "02m1",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FRONT_space_Button",
+      "name": "space",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_HAIR",
+      "name": "髪",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Prev_Btn_HAIR",
+      "name": "PREV",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Next_Btn_HAIR",
+      "name": "NEXT",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Preview_HAIR",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "HAIR_00_Button",
+      "name": "00",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "HAIR_01_Button",
+      "name": "01",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_EYEBROW",
+      "name": "眉",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Prev_Btn_EYEBROW",
+      "name": "PREV",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Next_Btn_EYEBROW",
+      "name": "NEXT",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Preview_EYEBROW",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_00_Button",
+      "name": "00",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_01_Button",
+      "name": "01",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_02_Button",
+      "name": "02",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_03_Button",
+      "name": "03",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_04_Button",
+      "name": "04",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_05_Button",
+      "name": "05",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_06_Button",
+      "name": "06",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_07_Button",
+      "name": "07",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_08_Button",
+      "name": "08",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_09_Button",
+      "name": "09",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_10_Button",
+      "name": "10",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_11_Button",
+      "name": "11",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_12_Button",
+      "name": "12",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYEBROW_13_Button",
+      "name": "13",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_EYE",
+      "name": "目",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Prev_Btn_EYE",
+      "name": "PREV",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Next_Btn_EYE",
+      "name": "NEXT",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Preview_EYE",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_00_Button",
+      "name": "00",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_01_Button",
+      "name": "01",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_02_Button",
+      "name": "02",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_03_Button",
+      "name": "03",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_04_Button",
+      "name": "04",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_05_Button",
+      "name": "05",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_06_Button",
+      "name": "06",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_07-15_Button",
+      "name": "07-15",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_08-15_Button",
+      "name": "08-15",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_09-15_Button",
+      "name": "09-15",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_10_Button",
+      "name": "10",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_11_Button",
+      "name": "11",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_12_Button",
+      "name": "12",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_13_Button",
+      "name": "13",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_14_Button",
+      "name": "14",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_15_Button",
+      "name": "15",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_16_Button",
+      "name": "16",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_17_Button",
+      "name": "17",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_18-15_Button",
+      "name": "18-15",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_19_Button",
+      "name": "19",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_20_Button",
+      "name": "20",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_21_Button",
+      "name": "21",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_22_Button",
+      "name": "22",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_23+眉_Button",
+      "name": "23+眉",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_24_Button",
+      "name": "24",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_25_Button",
+      "name": "25",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_26_Button",
+      "name": "26",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_27_Button",
+      "name": "27",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_28_Button",
+      "name": "28",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_29_Button",
+      "name": "29",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_30_Button",
+      "name": "30",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_31_Button",
+      "name": "31",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_32_Button",
+      "name": "32",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_33_Button",
+      "name": "33",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_34+眉_Button",
+      "name": "34+眉",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_35_Button",
+      "name": "35",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_36_Button",
+      "name": "36",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "EYE_37_Button",
+      "name": "37",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_MOUTH",
+      "name": "口",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Prev_Btn_MOUTH",
+      "name": "PREV",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Next_Btn_MOUTH",
+      "name": "NEXT",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Preview_MOUTH",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_00_Button",
+      "name": "00",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_01_Button",
+      "name": "01",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_02_Button",
+      "name": "02",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_03_Button",
+      "name": "03",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_04_Button",
+      "name": "04",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_05_Button",
+      "name": "05",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_06_Button",
+      "name": "06",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_07_Button",
+      "name": "07",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_08_Button",
+      "name": "08",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_09_Button",
+      "name": "09",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_10_Button",
+      "name": "10",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_11_Button",
+      "name": "11",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_12_Button",
+      "name": "12",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_13_Button",
+      "name": "13",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_14_Button",
+      "name": "14",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_15_Button",
+      "name": "15",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_16_Button",
+      "name": "16",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_17_Button",
+      "name": "17",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_18_Button",
+      "name": "18",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_19_Button",
+      "name": "19",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_20_Button",
+      "name": "20",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_21_Button",
+      "name": "21",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_22_Button",
+      "name": "22",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_23_Button",
+      "name": "23",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_24_Button",
+      "name": "24",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_25_Button",
+      "name": "25",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_26_Button",
+      "name": "26",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_27_Button",
+      "name": "27",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_28_Button",
+      "name": "28",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_29_Button",
+      "name": "29",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_30_Button",
+      "name": "30",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_31_Button",
+      "name": "31",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_32_Button",
+      "name": "32",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_33_Button",
+      "name": "33",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "MOUTH_34_Button",
+      "name": "34",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_FACE",
+      "name": "顔",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Prev_Btn_FACE",
+      "name": "PREV",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Next_Btn_FACE",
+      "name": "NEXT",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Preview_FACE",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_00_Button",
+      "name": "00",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_01_Button",
+      "name": "01",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_02_Button",
+      "name": "02",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_03_Button",
+      "name": "03",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_04_Button",
+      "name": "04",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_05_Button",
+      "name": "05",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_06_Button",
+      "name": "06",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_07_Button",
+      "name": "07",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "FACE_space_Button",
+      "name": "space",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_BODY",
+      "name": "体",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Prev_Btn_BODY",
+      "name": "PREV",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Next_Btn_BODY",
+      "name": "NEXT",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Preview_BODY",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "BODY_00_Button",
+      "name": "00",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "BODY_01_Button",
+      "name": "01",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_BACK",
+      "name": "後",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Prev_Btn_BACK",
+      "name": "PREV",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Next_Btn_BACK",
+      "name": "NEXT",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Preview_BACK",
+      "name": "",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "BACK_03u1_Button",
+      "name": "03u1",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "BACK_04_Button",
+      "name": "04",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "BACK_space_Button",
+      "name": "space",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Mouth_Ctrl",
+      "page": "Calc",
+      "id": "FirstOperand",
+      "name": "First Operand",
+      "control_group": 0,
+      "option01": "Page = \"口パク\"",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Mouth_Ctrl",
+      "page": "Calc",
+      "id": "SecondOperand",
+      "name": "Second Operand",
+      "control_group": 0,
+      "option01": "Page = \"口パク\"",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "目パチ",
+      "id": "Blink",
+      "name": "Blink",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "目パチ",
+      "id": "Other",
+      "name": "Other",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "目パチ",
+      "id": "Close",
+      "name": "Close",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "目パチ",
+      "id": "Apply",
+      "name": "Apply",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "目パチ",
+      "id": "at00",
+      "name": "ボタンを押さないと反映されません。",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    }
+  ]
+}
