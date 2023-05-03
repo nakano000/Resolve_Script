@@ -1,3 +1,4 @@
+import json
 import shutil
 from pathlib import Path
 from typing import List
@@ -7,6 +8,8 @@ from PIL import Image
 from rs.core import (
     pipe as p,
 )
+from rs_fusion.core import pose
+from rs_fusion.core import chara_sozai as cs_cmd
 
 X_OFFSET = 1
 Y_OFFSET = 4
@@ -80,7 +83,7 @@ def preprocess(src_dir: Path):
             f: Path
             if height is None:
                 with Image.open(f) as im:
-                    height, width = im.size
+                    width, height = im.size
 
             key = f.name.split('.')[0][:2]
             if f.name.startswith(key + 'm') and f.name[len(key) + 1].isdigit():
@@ -169,288 +172,570 @@ def convert(width, height, src_data, dst_dir, print_fn):
     return dst_data
 
 
-def add_node(comp, pre, pos_x, pos_y, size_x, size_y, data, name, p_name, index):
-    flow = comp.CurrentFrame.FlowView
-    xf = comp.AddTool('Transform', pos_x * X_OFFSET, pos_y * Y_OFFSET)
-    xf.SetAttrs({'TOOLS_Name': name})
-    pre_node = pre
-    if pre_node is None:
-        pre_node = comp.AddTool('Background', pos_x * X_OFFSET, (pos_y - 1) * Y_OFFSET)
-        pre_node.UseFrameFormatSettings = 0
-        pre_node.Width = size_x
-        pre_node.Height = size_y
-        pre_node.TopLeftAlpha = 0
-        pre_node.Depth = 1
-    pos_x += 1
-    pos_y -= 2
-    user_controls = {}
-    ctrl_name = part2en(name) + '_Slider'
-    imp_def = len(data) - 1 if name in ADD_NULL else 0
-    user_controls[ctrl_name] = {
-        'LINKID_DataType': 'Number',
-        'INPID_InputControl': 'SliderControl',
-        'LINKS_Name': name,
-        'INP_Integer': True,
-        'INP_Default': imp_def,
-        'INP_MinScale': 0,
-        'INP_MaxScale': len(data) - 1,
-        'ICS_ControlPage': 'User',
-    }
-    ctrl_cnt: int = len(data) - 1
-    base_node_list = [pre_node]
-    for key, lst in reversed(list(data.items())):
-        f: Path = lst[0] if len(lst) - 1 < index else lst[index]
-        mg = comp.AddTool('Merge', pos_x * X_OFFSET, (pos_y + 1) * Y_OFFSET)
-        node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
-        node.Clip[1] = comp.ReverseMapPath(str(f).replace('/', '\\'))
+class Importer:
+    def __init__(self, comp, fusion_ver, width, height, dst_data, print_fn):
+        self.comp = comp
+        self.flow = comp.CurrentFrame.FlowView
+        self.data = dst_data
+        self.print = print_fn
+
+        self.width = width
+        self.height = height
+
+        self.fusion_ver = fusion_ver
+
+        self.X_OFFSET = 1
+        self.Y_OFFSET = 4
+
+        self.BACK_LIST = [
+            BACK,
+            BODY,
+            FACE,
+        ]
+        self.ANIM_LIST = [
+            MOUTH,
+            EYE,
+        ]
+        self.FRONT_LIST = [
+            EYEBROW,
+            HAIR,
+            OTHER,
+            FRONT,
+        ]
+
+    @staticmethod
+    def set_orange(node):
+        node.TileColor = {
+            '__flags': 256,
+            'R': 0.92156862745098,
+            'G': 0.431372549019608,
+            'B': 0,
+        }
+
+    @staticmethod
+    def set_pink(node):
+        node.TileColor = {
+            '__flags': 256,
+            'R': 0.913725490196078,
+            'G': 0.549019607843137,
+            'B': 0.709803921568627,
+        }
+
+    @staticmethod
+    def get_connect_lua(xf, key):
+        return '''
+comp:Execute([[
+!Py3: from rs_fusion.core import chara_sozai
+chara_sozai.connect(comp, "%s", "%s")
+]])
+''' % (xf.Name, key)
+
+    @staticmethod
+    def get_prev_next_lua(xf, is_next=False):
+        return '''
+comp:Execute([[
+!Py3: from rs_fusion.core import chara_sozai
+chara_sozai.prev_next(comp, "%s", %s)
+]])
+''' % (xf.Name, str(is_next))
+
+    @staticmethod
+    def get_blink_lua(xf):
+        return '''
+comp:Execute([[
+!Py3: from rs_fusion.core import chara_sozai
+chara_sozai.set_blink(comp, "%s")
+]])
+''' % xf.Name
+
+    def add_set_dod(self, pos_x, pos_y, name, data_window):
+        node = self.comp.AddTool('SetDomain', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        node.SetAttrs({'TOOLS_Name': name})
+        node.Mode = 'Set'
+        node.Left = data_window[0] / self.width
+        node.Bottom = data_window[1] / self.height
+        node.Right = data_window[2] / self.width
+        node.Top = data_window[3] / self.height
+        if name is not None:
+            node.SetAttrs({'TOOLS_Name': name})
+        return node
+
+    def add_bg(self, pos_x, pos_y):
+        bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 2) * self.Y_OFFSET)
+        bg.UseFrameFormatSettings = 0
+        bg.Width = self.width
+        bg.Height = self.height
+        bg.TopLeftAlpha = 0
+        bg.Depth = 1
+        node = self.add_set_dod(pos_x, pos_y - 1, None, [0, 0, 0, 0])
+        node.ConnectInput('Input', bg)
+        return node
+
+    def add_ld(self, pos_x, pos_y, name, comment, path: str):
+        node = self.comp.AddTool('Loader', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        node.SetAttrs({'TOOLS_Name': name})
+        node.Comments = comment
+        node.Clip[1] = self.comp.ReverseMapPath(path.replace('/', '\\'))
         node.Loop[1] = 1
-        node.PostMultiplyByAlpha = 0
+        node.PostMultiplyByAlpha = 1 if self.fusion_ver < 10 else 0
+        node.GlobalIn = -1000
+        node.GlobalOut = -1000
+        return node
 
-        pos_x += 1
-        mg.ConnectInput('Foreground', node)
+    @staticmethod
+    def get_preview_name(part):
+        return 'Preview_' + part2en(part)
+
+    @staticmethod
+    def uc_button(lua, page_name, links_name, width):
+        return {
+            'LINKS_Name': links_name,
+            'LINKID_DataType': 'Number',
+            'INPID_InputControl': 'ButtonControl',
+            'INP_Integer': False,
+            'BTNCS_Execute': lua,
+            'INP_External': False,
+            'ICS_ControlPage': page_name,
+            'ICD_Width': width,
+        }
+
+    def get_uc_base(
+            self,
+            prev_lua,
+            next_lua,
+            part,
+            page_name,
+            num_inputs: int,
+    ):
+        label_name = 'Grp_' + part2en(part)
+        preview_name = self.get_preview_name(part)
+        prev_button_name = 'Prev_Btn_' + part2en(part)
+        next_button_name = 'Next_Btn_' + part2en(part)
+        return {
+            label_name: {
+                'LINKS_Name': part,
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'LabelControl',
+                'LBLC_DropDownButton': True,
+                'LBLC_NumInputs': num_inputs,
+                'INP_Default': 1,
+                'INP_External': False,
+                'INP_Passive': True,
+                'ICS_ControlPage': page_name,
+            },
+            prev_button_name: {
+                'LINKS_Name': 'PREV',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'ButtonControl',
+                'INP_Integer': False,
+                'BTNCS_Execute': prev_lua,
+                'INP_External': False,
+                'ICS_ControlPage': page_name,
+                'ICD_Width': 0.4,
+            },
+            next_button_name: {
+                'LINKS_Name': 'NEXT',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'ButtonControl',
+                'INP_Integer': False,
+                'BTNCS_Execute': next_lua,
+                'INP_External': False,
+                'ICS_ControlPage': page_name,
+                'ICD_Width': 0.4,
+            },
+            preview_name: {
+                'LINKS_Name': '',
+                'LINKID_DataType': 'Text',
+                'INPID_InputControl': 'TextEditControl',
+                'TEC_ReadOnly': True,
+                'TEC_Lines': 1,
+                'TEC_Wrap': False,
+                'INP_External': False,
+                'INP_Passive': True,
+                'ICS_ControlPage': page_name,
+                'ICD_Width': 0.2,
+            },
+        }
+
+    @staticmethod
+    def get_eye_uc(lua) -> dict:
+        return {
+            'Blink': {
+                'LINKS_Name': 'Blink',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'SliderControl',
+                'INP_Integer': True,
+                'INP_Default': 127,
+                'INP_MinScale': 0,
+                'INP_MaxScale': 500,
+                'INP_External': False,
+                'INP_Passive': True,
+                'ICS_ControlPage': '目パチ',
+            },
+            'Other': {
+                'LINKS_Name': 'Other',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'SliderControl',
+                'INP_Integer': True,
+                'INP_Default': 1,
+                'INP_MinScale': 0,
+                'INP_MaxScale': 10,
+                'INP_External': False,
+                'INP_Passive': True,
+                'ICS_ControlPage': '目パチ',
+            },
+            'Close': {
+                'LINKS_Name': 'Close',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'SliderControl',
+                'INP_Integer': True,
+                'INP_Default': 2,
+                'INP_MinScale': 0,
+                'INP_MaxScale': 10,
+                'INP_External': False,
+                'INP_Passive': True,
+                'ICS_ControlPage': '目パチ',
+            },
+            'Apply': {
+                'LINKS_Name': 'Apply',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'ButtonControl',
+                'BTNCS_Execute': lua,
+                'ICD_Width': 0.5,
+                'ICS_ControlPage': '目パチ',
+            },
+            'at00': {
+                'LINKS_Name': 'ボタンを押さないと反映されません。',
+                'LINKID_DataType': 'Number',
+                'INPID_InputControl': 'LabelControl',
+                'INP_External': False,
+                'INP_Passive': True,
+                'ICD_Width': 0.5,
+                'ICS_ControlPage': '目パチ',
+            },
+        }
+
+    def get_uc_list(self, mg_data, xf_data, eye_dx_list, ld_data):
+        page_name = 'ポーズ'
+        uc_list = []
+        # pre json
+        mg_name_data = {}
+        for part in mg_data.keys():
+            mg_name_data[part] = mg_data[part].Name
+        xf_name_data = {}
+        for part in xf_data.keys():
+            xf_name_data[part] = p.pipe(
+                xf_data[part],
+                p.map(lambda x: x.Name),
+                list,
+            )
+        eye_dx_name_list = p.pipe(
+            eye_dx_list,
+            p.map(lambda x: x.Name),
+            list,
+        )
+
+        # main
+        for part in mg_data.keys():
+            _ld_data = ld_data[part]
+            _xf_list = xf_data[part]
+
+            # json
+            data = {
+                'mg': mg_name_data,
+                'xf': xf_name_data,
+                'eye_dx': eye_dx_name_list,
+                'ld': {},
+                'part': part,
+                'offset': 10 / self.height,
+                'preview': self.get_preview_name(part),
+            }
+            for key, lst in _ld_data.items():
+                data['ld'][key] = p.pipe(
+                    lst,
+                    p.map(lambda x: x.Name),
+                    list,
+                )
+
+            _xf_list[0].Comments = json.dumps(data, ensure_ascii=False, indent=2)
+
+            # user control
+            _uc = self.get_uc_base(
+                self.get_prev_next_lua(_xf_list[0], is_next=False),
+                self.get_prev_next_lua(_xf_list[0], is_next=True),
+                part,
+                page_name,
+                len(_ld_data) + 3,  # +3 for prev, next, preview
+            )
+            for key, lst in _ld_data.items():
+                base_name = part2en(part) + '_' + str(key).zfill(2)
+                _uc[base_name + '_Button'] = self.uc_button(
+                    self.get_connect_lua(_xf_list[0], key), page_name, key, 0.125
+                )
+
+            uc_list.append(_uc)
+
+        return uc_list
+
+    def add_node(self, pre_node, pos_x, pos_y, part):
+        data = self.data[part]
+
+        xf = self.comp.AddTool('Transform', pos_x * self.X_OFFSET, (pos_y - 2) * self.Y_OFFSET)
+        xf.SetAttrs({'TOOLS_Name': part + '_Xf'})
+
+        # make
+        cnt = 0
+        ld_data = {}
+        for key, lst in data.items():
+            base_name = part2en(part) + '_' + str(cnt).zfill(2)
+            node = self.add_ld(
+                pos_x,
+                pos_y - 4,
+                base_name + '_LD',
+                key,
+                str(lst[0]),
+            )
+            ld_data[key] = [node]
+            cnt += 1
+            pos_x += 1
+
+        # Xf
+        self.flow.SetPos(xf, (pos_x - 1) * self.X_OFFSET, (pos_y - 2) * self.Y_OFFSET)
+
+        # mrg
+        mg = self.comp.AddTool('Merge', (pos_x - 1) * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
+        mg.SetAttrs({'TOOLS_Name': part + '_Mrg'})
+        if part in [FACE]:
+            mg.ApplyMode = 'Multiply'
+        #
+        mg.ConnectInput('Foreground', xf)
         mg.ConnectInput('Background', pre_node)
-        mg.Blend.SetExpression('iif(%s.%s == %d, 1, 0)' % (p_name, ctrl_name, ctrl_cnt))
-        ctrl_cnt -= 1
-        pre_node = mg
-        base_node_list.append(mg)
-    pos_x -= 1
-    xf.ConnectInput('Input', pre_node)
-    _x, _y = flow.GetPosTable(xf).values()
-    flow.SetPos(xf, pos_x, _y)
-    return xf, list(reversed(base_node_list)), user_controls, pos_x
-
-
-def add_node_sw(comp, base_nodes, pos_x, pos_y, data, name, p_name, index):
-    flow = comp.CurrentFrame.FlowView
-    swf = comp.AddTool('Fuse.Switch', pos_x * X_OFFSET, pos_y * Y_OFFSET)
-    swf.SetAttrs({'TOOLS_Name': name})
-    pos_x += 1
-    pos_y -= 2
-    user_controls = {}
-    ctrl_name = part2en(name) + '_Slider'
-    imp_def = len(data) - 1 if name in ADD_NULL else 0
-    user_controls[ctrl_name] = {
-        'LINKID_DataType': 'Number',
-        'INPID_InputControl': 'SliderControl',
-        'LINKS_Name': name,
-        'INP_Integer': True,
-        'INP_Default': imp_def,
-        'INP_MinScale': 0,
-        'INP_MaxScale': len(data) - 1,
-        'ICS_ControlPage': 'User',
-    }
-    sw_cnt = 0
-    base_node_list = []
-    for key, lst in data.items():
-        if len(lst) - 1 < index:
-            node = base_nodes[sw_cnt]
-        else:
-            node = comp.AddTool('Loader', pos_x * X_OFFSET, pos_y * Y_OFFSET)
-            node.Clip[1] = comp.ReverseMapPath(str(lst[index]).replace('/', '\\'))
-            node.Loop[1] = 1
-            node.PostMultiplyByAlpha = 0
-        swf.ConnectInput('Input%d' % (sw_cnt + 1), node)
         pos_x += 1
-        sw_cnt += 1
-        base_node_list.append(node)
-    pos_x -= 1
-    swf.Which.SetExpression('%s.%s + 1' % (p_name, ctrl_name))
-    _x, _y = flow.GetPosTable(swf).values()
-    flow.SetPos(swf, pos_x, _y)
-    return swf, base_node_list, user_controls, pos_x
 
+        return mg, [xf], ld_data, pos_x
 
-def import_chara(comp, width, height, dst_data, use_sw, print_fn):
-    flow = comp.CurrentFrame.FlowView
-    comp.Lock()
-    comp.StartUndo('RS Import')
-    xf = comp.AddTool('Transform', 0, 0)
-    xf.SetAttrs({'TOOLS_Name': 'Root'})
-    pre_node = comp.AddTool('Background', 0, - Y_OFFSET)
-    pre_node.UseFrameFormatSettings = 0
-    pre_node.Width = width
-    pre_node.Height = height
-    pre_node.TopLeftAlpha = 0
-    pre_node.Depth = 1
-    pos_x = 1
-    pos_y = -2
-    user_controls = {}
-    max_size = {}
-    for part in dst_data.keys():
-        max_size[part] = p.pipe(
-            dst_data[part].values(),
+    def add_mouth_ctrl(self, size):
+        ctrl = self.comp.AddTool('Calculation')
+        ctrl.SetAttrs({'TOOLS_Name': 'Mouth_Ctrl'})
+        ctrl.Operator = 3
+        ctrl.SecondOperand = 0.7
+        cal = self.comp.AddTool('Calculation')
+        cal.Operator = 2
+        cal.SecondOperand = size
+        exp = self.comp.AddTool('Expression')
+        exp.NumberExpression = 'int(n1)'
+        exp.ShowNumber2 = 0
+        exp.ShowNumber3 = 0
+        exp.ShowNumber4 = 0
+        exp.ShowNumber5 = 0
+        exp.ShowNumber6 = 0
+        exp.ShowNumber7 = 0
+        exp.ShowNumber8 = 0
+        exp.ShowNumber9 = 0
+        exp.ShowPoint1 = 0
+        exp.ShowPoint2 = 0
+        exp.ShowPoint3 = 0
+        exp.ShowPoint4 = 0
+        exp.ShowPoint5 = 0
+        exp.ShowPoint6 = 0
+        exp.ShowPoint7 = 0
+        exp.ShowPoint8 = 0
+        exp.ShowPoint9 = 0
+
+        cal.ConnectInput('FirstOperand', ctrl)
+        exp.ConnectInput('n1', cal)
+        return exp
+
+    def add_anim_node(self, pre_node, pos_x, pos_y, part):
+        data = self.data[part]
+
+        max_size = p.pipe(
+            data.values(),
             p.map(len),
             max,
         )
-    # 眉の非表示と口、眉のオフセット
-    no_eyebrow_list = []
-    no_mouth_list = []
-    offset_list = []
-    for i, key in enumerate(dst_data[EYE].keys()):
-        if key.endswith('-15'):
-            offset_list.append('[%d]=1' % i)
-        if key.endswith('+眉'):
-            no_eyebrow_list.append('[%d]=1' % i)
-        if key.endswith('+眉口'):
-            no_eyebrow_list.append('[%d]=1' % i)
-            no_mouth_list.append('[%d]=1' % i)
-    no_eyebrow_exp = ''
-    no_mouth_exp = ''
-    offset_exp = ''
-    if len(no_eyebrow_list) > 0:
-        no_eyebrow_exp = ':dct = {%s};if dct[%s.EYE_Slider] then return 0 else return 1 end' % (
-            ','.join(no_eyebrow_list),
-            xf.Name,
-        )
-    if len(no_mouth_list) > 0:
-        no_mouth_exp = ':dct = {%s};if dct[%s.EYE_Slider] then return 0 else return 1 end' % (
-            ','.join(no_mouth_list),
-            xf.Name,
-        )
-    if len(offset_list) > 0:
-        offset_exp = ':dct = {%s};' \
-                     'if dct[%s.EYE_Slider] then return Point(0.5, 0.5 + (10/%d)) ' \
-                     'else return Point(0.5, 0.5) end' % (
-                         ','.join(offset_list),
-                         xf.Name,
-                         height,
-                     )
-    # import メイン
-    for part in PARTS_LIST:
-        if part not in dst_data.keys():
-            continue
-        print_fn('処理中(読み込み,%s)' % part)
-        pos_x += 2
-        pre_pos_x = pos_x
-        if use_sw:
-            node, base_node_list, uc, pos_x = add_node_sw(
-                comp, {}, pos_x, pos_y, dst_data[part], part, xf.Name, 0
-            )
-            if max_size[part] > 1 and part in [EYE, MOUTH]:
-                _pre_node = None
-                _node = node
-                swf = comp.AddTool('Fuse.Switch', (pos_x + 4) * X_OFFSET, pos_y * Y_OFFSET)
-                swf.ConnectInput('Input%d' % 1, _node)
+        if max_size == 1:
+            return self.add_node(pre_node, pos_x, pos_y, part)
+
+        pos_x_list = []
+        pos_y_list = []
+        xf_list = []
+        dx_list = []
+
+        # mouth ctrl
+        mod = self.add_mouth_ctrl(max_size) if part == MOUTH else None
+
+        # make xf dx
+        for i in range(max_size):
+            _pos_x = pos_x
+            _pos_y = pos_y - (i * 3)
+            _xf = self.comp.AddTool('Transform', pos_x * self.X_OFFSET, (_pos_y - 2) * self.Y_OFFSET)
+            _xf.SetAttrs({'TOOLS_Name': part + '_' + str(i).zfill(2) + '_Xf'})
+            _pos_x += 1
+            if i != max_size - 1:
+                _dx = self.comp.AddTool('Dissolve', pos_x * self.X_OFFSET, (_pos_y - 2) * self.Y_OFFSET)
+                _dx.SetAttrs({'TOOLS_Name': part + '_' + str(i).zfill(2) + '_DX'})
+                _dx.Mix = 0
                 if part == MOUTH:
-                    swf.Which.SetExpression('%s.%s * %d + 0.5' % (xf.Name, 'MouthOpen', max_size[part]))
-                if part == EYE:
-                    swf.Which.SetExpression('%s.%s * %d + 0.5' % (xf.Name, 'EyeClose', max_size[part]))
-                for i in range(1, max_size[part]):
-                    _node, _, _, _ = add_node_sw(
-                        comp, base_node_list, pre_pos_x, pos_y + (-3 * i),
-                        dst_data[part], part, xf.Name, i
-                    )
-                    swf.ConnectInput('Input%d' % (i + 1), _node)
-                node = swf
-                pos_x += 4
-        else:
-            node, base_node_list, uc, pos_x = add_node(
-                comp, None, pos_x, pos_y, width, height, dst_data[part], part, xf.Name, 0
-            )
-            if max_size[part] > 1 and part in [EYE, MOUTH]:
-                _pre_node = None
-                _node = node
-                for i in range(1, max_size[part]):
-                    dx = comp.AddTool(
-                        'Dissolve',
-                        (pos_x + 4) * X_OFFSET,
-                        (pos_y - 3 * (i - 1)) * Y_OFFSET
-                    )
-                    if part == MOUTH:
-                        dx.Mix.SetExpression(
-                            'iif((%s.%s * %d) > %d, 1, 0)' % (xf.Name, 'MouthOpen', max_size[part], i)
-                        )
-                    if part == EYE:
-                        dx.Mix.SetExpression(
-                            'iif((%s.%s * %d) > %d, 1, 0)' % (xf.Name, 'EyeClose', max_size[part], i)
-                        )
-                    if _pre_node is not None:
-                        _pre_node.ConnectInput('Foreground', dx)
-                    if _node is not None:
-                        dx.ConnectInput('Background', _node)
-                    _pre_node = dx
+                    _offset = self.comp.AddTool('Calculation')
+                    _offset.Operator = 1
+                    _offset.SecondOperand = i
+                    _offset.FirstOperand.ConnectTo(mod.NumberResult)
+                    _dx.ConnectInput('Mix', _offset)
+                    if i == 0:
+                        self.set_orange(_dx)
+                dx_list.append(_dx)
+            pos_x_list.append(_pos_x)
+            pos_y_list.append(_pos_y)
+            xf_list.append(_xf)
 
-                    # dst_data[part]を整理
-                    # 後ろの一枚しか存在しない部分を除去する。
-                    _dct = {}
-                    _add_flag = False
-                    for _key, _lst in p.pipe(
-                            dst_data[part].items(),
-                            list,
-                            reversed,
-                    ):
-                        if len(_lst) > 1 or _add_flag:
-                            _dct[_key] = _lst
-                        if len(_lst) > 1:
-                            _add_flag = True
-                    # 反転
-                    _dct = p.pipe(
-                        _dct.items(),
-                        list,
-                        reversed,
-                        list,
-                        dict,
-                    )
+        # loader
+        ld_data = {}
+        cnt = 0
+        for key, lst in data.items():
+            _ld_list = []
+            for i in range(max_size):
+                if i > len(lst) - 1:
+                    continue
+                # add loader
+                base_name = part2en(part) + '_' + str(cnt).zfill(2) + '_' + str(i).zfill(2)
+                node = self.add_ld(
+                    pos_x_list[i],
+                    pos_y_list[i] - 4,
+                    base_name + '_LD',
+                    key,
+                    str(lst[i]),
+                )
+                _ld_list.append(node)
+                pos_x_list[i] += 1
 
-                    _node, _, _, _ = add_node(
-                        comp, base_node_list[len(_dct)],
-                        pre_pos_x + len(dst_data[part]) - len(_dct), pos_y + (-3 * i),
-                        width, height, _dct, part, xf.Name, i
-                    )
-                    if i == 1:
-                        node = dx
-                    if i == max_size[part] - 1:
-                        dx.ConnectInput('Foreground', _node)
-                pos_x += 4
-        for key in uc.keys():
-            user_controls[key] = uc[key]
-        mg = comp.AddTool('Merge', pos_x * X_OFFSET, (pos_y + 1) * Y_OFFSET)
-        mg.ConnectInput('Foreground', node)
+            ld_data[key] = _ld_list
+            cnt += 1
+        pos_x = max(pos_x_list)
+
+        # setup Xf
+        for i in range(max_size):
+            _pos_y = pos_y_list[i]
+            _xf = xf_list[i]
+            self.flow.SetPos(_xf, (pos_x - 1) * self.X_OFFSET, (_pos_y - 2) * self.Y_OFFSET)
+
+        # setup DX
+        for i in range(max_size - 1):
+            _pos_y = pos_y_list[i]
+            _dx = dx_list[i]
+            self.flow.SetPos(_dx, pos_x * self.X_OFFSET, (_pos_y - 2) * self.Y_OFFSET)
+            if i == max_size - 2:
+                _dx.ConnectInput('Foreground', xf_list[i + 1])
+            else:
+                _dx.ConnectInput('Foreground', dx_list[i + 1])
+            _dx.ConnectInput('Background', xf_list[i])
+
+        # Merge
+        mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
+        mg.SetAttrs({'TOOLS_Name': part + '_Mrg'})
+        mg.ConnectInput('Foreground', dx_list[0])
         mg.ConnectInput('Background', pre_node)
-        if part in [FACE]:
-            mg.ApplyMode = 'Multiply'
-        if part in [EYEBROW] and no_eyebrow_exp != '':
-            mg.Blend.SetExpression(no_eyebrow_exp)
-        if part in [MOUTH] and no_mouth_exp != '':
-            mg.Blend.SetExpression(no_mouth_exp)
-        if part in [MOUTH, EYEBROW] and offset_exp != '':
-            mg.Center.SetExpression(offset_exp)
-        pre_node = mg
+        pos_x += 1
 
-    xf.ConnectInput('Input', pre_node)
-    _x, _y = flow.GetPosTable(xf).values()
-    flow.SetPos(xf, pos_x, _y)
-    uc = {'__flags': 2097152}  # 順番を保持するフラグ
-    for k, v in reversed(list(user_controls.items())):
-        uc[k] = v
-    uc['MouthOpen'] = {
-        'LINKID_DataType': 'Number',
-        'INPID_InputControl': 'SliderControl',
-        'LINKS_Name': 'MouthOpen',
-        # 'INP_Integer': True,
-        'INP_Default': 0,
-        'INP_MinScale': 0,
-        'INP_MaxScale': 1,
-        'ICS_ControlPage': 'User',
-    }
-    uc['EyeClose'] = {
-        'LINKID_DataType': 'Number',
-        'INPID_InputControl': 'SliderControl',
-        'LINKS_Name': 'EyeClose',
-        # 'INP_Integer': True,
-        'INP_Default': 0,
-        'INP_MinScale': 0,
-        'INP_MaxScale': 1,
-        'ICS_ControlPage': 'User',
-    }
-    xf.UserControls = uc
-    xf = xf.Refresh()
-    xf.TileColor = {
-        '__flags': 256,
-        'R': 0.92156862745098,
-        'G': 0.431372549019608,
-        'B': 0,
-    }
-    # end
-    comp.EndUndo(True)
-    comp.Unlock()
+        return mg, xf_list, dx_list, ld_data, pos_x
+
+    def import_chara(self):
+        max_size = {}
+        for part in self.data.keys():
+            max_size[part] = p.pipe(
+                self.data[part].values(),
+                p.map(len),
+                max,
+            )
+
+        # bg
+        bg = self.add_bg(0, 0)
+        pos_x = 2
+        pos_y = 0
+        pre_node = bg
+
+        # parts
+        mg_data = {}
+        xf_data = {}
+        ld_data = {}
+        eye_dx_list = []
+        for part in self.BACK_LIST:
+            if part not in self.data.keys():
+                continue
+            pre_node, _xf_list, _ld_data, pos_x = self.add_node(pre_node, pos_x, pos_y, part)
+            mg_data[part] = pre_node
+            ld_data[part] = _ld_data
+            xf_data[part] = _xf_list
+        pre_node.FlattenTransform = 1
+        self.set_pink(pre_node)
+
+        # anim parts
+        for part in self.ANIM_LIST:
+            if part not in self.data.keys():
+                continue
+            pre_node, _xf_list, _eye_dx_list, _ld_data, pos_x = self.add_anim_node(pre_node, pos_x, pos_y, part)
+            mg_data[part] = pre_node
+            ld_data[part] = _ld_data
+            xf_data[part] = _xf_list
+            if part == EYE:
+                eye_dx_list = _eye_dx_list
+
+        #  front parts
+        f_pos_x = 2
+        pos_y += 5
+        f_pre_node = bg
+        for part in self.FRONT_LIST:
+            if part not in self.data.keys():
+                continue
+            f_pre_node, _xf_list, _ld_data, f_pos_x = self.add_node(f_pre_node, f_pos_x, pos_y, part)
+            mg_data[part] = f_pre_node
+            ld_data[part] = _ld_data
+            xf_data[part] = _xf_list
+        f_pre_node.FlattenTransform = 1
+        self.set_pink(f_pre_node)
+
+        # router
+        x_pos = max(pos_x, f_pos_x)
+        router = self.comp.AddTool('PipeRouter', x_pos * self.X_OFFSET, -1 * self.Y_OFFSET)
+
+        # mrg
+        mrg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
+
+        # xf
+        xf = self.comp.AddTool('Transform', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        xf.SetAttrs({'TOOLS_Name': 'Root'})
+
+        # uc
+        uc = pose.get_uc(None)
+        uc_list = self.get_uc_list(mg_data, xf_data, eye_dx_list, ld_data)
+        blink_lua = self.get_blink_lua(xf_data[EYE][0])
+        uc_list = [self.get_eye_uc(blink_lua)] + uc_list
+        for _uc in reversed(uc_list):
+            for k, v in list(_uc.items()):
+                uc[k] = v
+        xf.UserControls = uc
+        xf = xf.Refresh()
+        self.set_orange(xf)
+
+        # comment
+        xf_name_list = []
+        for lst in xf_data.values():
+            xf_name_list += [x.Name for x in lst]
+        xf.SetInput('Comments', '\n'.join(xf_name_list))
+
+        # connect
+        router.ConnectInput('Input', pre_node)
+        mrg.ConnectInput('Background', router)
+        mrg.ConnectInput('Foreground', f_pre_node)
+        xf.ConnectInput('Input', mrg)
+
+        for part, lst in xf_data.items():
+            _xf = lst[0]
+            keys = list(ld_data[part].keys())
+            key = keys[0]
+            if part in [FRONT, BACK]:
+                key = keys[-1]
+            cs_cmd.connect(self.comp, _xf.Name, key)
+
+        # blink
+        cs_cmd.set_blink(self.comp, xf_data[EYE][0].Name)

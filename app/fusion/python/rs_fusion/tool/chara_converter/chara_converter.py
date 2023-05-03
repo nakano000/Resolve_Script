@@ -34,7 +34,7 @@ APP_NAME = 'キャラ素材変換'
 class ConfigData(config.Data):
     src_dir: str = ''
     dst_dir: str = ''
-    use_sw: bool = False
+    make_dir: bool = True
 
 
 class MainWindow(QMainWindow):
@@ -48,7 +48,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(700, 500)
+        self.resize(400, 500)
 
         self.fusion = fusion
 
@@ -63,16 +63,6 @@ class MainWindow(QMainWindow):
 
         self.ui.srcToolButton.clicked.connect(partial(self.toolButton_clicked, self.ui.srcLineEdit))
         self.ui.dstToolButton.clicked.connect(partial(self.toolButton_clicked, self.ui.dstLineEdit))
-
-        self.ui.openSiteButton.clicked.connect(partial(
-            util.open_url,
-            'https://www.steakunderwater.com/VFXPedia/96.0.243.189/indexae7c.html',
-        ))
-        user_path = config.get_user_path(self.fusion.GetResolve() is not None)
-        self.ui.openFuseDirButton.clicked.connect(partial(
-            util.open_directory,
-            user_path.joinpath('Fuses'),
-        ))
 
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.importButton.clicked.connect(self.import_chara, Qt.QueuedConnection)
@@ -104,12 +94,18 @@ class MainWindow(QMainWindow):
         else:
             self.add2log('[ERROR]出力先が存在しません。', log.ERROR_COLOR)
             return
+        # make dir
+        if data.make_dir and src_dir.name != dst_dir.name:
+            dst_dir = dst_dir.joinpath(src_dir.name)
+            dst_dir.mkdir(parents=True, exist_ok=True)
+            self.add2log('フォルダ作成: %s' % str(dst_dir))
         self.add2log('')  # new line
         # comp check
         comp = self.fusion.CurrentComp
         if comp is None:
             self.add2log('[ERROR]コンポジションが見付かりません。', log.ERROR_COLOR)
             return
+        ver = self.fusion.Version
 
         # file_dataをパーツ、プレフィックスで整理する
         self.add2log('処理中(前準備)')
@@ -119,7 +115,13 @@ class MainWindow(QMainWindow):
         dst_data = chara_sozai.convert(width, height, src_data, dst_dir, self.add2log)
 
         # import
-        chara_sozai.import_chara(comp, width, height, dst_data, data.use_sw, self.add2log)
+        importer = chara_sozai.Importer(comp, ver, width, height, dst_data, self.add2log)
+        comp.Lock()
+        comp.StartUndo('RS Import')
+        importer.import_chara()
+        comp.EndUndo(True)
+        comp.Unlock()
+
         self.add2log('Done!')
 
     def add2log(self, text: str, color: QColor = log.TEXT_COLOR) -> None:
@@ -137,13 +139,13 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.srcLineEdit.setText(c.src_dir)
         self.ui.dstLineEdit.setText(c.dst_dir)
-        self.ui.useSwichCheckBox.setChecked(c.use_sw)
+        self.ui.makeDirCheckBox.setChecked(c.make_dir)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.src_dir = self.ui.srcLineEdit.text()
         c.dst_dir = self.ui.dstLineEdit.text()
-        c.use_sw = self.ui.useSwichCheckBox.isChecked()
+        c.make_dir = self.ui.makeDirCheckBox.isChecked()
 
         return c
 
