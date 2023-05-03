@@ -629,10 +629,15 @@ class MainWindow(QMainWindow):
             comp.StartUndo('RS Lip Sync')
             comp.Lock()
             for t in tool_list:
-                o_st = t.SaveSettings()
-                o_st['Tools']['MouthAnimBezierSpline'] = st['Tools']['MouthAnimBezierSpline']
-                o_st['Tools'][t.Name]['Inputs'][_pram] = st['Tools']['Ctrl']['Inputs'][_pram]
-                t.LoadSettings(o_st)
+                if t.GetAttrs()['TOOLB_Visible']:
+                    comment = t.GetInput('Comments', comp.CurrentTime)
+                    t.LoadSettings(st)
+                    t.SetInput('Comments', comment, comp.CurrentTime)
+                else:
+                    o_st = t.SaveSettings()
+                    o_st['Tools']['MouthAnimBezierSpline'] = st['Tools']['MouthAnimBezierSpline']
+                    o_st['Tools'][t.Name]['Inputs'][_pram] = st['Tools']['Ctrl']['Inputs'][_pram]
+                    t.LoadSettings(o_st)
             comp.Unlock()
             comp.EndUndo(True)
             self.add2log('Apply Anim: Done')
