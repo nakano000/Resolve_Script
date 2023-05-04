@@ -706,7 +706,7 @@ chara_sozai.set_blink(comp, "%s")
         xf.SetAttrs({'TOOLS_Name': 'Root'})
 
         # uc
-        uc = pose.get_uc(None)
+        uc = pose.get_uc(None, is_chara_sozai=True)
         uc_list = self.get_uc_list(mg_data, xf_data, eye_dx_list, ld_data)
         blink_lua = self.get_blink_lua(xf_data[EYE][0])
         uc_list = [self.get_eye_uc(blink_lua)] + uc_list
@@ -720,7 +720,7 @@ chara_sozai.set_blink(comp, "%s")
         # comment
         xf_name_list = []
         for lst in xf_data.values():
-            xf_name_list += [x.Name for x in lst]
+            xf_name_list.append(lst[0].Name)
         xf.SetInput('Comments', '\n'.join(xf_name_list))
 
         # connect

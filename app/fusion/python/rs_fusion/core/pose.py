@@ -7,6 +7,8 @@ from rs.core import (
     pipe as p,
 )
 
+from rs_fusion.core import chara_sozai as cs_cmd
+
 
 def get_connected(node):
     if node.ID == 'Merge':
@@ -24,29 +26,37 @@ def get_pair(node):
     return [node.Name, connected_name]
 
 
-def apply(comp, lst):
+def apply(comp, lst, is_chara_sozai=False):
     comp.Lock()
     comp.StartUndo('RS Pose')
     for x in lst:
         node_name = x[0]
         connected_name = x[1]
-        node = comp.FindTool(node_name)
-        if node is None or node.ID not in ['Merge', 'Transform']:
-            continue
-        if connected_name is None:
-            connected = None
-        else:
+        if is_chara_sozai:
             connected = comp.FindTool(connected_name)
             if connected is None:
                 continue
-        if node.ID == 'Merge':
-            parm = 'Foreground'
+            key = connected.GetInput('Comments')
+            cs_cmd.connect(comp, node_name, key)
         else:
-            parm = 'Input'
-        node.ConnectInput(parm, connected)
-        node.Center.HideViewControls()
-        node.Angle.HideViewControls()
-        node.Size.HideViewControls()
+            node = comp.FindTool(node_name)
+            if node is None or node.ID not in ['Merge', 'Transform']:
+                continue
+            if connected_name is None:
+                connected = None
+            else:
+                connected = comp.FindTool(connected_name)
+                if connected is None:
+                    continue
+            if node.ID == 'Merge':
+                parm = 'Foreground'
+            else:
+                parm = 'Input'
+
+            node.ConnectInput(parm, connected)
+            node.Center.HideViewControls()
+            node.Angle.HideViewControls()
+            node.Size.HideViewControls()
     comp.EndUndo(True)
     comp.Unlock()
 
@@ -82,7 +92,7 @@ def copy(comp):
     pyperclip.copy(text)
 
 
-def paste(comp):
+def paste(comp, is_chara_sozai=False):
     text = pyperclip.paste()
     try:
         lst = json.loads(text)
@@ -90,7 +100,7 @@ def paste(comp):
         print('Invalid JSON')
         return
     if isinstance(lst, list):
-        apply(comp, lst)
+        apply(comp, lst, is_chara_sozai=is_chara_sozai)
 
 
 def save(comp, fusion):
@@ -113,7 +123,7 @@ def save(comp, fusion):
     Path(path).write_text(text, encoding='utf-8')
 
 
-def load(comp, fusion):
+def load(comp, fusion, is_chara_sozai=False):
     path = fusion.RequestFile(
         '',
         '',
@@ -133,11 +143,14 @@ def load(comp, fusion):
         print('Invalid JSON')
         return
     if isinstance(lst, list):
-        apply(comp, lst)
+        apply(comp, lst, is_chara_sozai=is_chara_sozai)
 
 
-def get_uc(page):
+def get_uc(page, is_chara_sozai=False):
     width = 0.5
+    _text = ', is_chara_sozai=True' if is_chara_sozai else ''
+    paste_lua = 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.paste(comp%s)]])' % _text
+    load_lua = 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.load(comp, fu%s)]])' % _text
     return {
         '__flags': 2097152,
         'CopyPose': {
@@ -155,7 +168,7 @@ def get_uc(page):
             'LINKID_DataType': 'Number',
             'INPID_InputControl': 'ButtonControl',
             'INP_Integer': False,
-            'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.paste(comp)]])',
+            'BTNCS_Execute': paste_lua,
             'INP_External': False,
             'ICS_ControlPage': page,
             'ICD_Width': width,
@@ -175,7 +188,7 @@ def get_uc(page):
             'LINKID_DataType': 'Number',
             'INPID_InputControl': 'ButtonControl',
             'INP_Integer': False,
-            'BTNCS_Execute': 'comp:Execute([[!Py3: from rs_fusion.core import pose; pose.load(comp, fu)]])',
+            'BTNCS_Execute': load_lua,
             'INP_External': False,
             'ICS_ControlPage': page,
             'ICD_Width': width,

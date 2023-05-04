@@ -160,10 +160,10 @@ def set_blink(comp, xf_name):
         _dx = comp.FindTool(_dx_name)
         if _dx is None:
             continue
-
-        lst = [header, key_text % (blink - sf + i, 1)]
+        step = i * other
+        lst = [header, key_text % (blink - sf + step, 1)]
         if i != 0:
-            lst.append(key_text % (blink - i, 0))
+            lst.append(key_text % (blink - step, 0))
         lst.append(footer)
 
         text = '\n'.join(lst)
