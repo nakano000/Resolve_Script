@@ -1,4 +1,5 @@
 import json
+
 from rs.core import (
     pipe as p,
 )
