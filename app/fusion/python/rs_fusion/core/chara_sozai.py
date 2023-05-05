@@ -70,9 +70,11 @@ def connect(comp, xf_name, key):
         return
     ld_list = ld_data[key]
     # main
+    comp.Lock()
     _connect(comp, xf_list, ld_list)
     _set_for_eye(comp, key, data)
     _set_preview(comp, key, data)
+    comp.Unlock()
 
 
 def prev_next(comp, xf_name: str, is_next=False):
@@ -102,9 +104,11 @@ def prev_next(comp, xf_name: str, is_next=False):
     # set data
     key, ld_list = list(ld_data.items())[index]
     # main
+    comp.Lock()
     _connect(comp, xf_list, ld_list)
     _set_for_eye(comp, key, data)
     _set_preview(comp, key, data)
+    comp.Unlock()
 
 
 def set_blink(comp, xf_name):
