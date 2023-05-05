@@ -20,12 +20,12 @@ FRONT = '前'
 def _connect(comp, xf_name_list, ld_name_list):
     xf_list = p.pipe(
         xf_name_list,
-        p.map(lambda x: comp.FindTool(x)),
+        p.map(comp.FindTool),
         list,
     )
     ld_list = p.pipe(
         ld_name_list,
-        p.map(lambda x: comp.FindTool(x)),
+        p.map(comp.FindTool),
         list,
     )
     _ld = None
@@ -39,7 +39,7 @@ def _set_for_eye(comp, key, data):
     if data['part'] == EYE:
         xf_list = p.pipe(
             data['xf'][MOUTH] + data['xf'][EYEBROW],
-            p.map(lambda x: comp.FindTool(x)),
+            p.map(comp.FindTool),
             list,
         )
         mg_eyebrow = comp.FindTool(data['mg'][EYEBROW])
