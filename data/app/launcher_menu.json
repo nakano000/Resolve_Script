@@ -35,11 +35,6 @@
     "ss": "utility"
   },
   {
-    "name": "VTT2Anim",
-    "path": "bin/vtt2anim.py",
-    "ss": "utility"
-  },
-  {
     "name": "ScriptLauncher",
     "path": "bin/script_launcher.py",
     "ss": "utility"
