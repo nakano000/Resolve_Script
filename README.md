@@ -21,7 +21,6 @@ https://youtu.be/WyKujodsLh0
 * [VoiceBin](#VoiceBin)
 * [PsdSplitter](#PsdSplitter)
 * [Macro2Group](#Macro2Group)
-* [VTT2Anim](#VTT2Anim)
 * [ScriptLauncher](#ScriptLauncher)
 * [DiskCache](#DiskCache)
 * [Characters](#Characters)
@@ -101,7 +100,7 @@ https://youtu.be/ul7grfLvJCM
 [目次へ](#目次)
 
 ### VTT2Anim
-
+2.0.0で一時無効化しました。ご注意ください。
 動画参照
 https://youtu.be/zWq4AQeHZ68
 
@@ -134,7 +133,9 @@ https://youtu.be/kta_94REcEE
 
 検証不足です。ご注意ください。<br>
 下記環境にて確認しています。
+(りぞりぷと 2.0.0からpythonは3.10.11に変更しました。)
 
+- りぞりぷと 1.x.x
 - CentOS Linux release 7.9.2009 (Core)
 - python 3.6.8
 - DaVinci Resolve 18.02
