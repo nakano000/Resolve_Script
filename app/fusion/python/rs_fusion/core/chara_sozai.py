@@ -17,17 +17,7 @@ BACK = '後'
 FRONT = '前'
 
 
-def _connect(comp, xf_name_list, ld_name_list):
-    xf_list = p.pipe(
-        xf_name_list,
-        p.map(comp.FindTool),
-        list,
-    )
-    ld_list = p.pipe(
-        ld_name_list,
-        p.map(comp.FindTool),
-        list,
-    )
+def _connect(xf_list, ld_list):
     _ld = None
     for i, xf in enumerate(xf_list):
         if i < len(ld_list):
@@ -54,12 +44,6 @@ def _set_for_eye(comp, key, data):
         mg_mouth.SetAttrs({'TOOLB_PassThrough': key.endswith('+眉口')})
 
 
-def _set_preview(comp, key, data):
-    preview = data['preview']
-    xf = comp.FindTool('Root')
-    xf.SetInput(preview, key)
-
-
 def connect(comp, xf_name, key):
     xf = comp.FindTool(xf_name)
     if xf is None:
@@ -67,16 +51,27 @@ def connect(comp, xf_name, key):
     json_txt = xf.GetInput('Comments')
     data = json.loads(json_txt)
     part = data['part']
-    xf_name_list: list = data['xf'][part]
+    xf_list = p.pipe(
+        data['xf'][part],
+        p.map(comp.FindTool),
+        list,
+    )
     ld_data: dict = data['ld']
     if key not in ld_data.keys():
         return
-    ld_name_list = ld_data[key]
+    ld_list = p.pipe(
+        ld_data[key],
+        p.map(comp.FindTool),
+        list,
+    )
+    # preview
+    root = comp.FindTool('Root')
+    preview_param = data['preview']
     # main
     comp.Lock()
-    _connect(comp, xf_name_list, ld_name_list)
+    _connect(xf_list, ld_list)
     _set_for_eye(comp, key, data)
-    _set_preview(comp, key, data)
+    root.SetInput(preview_param, key)
     comp.Unlock()
 
 
@@ -87,7 +82,11 @@ def prev_next(comp, xf_name: str, is_next=False):
     json_txt = xf.GetInput('Comments')
     data = json.loads(json_txt)
     part = data['part']
-    xf_list: list = data['xf'][part]
+    xf_list = p.pipe(
+        data['xf'][part],
+        p.map(comp.FindTool),
+        list,
+    )
     ld_data: dict = data['ld']
     outp = xf.Input.GetConnectedOutput()
     # find index
@@ -105,12 +104,20 @@ def prev_next(comp, xf_name: str, is_next=False):
         index = max(index - 1, 0)
 
     # set data
-    key, ld_list = list(ld_data.items())[index]
+    key, ld_name_list = list(ld_data.items())[index]
+    ld_list = p.pipe(
+        ld_name_list,
+        p.map(comp.FindTool),
+        list,
+    )
+    # preview
+    root = comp.FindTool('Root')
+    preview_param = data['preview']
     # main
     comp.Lock()
-    _connect(comp, xf_list, ld_list)
+    _connect(xf_list, ld_list)
     _set_for_eye(comp, key, data)
-    _set_preview(comp, key, data)
+    root.SetInput(preview_param, key)
     comp.Unlock()
 
 
