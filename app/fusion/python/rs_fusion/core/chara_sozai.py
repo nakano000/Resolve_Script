@@ -17,19 +17,22 @@ BACK = '後'
 FRONT = '前'
 
 
-def _connect(comp, xf_list, ld_list):
-    for i in range(len(xf_list) - len(ld_list)):
-        ld_list.append(ld_list[-1])
-    for xf_name, ld_name in zip(xf_list, ld_list):
-        xf = comp.FindTool(xf_name)
-        if xf is None:
-            print('Tool not found: {}'.format(xf_name))
-            continue
-        ld = comp.FindTool(ld_name)
-        if ld is None:
-            print('Tool not found: {}'.format(ld_name))
-            continue
-        xf.ConnectInput('Input', ld)
+def _connect(comp, xf_name_list, ld_name_list):
+    xf_list = p.pipe(
+        xf_name_list,
+        p.map(lambda x: comp.FindTool(x)),
+        list,
+    )
+    ld_list = p.pipe(
+        ld_name_list,
+        p.map(lambda x: comp.FindTool(x)),
+        list,
+    )
+    _ld = None
+    for i, xf in enumerate(xf_list):
+        if i < len(ld_list):
+            _ld = ld_list[i]
+        xf.ConnectInput('Input', _ld)
 
 
 def _set_for_eye(comp, key, data):
@@ -64,14 +67,14 @@ def connect(comp, xf_name, key):
     json_txt = xf.GetInput('Comments')
     data = json.loads(json_txt)
     part = data['part']
-    xf_list: list = data['xf'][part]
+    xf_name_list: list = data['xf'][part]
     ld_data: dict = data['ld']
     if key not in ld_data.keys():
         return
-    ld_list = ld_data[key]
+    ld_name_list = ld_data[key]
     # main
     comp.Lock()
-    _connect(comp, xf_list, ld_list)
+    _connect(comp, xf_name_list, ld_name_list)
     _set_for_eye(comp, key, data)
     _set_preview(comp, key, data)
     comp.Unlock()
@@ -91,7 +94,7 @@ def prev_next(comp, xf_name: str, is_next=False):
     index = 0
     if outp is not None:
         _name = outp.GetTool().Name
-        for i, (k, v) in enumerate(ld_data.items()):
+        for i, v in enumerate(ld_data.values()):
             if v[0] == _name:
                 index = i
                 break
