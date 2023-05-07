@@ -30,6 +30,8 @@ def apply(comp, lst, is_chara_sozai=False):
     for x in lst:
         node_name = x[0]
         connected_name = x[1]
+        comp.Lock()
+        comp.StartUndo('RS Pose')
         if is_chara_sozai:
             connected = comp.FindTool(connected_name)
             if connected is None:
@@ -37,8 +39,7 @@ def apply(comp, lst, is_chara_sozai=False):
             key = connected.GetInput('Comments')
             cs_cmd.connect(comp, node_name, key)
         else:
-            comp.Lock()
-            comp.StartUndo('RS Pose')
+
             node = comp.FindTool(node_name)
             if node is None or node.ID not in ['Merge', 'Transform']:
                 continue
@@ -57,8 +58,8 @@ def apply(comp, lst, is_chara_sozai=False):
             node.Center.HideViewControls()
             node.Angle.HideViewControls()
             node.Size.HideViewControls()
-            comp.EndUndo(True)
-            comp.Unlock()
+        comp.EndUndo(True)
+        comp.Unlock()
 
 
 def comment2json(comp):

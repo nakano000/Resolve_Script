@@ -2,10 +2,10 @@ Composition {
 	CurrentTime = 0,
 	RenderRange = { 0, 1000 },
 	GlobalRange = { 0, 1000 },
-	CurrentID = 1609,
+	CurrentID = 2809,
 	HiQ = true,
 	PlaybackUpdateMode = 0,
-	Version = "Fusion Studio 18.5 build 28",
+	Version = "Fusion Studio 18.5 build 30",
 	SavedOutputs = 2,
 	HeldTools = 0,
 	DisabledTools = 0,
@@ -43,11 +43,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2255, 148.5 } },
 		},
-		MOUTH_22_00_LD = Loader {
+		MOUTH_18_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\22.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\18.05.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -66,15 +66,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "22", },
+				Comments = Input { Value = "18", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 5005, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4565, -2491.5 } },
 		},
-		MOUTH_26_00_LD = Loader {
+		MOUTH_07_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\26.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\07.05.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -93,9 +93,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "26", },
+				Comments = Input { Value = "07", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 5445, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3355, -2491.5 } },
 		},
 		MOUTH_01_02_LD = Loader {
 			Clips = {
@@ -124,11 +124,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2695, -1303.5 } },
 		},
-		EYE_11_05_LD = Loader {
+		EYE_31_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\11.05.目.png",
+					Filename = "CHARA:\\れいむ\\目\\31.00.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -147,15 +147,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "11", },
+				Comments = Input { Value = "31", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 7865, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 10065, -511.5 } },
 		},
-		MOUTH_15_01_LD = Loader {
+		MOUTH_22_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\15.01.口.png",
+					Filename = "CHARA:\\れいむ\\口\\22.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -174,36 +174,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
+				Comments = Input { Value = "22", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4235, -907.5 } },
-		},
-		MOUTH_06_05_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\06.05.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "06", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3245, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 5005, -511.5 } },
 		},
 		MOUTH_13_02_LD = Loader {
 			Clips = {
@@ -259,11 +232,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3245, -1303.5 } },
 		},
-		EYE_13_05_LD = Loader {
+		MOUTH_34_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\13.05.目.png",
+					Filename = "CHARA:\\れいむ\\口\\34.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -282,15 +255,42 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "13", },
+				Comments = Input { Value = "34", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8085, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 6325, -511.5 } },
 		},
-		MOUTH_15_04_LD = Loader {
+		EYE_34_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\15.04.口.png",
+					Filename = "CHARA:\\れいむ\\目\\34+眉.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "34+眉", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 10395, -511.5 } },
+		},
+		MOUTH_15_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\15.01.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -311,7 +311,520 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 				Comments = Input { Value = "15", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4235, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4235, -907.5 } },
+		},
+		EYE_17_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\17.01.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "17", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8525, -907.5 } },
+		},
+		MOUTH_09_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\09.00.口.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "09", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 3575, -511.5 } },
+		},
+		MOUTH_15_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\15.00.口.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "15", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 4235, -511.5 } },
+		},
+		MOUTH_26_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\26.00.口.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "26", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 5445, -511.5 } },
+		},
+		MOUTH_07_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\07.04.口.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "07", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 3355, -2095.5 } },
+		},
+		EYE_03_05_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\03.05.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "03", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6985, -2491.5 } },
+		},
+		EYE_03_03_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\03.03.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "03", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6985, -1699.5 } },
+		},
+		EYE_03_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\03.01.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "03", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6985, -907.5 } },
+		},
+		EYE_02_05_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\02.05.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "02", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6875, -2491.5 } },
+		},
+		EYE_02_03_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\02.03.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "02", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6875, -1699.5 } },
+		},
+		EYE_02_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\02.01.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "02", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6875, -907.5 } },
+		},
+		EYE_01_05_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\01.05.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "01", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6765, -2491.5 } },
+		},
+		EYE_01_03_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\01.03.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "01", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6765, -1699.5 } },
+		},
+		EYE_01_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\01.01.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "01", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6765, -907.5 } },
+		},
+		EYE_15_05_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\15.05.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "15", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8305, -2491.5 } },
+		},
+		EYE_15_03_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\15.03.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "15", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8305, -1699.5 } },
+		},
+		EYE_15_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\15.01.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "15", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8305, -907.5 } },
+		},
+		EYE_14_05_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\14.05.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "14", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8195, -2491.5 } },
+		},
+		EYE_14_03_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\14.03.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "14", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8195, -1699.5 } },
 		},
 		EYE_14_01_LD = Loader {
 			Clips = {
@@ -340,11 +853,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 8195, -907.5 } },
 		},
-		MOUTH_01_05_LD = Loader {
+		EYE_13_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\01.05.口.png",
+					Filename = "CHARA:\\れいむ\\目\\13.05.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -363,15 +876,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "01", },
+				Comments = Input { Value = "13", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 2695, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8085, -2491.5 } },
 		},
-		EYE_25_00_LD = Loader {
+		EYE_13_03_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\25.00.目.png",
+					Filename = "CHARA:\\れいむ\\目\\13.03.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -390,15 +903,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "25", },
+				Comments = Input { Value = "13", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 9405, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8085, -1699.5 } },
 		},
-		EYE_27_00_LD = Loader {
+		EYE_13_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\27.00.目.png",
+					Filename = "CHARA:\\れいむ\\目\\13.01.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -417,15 +930,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "27", },
+				Comments = Input { Value = "13", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 9625, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8085, -907.5 } },
 		},
-		MOUTH_07_04_LD = Loader {
+		EYE_12_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\07.04.口.png",
+					Filename = "CHARA:\\れいむ\\目\\12.05.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -444,9 +957,144 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "07", },
+				Comments = Input { Value = "12", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3355, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 7975, -2491.5 } },
+		},
+		EYE_12_03_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\12.03.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "12", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7975, -1699.5 } },
+		},
+		EYE_12_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\12.01.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "12", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7975, -907.5 } },
+		},
+		EYE_11_05_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\11.05.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "11", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7865, -2491.5 } },
+		},
+		EYE_11_03_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\11.03.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "11", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7865, -1699.5 } },
+		},
+		EYE_11_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\11.01.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "11", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7865, -907.5 } },
 		},
 		EYE_10_05_LD = Loader {
 			Clips = {
@@ -1015,11 +1663,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 7095, -907.5 } },
 		},
-		EYE_03_05_LD = Loader {
+		MOUTH_04_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\03.05.目.png",
+					Filename = "CHARA:\\れいむ\\口\\04.04.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1038,15 +1686,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "03", },
+				Comments = Input { Value = "04", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 6985, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3025, -2095.5 } },
 		},
-		EYE_03_03_LD = Loader {
+		EYE_16_03_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\03.03.目.png",
+					Filename = "CHARA:\\れいむ\\目\\16.03.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1065,15 +1713,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "03", },
+				Comments = Input { Value = "16", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 6985, -1699.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8415, -1699.5 } },
 		},
-		EYE_03_01_LD = Loader {
+		MOUTH_18_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\03.01.目.png",
+					Filename = "CHARA:\\れいむ\\口\\18.04.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1092,15 +1740,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "03", },
+				Comments = Input { Value = "18", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 6985, -907.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4565, -2095.5 } },
 		},
-		EYE_02_05_LD = Loader {
+		MOUTH_04_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\02.05.目.png",
+					Filename = "CHARA:\\れいむ\\口\\04.01.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1119,15 +1767,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
+				Comments = Input { Value = "04", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 6875, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3025, -907.5 } },
 		},
-		EYE_02_03_LD = Loader {
+		MOUTH_16_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\02.03.目.png",
+					Filename = "CHARA:\\れいむ\\口\\16.04.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1146,15 +1794,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
+				Comments = Input { Value = "16", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 6875, -1699.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4345, -2095.5 } },
 		},
-		EYE_02_01_LD = Loader {
+		MOUTH_08_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\02.01.目.png",
+					Filename = "CHARA:\\れいむ\\口\\08.01.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1173,252 +1821,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
+				Comments = Input { Value = "08", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 6875, -907.5 } },
-		},
-		EYE_01_05_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\01.05.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "01", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6765, -2491.5 } },
-		},
-		EYE_01_03_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\01.03.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "01", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6765, -1699.5 } },
-		},
-		EYE_01_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\01.01.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "01", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6765, -907.5 } },
-		},
-		EYE_34_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\34+眉.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "34+眉", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 10395, -511.5 } },
-		},
-		MOUTH_09_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\09.00.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "09", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3575, -511.5 } },
-		},
-		EYEBROW_13_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\眉\\13.眉.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "13", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 1705, 148.5 } },
-		},
-		MOUTH_12_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\12.01.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "12", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3905, -907.5 } },
-		},
-		MOUTH_34_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\34.00.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "34", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6325, -511.5 } },
-		},
-		EYE_15_05_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\15.05.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8305, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3465, -907.5 } },
 		},
 		EYE_29_00_LD = Loader {
 			Clips = {
@@ -1447,33 +1852,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 9845, -511.5 } },
 		},
-		MOUTH_09_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\09.04.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "09", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3575, -2095.5 } },
-		},
 		EYEBROW_10_LD = Loader {
 			Clips = {
 				Clip {
@@ -1500,33 +1878,6 @@ Composition {
 				Comments = Input { Value = "10", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 1375, 148.5 } },
-		},
-		MOUTH_10_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\10.00.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "10", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3685, -511.5 } },
 		},
 		MOUTH_12_02_LD = Loader {
 			Clips = {
@@ -1609,33 +1960,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 605, 148.5 } },
 		},
-		MOUTH_03_03_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\03.03.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "03", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2915, -1699.5 } },
-		},
 		EYEBROW_07_LD = Loader {
 			Clips = {
 				Clip {
@@ -1663,38 +1987,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 1045, 148.5 } },
 		},
-		MOUTH_17_01_LD = Loader {
+		MOUTH_04_02_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\17.01.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "17", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 4455, -907.5 } },
-		},
-		MOUTH_04_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\04.04.口.png",
+					Filename = "CHARA:\\れいむ\\口\\04.02.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1715,13 +2012,13 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 				Comments = Input { Value = "04", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3025, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3025, -1303.5 } },
 		},
-		MOUTH_16_02_LD = Loader {
+		MOUTH_11_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\16.02.口.png",
+					Filename = "CHARA:\\れいむ\\口\\11.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1740,15 +2037,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "16", },
+				Comments = Input { Value = "11", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4345, -1303.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3795, -511.5 } },
 		},
-		EYE_16_02_LD = Loader {
+		EYE_28_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\16.02.目.png",
+					Filename = "CHARA:\\れいむ\\目\\28.00.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1767,9 +2064,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "16", },
+				Comments = Input { Value = "28", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8415, -1303.5 } },
+			ViewInfo = OperatorInfo { Pos = { 9735, -511.5 } },
 		},
 		MOUTH_04_05_LD = Loader {
 			Clips = {
@@ -1825,11 +2122,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2805, -1303.5 } },
 		},
-		MOUTH_03_01_LD = Loader {
+		EYE_19_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\03.01.口.png",
+					Filename = "CHARA:\\れいむ\\目\\19.00.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1848,15 +2145,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "03", },
+				Comments = Input { Value = "19", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 2915, -907.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8745, -511.5 } },
 		},
-		EYE_18_05_LD = Loader {
+		MOUTH_08_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\18-15.05.目.png",
+					Filename = "CHARA:\\れいむ\\口\\08.05.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1875,36 +2172,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "18-15", },
+				Comments = Input { Value = "08", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8635, -2491.5 } },
-		},
-		MOUTH_14_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\14.01.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "14", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 4125, -907.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3465, -2491.5 } },
 		},
 		FRONT_01_LD = Loader {
 			Clips = {
@@ -1987,6 +2257,33 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 10175, -511.5 } },
 		},
+		MOUTH_16_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\16.00.口.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "16", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 4345, -511.5 } },
+		},
 		MOUTH_01_03_LD = Loader {
 			Clips = {
 				Clip {
@@ -2014,11 +2311,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2695, -1699.5 } },
 		},
-		MOUTH_02_00_LD = Loader {
+		MOUTH_15_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\02.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\15.05.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2037,9 +2334,36 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
+				Comments = Input { Value = "15", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 2805, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4235, -2491.5 } },
+		},
+		EYE_37_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\37.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "37", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 10725, -511.5 } },
 		},
 		MOUTH_06_04_LD = Loader {
 			Clips = {
@@ -2095,11 +2419,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 4125, -2095.5 } },
 		},
-		MOUTH_18_00_LD = Loader {
+		MOUTH_18_03_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\18.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\18.03.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2120,7 +2444,7 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 				Comments = Input { Value = "18", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4565, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4565, -1699.5 } },
 		},
 		MOUTH_10_03_LD = Loader {
 			Clips = {
@@ -2176,6 +2500,33 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 8415, -2491.5 } },
 		},
+		HAIR_01_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\髪\\01.髪.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "01", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 2035, 148.5 } },
+		},
 		MOUTH_01_01_LD = Loader {
 			Clips = {
 				Clip {
@@ -2203,11 +2554,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2695, -907.5 } },
 		},
-		MOUTH_30_00_LD = Loader {
+		MOUTH_09_02_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\30.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\09.02.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2226,42 +2577,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "30", },
+				Comments = Input { Value = "09", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 5885, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3575, -1303.5 } },
 		},
-		BACK_02_LD = Loader {
+		MOUTH_01_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\後\\04.後u1.png",
-					FormatID = "PNGFormat",
-					StartFrame = 1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "04u1", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 495, -511.5 } },
-		},
-		MOUTH_08_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\08.04.口.png",
+					Filename = "CHARA:\\れいむ\\口\\01.05.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2280,9 +2604,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "08", },
+				Comments = Input { Value = "01", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3465, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 2695, -2491.5 } },
 		},
 		MOUTH_12_05_LD = Loader {
 			Clips = {
@@ -2310,87 +2634,6 @@ Composition {
 				Comments = Input { Value = "12", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 3905, -2491.5 } },
-		},
-		MOUTH_18_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\18.04.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "18", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 4565, -2095.5 } },
-		},
-		MOUTH_13_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\13.04.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "13", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 4015, -2095.5 } },
-		},
-		FACE_07_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\顔\\07a.顔.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "07", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 2145, -511.5 } },
 		},
 		MOUTH_09_05_LD = Loader {
 			Clips = {
@@ -2500,33 +2743,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 8525, -1303.5 } },
 		},
-		EYE_16_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\16.01.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "16", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8415, -907.5 } },
-		},
 		EYEBROW_06_LD = Loader {
 			Clips = {
 				Clip {
@@ -2554,11 +2770,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 935, 148.5 } },
 		},
-		EYE_18_04_LD = Loader {
+		MOUTH_14_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\18-15.04.目.png",
+					Filename = "CHARA:\\れいむ\\口\\14.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2577,9 +2793,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "18-15", },
+				Comments = Input { Value = "14", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8635, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4125, -511.5 } },
 		},
 		MOUTH_11_03_LD = Loader {
 			Clips = {
@@ -2607,33 +2823,6 @@ Composition {
 				Comments = Input { Value = "11", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 3795, -1699.5 } },
-		},
-		EYE_13_03_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\13.03.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "13", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8085, -1699.5 } },
 		},
 		MOUTH_11_01_LD = Loader {
 			Clips = {
@@ -2689,33 +2878,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3685, -2095.5 } },
 		},
-		EYE_11_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\11.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "11", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7865, -511.5 } },
-		},
 		MOUTH_08_00_LD = Loader {
 			Clips = {
 				Clip {
@@ -2742,33 +2904,6 @@ Composition {
 				Comments = Input { Value = "08", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 3465, -511.5 } },
-		},
-		EYE_15_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\15.04.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8305, -2095.5 } },
 		},
 		MOUTH_17_02_LD = Loader {
 			Clips = {
@@ -2851,11 +2986,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3245, -511.5 } },
 		},
-		BODY_02_LD = Loader {
+		MOUTH_09_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\体\\02.体.png",
+					Filename = "CHARA:\\れいむ\\口\\09.04.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2874,15 +3009,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
+				Comments = Input { Value = "09", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 1155, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3575, -2095.5 } },
 		},
-		MOUTH_32_00_LD = Loader {
+		EYEBROW_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\32.00.口.png",
+					Filename = "CHARA:\\れいむ\\眉\\04.眉.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2901,15 +3036,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "32", },
+				Comments = Input { Value = "04", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 6105, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 715, 148.5 } },
 		},
-		MOUTH_29_00_LD = Loader {
+		MOUTH_15_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\29.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\15.04.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2928,9 +3063,36 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "29", },
+				Comments = Input { Value = "15", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 5775, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4235, -2095.5 } },
+		},
+		EYEBROW_05_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\眉\\05.眉.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "05", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 825, 148.5 } },
 		},
 		MOUTH_09_01_LD = Loader {
 			Clips = {
@@ -2959,11 +3121,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3575, -907.5 } },
 		},
-		MOUTH_20_00_LD = Loader {
+		MOUTH_10_02_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\20.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\10.02.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2982,15 +3144,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "20", },
+				Comments = Input { Value = "10", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4785, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3685, -1303.5 } },
 		},
-		MOUTH_04_01_LD = Loader {
+		MOUTH_06_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\04.01.口.png",
+					Filename = "CHARA:\\れいむ\\口\\06.05.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3009,36 +3171,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "04", },
+				Comments = Input { Value = "06", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3025, -907.5 } },
-		},
-		MOUTH_07_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\07.01.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "07", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3355, -907.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3245, -2491.5 } },
 		},
 		MOUTH_02_01_LD = Loader {
 			Clips = {
@@ -3067,11 +3202,65 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2805, -907.5 } },
 		},
-		MOUTH_16_04_LD = Loader {
+		MOUTH_12_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\16.04.口.png",
+					Filename = "CHARA:\\れいむ\\口\\12.01.口.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "12", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 3905, -907.5 } },
+		},
+		EYE_27_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\27.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "27", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 9625, -511.5 } },
+		},
+		MOUTH_16_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\16.02.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3092,13 +3281,13 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 				Comments = Input { Value = "16", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4345, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4345, -1303.5 } },
 		},
-		MOUTH_08_01_LD = Loader {
+		EYE_18_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\08.01.口.png",
+					Filename = "CHARA:\\れいむ\\目\\18-15.05.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3117,15 +3306,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "08", },
+				Comments = Input { Value = "18-15", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3465, -907.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8635, -2491.5 } },
 		},
-		MOUTH_14_00_LD = Loader {
+		MOUTH_13_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\14.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\13.04.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3144,15 +3333,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "14", },
+				Comments = Input { Value = "13", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4125, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4015, -2095.5 } },
 		},
-		EYE_33_00_LD = Loader {
+		EYE_16_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\33.00.目.png",
+					Filename = "CHARA:\\れいむ\\目\\16.00.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3171,9 +3360,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "33", },
+				Comments = Input { Value = "16", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 10285, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8415, -511.5 } },
 		},
 		MOUTH_14_05_LD = Loader {
 			Clips = {
@@ -3283,11 +3472,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3355, -1699.5 } },
 		},
-		EYE_13_04_LD = Loader {
+		MOUTH_03_03_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\13.04.目.png",
+					Filename = "CHARA:\\れいむ\\口\\03.03.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3306,9 +3495,36 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "13", },
+				Comments = Input { Value = "03", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8085, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 2915, -1699.5 } },
+		},
+		MOUTH_16_05_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\16.05.口.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "16", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 4345, -2491.5 } },
 		},
 		MOUTH_12_04_LD = Loader {
 			Clips = {
@@ -3364,11 +3580,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3795, -1303.5 } },
 		},
-		EYE_13_02_LD = Loader {
+		MOUTH_10_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\13.02.目.png",
+					Filename = "CHARA:\\れいむ\\口\\10.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3387,15 +3603,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "13", },
+				Comments = Input { Value = "10", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8085, -1303.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3685, -511.5 } },
 		},
-		MOUTH_02_04_LD = Loader {
+		MOUTH_17_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\02.04.口.png",
+					Filename = "CHARA:\\れいむ\\口\\17.01.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3414,9 +3630,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
+				Comments = Input { Value = "17", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 2805, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4455, -907.5 } },
 		},
 		EYEBROW_11_LD = Loader {
 			Clips = {
@@ -3445,33 +3661,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 1485, 148.5 } },
 		},
-		MOUTH_04_02_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\04.02.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "04", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3025, -1303.5 } },
-		},
 		MOUTH_16_03_LD = Loader {
 			Clips = {
 				Clip {
@@ -3498,33 +3687,6 @@ Composition {
 				Comments = Input { Value = "16", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 4345, -1699.5 } },
-		},
-		MOUTH_31_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\31.00.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "31", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 5995, -511.5 } },
 		},
 		MOUTH_03_00_LD = Loader {
 			Clips = {
@@ -3553,11 +3715,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2915, -511.5 } },
 		},
-		EYE_28_00_LD = Loader {
+		MOUTH_03_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\28.00.目.png",
+					Filename = "CHARA:\\れいむ\\口\\03.01.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3576,9 +3738,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "28", },
+				Comments = Input { Value = "03", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 9735, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 2915, -907.5 } },
 		},
 		MOUTH_17_05_LD = Loader {
 			Clips = {
@@ -3607,33 +3769,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 4455, -2491.5 } },
 		},
-		EYE_11_02_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\11.02.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "11", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7865, -1303.5 } },
-		},
 		EYE_18_03_LD = Loader {
 			Clips = {
 				Clip {
@@ -3661,11 +3796,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 8635, -1699.5 } },
 		},
-		MOUTH_11_00_LD = Loader {
+		MOUTH_14_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\11.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\14.01.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3684,9 +3819,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "11", },
+				Comments = Input { Value = "14", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3795, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4125, -907.5 } },
 		},
 		MOUTH_03_02_LD = Loader {
 			Clips = {
@@ -3715,11 +3850,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2915, -1303.5 } },
 		},
-		EYE_14_04_LD = Loader {
+		MOUTH_02_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\14.04.目.png",
+					Filename = "CHARA:\\れいむ\\口\\02.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3738,36 +3873,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "14", },
+				Comments = Input { Value = "02", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8195, -2095.5 } },
-		},
-		EYE_14_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\14.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "14", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8195, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 2805, -511.5 } },
 		},
 		MOUTH_11_05_LD = Loader {
 			Clips = {
@@ -3796,60 +3904,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3795, -2491.5 } },
 		},
-		EYE_15_02_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\15.02.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8305, -1303.5 } },
-		},
-		EYE_13_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\13.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "13", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8085, -511.5 } },
-		},
 		MOUTH_01_04_LD = Loader {
 			Clips = {
 				Clip {
@@ -3877,11 +3931,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2695, -2095.5 } },
 		},
-		MOUTH_02_05_LD = Loader {
+		EYE_33_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\02.05.口.png",
+					Filename = "CHARA:\\れいむ\\目\\33.00.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -3900,9 +3954,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
+				Comments = Input { Value = "33", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 2805, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 10285, -511.5 } },
 		},
 		MOUTH_12_03_LD = Loader {
 			Clips = {
@@ -3957,33 +4011,6 @@ Composition {
 				Comments = Input { Value = "18-15", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 8635, -1303.5 } },
-		},
-		EYE_15_03_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\15.03.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8305, -1699.5 } },
 		},
 		MOUTH_24_00_LD = Loader {
 			Clips = {
@@ -4066,11 +4093,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 9955, -511.5 } },
 		},
-		EYE_19_00_LD = Loader {
+		MOUTH_18_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\19.00.目.png",
+					Filename = "CHARA:\\れいむ\\口\\18.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -4089,9 +4116,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "19", },
+				Comments = Input { Value = "18", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8745, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4565, -511.5 } },
 		},
 		MOUTH_05_00_LD = Loader {
 			Clips = {
@@ -4119,33 +4146,6 @@ Composition {
 				Comments = Input { Value = "05", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 3135, -511.5 } },
-		},
-		EYE_12_02_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\12.02.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "12", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7975, -1303.5 } },
 		},
 		EYE_16_04_LD = Loader {
 			Clips = {
@@ -4228,65 +4228,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 1815, -511.5 } },
 		},
-		MOUTH_08_05_LD = Loader {
+		EYE_16_02_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\08.05.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "08", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 3465, -2491.5 } },
-		},
-		EYE_14_05_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\14.05.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "14", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8195, -2491.5 } },
-		},
-		MOUTH_16_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\16.00.口.png",
+					Filename = "CHARA:\\れいむ\\目\\16.02.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -4307,7 +4253,61 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 				Comments = Input { Value = "16", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4345, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8415, -1303.5 } },
+		},
+		MOUTH_30_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\口\\30.00.口.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "30", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 5885, -511.5 } },
+		},
+		BACK_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\後\\04.後u1.png",
+					FormatID = "PNGFormat",
+					StartFrame = 1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "04u1", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, -511.5 } },
 		},
 		MOUTH_13_05_LD = Loader {
 			Clips = {
@@ -4390,11 +4390,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 5115, -511.5 } },
 		},
-		MOUTH_09_02_LD = Loader {
+		MOUTH_08_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\09.02.口.png",
+					Filename = "CHARA:\\れいむ\\口\\08.04.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -4413,9 +4413,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "09", },
+				Comments = Input { Value = "08", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3575, -1303.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3465, -2095.5 } },
 		},
 		MOUTH_06_03_LD = Loader {
 			Clips = {
@@ -4444,11 +4444,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3245, -1699.5 } },
 		},
-		MOUTH_15_05_LD = Loader {
+		EYEBROW_13_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\15.05.口.png",
+					Filename = "CHARA:\\れいむ\\眉\\13.眉.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -4467,9 +4467,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
+				Comments = Input { Value = "13", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4235, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 1705, 148.5 } },
 		},
 		MOUTH_12_00_LD = Loader {
 			Clips = {
@@ -4579,33 +4579,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3135, -2095.5 } },
 		},
-		EYE_12_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\12.04.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "12", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7975, -2095.5 } },
-		},
 		EYEBROW_12_LD = Loader {
 			Clips = {
 				Clip {
@@ -4632,33 +4605,6 @@ Composition {
 				Comments = Input { Value = "12", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 1595, 148.5 } },
-		},
-		EYE_37_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\37.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "37", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 10725, -511.5 } },
 		},
 		MOUTH_05_02_LD = Loader {
 			Clips = {
@@ -4714,11 +4660,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 2915, -2095.5 } },
 		},
-		EYE_12_03_LD = Loader {
+		FACE_07_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\12.03.目.png",
+					Filename = "CHARA:\\れいむ\\顔\\07a.顔.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -4737,36 +4683,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "12", },
+				Comments = Input { Value = "07", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 7975, -1699.5 } },
-		},
-		MOUTH_18_03_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\18.03.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "18", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 4565, -1699.5 } },
+			ViewInfo = OperatorInfo { Pos = { 2145, -511.5 } },
 		},
 		MOUTH_21_00_LD = Loader {
 			Clips = {
@@ -4795,11 +4714,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 4895, -511.5 } },
 		},
-		HAIR_01_LD = Loader {
+		EYE_16_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\髪\\01.髪.png",
+					Filename = "CHARA:\\れいむ\\目\\16.01.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -4818,9 +4737,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "01", },
+				Comments = Input { Value = "16", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 2035, 148.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8415, -907.5 } },
 		},
 		EYE_23_00_LD = Loader {
 			Clips = {
@@ -4903,11 +4822,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 9075, -511.5 } },
 		},
-		MOUTH_10_02_LD = Loader {
+		MOUTH_02_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\10.02.口.png",
+					Filename = "CHARA:\\れいむ\\口\\02.04.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -4926,9 +4845,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "10", },
+				Comments = Input { Value = "02", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3685, -1303.5 } },
+			ViewInfo = OperatorInfo { Pos = { 2805, -2095.5 } },
 		},
 		EYE_17_03_LD = Loader {
 			Clips = {
@@ -4957,11 +4876,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 8525, -1699.5 } },
 		},
-		EYE_16_03_LD = Loader {
+		MOUTH_31_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\16.03.目.png",
+					Filename = "CHARA:\\れいむ\\口\\31.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -4980,15 +4899,15 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "16", },
+				Comments = Input { Value = "31", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8415, -1699.5 } },
+			ViewInfo = OperatorInfo { Pos = { 5995, -511.5 } },
 		},
-		EYE_14_02_LD = Loader {
+		EYE_18_04_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\14.02.目.png",
+					Filename = "CHARA:\\れいむ\\目\\18-15.04.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -5007,36 +4926,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "14", },
+				Comments = Input { Value = "18-15", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8195, -1303.5 } },
-		},
-		EYEBROW_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\眉\\04.眉.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "04", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 715, 148.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8635, -2095.5 } },
 		},
 		MOUTH_09_03_LD = Loader {
 			Clips = {
@@ -5199,249 +5091,6 @@ Composition {
 				Comments = Input { Value = "05", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 1925, -511.5 } },
-		},
-		EYE_01_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\01.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "01", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6765, -511.5 } },
-		},
-		EYE_01_02_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\01.02.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "01", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6765, -1303.5 } },
-		},
-		EYE_01_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\01.04.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "01", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6765, -2095.5 } },
-		},
-		EYE_02_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\02.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6875, -511.5 } },
-		},
-		EYE_02_02_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\02.02.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6875, -1303.5 } },
-		},
-		EYE_02_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\02.04.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "02", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6875, -2095.5 } },
-		},
-		EYE_03_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\03.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "03", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6985, -511.5 } },
-		},
-		EYE_03_02_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\03.02.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "03", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6985, -1303.5 } },
-		},
-		EYE_03_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\03.04.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "03", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6985, -2095.5 } },
 		},
 		EYE_04_00_LD = Loader {
 			Clips = {
@@ -6010,6 +5659,654 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 7755, -2095.5 } },
 		},
+		EYE_11_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\11.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "11", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7865, -511.5 } },
+		},
+		EYE_11_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\11.02.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "11", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7865, -1303.5 } },
+		},
+		EYE_11_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\11.04.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "11", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7865, -2095.5 } },
+		},
+		EYE_12_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\12.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "12", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7975, -511.5 } },
+		},
+		EYE_12_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\12.02.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "12", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7975, -1303.5 } },
+		},
+		EYE_12_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\12.04.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "12", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 7975, -2095.5 } },
+		},
+		EYE_13_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\13.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "13", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8085, -511.5 } },
+		},
+		EYE_13_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\13.02.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "13", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8085, -1303.5 } },
+		},
+		EYE_13_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\13.04.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "13", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8085, -2095.5 } },
+		},
+		EYE_14_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\14.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "14", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8195, -511.5 } },
+		},
+		EYE_14_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\14.02.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "14", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8195, -1303.5 } },
+		},
+		EYE_14_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\14.04.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "14", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8195, -2095.5 } },
+		},
+		EYE_15_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\15.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "15", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8305, -511.5 } },
+		},
+		EYE_15_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\15.02.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "15", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8305, -1303.5 } },
+		},
+		EYE_15_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\15.04.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "15", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8305, -2095.5 } },
+		},
+		EYE_01_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\01.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "01", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6765, -511.5 } },
+		},
+		EYE_01_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\01.02.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "01", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6765, -1303.5 } },
+		},
+		EYE_01_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\01.04.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "01", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6765, -2095.5 } },
+		},
+		EYE_02_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\02.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "02", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6875, -511.5 } },
+		},
+		EYE_02_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\02.02.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "02", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6875, -1303.5 } },
+		},
+		EYE_02_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\02.04.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "02", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6875, -2095.5 } },
+		},
+		EYE_03_00_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\03.00.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "03", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6985, -511.5 } },
+		},
+		EYE_03_02_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\03.02.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "03", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6985, -1303.5 } },
+		},
+		EYE_03_04_LD = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\れいむ\\目\\03.04.目.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+				Comments = Input { Value = "03", },
+			},
+			ViewInfo = OperatorInfo { Pos = { 6985, -2095.5 } },
+		},
 		BACK_04_LD = Loader {
 			Clips = {
 				Clip {
@@ -6523,11 +6820,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 8965, -511.5 } },
 		},
-		MOUTH_07_05_LD = Loader {
+		BODY_02_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\07.05.口.png",
+					Filename = "CHARA:\\れいむ\\体\\02.体.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -6546,9 +6843,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "07", },
+				Comments = Input { Value = "02", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 3355, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 1155, -511.5 } },
 		},
 		MOUTH_05_03_LD = Loader {
 			Clips = {
@@ -6577,11 +6874,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3135, -1699.5 } },
 		},
-		EYEBROW_05_LD = Loader {
+		MOUTH_32_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\眉\\05.眉.png",
+					Filename = "CHARA:\\れいむ\\口\\32.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -6600,9 +6897,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "05", },
+				Comments = Input { Value = "32", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 825, 148.5 } },
+			ViewInfo = OperatorInfo { Pos = { 6105, -511.5 } },
 		},
 		MOUTH_08_03_LD = Loader {
 			Clips = {
@@ -6631,11 +6928,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3465, -1699.5 } },
 		},
-		EYE_15_00_LD = Loader {
+		MOUTH_29_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\15.00.目.png",
+					Filename = "CHARA:\\れいむ\\口\\29.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -6654,36 +6951,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
+				Comments = Input { Value = "29", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8305, -511.5 } },
-		},
-		EYE_11_04_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\11.04.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "11", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7865, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 5775, -511.5 } },
 		},
 		MOUTH_10_05_LD = Loader {
 			Clips = {
@@ -6712,11 +6982,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 3685, -2491.5 } },
 		},
-		EYE_15_01_LD = Loader {
+		EYE_25_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\15.01.目.png",
+					Filename = "CHARA:\\れいむ\\目\\25.00.目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -6735,9 +7005,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
+				Comments = Input { Value = "25", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8305, -907.5 } },
+			ViewInfo = OperatorInfo { Pos = { 9405, -511.5 } },
 		},
 		EYE_35_00_LD = Loader {
 			Clips = {
@@ -6766,11 +7036,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 10505, -511.5 } },
 		},
-		MOUTH_15_00_LD = Loader {
+		MOUTH_02_05_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\15.00.口.png",
+					Filename = "CHARA:\\れいむ\\口\\02.05.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -6789,9 +7059,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "15", },
+				Comments = Input { Value = "02", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4235, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 2805, -2491.5 } },
 		},
 		MOUTH_16_01_LD = Loader {
 			Clips = {
@@ -6874,11 +7144,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 5555, -511.5 } },
 		},
-		EYE_31_00_LD = Loader {
+		MOUTH_20_00_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\31.00.目.png",
+					Filename = "CHARA:\\れいむ\\口\\20.00.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -6897,36 +7167,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "31", },
+				Comments = Input { Value = "20", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 10065, -511.5 } },
-		},
-		MOUTH_16_05_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\16.05.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "16", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 4345, -2491.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4785, -511.5 } },
 		},
 		BODY_01_LD = Loader {
 			Clips = {
@@ -6981,33 +7224,6 @@ Composition {
 				Comments = Input { Value = "06", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 2035, -511.5 } },
-		},
-		EYE_13_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\13.01.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "13", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8085, -907.5 } },
 		},
 		MOUTH_02_03_LD = Loader {
 			Clips = {
@@ -7198,11 +7414,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 1155, 148.5 } },
 		},
-		EYE_16_00_LD = Loader {
+		MOUTH_07_01_LD = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\16.00.目.png",
+					Filename = "CHARA:\\れいむ\\口\\07.01.口.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -7221,9 +7437,9 @@ Composition {
 			Inputs = {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "16", },
+				Comments = Input { Value = "07", },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8415, -511.5 } },
+			ViewInfo = OperatorInfo { Pos = { 3355, -907.5 } },
 		},
 		MOUTH_05_05_LD = Loader {
 			Clips = {
@@ -7251,33 +7467,6 @@ Composition {
 				Comments = Input { Value = "05", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 3135, -2491.5 } },
-		},
-		EYE_11_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\11.01.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "11", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7865, -907.5 } },
 		},
 		MOUTH_13_01_LD = Loader {
 			Clips = {
@@ -7332,87 +7521,6 @@ Composition {
 				Comments = Input { Value = "17", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 4455, -511.5 } },
-		},
-		EYE_17_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\17.01.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "17", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8525, -907.5 } },
-		},
-		EYE_12_05_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\12.05.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "12", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7975, -2491.5 } },
-		},
-		MOUTH_18_05_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\口\\18.05.口.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "18", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 4565, -2491.5 } },
 		},
 		MOUTH_01_00_LD = Loader {
 			Clips = {
@@ -7575,33 +7683,6 @@ Composition {
 				Comments = Input { Value = "11", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 3795, -2095.5 } },
-		},
-		EYE_12_00_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\12.00.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "12", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7975, -511.5 } },
 		},
 		MOUTH_33_00_LD = Loader {
 			Clips = {
@@ -7927,33 +8008,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 8525, -511.5 } },
 		},
-		EYE_14_03_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\14.03.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "14", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 8195, -1699.5 } },
-		},
 		MOUTH_18_01_LD = Loader {
 			Clips = {
 				Clip {
@@ -8007,60 +8061,6 @@ Composition {
 				Comments = Input { Value = "13", },
 			},
 			ViewInfo = OperatorInfo { Pos = { 4015, -1699.5 } },
-		},
-		EYE_11_03_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\11.03.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "11", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7865, -1699.5 } },
-		},
-		EYE_12_01_LD = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\れいむ\\目\\12.01.目.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-				Comments = Input { Value = "12", },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7975, -907.5 } },
 		},
 		EYE_18_01_LD = Loader {
 			Clips = {
@@ -8154,7 +8154,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { speed = { LINKS_Name = "speed", INP_Integer = false, INP_MinAllowed = 0.00999999977648258, LINKID_DataType = "Number", INP_MinScale = 0.00999999977648258, INPID_InputControl = "ScrewControl", ICS_ControlPage = "Controls", INP_Default = 1, } }
+					UserControls = ordered() { speed = { INP_Default = 1, INP_Integer = false, INP_MinAllowed = 0.00999999977648258, LINKID_DataType = "Number", ICS_ControlPage = "Controls", INPID_InputControl = "ScrewControl", INP_MinScale = 0.00999999977648258, LINKS_Name = "speed", } }
 				},
 				Calculation1_2 = Calculation {
 					CtrlWZoom = false,
@@ -8269,7 +8269,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 29.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Default = 0, INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "out", }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Y", INPID_InputControl = "CheckboxControl", INP_Default = 0, } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
 				}
 			},
 		},
@@ -8357,7 +8357,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_MinScale = 0, INP_Default = 0.1, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_MinScale = 0, INP_Default = 0.1, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKS_Name = "shake", LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", }, in_out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "in_out", } }
+					UserControls = ordered() { x = { INP_MinScale = 0, LINKS_Name = "x", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_MinScale = 0, LINKS_Name = "y", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", LINKS_Name = "shake", }, in_out = { INP_MinScale = 0, LINKS_Name = "in_out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
 				},
 				KeyframeStretcher1 = KeyStretcherMod {
 					CtrlWZoom = false,
@@ -8474,7 +8474,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "out", } }
 				}
 			},
 		},
@@ -8546,7 +8546,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Default = 0, INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "out", } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
 				}
 			},
 		},
@@ -8614,7 +8614,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "speed", INPID_InputControl = "ScrewControl", INP_Default = 1, }, offset = { INP_Integer = true, LINKS_Name = "offset", INPID_InputControl = "ScrewControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 500, INP_Default = 0, } }
+					UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 1, INPID_InputControl = "ScrewControl", LINKS_Name = "speed", }, offset = { INP_Integer = true, INP_Default = 0, INPID_InputControl = "ScrewControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 500, LINKS_Name = "offset", } }
 				},
 				XYPath1 = XYPath {
 					ShowKeyPoints = false,
@@ -8747,7 +8747,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_Integer = false, LINKS_Name = "x", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_Integer = false, LINKS_Name = "y", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { LINKS_Name = "shake", INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", }, in_out = { INP_Integer = false, LINKS_Name = "in_out", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, } }
+					UserControls = ordered() { x = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", LINKS_Name = "shake", }, in_out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "in_out", } }
 				},
 				KeyframeStretcher1_1 = KeyStretcherMod {
 					CtrlWZoom = false,
@@ -9595,7 +9595,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Prev_Btn_FRONT\nchara_sozai.prev_next(comp, \"前_Xf\", False)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"前_Xf\", False)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "PREV",
@@ -9605,7 +9605,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Next_Btn_FRONT\nchara_sozai.prev_next(comp, \"前_Xf\", True)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"前_Xf\", True)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "NEXT",
@@ -9668,7 +9668,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Prev_Btn_HAIR\nchara_sozai.prev_next(comp, \"髪_Xf\", False)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"髪_Xf\", False)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "PREV",
@@ -9678,7 +9678,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Next_Btn_HAIR\nchara_sozai.prev_next(comp, \"髪_Xf\", True)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"髪_Xf\", True)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "NEXT",
@@ -9731,7 +9731,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Prev_Btn_EYEBROW\nchara_sozai.prev_next(comp, \"眉_Xf\", False)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"眉_Xf\", False)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "PREV",
@@ -9741,7 +9741,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Next_Btn_EYEBROW\nchara_sozai.prev_next(comp, \"眉_Xf\", True)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"眉_Xf\", True)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "NEXT",
@@ -9914,7 +9914,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Prev_Btn_EYE\nchara_sozai.prev_next(comp, \"目_00_Xf\", False)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"目_00_Xf\", False)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "PREV",
@@ -9924,7 +9924,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Next_Btn_EYE\nchara_sozai.prev_next(comp, \"目_00_Xf\", True)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"目_00_Xf\", True)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "NEXT",
@@ -10337,7 +10337,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Prev_Btn_MOUTH\nchara_sozai.prev_next(comp, \"口_00_Xf\", False)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"口_00_Xf\", False)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "PREV",
@@ -10347,7 +10347,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Next_Btn_MOUTH\nchara_sozai.prev_next(comp, \"口_00_Xf\", True)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"口_00_Xf\", True)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "NEXT",
@@ -10730,7 +10730,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Prev_Btn_FACE\nchara_sozai.prev_next(comp, \"顔_Xf\", False)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"顔_Xf\", False)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "PREV",
@@ -10740,7 +10740,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Next_Btn_FACE\nchara_sozai.prev_next(comp, \"顔_Xf\", True)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"顔_Xf\", True)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "NEXT",
@@ -10863,7 +10863,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Prev_Btn_BODY\nchara_sozai.prev_next(comp, \"体_Xf\", False)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"体_Xf\", False)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "PREV",
@@ -10873,7 +10873,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Next_Btn_BODY\nchara_sozai.prev_next(comp, \"体_Xf\", True)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"体_Xf\", True)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "NEXT",
@@ -10936,7 +10936,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Prev_Btn_BACK\nchara_sozai.prev_next(comp, \"後_Xf\", False)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"後_Xf\", False)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "PREV",
@@ -10946,7 +10946,7 @@ Composition {
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "\nself:SetAttrs({INPB_Disabled = true})\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nimport time\nnode = comp.FindTool('Root')\nbtn = node.Next_Btn_BACK\nchara_sozai.prev_next(comp, \"後_Xf\", True)\ntime.sleep(0.1)\nbtn.SetAttrs({'INPB_Disabled': False})\n]])\n",
+					BTNCS_Execute = "\ncomp:Execute([[\n!Py3: from rs_fusion.core import chara_sozai\nchara_sozai.prev_next(comp, \"後_Xf\", True)\n]])\n",
 					ICS_ControlPage = "ポーズ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "NEXT",
@@ -11221,20 +11221,20 @@ Composition {
 			Width = 1920,
 			Height = 1104,
 			ZoneInfo = {
-				AuxRight = { Expanded = true },
+				["!Right"] = {
+				},
 				["!Left"] = {
 				},
 				AuxLeft = { Expanded = true },
 				Right = { Expanded = true, },
 				Left = { Expanded = false, },
-				["!Right"] = {
-				}
+				AuxRight = { Expanded = true }
 			},
 			ViewInfo = {
 				Viewer1 = { Show = true, RatioY = 0.01, RatioX = 1.00093023255814, },
 				InnerLeft = {
-					PixelX = 420,
 					RatioY = 100,
+					PixelX = 420,
 				},
 				MainSplit = {
 					RatioX = 100,
@@ -11256,13 +11256,13 @@ Composition {
 				Inspector = { Show = true, RatioY = 1, RatioX = 100, },
 				InnerRight = {
 				},
-				MediaPool = { Show = false, },
+				ActionStrip = { Show = true, RatioX = 100, },
 				OuterColumns = {
 					RatioX = 100,
 					RatioY = 1,
 				},
 				Effects = { Show = true, Adjust = false, RatioY = 100, MRU = 1, RatioX = 1, },
-				ActionStrip = { Show = true, RatioX = 100, },
+				Clips = { Show = false, },
 				Metadata = { Show = false, },
 				OuterLeft = {
 				},
@@ -11272,10 +11272,10 @@ Composition {
 				},
 				Nodes = { Show = true, RatioY = 100, RatioX = 1, },
 				OuterRight = {
-					PixelX = 420,
 					RatioY = 100,
+					PixelX = 420,
 				},
-				Clips = { Show = false, },
+				MediaPool = { Show = false, },
 				Spline = { Show = false, }
 			},
 			Views = ordered() {
@@ -11301,8 +11301,8 @@ Composition {
 						NavigatorSize = { 200, 140 },
 						Direction = "Horizontal",
 						PipeStyle = "Direct",
-						RootScale = 0.125,
-						RootOffset = { -7226.11, -207.634 }
+						RootScale = 0.12896,
+						RootOffset = { -7341.28, -415.06 }
 					}
 				},
 				Keyframes = MultiView {
@@ -11520,10 +11520,10 @@ Composition {
 				Preview = {
 					DataCheck = true,
 					Key = 15,
-					Handler = 1668707181,
-					KeyCheck = true,
+					Quality = 75,
 					DataRate = 300,
-					Quality = 75
+					KeyCheck = true,
+					Handler = 1668707181
 				}
 			},
 			Tweaks = {

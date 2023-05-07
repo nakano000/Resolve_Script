@@ -17,14 +17,6 @@ BACK = '後'
 FRONT = '前'
 
 
-def _connect(xf_list, ld_list):
-    _ld = None
-    for i, xf in enumerate(xf_list):
-        if i < len(ld_list):
-            _ld = ld_list[i]
-        xf.ConnectInput('Input', _ld)
-
-
 def _set_for_eye(comp, key, data):
     if data['part'] == EYE:
         xf_list = p.pipe(
@@ -44,23 +36,15 @@ def _set_for_eye(comp, key, data):
         mg_mouth.SetAttrs({'TOOLB_PassThrough': key.endswith('+眉口')})
 
 
-def connect(comp, xf_name, key):
-    xf = comp.FindTool(xf_name)
-    if xf is None:
-        return
-    json_txt = xf.GetInput('Comments')
-    data = json.loads(json_txt)
+def _connect(comp, key, data, ld_name_list):
     part = data['part']
     xf_list = p.pipe(
         data['xf'][part],
         p.map(comp.FindTool),
         list,
     )
-    ld_data: dict = data['ld']
-    if key not in ld_data.keys():
-        return
     ld_list = p.pipe(
-        ld_data[key],
+        ld_name_list,
         p.map(comp.FindTool),
         list,
     )
@@ -68,10 +52,33 @@ def connect(comp, xf_name, key):
     root = comp.FindTool('Root')
     preview_param = data['preview']
     # main
-    comp.Lock()
-    _connect(xf_list, ld_list)
+
+    # connect
+    _ld = None
+    for i, xf in enumerate(xf_list):
+        if i < len(ld_list):
+            _ld = ld_list[i]
+        xf.ConnectInput('Input', _ld)
+    # set for eye
     _set_for_eye(comp, key, data)
-    root.SetInput(preview_param, key)
+    # preview
+    root.SetInput(preview_param, key, comp.CurrentTime)
+
+
+
+def connect(comp, xf_name, key):
+    xf = comp.FindTool(xf_name)
+    if xf is None:
+        return
+    json_txt = xf.GetInput('Comments')
+    data = json.loads(json_txt)
+    ld_data: dict = data['ld']
+    if key not in ld_data.keys():
+        return
+    comp.Lock()
+    comp.StartUndo('RS Pose')
+    _connect(comp, key, data, ld_data[key])
+    comp.EndUndo(True)
     comp.Unlock()
 
 
@@ -81,12 +88,6 @@ def prev_next(comp, xf_name: str, is_next=False):
         return
     json_txt = xf.GetInput('Comments')
     data = json.loads(json_txt)
-    part = data['part']
-    xf_list = p.pipe(
-        data['xf'][part],
-        p.map(comp.FindTool),
-        list,
-    )
     ld_data: dict = data['ld']
     outp = xf.Input.GetConnectedOutput()
     # find index
@@ -98,26 +99,22 @@ def prev_next(comp, xf_name: str, is_next=False):
                 index = i
                 break
     # set index
+    max_index = len(ld_data) - 1
     if is_next:
-        index = min(index + 1, len(ld_data) - 1)
+        index += 1
+        if index > max_index:
+            index = 0
     else:
-        index = max(index - 1, 0)
+        index -= 1
+        if index < 0:
+            index = max_index
 
     # set data
     key, ld_name_list = list(ld_data.items())[index]
-    ld_list = p.pipe(
-        ld_name_list,
-        p.map(comp.FindTool),
-        list,
-    )
-    # preview
-    root = comp.FindTool('Root')
-    preview_param = data['preview']
-    # main
     comp.Lock()
-    _connect(xf_list, ld_list)
-    _set_for_eye(comp, key, data)
-    root.SetInput(preview_param, key)
+    comp.StartUndo('RS Pose')
+    _connect(comp, key, data, ld_name_list)
+    comp.EndUndo(True)
     comp.Unlock()
 
 

@@ -230,22 +230,14 @@ chara_sozai.connect(comp, "%s", "%s")
 ]])
 ''' % (xf.Name, key)
 
-    def get_prev_next_lua(self, xf, part, is_next=False):
-        prev_button_name = self.get_prev_button_name(part)
-        next_button_name = self.get_next_button_name(part)
-        btn_name = next_button_name if is_next else prev_button_name
+    @staticmethod
+    def get_prev_next_lua(xf, is_next=False):
         return '''
-self:SetAttrs({INPB_Disabled = true})
 comp:Execute([[
 !Py3: from rs_fusion.core import chara_sozai
-import time
-node = comp.FindTool('Root')
-btn = node.%s
 chara_sozai.prev_next(comp, "%s", %s)
-time.sleep(0.1)
-btn.SetAttrs({'INPB_Disabled': False})
 ]])
-''' % (btn_name, xf.Name, str(is_next))
+''' % (xf.Name, str(is_next))
 
     @staticmethod
     def get_blink_lua(xf):
@@ -477,8 +469,8 @@ chara_sozai.set_blink(comp, "%s")
 
             # user control
             _uc = self.get_uc_base(
-                self.get_prev_next_lua(_xf_list[0], part, is_next=False),
-                self.get_prev_next_lua(_xf_list[0], part, is_next=True),
+                self.get_prev_next_lua(_xf_list[0], is_next=False),
+                self.get_prev_next_lua(_xf_list[0], is_next=True),
                 part,
                 page_name,
                 len(_ld_data) + 3,  # +3 for prev, next, preview
