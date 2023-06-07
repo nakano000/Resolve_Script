@@ -76,6 +76,35 @@ def get_track_item_count(timeline, track_type, index):
     return len(lst)
 
 
+class LockOther:
+    def __init__(self, timeline, index, track_type='video', enable=True):
+        self.timeline = timeline
+        self.index = index
+        self.track_type = track_type
+        self.enable = enable
+        self.__lock_state = {}
+        self.__TYPE_LIST = ['video', 'audio', 'subtitle']
+        for _track_type in self.__TYPE_LIST:
+            self.__lock_state[_track_type] = {}
+
+    def __enter__(self):
+        if self.enable:
+            for _track_type in self.__TYPE_LIST:
+                for i in range(1, self.timeline.GetTrackCount(_track_type) + 1):
+                    self.__lock_state[_track_type][i] = self.timeline.GetIsTrackLocked(_track_type, i)
+                    if i == self.index and _track_type == self.track_type:
+                        self.timeline.SetTrackLock(_track_type, i, False)
+                    else:
+                        self.timeline.SetTrackLock(_track_type, i, True)
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.enable:
+            for _track_type in self.__TYPE_LIST:
+                for i in range(1, self.timeline.GetTrackCount(_track_type) + 1):
+                    self.timeline.SetTrackLock(_track_type, i, self.__lock_state[_track_type][i])
+
+
 if __name__ == '__main__':
     def test(tc: str, fps, frames):
         r = timecode2Frame(tc, fps)

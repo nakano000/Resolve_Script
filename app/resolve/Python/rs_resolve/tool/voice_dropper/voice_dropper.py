@@ -50,6 +50,7 @@ from rs_resolve.core import (
     track_name2index,
     get_item,
     get_track_item_count,
+    LockOther,
 )
 
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
@@ -548,122 +549,103 @@ class MainWindow(QMainWindow):
             'data', 'app', 'VoiceDropper', 'setting_base.txt'
         ).read_text(encoding='utf-8')
 
-        # track lock
-        track_type_list = ['video', 'audio', 'subtitle']
-        _lock_state = {}
-        for track_type in track_type_list:
-            _lock_state[track_type] = {}
-        if data.use_auto_lock:
-            for track_type in track_type_list:
-                for i in range(1, timeline.GetTrackCount(track_type) + 1):
-                    _lock_state[track_type][i] = timeline.GetIsTrackLocked(track_type, i)
-                    if i == v_index and track_type == 'video':
-                        timeline.SetTrackLock(track_type, i, False)
-                    else:
-                        timeline.SetTrackLock(track_type, i, True)
+        with LockOther(timeline, v_index, track_type='video', enable=data.use_auto_lock):
+            # main loop
+            for item in audio_items:
+                sf = max([item.GetStart(), v_sf])
+                ef = min([item.GetEnd(), v_ef])
+                f = Path(item.GetMediaPoolItem().GetClipProperty('File Path'))
+                lab_file = f.parent.joinpath(f.stem + '.lab')
+                self.add2log('wav: ' + str(f))
 
-        # main loop
-        for item in audio_items:
-            sf = max([item.GetStart(), v_sf])
-            ef = min([item.GetEnd(), v_ef])
-            f = Path(item.GetMediaPoolItem().GetClipProperty('File Path'))
-            lab_file = f.parent.joinpath(f.stem + '.lab')
-            self.add2log('wav: ' + str(f))
+                # キャラクター設定
+                ch_data = chara_data.from_file(f)
 
-            # キャラクター設定
-            ch_data = chara_data.from_file(f)
+                # split
+                self.cut_clip(w, timeline, sf, ef, data.wait)
 
-            # split
-            self.cut_clip(w, timeline, sf, ef, data.wait)
-
-            # get Macro Tool
-            tatie_clip = get_item(timeline, 'video', v_index, sf)
-            if tatie_clip is None:
-                self.add2log('立ち絵ビデオクリップが見付かりません。')
-                continue
-            if tatie_clip.GetFusionCompCount() == 0:
-                self.add2log('Fusion Compが見付かりません。')
-                continue
-            comp = tatie_clip.GetFusionCompByIndex(1)
-            tools = p.pipe(
-                comp.GetToolList(False).values(),
-                p.filter(lambda x: x.ID in ['MacroOperator', 'GroupOperator']),
-                p.filter(lambda x: x.ParentTool is None),
-                list,
-            )
-            if len(tools) == 0:
-                self.add2log('MacroまたはGroupが見付かりません。')
-                continue
-            tool = tools[0]
-
-            # get anim
-            self.add2log('Load Anim: Start')
-            anim = ''
-            offset = comp.GetAttrs()['COMPN_GlobalStart']
-            if ch_data.anim_type.strip().lower() == 'open':
-                anim = lab.wav2anim(f, fps, offset)
-            elif lab_file.is_file():
-                anim = lab.lab2anim(lab_file, fps, ch_data.anim_type.strip().lower(), offset)
-
-            st = ordered_dict_to_dict(bmd.readstring(setting_base % (
-                ch_data.anim_parameter,
-                ch_data.anim_parameter,
-                ch_data.anim_parameter,
-                anim,
-            )))
-            if st is None:
-                self.add2log('アニメーションの読み込みに失敗しました。')
-                continue
-            self.add2log('Load Anim: Done')
-
-            # get anim tool list
-            _pram = ch_data.anim_parameter
-            tool_list = []
-            for v in tool.SaveSettings()['Tools'][tool.Name]['Inputs'].values():
-                if isinstance(v, dict) and '__ctor' in v.keys():
-                    if v['__ctor'] == 'InstanceInput' and v['Source'] in [_pram]:
-                        tool_list.append(comp.FindTool(v['SourceOp']))
-
-            # set Lip Sync
-            self.add2log('Apply Anim: Start')
-            comp.StartUndo('RS Lip Sync')
-            comp.Lock()
-            for t in tool_list:
-                if t.GetAttrs()['TOOLB_Visible']:
-                    comment = t.GetInput('Comments', comp.CurrentTime)
-                    t.LoadSettings(st)
-                    t.SetInput('Comments', comment, comp.CurrentTime)
-                else:
-                    o_st = t.SaveSettings()
-                    o_st['Tools']['MouthAnimBezierSpline'] = st['Tools']['MouthAnimBezierSpline']
-                    o_st['Tools'][t.Name]['Inputs'][_pram] = st['Tools']['Ctrl']['Inputs'][_pram]
-                    t.LoadSettings(o_st)
-            comp.Unlock()
-            comp.EndUndo(True)
-            self.add2log('Apply Anim: Done')
-
-            # set color
-            tatie_clip.SetClipColor(ch_data.color)
-
-            # set pose
-            pf = Path(ch_data.pose_file)
-            if pf.is_file():
-                self.add2log('Apply Pose: Start')
-                text = pf.read_text(encoding='utf-8')
-                try:
-                    lst = json.loads(text)
-                except json.JSONDecodeError:
-                    self.add2log('Invalid JSON')
+                # get Macro Tool
+                tatie_clip = get_item(timeline, 'video', v_index, sf)
+                if tatie_clip is None:
+                    self.add2log('立ち絵ビデオクリップが見付かりません。')
                     continue
-                if isinstance(lst, list):
-                    pose.apply(comp, lst)
-                    self.add2log('Apply Pose: Done')
+                if tatie_clip.GetFusionCompCount() == 0:
+                    self.add2log('Fusion Compが見付かりません。')
+                    continue
+                comp = tatie_clip.GetFusionCompByIndex(1)
+                tools = p.pipe(
+                    comp.GetToolList(False).values(),
+                    p.filter(lambda x: x.ID in ['MacroOperator', 'GroupOperator']),
+                    p.filter(lambda x: x.ParentTool is None),
+                    list,
+                )
+                if len(tools) == 0:
+                    self.add2log('MacroまたはGroupが見付かりません。')
+                    continue
+                tool = tools[0]
 
-        # track unlock
-        if data.use_auto_lock:
-            for track_type in track_type_list:
-                for i in range(1, timeline.GetTrackCount(track_type) + 1):
-                    timeline.SetTrackLock(track_type, i, _lock_state[track_type][i])
+                # get anim
+                self.add2log('Load Anim: Start')
+                anim = ''
+                offset = comp.GetAttrs()['COMPN_GlobalStart']
+                if ch_data.anim_type.strip().lower() == 'open':
+                    anim = lab.wav2anim(f, fps, offset)
+                elif lab_file.is_file():
+                    anim = lab.lab2anim(lab_file, fps, ch_data.anim_type.strip().lower(), offset)
+
+                st = ordered_dict_to_dict(bmd.readstring(setting_base % (
+                    ch_data.anim_parameter,
+                    ch_data.anim_parameter,
+                    ch_data.anim_parameter,
+                    anim,
+                )))
+                if st is None:
+                    self.add2log('アニメーションの読み込みに失敗しました。')
+                    continue
+                self.add2log('Load Anim: Done')
+
+                # get anim tool list
+                _pram = ch_data.anim_parameter
+                tool_list = []
+                for v in tool.SaveSettings()['Tools'][tool.Name]['Inputs'].values():
+                    if isinstance(v, dict) and '__ctor' in v.keys():
+                        if v['__ctor'] == 'InstanceInput' and v['Source'] in [_pram]:
+                            tool_list.append(comp.FindTool(v['SourceOp']))
+
+                # set Lip Sync
+                self.add2log('Apply Anim: Start')
+                comp.StartUndo('RS Lip Sync')
+                comp.Lock()
+                for t in tool_list:
+                    if t.GetAttrs()['TOOLB_Visible']:
+                        comment = t.GetInput('Comments', comp.CurrentTime)
+                        t.LoadSettings(st)
+                        t.SetInput('Comments', comment, comp.CurrentTime)
+                    else:
+                        o_st = t.SaveSettings()
+                        o_st['Tools']['MouthAnimBezierSpline'] = st['Tools']['MouthAnimBezierSpline']
+                        o_st['Tools'][t.Name]['Inputs'][_pram] = st['Tools']['Ctrl']['Inputs'][_pram]
+                        t.LoadSettings(o_st)
+                comp.Unlock()
+                comp.EndUndo(True)
+                self.add2log('Apply Anim: Done')
+
+                # set color
+                tatie_clip.SetClipColor(ch_data.color)
+
+                # set pose
+                pf = Path(ch_data.pose_file)
+                if pf.is_file():
+                    self.add2log('Apply Pose: Start')
+                    text = pf.read_text(encoding='utf-8')
+                    try:
+                        lst = json.loads(text)
+                    except json.JSONDecodeError:
+                        self.add2log('Invalid JSON')
+                        continue
+                    if isinstance(lst, list):
+                        pose.apply(comp, lst)
+                        self.add2log('Apply Pose: Done')
 
         # log
         self.add2log('')
