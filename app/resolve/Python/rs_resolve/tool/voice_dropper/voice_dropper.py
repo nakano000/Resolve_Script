@@ -50,7 +50,7 @@ from rs_resolve.core import (
     track_name2index,
     get_item,
     get_track_item_count,
-    LockOther,
+    LockOtherTrack,
 )
 
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
@@ -549,7 +549,7 @@ class MainWindow(QMainWindow):
             'data', 'app', 'VoiceDropper', 'setting_base.txt'
         ).read_text(encoding='utf-8')
 
-        with LockOther(timeline, v_index, track_type='video', enable=data.use_auto_lock):
+        with LockOtherTrack(timeline, v_index, track_type='video', enable=data.use_auto_lock):
             # main loop
             for item in audio_items:
                 sf = max([item.GetStart(), v_sf])

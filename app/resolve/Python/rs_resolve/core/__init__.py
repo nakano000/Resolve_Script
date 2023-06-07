@@ -76,7 +76,7 @@ def get_track_item_count(timeline, track_type, index):
     return len(lst)
 
 
-class LockOther:
+class LockOtherTrack:
     def __init__(self, timeline, index, track_type='video', enable=True):
         self.timeline = timeline
         self.index = index
