@@ -15,7 +15,7 @@ from PySide2.QtWidgets import (
 
 from rs.core import (
     config,
-    pipe as p,
+    pipe as p, lang,
 )
 from rs.gui import (
     appearance,
@@ -23,6 +23,7 @@ from rs.gui import (
 
 from rs_resolve.core import (
     get_currentframe,
+    LockOtherTrack,
 )
 from rs_resolve.tool.subtitle2text_plus.subtitle2text_plus_ui import Ui_MainWindow
 
@@ -33,6 +34,7 @@ APP_NAME = 'Subtitle2TextPlus'
 class ConfigData(config.Data):
     wait_time: float = 0.01
     color: str = 'Blue'
+    use_auto_lock: bool = True
 
 
 def get_track_names(timeline, track_type):
@@ -79,6 +81,10 @@ class MainWindow(QMainWindow):
         self.resize(150, 150)
         self.fusion = fusion
 
+        # translate
+        self.lang_code: lang.Code = lang.load()
+        self.translate()
+
         # combobox
         for w in [self.ui.videoComboBox, self.ui.subtitleComboBox]:
             m = QStringListModel()
@@ -89,7 +95,6 @@ class MainWindow(QMainWindow):
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
-
 
         # style sheet
         self.ui.updateButton.setStyleSheet(appearance.other_stylesheet)
@@ -104,6 +109,13 @@ class MainWindow(QMainWindow):
         self.update_track()
         self.ui.closeButton.setFocus()
 
+    def translate(self) -> None:
+        if self.lang_code == lang.Code.en:
+            self.ui.settingGroupBox.setTitle('Setting')
+            self.ui.trackGroupBox.setTitle('Track')
+            self.ui.clipCplorLabel.setText('Clip Color')
+            self.ui.waitLabel.setText('Wait Time')
+
     def convert(self) -> None:
         import pyautogui
 
@@ -116,23 +128,39 @@ class MainWindow(QMainWindow):
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
-            print('Projectが見付かりません。')
+            print(
+                'Project not found.'
+                if self.lang_code == lang.Code.en else
+                'Projectが見付かりません。'
+            )
             return
         timeline = project.GetCurrentTimeline()
         if timeline is None:
-            print('Timelineが見付かりません。')
+            print(
+                'Timeline not found.'
+                if self.lang_code == lang.Code.en else
+                'Timelineが見付かりません。'
+            )
             return
 
         v_index = track_name2index(timeline, 'video', self.ui.videoComboBox.currentText())
         s_index = track_name2index(timeline, 'subtitle', self.ui.subtitleComboBox.currentText())
 
         if v_index == 0 or s_index == 0:
-            print('選択したトラックが見付かりません。')
+            print(
+                'Track not found.'
+                if self.lang_code == lang.Code.en else
+                '選択したトラックが見付かりません。'
+            )
             return
 
         v_item = get_video_item(timeline, v_index)
         if v_item is None:
-            print('ビデオクリップが見付かりません。')
+            print(
+                'Video clip not found.'
+                if self.lang_code == lang.Code.en else
+                'ビデオクリップが見付かりません。'
+            )
             return
         v_sf = v_item.GetStart()
         v_ef = v_item.GetEnd()
@@ -144,41 +172,54 @@ class MainWindow(QMainWindow):
 
         w = get_resolve_window(project.GetName())
         if w is None:
-            print('DaVinci ResolveのWindowが見付かりません。')
+            print(
+                'DaVinci Resolve window not found.'
+                if self.lang_code == lang.Code.en else
+                'DaVinci ResolveのWindowが見付かりません。'
+            )
             return
 
-        # main
-        for item in subtitle_items:
-            sf = max([item.GetStart(), v_sf])
-            ef = min([item.GetEnd(), v_ef])
-            cf = int((sf + ef) / 2)
-            text = item.GetName()
-            # split
-            w.activate()
-            pyautogui.hotkey('ctrl', 'shift', 'a')
-            for n in [sf, ef]:
-                timeline.SetCurrentTimecode(str(n))
+        with LockOtherTrack(timeline, v_index, track_type='video', enable=data.use_auto_lock):
+            # main
+            for item in subtitle_items:
+                sf = max([item.GetStart(), v_sf])
+                ef = min([item.GetEnd(), v_ef])
+                cf = int((sf + ef) / 2)
+                text = item.GetName()
+                # split
                 w.activate()
-                pyautogui.hotkey('ctrl', 'b')
-                time.sleep(data.wait_time)
-            # setup
-            timeline.SetCurrentTimecode(str(cf))
-            time.sleep(data.wait_time / 2)
-            for text_plus in timeline.GetItemListInTrack('video', v_index):
-                if text_plus.GetStart() < cf < text_plus.GetEnd():
-                    # set styled text
-                    if text_plus.GetFusionCompCount() == 0:
-                        print('FusionCompが見付かりません。')
+                pyautogui.hotkey('ctrl', 'shift', 'a')
+                for n in [sf, ef]:
+                    timeline.SetCurrentTimecode(str(n))
+                    w.activate()
+                    pyautogui.hotkey('ctrl', 'b')
+                    time.sleep(data.wait_time)
+                # setup
+                timeline.SetCurrentTimecode(str(cf))
+                time.sleep(data.wait_time / 2)
+                for text_plus in timeline.GetItemListInTrack('video', v_index):
+                    if text_plus.GetStart() < cf < text_plus.GetEnd():
+                        # set styled text
+                        if text_plus.GetFusionCompCount() == 0:
+                            print(
+                                'FusionComp not found.'
+                                if self.lang_code == lang.Code.en else
+                                'FusionCompが見付かりません。'
+                            )
+                            break
+                        comp = text_plus.GetFusionCompByIndex(1)
+                        lst = comp.GetToolList(False, 'TextPlus')
+                        if not lst[1]:
+                            print(
+                                'TextPlus Node not found.'
+                                if self.lang_code == lang.Code.en else
+                                'TextPlus Nodeが見付かりません。'
+                            )
+                            break
+                        tool = lst[1]
+                        tool.StyledText = text
+                        text_plus.SetClipColor(data.color)
                         break
-                    comp = text_plus.GetFusionCompByIndex(1)
-                    lst = comp.GetToolList(False, 'TextPlus')
-                    if not lst[1]:
-                        print('TextPlus Nodeが見付かりません。')
-                        break
-                    tool = lst[1]
-                    tool.StyledText = text
-                    text_plus.SetClipColor(data.color)
-                    break
 
         # end
         print('Done!')
@@ -190,11 +231,19 @@ class MainWindow(QMainWindow):
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
-            print('Projectが見付かりません。')
+            print(
+                'Project not found.'
+                if self.lang_code == lang.Code.en else
+                'Projectが見付かりません。'
+            )
             return
         timeline = project.GetCurrentTimeline()
         if timeline is None:
-            print('Timelineが見付かりません。')
+            print(
+                'Timeline not found.'
+                if self.lang_code == lang.Code.en else
+                'Timelineが見付かりません。'
+            )
             return
         if timeline is None:
             v_m.setStringList([])
@@ -210,11 +259,13 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.waitTimeSpinBox.setValue(c.wait_time)
         self.ui.colorComboBox.setCurrentText(c.color)
+        self.ui.autoLockCheckBox.setChecked(c.use_auto_lock)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.wait_time = self.ui.waitTimeSpinBox.value()
         c.color = self.ui.colorComboBox.currentText()
+        c.use_auto_lock = self.ui.autoLockCheckBox.isChecked()
         return c
 
     def load_config(self) -> None:
