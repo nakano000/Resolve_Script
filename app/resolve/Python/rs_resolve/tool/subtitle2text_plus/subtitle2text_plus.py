@@ -116,6 +116,25 @@ class MainWindow(QMainWindow):
             self.ui.clipCplorLabel.setText('Clip Color')
             self.ui.waitLabel.setText('Wait Time')
 
+    def get_text_plus(self, item):
+        if item.GetFusionCompCount() == 0:
+            print(
+                'FusionComp not found.'
+                if self.lang_code == lang.Code.en else
+                'FusionCompが見付かりません。'
+            )
+            return
+        comp = item.GetFusionCompByIndex(1)
+        lst = comp.GetToolList(False, 'TextPlus')
+        if not lst[1]:
+            print(
+                'TextPlus Node not found.'
+                if self.lang_code == lang.Code.en else
+                'TextPlus Nodeが見付かりません。'
+            )
+            return
+        return lst[1]
+
     def convert(self) -> None:
         import pyautogui
 
@@ -179,6 +198,12 @@ class MainWindow(QMainWindow):
             )
             return
 
+        # clear text+
+        _node = self.get_text_plus(v_item)
+        if _node is None:
+            return
+        _node.StyledText = ''
+
         with LockOtherTrack(timeline, v_index, track_type='video', enable=data.use_auto_lock):
             # main
             for item in subtitle_items:
@@ -188,6 +213,7 @@ class MainWindow(QMainWindow):
                 text = item.GetName()
                 # split
                 w.activate()
+                pyautogui.hotkey('ctrl', '4')
                 pyautogui.hotkey('ctrl', 'shift', 'a')
                 for n in [sf, ef]:
                     timeline.SetCurrentTimecode(str(n))
@@ -197,28 +223,14 @@ class MainWindow(QMainWindow):
                 # setup
                 timeline.SetCurrentTimecode(str(cf))
                 time.sleep(data.wait_time / 2)
-                for text_plus in timeline.GetItemListInTrack('video', v_index):
-                    if text_plus.GetStart() < cf < text_plus.GetEnd():
+                for clip in timeline.GetItemListInTrack('video', v_index):
+                    if clip.GetStart() < cf < clip.GetEnd():
                         # set styled text
-                        if text_plus.GetFusionCompCount() == 0:
-                            print(
-                                'FusionComp not found.'
-                                if self.lang_code == lang.Code.en else
-                                'FusionCompが見付かりません。'
-                            )
+                        tool = self.get_text_plus(clip)
+                        if tool is None:
                             break
-                        comp = text_plus.GetFusionCompByIndex(1)
-                        lst = comp.GetToolList(False, 'TextPlus')
-                        if not lst[1]:
-                            print(
-                                'TextPlus Node not found.'
-                                if self.lang_code == lang.Code.en else
-                                'TextPlus Nodeが見付かりません。'
-                            )
-                            break
-                        tool = lst[1]
                         tool.StyledText = text
-                        text_plus.SetClipColor(data.color)
+                        clip.SetClipColor(data.color)
                         break
 
         # end
