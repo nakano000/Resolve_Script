@@ -15,7 +15,8 @@ from PySide2.QtWidgets import (
 
 from rs.core import (
     config,
-    pipe as p, lang,
+    pipe as p,
+    lang,
 )
 from rs.gui import (
     appearance,
@@ -24,7 +25,9 @@ from rs.gui import (
 from rs_resolve.core import (
     get_currentframe,
     LockOtherTrack,
+    shortcut,
 )
+from rs_resolve.gui.shortcut.shortcut_window import MainWindow as ShortcutWindow
 from rs_resolve.tool.subtitle2text_plus.subtitle2text_plus_ui import Ui_MainWindow
 
 APP_NAME = 'Subtitle2TextPlus'
@@ -96,11 +99,16 @@ class MainWindow(QMainWindow):
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
 
+        # window
+        self.shortcut_window = ShortcutWindow(self, self.fusion)
+
         # style sheet
+        self.ui.shortcutButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.updateButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.convertButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
+        self.ui.shortcutButton.clicked.connect(self.shortcut_window.show)
         self.ui.updateButton.clicked.connect(self.update_track)
         self.ui.convertButton.clicked.connect(self.convert)
         self.ui.closeButton.clicked.connect(self.close)
@@ -136,8 +144,6 @@ class MainWindow(QMainWindow):
         return lst[1]
 
     def convert(self) -> None:
-        import pyautogui
-
         data = self.get_data()
 
         resolve = self.fusion.GetResolve()
@@ -205,6 +211,10 @@ class MainWindow(QMainWindow):
         _node.StyledText = ''
 
         with LockOtherTrack(timeline, v_index, track_type='video', enable=data.use_auto_lock):
+            sc = shortcut.Data()
+            if shortcut.CONFIG_FILE.exists():
+                sc.load(shortcut.CONFIG_FILE)
+
             # main
             for item in subtitle_items:
                 sf = max([item.GetStart(), v_sf])
@@ -213,12 +223,12 @@ class MainWindow(QMainWindow):
                 text = item.GetName()
                 # split
                 w.activate()
-                pyautogui.hotkey('ctrl', '4')
-                pyautogui.hotkey('ctrl', 'shift', 'a')
+                sc.active_timeline_panel()
+                sc.deselect_all()
                 for n in [sf, ef]:
                     timeline.SetCurrentTimecode(str(n))
                     w.activate()
-                    pyautogui.hotkey('ctrl', 'b')
+                    sc.razor()
                     time.sleep(data.wait_time)
                 # setup
                 timeline.SetCurrentTimecode(str(cf))

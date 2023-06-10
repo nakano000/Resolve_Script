@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>212</width>
-    <height>252</height>
+    <width>217</width>
+    <height>281</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,6 +59,13 @@
         <widget class="QCheckBox" name="autoLockCheckBox">
          <property name="text">
           <string>Auto Lock</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="shortcutButton">
+         <property name="text">
+          <string>shortcut</string>
          </property>
         </widget>
        </item>

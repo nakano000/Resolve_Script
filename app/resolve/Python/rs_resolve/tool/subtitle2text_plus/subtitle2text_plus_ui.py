@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\subtitle2text_plus\subtitle2text_plus.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\subtitle2text_plus\subtitle2text_plus.ui' applies.
 #
-# Created: Thu Jun  8 07:25:59 2023
+# Created: Sun Jun 11 07:59:55 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(212, 252)
+        MainWindow.resize(217, 281)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -46,6 +46,9 @@ class Ui_MainWindow(object):
         self.autoLockCheckBox = QtWidgets.QCheckBox(self.settingGroupBox)
         self.autoLockCheckBox.setObjectName("autoLockCheckBox")
         self.verticalLayout_3.addWidget(self.autoLockCheckBox)
+        self.shortcutButton = QtWidgets.QPushButton(self.settingGroupBox)
+        self.shortcutButton.setObjectName("shortcutButton")
+        self.verticalLayout_3.addWidget(self.shortcutButton)
         self.verticalLayout_2.addWidget(self.settingGroupBox)
         self.trackGroupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.trackGroupBox.setObjectName("trackGroupBox")
@@ -101,6 +104,7 @@ class Ui_MainWindow(object):
         self.waitLabel.setText(QtWidgets.QApplication.translate("MainWindow", "待ち時間(秒)", None, -1))
         self.clipCplorLabel.setText(QtWidgets.QApplication.translate("MainWindow", "クリップカラー", None, -1))
         self.autoLockCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Auto Lock", None, -1))
+        self.shortcutButton.setText(QtWidgets.QApplication.translate("MainWindow", "shortcut", None, -1))
         self.trackGroupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "トラック", None, -1))
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Subtitle", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Video", None, -1))
