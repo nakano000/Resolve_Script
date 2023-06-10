@@ -212,7 +212,7 @@ class MainWindow(QMainWindow):
 
         with LockOtherTrack(timeline, v_index, track_type='video', enable=data.use_auto_lock):
             sc = shortcut.Data()
-            if shortcut.CONFIG_FILE.exists():
+            if shortcut.CONFIG_FILE.is_file():
                 sc.load(shortcut.CONFIG_FILE)
 
             # main

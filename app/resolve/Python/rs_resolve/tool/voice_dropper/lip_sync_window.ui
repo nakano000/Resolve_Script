@@ -37,6 +37,13 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="shortcutButton">
+      <property name="text">
+       <string>shortcut</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QGroupBox" name="groupBox_6">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">

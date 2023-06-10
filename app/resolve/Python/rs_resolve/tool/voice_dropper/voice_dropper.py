@@ -24,7 +24,6 @@ from PySide2.QtGui import (
 from watchdog.observers.polling import PollingObserver
 from watchdog.events import FileSystemEventHandler
 
-import pyautogui
 import pygetwindow
 
 from rs.core import (
@@ -50,7 +49,7 @@ from rs_resolve.core import (
     track_name2index,
     get_item,
     get_track_item_count,
-    LockOtherTrack,
+    LockOtherTrack, shortcut,
 )
 
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
@@ -486,15 +485,15 @@ class MainWindow(QMainWindow):
         time_end = time.time()
         self.add2log('Done! %fs' % (time_end - time_sta))
 
-    def cut_clip(self, w, timeline, sf, ef, wait):
+    def cut_clip(self, w, timeline, sf, ef, wait, sc: shortcut.Data):
         self.add2log('Cut Clip: Start')
         w.activate()
-        pyautogui.hotkey('ctrl', '4')
-        pyautogui.hotkey('ctrl', 'shift', 'a')
+        sc.active_timeline_panel()
+        sc.deselect_all()
         for n in [sf, ef]:
             set_currentframe(timeline, n)
             w.activate()
-            pyautogui.hotkey('ctrl', 'b')
+            sc.razor()
             time.sleep(wait)
         self.add2log('Cut Clip: Done')
 
@@ -550,6 +549,9 @@ class MainWindow(QMainWindow):
         ).read_text(encoding='utf-8')
 
         with LockOtherTrack(timeline, v_index, track_type='video', enable=data.use_auto_lock):
+            sc = shortcut.Data()
+            if shortcut.CONFIG_FILE.is_file():
+                sc.load(shortcut.CONFIG_FILE)
             # main loop
             for item in audio_items:
                 sf = max([item.GetStart(), v_sf])
@@ -562,7 +564,7 @@ class MainWindow(QMainWindow):
                 ch_data = chara_data.from_file(f)
 
                 # split
-                self.cut_clip(w, timeline, sf, ef, data.wait)
+                self.cut_clip(w, timeline, sf, ef, data.wait, sc)
 
                 # get Macro Tool
                 tatie_clip = get_item(timeline, 'video', v_index, sf)
