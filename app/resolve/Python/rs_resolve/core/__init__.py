@@ -63,7 +63,7 @@ def get_item(timeline, track_type, index, frame=None):
     lst = timeline.GetItemListInTrack(track_type, index)
     if lst is None:
         return None
-    for item in timeline.GetItemListInTrack(track_type, index):
+    for item in lst:
         if item.GetStart() <= frame < item.GetEnd():
             return item
     return None
