@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setWindowTitle('Favorites')
+        self.setWindowTitle('Select Parm')
         self.setWindowFlags(
             Qt.Window
             | Qt.WindowCloseButtonHint
