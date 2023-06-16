@@ -7,6 +7,6 @@ lib_path = os.path.abspath(
 sys.path.append(lib_path)
 
 if __name__ == "__main__":
-    from rs.tool.resolve_launcher import run_resolve
+    from rs.tool.resolve_launcher import run_fusion
 
-    run_resolve()
+    run_fusion()

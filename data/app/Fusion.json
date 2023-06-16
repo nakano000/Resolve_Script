@@ -1,4 +1,4 @@
 {
   "program": "bin\\python-3.10.11\\pythonw.exe",
-  "arg": "bin\\run_resolve.py"
+  "arg": "bin\\run_fusion.py"
 }
