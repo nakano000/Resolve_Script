@@ -240,8 +240,20 @@ class MainWindow(QMainWindow):
                         if tool is None:
                             break
                         tool.StyledText = text
+                        tool.Comments = ''
                         clip.SetClipColor(data.color)
                         break
+
+        # delete empty text+
+        del_list = []
+        for clip in timeline.GetItemListInTrack('video', v_index):
+            if clip.GetStart() < v_ef and v_sf < clip.GetEnd():
+                tool = self.get_text_plus(clip)
+                if tool is None:
+                    continue
+                if tool.GetInput('StyledText', 0) == '':
+                    del_list.append(clip)
+        timeline.DeleteClips(del_list, False)
 
         # end
         print('Done!')
