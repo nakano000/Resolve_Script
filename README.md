@@ -21,6 +21,7 @@ https://youtu.be/WyKujodsLh0
 * [VoiceBin](#VoiceBin)
 * [PsdSplitter](#PsdSplitter)
 * [Macro2Group](#Macro2Group)
+* [VTT2Anim](#VTT2Anim)
 * [ScriptLauncher](#ScriptLauncher)
 * [DiskCache](#DiskCache)
 * [Characters](#Characters)
@@ -100,9 +101,9 @@ https://youtu.be/ul7grfLvJCM
 [目次へ](#目次)
 
 ### VTT2Anim
-2.0.0で一時無効化しました。ご注意ください。
-動画参照
-https://youtu.be/zWq4AQeHZ68
+2.0.0で一時無効化しました。<br>
+Subtitle2TextPlusを使ってください。<br>
+Workspase->Scripts->(Edit)->RS->Subtitle2TextPlus<br>
 
 [目次へ](#目次)
 
