@@ -37,6 +37,30 @@ class ConfigData(config.Data):
     do_close: bool = False
 
 
+def run_app(app_name):
+    config_file = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
+    c = ConfigData()
+    if config_file.is_file():
+        c.load(config_file)
+    if app_name == 'resolve':
+        app = c.resolve
+    elif app_name == 'fusion':
+        app = c.fusion
+    else:
+        return
+    if not Path(app.exe).is_file():
+        return
+    app.execute([])
+
+
+def run_resolve():
+    run_app('resolve')
+
+
+def run_fusion():
+    run_app('fusion')
+
+
 class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
