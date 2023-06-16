@@ -191,9 +191,9 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QCheckBox" name="useDodCheckBox">
+         <widget class="QCheckBox" name="useMMCheckBox">
           <property name="text">
-           <string>DoD</string>
+           <string>MultiMerge</string>
           </property>
          </widget>
         </item>

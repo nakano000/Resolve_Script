@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui' applies.
 #
-# Created: Thu Apr 13 00:17:25 2023
+# Created: Fri Jun 16 08:30:10 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -112,9 +112,9 @@ class Ui_MainWindow(object):
         self.tab_2.setObjectName("tab_2")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.tab_2)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.useDodCheckBox = QtWidgets.QCheckBox(self.tab_2)
-        self.useDodCheckBox.setObjectName("useDodCheckBox")
-        self.verticalLayout_5.addWidget(self.useDodCheckBox)
+        self.useMMCheckBox = QtWidgets.QCheckBox(self.tab_2)
+        self.useMMCheckBox.setObjectName("useMMCheckBox")
+        self.verticalLayout_5.addWidget(self.useMMCheckBox)
         spacerItem = QtWidgets.QSpacerItem(20, 146, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_5.addItem(spacerItem)
         self.tabWidget.addTab(self.tab_2, "")
@@ -158,7 +158,7 @@ class Ui_MainWindow(object):
         self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "Y", None, -1))
         self.ySpinBox.setSuffix(QtWidgets.QApplication.translate("MainWindow", " px", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtWidgets.QApplication.translate("MainWindow", "立ち絵", None, -1))
-        self.useDodCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "DoD", None, -1))
+        self.useMMCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "MultiMerge", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtWidgets.QApplication.translate("MainWindow", "通常", None, -1))
         self.importButton.setText(QtWidgets.QApplication.translate("MainWindow", "import", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))

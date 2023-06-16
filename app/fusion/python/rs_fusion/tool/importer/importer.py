@@ -42,7 +42,7 @@ class ConfigData(config.Data):
     space_x: int = 400
     space_y: int = 600
     is_normal: bool = False
-    use_dod: bool = True
+    use_mm: bool = False
 
 
 class Importer:
@@ -123,13 +123,15 @@ class Importer:
         return node
 
     def add_bg(self, pos_x, pos_y):
-        bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
         bg.UseFrameFormatSettings = 0
         bg.Width = self.size_x
         bg.Height = self.size_y
         bg.TopLeftAlpha = 0
         bg.Depth = 1
-        return bg
+        node = self.add_set_dod(pos_x, pos_y, None, [0, 0, 0, 0])
+        node.ConnectInput('Input', bg)
+        return node
 
     def add_big_bg(self, pos_x, pos_y):
         bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
@@ -154,14 +156,7 @@ class Importer:
     def add_xf_bg_c(self, pos_x, pos_y, name):
         xf = self.comp.AddTool('Transform', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
         xf.SetAttrs({'TOOLS_Name': name})
-        bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 2) * self.Y_OFFSET)
-        bg.UseFrameFormatSettings = 0
-        bg.Width = self.size_x
-        bg.Height = self.size_y
-        bg.TopLeftAlpha = 0
-        bg.Depth = 1
-        node = self.add_set_dod(pos_x, pos_y - 1, None, [0, 0, 0, 0])
-        node.ConnectInput('Input', bg)
+        node = self.add_bg(pos_x, pos_y - 1)
         return xf, node
 
     def add_ld(self, pos_x, pos_y, path: str):
@@ -179,6 +174,17 @@ class Importer:
         node.PostMultiplyByAlpha = 1 if self.fusion_ver < 10 else 0
         node.GlobalIn = -1000
         node.GlobalOut = -1000
+        return node
+
+    def add_mask(self, pos_x, pos_y, data_window):
+        node = self.comp.AddTool('RectangleMask', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        left = data_window[0] / self.size_x
+        bottom = data_window[1] / self.size_y
+        right = data_window[2] / self.size_x
+        top = data_window[3] / self.size_y
+        node.Center = [(left + right) / 2, (bottom + top) / 2]
+        node.Width = right - left
+        node.Height = top - bottom
         return node
 
     def add_node_A(self, pos_x, pos_y, data, name):
@@ -200,14 +206,13 @@ class Importer:
 
             mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y + 1) * self.Y_OFFSET)
             if type(layer_data) is list:
-                node, pos_x = self.add_node_A(pos_x, pos_y, layer_data, layer_name)
+                node, pos_x = self.add_node_A(pos_x, pos_y - 1, layer_data, layer_name)
                 self.set_x(mg, pos_x - 1)
             else:
                 node = self.add_ld(pos_x, pos_y, layer_data)
-                # if 'data_window' in layer:
-                #     _node = self.add_set_dod(pos_x, pos_y + 1, layer_name, layer['data_window'])
-                #     _node.ConnectInput('Input', node)
-                #     node = _node
+                if 'data_window' in layer.keys():
+                    _mask = self.add_mask(pos_x, pos_y - 1, layer['data_window'])
+                    node.ConnectInput('EffectMask', _mask)
                 pos_x += 1
             mg.ConnectInput('Foreground', node)
             mg.ConnectInput('Background', pre_node)
@@ -318,16 +323,15 @@ class Importer:
             # add loader
             if type(layer_data) is list:
                 node, pos_x, _uc, _name_list = self.add_node_B(
-                    pos_x, pos_y, layer_data, layer_name, {}, use_label
+                    pos_x, pos_y - 1, layer_data, layer_name, {}, use_label
                 )
                 uc_list.append(_uc)
                 name_list += _name_list
             else:
                 node = self.add_ld(pos_x, pos_y, layer_data)
-                # if 'data_window' in layer:
-                #     _node = self.add_set_dod(pos_x, pos_y + 1, layer_name, layer['data_window'])
-                #     _node.ConnectInput('Input', node)
-                #     node = _node
+                if 'data_window' in layer.keys():
+                    _mask = self.add_mask(pos_x, pos_y - 1, layer['data_window'])
+                    node.ConnectInput('EffectMask', _mask)
             # mg
             if layer_name.startswith('*'):
                 if a_mg is None:
@@ -385,11 +389,10 @@ class Importer:
 
         return xf, pos_x, uc, name_list
 
-    def add_node_C(self, pos_x, pos_y, data, name, use_dod):
+    def add_node_ST(self, pos_x, pos_y, data, name):
         pos_x += 1
         xf, bg = self.add_xf_bg_c(pos_x, pos_y, name)
         pos_x += 1
-        pos_y -= 4
 
         # main
         pre_node = bg
@@ -398,16 +401,15 @@ class Importer:
             visible: bool = layer['visible']
             layer_data = layer['data']
 
-            mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y + 3) * self.Y_OFFSET)
+            mg = self.comp.AddTool('Merge', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
             if type(layer_data) is list:
-                node, pos_x = self.add_node_C(pos_x, pos_y, layer_data, layer_name, use_dod)
+                node, pos_x = self.add_node_ST(pos_x, pos_y - 3, layer_data, layer_name)
                 self.set_x(mg, pos_x - 1)
             else:
-                node = self.add_ld(pos_x, pos_y, layer_data)
-                if 'data_window' in layer and use_dod:
-                    _node = self.add_set_dod(pos_x, pos_y + 1, layer_name, layer['data_window'])
-                    _node.ConnectInput('Input', node)
-                    node = _node
+                node = self.add_ld(pos_x, pos_y - 3, layer_data)
+                if 'data_window' in layer.keys():
+                    _mask = self.add_mask(pos_x, pos_y - 4, layer['data_window'])
+                    node.ConnectInput('EffectMask', _mask)
                 pos_x += 1
             mg.ConnectInput('Foreground', node)
             mg.ConnectInput('Background', pre_node)
@@ -420,11 +422,41 @@ class Importer:
         self.set_x(xf, pos_x - 1)
         return xf, pos_x
 
+    def add_node_STMM(self, pos_x, pos_y, data, name):
+        bg = self.add_bg(pos_x, pos_y)
+        pos_x += 1
+        mm = self.comp.AddTool('MultiMerge', pos_x * self.X_OFFSET, pos_y * self.Y_OFFSET)
+        mm.SetAttrs({'TOOLS_Name': name})
+        mm.ConnectInput('Background', bg)
+
+        for i, layer in enumerate(data, 1):
+            layer_name: str = layer['name']
+            visible: bool = layer['visible']
+            layer_data = layer['data']
+
+            if type(layer_data) is list:
+                node, pos_x = self.add_node_STMM(pos_x, pos_y - 3, layer_data, layer_name)
+            else:
+                node = self.add_ld(pos_x, pos_y - 3, layer_data)
+                if 'data_window' in layer.keys():
+                    _mask = self.add_mask(pos_x, pos_y - 4, layer['data_window'])
+                    node.ConnectInput('EffectMask', _mask)
+                pos_x += 1
+            mm.ConnectInput(f'Layer{i}.Foreground', node)
+            mm.SetInput(f'LayerEnabled{i}', 1 if visible else 0)
+
+        #
+        self.set_x(mm, pos_x - 1)
+        return mm, pos_x
+
     def make(self):
         c = self.config_data
         self.load_json()
         if c.is_normal:
-            self.add_node_C(0, 0, self.json_data['data'], self.json_data['name'], c.use_dod)
+            if c.use_mm:
+                self.add_node_STMM(0, 0, self.json_data['data'], self.json_data['name'])
+            else:
+                self.add_node_ST(0, 0, self.json_data['data'], self.json_data['name'])
         else:
             if c.style == TatieStyle.EXPRESSION:
                 self.add_node_A(0, 0, self.json_data['data'], self.json_data['name'])
@@ -526,7 +558,7 @@ class MainWindow(QMainWindow):
         self.ui.ySpinBox.setValue(c.space_y)
 
         self.ui.tabWidget.setCurrentIndex(1 if c.is_normal else 0)
-        self.ui.useDodCheckBox.setChecked(c.use_dod)
+        self.ui.useMMCheckBox.setChecked(c.use_mm)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
@@ -544,7 +576,7 @@ class MainWindow(QMainWindow):
         c.space_y = self.ui.ySpinBox.value()
 
         c.is_normal = self.ui.tabWidget.currentIndex() == 1
-        c.use_dod = self.ui.useDodCheckBox.isChecked()
+        c.use_mm = self.ui.useMMCheckBox.isChecked()
 
         return c
 
