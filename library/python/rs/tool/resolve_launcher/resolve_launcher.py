@@ -17,6 +17,7 @@ from rs.core import (
     config,
     pipe as p,
     util,
+    lang,
 )
 from rs.core.app import (
     Fusion,
@@ -74,11 +75,15 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(700, 100)
+        self.resize(750, 100)
 
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
+
+        # translate
+        self.lang_code: lang.Code = lang.load()
+        self.translate()
 
         # button
         self.ui.dragButton.setStyleSheet(appearance.in_stylesheet)
@@ -103,11 +108,22 @@ class MainWindow(QMainWindow):
             'Resolve.exe' if util.IS_WIN else 'resolve'
         ))
 
+    def translate(self) -> None:
+        if self.lang_code == lang.Code.en:
+            self.ui.checkBox.setText('Auto close when starting DaVinciResolve or Fusion.')
+            self.ui.dragButton.setText('Setting')
+            self.ui.plainTextEdit.setPlainText('\n'.join([
+                'If this is the first time starting from this tool, or if scripts does not appear in the menu',
+                'Drag and drop the left button to the DaVinci Resolve console.',
+                'Then $(RS_FUSION_USER_PATH) will be added to "UserPaths:" in Pathmap.',
+                'This will make scripts appear in the menu.',
+            ]))
+
     def run_fusion(self):
         c = self.get_data()
         app = c.fusion
         if not Path(app.exe).is_file():
-            QMessageBox.warning(self, 'File Not Found', '%s\nファイルが存在しません。' % app.exe)
+            QMessageBox.warning(self, 'File Not Found:', '%s' % app.exe)
             return
         app.execute([])
         if c.do_close:
@@ -117,7 +133,7 @@ class MainWindow(QMainWindow):
         c = self.get_data()
         app = c.resolve
         if not Path(app.exe).is_file():
-            QMessageBox.warning(self, 'File Not Found', '%s\nファイルが存在しません。' % app.exe)
+            QMessageBox.warning(self, 'File Not Found:', '%s' % app.exe)
             return
         app.execute([])
         if c.do_close:

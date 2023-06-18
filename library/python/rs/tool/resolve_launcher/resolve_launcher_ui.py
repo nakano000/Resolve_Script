@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\resolve_launcher\resolve_launcher.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\resolve_launcher\resolve_launcher.ui' applies.
 #
-# Created: Tue Aug 16 17:41:46 2022
+# Created: Sun Jun 18 13:28:10 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -92,7 +92,8 @@ class Ui_MainWindow(object):
         self.dragButton.setText(QtWidgets.QApplication.translate("MainWindow", "設定", None, -1))
         self.plainTextEdit.setPlainText(QtWidgets.QApplication.translate("MainWindow", "初回起動時、またはスクリプトがメニューに表示されない場合\n"
 "左の設定ボタンをDaVinci Resolveのコンソールへドラッグアンドドロップしてください。\n"
-"Path MapのUserPaths:へ$(RS_FUSION_USER_PATH)を追加します。", None, -1))
+"Path MapのUserPaths:へ$(RS_FUSION_USER_PATH)を追加します。\n"
+"これでメニューにスクリプトが表示されます。", None, -1))
         self.resolveButton.setText(QtWidgets.QApplication.translate("MainWindow", "Resolve", None, -1))
         self.fusionButton.setText(QtWidgets.QApplication.translate("MainWindow", "Fusion", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))

@@ -118,7 +118,8 @@
         <property name="plainText">
          <string>初回起動時、またはスクリプトがメニューに表示されない場合
 左の設定ボタンをDaVinci Resolveのコンソールへドラッグアンドドロップしてください。
-Path MapのUserPaths:へ$(RS_FUSION_USER_PATH)を追加します。</string>
+Path MapのUserPaths:へ$(RS_FUSION_USER_PATH)を追加します。
+これでメニューにスクリプトが表示されます。</string>
         </property>
        </widget>
       </item>
