@@ -51,20 +51,15 @@ from rs_resolve.core import (
     get_track_item_count,
     LockOtherTrack, shortcut,
 )
-
+from rs_resolve.gui import (
+    get_resolve_window,
+)
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
 from rs_resolve.tool.voice_dropper.lip_sync_window import MainWindow as LipSyncWindow
 
 APP_NAME = 'Voice Dropper'
 
 SCRIPT_DIR: Path = config.ROOT_PATH.joinpath('data', 'app', 'VoiceDropper')
-
-
-def get_resolve_window(pj_name):
-    for t in pygetwindow.getAllTitles():
-        if t.startswith('DaVinci Resolve') and t.endswith(pj_name):
-            return pygetwindow.getWindowsWithTitle(t)[0]
-    return None
 
 
 @dataclasses.dataclass

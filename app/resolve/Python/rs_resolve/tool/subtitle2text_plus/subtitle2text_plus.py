@@ -27,6 +27,9 @@ from rs_resolve.core import (
     LockOtherTrack,
     shortcut,
 )
+from rs_resolve.gui import (
+    get_resolve_window,
+)
 from rs_resolve.gui.shortcut.shortcut_window import MainWindow as ShortcutWindow
 from rs_resolve.tool.subtitle2text_plus.subtitle2text_plus_ui import Ui_MainWindow
 
@@ -59,14 +62,6 @@ def get_video_item(timeline, index):
     for item in timeline.GetItemListInTrack('video', index):
         if item.GetStart() <= frame < item.GetEnd():
             return item
-    return None
-
-
-def get_resolve_window(pj_name):
-    import pygetwindow
-    for t in pygetwindow.getAllTitles():
-        if t.startswith('DaVinci Resolve') and t.endswith(pj_name):
-            return pygetwindow.getWindowsWithTitle(t)[0]
     return None
 
 

@@ -34,6 +34,9 @@ from rs_resolve.core import (
     get_fps,
     track_name2index,
 )
+from rs_resolve.gui import (
+    get_resolve_window,
+)
 from rs_resolve.tool.voice_bin_assistant.voice_bin_assistant_ui import Ui_MainWindow
 
 APP_NAME = 'VoiceBinアシスタント'
@@ -44,14 +47,6 @@ def get_track_names(timeline, track_type):
     for i in range(1, timeline.GetTrackCount(track_type) + 1):
         r.append(timeline.GetTrackName(track_type, i))
     return r
-
-
-def get_resolve_window(pj_name):
-    import pygetwindow
-    for t in pygetwindow.getAllTitles():
-        if t.startswith('DaVinci Resolve') and t.endswith(pj_name):
-            return pygetwindow.getWindowsWithTitle(t)[0]
-    return None
 
 
 def get_index(timeline, track_type, v):
