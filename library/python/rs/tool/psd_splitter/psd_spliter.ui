@@ -6,17 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>596</width>
-    <height>533</height>
+    <width>588</width>
+    <height>537</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="settingGroupBox">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
         <horstretch>0</horstretch>
@@ -26,56 +26,60 @@
       <property name="title">
        <string>設定</string>
       </property>
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>PSD</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLineEdit" name="srcLineEdit"/>
-         </item>
-         <item>
-          <widget class="QToolButton" name="srcToolButton">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>...</string>
+            <string>PSD</string>
            </property>
           </widget>
          </item>
-        </layout>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>出力先</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QLineEdit" name="dstLineEdit"/>
+         <item row="0" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="srcLineEdit"/>
+           </item>
+           <item>
+            <widget class="QToolButton" name="srcToolButton">
+             <property name="text">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
-         <item>
-          <widget class="QToolButton" name="dstToolButton">
+         <item row="1" column="0">
+          <widget class="QLabel" name="destLabel">
            <property name="text">
-            <string>...</string>
+            <string>出力先</string>
            </property>
           </widget>
          </item>
+         <item row="1" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="dstLineEdit"/>
+           </item>
+           <item>
+            <widget class="QToolButton" name="dstToolButton">
+             <property name="text">
+              <string>...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
         </layout>
        </item>
-       <item row="2" column="1">
+       <item>
         <widget class="QCheckBox" name="useCp932CheckBox">
          <property name="text">
           <string>強制的に、文字コード cp932 を使う (文字化けする場合に使ってみて下さい。)</string>
@@ -86,7 +90,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QGroupBox" name="groupBox_2">
+     <widget class="QGroupBox" name="logGroupBox">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -166,7 +170,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>596</width>
+     <width>588</width>
      <height>21</height>
     </rect>
    </property>

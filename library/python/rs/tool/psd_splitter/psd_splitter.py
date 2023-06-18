@@ -22,7 +22,7 @@ import pykakasi
 
 from rs.core import (
     config,
-    util,
+    util, lang,
 )
 from rs.gui import (
     appearance,
@@ -58,6 +58,10 @@ class MainWindow(QMainWindow):
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
 
+        # translate
+        self.lang_code: lang.Code = lang.load()
+        self.translate()
+
         # style sheet
         self.ui.splitButton.setStyleSheet(appearance.ex_stylesheet)
 
@@ -72,6 +76,16 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.open)
         self.ui.actionSave.triggered.connect(self.save)
         self.ui.actionExit.triggered.connect(self.close)
+
+    def translate(self) -> None:
+        if self.lang_code == lang.Code.en:
+            self.ui.useCp932CheckBox.setText(
+                'Force use of cp932 charset '
+                '(try using this when Japanese characters are garbled.)'
+            )
+            self.ui.settingGroupBox.setTitle('Settings')
+            self.ui.logGroupBox.setTitle('Log')
+            self.ui.destLabel.setText('Destination Dir')
 
     def set_data(self, c: ConfigData):
         self.ui.srcLineEdit.setText(c.src_dir)
@@ -233,7 +247,11 @@ class MainWindow(QMainWindow):
         if src_file.is_file() and src_text != '':
             self.add2log('PSD: %s' % str(src_file))
         else:
-            self.add2log('[ERROR]PSDが存在しません。', log.ERROR_COLOR)
+            self.add2log(
+                '[ERROR]PSD file not found.'
+                if self.lang_code == lang.Code.en else
+                '[ERROR]PSDが存在しません。'
+                , log.ERROR_COLOR)
             return
 
         self.add2log('')  # new line
@@ -242,9 +260,19 @@ class MainWindow(QMainWindow):
         dst_text = data.dst_dir.strip()
         dst_dir: Path = Path(dst_text)
         if dst_dir.is_dir() and dst_text != '':
-            self.add2log('出力先: %s' % str(dst_dir))
+            self.add2log(
+                (
+                    'Destination Dir: %s'
+                    if self.lang_code == lang.Code.en else
+                    '出力先: %s'
+                ) % str(dst_dir)
+            )
         else:
-            self.add2log('[ERROR]出力先が存在しません。', log.ERROR_COLOR)
+            self.add2log(
+                '[ERROR]Output directory not found.'
+                if self.lang_code == lang.Code.en else
+                '[ERROR]出力先が存在しません。'
+                , log.ERROR_COLOR)
             return
 
         self.add2log('')  # new line
@@ -254,7 +282,11 @@ class MainWindow(QMainWindow):
             try:
                 psd = PSDImage.open(src_file, encoding='cp932')
             except UnicodeDecodeError:
-                self.add2log('[ERROR]CP932でエンコードされていません。', log.ERROR_COLOR)
+                self.add2log(
+                    '[ERROR]Not encoded in CP932.'
+                    if self.lang_code == lang.Code.en else
+                    '[ERROR]CP932でエンコードされていません。'
+                    , log.ERROR_COLOR)
                 return
         out_dir = dst_dir.joinpath(src_file.stem)
         out_dir.mkdir(parents=True, exist_ok=True)
