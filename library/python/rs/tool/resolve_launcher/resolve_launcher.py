@@ -49,6 +49,7 @@ def run_app(app_name):
     else:
         return
     if not Path(app.exe).is_file():
+        run()
         return
     app.execute([])
 
