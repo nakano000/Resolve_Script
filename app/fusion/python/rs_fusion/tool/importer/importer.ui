@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
-     <widget class="QGroupBox" name="groupBox_2">
+     <widget class="QGroupBox" name="fileGroupBox">
       <property name="title">
        <string>ファイル</string>
       </property>
@@ -59,7 +59,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QGroupBox" name="groupBox_3">
+         <widget class="QGroupBox" name="tatieFormatGroupBox">
           <property name="title">
            <string>立ち絵形式</string>
           </property>
@@ -96,7 +96,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox_4">
+         <widget class="QGroupBox" name="connectOptionGroupBox">
           <property name="title">
            <string>コネクション切り替え式オプション</string>
           </property>
@@ -104,7 +104,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QLabel" name="label_5">
+              <widget class="QLabel" name="btnSizeLabel">
                <property name="text">
                 <string>通常ボタン サイズ</string>
                </property>
@@ -119,7 +119,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox">
+         <widget class="QGroupBox" name="expandGroupBox">
           <property name="title">
            <string>拡張 (アニメーション スペース確保)</string>
           </property>
@@ -185,7 +185,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="tab2">
        <attribute name="title">
         <string>通常</string>
        </attribute>

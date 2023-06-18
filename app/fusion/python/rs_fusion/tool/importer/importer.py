@@ -18,6 +18,7 @@ from PySide2.QtWidgets import (
 from rs.core import (
     config,
     pipe as p,
+    lang,
 )
 from rs.gui import (
     appearance,
@@ -26,6 +27,7 @@ from rs_fusion.core import pose
 from rs_fusion.tool.importer.importer_ui import Ui_MainWindow
 
 APP_NAME = '読み込み(PsdSplitter用)'
+APP_NAME_EN = 'Import(For PsdSplitter)'
 
 
 class TatieStyle(IntEnum):
@@ -483,7 +485,6 @@ class MainWindow(QMainWindow):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setWindowTitle(APP_NAME)
         self.setWindowFlags(
             Qt.Window
             | Qt.WindowCloseButtonHint
@@ -497,6 +498,11 @@ class MainWindow(QMainWindow):
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
 
+        # translate
+        self.lang_code: lang.Code = lang.load()
+        self.setWindowTitle('%s' % (APP_NAME if self.lang_code == lang.Code.ja else APP_NAME_EN))
+        self.translate()
+
         # style sheet
         self.ui.importButton.setStyleSheet(appearance.in_stylesheet)
 
@@ -507,16 +513,40 @@ class MainWindow(QMainWindow):
         self.ui.closeButton.clicked.connect(self.close)
         self.ui.importButton.clicked.connect(self.import_json, Qt.QueuedConnection)
 
+    def translate(self) -> None:
+        if self.lang_code == lang.Code.en:
+            self.ui.fileGroupBox.setTitle('File')
+            self.ui.tatieFormatGroupBox.setTitle('Tatie Format')
+            self.ui.connectOptionGroupBox.setTitle('Options of Switching Connection')
+            self.ui.expandGroupBox.setTitle('Expand size')
+
+            self.ui.tabWidget.setTabText(0, 'Tatie')
+            self.ui.tabWidget.setTabText(1, 'Normal')
+
+            self.ui.expRadioButton.setText('Expression')
+            self.ui.connectRadioButton.setText('Switching Connection(Page)')
+            self.ui.connectLabelRadioButton.setText('Switching Connection(Label)')
+            self.ui.label.setText('')
+            self.ui.btnSizeLabel.setText('Button Size')
+
     def import_json(self) -> None:
         resolve = self.fusion.GetResolve()
         if resolve and resolve.GetCurrentPage() != 'fusion':
-            print('Fusion Pageで実行してください。')
+            print(
+                'Please execute in Fusion Page.'
+                if self.lang_code == lang.Code.en else
+                'Fusion Pageで実行してください。'
+            )
             return
 
         # comp check
         comp = self.fusion.CurrentComp
         if comp is None:
-            print('コンポジションが見付かりません。')
+            print(
+                'Composition not found.'
+                if self.lang_code == lang.Code.en else
+                'コンポジションが見付かりません。'
+            )
             return
         ver = self.fusion.Version
 
