@@ -24,8 +24,6 @@ from PySide2.QtGui import (
 from watchdog.observers.polling import PollingObserver
 from watchdog.events import FileSystemEventHandler
 
-import pygetwindow
-
 from rs.core import (
     config,
     pipe as p,
@@ -480,7 +478,7 @@ class MainWindow(QMainWindow):
         time_end = time.time()
         self.add2log('Done! %fs' % (time_end - time_sta))
 
-    def cut_clip(self, w, timeline, sf, ef, wait, sc: shortcut.Data):
+    def cut_clip(self, w, timeline, index, sf, ef, wait, sc: shortcut.Data):
         self.add2log('Cut Clip: Start')
         w.activate()
         sc.active_timeline_panel()
@@ -488,8 +486,15 @@ class MainWindow(QMainWindow):
         for n in [sf, ef]:
             set_currentframe(timeline, n)
             w.activate()
+            _cnt = get_track_item_count(timeline, 'video', index)
+            start_time = time.time()
             sc.razor()
-            time.sleep(wait)
+            while True:
+                if time.time() - start_time > wait:
+                    break
+                if get_track_item_count(timeline, 'video', index) > _cnt:
+                    break
+                time.sleep(0.1)
         self.add2log('Cut Clip: Done')
 
     def lip_sync(self):
@@ -559,7 +564,7 @@ class MainWindow(QMainWindow):
                 ch_data = chara_data.from_file(f)
 
                 # split
-                self.cut_clip(w, timeline, sf, ef, data.wait, sc)
+                self.cut_clip(w, timeline, v_index, sf, ef, data.time_out, sc)
 
                 # get Macro Tool
                 tatie_clip = get_item(timeline, 'video', v_index, sf)

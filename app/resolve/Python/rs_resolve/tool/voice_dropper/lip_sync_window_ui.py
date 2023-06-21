@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\lip_sync_window.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\lip_sync_window.ui' applies.
 #
-# Created: Sun Jun 11 08:15:47 2023
+# Created: Thu Jun 22 01:10:37 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,9 +23,9 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setObjectName("label_3")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        self.tatieWaitSpinBox = QtWidgets.QDoubleSpinBox(self.centralwidget)
-        self.tatieWaitSpinBox.setObjectName("tatieWaitSpinBox")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.tatieWaitSpinBox)
+        self.tatieTimeOutSpinBox = QtWidgets.QDoubleSpinBox(self.centralwidget)
+        self.tatieTimeOutSpinBox.setObjectName("tatieTimeOutSpinBox")
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.tatieTimeOutSpinBox)
         self.verticalLayout.addLayout(self.formLayout_2)
         self.autoLockCheckBox = QtWidgets.QCheckBox(self.centralwidget)
         self.autoLockCheckBox.setObjectName("autoLockCheckBox")
@@ -123,7 +123,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "wait time", None, -1))
+        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "time out", None, -1))
         self.autoLockCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Auto Lock", None, -1))
         self.shortcutButton.setText(QtWidgets.QApplication.translate("MainWindow", "shortcut", None, -1))
         self.groupBox_4.setTitle(QtWidgets.QApplication.translate("MainWindow", "Video Track", None, -1))

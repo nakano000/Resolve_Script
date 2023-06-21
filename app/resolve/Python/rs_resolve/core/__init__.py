@@ -57,6 +57,13 @@ def track_name2index(timeline, track_type, name):
     return 0
 
 
+def get_track_names(timeline, track_type):
+    r = []
+    for i in range(1, timeline.GetTrackCount(track_type) + 1):
+        r.append(timeline.GetTrackName(track_type, i))
+    return r
+
+
 def get_item(timeline, track_type, index, frame=None):
     if frame is None:
         frame = get_currentframe(timeline)

@@ -22,18 +22,12 @@ from rs.gui import (
 
 from rs_resolve.core import (
     track_name2index,
+    get_track_names,
 )
 from rs_resolve.gui.shortcut.shortcut_window import MainWindow as ShortcutWindow
 from rs_resolve.tool.voice_dropper.lip_sync_window_ui import Ui_MainWindow
 
 APP_NAME = 'lipSyncWindow'
-
-
-def get_track_names(timeline, track_type):
-    r = []
-    for i in range(1, timeline.GetTrackCount(track_type) + 1):
-        r.append(timeline.GetTrackName(track_type, i))
-    return r
 
 
 def get_index(timeline, track_type, v):
@@ -52,7 +46,7 @@ def get_index(timeline, track_type, v):
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
-    wait: float = 2.0
+    time_out: float = 2.0
     use_auto_lock: bool = True
 
 
@@ -114,12 +108,12 @@ class MainWindow(QMainWindow):
         a_m.setStringList(get_track_names(timeline, 'audio'))
 
     def set_data(self, c: ConfigData):
-        self.ui.tatieWaitSpinBox.setValue(c.wait)
+        self.ui.tatieTimeOutSpinBox.setValue(c.time_out)
         self.ui.autoLockCheckBox.setChecked(c.use_auto_lock)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
-        c.wait = self.ui.tatieWaitSpinBox.value()
+        c.time_out = self.ui.tatieTimeOutSpinBox.value()
         c.use_auto_lock = self.ui.autoLockCheckBox.isChecked()
         return c
 
