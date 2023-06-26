@@ -10,6 +10,8 @@ charset-normalizer
 decorator
 Deprecated
 docopt
+EasyProcess
+entrypoint2
 idna
 imageio
 jaconv
@@ -19,6 +21,7 @@ librosa
 llvmlite
 MouseInfo
 msgpack
+mss
 networkx
 numba
 numpy
@@ -33,8 +36,11 @@ pykakasi
 PyMsgBox
 pyperclip
 PyRect
+pyrubberband
+pyscreenshot
 PyScreeze
 PySide2
+PySoundFile
 pytweening
 PyWavelets
 requests
@@ -42,6 +48,7 @@ scikit-image
 scikit-learn
 scipy
 shiboken2
+six
 soundfile
 soxr
 StrEnum
