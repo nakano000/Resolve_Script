@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
 
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
-        self.load_config()
+        self.set_data(ConfigData())
 
         # window
         self.check_window = CheckWindow(self)
@@ -455,9 +455,9 @@ class MainWindow(QMainWindow):
         c = self.get_data()
         c.save(self.config_file)
 
-    def closeEvent(self, event):
-        self.save_config()
-        super().closeEvent(event)
+    # def closeEvent(self, event):
+    #     self.save_config()
+    #     super().closeEvent(event)
 
 
 def run() -> None:
