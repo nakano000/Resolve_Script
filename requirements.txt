@@ -27,6 +27,7 @@ numba
 numpy
 packaging
 Pillow
+platformdirs
 pooch
 psd-tools
 PyAutoGUI

@@ -25,6 +25,11 @@
     "ss": "sound"
   },
   {
+    "name": "VoiceSync",
+    "path": "bin/voice_sync.py",
+    "ss": "sound"
+  },
+  {
     "name": "PsdSplitter",
     "path": "bin/psd_splitter.py",
     "ss": "picture"
@@ -44,7 +49,7 @@
     "path": "bin/disk_cache.py",
     "ss": "utility"
   },
-    {
+  {
     "name": "Characters",
     "path": "bin/characters.py",
     "ss": "utility"

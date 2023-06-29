@@ -77,6 +77,28 @@ def dict2anim(dct) -> str:
     return space + (',\n' + space).join(key_list)
 
 
+def read(path: Path):
+    lst = p.pipe(
+        path.read_text(encoding='utf-8-sig').split('\n'),
+        p.map(p.call.split(' ')),
+        p.filter(lambda x: len(x) == 3),
+        p.map(lambda x: {
+            's': int(x[0]),
+            'e': int(x[1]),
+            'sign': x[2],
+        }),
+        p.filter(lambda x: x['s'] < x['e']),
+        list,
+    )
+    if lst[0]['s'] != 0:
+        lst.insert(0, {
+            's': 0,
+            'e': lst[0]['s'],
+            'sign': 'pau',
+        })
+    return lst
+
+
 def lab2anim(path: Path, fps, anim_tpe, offset: int = 0) -> str:
     n = 10000000
     func = sign2intE
@@ -85,13 +107,11 @@ def lab2anim(path: Path, fps, anim_tpe, offset: int = 0) -> str:
 
     # lab 読み込み
     data = p.pipe(
-        path.read_text(encoding='utf-8-sig').split('\n'),
-        p.map(p.call.split(' ')),
-        p.filter(lambda x: len(x) == 3),
+        read(path),
         p.map(lambda x: {
-            's': offset + round(int(x[0]) * fps / n),
-            'e': offset + round(int(x[1]) * fps / n),
-            'sign': func(x[2]),
+            's': offset + round(x['s'] * fps / n),
+            'e': offset + round(x['e'] * fps / n),
+            'sign': func(x['sign']),
         }),
         list,
     )
