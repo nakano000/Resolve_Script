@@ -37,9 +37,6 @@ from rs.tool.voice_sync.check_timing import MainWindow as CheckWindow
 
 APP_NAME = 'VoiceSync'
 
-N = 10000000
-SR = 48000
-
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
@@ -103,50 +100,11 @@ class MainWindow(QMainWindow):
         self.ui.syncButton.clicked.connect(self.sync_voice)
         self.ui.closeButton.clicked.connect(self.close)
 
-    def read_src_lab(self):
-        config_data = self.get_data()
-        if config_data.tab_index == 0:
-            src_lab_file = Path(config_data.src_lab_file)
-            if not src_lab_file.is_file():
-                self.add2log('Error: 音素タイミングファイルがありません。', log.ERROR_COLOR)
-                return
-            _lab = lab.read(src_lab_file)
-            number_list = []
-            for i in range(len(_lab)):
-                number_list.append('00')
-            return lab.read(src_lab_file)
-        else:
-            w = self.ui.wavTableView
-            m = w.model()
-            lst = p.pipe(
-                m.to_list(),
-                p.map(lambda x: Path(x.lab)),
-                list,
-            )
-            for f in lst:
-                if not f.is_file():
-                    self.add2log('Error: 音素タイミングファイルがありません。', log.ERROR_COLOR)
-                    return
-
-            r = []
-            end_point = 0
-            number_list = []
-            file_number = 0
-            for f in lst:
-                _lab = lab.read(f)
-                file_number += 1
-                if _lab[-1]['sign'] in ['sil', 'pau', 'br']:
-                    _lab.pop()
-                for i in range(len(_lab)):
-                    _lab[i]['s'] += end_point
-                    _lab[i]['e'] += end_point
-                    number_list.append('%02d' % file_number)
-                end_point = _lab[-1]['e']
-                r.extend(_lab)
-            return r, number_list
-
     def sync_voice(self):
         self.ui.logTextEdit.clear()
+
+        N = 10000000
+        SR = 48000
 
         def resample(_f: Path):
             _clip, _sr = sf.read(str(_f))
