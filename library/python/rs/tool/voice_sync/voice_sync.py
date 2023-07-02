@@ -46,6 +46,7 @@ class ConfigData(config.Data):
     dst_file: str = ''
     tab_index: int = 0
     use_auto_set: bool = True
+    use_pau_comp: bool = True
 
 
 class MainWindow(QMainWindow):
@@ -100,6 +101,32 @@ class MainWindow(QMainWindow):
         self.ui.syncButton.clicked.connect(self.sync_voice)
         self.ui.closeButton.clicked.connect(self.close)
 
+    @staticmethod
+    def pau_comp(lab_data):
+        """pau、sil、brを一つにまとめる"""
+        r = []
+        _sub_list = None
+        for d in lab_data:
+            if d['sign'] in ['sil', 'pau', 'br']:
+                if _sub_list is None:
+                    _sub_list = []
+                    r.append(_sub_list)
+                _sub_list.append(d)
+            else:
+                _sub_list = None
+                r.append(d)
+        for i, d in enumerate(r):
+            if isinstance(d, list):
+                if len(d) == 1:
+                    r[i] = d[0]
+                else:
+                    r[i] = {
+                        's': d[0]['s'],
+                        'e': d[-1]['e'],
+                        'sign': 'pau'
+                    }
+        return r
+
     def sync_voice(self):
         self.ui.logTextEdit.clear()
 
@@ -128,6 +155,9 @@ class MainWindow(QMainWindow):
 
         # src wav
         src_file_list = [Path(config_data.src_file)] if is_talk else w.get_wav_list()
+        if len(src_file_list) == 0:
+            self.add2log('Error: 音声ファイルがありません。', log.ERROR_COLOR)
+            return
 
         for f in src_file_list:
             if not f.is_file():
@@ -136,6 +166,9 @@ class MainWindow(QMainWindow):
 
         # src lab
         src_lab_file_list = [Path(config_data.src_lab_file)] if is_talk else w.get_lab_list()
+        if len(src_lab_file_list) == 0:
+            self.add2log('Error: 音素タイミングファイルがありません。', log.ERROR_COLOR)
+            return
 
         for f in src_lab_file_list:
             if not f.is_file():
@@ -162,6 +195,8 @@ class MainWindow(QMainWindow):
         # read ref
         ref_lab_data = lab.read(ref_lab_file)
         self.add2log('Read ref.')
+        if config_data.use_pau_comp:
+            ref_lab_data = self.pau_comp(ref_lab_data)
 
         # y and lab
         y_list = []
@@ -286,6 +321,9 @@ class MainWindow(QMainWindow):
 
         # ref lab
         ref_lab_data = lab.read(ref_lab_file)
+        if config_data.use_pau_comp:
+            ref_lab_data = self.pau_comp(ref_lab_data)
+
         ref_data = p.pipe(
             ref_lab_data,
             p.map(lambda x: x['sign']),
@@ -391,6 +429,7 @@ class MainWindow(QMainWindow):
         self.ui.dstLineEdit.setText(c.dst_file)
         self.ui.tabWidget.setCurrentIndex(c.tab_index)
         self.ui.useAutoSetCheckBox.setChecked(c.use_auto_set)
+        self.ui.usePauCompCheckBox.setChecked(c.use_pau_comp)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
@@ -400,6 +439,7 @@ class MainWindow(QMainWindow):
         c.dst_file = self.ui.dstLineEdit.text()
         c.tab_index = self.ui.tabWidget.currentIndex()
         c.use_auto_set = self.ui.useAutoSetCheckBox.isChecked()
+        c.use_pau_comp = self.ui.usePauCompCheckBox.isChecked()
         return c
 
     def load_config(self) -> None:
