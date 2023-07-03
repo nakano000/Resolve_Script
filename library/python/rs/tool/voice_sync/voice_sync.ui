@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>727</width>
-    <height>692</height>
+    <width>758</width>
+    <height>694</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -208,15 +208,15 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_10">
-         <item>
+        <layout class="QFormLayout" name="formLayout_2">
+         <item row="0" column="0">
           <widget class="QLabel" name="label_2">
            <property name="text">
             <string>変換タイミング (lab)</string>
            </property>
           </widget>
          </item>
-         <item>
+         <item row="0" column="1">
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <property name="spacing">
             <number>0</number>
@@ -239,6 +239,16 @@
             </widget>
            </item>
           </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>母音を繰り返す</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="repeatSpinBox"/>
          </item>
         </layout>
        </item>

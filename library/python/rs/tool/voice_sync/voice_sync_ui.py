@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui' applies.
 #
-# Created: Sun Jul  2 18:46:40 2023
+# Created: Mon Jul  3 09:46:41 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(727, 692)
+        MainWindow.resize(758, 694)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -108,11 +108,11 @@ class Ui_MainWindow(object):
         self.groupBox_3.setObjectName("groupBox_3")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_3)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.formLayout_2 = QtWidgets.QFormLayout()
+        self.formLayout_2.setObjectName("formLayout_2")
         self.label_2 = QtWidgets.QLabel(self.groupBox_3)
         self.label_2.setObjectName("label_2")
-        self.horizontalLayout_10.addWidget(self.label_2)
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -127,8 +127,14 @@ class Ui_MainWindow(object):
         self.refLabToolButton = QtWidgets.QToolButton(self.groupBox_3)
         self.refLabToolButton.setObjectName("refLabToolButton")
         self.horizontalLayout_2.addWidget(self.refLabToolButton)
-        self.horizontalLayout_10.addLayout(self.horizontalLayout_2)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_10)
+        self.formLayout_2.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
+        self.label_4 = QtWidgets.QLabel(self.groupBox_3)
+        self.label_4.setObjectName("label_4")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_4)
+        self.repeatSpinBox = QtWidgets.QSpinBox(self.groupBox_3)
+        self.repeatSpinBox.setObjectName("repeatSpinBox")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.repeatSpinBox)
+        self.verticalLayout_2.addLayout(self.formLayout_2)
         self.usePauCompCheckBox = QtWidgets.QCheckBox(self.groupBox_3)
         self.usePauCompCheckBox.setObjectName("usePauCompCheckBox")
         self.verticalLayout_2.addWidget(self.usePauCompCheckBox)
@@ -189,7 +195,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -210,6 +216,7 @@ class Ui_MainWindow(object):
         self.groupBox_3.setTitle(QtWidgets.QApplication.translate("MainWindow", "リファレンス", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "変換タイミング (lab)", None, -1))
         self.refLabToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
+        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "母音を繰り返す", None, -1))
         self.usePauCompCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "pau(休符)、sil(全休符)、br(息継ぎ)が並んでいたら、一つのpauにする。", None, -1))
         self.destLabel.setText(QtWidgets.QApplication.translate("MainWindow", "出力先", None, -1))
         self.dstToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
@@ -218,5 +225,5 @@ class Ui_MainWindow(object):
         self.syncButton.setText(QtWidgets.QApplication.translate("MainWindow", "sync", None, -1))
         self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
 
-from rs.gui.log import LogTextEdit
 from rs.tool.voice_sync.wav_table import View
+from rs.gui.log import LogTextEdit

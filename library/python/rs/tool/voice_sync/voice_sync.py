@@ -47,6 +47,7 @@ class ConfigData(config.Data):
     tab_index: int = 0
     use_auto_set: bool = True
     use_pau_comp: bool = True
+    repeat: int = 0
 
 
 class MainWindow(QMainWindow):
@@ -127,6 +128,28 @@ class MainWindow(QMainWindow):
                     }
         return r
 
+    @staticmethod
+    def repeat_vowel(lab_data, repeat):
+        """母音を繰り返す"""
+        if repeat == 0:
+            return lab_data
+        r = []
+        for d in lab_data:
+            if d['sign'] in ['a', 'i', 'u', 'e', 'o']:
+                _l = int((d['e'] - d['s']) / (repeat + 1.0))
+                for i in range(repeat + 1):
+                    _d = {
+                        's': d['s'] + _l * i,
+                        'e': d['s'] + _l * (i + 1),
+                        'sign': d['sign']
+                    }
+                    if i == repeat:
+                        _d['e'] = d['e']
+                    r.append(_d)
+            else:
+                r.append(d)
+        return r
+
     def sync_voice(self):
         self.ui.logTextEdit.clear()
 
@@ -197,6 +220,7 @@ class MainWindow(QMainWindow):
         self.add2log('Read ref.')
         if config_data.use_pau_comp:
             ref_lab_data = self.pau_comp(ref_lab_data)
+        ref_lab_data = self.repeat_vowel(ref_lab_data, config_data.repeat)
 
         # y and lab
         y_list = []
@@ -323,6 +347,7 @@ class MainWindow(QMainWindow):
         ref_lab_data = lab.read(ref_lab_file)
         if config_data.use_pau_comp:
             ref_lab_data = self.pau_comp(ref_lab_data)
+        ref_lab_data = self.repeat_vowel(ref_lab_data, config_data.repeat)
 
         ref_data = p.pipe(
             ref_lab_data,
@@ -367,6 +392,7 @@ class MainWindow(QMainWindow):
 
         data = p.pipe(
             lab.read(ref_lab_file),
+            lambda x: self.repeat_vowel(x, config_data.repeat),
             p.map(lambda x: x['sign']),
             list,
         )
@@ -430,6 +456,7 @@ class MainWindow(QMainWindow):
         self.ui.tabWidget.setCurrentIndex(c.tab_index)
         self.ui.useAutoSetCheckBox.setChecked(c.use_auto_set)
         self.ui.usePauCompCheckBox.setChecked(c.use_pau_comp)
+        self.ui.repeatSpinBox.setValue(c.repeat)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
@@ -440,6 +467,7 @@ class MainWindow(QMainWindow):
         c.tab_index = self.ui.tabWidget.currentIndex()
         c.use_auto_set = self.ui.useAutoSetCheckBox.isChecked()
         c.use_pau_comp = self.ui.usePauCompCheckBox.isChecked()
+        c.repeat = self.ui.repeatSpinBox.value()
         return c
 
     def load_config(self) -> None:
