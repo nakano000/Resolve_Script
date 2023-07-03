@@ -294,8 +294,11 @@ class MainWindow(QMainWindow):
             if src_txt_file.is_file():
                 shutil.copyfile(src_txt_file, dst_txt_file)
                 self.add2log('Copy: %s' % dst_txt_file.name)
-
-        sf.write(str(dst), result, SR)
+        try:
+            sf.write(str(dst), result, SR)
+        except RuntimeError:
+            self.add2log('Error: wavファイルの保存に失敗しました。', log.ERROR_COLOR)
+            return
         self.add2log('Save: %s' % dst.name)
 
         self.add2log('Done!')
