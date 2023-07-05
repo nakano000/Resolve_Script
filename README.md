@@ -19,7 +19,7 @@ https://youtu.be/WyKujodsLh0
 * [AssistantSeika2wave](#AssistantSeika2wave)
 * [AquesTalkWrapper](#AquesTalkWrapper)
 * [VoiceBin](#VoiceBin)
-* [VoiceBin](#VoiceSync)
+* [VoiceSync](#VoiceSync)
 * [PsdSplitter](#PsdSplitter)
 * [Macro2Group](#Macro2Group)
 * [VTT2Anim](#VTT2Anim)
