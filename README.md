@@ -19,6 +19,7 @@ https://youtu.be/WyKujodsLh0
 * [AssistantSeika2wave](#AssistantSeika2wave)
 * [AquesTalkWrapper](#AquesTalkWrapper)
 * [VoiceBin](#VoiceBin)
+* [VoiceBin](#VoiceSync)
 * [PsdSplitter](#PsdSplitter)
 * [Macro2Group](#Macro2Group)
 * [VTT2Anim](#VTT2Anim)
@@ -83,6 +84,13 @@ https://youtu.be/afiJp1lodMo
 
 動画参照
 https://youtu.be/5Q6WNtMFhWI
+
+[目次へ](#目次)
+
+### VoiceSync
+
+動画参照
+https://youtu.be/Y5KpnlWsqmo
 
 [目次へ](#目次)
 
