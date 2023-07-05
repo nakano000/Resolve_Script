@@ -80,7 +80,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(APP_NAME)
         self.setWindowFlags(
             Qt.Window
-            | Qt.WindowCloseButtonHint
+            # | Qt.WindowCloseButtonHint
             # | Qt.WindowStaysOnTopHint
         )
         self.resize(800, 900)

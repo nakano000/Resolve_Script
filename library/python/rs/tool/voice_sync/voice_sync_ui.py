@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui' applies.
 #
-# Created: Wed Jul  5 08:54:05 2023
+# Created: Wed Jul  5 11:02:00 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,12 +13,15 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(524, 657)
+        MainWindow.resize(751, 848)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.splitter = QtWidgets.QSplitter(self.centralwidget)
+        self.splitter.setOrientation(QtCore.Qt.Vertical)
+        self.splitter.setObjectName("splitter")
+        self.tabWidget = QtWidgets.QTabWidget(self.splitter)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -103,8 +106,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setStretch(0, 1)
         self.horizontalLayout_7.setStretch(1, 2)
         self.tabWidget.addTab(self.tab_2, "")
-        self.verticalLayout_6.addWidget(self.tabWidget)
-        self.groupBox_3 = QtWidgets.QGroupBox(self.centralwidget)
+        self.widget = QtWidgets.QWidget(self.splitter)
+        self.widget.setObjectName("widget")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.groupBox_3 = QtWidgets.QGroupBox(self.widget)
         self.groupBox_3.setObjectName("groupBox_3")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_3)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -146,7 +153,7 @@ class Ui_MainWindow(object):
         self.usePauCompCheckBox.setObjectName("usePauCompCheckBox")
         self.verticalLayout_2.addWidget(self.usePauCompCheckBox)
         self.verticalLayout_6.addWidget(self.groupBox_3)
-        self.useReplaceGroupBox = QtWidgets.QGroupBox(self.centralwidget)
+        self.useReplaceGroupBox = QtWidgets.QGroupBox(self.widget)
         self.useReplaceGroupBox.setTitle("音程を置き換えたファイルも作る")
         self.useReplaceGroupBox.setCheckable(True)
         self.useReplaceGroupBox.setObjectName("useReplaceGroupBox")
@@ -187,7 +194,7 @@ class Ui_MainWindow(object):
         self.replaceWavLabel.setObjectName("replaceWavLabel")
         self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.replaceWavLabel)
         self.verticalLayout_6.addWidget(self.useReplaceGroupBox)
-        self.groupBox_4 = QtWidgets.QGroupBox(self.centralwidget)
+        self.groupBox_4 = QtWidgets.QGroupBox(self.widget)
         self.groupBox_4.setTitle("出力先")
         self.groupBox_4.setObjectName("groupBox_4")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.groupBox_4)
@@ -203,7 +210,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.dstToolButton)
         self.verticalLayout_5.addLayout(self.horizontalLayout)
         self.verticalLayout_6.addWidget(self.groupBox_4)
-        self.logGroupBox = QtWidgets.QGroupBox(self.centralwidget)
+        self.logGroupBox = QtWidgets.QGroupBox(self.widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(1)
@@ -225,24 +232,25 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addWidget(self.logGroupBox)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.checkButton = QtWidgets.QPushButton(self.centralwidget)
+        self.checkButton = QtWidgets.QPushButton(self.widget)
         self.checkButton.setMinimumSize(QtCore.QSize(80, 30))
         self.checkButton.setObjectName("checkButton")
         self.horizontalLayout_3.addWidget(self.checkButton)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem2)
-        self.syncButton = QtWidgets.QPushButton(self.centralwidget)
+        self.syncButton = QtWidgets.QPushButton(self.widget)
         self.syncButton.setMinimumSize(QtCore.QSize(80, 30))
         self.syncButton.setObjectName("syncButton")
         self.horizontalLayout_3.addWidget(self.syncButton)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
+        self.closeButton = QtWidgets.QPushButton(self.widget)
         self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
         self.closeButton.setObjectName("closeButton")
         self.horizontalLayout_3.addWidget(self.closeButton)
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
+        self.verticalLayout_7.addWidget(self.splitter)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 524, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 751, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -307,5 +315,5 @@ class Ui_MainWindow(object):
         self.actionNew.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
         self.actionNew.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+N", None, -1))
 
-from rs.tool.voice_sync.wav_table import View
 from rs.gui.log import LogTextEdit
+from rs.tool.voice_sync.wav_table import View
