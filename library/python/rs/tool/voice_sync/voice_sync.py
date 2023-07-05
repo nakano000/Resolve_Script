@@ -10,6 +10,7 @@ import numpy as np
 import scipy.signal as signal
 import soundfile as sf
 import pyrubberband as pyrb
+import pyworld as pw
 
 from PySide2.QtCore import (
     Qt,
@@ -35,20 +36,38 @@ from rs.gui import (
 from rs.tool.voice_sync.voice_sync_ui import Ui_MainWindow
 from rs.tool.voice_sync.check_timing import MainWindow as CheckWindow
 
+from rs.tool.voice_sync.wav_table import InputData
+
 APP_NAME = 'VoiceSync'
 
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
+    # talk tab
     src_file: str = ''
-    src_lab_file: str = ''
-    ref_lab_file: str = ''
-    dst_file: str = ''
-    tab_index: int = 0
     use_auto_set: bool = True
+    src_lab_file: str = ''
+
+    # tab
+    tab_index: int = 0
+
+    # dst
+    dst_file: str = ''
+
+    # ref
+    ref_lab_file: str = ''
     use_pau_comp: bool = True
     repeat: int = 0
     exclude_end: bool = True
+
+    # replace
+    use_replace: bool = False
+    replaced_wav_file: str = ''
+    pitch_wav_file: str = ''
+    ap_value: float = 1.0
+
+    # table
+    src_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
 
 
 class MainWindow(QMainWindow):
@@ -62,13 +81,14 @@ class MainWindow(QMainWindow):
         self.setWindowFlags(
             Qt.Window
             | Qt.WindowCloseButtonHint
-            | Qt.WindowStaysOnTopHint
+            # | Qt.WindowStaysOnTopHint
         )
         self.resize(800, 600)
 
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.set_data(ConfigData())
+        self.sampling_rate = 48000
 
         # window
         self.check_window = CheckWindow(self)
@@ -91,6 +111,12 @@ class MainWindow(QMainWindow):
         self.ui.srcToolButton.clicked.connect(self.get_wav_name)
         self.ui.srcLabToolButton.clicked.connect(partial(self.get_open_file_name, self.ui.srcLabLineEdit, 'lab'))
         self.ui.refLabToolButton.clicked.connect(partial(self.get_open_file_name, self.ui.refLabLineEdit, 'lab'))
+
+        self.ui.pitchWavToolButton.clicked.connect(partial(self.get_open_file_name, self.ui.pitchWavLineEdit, 'wav'))
+
+        self.ui.replacedWavToolButton.clicked.connect(
+            partial(self.get_save_file_name, self.ui.replacedWavLineEdit, 'wav')
+        )
         self.ui.dstToolButton.clicked.connect(partial(self.get_save_file_name, self.ui.dstLineEdit, 'wav'))
 
         self.ui.readButton.clicked.connect(self.read_lyrics)
@@ -102,6 +128,12 @@ class MainWindow(QMainWindow):
         self.ui.checkButton.clicked.connect(self.check)
         self.ui.syncButton.clicked.connect(self.sync_voice)
         self.ui.closeButton.clicked.connect(self.close)
+
+        # menu
+        self.ui.actionNew.triggered.connect(self.new_file)
+        self.ui.actionOpen.triggered.connect(self.open_file)
+        self.ui.actionSave.triggered.connect(self.save_file)
+        self.ui.actionExit.triggered.connect(self.close)
 
     @staticmethod
     def pau_comp(lab_data):
@@ -156,11 +188,63 @@ class MainWindow(QMainWindow):
                 r.append(d)
         return r
 
-    def sync_voice(self):
-        self.ui.logTextEdit.clear()
+    def _pitch_replace_process(self):
+        SR = self.sampling_rate
 
+        def read_wav(path: Path):
+            wav_data, _sr = sf.read(str(path))
+            wav_data = signal.resample(
+                wav_data,
+                round(len(wav_data) * float(SR) / _sr),
+            )
+            temp_file = path.with_suffix('.tmp.wav')
+            for i in range(1000):
+                if temp_file.is_file():
+                    temp_file = temp_file.with_suffix('.tmp%d.wav' % i)
+                else:
+                    break
+            sf.write(str(temp_file), wav_data, SR)
+            result, _ = sf.read(str(temp_file))
+            temp_file.unlink()
+            return result
+
+        # get data
+        config_data = self.get_data()
+        src_file = Path(config_data.dst_file)
+        ref_file = Path(config_data.pitch_wav_file)
+        dst_file = Path(config_data.replaced_wav_file)
+        ap_value = config_data.ap_value
+
+        # read wav
+        src_data = read_wav(src_file)
+        ref_data = read_wav(ref_file)
+        # mono
+        if len(src_data.shape) > 1:
+            src_data = src_data[:, 0].copy(order='c')
+        if len(ref_data.shape) > 1:
+            ref_data = np.asarray(ref_data[:, 0]).copy(order='c')
+        # 長さを合わせる
+        if len(src_data) > len(ref_data):
+            src_data = src_data[:len(ref_data)]
+        if len(ref_data) > len(src_data):
+            ref_data = ref_data[:len(src_data)]
+        # normalize
+        src_data = src_data / (np.nanmax(np.abs(src_data)))
+        ref_data = ref_data / (np.nanmax(np.abs(ref_data)))
+
+        # pitch replace
+        _f0, _t = pw.harvest(ref_data, SR, f0_floor=110.0, f0_ceil=783.991)
+        f0 = pw.stonemask(ref_data, _f0, _t, SR)
+
+        sp = pw.cheaptrick(src_data, f0, _t, SR)
+        ap = pw.d4c(src_data, f0, _t, SR)
+
+        y = pw.synthesize(f0, sp, ap * ap_value, SR)
+        return y / (np.nanmax(np.abs(y)))
+
+    def _sync_voice_process(self):
         N = 10000000
-        SR = 48000
+        SR = self.sampling_rate
 
         def resample(_f: Path):
             _clip, _sr = sf.read(str(_f))
@@ -180,6 +264,88 @@ class MainWindow(QMainWindow):
         # get data
         config_data = self.get_data()
         is_talk = config_data.tab_index == 0
+        w = self.ui.wavTableView
+
+        src_file_list = [Path(config_data.src_file)] if is_talk else w.get_wav_list()
+        src_lab_file_list = [Path(config_data.src_lab_file)] if is_talk else w.get_lab_list()
+
+        ref_lab_file = Path(config_data.ref_lab_file)
+
+        # read src
+        src_data_list = p.pipe(
+            zip(src_file_list, src_lab_file_list),
+            p.map(lambda x: (resample(x[0]), lab.read(x[1]))),
+            list,
+        )
+        self.add2log('Read wav and lab.')
+
+        # read ref
+        ref_lab_data = lab.read(ref_lab_file)
+        self.add2log('Read ref.')
+        if config_data.use_pau_comp:
+            ref_lab_data = self.pau_comp(ref_lab_data)
+        ref_lab_data = self.repeat_vowel(ref_lab_data, config_data.repeat, config_data.exclude_end)
+
+        # y and lab
+        wav_list = []
+        lab_data = []
+        _end_point = 0
+        for i, src_data in enumerate(src_data_list):
+            _wav_data, _lab_data = src_data
+            if i != len(src_data_list) - 1:
+                # lab:最後が無音なら削除。
+                if _lab_data[-1]['sign'] in ['sil', 'pau', 'br']:
+                    _lab_data.pop()
+            else:
+                # lab:無音で終っていなければ無音を追加。ai voice対策
+                if _lab_data[-1]['sign'] not in ['sil', 'pau', 'br']:
+                    _lab_data.append({
+                        's': _lab_data[-1]['e'],
+                        'e': int(len(_wav_data) * N / SR),
+                        'sign': 'pau'
+                    })
+            # y
+            last_pos = to_pos(_lab_data[-1]['e'])
+            if len(_wav_data) < last_pos:
+                last_pos = len(_wav_data)
+            wav_list.append(_wav_data[: last_pos])
+            # lab
+            for _lab in _lab_data:
+                _lab['s'] += _end_point
+                _lab['e'] += _end_point
+            _end_point = _lab_data[-1]['e']
+            lab_data.extend(_lab_data)
+        wav_data = np.concatenate(wav_list)
+
+        # get pos
+        pos_list: list = read_pos(lab_data)
+        end_pos = len(wav_data)
+        pos_list.append(end_pos)
+
+        pos2_list: list = read_pos(ref_lab_data)
+        end_pos2 = to_pos(ref_lab_data[len(pos2_list) - 1]['e'])
+        pos2_list.append(end_pos2)
+
+        if len(pos_list) > len(pos2_list):
+            _d = pos2_list[-1] - pos_list[len(pos2_list) - 1]
+            pos2_list.extend(p.pipe(
+                pos_list[len(pos2_list): len(pos_list)],
+                p.map(lambda x: x + _d),
+                list,
+            ))
+
+        # sync
+        time_map = list(zip(pos_list, pos2_list))
+        # print(time_map)
+        return pyrb.timemap_stretch(wav_data, SR, time_map)
+
+    def sync_voice(self):
+        self.ui.logTextEdit.clear()
+
+        # get data
+        config_data = self.get_data()
+        is_talk = config_data.tab_index == 0
+        use_replace = config_data.use_replace
         w = self.ui.wavTableView
 
         # src wav
@@ -210,76 +376,22 @@ class MainWindow(QMainWindow):
             self.add2log(f'Error: 変換用音素タイミングファイルがありません。{ref_lab_file.name}', log.ERROR_COLOR)
             return
 
+        # replaced wav
+        replaced_wav_file = Path(config_data.replaced_wav_file)
+        pitch_wav_file = Path(config_data.pitch_wav_file)
+        if use_replace:
+            if not pitch_wav_file.is_file():
+                self.add2log(f'Error: 音程参照用音声ファイルがありません。{pitch_wav_file.name}', log.ERROR_COLOR)
+                return
+            replaced_wav_file.parent.mkdir(parents=True, exist_ok=True)
+
         # dst
         dst = Path(config_data.dst_file)
-
-        # read src
-        src_data_list = p.pipe(
-            zip(src_file_list, src_lab_file_list),
-            p.map(lambda x: (resample(x[0]), lab.read(x[1]))),
-            list,
-        )
-        self.add2log('Read wav and lab.')
-
-        # read ref
-        ref_lab_data = lab.read(ref_lab_file)
-        self.add2log('Read ref.')
-        if config_data.use_pau_comp:
-            ref_lab_data = self.pau_comp(ref_lab_data)
-        ref_lab_data = self.repeat_vowel(ref_lab_data, config_data.repeat, config_data.exclude_end)
-
-        # y and lab
-        y_list = []
-        lab_data = []
-        _end_point = 0
-        for i, src_data in enumerate(src_data_list):
-            _y, _lab_data = src_data
-            if i != len(src_data_list) - 1:
-                # lab:無音を削除。
-                if _lab_data[-1]['sign'] in ['sil', 'pau', 'br']:
-                    _lab_data.pop()
-            else:
-                # lab:無音で終っていなければ無音を追加。ai voice対策
-                if _lab_data[-1]['sign'] not in ['sil', 'pau', 'br']:
-                    _lab_data.append({
-                        's': _lab_data[-1]['e'],
-                        'e': int(len(_y) * N / SR),
-                        'sign': 'pau'
-                    })
-            # y
-            last_pos = to_pos(_lab_data[-1]['e'])
-            if len(_y) < last_pos:
-                last_pos = len(_y)
-            y_list.append(_y[: last_pos])
-            # lab
-            for _lab in _lab_data:
-                _lab['s'] += _end_point
-                _lab['e'] += _end_point
-            _end_point = _lab_data[-1]['e']
-            lab_data.extend(_lab_data)
-        y = np.concatenate(y_list)
-
-        # get pos
-        pos_list: list = read_pos(lab_data)
-        end_pos = len(y)
-        pos_list.append(end_pos)
-
-        pos2_list: list = read_pos(ref_lab_data)
-        end_pos2 = to_pos(ref_lab_data[len(pos2_list) - 1]['e'])
-        pos2_list.append(end_pos2)
-
-        if len(pos_list) > len(pos2_list):
-            _d = pos2_list[-1] - pos_list[len(pos2_list) - 1]
-            pos2_list.extend(p.pipe(
-                pos_list[len(pos2_list): len(pos_list)],
-                p.map(lambda x: x + _d),
-                list,
-            ))
+        dst.parent.mkdir(parents=True, exist_ok=True)
 
         # sync
-        time_map = list(zip(pos_list, pos2_list))
-        # print(time_map)
-        result = pyrb.timemap_stretch(y, SR, time_map)
+        self.add2log('Sync processing...')
+        result = self._sync_voice_process()
 
         # save
         dst.parent.mkdir(parents=True, exist_ok=True)
@@ -295,12 +407,24 @@ class MainWindow(QMainWindow):
                 shutil.copyfile(src_txt_file, dst_txt_file)
                 self.add2log('Copy: %s' % dst_txt_file.name)
         try:
-            sf.write(str(dst), result, SR)
+            sf.write(str(dst), result, self.sampling_rate)
         except RuntimeError:
             self.add2log('Error: wavファイルの保存に失敗しました。', log.ERROR_COLOR)
             return
         self.add2log('Save: %s' % dst.name)
 
+        # pitch replace
+        if use_replace:
+            self.add2log('Pitch replace...')
+            replaced_data = self._pitch_replace_process()
+            try:
+                sf.write(str(replaced_wav_file), replaced_data, self.sampling_rate)
+            except RuntimeError:
+                self.add2log('Error: wavファイルの保存に失敗しました。', log.ERROR_COLOR)
+                return
+            self.add2log('Save: %s' % replaced_wav_file.name)
+
+        # end
         self.add2log('Done!')
 
     def check(self):
@@ -459,26 +583,46 @@ class MainWindow(QMainWindow):
 
     def set_data(self, c: ConfigData):
         self.ui.srcLineEdit.setText(c.src_file)
-        self.ui.srcLabLineEdit.setText(c.src_lab_file)
-        self.ui.refLabLineEdit.setText(c.ref_lab_file)
-        self.ui.dstLineEdit.setText(c.dst_file)
-        self.ui.tabWidget.setCurrentIndex(c.tab_index)
         self.ui.useAutoSetCheckBox.setChecked(c.use_auto_set)
+        self.ui.srcLabLineEdit.setText(c.src_lab_file)
+
+        self.ui.tabWidget.setCurrentIndex(c.tab_index)
+
+        self.ui.dstLineEdit.setText(c.dst_file)
+
+        self.ui.refLabLineEdit.setText(c.ref_lab_file)
         self.ui.usePauCompCheckBox.setChecked(c.use_pau_comp)
         self.ui.repeatSpinBox.setValue(c.repeat)
         self.ui.excludeEndCheckBox.setChecked(c.exclude_end)
 
+        self.ui.useReplaceGroupBox.setChecked(c.use_replace)
+        self.ui.pitchWavLineEdit.setText(c.pitch_wav_file)
+        self.ui.replacedWavLineEdit.setText(c.replaced_wav_file)
+        self.ui.apValueSpinBox.setValue(c.ap_value)
+
+        self.ui.wavTableView.model().set_data(c.src_list)
+
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.src_file = self.ui.srcLineEdit.text()
-        c.src_lab_file = self.ui.srcLabLineEdit.text()
-        c.ref_lab_file = self.ui.refLabLineEdit.text()
-        c.dst_file = self.ui.dstLineEdit.text()
-        c.tab_index = self.ui.tabWidget.currentIndex()
         c.use_auto_set = self.ui.useAutoSetCheckBox.isChecked()
+        c.src_lab_file = self.ui.srcLabLineEdit.text()
+
+        c.tab_index = self.ui.tabWidget.currentIndex()
+
+        c.dst_file = self.ui.dstLineEdit.text()
+
+        c.ref_lab_file = self.ui.refLabLineEdit.text()
         c.use_pau_comp = self.ui.usePauCompCheckBox.isChecked()
         c.repeat = self.ui.repeatSpinBox.value()
         c.exclude_end = self.ui.excludeEndCheckBox.isChecked()
+
+        c.use_replace = self.ui.useReplaceGroupBox.isChecked()
+        c.pitch_wav_file = self.ui.pitchWavLineEdit.text()
+        c.replaced_wav_file = self.ui.replacedWavLineEdit.text()
+        c.ap_value = self.ui.apValueSpinBox.value()
+
+        c.src_list.set_list(self.ui.wavTableView.model().to_list())
         return c
 
     def load_config(self) -> None:
@@ -491,6 +635,39 @@ class MainWindow(QMainWindow):
         config.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
         c = self.get_data()
         c.save(self.config_file)
+
+    def new_file(self) -> None:
+        c = ConfigData()
+        self.set_data(c)
+
+    def open_file(self) -> None:
+        type_name = 'json'
+        path, _ = QFileDialog.getOpenFileName(
+            self,
+            f'Select {type_name.upper()} File',
+            '',
+            f'{type_name.upper()} File (*.{type_name.lower()})',
+        )
+        if path != '':
+            json_file = Path(path)
+            if json_file.is_file():
+                c = ConfigData()
+                c.load(json_file)
+                self.set_data(c)
+
+    def save_file(self) -> None:
+        type_name = 'json'
+        path, _ = QFileDialog.getSaveFileName(
+            self,
+            'save as',
+            '',
+            f'{type_name.upper()} File (*.{type_name.lower()})',
+        )
+        if path != '':
+            json_file = Path(path)
+            json_file.parent.mkdir(parents=True, exist_ok=True)
+            c = self.get_data()
+            c.save(json_file)
 
     # def closeEvent(self, event):
     #     self.save_config()
