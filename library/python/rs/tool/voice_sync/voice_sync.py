@@ -83,7 +83,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             # | Qt.WindowStaysOnTopHint
         )
-        self.resize(800, 600)
+        self.resize(800, 900)
 
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
@@ -212,7 +212,6 @@ class MainWindow(QMainWindow):
         config_data = self.get_data()
         src_file = Path(config_data.dst_file)
         ref_file = Path(config_data.pitch_wav_file)
-        dst_file = Path(config_data.replaced_wav_file)
         ap_value = config_data.ap_value
 
         # read wav
