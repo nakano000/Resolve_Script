@@ -66,6 +66,9 @@ class ConfigData(config.Data):
     pitch_wav_file: str = ''
     ap_value: float = 1.0
 
+    # remap
+    remap_type: str = 'B'
+
     # table
     src_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
 
@@ -263,6 +266,7 @@ class MainWindow(QMainWindow):
         # get data
         config_data = self.get_data()
         is_talk = config_data.tab_index == 0
+        is_type_a = config_data.remap_type == 'A'
         w = self.ui.wavTableView
 
         src_file_list = [Path(config_data.src_file)] if is_talk else w.get_wav_list()
@@ -334,9 +338,25 @@ class MainWindow(QMainWindow):
             ))
 
         # sync
-        time_map = list(zip(pos_list, pos2_list))
-        # print(time_map)
-        return pyrb.timemap_stretch(wav_data, SR, time_map)
+        # type A
+        if is_type_a:
+            time_map = list(zip(pos_list, pos2_list))
+            return pyrb.timemap_stretch(wav_data, SR, time_map)
+
+        # type B
+        remapped_list = []
+        for i in range(len(pos_list) - 1):
+            _wav_data = wav_data[pos_list[i]: pos_list[i + 1]]
+            _length = len(_wav_data)
+            _length2 = pos2_list[i + 1] - pos2_list[i]
+            _remapped = pyrb.timemap_stretch(
+                _wav_data,
+                SR,
+                [(_length, _length2)],
+                rbargs={'-3': '--fine'},
+            )
+            remapped_list.append(_remapped)
+        return np.concatenate(remapped_list)
 
     def sync_voice(self):
         self.ui.logTextEdit.clear()
@@ -598,6 +618,10 @@ class MainWindow(QMainWindow):
         self.ui.pitchWavLineEdit.setText(c.pitch_wav_file)
         self.ui.replacedWavLineEdit.setText(c.replaced_wav_file)
         self.ui.apValueSpinBox.setValue(c.ap_value)
+        if c.remap_type == 'A':
+            self.ui.remapARadioButton.setChecked(True)
+        else:  # remap_type == 'B'
+            self.ui.remapBRadioButton.setChecked(True)
 
         self.ui.wavTableView.model().set_data(c.src_list)
 
@@ -620,6 +644,11 @@ class MainWindow(QMainWindow):
         c.pitch_wav_file = self.ui.pitchWavLineEdit.text()
         c.replaced_wav_file = self.ui.replacedWavLineEdit.text()
         c.ap_value = self.ui.apValueSpinBox.value()
+
+        if self.ui.remapARadioButton.isChecked():
+            c.remap_type = 'A'
+        else:  # self.ui.remapBRadioButton.isChecked()
+            c.remap_type = 'B'
 
         c.src_list.set_list(self.ui.wavTableView.model().to_list())
         return c

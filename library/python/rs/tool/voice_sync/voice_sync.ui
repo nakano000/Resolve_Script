@@ -204,7 +204,7 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
          <widget class="QGroupBox" name="groupBox_3">
@@ -279,6 +279,29 @@
             <widget class="QCheckBox" name="usePauCompCheckBox">
              <property name="text">
               <string>pau(休符)、sil(全休符)、br(息継ぎ)が並んでいたら、一つのpauにする。</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="title">
+           <string>リマップ</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QRadioButton" name="remapARadioButton">
+             <property name="text">
+              <string>Type A</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="remapBRadioButton">
+             <property name="text">
+              <string>Type B</string>
              </property>
             </widget>
            </item>
