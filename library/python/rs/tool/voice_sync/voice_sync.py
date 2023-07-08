@@ -344,16 +344,24 @@ class MainWindow(QMainWindow):
             return pyrb.timemap_stretch(wav_data, SR, time_map)
 
         # type B
+        silent_flags = p.pipe(
+            ref_lab_data,
+            p.map(lambda x: x['sign'] in ['sil', 'pau', 'br']),
+            list,
+        )
         remapped_list = []
         for i in range(len(pos_list) - 1):
             _wav_data = wav_data[pos_list[i]: pos_list[i + 1]]
             _length = len(_wav_data)
             _length2 = pos2_list[i + 1] - pos2_list[i]
+            args = {}
+            if not silent_flags[i]:
+                args = {'-3': '--fine'}
             _remapped = pyrb.timemap_stretch(
                 _wav_data,
                 SR,
                 [(_length, _length2)],
-                rbargs={'-3': '--fine'},
+                rbargs=args,
             )
             remapped_list.append(_remapped)
         return np.concatenate(remapped_list)
