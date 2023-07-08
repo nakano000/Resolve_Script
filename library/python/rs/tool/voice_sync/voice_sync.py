@@ -363,6 +363,13 @@ class MainWindow(QMainWindow):
                 [(_length, _length2)],
                 rbargs=args,
             )
+            if len(_remapped) != _length2:
+                if len(_remapped) > _length2:
+                    _remapped = _remapped[: _length2]
+                else:
+                    # 0埋め
+                    _arr = signal.resample(_remapped[-1:] * 0.0, _length2 - len(_remapped))
+                    _remapped = np.concatenate([_remapped, _arr])
             remapped_list.append(_remapped)
         return np.concatenate(remapped_list)
 
