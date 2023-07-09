@@ -141,11 +141,11 @@ class Importer:
     def add_base_bg(self, pos_x, pos_y):
         bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
         if self.use_frame_format_settings:
+            bg.UseFrameFormatSettings = 1
+        else:
             bg.UseFrameFormatSettings = 0
             bg.Width = self.size_x + self.config_data.space_x
             bg.Height = self.size_y + self.config_data.space_y
-        else:
-            bg.UseFrameFormatSettings = 1
         bg.TopLeftAlpha = 0
         bg.Depth = 1
         node = self.add_set_dod(pos_x, pos_y, None, [0, 0, 0, 0])
