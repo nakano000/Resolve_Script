@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui' applies.
 #
-# Created: Sun Jun 18 15:29:50 2023
+# Created: Sun Jul  9 09:49:49 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,11 +13,11 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(269, 396)
+        MainWindow.resize(276, 450)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.fileGroupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.fileGroupBox.setObjectName("fileGroupBox")
         self.formLayout = QtWidgets.QFormLayout(self.fileGroupBox)
@@ -35,7 +35,7 @@ class Ui_MainWindow(object):
         self.jsonToolButton.setObjectName("jsonToolButton")
         self.horizontalLayout_2.addWidget(self.jsonToolButton)
         self.formLayout.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
-        self.verticalLayout_4.addWidget(self.fileGroupBox)
+        self.verticalLayout_7.addWidget(self.fileGroupBox)
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
@@ -73,7 +73,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.btnSizeSpinBox)
         self.verticalLayout_6.addLayout(self.horizontalLayout_4)
         self.verticalLayout_2.addWidget(self.connectOptionGroupBox)
-        self.expandGroupBox = QtWidgets.QGroupBox(self.tab)
+        self.groupBox = QtWidgets.QGroupBox(self.tab)
+        self.groupBox.setObjectName("groupBox")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.groupBox)
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.useFrameFormatSettingsCheckBox = QtWidgets.QCheckBox(self.groupBox)
+        self.useFrameFormatSettingsCheckBox.setObjectName("useFrameFormatSettingsCheckBox")
+        self.verticalLayout_4.addWidget(self.useFrameFormatSettingsCheckBox)
+        self.expandGroupBox = QtWidgets.QGroupBox(self.groupBox)
         self.expandGroupBox.setObjectName("expandGroupBox")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.expandGroupBox)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -106,7 +113,8 @@ class Ui_MainWindow(object):
         self.ySpinBox.setObjectName("ySpinBox")
         self.horizontalLayout.addWidget(self.ySpinBox)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.verticalLayout_2.addWidget(self.expandGroupBox)
+        self.verticalLayout_4.addWidget(self.expandGroupBox)
+        self.verticalLayout_2.addWidget(self.groupBox)
         self.tabWidget.addTab(self.tab, "")
         self.tab2 = QtWidgets.QWidget()
         self.tab2.setObjectName("tab2")
@@ -118,9 +126,9 @@ class Ui_MainWindow(object):
         spacerItem = QtWidgets.QSpacerItem(20, 146, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_5.addItem(spacerItem)
         self.tabWidget.addTab(self.tab2, "")
-        self.verticalLayout_4.addWidget(self.tabWidget)
+        self.verticalLayout_7.addWidget(self.tabWidget)
         spacerItem1 = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_4.addItem(spacerItem1)
+        self.verticalLayout_7.addItem(spacerItem1)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -133,7 +141,7 @@ class Ui_MainWindow(object):
         self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
         self.closeButton.setObjectName("closeButton")
         self.horizontalLayout_3.addWidget(self.closeButton)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_3)
+        self.verticalLayout_7.addLayout(self.horizontalLayout_3)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -152,6 +160,8 @@ class Ui_MainWindow(object):
         self.label.setText(QtWidgets.QApplication.translate("MainWindow", "※エクスプレッションが従来のものです。", None, -1))
         self.connectOptionGroupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "コネクション切り替え式オプション", None, -1))
         self.btnSizeLabel.setText(QtWidgets.QApplication.translate("MainWindow", "通常ボタン サイズ", None, -1))
+        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Size", None, -1))
+        self.useFrameFormatSettingsCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Use Frame Format Settings", None, -1))
         self.expandGroupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "拡張 (アニメーション スペース確保)", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "X", None, -1))
         self.xSpinBox.setSuffix(QtWidgets.QApplication.translate("MainWindow", " px", None, -1))
