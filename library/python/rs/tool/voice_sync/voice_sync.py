@@ -363,7 +363,16 @@ class MainWindow(QMainWindow):
                 [(_length, _length2)],
                 rbargs=args,
             )
+            # 下の実装でも、-3 or --fine 指定だと尺が合わないことがある。
+            # 根本的に解決するにはrubberband(c++)を直さないといけない。
+            # _remapped = pyrb.time_stretch(
+            #     _wav_data,
+            #     SR,
+            #     _length / _length2,
+            #     rbargs=args,
+            # )
             if len(_remapped) != _length2:
+                print('length error', len(_remapped), _length2)
                 if len(_remapped) > _length2:
                     _remapped = _remapped[: _length2]
                 else:
