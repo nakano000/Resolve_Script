@@ -38,11 +38,11 @@ pykakasi
 PyMsgBox
 pyperclip
 PyRect
-pyrubberband
 pyscreenshot
 PyScreeze
 PySide2
 PySoundFile
+pytsmod
 pytweening
 PyWavelets
 pyworld
