@@ -9,8 +9,8 @@ from pathlib import Path
 import numpy as np
 import scipy.signal as signal
 import soundfile as sf
-import pyrubberband as pyrb
 import pyworld as pw
+import pytsmod as tsm
 
 from PySide2.QtCore import (
     Qt,
@@ -65,9 +65,6 @@ class ConfigData(config.Data):
     replaced_wav_file: str = ''
     pitch_wav_file: str = ''
     ap_value: float = 1.0
-
-    # remap
-    remap_type: str = 'B'
 
     # table
     src_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(InputData))
@@ -266,7 +263,6 @@ class MainWindow(QMainWindow):
         # get data
         config_data = self.get_data()
         is_talk = config_data.tab_index == 0
-        is_type_a = config_data.remap_type == 'A'
         w = self.ui.wavTableView
 
         src_file_list = [Path(config_data.src_file)] if is_talk else w.get_wav_list()
@@ -289,7 +285,7 @@ class MainWindow(QMainWindow):
             ref_lab_data = self.pau_comp(ref_lab_data)
         ref_lab_data = self.repeat_vowel(ref_lab_data, config_data.repeat, config_data.exclude_end)
 
-        # y and lab
+        # wav and lab
         wav_list = []
         lab_data = []
         _end_point = 0
@@ -307,7 +303,7 @@ class MainWindow(QMainWindow):
                         'e': int(len(_wav_data) * N / SR),
                         'sign': 'pau'
                     })
-            # y
+            # wav
             last_pos = to_pos(_lab_data[-1]['e'])
             if len(_wav_data) < last_pos:
                 last_pos = len(_wav_data)
@@ -337,50 +333,10 @@ class MainWindow(QMainWindow):
                 list,
             ))
 
-        # sync
-        # type A
-        if is_type_a:
-            time_map = list(zip(pos_list, pos2_list))
-            return pyrb.timemap_stretch(wav_data, SR, time_map)
-
-        # type B
-        silent_flags = p.pipe(
-            ref_lab_data,
-            p.map(lambda x: x['sign'] in ['sil', 'pau', 'br']),
-            list,
-        )
-        remapped_list = []
-        for i in range(len(pos_list) - 1):
-            _wav_data = wav_data[pos_list[i]: pos_list[i + 1]]
-            _length = len(_wav_data)
-            _length2 = pos2_list[i + 1] - pos2_list[i]
-            args = {}
-            if not silent_flags[i]:
-                args = {'-3': '--fine'}
-            _remapped = pyrb.timemap_stretch(
-                _wav_data,
-                SR,
-                [(_length, _length2)],
-                rbargs=args,
-            )
-            # 下の実装でも、-3 or --fine 指定だと尺が合わないことがある。
-            # 根本的に解決するにはrubberband(c++)を直さないといけない。
-            # _remapped = pyrb.time_stretch(
-            #     _wav_data,
-            #     SR,
-            #     _length / _length2,
-            #     rbargs=args,
-            # )
-            if len(_remapped) != _length2:
-                print('length error', len(_remapped), _length2)
-                if len(_remapped) > _length2:
-                    _remapped = _remapped[: _length2]
-                else:
-                    # 0埋め
-                    _arr = signal.resample(_remapped[-1:] * 0.0, _length2 - len(_remapped))
-                    _remapped = np.concatenate([_remapped, _arr])
-            remapped_list.append(_remapped)
-        return np.concatenate(remapped_list)
+        time_map = np.array([pos_list, pos2_list])
+        x = wav_data.T
+        remapped = tsm.wsola(x, time_map)
+        return remapped.T
 
     def sync_voice(self):
         self.ui.logTextEdit.clear()
@@ -642,10 +598,6 @@ class MainWindow(QMainWindow):
         self.ui.pitchWavLineEdit.setText(c.pitch_wav_file)
         self.ui.replacedWavLineEdit.setText(c.replaced_wav_file)
         self.ui.apValueSpinBox.setValue(c.ap_value)
-        if c.remap_type == 'A':
-            self.ui.remapARadioButton.setChecked(True)
-        else:  # remap_type == 'B'
-            self.ui.remapBRadioButton.setChecked(True)
 
         self.ui.wavTableView.model().set_data(c.src_list)
 
@@ -668,11 +620,6 @@ class MainWindow(QMainWindow):
         c.pitch_wav_file = self.ui.pitchWavLineEdit.text()
         c.replaced_wav_file = self.ui.replacedWavLineEdit.text()
         c.ap_value = self.ui.apValueSpinBox.value()
-
-        if self.ui.remapARadioButton.isChecked():
-            c.remap_type = 'A'
-        else:  # self.ui.remapBRadioButton.isChecked()
-            c.remap_type = 'B'
 
         c.src_list.set_list(self.ui.wavTableView.model().to_list())
         return c

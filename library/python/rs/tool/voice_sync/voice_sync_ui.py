@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui' applies.
 #
-# Created: Mon Jul 10 21:37:54 2023
+# Created: Mon Jul 10 23:06:15 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -153,17 +153,6 @@ class Ui_MainWindow(object):
         self.usePauCompCheckBox.setObjectName("usePauCompCheckBox")
         self.verticalLayout_2.addWidget(self.usePauCompCheckBox)
         self.verticalLayout_6.addWidget(self.groupBox_3)
-        self.groupBox_5 = QtWidgets.QGroupBox(self.layoutWidget)
-        self.groupBox_5.setObjectName("groupBox_5")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.groupBox_5)
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.remapARadioButton = QtWidgets.QRadioButton(self.groupBox_5)
-        self.remapARadioButton.setObjectName("remapARadioButton")
-        self.verticalLayout_8.addWidget(self.remapARadioButton)
-        self.remapBRadioButton = QtWidgets.QRadioButton(self.groupBox_5)
-        self.remapBRadioButton.setObjectName("remapBRadioButton")
-        self.verticalLayout_8.addWidget(self.remapBRadioButton)
-        self.verticalLayout_6.addWidget(self.groupBox_5)
         self.useReplaceGroupBox = QtWidgets.QGroupBox(self.layoutWidget)
         self.useReplaceGroupBox.setTitle("音程を置き換えたファイルも作る")
         self.useReplaceGroupBox.setCheckable(True)
@@ -306,9 +295,6 @@ class Ui_MainWindow(object):
         self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "母音を繰り返す", None, -1))
         self.excludeEndCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "休符の前では繰り返さない。", None, -1))
         self.usePauCompCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "pau(休符)、sil(全休符)、br(息継ぎ)が並んでいたら、一つのpauにする。", None, -1))
-        self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "リマップ", None, -1))
-        self.remapARadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "Type A (ロボっぽい)", None, -1))
-        self.remapBRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "Type B (いい感じだけど、プチプチする)", None, -1))
         self.label_5.setText(QtWidgets.QApplication.translate("MainWindow", "音程(wav)", None, -1))
         self.pitchWavToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.label_6.setText(QtWidgets.QApplication.translate("MainWindow", "雑味(aperiodicity)", None, -1))
