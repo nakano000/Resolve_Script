@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>751</width>
-    <height>848</height>
+    <width>626</width>
+    <height>787</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -294,14 +294,14 @@
            <item>
             <widget class="QRadioButton" name="remapARadioButton">
              <property name="text">
-              <string>Type A</string>
+              <string>Type A (ロボっぽい)</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="remapBRadioButton">
              <property name="text">
-              <string>Type B</string>
+              <string>Type B (いい感じだけど、プチプチする)</string>
              </property>
             </widget>
            </item>
@@ -509,7 +509,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>751</width>
+     <width>626</width>
      <height>21</height>
     </rect>
    </property>

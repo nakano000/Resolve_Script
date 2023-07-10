@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui',
 # licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui' applies.
 #
-# Created: Sat Jul  8 04:45:20 2023
+# Created: Mon Jul 10 21:37:54 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(751, 848)
+        MainWindow.resize(626, 787)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -261,7 +261,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.addWidget(self.splitter)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 751, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 626, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -307,8 +307,8 @@ class Ui_MainWindow(object):
         self.excludeEndCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "休符の前では繰り返さない。", None, -1))
         self.usePauCompCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "pau(休符)、sil(全休符)、br(息継ぎ)が並んでいたら、一つのpauにする。", None, -1))
         self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "リマップ", None, -1))
-        self.remapARadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "Type A", None, -1))
-        self.remapBRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "Type B", None, -1))
+        self.remapARadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "Type A (ロボっぽい)", None, -1))
+        self.remapBRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "Type B (いい感じだけど、プチプチする)", None, -1))
         self.label_5.setText(QtWidgets.QApplication.translate("MainWindow", "音程(wav)", None, -1))
         self.pitchWavToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
         self.label_6.setText(QtWidgets.QApplication.translate("MainWindow", "雑味(aperiodicity)", None, -1))
@@ -329,5 +329,5 @@ class Ui_MainWindow(object):
         self.actionNew.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
         self.actionNew.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+N", None, -1))
 
-from rs.gui.log import LogTextEdit
 from rs.tool.voice_sync.wav_table import View
+from rs.gui.log import LogTextEdit
