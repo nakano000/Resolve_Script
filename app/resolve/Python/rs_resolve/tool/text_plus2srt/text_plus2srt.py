@@ -55,6 +55,9 @@ class MainWindow(QMainWindow):
         self.resize(250, 50)
         self.fusion = fusion
 
+        # lang
+        self.lang_code: lang.Code = lang.load()
+
         # combobox
         w = self.ui.videoComboBox
         m = QStringListModel()
@@ -62,7 +65,7 @@ class MainWindow(QMainWindow):
 
         # style sheet
         self.ui.updateButton.setStyleSheet(appearance.other_stylesheet)
-        self.ui.saveButton.setStyleSheet(appearance.in_stylesheet)
+        self.ui.saveButton.setStyleSheet(appearance.ex_stylesheet)
 
         # event
         self.ui.updateButton.clicked.connect(self.update_track)
