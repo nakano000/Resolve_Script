@@ -7,9 +7,11 @@ from PySide2.QtCore import (
     Qt,
     QStringListModel,
 )
+from PySide2.QtGui import QColor
 from PySide2.QtWidgets import (
     QApplication,
-    QMainWindow, QFileDialog,
+    QMainWindow,
+    QFileDialog,
 )
 
 from rs.core import (
@@ -19,6 +21,7 @@ from rs.core import (
 )
 from rs.gui import (
     appearance,
+    log,
 )
 
 from rs_resolve.core import (
@@ -77,6 +80,8 @@ class MainWindow(QMainWindow):
         self.ui.closeButton.setFocus()
 
     def save(self) -> None:
+        self.ui.logTextEdit.clear()
+        # dialog
         type_name = 'srt'
         path, _ = QFileDialog.getSaveFileName(
             self,
@@ -96,32 +101,37 @@ class MainWindow(QMainWindow):
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
-            print(
+            self.add2log(
                 'Project not found.'
                 if self.lang_code == lang.Code.en else
-                'Projectが見付かりません。'
+                'Projectが見付かりません。',
+                log.ERROR_COLOR,
             )
             return
         timeline = project.GetCurrentTimeline()
         if timeline is None:
-            print(
+            self.add2log(
                 'Timeline not found.'
                 if self.lang_code == lang.Code.en else
-                'Timelineが見付かりません。'
+                'Timelineが見付かりません。',
+                log.ERROR_COLOR,
             )
             return
 
         index = track_name2index(timeline, 'video', self.ui.videoComboBox.currentText())
 
         if index == 0:
-            print(
+            self.add2log(
                 'Track not found.'
                 if self.lang_code == lang.Code.en else
-                '選択したトラックが見付かりません。'
+                '選択したトラックが見付かりません。',
+                log.ERROR_COLOR,
             )
             return
 
         # start
+        self.add2log('Processing...')
+
         start_frame = timeline.GetStartFrame()
         fps = get_fps(timeline)
         data_list = []
@@ -146,7 +156,7 @@ class MainWindow(QMainWindow):
         util.write_text(srt_file, srt)
 
         # end
-        print('Done!')
+        self.add2log('Done!')
 
     def update_track(self) -> None:
         m: QStringListModel = self.ui.videoComboBox.model()
@@ -154,18 +164,20 @@ class MainWindow(QMainWindow):
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
-            print(
+            self.add2log(
                 'Project not found.'
                 if self.lang_code == lang.Code.en else
-                'Projectが見付かりません。'
+                'Projectが見付かりません。',
+                log.ERROR_COLOR,
             )
             return
         timeline = project.GetCurrentTimeline()
         if timeline is None:
-            print(
+            self.add2log(
                 'Timeline not found.'
                 if self.lang_code == lang.Code.en else
-                'Timelineが見付かりません。'
+                'Timelineが見付かりません。',
+                log.ERROR_COLOR,
             )
             return
         if timeline is None:
@@ -174,6 +186,9 @@ class MainWindow(QMainWindow):
 
         # video
         m.setStringList(get_track_names(timeline, 'video'))
+
+    def add2log(self, text: str, color: QColor = log.TEXT_COLOR) -> None:
+        self.ui.logTextEdit.log(text, color)
 
 
 def run(fusion) -> None:
