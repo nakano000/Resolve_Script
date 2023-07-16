@@ -30,6 +30,7 @@ from rs.core import (
     util,
     chara_data,
     txt,
+    lab,
 )
 from rs.core.chara_data import CharaData
 from rs.gui.chara.chara import MainWindow as CharaWindow
@@ -39,7 +40,10 @@ from rs.gui import (
     log,
 )
 
-from rs_fusion.core import ordered_dict_to_dict, pose
+from rs_fusion.core import (
+    ordered_dict_to_dict,
+    pose,
+)
 from rs_resolve.core import (
     get_currentframe,
     set_currentframe,
@@ -47,7 +51,8 @@ from rs_resolve.core import (
     track_name2index,
     get_item,
     get_track_item_count,
-    LockOtherTrack, shortcut,
+    LockOtherTrack,
+    shortcut,
 )
 from rs_resolve.gui import (
     get_resolve_window,
@@ -114,13 +119,12 @@ class MainWindow(QMainWindow):
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
 
-        tmp_dir = config.CONFIG_DIR.joinpath('tmp')
-        tmp_dir.mkdir(parents=True, exist_ok=True)
-        self.temp_file: Path = tmp_dir.joinpath('timeline.xml')
-
-        self.xml = config.DATA_PATH.joinpath('app', 'VoiceDropper', 'Timeline.xml').read_text(encoding='utf-8')
-
-        self.script_base: str = SCRIPT_DIR.joinpath('script_base.lua').read_text(encoding='utf-8')
+        self.anim_setting: str = config.ROOT_PATH.joinpath(
+            'data', 'app', 'VoiceDropper', 'setting_base.txt'
+        ).read_text(encoding='utf-8')
+        self.anim_setting_mm: str = config.ROOT_PATH.joinpath(
+            'data', 'app', 'VoiceDropper', 'setting_base_mm.txt'
+        ).read_text(encoding='utf-8')
 
         # window
         self.chara_window = CharaWindow(self)
@@ -497,6 +501,94 @@ class MainWindow(QMainWindow):
                 time.sleep(0.1)
         self.add2log('Cut Clip: Done')
 
+    def set_anim(self, comp, tool, ch_data, f, fps):
+        # get anim
+        self.add2log('Load Anim: Start')
+        lab_file = f.with_suffix('.lab')
+        anim = ''
+        offset = comp.GetAttrs()['COMPN_GlobalStart']
+        if ch_data.anim_type.strip().lower() == 'open':
+            anim = lab.wav2anim(f, fps, offset)
+        elif lab_file.is_file():
+            anim = lab.lab2anim(lab_file, fps, ch_data.anim_type.strip().lower(), offset)
+
+        st = ordered_dict_to_dict(bmd.readstring(self.anim_setting % (
+            ch_data.anim_parameter,
+            ch_data.anim_parameter,
+            ch_data.anim_parameter,
+            anim,
+        )))
+        if st is None:
+            self.add2log('アニメーションの読み込みに失敗しました。')
+            return
+        self.add2log('Load Anim: Done')
+
+        # get anim tool list
+        _pram = ch_data.anim_parameter
+        tool_list = []
+        for v in tool.SaveSettings()['Tools'][tool.Name]['Inputs'].values():
+            if isinstance(v, dict) and '__ctor' in v.keys():
+                if v['__ctor'] == 'InstanceInput' and v['Source'] in [_pram]:
+                    tool_list.append(comp.FindTool(v['SourceOp']))
+
+        # set Lip Sync
+        self.add2log('Apply Anim: Start')
+        comp.StartUndo('RS Lip Sync')
+        comp.Lock()
+        for t in tool_list:
+            if t.GetAttrs()['TOOLB_Visible']:
+                comment = t.GetInput('Comments', comp.CurrentTime)
+                t.LoadSettings(st)
+                t.SetInput('Comments', comment, comp.CurrentTime)
+            else:
+                o_st = t.SaveSettings()
+                o_st['Tools']['MouthAnimBezierSpline'] = st['Tools']['MouthAnimBezierSpline']
+                o_st['Tools'][t.Name]['Inputs'][_pram] = st['Tools']['Ctrl']['Inputs'][_pram]
+                t.LoadSettings(o_st)
+        comp.Unlock()
+        comp.EndUndo(True)
+        self.add2log('Apply Anim: Done')
+
+    def set_anim_mm(self, comp, ch_data, f, fps):
+        # get anim
+        self.add2log('Load Anim: Start')
+        lab_file = f.with_suffix('.lab')
+        anim_list = []
+        offset = comp.GetAttrs()['COMPN_GlobalStart']
+        if ch_data.anim_type.strip().lower() == 'open':
+            pass
+        elif lab_file.is_file():
+            anim_list = lab.lab2anim_mm(lab_file, fps, ch_data.anim_type.strip().lower(), offset)
+        if len(anim_list) != 7:
+            self.add2log('アニメーションの読み込みに失敗しました。')
+            return
+
+        st = ordered_dict_to_dict(bmd.readstring(self.anim_setting_mm % tuple(anim_list)))
+        if st is None:
+            self.add2log('アニメーションの読み込みに失敗しました。')
+            return
+        self.add2log('Load Anim: Done')
+
+        # get anim tool list
+        tool_name = 'MouthAnim'
+        tool = comp.FindTool(tool_name)
+        if tool is None:
+            self.add2log('MultiMerge MouthAnimがありません。')
+            return
+
+        # set Lip Sync
+        self.add2log('Apply Anim: Start')
+        comp.StartUndo('RS Lip Sync')
+        comp.Lock()
+
+        comment = tool.GetInput('Comments', comp.CurrentTime)
+        tool.LoadSettings(st)
+        tool.SetInput('Comments', comment, comp.CurrentTime)
+
+        comp.Unlock()
+        comp.EndUndo(True)
+        self.add2log('Apply Anim: Done')
+
     def lip_sync(self):
         self.ui.logTextEdit.clear()
 
@@ -541,12 +633,8 @@ class MainWindow(QMainWindow):
         # main
         self.add2log('Start')
         # config
-        from rs.core import lab
 
         data = self.lip_sync_window.get_data()
-        setting_base: str = config.ROOT_PATH.joinpath(
-            'data', 'app', 'VoiceDropper', 'setting_base.txt'
-        ).read_text(encoding='utf-8')
 
         with LockOtherTrack(timeline, v_index, track_type='video', enable=data.use_auto_lock):
             sc = shortcut.Data()
@@ -557,7 +645,6 @@ class MainWindow(QMainWindow):
                 sf = max([item.GetStart(), v_sf])
                 ef = min([item.GetEnd(), v_ef])
                 f = Path(item.GetMediaPoolItem().GetClipProperty('File Path'))
-                lab_file = f.parent.joinpath(f.stem + '.lab')
                 self.add2log('wav: ' + str(f))
 
                 # キャラクター設定
@@ -586,51 +673,11 @@ class MainWindow(QMainWindow):
                     continue
                 tool = tools[0]
 
-                # get anim
-                self.add2log('Load Anim: Start')
-                anim = ''
-                offset = comp.GetAttrs()['COMPN_GlobalStart']
-                if ch_data.anim_type.strip().lower() == 'open':
-                    anim = lab.wav2anim(f, fps, offset)
-                elif lab_file.is_file():
-                    anim = lab.lab2anim(lab_file, fps, ch_data.anim_type.strip().lower(), offset)
-
-                st = ordered_dict_to_dict(bmd.readstring(setting_base % (
-                    ch_data.anim_parameter,
-                    ch_data.anim_parameter,
-                    ch_data.anim_parameter,
-                    anim,
-                )))
-                if st is None:
-                    self.add2log('アニメーションの読み込みに失敗しました。')
-                    continue
-                self.add2log('Load Anim: Done')
-
-                # get anim tool list
-                _pram = ch_data.anim_parameter
-                tool_list = []
-                for v in tool.SaveSettings()['Tools'][tool.Name]['Inputs'].values():
-                    if isinstance(v, dict) and '__ctor' in v.keys():
-                        if v['__ctor'] == 'InstanceInput' and v['Source'] in [_pram]:
-                            tool_list.append(comp.FindTool(v['SourceOp']))
-
-                # set Lip Sync
-                self.add2log('Apply Anim: Start')
-                comp.StartUndo('RS Lip Sync')
-                comp.Lock()
-                for t in tool_list:
-                    if t.GetAttrs()['TOOLB_Visible']:
-                        comment = t.GetInput('Comments', comp.CurrentTime)
-                        t.LoadSettings(st)
-                        t.SetInput('Comments', comment, comp.CurrentTime)
-                    else:
-                        o_st = t.SaveSettings()
-                        o_st['Tools']['MouthAnimBezierSpline'] = st['Tools']['MouthAnimBezierSpline']
-                        o_st['Tools'][t.Name]['Inputs'][_pram] = st['Tools']['Ctrl']['Inputs'][_pram]
-                        t.LoadSettings(o_st)
-                comp.Unlock()
-                comp.EndUndo(True)
-                self.add2log('Apply Anim: Done')
+                # set anim
+                if ch_data.anim_parameter == '<MultiMerge>':
+                    self.set_anim_mm(comp, ch_data, f, fps)
+                else:
+                    self.set_anim(comp, tool, ch_data, f, fps)
 
                 # set color
                 tatie_clip.SetClipColor(ch_data.color)

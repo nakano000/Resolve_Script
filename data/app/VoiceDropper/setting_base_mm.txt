@@ -1,0 +1,118 @@
+{
+	Tools = ordered() {
+		MouthAnim = PipeRouter {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				LayerOrder = Input {
+					SourceOp = "MouthAnimLayerOrder",
+					Source = "Value",
+				},
+				LayerEnabled1 = Input {
+					SourceOp = "MouthAnimLayerEnabled1",
+					Source = "Value",
+				},
+				LayerEnabled2 = Input {
+					SourceOp = "MouthAnimLayerEnabled2",
+					Source = "Value",
+				},
+				LayerEnabled3 = Input {
+					SourceOp = "MouthAnimLayerEnabled3",
+					Source = "Value",
+				},
+				LayerEnabled4 = Input {
+					SourceOp = "MouthAnimLayerEnabled4",
+					Source = "Value",
+				},
+				LayerEnabled5 = Input {
+					SourceOp = "MouthAnimLayerEnabled5",
+					Source = "Value",
+				},
+				LayerEnabled6 = Input {
+					SourceOp = "MouthAnimLayerEnabled6",
+					Source = "Value",
+				},
+				LayerEnabled7 = Input {
+					SourceOp = "MouthAnimLayerEnabled7",
+					Source = "Value",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 13365, 115.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+		},
+		MouthAnimLayerOrder = BezierSpline {
+			SplineColor = { Red = 155, Green = 64, Blue = 239 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+				[0] = { 0, Flags = { Linear = true, LockedY = true }, Value = ScriptVal { {
+							[0] = 1,
+							2,
+							3,
+							4,
+							5,
+							6,
+							7,
+							8,
+							9
+						} } }
+			}
+		},
+		MouthAnimLayerEnabled1 = BezierSpline {
+			SplineColor = { Red = 198, Green = 82, Blue = 232 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+%s
+			}
+		},
+		MouthAnimLayerEnabled2 = BezierSpline {
+			SplineColor = { Red = 232, Green = 82, Blue = 214 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+%s
+			}
+		},
+		MouthAnimLayerEnabled3 = BezierSpline {
+			SplineColor = { Red = 232, Green = 82, Blue = 125 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+%s
+			}
+		},
+		MouthAnimLayerEnabled4 = BezierSpline {
+			SplineColor = { Red = 232, Green = 82, Blue = 44 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+%s
+			}
+		},
+		MouthAnimLayerEnabled5 = BezierSpline {
+			SplineColor = { Red = 232, Green = 145, Blue = 44 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+%s
+			}
+		},
+		MouthAnimLayerEnabled6 = BezierSpline {
+			SplineColor = { Red = 232, Green = 202, Blue = 44 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+%s
+			}
+		},
+		MouthAnimLayerEnabled7 = BezierSpline {
+			SplineColor = { Red = 210, Green = 232, Blue = 44 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+%s
+			}
+		},
+	},
+}

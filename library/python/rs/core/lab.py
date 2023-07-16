@@ -42,7 +42,7 @@ def sign2intE(s: str):
     return n
 
 
-def dict2anim(dct) -> str:
+def _dict2anim_process(dct) -> str:
     space = '\t\t\t\t'
     key01_block = '[%d] = { %s,'
     key02_block = ' LH = { %s, %s },'
@@ -50,16 +50,9 @@ def dict2anim(dct) -> str:
     flagA_block = ' Flags = { Linear = true } }'
     flagB_block = ' Flags = { StepIn = true } }'
 
-    if len(dct) < 2:
-        return ''
-
     key_list = []
     size = len(dct)
     flame_list = list(dct.keys())
-
-    # 最初と最後は0にしておく
-    dct[flame_list[0]] = 0
-    dct[flame_list[size - 1]] = 0
 
     for i, frame in enumerate(flame_list):
         v = dct[frame]
@@ -75,6 +68,42 @@ def dict2anim(dct) -> str:
         key_list.append(s)
 
     return space + (',\n' + space).join(key_list)
+
+
+def dict2anim(dct) -> str:
+    size = len(dct)
+    flame_list = list(dct.keys())
+
+    if len(dct) < 2:
+        return ''
+
+    # 最初と最後は0にしておく
+    dct[flame_list[0]] = 0
+    dct[flame_list[size - 1]] = 0
+
+    return _dict2anim_process(dct)
+
+
+def dict2anim_mm(dct) -> list:
+    anim_list = []
+    if len(dct) < 2:
+        return anim_list
+    size = len(dct)
+    flame_list = list(dct.keys())
+
+    # 最初と最後は0にしておく
+    dct[flame_list[0]] = 0
+    dct[flame_list[size - 1]] = 0
+
+    for i in range(7):
+        _dct = {}
+        for frame in flame_list:
+            if dct[frame] == i:
+                _dct[frame] = 1
+            else:
+                _dct[frame] = 0
+        anim_list.append(_dict2anim_process(_dct))
+    return anim_list
 
 
 def read(path: Path):
@@ -99,7 +128,7 @@ def read(path: Path):
     return lst
 
 
-def lab2anim(path: Path, fps, anim_tpe, offset: int = 0) -> str:
+def _lab2anim(path: Path, fps, anim_tpe, offset: int = 0, is_mm: bool = False) -> list:
     n = 10000000
     func = sign2intE
     if anim_tpe == anim.Type.aiueo2:
@@ -130,7 +159,19 @@ def lab2anim(path: Path, fps, anim_tpe, offset: int = 0) -> str:
         dct[d['s']] = d['sign']
         dct[d['e']] = _NONE
 
-    return dict2anim(dct)
+    if is_mm:
+        return dict2anim_mm(dct)
+    else:
+        return [dict2anim(dct)]
+
+
+def lab2anim(path: Path, fps, anim_tpe, offset: int = 0) -> str:
+    anim_list = _lab2anim(path, fps, anim_tpe, offset)
+    return anim_list[0]
+
+
+def lab2anim_mm(path: Path, fps, anim_tpe, offset: int = 0) -> list:
+    return _lab2anim(path, fps, anim_tpe, offset, is_mm=True)
 
 
 def wav2anim(path: Path, fps, offset: int = 0) -> str:
@@ -147,9 +188,10 @@ def wav2anim(path: Path, fps, offset: int = 0) -> str:
 
 
 if __name__ == '__main__':
+    _lab_file = Path(r'C:\work\wave\00120230716164846_琴葉 茜_今は昔、竹取の翁とい.lab')
     p.pipe(
         lab2anim(
-            Path(r'\\qnap\PJ\youtube\test\out06\001_四国めたん（ノーマル）_おはようございます。.lab'),
+            _lab_file,
             30,
             anim.Type.aiueo,
         ),
@@ -157,7 +199,15 @@ if __name__ == '__main__':
     )
     p.pipe(
         lab2anim(
-            Path(r'\\qnap\PJ\youtube\test\out06\001_四国めたん（ノーマル）_おはようございます。.lab'),
+            _lab_file,
+            30,
+            anim.Type.aiueo2,
+        ),
+        print,
+    )
+    p.pipe(
+        lab2anim_mm(
+            _lab_file,
             30,
             anim.Type.aiueo2,
         ),
