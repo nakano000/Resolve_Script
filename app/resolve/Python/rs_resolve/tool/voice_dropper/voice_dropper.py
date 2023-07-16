@@ -123,7 +123,7 @@ class MainWindow(QMainWindow):
             'data', 'app', 'VoiceDropper', 'setting_base.txt'
         ).read_text(encoding='utf-8')
         self.anim_setting_mm: str = config.ROOT_PATH.joinpath(
-            'data', 'app', 'VoiceDropper', 'setting_base_mm.txt'
+            'data', 'app', 'VoiceDropper', 'setting_aiueo_mm.txt'
         ).read_text(encoding='utf-8')
 
         # window
