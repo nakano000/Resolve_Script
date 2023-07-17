@@ -6,6 +6,7 @@ from rs.core import pipe as p
 class Type(StrEnum):
     aiueo = enum.auto()
     aiueo2 = enum.auto()
+    aiueo3 = enum.auto()
     open = enum.auto()
 
 

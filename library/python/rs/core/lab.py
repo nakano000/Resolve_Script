@@ -130,20 +130,38 @@ def read(path: Path):
 
 def _lab2anim(path: Path, fps, anim_tpe, offset: int = 0, is_mm: bool = False) -> list:
     n = 10000000
+    scale = 0.8
+
     func = sign2intE
-    if anim_tpe == anim.Type.aiueo2:
+    if anim_tpe in [anim.Type.aiueo2, anim.Type.aiueo3]:
         func = sign2int
 
     # lab 読み込み
-    data = p.pipe(
+    pre_data = p.pipe(
         read(path),
         p.map(lambda x: {
             's': offset + round(x['s'] * fps / n),
             'e': offset + round(x['e'] * fps / n),
-            'sign': func(x['sign']),
+            'sign': x['sign'],
         }),
         list,
     )
+    data = p.pipe(
+        pre_data,
+        p.map(lambda x: {
+            's': x['s'], 'e': x['e'], 'sign': func(x['sign'])
+        }),
+        list,
+    )
+    scale_data = []
+    if anim_tpe == anim.Type.aiueo3:
+        scale_data = p.pipe(
+            pre_data,
+            p.map(lambda x: {
+                's': x['s'], 'e': x['e'], 'sign': func(x['sign'])
+            }),
+            list,
+        )
 
     # 子音除去
     pre_sign = _N
@@ -158,9 +176,17 @@ def _lab2anim(path: Path, fps, anim_tpe, offset: int = 0, is_mm: bool = False) -
     for d in data:
         dct[d['s']] = d['sign']
         dct[d['e']] = _NONE
+    scale_dct = {}
+    if anim_tpe == anim.Type.aiueo3:
+        for d in scale_data:
+            scale_dct[d['s']] = scale if d['sign'] == _S else 1.0
+            scale_dct[d['e']] = 1.0
 
     if is_mm:
-        return dict2anim_mm(dct)
+        anim_list = dict2anim_mm(dct)
+        if anim_tpe == anim.Type.aiueo3:
+            anim_list.append(_dict2anim_process(scale_dct))
+        return anim_list
     else:
         return [dict2anim(dct)]
 

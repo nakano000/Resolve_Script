@@ -554,19 +554,35 @@ class MainWindow(QMainWindow):
         self.add2log('Load Anim: Start')
         lab_file = f.with_suffix('.lab')
         anim_list = []
+        ch_data.anim_type = ch_data.anim_type.strip().lower()
         offset = comp.GetAttrs()['COMPN_GlobalStart']
-        if ch_data.anim_type.strip().lower() == 'open':
+        if ch_data.anim_type == 'open':
             pass
         elif lab_file.is_file():
-            anim_list = lab.lab2anim_mm(lab_file, fps, ch_data.anim_type.strip().lower(), offset)
-        if len(anim_list) != 7:
+            anim_list = lab.lab2anim_mm(lab_file, fps, ch_data.anim_type, offset)
+        if len(anim_list) < 7:
             self.add2log('アニメーションの読み込みに失敗しました。')
             return
 
-        st = ordered_dict_to_dict(bmd.readstring(self.anim_setting_mm % tuple(anim_list)))
+        st = ordered_dict_to_dict(bmd.readstring(self.anim_setting_mm % tuple(anim_list[:7])))
         if st is None:
             self.add2log('アニメーションの読み込みに失敗しました。')
             return
+
+        # scale anim
+        scale_st = None
+        if ch_data.anim_type == 'aiueo3':
+            scal_parm = 'Size'
+            if len(anim_list) > 7:
+                scale_st = ordered_dict_to_dict(bmd.readstring(self.anim_setting % (
+                    scal_parm,
+                    scal_parm,
+                    scal_parm,
+                    anim_list[7],
+                )))
+            if scale_st is None:
+                self.add2log('アニメーションの読み込みに失敗しました。')
+                return
         self.add2log('Load Anim: Done')
 
         # get anim tool list
@@ -575,15 +591,39 @@ class MainWindow(QMainWindow):
         if tool is None:
             self.add2log('MultiMerge MouthAnimがありません。')
             return
+        scale_tool = None
+        if ch_data.anim_type == 'aiueo3':
+            scale_tool_name = 'MouthScale'
+            scale_tool = comp.FindTool(scale_tool_name)
+            if scale_tool is None:
+                self.add2log('MouthScaleがありません。')
+                return
 
         # set Lip Sync
         self.add2log('Apply Anim: Start')
         comp.StartUndo('RS Lip Sync')
         comp.Lock()
-
-        comment = tool.GetInput('Comments', comp.CurrentTime)
+        parm_name_list = [
+            'Comments',
+            'LayerName1',
+            'LayerName2',
+            'LayerName3',
+            'LayerName4',
+            'LayerName5',
+            'LayerName6',
+            'LayerName7',
+        ]
+        parm_dct = {}
+        for parm in parm_name_list:
+            parm_dct[parm] = tool.GetInput(parm, comp.CurrentTime)
         tool.LoadSettings(st)
-        tool.SetInput('Comments', comment, comp.CurrentTime)
+        for parm in parm_name_list:
+            tool.SetInput(parm, parm_dct[parm], comp.CurrentTime)
+        # scale
+        if ch_data.anim_type == 'aiueo3':
+            comment = scale_tool.GetInput('Comments', comp.CurrentTime)
+            scale_tool.LoadSettings(scale_st)
+            scale_tool.SetInput('Comments', comment, comp.CurrentTime)
 
         comp.Unlock()
         comp.EndUndo(True)
