@@ -244,7 +244,7 @@ class MainWindow(QMainWindow):
         self.add2log('waveファイルチェック:  Start')
         while True:
             if time.time() - start_time > time_out:
-                self.add2log('タイムアウト:ファイルが計算中ため、処理をスキップします。')
+                self.add2log('タイムアウト:ファイルが計算中ため、処理をスキップします。', log.ERROR_COLOR)
                 return False
             try:
                 os.rename(str(f), str(f))
@@ -255,11 +255,11 @@ class MainWindow(QMainWindow):
         self.add2log('waveファイルチェック:  OK')
         return True
 
-    def import_wave2mp3(self, media_pool, f: Path, start_time, step, time_out):
+    def import_wave2mediapool(self, media_pool, f: Path, start_time, step, time_out):
         mi_list = media_pool.ImportMedia(str(f))
         while True:
             if time.time() - start_time > time_out:
-                self.add2log('タイムアウト:音声ファイルのインポートに失敗しました。')
+                self.add2log('タイムアウト:音声ファイルのインポートに失敗しました。', log.ERROR_COLOR)
                 return None
             if len(mi_list) > 0:
                 break
@@ -284,7 +284,7 @@ class MainWindow(QMainWindow):
         clip = media_pool.AppendToTimeline([audio_info])[0]
         while True:
             if time.time() - start_time > time_out:
-                self.add2log('タイムアウト:音声クリップの挿入に失敗しました。')
+                self.add2log('タイムアウト:音声クリップの挿入に失敗しました。', log.ERROR_COLOR)
                 return None
             time.sleep(step)
             if get_track_item_count(timeline, 'audio', audio_index) == _cnt:
@@ -314,21 +314,21 @@ class MainWindow(QMainWindow):
 
         # comp
         if clip.GetFusionCompCount() == 0:
-            self.add2log('FusionCompが見付かりません。')
+            self.add2log('FusionCompが見付かりません。', log.ERROR_COLOR)
             return False
         comp = clip.GetFusionCompByIndex(1)
 
         # tool
         lst = list(comp.GetToolList(False, 'TextPlus').values())
         if len(lst) == 0:
-            self.add2log('Text+が見付かりません。')
+            self.add2log('Text+が見付かりません。', log.ERROR_COLOR)
             return False
         tool = lst[0]
 
         # settings
         st = ordered_dict_to_dict(bmd.readfile(str(ch_data.setting_file)))
         if st is None:
-            self.add2log('settingファイルの読み込みに失敗しました。')
+            self.add2log('settingファイルの読み込みに失敗しました。', log.ERROR_COLOR)
             return False
 
         # apply
@@ -353,11 +353,11 @@ class MainWindow(QMainWindow):
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
-            self.add2log('Projectが見付かりません。')
+            self.add2log('Projectが見付かりません。', log.ERROR_COLOR)
         media_pool = project.GetMediaPool()
         timeline = project.GetCurrentTimeline()
         if timeline is None:
-            self.add2log('Timelineが見付かりません。')
+            self.add2log('Timelineが見付かりません。', log.ERROR_COLOR)
             return
 
         root_folder = media_pool.GetRootFolder()
@@ -373,10 +373,10 @@ class MainWindow(QMainWindow):
         media_pool.SetCurrentFolder(voice_folder)
 
         if dropper_folder is None:
-            self.add2log('MediaPool VoiceDropperフォルダにtext+が見付かりません。')
+            self.add2log('MediaPool VoiceDropperフォルダにtext+が見付かりません。', log.ERROR_COLOR)
             return
         if len(dropper_folder.GetClipList()) == 0:
-            self.add2log('MediaPool VoiceDropperフォルダにtext+が見付かりません。')
+            self.add2log('MediaPool VoiceDropperフォルダにtext+が見付かりません。', log.ERROR_COLOR)
             return
         text_template = dropper_folder.GetClipList()[0]
 
@@ -410,10 +410,10 @@ class MainWindow(QMainWindow):
 
             self.setup_track(timeline, video_index, audio_index)
             if get_item(timeline, 'video', video_index, current_frame) is not None:
-                self.add2log('Videoトラックに既にアイテムが存在します。')
+                self.add2log('Videoトラックに既にアイテムが存在します。', log.ERROR_COLOR)
                 return
             if get_item(timeline, 'audio', audio_index, current_frame) is not None:
-                self.add2log('Audioトラックに既にアイテムが存在します。')
+                self.add2log('Audioトラックに既にアイテムが存在します。', log.ERROR_COLOR)
                 return
 
             # time out 設定
@@ -425,7 +425,7 @@ class MainWindow(QMainWindow):
                 continue
 
             # import
-            mi = self.import_wave2mp3(media_pool, f, start_time, step, data.time_out)
+            mi = self.import_wave2mediapool(media_pool, f, start_time, step, data.time_out)
             if mi is None:
                 continue
 
@@ -452,7 +452,7 @@ class MainWindow(QMainWindow):
                 'recordFrame': current_frame,
             }])[0]
             if text_plus is None:
-                self.add2log('Insert Text Clip: Failed')
+                self.add2log('Insert Text Clip: Failed', log.ERROR_COLOR)
                 continue
             self.add2log('Insert Text Clip: Done')
 
