@@ -162,7 +162,7 @@ def delete_mm(comp):
 
     # apply
     comp.Lock()
-    comp.StartUndo('RS EyeBlink')
+    comp.StartUndo('RS Delete EyeBlink')
 
     tool.LoadSettings(st)
 

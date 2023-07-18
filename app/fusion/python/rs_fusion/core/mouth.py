@@ -45,7 +45,7 @@ def delete_mm(comp):
 
     # apply
     comp.Lock()
-    comp.StartUndo('RS Mouth')
+    comp.StartUndo('RS Delete Mouth Anim')
 
     tool.LoadSettings(st)
 
