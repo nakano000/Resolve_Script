@@ -2,6 +2,8 @@ from collections import OrderedDict
 
 
 def ordered_dict_to_dict(org_dict):
+    if org_dict is None:
+        return None
     dct = dict(org_dict)
     for k, v in dct.items():
         if isinstance(v, dict):
