@@ -519,7 +519,7 @@ class MainWindow(QMainWindow):
             anim,
         )))
         if st is None:
-            self.add2log('アニメーションの読み込みに失敗しました。')
+            self.add2log('アニメーションの読み込みに失敗しました。', log.ERROR_COLOR)
             return
         self.add2log('Load Anim: Done')
 
@@ -561,12 +561,12 @@ class MainWindow(QMainWindow):
         elif lab_file.is_file():
             anim_list = lab.lab2anim_mm(lab_file, fps, ch_data.anim_type, offset)
         if len(anim_list) < 7:
-            self.add2log('アニメーションの読み込みに失敗しました。')
+            self.add2log('アニメーションの読み込みに失敗しました。', log.ERROR_COLOR)
             return
 
         st = ordered_dict_to_dict(bmd.readstring(self.anim_setting_mm % tuple(anim_list[:7])))
         if st is None:
-            self.add2log('アニメーションの読み込みに失敗しました。')
+            self.add2log('アニメーションの読み込みに失敗しました。', log.ERROR_COLOR)
             return
 
         # scale anim
@@ -581,7 +581,7 @@ class MainWindow(QMainWindow):
                     anim_list[7],
                 )))
             if scale_st is None:
-                self.add2log('アニメーションの読み込みに失敗しました。')
+                self.add2log('アニメーションの読み込みに失敗しました。', log.ERROR_COLOR)
                 return
         self.add2log('Load Anim: Done')
 
@@ -589,14 +589,14 @@ class MainWindow(QMainWindow):
         tool_name = 'MouthAnim'
         tool = comp.FindTool(tool_name)
         if tool is None:
-            self.add2log('MultiMerge MouthAnimがありません。')
+            self.add2log('MultiMerge MouthAnimがありません。', log.ERROR_COLOR)
             return
         scale_tool = None
         if ch_data.anim_type == 'aiueo3':
             scale_tool_name = 'MouthScale'
             scale_tool = comp.FindTool(scale_tool_name)
             if scale_tool is None:
-                self.add2log('MouthScaleがありません。')
+                self.add2log('MouthScaleがありません。', log.ERROR_COLOR)
                 return
 
         # set Lip Sync
@@ -636,10 +636,10 @@ class MainWindow(QMainWindow):
         projectManager = resolve.GetProjectManager()
         project = projectManager.GetCurrentProject()
         if project is None:
-            self.add2log('Projectが見付かりません。')
+            self.add2log('Projectが見付かりません。', log.ERROR_COLOR)
         timeline = project.GetCurrentTimeline()
         if timeline is None:
-            self.add2log('Timelineが見付かりません。')
+            self.add2log('Timelineが見付かりません。', log.ERROR_COLOR)
             return
 
         fps = get_fps(timeline)
@@ -647,12 +647,12 @@ class MainWindow(QMainWindow):
         a_index = self.lip_sync_window.get_audio_track_index(timeline)
 
         if v_index == 0 or a_index == 0:
-            self.add2log('選択したトラックが見付かりません。')
+            self.add2log('選択したトラックが見付かりません。', log.ERROR_COLOR)
             return
 
         v_item = get_item(timeline, 'video', v_index)
         if v_item is None:
-            self.add2log('ビデオクリップが見付かりません。')
+            self.add2log('ビデオクリップが見付かりません。', log.ERROR_COLOR)
             return
         v_sf = v_item.GetStart()
         v_ef = v_item.GetEnd()
@@ -664,7 +664,7 @@ class MainWindow(QMainWindow):
 
         w = get_resolve_window(project.GetName())
         if w is None:
-            self.add2log('DaVinci ResolveのWindowが見付かりません。')
+            self.add2log('DaVinci ResolveのWindowが見付かりません。', log.ERROR_COLOR)
             return
         if util.IS_WIN:
             self.setWindowState(Qt.WindowMinimized)  # windowsの場合、最小化しないとウィンドウがactiveにならないので、
@@ -696,10 +696,10 @@ class MainWindow(QMainWindow):
                 # get Macro Tool
                 tatie_clip = get_item(timeline, 'video', v_index, sf)
                 if tatie_clip is None:
-                    self.add2log('立ち絵ビデオクリップが見付かりません。')
+                    self.add2log('立ち絵ビデオクリップが見付かりません。', log.ERROR_COLOR)
                     continue
                 if tatie_clip.GetFusionCompCount() == 0:
-                    self.add2log('Fusion Compが見付かりません。')
+                    self.add2log('Fusion Compが見付かりません。', log.ERROR_COLOR)
                     continue
                 comp = tatie_clip.GetFusionCompByIndex(1)
                 tools = p.pipe(
@@ -709,7 +709,7 @@ class MainWindow(QMainWindow):
                     list,
                 )
                 if len(tools) == 0:
-                    self.add2log('MacroまたはGroupが見付かりません。')
+                    self.add2log('MacroまたはGroupが見付かりません。', log.ERROR_COLOR)
                     continue
                 tool = tools[0]
 
