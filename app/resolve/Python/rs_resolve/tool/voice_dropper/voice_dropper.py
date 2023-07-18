@@ -328,7 +328,7 @@ class MainWindow(QMainWindow):
         # settings
         st = ordered_dict_to_dict(bmd.readfile(str(ch_data.setting_file)))
         if st is None:
-            self.add2log('settingファイルの読み込みに失敗しました。', log.ERROR_COLOR)
+            self.add2log(f'settingファイルの読み込みに失敗しました。:{str(ch_data.setting_file)}', log.ERROR_COLOR)
             return False
 
         # apply
