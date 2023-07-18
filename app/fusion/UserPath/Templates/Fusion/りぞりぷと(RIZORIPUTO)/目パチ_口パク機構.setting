@@ -1,0 +1,353 @@
+{
+	Tools = ordered() {
+		MouthScale = Transform {
+			NameSet = true,
+			Inputs = {
+				Pivot = Input { Value = { 0.476212073073868, 0.796191819464034 }, },
+				Input = Input {
+					SourceOp = "MouthAnim",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 13365, 115.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+		},
+		MouthAnim = MultiMerge {
+			NameSet = true,
+			Inputs = {
+				LayerOrder = Input { Value = ScriptVal { {
+							[0] = 1,
+							2,
+							3,
+							4,
+							5,
+							6,
+							7
+						} }, },
+				Background = Input {
+					SourceOp = "Instance_invert",
+					Source = "Output",
+				},
+				["Layer1.Foreground"] = Input {
+					SourceOp = "MouthBase",
+					Source = "Output",
+				},
+				LayerName1 = Input { Value = "MouthBase", },
+				["Layer2.Foreground"] = Input {
+					SourceOp = "N",
+					Source = "Output",
+				},
+				LayerName2 = Input { Value = "N", },
+				LayerEnabled2 = Input { Value = 0, },
+				["Layer3.Foreground"] = Input {
+					SourceOp = "A",
+					Source = "Output",
+				},
+				LayerName3 = Input { Value = "A", },
+				LayerEnabled3 = Input { Value = 0, },
+				["Layer4.Foreground"] = Input {
+					SourceOp = "I",
+					Source = "Output",
+				},
+				LayerName4 = Input { Value = "I", },
+				LayerEnabled4 = Input { Value = 0, },
+				["Layer5.Foreground"] = Input {
+					SourceOp = "U",
+					Source = "Output",
+				},
+				LayerName5 = Input { Value = "U", },
+				LayerEnabled5 = Input { Value = 0, },
+				["Layer6.Foreground"] = Input {
+					SourceOp = "E",
+					Source = "Output",
+				},
+				LayerName6 = Input { Value = "E", },
+				LayerEnabled6 = Input { Value = 0, },
+				["Layer7.Foreground"] = Input {
+					SourceOp = "O",
+					Source = "Output",
+				},
+				LayerName7 = Input { Value = "O", },
+				LayerEnabled7 = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 13145, 115.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+			UserControls = ordered() {
+				Delete = {
+					ICD_Width = 1,
+					INP_Integer = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local tool = comp:FindTool('EyeAnim')\ncomp:Execute('!Py3: from rs_fusion.core.mouth import delete_mm;delete_mm(comp)')\n",
+					ICS_ControlPage = "口パク",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "Delete Anim",
+				}
+			}
+		},
+		Instance_invert = Transform {
+			NameSet = true,
+			SourceOp = "MouthScale",
+			Inputs = {
+				EffectMask = Input { },
+				SettingsNest = Input { },
+				TransformNest = Input { },
+				InvertTransform = Input { Value = 1, },
+				ReferenceSize = Input { },
+				Input = Input {
+					SourceOp = "Body",
+					Source = "Output",
+				},
+				CommentsNest = Input { },
+				FrameRenderScriptNest = Input { },
+				StartRenderScripts = Input { },
+				EndRenderScripts = Input { },
+			},
+			ViewInfo = OperatorInfo { Pos = { 12925, 115.5 } },
+		},
+		EyeBase = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				},
+			},
+			Inputs = {
+				FlattenTransform = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 13805, -280.5 } },
+			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+		},
+		MouthBase = Transform {
+			Locked = true,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				},
+			},
+			Inputs = {
+				FlattenTransform = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 13365, -280.5 } },
+			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+		},
+		I = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 13035, -280.5 } },
+		},
+		U = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 12925, -280.5 } },
+		},
+		Closed = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 13640, -280.5 } },
+		},
+		N = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 13255, -280.5 } },
+		},
+		A = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 13145, -280.5 } },
+		},
+		E = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 12815, -280.5 } },
+		},
+		Body = Transform {
+			Locked = true,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				},
+			},
+			Inputs = {
+				FlattenTransform = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 12705, 115.5 } },
+			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+		},
+		O = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 12705, -280.5 } },
+		},
+		EyeAnim = MultiMerge {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				LayerOrder = Input { Value = ScriptVal { {
+							[0] = 1,
+							2
+						} }, },
+				Background = Input {
+					SourceOp = "MouthScale",
+					Source = "Output",
+				},
+				["Layer1.Foreground"] = Input {
+					SourceOp = "EyeBase",
+					Source = "Output",
+				},
+				LayerName1 = Input { Value = "EyeBase ", },
+				LayerEnabled1 = Input {
+					SourceOp = "EyeAnimLayerEnabled1",
+					Source = "Value",
+				},
+				["Layer2.Foreground"] = Input {
+					SourceOp = "Closed",
+					Source = "Output",
+				},
+				LayerName2 = Input { Value = "Closed", },
+				LayerEnabled2 = Input {
+					SourceOp = "EyeAnimLayerEnabled2",
+					Source = "Value",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 13805, 115.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
+			UserControls = ordered() {
+				Blink = {
+					INP_MaxAllowed = 1000000,
+					INP_Integer = true,
+					ICS_ControlPage = "目パチ",
+					INP_MaxScale = 500,
+					INP_Default = 127,
+					INP_MinScale = 0,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					INP_MinAllowed = 0,
+					INPID_InputControl = "SliderControl",
+					LINKS_Name = "Blink"
+				},
+				Close = {
+					INP_Integer = true,
+					INPID_InputControl = "SliderControl",
+					INP_MaxScale = 10,
+					INP_Default = 4,
+					INP_MinScale = 0,
+					INP_MinAllowed = 0,
+					LINKID_DataType = "Number",
+					INP_External = false,
+					INP_Passive = true,
+					ICS_ControlPage = "目パチ",
+					LINKS_Name = "Close",
+				},
+				Make = {
+					ICD_Width = 0.5,
+					INP_Integer = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local tool = comp:FindTool('EyeAnim')\ncomp:Execute('!Py3: from rs_fusion.core.eye_blink import apply_mm;apply_mm(comp,' .. tostring(tool:GetInput('Blink')) .. ','  .. tostring(tool:GetInput('Close')) .. ')')\n",
+					ICS_ControlPage = "目パチ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "Make Anim",
+				},
+				Delete = {
+					ICD_Width = 0.5,
+					INP_Integer = false,
+					LINKID_DataType = "Number",
+					BTNCS_Execute = "local tool = comp:FindTool('EyeAnim')\ncomp:Execute('!Py3: from rs_fusion.core.eye_blink import delete_mm;delete_mm(comp)')\n",
+					ICS_ControlPage = "目パチ",
+					INPID_InputControl = "ButtonControl",
+					LINKS_Name = "Delete Anim",
+				},
+				at00 = {
+					INP_External = false,
+					INP_Integer = false,
+					LBLC_DropDownButton = false,
+					INPID_InputControl = "LabelControl",
+					ICS_ControlPage = "目パチ",
+					INP_Passive = true,
+					LINKID_DataType = "Number",
+					LINKS_Name = "ボタンを押さないと反映されません。",
+				},
+				sp00 = {
+					ICS_ControlPage = "目パチ",
+					INP_Integer = false,
+					LBLC_DropDownButton = false,
+					LINKID_DataType = "Number",
+					INP_External = false,
+					INP_Passive = true,
+					INPID_InputControl = "LabelControl",
+					LINKS_Name = "",
+				}
+			}
+		},
+		EyeAnimLayerEnabled1 = BezierSpline {
+			SplineColor = { Red = 198, Green = 82, Blue = 232 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+				[0] = { 1, RH = { 41, 0 }, Flags = { Linear = true, Loop = true, PreLoop = true } },
+				[123] = { 0, LH = { 123, 0.666666666666667 }, RH = { 124, 1 }, Flags = { StepIn = true } },
+				[127] = { 1, LH = { 127, 0.333333333333333 }, Flags = { StepIn = true, Loop = true, PreLoop = true } }
+			}
+		},
+		EyeAnimLayerEnabled2 = BezierSpline {
+			SplineColor = { Red = 232, Green = 82, Blue = 214 },
+			CtrlWZoom = false,
+			NameSet = true,
+			KeyFrames = {
+				[0] = { 0, RH = { 41, 0 }, Flags = { Linear = true, Loop = true, PreLoop = true } },
+				[123] = { 1, LH = { 123, 0.666666666666667 }, RH = { 124, 1 }, Flags = { StepIn = true } },
+				[127] = { 0, LH = { 127, 0.333333333333333 }, Flags = { StepIn = true, Loop = true, PreLoop = true } }
+			}
+		}
+	},
+	ActiveTool = "EyeAnim"
+}
