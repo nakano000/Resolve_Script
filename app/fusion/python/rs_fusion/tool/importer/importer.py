@@ -609,6 +609,7 @@ class MainWindow(QMainWindow):
         self.ui.expandGroupBox.setEnabled(not c.use_frame_format_settings)
 
         self.ui.useMaskCheckBox.setChecked(c.use_mask)
+        self.ui.useMask2CheckBox.setChecked(c.use_mask)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
