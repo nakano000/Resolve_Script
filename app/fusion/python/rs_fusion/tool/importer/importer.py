@@ -46,6 +46,7 @@ class ConfigData(config.Data):
     is_normal: bool = False
     use_mm: bool = False
     use_frame_format_settings: bool = True
+    use_mask: bool = False
 
 
 class Importer:
@@ -218,7 +219,7 @@ class Importer:
                 self.set_x(mg, pos_x - 1)
             else:
                 node = self.add_ld(pos_x, pos_y, layer_data)
-                if 'data_window' in layer.keys():
+                if 'data_window' in layer.keys() and self.config_data.use_mask:
                     _mask = self.add_mask(pos_x, pos_y - 1, layer['data_window'])
                     node.ConnectInput('EffectMask', _mask)
                 pos_x += 1
@@ -337,7 +338,7 @@ class Importer:
                 name_list += _name_list
             else:
                 node = self.add_ld(pos_x, pos_y, layer_data)
-                if 'data_window' in layer.keys():
+                if 'data_window' in layer.keys() and self.config_data.use_mask:
                     _mask = self.add_mask(pos_x, pos_y - 1, layer['data_window'])
                     node.ConnectInput('EffectMask', _mask)
             # mg
@@ -415,7 +416,7 @@ class Importer:
                 self.set_x(mg, pos_x - 1)
             else:
                 node = self.add_ld(pos_x, pos_y - 3, layer_data)
-                if 'data_window' in layer.keys():
+                if 'data_window' in layer.keys() and self.config_data.use_mask:
                     _mask = self.add_mask(pos_x, pos_y - 4, layer['data_window'])
                     node.ConnectInput('EffectMask', _mask)
                 pos_x += 1
@@ -446,7 +447,7 @@ class Importer:
                 node, pos_x = self.add_node_STMM(pos_x, pos_y - 3, layer_data, layer_name)
             else:
                 node = self.add_ld(pos_x, pos_y - 3, layer_data)
-                if 'data_window' in layer.keys():
+                if 'data_window' in layer.keys() and self.config_data.use_mask:
                     _mask = self.add_mask(pos_x, pos_y - 4, layer['data_window'])
                     node.ConnectInput('EffectMask', _mask)
                 pos_x += 1
@@ -515,6 +516,9 @@ class MainWindow(QMainWindow):
 
         # event
         self.ui.useFrameFormatSettingsCheckBox.stateChanged.connect(self.use_frame_format_settings_changed)
+
+        self.ui.useMaskCheckBox.stateChanged.connect(self.ui.useMask2CheckBox.setChecked)
+        self.ui.useMask2CheckBox.stateChanged.connect(self.ui.useMaskCheckBox.setChecked)
 
         self.ui.jsonToolButton.clicked.connect(partial(self.toolButton_clicked))
 
@@ -604,6 +608,8 @@ class MainWindow(QMainWindow):
         self.ui.useFrameFormatSettingsCheckBox.setChecked(c.use_frame_format_settings)
         self.ui.expandGroupBox.setEnabled(not c.use_frame_format_settings)
 
+        self.ui.useMaskCheckBox.setChecked(c.use_mask)
+
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.json_path = self.ui.jsonLineEdit.text()
@@ -623,6 +629,8 @@ class MainWindow(QMainWindow):
         c.use_mm = self.ui.useMMCheckBox.isChecked()
 
         c.use_frame_format_settings = self.ui.useFrameFormatSettingsCheckBox.isChecked()
+
+        c.use_mask = self.ui.useMaskCheckBox.isChecked()
 
         return c
 
