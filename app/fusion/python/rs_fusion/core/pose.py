@@ -27,11 +27,11 @@ def get_pair(node):
 
 
 def apply(comp, lst, is_chara_sozai=False):
+    comp.Lock()
+    comp.StartUndo('RS Pose')
     for x in lst:
         node_name = x[0]
         connected_name = x[1]
-        comp.Lock()
-        comp.StartUndo('RS Pose')
         if is_chara_sozai:
             connected = comp.FindTool(connected_name)
             if connected is None:
@@ -58,8 +58,9 @@ def apply(comp, lst, is_chara_sozai=False):
             node.Center.HideViewControls()
             node.Angle.HideViewControls()
             node.Size.HideViewControls()
-        comp.EndUndo(True)
-        comp.Unlock()
+    comp.EndUndo(True)
+    comp.Unlock()
+    print('Pose applied')
 
 
 def comment2json(comp):
