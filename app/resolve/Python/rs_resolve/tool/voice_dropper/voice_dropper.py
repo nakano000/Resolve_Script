@@ -487,7 +487,17 @@ class MainWindow(QMainWindow):
         w.activate()
         sc.active_timeline_panel()
         sc.deselect_all()
-        for n in [sf, ef]:
+
+        # make list
+        clip = get_item(timeline, 'video', index, sf)
+        cut_lst = []
+        if clip.GetStart() != sf:
+            cut_lst.append(sf)
+        if clip.GetEnd() != ef:
+            cut_lst.append(ef)
+
+        # cut
+        for n in cut_lst:
             set_currentframe(timeline, n)
             w.activate()
             _cnt = get_track_item_count(timeline, 'video', index)
