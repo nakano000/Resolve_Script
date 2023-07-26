@@ -488,7 +488,7 @@ class MainWindow(QMainWindow):
         sc.active_timeline_panel()
         sc.deselect_all()
 
-        # make list
+        # cut list
         clip = get_item(timeline, 'video', index, sf)
         cut_lst = []
         if clip.GetStart() != sf:
