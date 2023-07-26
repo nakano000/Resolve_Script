@@ -8,6 +8,11 @@
 https://seiga.nicovideo.jp/seiga/im10788496
 ファイル名: ずんだもん立ち絵素材2.3.zip
 
+キャラクター設定参考
+ZU	^\d+_ずんだもん.+	Olive	auto	25	aiueo3	<MultiMerge>
+Open版
+ZU	^\d+_ずんだもん.+	Olive	auto	25	open	<MultiMerge>
+
 ------------------------------------------------------
 四国めたん.setting
 
@@ -15,12 +20,18 @@ https://seiga.nicovideo.jp/seiga/im10788496
 https://seiga.nicovideo.jp/seiga/im10791276
 ファイル名: 四国めたん立ち絵素材2.1.zip
 
+キャラクター設定参考
+ME	^\d+_四国めたん.+	Violet	auto	25	aiueo3	<MultiMerge>
+
 ------------------------------------------------------
 ちびめたん.setting
 
 坂本アヒル様:ちびめたん立ち絵素材
 https://seiga.nicovideo.jp/seiga/im11020697
 ファイル名: ちびめたん立ち絵素材.zip
+
+キャラクター設定参考
+ME	^\d+_四国めたん.+	Violet	auto	25	aiueo3	<MultiMerge>
 
 ------------------------------------------------------
 東北ずん子(Open).setting
@@ -37,12 +48,19 @@ https://seiga.nicovideo.jp/seiga/im11135374
 https://seiga.nicovideo.jp/seiga/im10854789
 ファイル名: 琴葉姉妹立ち絵素材1.1.zip
 
+キャラクター設定参考
+AO	^\d+_琴葉 葵.+	Teal	auto	25	aiueo3	<MultiMerge>
+AK	^\d+_琴葉 茜.+	Pink	auto	25	aiueo3	<MultiMerge>
+
 ------------------------------------------------------
 九州そら.setting
 
 坂本アヒル様:九州そら立ち絵素材
 https://seiga.nicovideo.jp/seiga/im10924061
 ファイル名: 九州そら立ち絵素材.zip
+
+キャラクター設定参考
+SO	^\d+_九州そら.+	Purple	auto	25	aiueo3	<MultiMerge>
 
 ------------------------------------------------------
 WhiteCUL.setting
@@ -51,12 +69,18 @@ WhiteCUL.setting
 https://seiga.nicovideo.jp/seiga/im11232248
 ファイル名: WhiteCUL立ち絵素材.zip
 
+キャラクター設定参考
+WH	^\d+_WhiteCUL.+	Teal	auto	25	aiueo3	<MultiMerge>
+
 ------------------------------------------------------
 中国うさぎ.setting
 
 坂本アヒル様:中国うさぎ立ち絵素材
 https://seiga.nicovideo.jp/seiga/im11232921
 ファイル名: 中国うさぎ立ち絵素材2.0.zip
+
+キャラクター設定参考
+USA	^\d+_中国うさぎ.+	Pink	auto	25	aiueo3	<MultiMerge>
 
 ------------------------------------------------------
 れいむ.setting
@@ -65,11 +89,17 @@ https://seiga.nicovideo.jp/seiga/im11232921
 http://www.nicotalk.com/charasozai_kt.html
 ファイル名: れいむ.zip
 
+キャラクター設定参考
+RE	^\d+_れいむ.+	Pink	auto	25	open	FirstOperand
+
 ------------------------------------------------------
 まりさ.setting
 
 きつね様:きつねゆっくり まりさ
 http://www.nicotalk.com/charasozai_kt.html
 ファイル名: まりさ.zip
+
+キャラクター設定参考
+MA	^\d+_まりさ.+	Yellow	auto	25	open	FirstOperand
 
 ------------------------------------------------------

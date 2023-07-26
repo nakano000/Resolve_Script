@@ -316,336 +316,6 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
-      "page": "口パク",
-      "id": "Delete",
-      "name": "Delete Anim",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerOrder",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerSelection",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName1",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled1",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName2",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled2",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName3",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled3",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName4",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled4",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName5",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled5",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName6",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled6",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName7",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled7",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName8",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled8",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthScale",
-      "page": "Controls",
-      "id": "Size",
-      "name": "Size",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "目パチ",
-      "id": "Blink",
-      "name": "Blink",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "目パチ",
-      "id": "Close",
-      "name": "Close",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "目パチ",
-      "id": "Make",
-      "name": "Make Anim",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "目パチ",
-      "id": "Delete",
-      "name": "Delete Anim",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "目パチ",
-      "id": "at00",
-      "name": "ボタンを押さないと反映されません。",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "Merge",
-      "id": "LayerOrder",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "Merge",
-      "id": "LayerSelection",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "Merge",
-      "id": "LayerName1",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "Merge",
-      "id": "LayerEnabled1",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "Merge",
-      "id": "LayerName2",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "Merge",
-      "id": "LayerEnabled2",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "Merge",
-      "id": "LayerName3",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "EyeAnim",
-      "page": "Merge",
-      "id": "LayerEnabled3",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
       "node": "Root",
       "page": "ポーズ",
       "id": "Grp_アクセサリ",
@@ -1211,6 +881,326 @@
       "id": "N000_hihyouji5",
       "name": "*(非表示)",
       "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "Page=\"口パク\"",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerSelection",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName4",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled4",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName5",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled5",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName6",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled6",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName7",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled7",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName8",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled8",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthScale",
+      "page": "Controls",
+      "id": "Size",
+      "name": "Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Blink",
+      "name": "Blink",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Close",
+      "name": "Close",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Make",
+      "name": "Make Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Delete",
+      "name": "Delete Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "at00",
+      "name": "ボタンを押さないと反映されません。",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerSelection",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled3",
+      "name": "Layer List",
+      "control_group": 1,
       "option01": "",
       "option02": "",
       "option03": ""

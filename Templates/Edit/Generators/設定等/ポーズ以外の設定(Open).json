@@ -316,17 +316,37 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerOrder",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "Page=\"口パク\"",
+      "node": "MouthOpenAnim",
+      "page": "口パク",
+      "id": "M_Open",
+      "name": "M_Open",
+      "control_group": 0,
+      "option01": "",
       "option02": "",
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
+      "page": "口パク",
+      "id": "Threshold",
+      "name": "Threshold",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthOpenAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerSelection",
       "name": "Layer List",
@@ -336,7 +356,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerName1",
       "name": "Layer List",
@@ -346,7 +366,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerEnabled1",
       "name": "Layer List",
@@ -356,7 +376,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerName2",
       "name": "Layer List",
@@ -366,7 +386,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerEnabled2",
       "name": "Layer List",
@@ -376,7 +396,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerName3",
       "name": "Layer List",
@@ -386,7 +406,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerEnabled3",
       "name": "Layer List",
@@ -396,7 +416,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerName4",
       "name": "Layer List",
@@ -406,7 +426,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerEnabled4",
       "name": "Layer List",
@@ -416,7 +436,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerName5",
       "name": "Layer List",
@@ -426,7 +446,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerEnabled5",
       "name": "Layer List",
@@ -436,7 +456,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerName6",
       "name": "Layer List",
@@ -446,7 +466,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerEnabled6",
       "name": "Layer List",
@@ -456,7 +476,7 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerName7",
       "name": "Layer List",
@@ -466,41 +486,11 @@
       "option03": ""
     },
     {
-      "node": "MouthAnim",
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerEnabled7",
       "name": "Layer List",
       "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerName8",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
-      "page": "Merge",
-      "id": "LayerEnabled8",
-      "name": "Layer List",
-      "control_group": 1,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthScale",
-      "page": "Controls",
-      "id": "Size",
-      "name": "Size",
-      "control_group": 0,
       "option01": "",
       "option02": "",
       "option03": ""

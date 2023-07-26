@@ -1147,21 +1147,11 @@
     },
     {
       "node": "MouthAnim",
-      "page": "口パク",
-      "id": "Delete",
-      "name": "Delete Anim",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "MouthAnim",
       "page": "Merge",
       "id": "LayerOrder",
       "name": "Layer List",
       "control_group": 1,
-      "option01": "",
+      "option01": "Page=\"口パク\"",
       "option02": "",
       "option03": ""
     },

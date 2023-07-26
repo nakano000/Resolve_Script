@@ -72,17 +72,6 @@
 			},
 			ViewInfo = OperatorInfo { Pos = { 13145, 115.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
-			UserControls = ordered() {
-				Delete = {
-					ICD_Width = 1,
-					INP_Integer = false,
-					LINKID_DataType = "Number",
-					BTNCS_Execute = "comp:Execute('!Py3: from rs_fusion.core.mouth import delete_mm;delete_mm(comp)')\n",
-					ICS_ControlPage = "口パク",
-					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "Delete Anim",
-				}
-			}
 		},
 		Instance_invert = Transform {
 			NameSet = true,
