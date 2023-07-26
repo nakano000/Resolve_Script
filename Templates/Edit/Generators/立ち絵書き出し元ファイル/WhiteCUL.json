@@ -1,0 +1,1339 @@
+{
+  "macro_name": "WhiteCUL",
+  "use_group": true,
+  "main_output_list": [
+    {
+      "node": "レイアウト",
+      "page": "<Output>",
+      "id": "Output",
+      "name": "Output",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    }
+  ],
+  "main_input_list": [],
+  "input_list": [
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "CopyPose",
+      "name": "Copy Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "PastePose",
+      "name": "Paste Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "SavePose",
+      "name": "Save Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "LoadPose",
+      "name": "Load Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Center",
+      "name": "Center",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Pivot",
+      "name": "Pivot",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "UseSizeAndAspect",
+      "name": "Use Size and Aspect",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Size",
+      "name": "Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Aspect",
+      "name": "Aspect",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "XSize",
+      "name": "X Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "YSize",
+      "name": "Y Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Angle",
+      "name": "Angle",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "FlipHoriz",
+      "name": "Flip Horizontal",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "FlipVert",
+      "name": "Flip Vertical",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Motion_Speed",
+      "page": "Controls",
+      "id": "Value",
+      "name": "スピード",
+      "control_group": 0,
+      "option01": "Page=\"モーション\"",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Motion_Str",
+      "page": "Controls",
+      "id": "Value",
+      "name": "強さ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N000_モーションなし",
+      "name": "モーションなし",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N001_ぽよ",
+      "name": "ぽよ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N002_ぴょん_Ctrl",
+      "name": "ぴょん_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N003_リズム_Ctrl",
+      "name": "リズム_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N004_跳ねる_Ctrl",
+      "name": "跳ねる_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N005_横揺れ_Ctrl",
+      "name": "横揺れ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N006_縦揺れ_Ctrl",
+      "name": "縦揺れ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N007_拡縮_Ctrl",
+      "name": "拡縮_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N008_パーターブ_Ctrl",
+      "name": "パーターブ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N009_跳ねる",
+      "name": "跳ねる",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N010_跳ねる_小",
+      "name": "跳ねる_小",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N011_不安",
+      "name": "不安",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N012_荒ぶる",
+      "name": "荒ぶる",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N013_震え",
+      "name": "震え",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_記号など",
+      "name": "記号など",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_namida_show_75",
+      "name": "涙 show",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_namida_hide_75",
+      "name": "涙 hide",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_takinamida_show_74",
+      "name": "滝涙 show",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_takinamida_hide_74",
+      "name": "滝涙 hide",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_ase_show_73",
+      "name": "汗 show",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_ase_hide_73",
+      "name": "汗 hide",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_aseoome_show_72",
+      "name": "汗多め show",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_aseoome_hide_72",
+      "name": "汗多め hide",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_眉",
+      "name": "眉",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N004_kihonmayu69",
+      "name": "*基本眉",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_ikarimayu68",
+      "name": "*怒り眉",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_agarimayu67",
+      "name": "*上がり眉",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_komarimayu66",
+      "name": "*困り眉",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_komarimayu265",
+      "name": "*困り眉2",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_目",
+      "name": "目",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N005_kihonmesetto62",
+      "name": "*基本目セット",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N004_none46",
+      "name": "*><",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_nagomi45",
+      "name": "*なごみ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_nikkori44",
+      "name": "*にっこり",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_◯◯43",
+      "name": "*◯◯",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_jitome42",
+      "name": "*ジト目",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_基本目セット",
+      "name": "基本目セット",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_黒目",
+      "name": "黒目",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N006_kihon62",
+      "name": "*基本",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N005_kihon261",
+      "name": "*基本2",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N004_kameramesen60",
+      "name": "*カメラ目線",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_kameramesen259",
+      "name": "*カメラ目線2",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_mesorashi58",
+      "name": "*目そらし",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_mesorashi257",
+      "name": "*目そらし2",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_●●56",
+      "name": "*●●",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_白目",
+      "name": "白目",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_shitagankenkyouchou_show_53",
+      "name": "下眼瞼強調 show",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_shitagankenkyouchou_hide_53",
+      "name": "下眼瞼強調 hide",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_shiromekihon52",
+      "name": "*白目基本",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_shiromemihiraki51",
+      "name": "*白目見開き",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_口",
+      "name": "口",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N016_hohoemi39",
+      "name": "*ほほえみ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N015_aha38",
+      "name": "*あは",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N014_hoo37",
+      "name": "*ほー",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N013_wahaa36",
+      "name": "*わはー",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N012_peron35",
+      "name": "*ぺろん",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N011_ehee34",
+      "name": "*えへぇ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N010_n33",
+      "name": "*ん",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N009_mun32",
+      "name": "*むん",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N008_o31",
+      "name": "*お",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N007_chu30",
+      "name": "*ちゅ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N006_hyutsu29",
+      "name": "*ひゅっ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N005_n28",
+      "name": "*ん",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N004_e27",
+      "name": "*え",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_eaa26",
+      "name": "*えあー",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_uhee25",
+      "name": "*うへぇ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_eee24",
+      "name": "*えぇー",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_utsuwaa23",
+      "name": "*うっわー",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_顔色など",
+      "name": "顔色など",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_hana_show_20",
+      "name": "鼻 show",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_hana_hide_20",
+      "name": "鼻 hide",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_hoppe19",
+      "name": "*ほっぺ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_sekimen18",
+      "name": "*赤面",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_aozame17",
+      "name": "*青ざめ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_右腕",
+      "name": "右腕",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N003_kihon14",
+      "name": "*基本",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_sasashi13",
+      "name": "*指さし",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_tenohira12",
+      "name": "*手のひら",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_tenokabuto11",
+      "name": "*手の甲",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_左腕",
+      "name": "左腕",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N002_kihon8",
+      "name": "*基本",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_tenohira7",
+      "name": "*手のひら",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_tenokabuto6",
+      "name": "*手の甲",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "口パク",
+      "id": "Delete",
+      "name": "Delete Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerSelection",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName4",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled4",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName5",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled5",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName6",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled6",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName7",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled7",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName8",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled8",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthScale",
+      "page": "Controls",
+      "id": "Size",
+      "name": "Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Blink",
+      "name": "Blink",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Close",
+      "name": "Close",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Make",
+      "name": "Make Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Delete",
+      "name": "Delete Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "at00",
+      "name": "ボタンを押さないと反映されません。",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerSelection",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    }
+  ]
+}
