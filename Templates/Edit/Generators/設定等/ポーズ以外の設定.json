@@ -1,0 +1,649 @@
+{
+  "macro_name": "MacroTool",
+  "use_group": true,
+  "main_output_list": [
+    {
+      "node": "レイアウト",
+      "page": "<Output>",
+      "id": "Output",
+      "name": "Output",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    }
+  ],
+  "main_input_list": [],
+  "input_list": [
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "CopyPose",
+      "name": "Copy Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "PastePose",
+      "name": "Paste Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "SavePose",
+      "name": "Save Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "User",
+      "id": "LoadPose",
+      "name": "Load Pose",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Center",
+      "name": "Center",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Pivot",
+      "name": "Pivot",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "UseSizeAndAspect",
+      "name": "Use Size and Aspect",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Size",
+      "name": "Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Aspect",
+      "name": "Aspect",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "XSize",
+      "name": "X Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "YSize",
+      "name": "Y Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Angle",
+      "name": "Angle",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "FlipHoriz",
+      "name": "Flip Horizontal",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "FlipVert",
+      "name": "Flip Vertical",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Motion_Speed",
+      "page": "Controls",
+      "id": "Value",
+      "name": "スピード",
+      "control_group": 0,
+      "option01": "Page=\"モーション\"",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Motion_Str",
+      "page": "Controls",
+      "id": "Value",
+      "name": "強さ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N000_モーションなし",
+      "name": "モーションなし",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N001_ぽよ",
+      "name": "ぽよ",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N002_ぴょん_Ctrl",
+      "name": "ぴょん_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N003_リズム_Ctrl",
+      "name": "リズム_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N004_跳ねる_Ctrl",
+      "name": "跳ねる_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N005_横揺れ_Ctrl",
+      "name": "横揺れ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N006_縦揺れ_Ctrl",
+      "name": "縦揺れ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N007_拡縮_Ctrl",
+      "name": "拡縮_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N008_パーターブ_Ctrl",
+      "name": "パーターブ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N009_跳ねる",
+      "name": "跳ねる",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N010_跳ねる_小",
+      "name": "跳ねる_小",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N011_不安",
+      "name": "不安",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N012_荒ぶる",
+      "name": "荒ぶる",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N013_震え",
+      "name": "震え",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "口パク",
+      "id": "Delete",
+      "name": "Delete Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerSelection",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName4",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled4",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName5",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled5",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName6",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled6",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName7",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled7",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName8",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled8",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthScale",
+      "page": "Controls",
+      "id": "Size",
+      "name": "Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Blink",
+      "name": "Blink",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Close",
+      "name": "Close",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Make",
+      "name": "Make Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Delete",
+      "name": "Delete Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "at00",
+      "name": "ボタンを押さないと反映されません。",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerSelection",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    }
+  ]
+}

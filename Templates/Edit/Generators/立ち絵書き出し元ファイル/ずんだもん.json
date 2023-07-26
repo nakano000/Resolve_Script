@@ -3,7 +3,7 @@
   "use_group": true,
   "main_output_list": [
     {
-      "node": "ST_MergeB",
+      "node": "レイアウト",
       "page": "<Output>",
       "id": "Output",
       "name": "Output",
@@ -56,8 +56,8 @@
       "option03": ""
     },
     {
-      "node": "ST_MergeB",
-      "page": "Merge",
+      "node": "レイアウト",
+      "page": "Controls",
       "id": "Center",
       "name": "Center",
       "control_group": 0,
@@ -66,8 +66,28 @@
       "option03": ""
     },
     {
-      "node": "ST_MergeB",
-      "page": "Merge",
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Pivot",
+      "name": "Pivot",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "UseSizeAndAspect",
+      "name": "Use Size and Aspect",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
       "id": "Size",
       "name": "Size",
       "control_group": 0,
@@ -76,8 +96,38 @@
       "option03": ""
     },
     {
-      "node": "ST_MergeB",
-      "page": "Merge",
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "Aspect",
+      "name": "Aspect",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "XSize",
+      "name": "X Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
+      "id": "YSize",
+      "name": "Y Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "レイアウト",
+      "page": "Controls",
       "id": "Angle",
       "name": "Angle",
       "control_group": 0,
@@ -86,8 +136,8 @@
       "option03": ""
     },
     {
-      "node": "ST_MergeB",
-      "page": "Merge",
+      "node": "レイアウト",
+      "page": "Controls",
       "id": "FlipHoriz",
       "name": "Flip Horizontal",
       "control_group": 1,
@@ -96,11 +146,31 @@
       "option03": ""
     },
     {
-      "node": "ST_MergeB",
-      "page": "Merge",
+      "node": "レイアウト",
+      "page": "Controls",
       "id": "FlipVert",
       "name": "Flip Vertical",
       "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Motion_Speed",
+      "page": "Controls",
+      "id": "Value",
+      "name": "スピード",
+      "control_group": 0,
+      "option01": "Page=\"モーション\"",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Motion_Str",
+      "page": "Controls",
+      "id": "Value",
+      "name": "強さ",
+      "control_group": 0,
       "option01": "",
       "option02": "",
       "option03": ""
@@ -128,8 +198,8 @@
     {
       "node": "モーションSelector",
       "page": "モーション",
-      "id": "N002_ぴょん",
-      "name": "ぴょん",
+      "id": "N002_ぴょん_Ctrl",
+      "name": "ぴょん_Ctrl",
       "control_group": 0,
       "option01": "",
       "option02": "",
@@ -138,7 +208,67 @@
     {
       "node": "モーションSelector",
       "page": "モーション",
-      "id": "N003_跳ねる",
+      "id": "N003_リズム_Ctrl",
+      "name": "リズム_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N004_跳ねる_Ctrl",
+      "name": "跳ねる_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N005_横揺れ_Ctrl",
+      "name": "横揺れ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N006_縦揺れ_Ctrl",
+      "name": "縦揺れ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N007_拡縮_Ctrl",
+      "name": "拡縮_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N008_パーターブ_Ctrl",
+      "name": "パーターブ_Ctrl",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "モーションSelector",
+      "page": "モーション",
+      "id": "N009_跳ねる",
       "name": "跳ねる",
       "control_group": 0,
       "option01": "",
@@ -148,7 +278,7 @@
     {
       "node": "モーションSelector",
       "page": "モーション",
-      "id": "N004_跳ねる_小",
+      "id": "N010_跳ねる_小",
       "name": "跳ねる_小",
       "control_group": 0,
       "option01": "",
@@ -158,7 +288,7 @@
     {
       "node": "モーションSelector",
       "page": "モーション",
-      "id": "N005_不安",
+      "id": "N011_不安",
       "name": "不安",
       "control_group": 0,
       "option01": "",
@@ -168,7 +298,7 @@
     {
       "node": "モーションSelector",
       "page": "モーション",
-      "id": "N006_荒ぶる",
+      "id": "N012_荒ぶる",
       "name": "荒ぶる",
       "control_group": 0,
       "option01": "",
@@ -178,7 +308,7 @@
     {
       "node": "モーションSelector",
       "page": "モーション",
-      "id": "N007_震え",
+      "id": "N013_震え",
       "name": "震え",
       "control_group": 0,
       "option01": "",
@@ -311,7 +441,7 @@
       "id": "N002_paakaaurajitosettodeshiyou121",
       "name": "*パーカー(裏地とセットで使用)",
       "control_group": 0,
-      "option01": "Width = 0.5",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -321,7 +451,7 @@
       "id": "N001_edamametsuujou120",
       "name": "*枝豆通常",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -331,7 +461,7 @@
       "id": "N000_edamamenae119",
       "name": "*枝豆萎え",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -351,7 +481,7 @@
       "id": "N004_futsuumayu116",
       "name": "*普通眉",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -361,7 +491,7 @@
       "id": "N003_ikarimayu115",
       "name": "*怒り眉",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -371,7 +501,7 @@
       "id": "N002_agarimayu114",
       "name": "*上がり眉",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -381,7 +511,7 @@
       "id": "N001_komarimayu1113",
       "name": "*困り眉1",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -391,7 +521,7 @@
       "id": "N000_komarimayu2112",
       "name": "*困り眉2",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -411,7 +541,7 @@
       "id": "N013_mesetto109",
       "name": "*目セット",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -421,7 +551,7 @@
       "id": "N012_uwamuki93",
       "name": "*上向き",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -431,7 +561,7 @@
       "id": "N011_uwamuki292",
       "name": "*上向き2",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -441,7 +571,7 @@
       "id": "N010_uwamuki391",
       "name": "*上向き3",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -451,7 +581,7 @@
       "id": "N009_hosomemehaato90",
       "name": "*細め目ハート",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -461,7 +591,7 @@
       "id": "N008_hosomeme89",
       "name": "*細め目",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -471,7 +601,7 @@
       "id": "N007_jitome88",
       "name": "*ジト目",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -481,7 +611,7 @@
       "id": "N006_nagomime87",
       "name": "*なごみ目",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -491,7 +621,7 @@
       "id": "N005_nikkori86",
       "name": "*にっこり",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -501,7 +631,7 @@
       "id": "N004_nikkori285",
       "name": "*にっこり2",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -511,7 +641,7 @@
       "id": "N003_UU84",
       "name": "*UU",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -521,7 +651,7 @@
       "id": "N002_none83",
       "name": "*><",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -531,7 +661,7 @@
       "id": "N001_〇〇82",
       "name": "*〇〇",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -541,7 +671,7 @@
       "id": "N000_guruguru81",
       "name": "*ぐるぐる",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -561,7 +691,7 @@
       "id": "N002_futsuushirome98",
       "name": "*普通白目",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -571,7 +701,7 @@
       "id": "N001_jitoshirome97",
       "name": "*ジト白目",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -581,7 +711,7 @@
       "id": "N000_mihirakishirome96",
       "name": "*見開き白目",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -601,7 +731,7 @@
       "id": "N008_futsuume109",
       "name": "*普通目",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -611,7 +741,7 @@
       "id": "N007_futsuume2108",
       "name": "*普通目2",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -621,7 +751,7 @@
       "id": "N006_futsuume3107",
       "name": "*普通目3",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -631,7 +761,7 @@
       "id": "N005_kameramesen106",
       "name": "*カメラ目線",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -641,7 +771,7 @@
       "id": "N004_kameramesen2105",
       "name": "*カメラ目線2",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -651,7 +781,7 @@
       "id": "N003_kameramesen3104",
       "name": "*カメラ目線3",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -661,7 +791,7 @@
       "id": "N002_mesorashi103",
       "name": "*目逸らし",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -671,7 +801,7 @@
       "id": "N001_mesorashi2102",
       "name": "*目逸らし2",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -681,7 +811,7 @@
       "id": "N000_mesorashi3101",
       "name": "*目逸らし3",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -721,7 +851,7 @@
       "id": "N005_hoppe78",
       "name": "*ほっぺ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -731,7 +861,7 @@
       "id": "N004_hoppe277",
       "name": "*ほっぺ2",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -741,7 +871,7 @@
       "id": "N003_hoppeakame76",
       "name": "*ほっぺ赤め",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -751,7 +881,7 @@
       "id": "N002_aozame75",
       "name": "*青ざめ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -761,7 +891,7 @@
       "id": "N001_hihyouji74",
       "name": "*(非表示)",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -781,7 +911,7 @@
       "id": "N012_muu70",
       "name": "*むー",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -791,7 +921,7 @@
       "id": "N011_yu69",
       "name": "*ゆ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -801,7 +931,7 @@
       "id": "N010_o68",
       "name": "*お",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -811,7 +941,7 @@
       "id": "N009_ohoo67",
       "name": "*おほお",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -821,7 +951,7 @@
       "id": "N008_hahee66",
       "name": "*はへえ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -831,7 +961,7 @@
       "id": "N007_nn65",
       "name": "*んー",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -841,7 +971,7 @@
       "id": "N006_nhee64",
       "name": "*んへー",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -851,7 +981,7 @@
       "id": "N005_naa63",
       "name": "*んあー",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -861,7 +991,7 @@
       "id": "N004_△62",
       "name": "*△",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -871,7 +1001,7 @@
       "id": "N003_mufu61",
       "name": "*むふ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -881,7 +1011,7 @@
       "id": "N002_hoo60",
       "name": "*ほー",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -891,7 +1021,7 @@
       "id": "N001_hoa59",
       "name": "*ほあ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -901,7 +1031,7 @@
       "id": "N000_hoaa58",
       "name": "*ほあー",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -921,7 +1051,7 @@
       "id": "N007_kihon55",
       "name": "*基本",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -931,7 +1061,7 @@
       "id": "N006_koshi54",
       "name": "*腰",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -941,7 +1071,7 @@
       "id": "N005_tewoageru53",
       "name": "*手を挙げる",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -951,7 +1081,7 @@
       "id": "N004_kuchimoto52",
       "name": "*口元",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -961,7 +1091,7 @@
       "id": "N003_kurushimu51",
       "name": "*苦しむ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -971,7 +1101,7 @@
       "id": "N002_yubisashishi50",
       "name": "*指差し",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -981,7 +1111,7 @@
       "id": "N001_maiku49",
       "name": "*マイク",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -991,7 +1121,7 @@
       "id": "N000_hihyouji48",
       "name": "*(非表示)",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1011,7 +1141,7 @@
       "id": "N007_kihon45",
       "name": "*基本",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1021,7 +1151,7 @@
       "id": "N006_koshi44",
       "name": "*腰",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1031,7 +1161,7 @@
       "id": "N005_tewoageru43",
       "name": "*手を挙げる",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1041,7 +1171,7 @@
       "id": "N004_kuchimoto42",
       "name": "*口元",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1051,7 +1181,7 @@
       "id": "N003_kurushimu41",
       "name": "*苦しむ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1061,7 +1191,7 @@
       "id": "N002_kangaeru40",
       "name": "*考える",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1071,7 +1201,7 @@
       "id": "N001_hisohiso39",
       "name": "*ひそひそ",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1081,7 +1211,37 @@
       "id": "N000_hihyouji38",
       "name": "*(非表示)",
       "control_group": 0,
-      "option01": "Width = 0.25",
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "Grp_服装1",
+      "name": "服装1",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N001_itsumonofuku35",
+      "name": "*いつもの服",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "Root",
+      "page": "ポーズ",
+      "id": "N000_seifuku34",
+      "name": "*制服",
+      "control_group": 0,
+      "option01": "",
       "option02": "",
       "option03": ""
     },
@@ -1136,47 +1296,207 @@
       "option03": ""
     },
     {
-      "node": "Root",
-      "page": "ポーズ",
-      "id": "Grp_服装1",
-      "name": "服装1",
-      "control_group": 0,
-      "option01": "",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "Root",
-      "page": "ポーズ",
-      "id": "N001_itsumonofuku35",
-      "name": "*いつもの服",
-      "control_group": 0,
-      "option01": "Width = 0.25",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "Root",
-      "page": "ポーズ",
-      "id": "N000_seifuku34",
-      "name": "*制服",
-      "control_group": 0,
-      "option01": "Width = 0.25",
-      "option02": "",
-      "option03": ""
-    },
-    {
-      "node": "RS_MouthOpen",
+      "node": "MouthAnim",
       "page": "口パク",
-      "id": "Open",
-      "name": "Open",
+      "id": "Delete",
+      "name": "Delete Anim",
       "control_group": 0,
       "option01": "",
       "option02": "",
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerSelection",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName4",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled4",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName5",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled5",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName6",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled6",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName7",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled7",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerName8",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthAnim",
+      "page": "Merge",
+      "id": "LayerEnabled8",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthScale",
+      "page": "Controls",
+      "id": "Size",
+      "name": "Size",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
       "page": "目パチ",
       "id": "Blink",
       "name": "Blink",
@@ -1186,7 +1506,7 @@
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
+      "node": "EyeAnim",
       "page": "目パチ",
       "id": "Close",
       "name": "Close",
@@ -1196,17 +1516,27 @@
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
+      "node": "EyeAnim",
       "page": "目パチ",
-      "id": "Apply",
-      "name": "Apply",
+      "id": "Make",
+      "name": "Make Anim",
       "control_group": 0,
       "option01": "",
       "option02": "",
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
+      "node": "EyeAnim",
+      "page": "目パチ",
+      "id": "Delete",
+      "name": "Delete Anim",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
       "page": "目パチ",
       "id": "at00",
       "name": "ボタンを押さないと反映されません。",
@@ -1216,41 +1546,81 @@
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
-      "page": "目パチ",
-      "id": "sp00",
-      "name": "",
-      "control_group": 0,
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerOrder",
+      "name": "Layer List",
+      "control_group": 1,
       "option01": "",
       "option02": "",
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
-      "page": "目パチ",
-      "id": "BlinkOn",
-      "name": "BlinkOn",
-      "control_group": 0,
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerSelection",
+      "name": "Layer List",
+      "control_group": 1,
       "option01": "",
       "option02": "",
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
-      "page": "目パチ",
-      "id": "BlinkOff",
-      "name": "BlinkOff",
-      "control_group": 0,
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName1",
+      "name": "Layer List",
+      "control_group": 1,
       "option01": "",
       "option02": "",
       "option03": ""
     },
     {
-      "node": "EyeCtrl",
-      "page": "目パチ",
-      "id": "EyeStatus",
-      "name": "",
-      "control_group": 0,
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled1",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled2",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerName3",
+      "name": "Layer List",
+      "control_group": 1,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "Merge",
+      "id": "LayerEnabled3",
+      "name": "Layer List",
+      "control_group": 1,
       "option01": "",
       "option02": "",
       "option03": ""

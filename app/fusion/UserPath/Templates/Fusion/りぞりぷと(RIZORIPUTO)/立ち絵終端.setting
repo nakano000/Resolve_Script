@@ -1,581 +1,5 @@
 {
 	Tools = ordered() {
-		["震え"] = GroupOperator {
-			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_3",
-					Source = "Input",
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_3",
-					Source = "speed",
-					Default = 2,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_3",
-					Source = "amplitude",
-					Default = 0.1,
-				},
-				Input3 = InstanceInput {
-					SourceOp = "Transform1_3",
-					Source = "Y",
-					Default = 0,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_3",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 14795, 808.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 109.359, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_3 = Transform {
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.504755282581476, 0.5 },
-							Expression = "iif(Y == 0, Point(v, 0.5),Point(0.5,v))",
-						},
-						ReferenceSize = Input { Value = 1, },
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						bound = Input {
-							Value = 0.951056516295153,
-							Expression = "sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate)",
-						},
-						speed = Input { Value = 12, },
-						amplitude = Input { Value = 0.005, },
-						out = Input {
-							Value = 59,
-							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
-						},
-						v = Input {
-							Value = 0.504755282581476,
-							Expression = "0.5 + amplitude * iif(time > out, 0,bound)",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 29.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
-				}
-			},
-		},
-		["跳ねる_小"] = GroupOperator {
-			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_1_1",
-					Source = "Input",
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_1_1",
-					Source = "speed",
-					MinScale = 0.0010000000475,
-					Default = 2,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_1_1",
-					Source = "amplitude",
-					Default = 0.1,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_1_1",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 14300, 808.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 107.433, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_1_1 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.5, 0.595105651629515 },
-							Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
-						},
-						ReferenceSize = Input { Value = 1, },
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						bound = Input {
-							Value = 0.951056516295154,
-							Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
-						},
-						speed = Input { Value = 2, },
-						amplitude = Input { Value = 0.02, },
-						out = Input {
-							Value = 59,
-							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "out", } }
-				}
-			},
-		},
-		["不安"] = GroupOperator {
-			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_2",
-					Source = "Input",
-				},
-				Input3 = InstanceInput {
-					SourceOp = "Shake1",
-					Source = "RandomSeed",
-					Width = 1,
-					Default = 0,
-				},
-				Input4 = InstanceInput {
-					SourceOp = "Shake1",
-					Source = "Randomize",
-					Width = 0.385,
-				},
-				Input5 = InstanceInput {
-					SourceOp = "Shake1",
-					Source = "Smoothness",
-					Default = 10,
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_2",
-					Source = "x",
-					Name = "X",
-					Default = 0.1,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_2",
-					Source = "y",
-					Name = "Y",
-					Default = 0.1,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_2",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 14465, 808.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 107.433, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_2 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.502997744173508, 0.497908177638071 },
-							Expression = "Point(0.5, 0.5) + shake * in_out",
-						},
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						x = Input { Value = 0.01, },
-						y = Input { Value = 0.01, },
-						shake = Input {
-							SourceOp = "Shake1",
-							Source = "Position",
-						},
-						in_out = Input {
-							SourceOp = "KeyframeStretcher1",
-							Source = "Result",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_MinScale = 0, LINKS_Name = "x", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_MinScale = 0, LINKS_Name = "y", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", LINKS_Name = "shake", }, in_out = { INP_MinScale = 0, LINKS_Name = "in_out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
-				},
-				KeyframeStretcher1 = KeyStretcherMod {
-					CtrlWZoom = false,
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "KeyStretcheronTransform1_2Keyframes",
-							Source = "Value",
-						},
-						StretchStart = Input { Value = 10, },
-						StretchEnd = Input { Value = 110, },
-					},
-				},
-				KeyStretcheronTransform1_2Keyframes = BezierSpline {
-					SplineColor = { Red = 193, Green = 106, Blue = 231 },
-					CtrlWZoom = false,
-					KeyFrames = {
-						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
-						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
-						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
-						[120] = { 0, LH = { 116.666666666667, 0 } }
-					}
-				},
-				Shake1 = Shake {
-					Faster = true,
-					CtrlWZoom = false,
-					Inputs = {
-						Smoothness = Input { Value = 2, },
-						LockXY = Input { Value = 0, },
-						XMinimum = Input {
-							Value = -0.1,
-							Expression = "-モーションSelector_2.x",
-						},
-						XMaximum = Input {
-							Value = 0.1,
-							Expression = "モーションSelector_2.x",
-						},
-						YMinimum = Input {
-							Value = -0.1,
-							Expression = "-モーションSelector_2.y",
-						},
-						YMaximum = Input {
-							Value = 0.1,
-							Expression = "モーションSelector_2.y",
-						},
-					},
-				}
-			},
-		},
-		["荒ぶる"] = GroupOperator {
-			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_2_1",
-					Source = "Input",
-				},
-				Input3 = InstanceInput {
-					SourceOp = "Shake1_1",
-					Source = "RandomSeed",
-					Width = 1,
-					Default = 0,
-				},
-				Input4 = InstanceInput {
-					SourceOp = "Shake1_1",
-					Source = "Randomize",
-					Width = 0.385,
-				},
-				Input5 = InstanceInput {
-					SourceOp = "Shake1_1",
-					Source = "Smoothness",
-					Default = 10,
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_2_1",
-					Source = "x",
-					Name = "X",
-					Default = 0.1,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_2_1",
-					Source = "y",
-					Name = "Y",
-					Default = 0.1,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_2_1",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 14630, 808.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 107.433, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_2_1 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.502997744173508, 0.497908177638071 },
-							Expression = "Point(0.5, 0.5) + shake * in_out",
-						},
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						x = Input { Value = 0.03, },
-						y = Input { Value = 0.03, },
-						shake = Input {
-							SourceOp = "Shake1_1",
-							Source = "Position",
-						},
-						in_out = Input {
-							SourceOp = "KeyframeStretcher1_1",
-							Source = "Result",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", LINKS_Name = "shake", }, in_out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "in_out", } }
-				},
-				KeyframeStretcher1_1 = KeyStretcherMod {
-					CtrlWZoom = false,
-					Inputs = {
-						Keyframes = Input {
-							SourceOp = "KeyStretcheronTransform1_2_1Keyframes",
-							Source = "Value",
-						},
-						StretchStart = Input { Value = 10, },
-						StretchEnd = Input { Value = 110, },
-					},
-				},
-				KeyStretcheronTransform1_2_1Keyframes = BezierSpline {
-					SplineColor = { Red = 193, Green = 106, Blue = 231 },
-					CtrlWZoom = false,
-					KeyFrames = {
-						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
-						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
-						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
-						[120] = { 0, LH = { 116.666666666667, 0 } }
-					}
-				},
-				Shake1_1 = Shake {
-					Faster = true,
-					CtrlWZoom = false,
-					Inputs = {
-						Smoothness = Input { Value = 1.5, },
-						LockXY = Input { Value = 0, },
-						XMinimum = Input {
-							Value = -0.1,
-							Expression = "-モーションSelector_2_1.x",
-						},
-						XMaximum = Input {
-							Value = 0.1,
-							Expression = "モーションSelector_2_1.x",
-						},
-						YMinimum = Input {
-							Value = -0.1,
-							Expression = "-モーションSelector_2_1.y",
-						},
-						YMaximum = Input {
-							Value = 0.1,
-							Expression = "モーションSelector_2_1.y",
-						},
-					},
-				}
-			},
-		},
-		["跳ねる"] = GroupOperator {
-			NameSet = true,
-			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } } },
-			Inputs = ordered() {
-				MainInput1 = InstanceInput {
-					SourceOp = "Transform1_1",
-					Source = "Input",
-				},
-				Input1 = InstanceInput {
-					SourceOp = "Transform1_1",
-					Source = "speed",
-					MinScale = 0.0010000000475,
-					Default = 2,
-				},
-				Input2 = InstanceInput {
-					SourceOp = "Transform1_1",
-					Source = "amplitude",
-					Default = 0.1,
-				}
-			},
-			Outputs = {
-				MainOutput1 = InstanceOutput {
-					SourceOp = "Transform1_1",
-					Source = "Output",
-				}
-			},
-			ViewInfo = GroupInfo {
-				Pos = { 14135, 808.5 },
-				Flags = {
-					AllowPan = false,
-					ForceAll = true,
-					GridSnap = true,
-					ConnectedSnap = true,
-					AutoSnap = true,
-					RemoveRouters = true
-				},
-				Size = { 126, 107.433, 63, 24.2424 },
-				Direction = "Horizontal",
-				PipeStyle = "Direct",
-				Scale = 1,
-				Offset = { 0, 0 }
-			},
-			Tools = ordered() {
-				Transform1_1 = Transform {
-					CtrlWZoom = false,
-					CtrlWShown = false,
-					Inputs = {
-						Center = Input {
-							Value = { 0.5, 0.595105651629515 },
-							Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
-						},
-						ReferenceSize = Input { Value = 1, },
-						Input = Input {
-							SourceOp = "モーションなし",
-							Source = "Output",
-						},
-						bound = Input {
-							Value = 0.951056516295154,
-							Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
-						},
-						speed = Input { Value = 2, },
-						amplitude = Input { Value = 0.08, },
-						out = Input {
-							Value = 59,
-							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
-						},
-					},
-					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
-				}
-			},
-		},
-		["パーターブ_Ctrl"] = Transform {
-			NameSet = true,
-			Inputs = {
-				Center = Input {
-					SourceOp = "Perturb1",
-					Source = "Value",
-				},
-				Input = Input {
-					SourceOp = "モーションなし",
-					Source = "Output",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13970, 808.5 } },
-		},
-		Perturb1 = PerturbPoint {
-			CtrlWZoom = false,
-			Inputs = {
-				Strength = Input {
-					SourceOp = "Motion_Str",
-					Source = "Value",
-				},
-				Speed = Input {
-					SourceOp = "Motion_Speed",
-					Source = "Value",
-				},
-			},
-		},
-		Motion_Str = PublishNumber {
-			CtrlWZoom = false,
-			NameSet = true,
-			Inputs = {
-				Value = Input { Value = 1, },
-			},
-		},
-		Motion_Speed = PublishNumber {
-			CtrlWZoom = false,
-			NameSet = true,
-			Inputs = {
-				Value = Input { Value = 1, },
-			},
-		},
-		["モーションなし"] = Transform {
-			CtrlWZoom = false,
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13805, 610.5 } },
-		},
-		["拡縮_Ctrl"] = Transform {
-			NameSet = true,
-			Inputs = {
-				Center = Input { Value = { 0.504755282581476, 0.5 }, },
-				Size = Input { Expression = " v", },
-				ReferenceSize = Input { Value = 1, },
-				Input = Input {
-					SourceOp = "モーションなし",
-					Source = "Output",
-				},
-				bound = Input {
-					Value = 0.951056516295153,
-					Expression = "sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate)",
-				},
-				speed = Input {
-					SourceOp = "Motion_Speed",
-					Source = "Value",
-				},
-				amplitude = Input {
-					SourceOp = "Motion_Str",
-					Source = "Value",
-				},
-				out = Input {
-					Value = 59,
-					Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
-				},
-				v = Input {
-					Value = 0.504755282581476,
-					Expression = "1 + amplitude * iif(time > out, 0,bound)",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13805, 808.5 } },
-			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, INP_Default = 0, }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
-		},
 		["モーションSelector"] = Transform {
 			Inputs = {
 				Input = Input {
@@ -591,7 +15,7 @@
 					Source = "Value",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 13805, 973.5 } },
+			ViewInfo = OperatorInfo { Pos = { 13805, 940.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 			UserControls = ordered() {
 				["N000_モーションなし"] = {
@@ -604,15 +28,15 @@
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "モーションなし",
 				},
-				["N001_ぽよ_Ctrl"] = {
+				["N001_ぽよ"] = {
 					ICD_Width = 1,
 					INP_Integer = false,
 					INP_External = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぽよ_Ctrl\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
+					BTNCS_Execute = "local _a = comp:FindTool(\"モーションSelector\")\nlocal _b = comp:FindTool(\"ぽよ\")\n_a:ConnectInput(\"Input\", _b)\nif _a.ParentTool then\n_a.Center:HideViewControls()\n_a.Pivot:HideViewControls()\n_a.Angle:HideViewControls()\n_a.Size:HideViewControls()\n_a.Aspect:HideViewControls()\n_a.XSize:HideViewControls()\n_a.YSize:HideViewControls()\nend",
 					ICS_ControlPage = "モーション",
 					INPID_InputControl = "ButtonControl",
-					LINKS_Name = "ぽよ_Ctrl",
+					LINKS_Name = "ぽよ",
 				},
 				["N002_ぴょん_Ctrl"] = {
 					ICD_Width = 1,
@@ -735,28 +159,38 @@
 					LINKS_Name = "震え",
 				},
 				Speed = {
-					LINKS_Name = "Speed",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "SliderControl",
-					INP_Default = 1,
 					INP_Integer = false,
+					INPID_InputControl = "SliderControl",
+					LINKID_DataType = "Number",
 					INP_MinScale = 0,
+					INP_Default = 1,
 					INP_MaxScale = 5,
-					INP_MinAllowed = -1000000,
-					INP_MaxAllowed = 1000000,
+					LINKS_Name = "Speed",
 				},
 				Str = {
-					LINKS_Name = "Strength",
-					LINKID_DataType = "Number",
-					INPID_InputControl = "SliderControl",
-					INP_Default = 1,
 					INP_Integer = false,
+					INPID_InputControl = "SliderControl",
+					LINKID_DataType = "Number",
 					INP_MinScale = 0,
+					INP_Default = 1,
 					INP_MaxScale = 5,
-					INP_MinAllowed = -1000000,
-					INP_MaxAllowed = 1000000,
+					LINKS_Name = "Str",
 				}
 			}
+		},
+		Motion_Speed = PublishNumber {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				Value = Input { Value = 1, },
+			},
+		},
+		Motion_Str = PublishNumber {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = {
+				Value = Input { Value = 1, },
+			},
 		},
 		["レイアウト"] = Transform {
 			NameSet = true,
@@ -769,6 +203,556 @@
 			},
 			ViewInfo = OperatorInfo { Pos = { 13805, 1105.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+		},
+		["パーターブ_Ctrl"] = Transform {
+			NameSet = true,
+			Inputs = {
+				Center = Input {
+					SourceOp = "Perturb1",
+					Source = "Value",
+				},
+				Input = Input {
+					SourceOp = "モーションなし",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 13970, 775.5 } },
+		},
+		Perturb1 = PerturbPoint {
+			CtrlWZoom = false,
+			Inputs = {
+				Strength = Input {
+					SourceOp = "Motion_Str",
+					Source = "Value",
+				},
+				Speed = Input {
+					SourceOp = "Motion_Speed",
+					Source = "Value",
+				},
+			},
+		},
+		["跳ねる"] = GroupOperator {
+			NameSet = true,
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } } },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_1",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_1",
+					Source = "speed",
+					MinScale = 0.0010000000475,
+					Default = 2,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_1",
+					Source = "amplitude",
+					Default = 0.1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 14135, 775.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_1 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.5, 0.595105651629515 },
+							Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
+						},
+						ReferenceSize = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						bound = Input {
+							Value = 0.951056516295154,
+							Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
+						},
+						speed = Input { Value = 2, },
+						amplitude = Input { Value = 0.08, },
+						out = Input {
+							Value = 59,
+							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
+				}
+			},
+		},
+		["拡縮_Ctrl"] = Transform {
+			NameSet = true,
+			Inputs = {
+				Center = Input { Value = { 0.504755282581476, 0.5 }, },
+				Size = Input { Expression = " v", },
+				ReferenceSize = Input { Value = 1, },
+				Input = Input {
+					SourceOp = "モーションなし",
+					Source = "Output",
+				},
+				bound = Input {
+					Value = 0.951056516295153,
+					Expression = "sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate)",
+				},
+				speed = Input {
+					SourceOp = "Motion_Speed",
+					Source = "Value",
+				},
+				amplitude = Input {
+					SourceOp = "Motion_Str",
+					Source = "Value",
+				},
+				out = Input {
+					Value = 59,
+					Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
+				},
+				v = Input {
+					Value = 0.504755282581476,
+					Expression = "1 + amplitude * iif(time > out, 0,bound)",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 13805, 775.5 } },
+			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, INP_Default = 0, }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
+		},
+		["荒ぶる"] = GroupOperator {
+			NameSet = true,
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } }, },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_2_1",
+					Source = "Input",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Shake1_1",
+					Source = "RandomSeed",
+					Width = 1,
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Shake1_1",
+					Source = "Randomize",
+					Width = 0.385,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Shake1_1",
+					Source = "Smoothness",
+					Default = 10,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_2_1",
+					Source = "x",
+					Name = "X",
+					Default = 0.1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_2_1",
+					Source = "y",
+					Name = "Y",
+					Default = 0.1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_2_1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 14630, 775.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_2_1 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.502997744173508, 0.497908177638071 },
+							Expression = "Point(0.5, 0.5) + shake * in_out",
+						},
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						x = Input { Value = 0.03, },
+						y = Input { Value = 0.03, },
+						shake = Input {
+							SourceOp = "Shake1_1",
+							Source = "Position",
+						},
+						in_out = Input {
+							SourceOp = "KeyframeStretcher1_1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { x = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", LINKS_Name = "shake", }, in_out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "in_out", } }
+				},
+				KeyframeStretcher1_1 = KeyStretcherMod {
+					CtrlWZoom = false,
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "KeyStretcheronTransform1_2_1Keyframes",
+							Source = "Value",
+						},
+						StretchStart = Input { Value = 10, },
+						StretchEnd = Input { Value = 110, },
+					},
+				},
+				KeyStretcheronTransform1_2_1Keyframes = BezierSpline {
+					SplineColor = { Red = 193, Green = 106, Blue = 231 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
+						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
+						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
+					}
+				},
+				Shake1_1 = Shake {
+					Faster = true,
+					CtrlWZoom = false,
+					Inputs = {
+						Smoothness = Input { Value = 1.5, },
+						LockXY = Input { Value = 0, },
+						XMinimum = Input {
+							Value = -0.1,
+							Expression = "-モーションSelector_2_1.x",
+						},
+						XMaximum = Input {
+							Value = 0.1,
+							Expression = "モーションSelector_2_1.x",
+						},
+						YMinimum = Input {
+							Value = -0.1,
+							Expression = "-モーションSelector_2_1.y",
+						},
+						YMaximum = Input {
+							Value = 0.1,
+							Expression = "モーションSelector_2_1.y",
+						},
+					},
+				}
+			},
+		},
+		["震え"] = GroupOperator {
+			NameSet = true,
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } }, },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_3",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_3",
+					Source = "speed",
+					Default = 2,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_3",
+					Source = "amplitude",
+					Default = 0.1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Transform1_3",
+					Source = "Y",
+					Default = 0,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_3",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 14795, 775.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 109.359, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_3 = Transform {
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.504755282581476, 0.5 },
+							Expression = "iif(Y == 0, Point(v, 0.5),Point(0.5,v))",
+						},
+						ReferenceSize = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						bound = Input {
+							Value = 0.951056516295153,
+							Expression = "sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate)",
+						},
+						speed = Input { Value = 12, },
+						amplitude = Input { Value = 0.005, },
+						out = Input {
+							Value = 59,
+							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
+						},
+						v = Input {
+							Value = 0.504755282581476,
+							Expression = "0.5 + amplitude * iif(time > out, 0,bound)",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 29.7576 } },
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
+				}
+			},
+		},
+		["不安"] = GroupOperator {
+			NameSet = true,
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } } },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_2",
+					Source = "Input",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "RandomSeed",
+					Width = 1,
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "Randomize",
+					Width = 0.385,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Shake1",
+					Source = "Smoothness",
+					Default = 10,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_2",
+					Source = "x",
+					Name = "X",
+					Default = 0.1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_2",
+					Source = "y",
+					Name = "Y",
+					Default = 0.1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 14465, 775.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_2 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.502997744173508, 0.497908177638071 },
+							Expression = "Point(0.5, 0.5) + shake * in_out",
+						},
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						x = Input { Value = 0.01, },
+						y = Input { Value = 0.01, },
+						shake = Input {
+							SourceOp = "Shake1",
+							Source = "Position",
+						},
+						in_out = Input {
+							SourceOp = "KeyframeStretcher1",
+							Source = "Result",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { x = { INP_MinScale = 0, LINKS_Name = "x", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_MinScale = 0, LINKS_Name = "y", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", LINKS_Name = "shake", }, in_out = { INP_MinScale = 0, LINKS_Name = "in_out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
+				},
+				KeyframeStretcher1 = KeyStretcherMod {
+					CtrlWZoom = false,
+					Inputs = {
+						Keyframes = Input {
+							SourceOp = "KeyStretcheronTransform1_2Keyframes",
+							Source = "Value",
+						},
+						StretchStart = Input { Value = 10, },
+						StretchEnd = Input { Value = 110, },
+					},
+				},
+				KeyStretcheronTransform1_2Keyframes = BezierSpline {
+					SplineColor = { Red = 193, Green = 106, Blue = 231 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 3.33333333333333, 0 }, Flags = { Linear = true } },
+						[10] = { 1, LH = { 6.66666666666667, 1 }, RH = { 43.3333333333333, 1 } },
+						[110] = { 1, LH = { 76.6666666666667, 1 }, RH = { 113.333333333333, 1 } },
+						[120] = { 0, LH = { 116.666666666667, 0 } }
+					}
+				},
+				Shake1 = Shake {
+					Faster = true,
+					CtrlWZoom = false,
+					Inputs = {
+						Smoothness = Input { Value = 2, },
+						LockXY = Input { Value = 0, },
+						XMinimum = Input {
+							Value = -0.1,
+							Expression = "-モーションSelector_2.x",
+						},
+						XMaximum = Input {
+							Value = 0.1,
+							Expression = "モーションSelector_2.x",
+						},
+						YMinimum = Input {
+							Value = -0.1,
+							Expression = "-モーションSelector_2.y",
+						},
+						YMaximum = Input {
+							Value = 0.1,
+							Expression = "モーションSelector_2.y",
+						},
+					},
+				}
+			},
+		},
+		["跳ねる_小"] = GroupOperator {
+			NameSet = true,
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\" } } },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1_1_1",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform1_1_1",
+					Source = "speed",
+					MinScale = 0.0010000000475,
+					Default = 2,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Transform1_1_1",
+					Source = "amplitude",
+					Default = 0.1,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform1_1_1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 14300, 775.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Transform1_1_1 = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input {
+							Value = { 0.5, 0.595105651629515 },
+							Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
+						},
+						ReferenceSize = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+						bound = Input {
+							Value = 0.951056516295154,
+							Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
+						},
+						speed = Input { Value = 2, },
+						amplitude = Input { Value = 0.02, },
+						out = Input {
+							Value = 59,
+							Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "out", } }
+				}
+			},
 		},
 		["縦揺れ_Ctrl"] = Transform {
 			NameSet = true,
@@ -803,7 +787,7 @@
 					Expression = "0.5 + amplitude * iif(time > out, 0,bound)",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 13640, 808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 13640, 775.5 } },
 			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, LINKS_Name = "out", }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Y", INPID_InputControl = "CheckboxControl", INP_Default = 0, } }
 		},
 		["横揺れ_Ctrl"] = Transform {
@@ -839,7 +823,7 @@
 					Expression = "0.5 + amplitude * iif(time > out, 0,bound)",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 13475, 808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 13475, 775.5 } },
 			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, INP_Default = 0, }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
 		},
 		["跳ねる_Ctrl"] = Transform {
@@ -871,7 +855,7 @@
 					Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 13310, 808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 13310, 775.5 } },
 			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, INP_Default = 0, } }
 		},
 		["リズム_Ctrl"] = Transform {
@@ -887,7 +871,7 @@
 					Source = "Output",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 13145, 808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 13145, 775.5 } },
 		},
 		["リズム_AspectAffset"] = Calculation {
 			CtrlWZoom = false,
@@ -977,7 +961,7 @@
 					Source = "Value",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 12980, 808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 12980, 775.5 } },
 			UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 1, INPID_InputControl = "ScrewControl", LINKS_Name = "speed", }, offset = { INP_Integer = true, LINKS_Name = "offset", INPID_InputControl = "ScrewControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 500, INP_Default = 0, } }
 		},
 		XYPath1_1 = XYPath {
@@ -1019,7 +1003,7 @@
 			CtrlWZoom = false,
 			Inputs = {
 				FirstOperand = Input {
-					SourceOp = "Calculation4_1FirstOperand",
+					SourceOp = "CalculationonCalculationonCalculationonぴょん_CtrlCenterXYPath1_1YFirstOperandFirstOperand",
 					Source = "Value",
 				},
 				Operator = Input { Value = 2, },
@@ -1029,10 +1013,9 @@
 				},
 			},
 		},
-		Calculation4_1FirstOperand = BezierSpline {
+		["CalculationonCalculationonCalculationonぴょん_CtrlCenterXYPath1_1YFirstOperandFirstOperand"] = BezierSpline {
 			SplineColor = { Red = 0, Green = 255, Blue = 0 },
 			CtrlWZoom = false,
-			NameSet = true,
 			KeyFrames = {
 				[0] = { 0, RH = { 2.65, 0.18 }, Flags = { Linear = true } },
 				[13] = { 0, LH = { 9.5, 0.194 }, RH = { 15.2, 0.05 } },
@@ -1040,76 +1023,122 @@
 				[30] = { 0, LH = { 27.4851924208954, 0 } }
 			}
 		},
-		["ぽよ_Ctrl"] = Transform {
+		["モーションなし"] = Transform {
+			CtrlWZoom = false,
 			NameSet = true,
-			Inputs = {
-				Pivot = Input { Value = { 0.5, 0 }, },
-				Aspect = Input {
-					SourceOp = "Calculation1_2",
-					Source = "Result",
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
 				},
-				Input = Input {
-					SourceOp = "モーションなし",
+			},
+			ViewInfo = OperatorInfo { Pos = { 13805, 511.5 } },
+		},
+		["ぽよ"] = GroupOperator {
+			NameSet = true,
+			CustomData = { Path = { Map = { ["Setting:"] = "FusionTemplates:\\りぞりぷと\\" } }, },
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform",
+					Source = "Input",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "Transform",
+					Source = "speed",
+					Name = "スピード",
+					Page = "Controls",
+					Default = 1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Calculation2",
+					Source = "SecondOperand",
+					Name = "強さ",
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Transform",
+					Source = "Pivot",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Transform",
 					Source = "Output",
-				},
-				speed = Input {
-					SourceOp = "Motion_Speed",
-					Source = "Value",
-				},
+				}
 			},
-			ViewInfo = OperatorInfo { Pos = { 12815, 808.5 } },
-			UserControls = ordered() { speed = { INP_Default = 1, INP_Integer = false, INP_MinAllowed = 0.00999999977648258, ICS_ControlPage = "Controls", INP_MinScale = 0.00999999977648258, INPID_InputControl = "ScrewControl", LINKID_DataType = "Number", LINKS_Name = "speed", } }
-		},
-		Calculation1_2 = Calculation {
-			CtrlWZoom = false,
-			Inputs = {
-				FirstOperand = Input {
-					SourceOp = "Calculation2_2",
-					Source = "Result",
+			ViewInfo = GroupInfo {
+				Pos = { 12815, 775.5 },
+				Flags = {
+					AllowPan = false,
+					ForceAll = true,
+					GridSnap = true,
+					ConnectedSnap = true,
+					AutoSnap = true,
+					RemoveRouters = true
 				},
-				SecondOperand = Input { Value = 1, },
-				FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart", },
+				Size = { 126, 107.433, 63, 24.2424 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
 			},
-		},
-		Calculation2_2 = Calculation {
-			CtrlWZoom = false,
-			Inputs = {
-				FirstOperand = Input {
-					SourceOp = "Calculation3_1",
-					Source = "Result",
+			Tools = ordered() {
+				Transform = Transform {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						Pivot = Input { Value = { 0.5, 0 }, },
+						Aspect = Input {
+							SourceOp = "Calculation1",
+							Source = "Result",
+						},
+						Input = Input {
+							SourceOp = "モーションなし",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
+					UserControls = ordered() { speed = { INP_Default = 1, INP_Integer = false, INP_MinAllowed = 0.00999999977648258, LINKID_DataType = "Number", ICS_ControlPage = "Controls", INPID_InputControl = "ScrewControl", INP_MinScale = 0.00999999977648258, LINKS_Name = "speed", } }
 				},
-				Operator = Input { Value = 2, },
-				SecondOperand = Input { Value = 0.8, },
-				FirstOperandTimeScale = Input { Expression = "ぽよ_Ctrl.speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate", },
+				Calculation1 = Calculation {
+					CtrlWZoom = false,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "Calculation2",
+							Source = "Result",
+						},
+						SecondOperand = Input { Value = 1, },
+						FirstOperandTimeOffset = Input { Expression = "-comp.GlobalStart", },
+					},
+				},
+				Calculation2 = Calculation {
+					CtrlWZoom = false,
+					Inputs = {
+						FirstOperand = Input {
+							SourceOp = "CalculationonCalculationonTransformAspectFirstOperand",
+							Source = "Value",
+						},
+						Operator = Input { Value = 2, },
+						SecondOperand = Input { Value = 0.8, },
+						FirstOperandTimeScale = Input { Expression = "Transform.speed * 30 / comp:GetPrefs().Comp.FrameFormat.Rate", },
+					},
+				},
+				CalculationonCalculationonTransformAspectFirstOperand = BezierSpline {
+					SplineColor = { Red = 210, Green = 105, Blue = 30 },
+					CtrlWZoom = false,
+					KeyFrames = {
+						[0] = { 0, RH = { 1, 0 }, Flags = { Linear = true } },
+						[3] = { 0.0800000000000001, LH = { 2, 0.0800000000000001 }, RH = { 4.66666666666667, 0.0800000000000001 } },
+						[8] = { -0.0489999999999999, LH = { 6.33333333333333, -0.0489999999999999 }, RH = { 9.33333333333333, -0.0489999999999999 } },
+						[12] = { 0.03, LH = { 10.6666666666667, 0.03 }, RH = { 13.3333333333333, 0.03 } },
+						[16] = { -0.00700000000000001, LH = { 14.6666666666667, -0.00700000000000001 }, RH = { 16.6666666666667, -0.00700000000000001 } },
+						[18] = { 0.004, LH = { 17.3333333333333, 0.004 }, RH = { 18.6666666666667, 0.004 } },
+						[20] = { 0, LH = { 19.3333333333333, 0 } }
+					}
+				}
 			},
-		},
-		Calculation3_1 = Calculation {
-			CtrlWZoom = false,
-			Inputs = {
-				FirstOperand = Input {
-					SourceOp = "Calculation3_1FirstOperand",
-					Source = "Value",
-				},
-				Operator = Input { Value = 2, },
-				SecondOperand = Input {
-					SourceOp = "Motion_Str",
-					Source = "Value",
-				},
-			},
-		},
-		Calculation3_1FirstOperand = BezierSpline {
-			SplineColor = { Red = 210, Green = 105, Blue = 30 },
-			CtrlWZoom = false,
-			NameSet = true,
-			KeyFrames = {
-				[0] = { 0, RH = { 1, 0 }, Flags = { Linear = true } },
-				[3] = { 0.0800000000000001, LH = { 2, 0.0800000000000001 }, RH = { 4.66666666666667, 0.0800000000000001 } },
-				[8] = { -0.0489999999999999, LH = { 6.33333333333333, -0.0489999999999999 }, RH = { 9.33333333333333, -0.0489999999999999 } },
-				[12] = { 0.03, LH = { 10.6666666666667, 0.03 }, RH = { 13.3333333333333, 0.03 } },
-				[16] = { -0.00700000000000001, LH = { 14.6666666666667, -0.00700000000000001 }, RH = { 16.6666666666667, -0.00700000000000001 } },
-				[18] = { 0.004, LH = { 17.3333333333333, 0.004 }, RH = { 18.6666666666667, 0.004 } },
-				[20] = { 0, LH = { 19.3333333333333, 0 } }
-			}
 		}
 	},
 	ActiveTool = "モーションなし"
