@@ -77,7 +77,7 @@
 					ICD_Width = 1,
 					INP_Integer = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "local tool = comp:FindTool('EyeAnim')\ncomp:Execute('!Py3: from rs_fusion.core.mouth import delete_mm;delete_mm(comp)')\n",
+					BTNCS_Execute = "comp:Execute('!Py3: from rs_fusion.core.mouth import delete_mm;delete_mm(comp)')\n",
 					ICS_ControlPage = "口パク",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "Delete Anim",
