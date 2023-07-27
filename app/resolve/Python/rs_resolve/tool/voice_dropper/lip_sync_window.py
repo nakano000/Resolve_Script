@@ -48,6 +48,7 @@ def get_index(timeline, track_type, v):
 class ConfigData(config.Data):
     time_out: float = 2.0
     use_auto_lock: bool = True
+    use_delete: bool = False
 
 
 class MainWindow(QMainWindow):
@@ -110,11 +111,13 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.tatieTimeOutSpinBox.setValue(c.time_out)
         self.ui.autoLockCheckBox.setChecked(c.use_auto_lock)
+        self.ui.useDeleteCheckBox.setChecked(c.use_delete)
 
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.time_out = self.ui.tatieTimeOutSpinBox.value()
         c.use_auto_lock = self.ui.autoLockCheckBox.isChecked()
+        c.use_delete = self.ui.useDeleteCheckBox.isChecked()
         return c
 
     def get_video_track_index(self, timeline):

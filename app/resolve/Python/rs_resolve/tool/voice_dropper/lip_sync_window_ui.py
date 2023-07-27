@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\lip_sync_window.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\lip_sync_window.ui' applies.
+# Form implementation generated from reading ui file 'D:\dev\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\lip_sync_window.ui',
+# licensing of 'D:\dev\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\voice_dropper\lip_sync_window.ui' applies.
 #
-# Created: Thu Jun 22 01:10:37 2023
+# Created: Fri Jul 28 00:16:23 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(272, 290)
+        MainWindow.resize(272, 297)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -30,6 +30,9 @@ class Ui_MainWindow(object):
         self.autoLockCheckBox = QtWidgets.QCheckBox(self.centralwidget)
         self.autoLockCheckBox.setObjectName("autoLockCheckBox")
         self.verticalLayout.addWidget(self.autoLockCheckBox)
+        self.useDeleteCheckBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.useDeleteCheckBox.setObjectName("useDeleteCheckBox")
+        self.verticalLayout.addWidget(self.useDeleteCheckBox)
         self.shortcutButton = QtWidgets.QPushButton(self.centralwidget)
         self.shortcutButton.setObjectName("shortcutButton")
         self.verticalLayout.addWidget(self.shortcutButton)
@@ -125,6 +128,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
         self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "time out", None, -1))
         self.autoLockCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Auto Lock", None, -1))
+        self.useDeleteCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "音声がない部分の立ち絵を削除", None, -1))
         self.shortcutButton.setText(QtWidgets.QApplication.translate("MainWindow", "shortcut", None, -1))
         self.groupBox_4.setTitle(QtWidgets.QApplication.translate("MainWindow", "Video Track", None, -1))
         self.groupBox_5.setTitle(QtWidgets.QApplication.translate("MainWindow", "Audio Track", None, -1))

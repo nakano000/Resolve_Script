@@ -637,6 +637,7 @@ class MainWindow(QMainWindow):
         comp.EndUndo(True)
         self.add2log('Apply Anim: Done')
 
+
     def set_anim_mm_o(self, comp, f, fps):
         self.add2log('Load Anim: Start')
         # get anim tool list
@@ -796,6 +797,19 @@ class MainWindow(QMainWindow):
                     if isinstance(lst, list):
                         pose.apply(comp, lst)
                         self.add2log('Apply Pose: Done')
+
+        # delete empty
+        if data.use_delete:
+            self.add2log('Delete: Start')
+            del_list = []
+            for clip in timeline.GetItemListInTrack('video', v_index):
+                if clip.GetStart() < v_ef and v_sf < clip.GetEnd():
+                    c_frame = clip.GetStart() + clip.GetDuration() // 2
+                    _wav = get_item(timeline, 'audio', a_index, c_frame)
+                    if _wav is None:
+                        del_list.append(clip)
+            timeline.DeleteClips(del_list, False)
+            self.add2log('Delete: Done')
 
         # log
         self.add2log('')
