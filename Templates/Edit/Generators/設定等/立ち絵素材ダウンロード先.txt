@@ -40,6 +40,9 @@ ME	^\d+_四国めたん.+	Violet	auto	25	aiueo3	<MultiMerge>
 https://seiga.nicovideo.jp/seiga/im11135374
 ファイル名: 東北ずん子立ち絵素材2.0.zip
 
+キャラクター設定参考
+ZK	^\d+-東北ずん子.+	Lime	auto	25	open	<MultiMerge>
+
 ------------------------------------------------------
 琴葉葵.setting
 琴葉茜.setting
