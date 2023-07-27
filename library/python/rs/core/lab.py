@@ -200,17 +200,96 @@ def lab2anim_mm(path: Path, fps, anim_tpe, offset: int = 0) -> list:
     return _lab2anim(path, fps, anim_tpe, offset, is_mm=True)
 
 
-def wav2anim(path: Path, fps, offset: int = 0) -> str:
+def get_wav_data(path: Path, fps, offset: int = 0):
     y, sr = librosa.load(str(path))
     rms = librosa.feature.rms(y=y)
-    m = rms.max() + 0.001
+    m = rms.max() + 0.001  # 0 除算防止
     rms_n = rms / m
     times = librosa.times_like(rms, sr=sr)
     frame = np.round(times * fps)
     dct = {}
     for i, v in enumerate(frame):
         dct[int(v) + offset] = rms_n[0][i]
+    return dct
+
+
+def wav2anim(path: Path, fps, offset: int = 0) -> str:
+    dct = get_wav_data(path, fps, offset)
     return dict2anim(dct)
+
+
+def to_mm_setting(anim_list) -> str:
+    header_text = '''
+    {
+        Tools = ordered() {
+            MouthAnim = PipeRouter {
+                CtrlWZoom = false,
+                NameSet = true,
+                Inputs = {'''
+    input_text = '''
+                    LayerEnabled%d = Input {
+                        SourceOp = "MouthAnimLayerEnabled%d",
+                        Source = "Value",
+                    },'''
+    middle_text = '''
+                },
+                ViewInfo = OperatorInfo { Pos = { 13365, 115.5 } },
+                Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+            },'''
+    spline_header_text = '''
+            MouthAnimLayerEnabled%d = BezierSpline {
+                SplineColor = { Red = 198, Green = 82, Blue = 232 },
+                CtrlWZoom = false,
+                NameSet = true,
+                KeyFrames = {'''
+    spline_footer_text = '''
+                }
+            },'''
+    footer_text = '''
+        },
+    }'''
+
+    layer_max = len(anim_list)
+    input_list = []
+    spline_list = []
+    for i in range(1, layer_max + 1):
+        input_list.append(input_text % (i, i))
+        spline_list.append('\n'.join([
+            spline_header_text % i,
+            anim_list[i - 1],
+            spline_footer_text
+        ]))
+    return '\n'.join(
+        [header_text] + input_list + [middle_text] + spline_list + [footer_text]
+    )
+
+
+def wav2setting_mm(comp, path: Path, fps, offset: int = 0) -> str:
+    tool = comp.FindTool('MouthOpenAnim')
+    if tool is None:
+        return []
+    layer_max = int(tool.GetInput('M_Open', comp.CurrentTime))
+    threshold = tool.GetInput('Threshold', comp.CurrentTime)
+    # make threshold_list
+    threshold_list = list(np.linspace(0.0, threshold, layer_max - 1))
+    threshold_list.insert(0, -1.0)  # 最小値は0.0なので、最初は下限なしの意味で-1.0を追加
+    threshold_list.append(2.0)  # 最大値は1.0なので、最後は上限なしの意味で2.0を追加
+    # get wav data
+    dct = get_wav_data(path, fps, offset)
+    # make anim
+    anim_list = []
+    for i in range(1, layer_max + 1):
+        _dct = {}
+        _sup = threshold_list[i - 1]
+        _inf = threshold_list[i]
+        for frame in dct.keys():
+            if _inf > dct[frame] >= _sup:
+                _dct[frame] = 1
+            else:
+                _dct[frame] = 0
+        anim_list.append(_dict2anim_process(_dct))
+    # return setting
+    return to_mm_setting(anim_list)
 
 
 if __name__ == '__main__':

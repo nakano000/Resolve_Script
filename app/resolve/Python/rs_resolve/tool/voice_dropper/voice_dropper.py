@@ -566,9 +566,7 @@ class MainWindow(QMainWindow):
         anim_list = []
         ch_data.anim_type = ch_data.anim_type.strip().lower()
         offset = comp.GetAttrs()['COMPN_GlobalStart']
-        if ch_data.anim_type == 'open':
-            pass
-        elif lab_file.is_file():
+        if lab_file.is_file():
             anim_list = lab.lab2anim_mm(lab_file, fps, ch_data.anim_type, offset)
         if len(anim_list) < 7:
             self.add2log('アニメーションの読み込みに失敗しました。', log.ERROR_COLOR)
@@ -634,6 +632,56 @@ class MainWindow(QMainWindow):
             comment = scale_tool.GetInput('Comments', comp.CurrentTime)
             scale_tool.LoadSettings(scale_st)
             scale_tool.SetInput('Comments', comment, comp.CurrentTime)
+
+        comp.Unlock()
+        comp.EndUndo(True)
+        self.add2log('Apply Anim: Done')
+
+    def set_anim_mm_o(self, comp, f, fps):
+        self.add2log('Load Anim: Start')
+        # get anim tool list
+        tool_name = 'MouthOpenAnim'
+        tool = comp.FindTool(tool_name)
+        if tool is None:
+            self.add2log('MultiMerge MouthOpenAnimがありません。', log.ERROR_COLOR)
+            return
+        layer_max = int(tool.GetInput('M_Open', comp.CurrentTime))
+
+        # get anim
+        offset = comp.GetAttrs()['COMPN_GlobalStart']
+
+        st = ordered_dict_to_dict(bmd.readstring(
+            lab.wav2setting_mm(comp, f, fps, offset)
+        ))
+        if st is None:
+            self.add2log('アニメーションの読み込みに失敗しました。', log.ERROR_COLOR)
+            return
+
+        self.add2log('Load Anim: Done')
+
+        # set Lip Sync
+        self.add2log('Apply Anim: Start')
+
+        # store
+        parm_name_list = p.pipe(
+            range(1, layer_max + 1),
+            p.map(lambda x: 'LayerName%d' % x),
+            list,
+        )
+        parm_name_list.append('Comments')
+        parm_dct = {}
+        for parm in parm_name_list:
+            parm_dct[parm] = tool.GetInput(parm, comp.CurrentTime)
+
+        # apply
+        comp.StartUndo('RS Lip Sync')
+        comp.Lock()
+
+        tool.LoadSettings(st)
+
+        # restore
+        for parm in parm_name_list:
+            tool.SetInput(parm, parm_dct[parm], comp.CurrentTime)
 
         comp.Unlock()
         comp.EndUndo(True)
@@ -725,7 +773,10 @@ class MainWindow(QMainWindow):
 
                 # set anim
                 if ch_data.anim_parameter == '<MultiMerge>':
-                    self.set_anim_mm(comp, ch_data, f, fps)
+                    if ch_data.anim_type == 'open':
+                        self.set_anim_mm_o(comp, f, fps)
+                    else:
+                        self.set_anim_mm(comp, ch_data, f, fps)
                 else:
                     self.set_anim(comp, tool, ch_data, f, fps)
 
