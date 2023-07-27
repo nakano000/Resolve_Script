@@ -2,7 +2,7 @@ Composition {
 	CurrentTime = 0,
 	RenderRange = { 0, 300 },
 	GlobalRange = { 0, 300 },
-	CurrentID = 8374,
+	CurrentID = 8606,
 	HiQ = true,
 	PlaybackUpdateMode = 0,
 	Version = "Fusion Studio 18.5 build 73",
@@ -15,11 +15,11 @@ Composition {
 	OutputClips = {
 	},
 	Tools = {
-		Loader88 = Loader {
+		Loader80 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!眉\\-困り眉1_.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\!黒目\\-目逸らし.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -39,7 +39,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 10835, -412.5 } },
+			ViewInfo = OperatorInfo { Pos = { 13145, -2095.5 } },
 		},
 		Loader21 = Loader {
 			Clips = {
@@ -67,11 +67,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 6490, -808.5 } },
 		},
-		Loader14 = Loader {
+		Loader71 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!右腕\\-腰.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-細め目ハート.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -91,7 +91,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 5500, -808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 11715, -1303.5 } },
 		},
 		Loader65 = Loader {
 			Clips = {
@@ -119,11 +119,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 11055, -1303.5 } },
 		},
-		Loader35 = Loader {
+		Loader91 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!右腕\\-(非表示).png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!眉\\-普通眉.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -143,7 +143,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8690, -808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 11165, -412.5 } },
 		},
 		Loader4 = Loader {
 			Clips = {
@@ -171,11 +171,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 4180, -412.5 } },
 		},
-		Loader78 = Loader {
+		Loader89 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\!黒目\\-目逸らし3_.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!眉\\-上がり眉.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -195,7 +195,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 12925, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 10945, -412.5 } },
 		},
 		Loader95 = Loader {
 			Clips = {
@@ -275,6 +275,32 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 11825, -1303.5 } },
 		},
+		Loader50 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!口\\-んー.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 12815, -841.5 } },
+		},
 		Loader28 = Loader {
 			Clips = {
 				Clip {
@@ -300,6 +326,32 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
 			ViewInfo = OperatorInfo { Pos = { 7700, -808.5 } },
+		},
+		Loader62 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-ぐるぐる.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 10725, -1303.5 } },
 		},
 		Loader63 = Loader {
 			Clips = {
@@ -327,11 +379,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 10835, -1303.5 } },
 		},
-		Loader80 = Loader {
+		Loader5 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\!黒目\\-目逸らし.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\-スク水.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -351,7 +403,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 13145, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 4290, -412.5 } },
 		},
 		Loader82 = Loader {
 			Clips = {
@@ -378,58 +430,6 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
 			ViewInfo = OperatorInfo { Pos = { 13365, -2095.5 } },
-		},
-		Loader71 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-細め目ハート.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 11715, -1303.5 } },
-		},
-		Loader22 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!左腕\\-手を挙げる.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6600, -808.5 } },
 		},
 		Loader13 = Loader {
 			Clips = {
@@ -483,11 +483,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 9240, -808.5 } },
 		},
-		Loader91 = Loader {
+		Loader86 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!眉\\-普通眉.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\!黒目\\-普通目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -507,13 +507,13 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 11165, -412.5 } },
+			ViewInfo = OperatorInfo { Pos = { 13805, -2095.5 } },
 		},
-		Loader75 = Loader {
+		Loader27 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\-見開き白目.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!左腕\\-(非表示).png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -533,7 +533,33 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 12375, -1699.5 } },
+			ViewInfo = OperatorInfo { Pos = { 7590, -808.5 } },
+		},
+		Loader33 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!左腕\\-腰.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8250, -808.5 } },
 		},
 		Loader98 = Loader {
 			Clips = {
@@ -691,11 +717,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 5170, -808.5 } },
 		},
-		Loader48 = Loader {
+		Loader14 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!口\\-んあー.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!右腕\\-腰.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -715,7 +741,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 12595, -841.5 } },
+			ViewInfo = OperatorInfo { Pos = { 5500, -808.5 } },
 		},
 		Loader24 = Loader {
 			Clips = {
@@ -769,6 +795,32 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 6710, -808.5 } },
 		},
+		Loader36 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!右腕\\-マイク.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8800, -808.5 } },
+		},
 		Loader69 = Loader {
 			Clips = {
 				Clip {
@@ -795,11 +847,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 11495, -1303.5 } },
 		},
-		Loader89 = Loader {
+		Loader78 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!眉\\-上がり眉.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\!黒目\\-目逸らし3_.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -819,7 +871,85 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 10945, -412.5 } },
+			ViewInfo = OperatorInfo { Pos = { 12925, -2095.5 } },
+		},
+		Loader12 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!右腕\\-口元.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 5280, -808.5 } },
+		},
+		Loader52 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!口\\-おほお.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 13035, -841.5 } },
+		},
+		Loader58 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!顔色\\-青ざめ.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 10010, -412.5 } },
 		},
 		Loader3 = Loader {
 			Clips = {
@@ -898,136 +1028,6 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
 			ViewInfo = OperatorInfo { Pos = { 5940, -808.5 } },
-		},
-		Loader10 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!右腕\\-指差し.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 5060, -808.5 } },
-		},
-		Loader50 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!口\\-んー.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 12815, -841.5 } },
-		},
-		Loader18 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!左腕\\-胸元.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 6160, -808.5 } },
-		},
-		Loader52 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!口\\-おほお.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 13035, -841.5 } },
-		},
-		Loader58 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!顔色\\-青ざめ.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 10010, -412.5 } },
 		},
 		Loader59 = Loader {
 			Clips = {
@@ -1133,11 +1133,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 9790, -412.5 } },
 		},
-		Loader62 = Loader {
+		Loader35 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-ぐるぐる.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!右腕\\-(非表示).png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1157,7 +1157,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 10725, -1303.5 } },
+			ViewInfo = OperatorInfo { Pos = { 8690, -808.5 } },
 		},
 		Loader76 = Loader {
 			Clips = {
@@ -1185,11 +1185,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 12485, -1699.5 } },
 		},
-		Loader36 = Loader {
+		Loader41 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!右腕\\-マイク.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!右腕\\-腰.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1209,7 +1209,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8800, -808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 9350, -808.5 } },
 		},
 		Loader81 = Loader {
 			Clips = {
@@ -1237,11 +1237,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 13255, -2095.5 } },
 		},
-		Loader38 = Loader {
+		Loader48 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!右腕\\-苦しむ.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!口\\-んあー.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1261,7 +1261,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 9020, -808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 12595, -841.5 } },
 		},
 		Loader60 = Loader {
 			Clips = {
@@ -1288,32 +1288,6 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
 			ViewInfo = OperatorInfo { Pos = { 10230, -412.5 } },
-		},
-		Loader83 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\!黒目\\-カメラ目線.png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 13475, -2095.5 } },
 		},
 		Loader85 = Loader {
 			Clips = {
@@ -1523,11 +1497,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 10945, -1303.5 } },
 		},
-		Loader33 = Loader {
+		Loader22 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!左腕\\-腰.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!左腕\\-手を挙げる.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1547,7 +1521,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8250, -808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 6600, -808.5 } },
 		},
 		Loader6 = Loader {
 			Clips = {
@@ -1575,11 +1549,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 4400, -412.5 } },
 		},
-		Loader12 = Loader {
+		Loader75 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!右腕\\-口元.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\-見開き白目.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1599,7 +1573,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 5280, -808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 12375, -1699.5 } },
 		},
 		Loader94 = Loader {
 			Clips = {
@@ -1679,6 +1653,58 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 13585, -2095.5 } },
 		},
+		Loader38 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!右腕\\-苦しむ.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 9020, -808.5 } },
+		},
+		Loader32 = Loader {
+			Clips = {
+				Clip {
+					ID = "Clip1",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!左腕\\-手を挙げる.png",
+					FormatID = "PNGFormat",
+					StartFrame = -1,
+					LengthSetManually = true,
+					TrimIn = 0,
+					TrimOut = 0,
+					ExtendFirst = 0,
+					ExtendLast = 0,
+					Loop = 0,
+					AspectMode = 0,
+					Depth = 0,
+					TimeCode = 0,
+					GlobalStart = -1000,
+					GlobalEnd = -1000
+				}
+			},
+			Inputs = {
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 8140, -808.5 } },
+		},
 		Loader66 = Loader {
 			Clips = {
 				Clip {
@@ -1757,11 +1783,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 4840, -808.5 } },
 		},
-		Loader32 = Loader {
+		Loader10 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!左腕\\-手を挙げる.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!右腕\\-指差し.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1781,7 +1807,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 8140, -808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 5060, -808.5 } },
 		},
 		Loader92 = Loader {
 			Clips = {
@@ -1887,11 +1913,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 7920, -808.5 } },
 		},
-		Loader41 = Loader {
+		Loader88 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!右腕\\-腰.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!眉\\-困り眉1_.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -1911,7 +1937,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 9350, -808.5 } },
+			ViewInfo = OperatorInfo { Pos = { 10835, -412.5 } },
 		},
 		Loader9 = Loader {
 			Clips = {
@@ -2095,11 +2121,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 6050, -808.5 } },
 		},
-		Loader5 = Loader {
+		Loader18 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\-スク水.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装2_\\!左腕\\-胸元.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2119,7 +2145,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 4290, -412.5 } },
+			ViewInfo = OperatorInfo { Pos = { 6160, -808.5 } },
 		},
 		Loader51 = Loader {
 			Clips = {
@@ -2511,11 +2537,11 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 12595, -1699.5 } },
 		},
-		Loader86 = Loader {
+		Loader83 = Loader {
 			Clips = {
 				Clip {
 					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\!黒目\\-普通目.png",
+					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\!目\\-目セット\\!黒目\\-カメラ目線.png",
 					FormatID = "PNGFormat",
 					StartFrame = -1,
 					LengthSetManually = true,
@@ -2535,7 +2561,7 @@ Composition {
 				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
-			ViewInfo = OperatorInfo { Pos = { 13805, -2095.5 } },
+			ViewInfo = OperatorInfo { Pos = { 13475, -2095.5 } },
 		},
 		Loader68 = Loader {
 			Clips = {
@@ -2562,32 +2588,6 @@ Composition {
 				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
 			},
 			ViewInfo = OperatorInfo { Pos = { 11385, -1303.5 } },
-		},
-		Loader27 = Loader {
-			Clips = {
-				Clip {
-					ID = "Clip1",
-					Filename = "CHARA:\\ずんだもん立ち絵素材2.3\\-服装1_\\!左腕\\-(非表示).png",
-					FormatID = "PNGFormat",
-					StartFrame = -1,
-					LengthSetManually = true,
-					TrimIn = 0,
-					TrimOut = 0,
-					ExtendFirst = 0,
-					ExtendLast = 0,
-					Loop = 0,
-					AspectMode = 0,
-					Depth = 0,
-					TimeCode = 0,
-					GlobalStart = -1000,
-					GlobalEnd = -1000
-				}
-			},
-			Inputs = {
-				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
-				["Clip1.PNGFormat.PostMultiply"] = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 7590, -808.5 } },
 		},
 		["ぽよ"] = GroupOperator {
 			NameSet = true,
@@ -2654,7 +2654,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { speed = { INP_Default = 1, INP_Integer = false, INP_MinAllowed = 0.00999999977648258, LINKID_DataType = "Number", ICS_ControlPage = "Controls", INPID_InputControl = "ScrewControl", INP_MinScale = 0.00999999977648258, LINKS_Name = "speed", } }
+					UserControls = ordered() { speed = { LINKS_Name = "speed", INP_Integer = false, INP_MinAllowed = 0.00999999977648258, LINKID_DataType = "Number", INP_MinScale = 0.00999999977648258, INPID_InputControl = "ScrewControl", ICS_ControlPage = "Controls", INP_Default = 1, } }
 				},
 				Calculation1 = Calculation {
 					CtrlWZoom = false,
@@ -2778,7 +2778,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_Integer = false, INP_Default = 0.1, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", LINKS_Name = "shake", }, in_out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "in_out", } }
+					UserControls = ordered() { x = { INP_Integer = false, LINKS_Name = "x", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_Integer = false, LINKS_Name = "y", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { LINKS_Name = "shake", INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", }, in_out = { INP_Integer = false, LINKS_Name = "in_out", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, } }
 				},
 				KeyframeStretcher1_1 = KeyStretcherMod {
 					CtrlWZoom = false,
@@ -3028,21 +3028,21 @@ Composition {
 				},
 				Speed = {
 					INP_Integer = false,
-					INP_Default = 1,
+					LINKS_Name = "Speed",
 					INPID_InputControl = "SliderControl",
 					INP_MinScale = 0,
 					LINKID_DataType = "Number",
 					INP_MaxScale = 5,
-					LINKS_Name = "Speed",
+					INP_Default = 1,
 				},
 				Str = {
 					INP_Integer = false,
-					INP_Default = 1,
+					LINKS_Name = "Str",
 					INPID_InputControl = "SliderControl",
 					INP_MinScale = 0,
 					LINKID_DataType = "Number",
 					INP_MaxScale = 5,
-					LINKS_Name = "Str",
+					INP_Default = 1,
 				}
 			}
 		},
@@ -3057,40 +3057,6 @@ Composition {
 			},
 			ViewInfo = OperatorInfo { Pos = { 13805, 1105.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
-		},
-		["拡縮_Ctrl"] = Transform {
-			NameSet = true,
-			Inputs = {
-				Center = Input { Value = { 0.504755282581476, 0.5 }, },
-				Size = Input { Expression = " v", },
-				ReferenceSize = Input { Value = 1, },
-				Input = Input {
-					SourceOp = "モーションなし",
-					Source = "Output",
-				},
-				bound = Input {
-					Value = 0.951056516295153,
-					Expression = "sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate)",
-				},
-				speed = Input {
-					SourceOp = "Motion_Speed",
-					Source = "Value",
-				},
-				amplitude = Input {
-					SourceOp = "Motion_Str",
-					Source = "Value",
-				},
-				out = Input {
-					Value = 59,
-					Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
-				},
-				v = Input {
-					Value = 0.504755282581476,
-					Expression = "1 + amplitude * iif(time > out, 0,bound)",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13805, 775.5 } },
-			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, INP_Default = 0, }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
 		},
 		["縦揺れ_Ctrl"] = Transform {
 			NameSet = true,
@@ -3126,6 +3092,42 @@ Composition {
 				},
 			},
 			ViewInfo = OperatorInfo { Pos = { 13640, 775.5 } },
+			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, INP_Default = 0, }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
+		},
+		["横揺れ_Ctrl"] = Transform {
+			NameSet = true,
+			Inputs = {
+				Center = Input {
+					Value = { 0.504755282581476, 0.5 },
+					Expression = "Point(v, 0.5)",
+				},
+				ReferenceSize = Input { Value = 1, },
+				Input = Input {
+					SourceOp = "モーションなし",
+					Source = "Output",
+				},
+				bound = Input {
+					Value = 0.951056516295153,
+					Expression = "sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate)",
+				},
+				speed = Input {
+					SourceOp = "Motion_Speed",
+					Source = "Value",
+				},
+				amplitude = Input {
+					SourceOp = "Motion_Str",
+					Source = "Value",
+				},
+				out = Input {
+					Value = 59,
+					Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
+				},
+				v = Input {
+					Value = 0.504755282581476,
+					Expression = "0.5 + amplitude * iif(time > out, 0,bound)",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 13475, 775.5 } },
 			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, LINKS_Name = "out", }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Y", INPID_InputControl = "CheckboxControl", INP_Default = 0, } }
 		},
 		["リズム_Ctrl"] = Transform {
@@ -3193,16 +3195,16 @@ Composition {
 				Speed = {
 					INP_Integer = false,
 					LINKID_DataType = "Number",
-					INP_Default = 1,
-					INPID_InputControl = "SliderControl",
 					LINKS_Name = "Speed",
+					INPID_InputControl = "SliderControl",
+					INP_Default = 1,
 				},
 				Frame = {
 					INP_Integer = false,
 					LINKID_DataType = "Number",
-					INP_Default = 1,
-					INPID_InputControl = "SliderControl",
 					LINKS_Name = "Frame",
+					INPID_InputControl = "SliderControl",
+					INP_Default = 1,
 				}
 			}
 		},
@@ -3215,13 +3217,11 @@ Composition {
 				[6] = { 0, LH = { 5, 0 } }
 			}
 		},
-		["横揺れ_Ctrl"] = Transform {
+		["拡縮_Ctrl"] = Transform {
 			NameSet = true,
 			Inputs = {
-				Center = Input {
-					Value = { 0.504755282581476, 0.5 },
-					Expression = "Point(v, 0.5)",
-				},
+				Center = Input { Value = { 0.504755282581476, 0.5 }, },
+				Size = Input { Expression = " v", },
 				ReferenceSize = Input { Value = 1, },
 				Input = Input {
 					SourceOp = "モーションなし",
@@ -3245,11 +3245,11 @@ Composition {
 				},
 				v = Input {
 					Value = 0.504755282581476,
-					Expression = "0.5 + amplitude * iif(time > out, 0,bound)",
+					Expression = "1 + amplitude * iif(time > out, 0,bound)",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 13475, 775.5 } },
-			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, INP_Default = 0, }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
+			ViewInfo = OperatorInfo { Pos = { 13805, 775.5 } },
+			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, LINKS_Name = "out", }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Y", INPID_InputControl = "CheckboxControl", INP_Default = 0, } }
 		},
 		["跳ねる"] = GroupOperator {
 			NameSet = true,
@@ -3319,9 +3319,41 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Default = 0, INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "out", } }
 				}
 			},
+		},
+		["跳ねる_Ctrl"] = Transform {
+			NameSet = true,
+			Inputs = {
+				Center = Input {
+					Value = { 0.5, 0.595105651629515 },
+					Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
+				},
+				ReferenceSize = Input { Value = 1, },
+				Input = Input {
+					SourceOp = "モーションなし",
+					Source = "Output",
+				},
+				bound = Input {
+					Value = 0.951056516295154,
+					Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
+				},
+				speed = Input {
+					SourceOp = "Motion_Speed",
+					Source = "Value",
+				},
+				amplitude = Input {
+					SourceOp = "Motion_Str",
+					Source = "Value",
+				},
+				out = Input {
+					Value = 59,
+					Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 13310, 775.5 } },
+			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, LINKS_Name = "out", } }
 		},
 		Background2 = Background {
 			Inputs = {
@@ -3506,7 +3538,7 @@ Composition {
 				},
 			},
 			ViewInfo = OperatorInfo { Pos = { 12980, 775.5 } },
-			UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 1, INPID_InputControl = "ScrewControl", LINKS_Name = "speed", }, offset = { INP_Integer = true, LINKS_Name = "offset", INPID_InputControl = "ScrewControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 500, INP_Default = 0, } }
+			UserControls = ordered() { speed = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "speed", INPID_InputControl = "ScrewControl", INP_Default = 1, }, offset = { INP_Integer = true, INP_Default = 0, INPID_InputControl = "ScrewControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 500, LINKS_Name = "offset", } }
 		},
 		XYPath1_1 = XYPath {
 			ShowKeyPoints = false,
@@ -3560,7 +3592,6 @@ Composition {
 		Calculation4_1FirstOperand = BezierSpline {
 			SplineColor = { Red = 0, Green = 255, Blue = 0 },
 			CtrlWZoom = false,
-			NameSet = true,
 			KeyFrames = {
 				[0] = { 0, RH = { 2.65, 0.18 }, Flags = { Linear = true } },
 				[13] = { 0, LH = { 9.5, 0.194 }, RH = { 15.2, 0.05 } },
@@ -3643,41 +3674,9 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 29.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, LINKS_Name = "out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, }, v = { INPID_InputControl = "SliderControl", INP_Integer = false, LINKS_Name = "v", LINKID_DataType = "Number", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "CheckboxControl", LINKS_Name = "Y", } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.001, INP_MinAllowed = 0.001, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_MinScale = 0, LINKID_DataType = "Number", INP_Default = 0, INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "out", }, v = { LINKID_DataType = "Number", INP_Integer = false, LINKS_Name = "v", INPID_InputControl = "SliderControl", }, Y = { CBC_TriState = false, INP_Integer = true, LINKID_DataType = "Number", LINKS_Name = "Y", INPID_InputControl = "CheckboxControl", INP_Default = 0, } }
 				}
 			},
-		},
-		["跳ねる_Ctrl"] = Transform {
-			NameSet = true,
-			Inputs = {
-				Center = Input {
-					Value = { 0.5, 0.595105651629515 },
-					Expression = "Point(0.5, 0.5 + amplitude * iif(time > out, 0,bound))",
-				},
-				ReferenceSize = Input { Value = 1, },
-				Input = Input {
-					SourceOp = "モーションなし",
-					Source = "Output",
-				},
-				bound = Input {
-					Value = 0.951056516295154,
-					Expression = "math.abs(sin((time - comp.GlobalStart)*speed*pi/comp:GetPrefs().Comp.FrameFormat.Rate))\n",
-				},
-				speed = Input {
-					SourceOp = "Motion_Speed",
-					Source = "Value",
-				},
-				amplitude = Input {
-					SourceOp = "Motion_Str",
-					Source = "Value",
-				},
-				out = Input {
-					Value = 59,
-					Expression = "comp.GlobalEnd - (comp.GlobalEnd - comp.GlobalStart + 1) % (comp:GetPrefs().Comp.FrameFormat.Rate/speed)",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13310, 775.5 } },
-			UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", INP_MinScale = 0, LINKID_DataType = "Number", INP_MaxScale = 1, INP_Default = 0, } }
 		},
 		["跳ねる_小"] = GroupOperator {
 			NameSet = true,
@@ -3747,7 +3746,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INPID_InputControl = "SliderControl", LINKS_Name = "bound", }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", INP_Default = 0, INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "\nwidth", }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, INP_Default = 0, INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, LINKS_Name = "out", } }
+					UserControls = ordered() { bound = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "bound", INPID_InputControl = "SliderControl", INP_Default = 0, }, speed = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 1, INP_MinScale = 0.00100000004749745, INP_MinAllowed = 0.00100000004749745, LINKID_DataType = "Number", LINKS_Name = "speed", }, width = { INP_Integer = false, LINKID_DataType = "Number", LINKS_Name = "\nwidth", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, }, amplitude = { INP_MaxAllowed = 1000000, INP_Integer = false, INPID_InputControl = "SliderControl", INP_MaxScale = 1, INP_Default = 0, INP_MinScale = 0, INP_MinAllowed = -1000000, LINKID_DataType = "Number", LINKS_Name = "amplitude", }, out = { INP_Integer = false, LINKS_Name = "out", INPID_InputControl = "SliderControl", LINKID_DataType = "Number", INP_MinScale = 0, INP_MaxScale = 1, INP_Default = 0, } }
 				}
 			},
 		},
@@ -4308,7 +4307,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
 					}
-				},
+				}
 			},
 			SourceOp = "MouthScale",
 			Inputs = {
@@ -4410,7 +4409,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -4427,7 +4426,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -4444,7 +4443,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -4461,7 +4460,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -4478,7 +4477,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				Input = Input {
@@ -4495,7 +4494,7 @@ Composition {
 					Map = {
 						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
 					}
-				},
+				}
 			},
 			Inputs = {
 				LayerOrder = Input { Value = ScriptVal { {
@@ -4665,7 +4664,7 @@ Composition {
 					Source = "Output",
 				},
 				Foreground = Input {
-					SourceOp = "Loader86",
+					SourceOp = "Loader83",
 					Source = "Output",
 				},
 				PerformDepthMerge = Input { Value = 0, },
@@ -4841,23 +4840,23 @@ Composition {
 					LINKS_Name = "Delete Anim",
 				},
 				at00 = {
-					INP_External = false,
-					INP_Integer = false,
 					LBLC_DropDownButton = false,
+					INP_Integer = false,
+					INP_External = false,
 					INPID_InputControl = "LabelControl",
-					ICS_ControlPage = "目パチ",
-					INP_Passive = true,
 					LINKID_DataType = "Number",
+					INP_Passive = true,
+					ICS_ControlPage = "目パチ",
 					LINKS_Name = "ボタンを押さないと反映されません。",
 				},
 				sp00 = {
-					ICS_ControlPage = "目パチ",
+					LINKID_DataType = "Number",
 					INP_Integer = false,
 					LBLC_DropDownButton = false,
-					LINKID_DataType = "Number",
-					INP_External = false,
-					INP_Passive = true,
+					ICS_ControlPage = "目パチ",
 					INPID_InputControl = "LabelControl",
+					INP_Passive = true,
+					INP_External = false,
 					LINKS_Name = "",
 				}
 			}
@@ -6356,7 +6355,7 @@ Composition {
 						},
 					},
 					ViewInfo = OperatorInfo { Pos = { 0, 28.7576 } },
-					UserControls = ordered() { x = { INP_MinScale = 0, LINKS_Name = "x", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, y = { INP_MinScale = 0, LINKS_Name = "y", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0.1, }, shake = { INPID_InputControl = "OffsetControl", LINKID_DataType = "Point", LINKS_Name = "shake", }, in_out = { INP_MinScale = 0, LINKS_Name = "in_out", LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, INP_Default = 0, } }
+					UserControls = ordered() { x = { INP_MinScale = 0, INP_Default = 0.1, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "x", }, y = { INP_MinScale = 0, INP_Default = 0.1, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "y", }, shake = { LINKS_Name = "shake", LINKID_DataType = "Point", INPID_InputControl = "OffsetControl", }, in_out = { INP_MinScale = 0, INP_Default = 0, LINKID_DataType = "Number", INPID_InputControl = "SliderControl", INP_Integer = false, INP_MaxScale = 1, LINKS_Name = "in_out", } }
 				},
 				KeyframeStretcher1 = KeyStretcherMod {
 					CtrlWZoom = false,
@@ -6417,20 +6416,20 @@ Composition {
 			Width = 1920,
 			Height = 1104,
 			ZoneInfo = {
-				["!Right"] = {
-				},
+				AuxRight = { Expanded = true },
 				["!Left"] = {
 				},
 				AuxLeft = { Expanded = true },
 				Right = { Expanded = true, },
 				Left = { Expanded = false, },
-				AuxRight = { Expanded = true }
+				["!Right"] = {
+				}
 			},
 			ViewInfo = {
 				Viewer1 = { Show = true, RatioY = 0.01, RatioX = 1.00215517241379, },
 				InnerLeft = {
-					PixelX = 547,
 					RatioY = 100,
+					PixelX = 547,
 				},
 				MainSplit = {
 					RatioX = 100,
@@ -6452,13 +6451,13 @@ Composition {
 				Inspector = { Show = true, RatioY = 1, RatioX = 100, },
 				InnerRight = {
 				},
-				Clips = { Show = false, },
+				MediaPool = { Show = false, },
 				OuterColumns = {
 					RatioX = 100,
 					RatioY = 1,
 				},
 				Effects = { Show = true, Adjust = false, RatioY = 100, MRU = 8, RatioX = 1, },
-				ActionStrip = { Show = true, RatioX = 100, },
+				Clips = { Show = false, },
 				Metadata = { Show = false, },
 				OuterLeft = {
 				},
@@ -6468,11 +6467,11 @@ Composition {
 				},
 				Nodes = { Show = true, RatioY = 100, RatioX = 1.46070460704607, },
 				OuterRight = {
-					RatioY = 100,
 					PixelX = 440,
+					RatioY = 100,
 				},
-				MediaPool = { Show = false, },
-				Spline = { Show = true, Adjust = false, RatioY = 100, MRU = 1, RatioX = 0.53929539295393, }
+				ActionStrip = { Show = true, RatioX = 100, },
+				Spline = { Show = false, Adjust = true, RatioY = 100, MRU = 0, RatioX = 0.53929539295393, }
 			},
 			Views = ordered() {
 				Effects = MultiView {
@@ -6498,7 +6497,7 @@ Composition {
 						Direction = "Horizontal",
 						PipeStyle = "Direct",
 						RootScale = 0.181747,
-						RootOffset = { -11243.1, 729.016 }
+						RootOffset = { -11206.4, 185.47 }
 					}
 				},
 				Keyframes = MultiView {
@@ -6725,10 +6724,10 @@ Composition {
 				Preview = {
 					DataCheck = true,
 					Key = 15,
-					Handler = 1668707181,
-					KeyCheck = true,
+					Quality = 75,
 					DataRate = 300,
-					Quality = 75
+					KeyCheck = true,
+					Handler = 1668707181
 				}
 			},
 			Tweaks = {
