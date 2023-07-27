@@ -337,6 +337,16 @@
     },
     {
       "node": "MouthOpenAnim",
+      "page": "口パク",
+      "id": "Label_000",
+      "name": "※変更後アニメーションを作り直す必要があります。",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "MouthOpenAnim",
       "page": "Merge",
       "id": "LayerOrder",
       "name": "Layer List",
