@@ -41,8 +41,8 @@ class ConfigData(config.Data):
     json_path: str = ''
     style: TatieStyle = TatieStyle.CONNECTION_LABEL
     btn_size: float = 0.25
-    space_x: int = 400
-    space_y: int = 600
+    space_x: int = 0
+    space_y: int = 0
     is_normal: bool = False
     use_mm: bool = False
     use_mask: bool = False
