@@ -45,7 +45,6 @@ class ConfigData(config.Data):
     space_y: int = 600
     is_normal: bool = False
     use_mm: bool = False
-    use_frame_format_settings: bool = True
     use_mask: bool = False
 
 
@@ -62,8 +61,6 @@ class Importer:
         self.size_y = 0
 
         self.fusion_ver = fusion_ver
-
-        self.use_frame_format_settings = True
 
         self.X_OFFSET = 1
         self.Y_OFFSET = 4
@@ -141,12 +138,9 @@ class Importer:
 
     def add_base_bg(self, pos_x, pos_y):
         bg = self.comp.AddTool('Background', pos_x * self.X_OFFSET, (pos_y - 1) * self.Y_OFFSET)
-        if self.use_frame_format_settings:
-            bg.UseFrameFormatSettings = 1
-        else:
-            bg.UseFrameFormatSettings = 0
-            bg.Width = self.size_x + self.config_data.space_x
-            bg.Height = self.size_y + self.config_data.space_y
+        bg.UseFrameFormatSettings = 0
+        bg.Width = self.size_x + self.config_data.space_x
+        bg.Height = self.size_y + self.config_data.space_y
         bg.TopLeftAlpha = 0
         bg.Depth = 1
         node = self.add_set_dod(pos_x, pos_y, None, [0, 0, 0, 0])
@@ -460,7 +454,6 @@ class Importer:
 
     def make(self):
         c = self.config_data
-        self.use_frame_format_settings = c.use_frame_format_settings
         self.load_json()
         if c.is_normal:
             if c.use_mm:
@@ -515,8 +508,6 @@ class MainWindow(QMainWindow):
         self.ui.importButton.setStyleSheet(appearance.in_stylesheet)
 
         # event
-        self.ui.useFrameFormatSettingsCheckBox.stateChanged.connect(self.use_frame_format_settings_changed)
-
         self.ui.useMaskCheckBox.stateChanged.connect(self.ui.useMask2CheckBox.setChecked)
         self.ui.useMask2CheckBox.stateChanged.connect(self.ui.useMaskCheckBox.setChecked)
 
@@ -540,9 +531,6 @@ class MainWindow(QMainWindow):
             self.ui.connectLabelRadioButton.setText('Switching Connection(Label)')
             self.ui.label.setText('')
             self.ui.btnSizeLabel.setText('Button Size')
-
-    def use_frame_format_settings_changed(self, state: int) -> None:
-        self.ui.expandGroupBox.setEnabled(not(state == Qt.Checked))
 
     def import_json(self) -> None:
         resolve = self.fusion.GetResolve()
@@ -605,9 +593,6 @@ class MainWindow(QMainWindow):
         self.ui.tabWidget.setCurrentIndex(1 if c.is_normal else 0)
         self.ui.useMMCheckBox.setChecked(c.use_mm)
 
-        self.ui.useFrameFormatSettingsCheckBox.setChecked(c.use_frame_format_settings)
-        self.ui.expandGroupBox.setEnabled(not c.use_frame_format_settings)
-
         self.ui.useMaskCheckBox.setChecked(c.use_mask)
         self.ui.useMask2CheckBox.setChecked(c.use_mask)
 
@@ -628,8 +613,6 @@ class MainWindow(QMainWindow):
 
         c.is_normal = self.ui.tabWidget.currentIndex() == 1
         c.use_mm = self.ui.useMMCheckBox.isChecked()
-
-        c.use_frame_format_settings = self.ui.useFrameFormatSettingsCheckBox.isChecked()
 
         c.use_mask = self.ui.useMaskCheckBox.isChecked()
 

@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'D:\dev\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui',
 # licensing of 'D:\dev\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\importer\importer.ui' applies.
 #
-# Created: Thu Jul 20 05:20:21 2023
+# Created: Tue Aug  1 05:37:48 2023
 #      by: pyside2-uic  running on PySide2 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(296, 504)
+        MainWindow.resize(285, 450)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -80,14 +80,7 @@ class Ui_MainWindow(object):
         self.useMaskCheckBox = QtWidgets.QCheckBox(self.groupBox)
         self.useMaskCheckBox.setObjectName("useMaskCheckBox")
         self.verticalLayout_4.addWidget(self.useMaskCheckBox)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.groupBox)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.useFrameFormatSettingsCheckBox = QtWidgets.QCheckBox(self.groupBox_2)
-        self.useFrameFormatSettingsCheckBox.setObjectName("useFrameFormatSettingsCheckBox")
-        self.verticalLayout_8.addWidget(self.useFrameFormatSettingsCheckBox)
-        self.expandGroupBox = QtWidgets.QGroupBox(self.groupBox_2)
+        self.expandGroupBox = QtWidgets.QGroupBox(self.groupBox)
         self.expandGroupBox.setObjectName("expandGroupBox")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.expandGroupBox)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -120,8 +113,7 @@ class Ui_MainWindow(object):
         self.ySpinBox.setObjectName("ySpinBox")
         self.horizontalLayout.addWidget(self.ySpinBox)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.verticalLayout_8.addWidget(self.expandGroupBox)
-        self.verticalLayout_4.addWidget(self.groupBox_2)
+        self.verticalLayout_4.addWidget(self.expandGroupBox)
         self.verticalLayout_2.addWidget(self.groupBox)
         self.tabWidget.addTab(self.tab, "")
         self.tab2 = QtWidgets.QWidget()
@@ -173,8 +165,6 @@ class Ui_MainWindow(object):
         self.btnSizeLabel.setText(QtWidgets.QApplication.translate("MainWindow", "通常ボタン サイズ", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Image", None, -1))
         self.useMaskCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Use Mask", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "Size", None, -1))
-        self.useFrameFormatSettingsCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Use Frame Format Settings", None, -1))
         self.expandGroupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "拡張 (アニメーション スペース確保)", None, -1))
         self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "X", None, -1))
         self.xSpinBox.setSuffix(QtWidgets.QApplication.translate("MainWindow", " px", None, -1))
