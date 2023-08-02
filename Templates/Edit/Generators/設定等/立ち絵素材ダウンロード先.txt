@@ -34,26 +34,24 @@ https://seiga.nicovideo.jp/seiga/im11020697
 ME	^\d+_四国めたん.+	Violet	auto	25	aiueo3	<MultiMerge>
 
 ------------------------------------------------------
-東北ずん子(Open).setting
+春日部つむぎ.setting
 
-坂本アヒル様:東北ずん子立ち絵素材
-https://seiga.nicovideo.jp/seiga/im11135374
-ファイル名: 東北ずん子立ち絵素材2.0.zip
+坂本アヒル様:春日部つむぎ立ち絵素材
+https://seiga.nicovideo.jp/seiga/im10849150
+ファイル名: 春日部つむぎ立ち絵素材3.0.zip
 
 キャラクター設定参考
-ZK	^\d+-東北ずん子.+	Lime	auto	25	open	<MultiMerge>
+ME	^\d+_春日部つむぎ.+	Violet	auto	25	aiueo3	<MultiMerge>
 
 ------------------------------------------------------
-琴葉葵.setting
-琴葉茜.setting
+雨晴はう.setting
 
-坂本アヒル様:琴葉姉妹立ち絵素材
-https://seiga.nicovideo.jp/seiga/im10854789
-ファイル名: 琴葉姉妹立ち絵素材1.1.zip
+坂本アヒル様:雨晴はう立ち絵素材
+https://seiga.nicovideo.jp/seiga/im10880094
+ファイル名: 雨晴はう立ち絵素材2.0.zip
 
 キャラクター設定参考
-AO	^\d+_琴葉 葵.+	Teal	auto	25	aiueo3	<MultiMerge>
-AK	^\d+_琴葉 茜.+	Pink	auto	25	aiueo3	<MultiMerge>
+ME	^\d+_雨晴はう.+	Violet	auto	25	aiueo3	<MultiMerge>
 
 ------------------------------------------------------
 九州そら.setting
@@ -84,6 +82,28 @@ https://seiga.nicovideo.jp/seiga/im11232921
 
 キャラクター設定参考
 USA	^\d+_中国うさぎ.+	Pink	auto	25	aiueo3	<MultiMerge>
+
+------------------------------------------------------
+東北ずん子(Open).setting
+
+坂本アヒル様:東北ずん子立ち絵素材
+https://seiga.nicovideo.jp/seiga/im11135374
+ファイル名: 東北ずん子立ち絵素材2.0.zip
+
+キャラクター設定参考
+ZK	^\d+-東北ずん子.+	Lime	auto	25	open	<MultiMerge>
+
+------------------------------------------------------
+琴葉葵.setting
+琴葉茜.setting
+
+坂本アヒル様:琴葉姉妹立ち絵素材
+https://seiga.nicovideo.jp/seiga/im10854789
+ファイル名: 琴葉姉妹立ち絵素材1.1.zip
+
+キャラクター設定参考
+AO	^\d+_琴葉 葵.+	Teal	auto	25	aiueo3	<MultiMerge>
+AK	^\d+_琴葉 茜.+	Pink	auto	25	aiueo3	<MultiMerge>
 
 ------------------------------------------------------
 れいむ.setting
