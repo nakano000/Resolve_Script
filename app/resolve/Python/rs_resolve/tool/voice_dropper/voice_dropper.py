@@ -513,7 +513,7 @@ class MainWindow(QMainWindow):
 
     def set_anim(self, comp, tool, ch_data, f, fps):
         # get anim
-        self.add2log('Load Anim: Start')
+        self.add2log(f'Load Anim({ch_data.anim_type.strip().lower()}, {ch_data.anim_type.anim_parameter}): Start')
         lab_file = f.with_suffix('.lab')
         anim = ''
         offset = comp.GetAttrs()['COMPN_GlobalStart']
@@ -561,7 +561,7 @@ class MainWindow(QMainWindow):
 
     def set_anim_mm(self, comp, ch_data, f, fps):
         # get anim
-        self.add2log('Load Anim: Start')
+        self.add2log(f'Load Anim({ch_data.anim_type.strip().lower()}, {ch_data.anim_type.anim_parameter}): Start')
         lab_file = f.with_suffix('.lab')
         anim_list = []
         ch_data.anim_type = ch_data.anim_type.strip().lower()
@@ -608,7 +608,7 @@ class MainWindow(QMainWindow):
                 return
 
         # set Lip Sync
-        self.add2log('Apply Anim: Start')
+        self.add2log('Apply Anim(MultiMerge): Start')
         comp.StartUndo('RS Lip Sync')
         comp.Lock()
         parm_name_list = [
@@ -639,7 +639,7 @@ class MainWindow(QMainWindow):
 
 
     def set_anim_mm_o(self, comp, f, fps):
-        self.add2log('Load Anim: Start')
+        self.add2log('Load Anim(open, <MultiMerge>): Start')
         # get anim tool list
         tool_name = 'MouthOpenAnim'
         tool = comp.FindTool(tool_name)
@@ -661,7 +661,7 @@ class MainWindow(QMainWindow):
         self.add2log('Load Anim: Done')
 
         # set Lip Sync
-        self.add2log('Apply Anim: Start')
+        self.add2log('Apply Anim(MultiMerge): Start')
 
         # store
         parm_name_list = p.pipe(
