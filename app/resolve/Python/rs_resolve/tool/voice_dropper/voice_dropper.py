@@ -513,7 +513,7 @@ class MainWindow(QMainWindow):
 
     def set_anim(self, comp, tool, ch_data, f, fps):
         # get anim
-        self.add2log(f'Load Anim({ch_data.anim_type.strip().lower()}, {ch_data.anim_type.anim_parameter}): Start')
+        self.add2log(f'Load Anim({ch_data.anim_type.strip().lower()}, {ch_data.anim_parameter}): Start')
         lab_file = f.with_suffix('.lab')
         anim = ''
         offset = comp.GetAttrs()['COMPN_GlobalStart']
@@ -561,7 +561,7 @@ class MainWindow(QMainWindow):
 
     def set_anim_mm(self, comp, ch_data, f, fps):
         # get anim
-        self.add2log(f'Load Anim({ch_data.anim_type.strip().lower()}, {ch_data.anim_type.anim_parameter}): Start')
+        self.add2log(f'Load Anim({ch_data.anim_type.strip().lower()}, {ch_data.anim_parameter}): Start')
         lab_file = f.with_suffix('.lab')
         anim_list = []
         ch_data.anim_type = ch_data.anim_type.strip().lower()
