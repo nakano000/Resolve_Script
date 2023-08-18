@@ -120,7 +120,6 @@
             <font>
              <family>メイリオ</family>
              <pointsize>24</pointsize>
-             <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>
@@ -157,7 +156,6 @@
             <font>
              <family>メイリオ</family>
              <pointsize>24</pointsize>
-             <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>
@@ -194,7 +192,6 @@
             <font>
              <family>メイリオ</family>
              <pointsize>16</pointsize>
-             <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>
@@ -231,7 +228,6 @@
             <font>
              <family>メイリオ</family>
              <pointsize>16</pointsize>
-             <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>

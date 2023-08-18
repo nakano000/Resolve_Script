@@ -1,16 +1,16 @@
 import sys
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QWidget,
-    QShortcut,
 )
-from PySide2.QtGui import (
+from PySide6.QtGui import (
     QKeySequence,
+    QShortcut,
 )
 
 from rs.core import (
@@ -98,7 +98,7 @@ def run() -> None:
 
     window = Form()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

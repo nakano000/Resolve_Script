@@ -3,16 +3,16 @@ import sys
 from pathlib import Path
 from typing import List
 import dataclasses
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QModelIndex,
     QStringListModel,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtGui import QAction
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QMenu,
-    QAction,
 )
 
 from rs.core import (

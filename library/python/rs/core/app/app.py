@@ -14,7 +14,7 @@ class App(config.DataInterface):
     def get_env(self) -> Env:
         env = Env()
         # PYTHONDONTWRITEBYTECODE
-        env.set(EnvKey.PYTHONDONTWRITEBYTECODE, '1')
+        # env.set(EnvKey.PYTHONDONTWRITEBYTECODE, '1')
         # PYTHONPATH
         env.add_path(EnvKey.PYTHONPATH, suf=[
             config.ROOT_PATH.joinpath('library', 'python'),

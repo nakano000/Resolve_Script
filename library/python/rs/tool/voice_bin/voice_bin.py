@@ -4,18 +4,19 @@ import sys
 from functools import partial
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QDir,
     QItemSelectionModel,
     Signal,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
     QFileSystemModel,
     QWidget,
-    QHeaderView, QProgressDialog,
+    QHeaderView,
+    QProgressDialog,
 )
 
 from watchdog.observers.polling import PollingObserver
@@ -216,11 +217,11 @@ class Form(QWidget):
         self.reset_tree()
         if self.sel_wav != '':
             sel.clearSelection()
-            sel.select(model.index(self.sel_srt.replace('\\', '/')), QItemSelectionModel.Select)
-            sel.select(model.index(self.sel_wav.replace('\\', '/')), QItemSelectionModel.Select)
+            sel.select(model.index(self.sel_srt.replace('\\', '/')), QItemSelectionModel.SelectionFlag.Select)
+            sel.select(model.index(self.sel_wav.replace('\\', '/')), QItemSelectionModel.SelectionFlag.Select)
         if self.sel_wav != '':
             txt_sel.clearSelection()
-            txt_sel.select(txt_model.index(self.sel_wav), QItemSelectionModel.Select)
+            txt_sel.select(txt_model.index(self.sel_wav), QItemSelectionModel.SelectionFlag.Select)
 
     def rebuild_all(self):
         c = self.get_data()
@@ -323,7 +324,7 @@ def run() -> None:
 
     window = Form()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

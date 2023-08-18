@@ -1,108 +1,157 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\chara_converter\chara_converter.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\chara_converter\chara_converter.ui' applies.
-#
-# Created: Wed May  3 15:16:41 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'chara_converter.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QGroupBox,
+    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
+    QPushButton, QSizePolicy, QSpacerItem, QTextEdit,
+    QToolButton, QVBoxLayout, QWidget)
+
+from rs.gui.log import LogTextEdit
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(404, 386)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.formLayout = QtWidgets.QFormLayout()
-        self.formLayout.setObjectName("formLayout")
-        self.label_2 = QtWidgets.QLabel(self.groupBox)
-        self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.groupBox = QGroupBox(self.centralwidget)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout_2 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.formLayout = QFormLayout()
+        self.formLayout.setObjectName(u"formLayout")
+        self.label_2 = QLabel(self.groupBox)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label_2)
+
+        self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.srcLineEdit = QtWidgets.QLineEdit(self.groupBox)
-        self.srcLineEdit.setObjectName("srcLineEdit")
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.srcLineEdit = QLineEdit(self.groupBox)
+        self.srcLineEdit.setObjectName(u"srcLineEdit")
+
         self.horizontalLayout_2.addWidget(self.srcLineEdit)
-        self.srcToolButton = QtWidgets.QToolButton(self.groupBox)
-        self.srcToolButton.setObjectName("srcToolButton")
+
+        self.srcToolButton = QToolButton(self.groupBox)
+        self.srcToolButton.setObjectName(u"srcToolButton")
+
         self.horizontalLayout_2.addWidget(self.srcToolButton)
-        self.formLayout.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
-        self.label_4 = QtWidgets.QLabel(self.groupBox)
-        self.label_4.setObjectName("label_4")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
+
+
+        self.formLayout.setLayout(0, QFormLayout.FieldRole, self.horizontalLayout_2)
+
+        self.label_4 = QLabel(self.groupBox)
+        self.label_4.setObjectName(u"label_4")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_4)
+
+        self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.dstLineEdit = QtWidgets.QLineEdit(self.groupBox)
-        self.dstLineEdit.setObjectName("dstLineEdit")
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.dstLineEdit = QLineEdit(self.groupBox)
+        self.dstLineEdit.setObjectName(u"dstLineEdit")
+
         self.horizontalLayout.addWidget(self.dstLineEdit)
-        self.dstToolButton = QtWidgets.QToolButton(self.groupBox)
-        self.dstToolButton.setObjectName("dstToolButton")
+
+        self.dstToolButton = QToolButton(self.groupBox)
+        self.dstToolButton.setObjectName(u"dstToolButton")
+
         self.horizontalLayout.addWidget(self.dstToolButton)
-        self.formLayout.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
+
+
+        self.formLayout.setLayout(1, QFormLayout.FieldRole, self.horizontalLayout)
+
+
         self.verticalLayout_2.addLayout(self.formLayout)
-        self.makeDirCheckBox = QtWidgets.QCheckBox(self.groupBox)
-        self.makeDirCheckBox.setObjectName("makeDirCheckBox")
+
+        self.makeDirCheckBox = QCheckBox(self.groupBox)
+        self.makeDirCheckBox.setObjectName(u"makeDirCheckBox")
+
         self.verticalLayout_2.addWidget(self.makeDirCheckBox)
+
+
         self.verticalLayout_3.addWidget(self.groupBox)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
+
+        self.groupBox_2 = QGroupBox(self.centralwidget)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.groupBox_2.sizePolicy().hasHeightForWidth())
         self.groupBox_2.setSizePolicy(sizePolicy)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout.setObjectName("verticalLayout")
+        self.verticalLayout = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.logTextEdit = LogTextEdit(self.groupBox_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.logTextEdit.sizePolicy().hasHeightForWidth())
-        self.logTextEdit.setSizePolicy(sizePolicy)
-        self.logTextEdit.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
+        self.logTextEdit.setObjectName(u"logTextEdit")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.logTextEdit.sizePolicy().hasHeightForWidth())
+        self.logTextEdit.setSizePolicy(sizePolicy1)
+        self.logTextEdit.setLineWrapMode(QTextEdit.NoWrap)
         self.logTextEdit.setReadOnly(True)
-        self.logTextEdit.setObjectName("logTextEdit")
+
         self.verticalLayout.addWidget(self.logTextEdit)
+
+
         self.verticalLayout_3.addWidget(self.groupBox_2)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem)
-        self.importButton = QtWidgets.QPushButton(self.centralwidget)
-        self.importButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.importButton.setObjectName("importButton")
+
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer)
+
+        self.importButton = QPushButton(self.centralwidget)
+        self.importButton.setObjectName(u"importButton")
+        self.importButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_3.addWidget(self.importButton)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_3.addWidget(self.closeButton)
+
+
         self.verticalLayout_3.addLayout(self.horizontalLayout_3)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "ディレクトリ設定", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "キャラ素材", None, -1))
-        self.srcToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "出力先", None, -1))
-        self.dstToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.makeDirCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "キャラ素材と同じ名前のフォルダを出力先に作る", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
-        self.importButton.setText(QtWidgets.QApplication.translate("MainWindow", "import", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u30c7\u30a3\u30ec\u30af\u30c8\u30ea\u8a2d\u5b9a", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u30ad\u30e3\u30e9\u7d20\u6750", None))
+        self.srcToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u51fa\u529b\u5148", None))
+        self.dstToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.makeDirCheckBox.setText(QCoreApplication.translate("MainWindow", u"\u30ad\u30e3\u30e9\u7d20\u6750\u3068\u540c\u3058\u540d\u524d\u306e\u30d5\u30a9\u30eb\u30c0\u3092\u51fa\u529b\u5148\u306b\u4f5c\u308b", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"\u30ed\u30b0", None))
+        self.importButton.setText(QCoreApplication.translate("MainWindow", u"import", None))
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+    # retranslateUi
 
-from rs.gui.log import LogTextEdit

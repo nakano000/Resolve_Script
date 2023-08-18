@@ -1,8 +1,8 @@
-from PySide2.QtGui import (
+from PySide6.QtGui import (
     QPalette,
     QColor,
 )
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
 )
 

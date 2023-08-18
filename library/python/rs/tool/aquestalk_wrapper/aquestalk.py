@@ -3,7 +3,7 @@ import time
 from pathlib import Path
 from typing import List
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     QObject,
     Signal,
 )

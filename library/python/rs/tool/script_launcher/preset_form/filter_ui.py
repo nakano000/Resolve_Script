@@ -1,41 +1,63 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\script_launcher\preset_form\filter.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\script_launcher\preset_form\filter.ui' applies.
-#
-# Created: Thu Jun 16 11:13:50 2022
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'filter.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QPlainTextEdit, QPushButton,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName("Form")
+        if not Form.objectName():
+            Form.setObjectName(u"Form")
         Form.resize(458, 472)
-        self.verticalLayout = QtWidgets.QVBoxLayout(Form)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.textEdit = QtWidgets.QPlainTextEdit(Form)
-        self.textEdit.setObjectName("textEdit")
+        self.verticalLayout = QVBoxLayout(Form)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.textEdit = QPlainTextEdit(Form)
+        self.textEdit.setObjectName(u"textEdit")
+
         self.verticalLayout.addWidget(self.textEdit)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.saveButton = QtWidgets.QPushButton(Form)
-        self.saveButton.setObjectName("saveButton")
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.saveButton = QPushButton(Form)
+        self.saveButton.setObjectName(u"saveButton")
+
         self.horizontalLayout.addWidget(self.saveButton)
-        self.cancelButton = QtWidgets.QPushButton(Form)
-        self.cancelButton.setObjectName("cancelButton")
+
+        self.cancelButton = QPushButton(Form)
+        self.cancelButton.setObjectName(u"cancelButton")
+
         self.horizontalLayout.addWidget(self.cancelButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
 
+
         self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+
+        QMetaObject.connectSlotsByName(Form)
+    # setupUi
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QtWidgets.QApplication.translate("Form", "Form", None, -1))
-        self.saveButton.setText(QtWidgets.QApplication.translate("Form", "save", None, -1))
-        self.cancelButton.setText(QtWidgets.QApplication.translate("Form", "cancel", None, -1))
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        self.saveButton.setText(QCoreApplication.translate("Form", u"save", None))
+        self.cancelButton.setText(QCoreApplication.translate("Form", u"cancel", None))
+    # retranslateUi
 

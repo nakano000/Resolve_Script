@@ -3,12 +3,12 @@ from pathlib import Path
 
 import sys
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QStringListModel,
 )
-from PySide2.QtGui import QColor
-from PySide2.QtWidgets import (
+from PySide6.QtGui import QColor
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QFileDialog,

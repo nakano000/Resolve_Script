@@ -1,15 +1,15 @@
 import shutil
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     QMimeData,
     QSize,
 )
-from PySide2.QtGui import (
+from PySide6.QtGui import (
     QDrag,
     QIcon,
 )
-from PySide2.QtWidgets import QPushButton
+from PySide6.QtWidgets import QPushButton
 
 from rs.core import (
     config,

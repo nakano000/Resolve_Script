@@ -5,10 +5,10 @@ from pathlib import Path
 from enum import IntEnum
 
 import dataclasses
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
     QMainWindow,

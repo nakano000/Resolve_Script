@@ -5,11 +5,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QModelIndex,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QHeaderView,

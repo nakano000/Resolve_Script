@@ -1,92 +1,126 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\disk_cache\disk_cache.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\disk_cache\disk_cache.ui' applies.
-#
-# Created: Wed Jul  6 03:02:59 2022
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'disk_cache.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QGroupBox, QHBoxLayout,
+    QListView, QMainWindow, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
+
+from rs.tool.disk_cache.drag_button import DragButton
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(226, 387)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(230, 387)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.cacheDragButton = DragButton(self.centralwidget)
-        self.cacheDragButton.setMinimumSize(QtCore.QSize(100, 100))
-        self.cacheDragButton.setObjectName("cacheDragButton")
+        self.cacheDragButton.setObjectName(u"cacheDragButton")
+        self.cacheDragButton.setMinimumSize(QSize(100, 100))
+
         self.horizontalLayout_2.addWidget(self.cacheDragButton)
-        spacerItem = QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
+
+        self.horizontalSpacer_2 = QSpacerItem(10, 10, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
         self.clearDragButton = DragButton(self.centralwidget)
-        self.clearDragButton.setMinimumSize(QtCore.QSize(100, 100))
-        self.clearDragButton.setObjectName("clearDragButton")
+        self.clearDragButton.setObjectName(u"clearDragButton")
+        self.clearDragButton.setMinimumSize(QSize(100, 100))
+
         self.horizontalLayout_2.addWidget(self.clearDragButton)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem1)
+
+        self.horizontalSpacer = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+
+
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.groupBox = QGroupBox(self.centralwidget)
+        self.groupBox.setObjectName(u"groupBox")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
         self.groupBox.setSizePolicy(sizePolicy)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
+        self.verticalLayout = QVBoxLayout(self.groupBox)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.markerListView = QtWidgets.QListView(self.groupBox)
-        self.markerListView.setBaseSize(QtCore.QSize(0, 0))
-        self.markerListView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.markerListView.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.markerListView.setObjectName("markerListView")
+        self.markerListView = QListView(self.groupBox)
+        self.markerListView.setObjectName(u"markerListView")
+        self.markerListView.setBaseSize(QSize(0, 0))
+        self.markerListView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.markerListView.setSelectionBehavior(QAbstractItemView.SelectRows)
+
         self.verticalLayout.addWidget(self.markerListView)
+
+
         self.horizontalLayout.addWidget(self.groupBox)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.groupBox_2.sizePolicy().hasHeightForWidth())
-        self.groupBox_2.setSizePolicy(sizePolicy)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_2)
+
+        self.groupBox_2 = QGroupBox(self.centralwidget)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.groupBox_2.sizePolicy().hasHeightForWidth())
+        self.groupBox_2.setSizePolicy(sizePolicy1)
+        self.verticalLayout_2 = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.videoIndexListView = QtWidgets.QListView(self.groupBox_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.videoIndexListView.sizePolicy().hasHeightForWidth())
-        self.videoIndexListView.setSizePolicy(sizePolicy)
-        self.videoIndexListView.setBaseSize(QtCore.QSize(0, 0))
-        self.videoIndexListView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.videoIndexListView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.videoIndexListView.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.videoIndexListView.setObjectName("videoIndexListView")
+        self.videoIndexListView = QListView(self.groupBox_2)
+        self.videoIndexListView.setObjectName(u"videoIndexListView")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.videoIndexListView.sizePolicy().hasHeightForWidth())
+        self.videoIndexListView.setSizePolicy(sizePolicy2)
+        self.videoIndexListView.setBaseSize(QSize(0, 0))
+        self.videoIndexListView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.videoIndexListView.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.videoIndexListView.setSelectionBehavior(QAbstractItemView.SelectRows)
+
         self.verticalLayout_2.addWidget(self.videoIndexListView)
+
+
         self.horizontalLayout.addWidget(self.groupBox_2)
+
+
         self.verticalLayout_3.addLayout(self.horizontalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.cacheDragButton.setText(QtWidgets.QApplication.translate("MainWindow", " cache", None, -1))
-        self.clearDragButton.setText(QtWidgets.QApplication.translate("MainWindow", " clear", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "marker", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "index", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.cacheDragButton.setText(QCoreApplication.translate("MainWindow", u" cache", None))
+        self.clearDragButton.setText(QCoreApplication.translate("MainWindow", u" clear", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"marker", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"index", None))
+    # retranslateUi
 
-from rs.tool.disk_cache.drag_button import DragButton

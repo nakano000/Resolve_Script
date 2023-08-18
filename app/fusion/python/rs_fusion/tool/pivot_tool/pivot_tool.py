@@ -1,15 +1,16 @@
 import enum
 import sys
 import functools
-from PySide2.QtCore import (
-    Qt,
+from PySide6.QtCore import (
+    Qt, QSize,
 )
-from PySide2.QtGui import QDoubleValidator
-from PySide2.QtWidgets import (
+from PySide6.QtGui import QDoubleValidator, QIcon
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
 )
 
+from rs.core import config
 from rs.gui import (
     appearance,
 )
@@ -55,6 +56,36 @@ class MainWindow(QMainWindow):
         self.ui.yLineEdit.setText(str(0.5))
         self.ui.xLineEdit.setValidator(QDoubleValidator())
         self.ui.yLineEdit.setValidator(QDoubleValidator())
+
+        # icon
+        icon_dir = config.ROOT_PATH.joinpath('data', 'image', 'icon', 'pivot')
+        nw_icon = QIcon(str(icon_dir.joinpath('nw.svg')))
+        n_icon = QIcon(str(icon_dir.joinpath('n.svg')))
+        ne_icon = QIcon(str(icon_dir.joinpath('ne.svg')))
+        w_icon = QIcon(str(icon_dir.joinpath('w.svg')))
+        center_icon = QIcon(str(icon_dir.joinpath('center.svg')))
+        e_icon = QIcon(str(icon_dir.joinpath('e.svg')))
+        sw_icon = QIcon(str(icon_dir.joinpath('sw.svg')))
+        s_icon = QIcon(str(icon_dir.joinpath('s.svg')))
+        se_icon = QIcon(str(icon_dir.joinpath('se.svg')))
+        self.ui.nwButton.setIcon(nw_icon)
+        self.ui.nButton.setIcon(n_icon)
+        self.ui.neButton.setIcon(ne_icon)
+        self.ui.wButton.setIcon(w_icon)
+        self.ui.centerButton.setIcon(center_icon)
+        self.ui.eButton.setIcon(e_icon)
+        self.ui.swButton.setIcon(sw_icon)
+        self.ui.sButton.setIcon(s_icon)
+        self.ui.seButton.setIcon(se_icon)
+        self.ui.nwButton.setIconSize(QSize(40, 40))
+        self.ui.nButton.setIconSize(QSize(40, 40))
+        self.ui.neButton.setIconSize(QSize(40, 40))
+        self.ui.wButton.setIconSize(QSize(40, 40))
+        self.ui.centerButton.setIconSize(QSize(40, 40))
+        self.ui.eButton.setIconSize(QSize(40, 40))
+        self.ui.swButton.setIconSize(QSize(40, 40))
+        self.ui.sButton.setIconSize(QSize(40, 40))
+        self.ui.seButton.setIconSize(QSize(40, 40))
 
         # button
         self.ui.setButton.setStyleSheet(appearance.in_stylesheet)
@@ -224,4 +255,4 @@ def run(fusion) -> None:
 
 
 if __name__ == '__main__':
-    pass
+    run(None)

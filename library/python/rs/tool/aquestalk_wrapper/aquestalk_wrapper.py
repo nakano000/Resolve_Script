@@ -7,12 +7,12 @@ import re
 import sys
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QItemSelectionModel,
     QModelIndex, QEvent, QThread,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
     QHeaderView,
@@ -21,7 +21,7 @@ from PySide2.QtWidgets import (
     QMenu,
     QStyledItemDelegate,
 )
-from shiboken2 import shiboken2
+from shiboken6 import Shiboken
 
 from rs.core import (
     config,
@@ -259,7 +259,7 @@ class MainWindow(QMainWindow):
             self.play()
 
     def stop(self):
-        if self.player_thread and shiboken2.isValid(self.player_thread):
+        if self.player_thread and Shiboken.isValid(self.player_thread):
             if self.player_thread.isRunning():
                 self.player.stop()
                 self.player_thread.quit()
@@ -350,7 +350,7 @@ class MainWindow(QMainWindow):
             d.chara = m.get_row_data(row).chara
             m.insert_row_data(row + 1, d)
             index = m.index(row + 1, col, QModelIndex())
-            sm.setCurrentIndex(index, QItemSelectionModel.ClearAndSelect)
+            sm.setCurrentIndex(index, QItemSelectionModel.SelectionFlag.ClearAndSelect)
 
     def import_from_clipboard(self):
         c = self.get_config()
@@ -495,7 +495,7 @@ def run() -> None:
 
     window = MainWindow()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

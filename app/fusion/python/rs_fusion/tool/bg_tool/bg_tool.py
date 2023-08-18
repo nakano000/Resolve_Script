@@ -1,15 +1,12 @@
 import sys
 import functools
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
-    QStringListModel,
-    QSortFilterProxyModel,
 )
-from PySide2.QtGui import QKeySequence
-from PySide2.QtWidgets import (
+
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
-    QAction,
 )
 
 from rs.gui import (

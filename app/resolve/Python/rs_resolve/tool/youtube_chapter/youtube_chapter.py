@@ -2,12 +2,12 @@ import dataclasses
 import sys
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QStringListModel,
     QItemSelectionModel,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
 )
@@ -46,7 +46,7 @@ def select(v, names):
             i = m.match(m.index(0, 0), Qt.DisplayRole, name)[0]
             sm.setCurrentIndex(
                 i,
-                QItemSelectionModel.SelectCurrent | QItemSelectionModel.Rows
+                QItemSelectionModel.SelectionFlag.SelectCurrent | QItemSelectionModel.SelectionFlag.Rows
             )
 
 

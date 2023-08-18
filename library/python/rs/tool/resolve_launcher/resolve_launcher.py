@@ -4,13 +4,14 @@ import dataclasses
 import sys
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
-    QMainWindow, QMessageBox,
+    QMainWindow,
+    QMessageBox,
 )
 
 from rs.core import (
@@ -188,7 +189,7 @@ def run() -> None:
 
     window = MainWindow()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

@@ -1,156 +1,216 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\text2wave\base\base.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\text2wave\base\base.ui' applies.
-#
-# Created: Tue Feb  8 20:32:32 2022
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'base.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFormLayout, QGroupBox,
+    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
+    QMainWindow, QMenu, QMenuBar, QPlainTextEdit,
+    QPushButton, QSizePolicy, QSpacerItem, QSplitter,
+    QTextEdit, QToolButton, QTreeView, QVBoxLayout,
+    QWidget)
+
+from rs.gui.log import LogTextEdit
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(720, 547)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.splitter = QtWidgets.QSplitter(self.centralwidget)
-        self.splitter.setOrientation(QtCore.Qt.Horizontal)
+        self.actionOpen = QAction(MainWindow)
+        self.actionOpen.setObjectName(u"actionOpen")
+        self.actionSave = QAction(MainWindow)
+        self.actionSave.setObjectName(u"actionSave")
+        self.actionExit = QAction(MainWindow)
+        self.actionExit.setObjectName(u"actionExit")
+        self.actionSave_Voice_Template = QAction(MainWindow)
+        self.actionSave_Voice_Template.setObjectName(u"actionSave_Voice_Template")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.splitter = QSplitter(self.centralwidget)
+        self.splitter.setObjectName(u"splitter")
+        self.splitter.setOrientation(Qt.Horizontal)
         self.splitter.setOpaqueResize(True)
-        self.splitter.setObjectName("splitter")
-        self.treeView = QtWidgets.QTreeView(self.splitter)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.treeView = QTreeView(self.splitter)
+        self.treeView.setObjectName(u"treeView")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.treeView.sizePolicy().hasHeightForWidth())
         self.treeView.setSizePolicy(sizePolicy)
-        self.treeView.setMinimumSize(QtCore.QSize(350, 0))
+        self.treeView.setMinimumSize(QSize(350, 0))
         self.treeView.setDragEnabled(True)
-        self.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.treeView.setObjectName("treeView")
-        self.layoutWidget = QtWidgets.QWidget(self.splitter)
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.treeView.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.splitter.addWidget(self.treeView)
+        self.layoutWidget = QWidget(self.splitter)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.verticalLayout_2 = QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.formLayout_2 = QtWidgets.QFormLayout()
-        self.formLayout_2.setObjectName("formLayout_2")
-        self.exeLabel = QtWidgets.QLabel(self.layoutWidget)
-        self.exeLabel.setObjectName("exeLabel")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.exeLabel)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.formLayout_2 = QFormLayout()
+        self.formLayout_2.setObjectName(u"formLayout_2")
+        self.exeLabel = QLabel(self.layoutWidget)
+        self.exeLabel.setObjectName(u"exeLabel")
+
+        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.exeLabel)
+
+        self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.exeLineEdit = QtWidgets.QLineEdit(self.layoutWidget)
-        self.exeLineEdit.setObjectName("exeLineEdit")
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.exeLineEdit = QLineEdit(self.layoutWidget)
+        self.exeLineEdit.setObjectName(u"exeLineEdit")
+
         self.horizontalLayout_2.addWidget(self.exeLineEdit)
-        self.exeToolButton = QtWidgets.QToolButton(self.layoutWidget)
-        self.exeToolButton.setObjectName("exeToolButton")
+
+        self.exeToolButton = QToolButton(self.layoutWidget)
+        self.exeToolButton.setObjectName(u"exeToolButton")
+
         self.horizontalLayout_2.addWidget(self.exeToolButton)
-        self.formLayout_2.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
+
+
+        self.formLayout_2.setLayout(0, QFormLayout.FieldRole, self.horizontalLayout_2)
+
+        self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.outLineEdit = QtWidgets.QLineEdit(self.layoutWidget)
-        self.outLineEdit.setObjectName("outLineEdit")
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.outLineEdit = QLineEdit(self.layoutWidget)
+        self.outLineEdit.setObjectName(u"outLineEdit")
+
         self.horizontalLayout.addWidget(self.outLineEdit)
-        self.outToolButton = QtWidgets.QToolButton(self.layoutWidget)
-        self.outToolButton.setObjectName("outToolButton")
+
+        self.outToolButton = QToolButton(self.layoutWidget)
+        self.outToolButton.setObjectName(u"outToolButton")
+
         self.horizontalLayout.addWidget(self.outToolButton)
-        self.formLayout_2.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
-        self.label_2 = QtWidgets.QLabel(self.layoutWidget)
-        self.label_2.setObjectName("label_2")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)
+
+
+        self.formLayout_2.setLayout(1, QFormLayout.FieldRole, self.horizontalLayout)
+
+        self.label_2 = QLabel(self.layoutWidget)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.label_2)
+
+
         self.verticalLayout_2.addLayout(self.formLayout_2)
-        self.groupBox = QtWidgets.QGroupBox(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
-        self.groupBox.setSizePolicy(sizePolicy)
-        self.groupBox.setObjectName("groupBox")
-        self.SettingLayout = QtWidgets.QHBoxLayout(self.groupBox)
-        self.SettingLayout.setObjectName("SettingLayout")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.groupBox)
-        self.plainTextEdit.setMinimumSize(QtCore.QSize(250, 0))
-        self.plainTextEdit.setObjectName("plainTextEdit")
+
+        self.groupBox = QGroupBox(self.layoutWidget)
+        self.groupBox.setObjectName(u"groupBox")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
+        self.groupBox.setSizePolicy(sizePolicy1)
+        self.SettingLayout = QHBoxLayout(self.groupBox)
+        self.SettingLayout.setObjectName(u"SettingLayout")
+        self.plainTextEdit = QPlainTextEdit(self.groupBox)
+        self.plainTextEdit.setObjectName(u"plainTextEdit")
+        self.plainTextEdit.setMinimumSize(QSize(250, 0))
+
         self.SettingLayout.addWidget(self.plainTextEdit)
+
+
         self.verticalLayout_2.addWidget(self.groupBox)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.layoutWidget)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout.setObjectName("verticalLayout")
+
+        self.groupBox_2 = QGroupBox(self.layoutWidget)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.verticalLayout = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.logTextEdit = LogTextEdit(self.groupBox_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+        self.logTextEdit.setObjectName(u"logTextEdit")
         sizePolicy.setHeightForWidth(self.logTextEdit.sizePolicy().hasHeightForWidth())
         self.logTextEdit.setSizePolicy(sizePolicy)
-        self.logTextEdit.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
+        self.logTextEdit.setLineWrapMode(QTextEdit.NoWrap)
         self.logTextEdit.setReadOnly(True)
-        self.logTextEdit.setObjectName("logTextEdit")
+
         self.verticalLayout.addWidget(self.logTextEdit)
+
+
         self.verticalLayout_2.addWidget(self.groupBox_2)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem)
-        self.exportButton = QtWidgets.QPushButton(self.layoutWidget)
-        self.exportButton.setMinimumSize(QtCore.QSize(100, 40))
-        self.exportButton.setObjectName("exportButton")
+
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer)
+
+        self.exportButton = QPushButton(self.layoutWidget)
+        self.exportButton.setObjectName(u"exportButton")
+        self.exportButton.setMinimumSize(QSize(100, 40))
+
         self.horizontalLayout_3.addWidget(self.exportButton)
-        self.closeButton = QtWidgets.QPushButton(self.layoutWidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
-        self.closeButton.setObjectName("closeButton")
+
+        self.closeButton = QPushButton(self.layoutWidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(100, 40))
+
         self.horizontalLayout_3.addWidget(self.closeButton)
+
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+
+        self.splitter.addWidget(self.layoutWidget)
+
         self.verticalLayout_3.addWidget(self.splitter)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 720, 21))
-        self.menubar.setObjectName("menubar")
-        self.menuFile = QtWidgets.QMenu(self.menubar)
-        self.menuFile.setObjectName("menuFile")
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 720, 22))
+        self.menuFile = QMenu(self.menubar)
+        self.menuFile.setObjectName(u"menuFile")
         MainWindow.setMenuBar(self.menubar)
-        self.actionOpen = QtWidgets.QAction(MainWindow)
-        self.actionOpen.setObjectName("actionOpen")
-        self.actionSave = QtWidgets.QAction(MainWindow)
-        self.actionSave.setObjectName("actionSave")
-        self.actionExit = QtWidgets.QAction(MainWindow)
-        self.actionExit.setObjectName("actionExit")
-        self.actionSave_Voice_Template = QtWidgets.QAction(MainWindow)
-        self.actionSave_Voice_Template.setObjectName("actionSave_Voice_Template")
+
+        self.menubar.addAction(self.menuFile.menuAction())
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_Voice_Template)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit)
-        self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.exeLabel.setText(QtWidgets.QApplication.translate("MainWindow", "exeの場所", None, -1))
-        self.exeToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.outToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "保存ディレクトリ", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "音声設定", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
-        self.exportButton.setText(QtWidgets.QApplication.translate("MainWindow", "export", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
-        self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
-        self.actionOpen.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
-        self.actionOpen.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+O", None, -1))
-        self.actionSave.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
-        self.actionSave.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+S", None, -1))
-        self.actionExit.setText(QtWidgets.QApplication.translate("MainWindow", "Exit", None, -1))
-        self.actionExit.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Q", None, -1))
-        self.actionSave_Voice_Template.setText(QtWidgets.QApplication.translate("MainWindow", "Save Voice Template", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.actionOpen.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+#if QT_CONFIG(shortcut)
+        self.actionOpen.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+O", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionSave.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+#if QT_CONFIG(shortcut)
+        self.actionSave.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+S", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionExit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
+#if QT_CONFIG(shortcut)
+        self.actionExit.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Q", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionSave_Voice_Template.setText(QCoreApplication.translate("MainWindow", u"Save Voice Template", None))
+        self.exeLabel.setText(QCoreApplication.translate("MainWindow", u"exe\u306e\u5834\u6240", None))
+        self.exeToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.outToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u30c7\u30a3\u30ec\u30af\u30c8\u30ea", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u97f3\u58f0\u8a2d\u5b9a", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"\u30ed\u30b0", None))
+        self.exportButton.setText(QCoreApplication.translate("MainWindow", u"export", None))
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+        self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
+    # retranslateUi
 
-from rs.gui.log import LogTextEdit

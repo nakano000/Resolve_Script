@@ -3,16 +3,22 @@ import sys
 from functools import partial
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtGui import (
+    QAction,
+)
+from PySide6.QtWidgets import (
     QApplication,
     QPushButton,
     QSizePolicy,
     QSpacerItem,
     QVBoxLayout,
-    QWidget, QHBoxLayout, QToolButton, QMenu, QAction,
+    QWidget,
+    QHBoxLayout,
+    QToolButton,
+    QMenu,
 )
 
 from rs.core import (
@@ -116,13 +122,13 @@ class MainWindow(QWidget):
 
 def run() -> None:
     app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
     app.setStyle("Fusion")
-
     app.setPalette(appearance.palette)
     app.setStyleSheet(appearance.stylesheet)
-    sys.exit(app.exec_())
+
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

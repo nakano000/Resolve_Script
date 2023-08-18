@@ -3,12 +3,12 @@ import sys
 from functools import partial
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QItemSelectionModel,
     QStringListModel,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QWidget,
 )
@@ -178,9 +178,9 @@ class Form(QWidget):
         ss = m.stringList()
         if name in ss:
             i = m.match(m.index(0, 0), Qt.DisplayRole, name)[0]
-            sm.setCurrentIndex(i, QItemSelectionModel.Clear
-                               | QItemSelectionModel.SelectCurrent
-                               | QItemSelectionModel.Rows)
+            sm.setCurrentIndex(i, QItemSelectionModel.SelectionFlag.Clear
+                               | QItemSelectionModel.SelectionFlag.SelectCurrent
+                               | QItemSelectionModel.SelectionFlag.Rows)
 
     def setting(self):
         self.ui.filterNameLineEdit.setText('')
@@ -205,9 +205,9 @@ class Form(QWidget):
         ss = m.stringList()
         if len(ss) > 0:
             i = m.match(m.index(0, 0), Qt.DisplayRole, ss[0])[0]
-            sm.setCurrentIndex(i, QItemSelectionModel.Clear
-                               | QItemSelectionModel.SelectCurrent
-                               | QItemSelectionModel.Rows)
+            sm.setCurrentIndex(i, QItemSelectionModel.SelectionFlag.Clear
+                               | QItemSelectionModel.SelectionFlag.SelectCurrent
+                               | QItemSelectionModel.SelectionFlag.Rows)
         v.blockSignals(wasBlocked)
         new_selection = sm.selection()
         sm.emitSelectionChanged(new_selection, old_selection)
@@ -241,9 +241,9 @@ class Form(QWidget):
         ss = m.stringList()
         if len(ss) > 0:
             i = m.match(m.index(0, 0), Qt.DisplayRole, ss[0])[0]
-            sm.setCurrentIndex(i, QItemSelectionModel.Clear
-                               | QItemSelectionModel.SelectCurrent
-                               | QItemSelectionModel.Rows)
+            sm.setCurrentIndex(i, QItemSelectionModel.SelectionFlag.Clear
+                               | QItemSelectionModel.SelectionFlag.SelectCurrent
+                               | QItemSelectionModel.SelectionFlag.Rows)
 
     def load_filter_List(self):
         path = self.get_dir_path().joinpath('Filter')
@@ -266,9 +266,9 @@ class Form(QWidget):
         ss = m.stringList()
         if len(ss) > 0:
             i = m.match(m.index(0, 0), Qt.DisplayRole, ss[0])[0]
-            sm.setCurrentIndex(i, QItemSelectionModel.Clear
-                               | QItemSelectionModel.SelectCurrent
-                               | QItemSelectionModel.Rows)
+            sm.setCurrentIndex(i, QItemSelectionModel.SelectionFlag.Clear
+                               | QItemSelectionModel.SelectionFlag.SelectCurrent
+                               | QItemSelectionModel.SelectionFlag.Rows)
 
     def get_file_path(self):
         path = self.get_dir_path()

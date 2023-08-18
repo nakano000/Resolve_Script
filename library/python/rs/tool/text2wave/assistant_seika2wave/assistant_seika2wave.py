@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 from functools import partial
 
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QWidget,
 )
@@ -105,7 +105,7 @@ def run() -> None:
 
     window = MainWindow()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

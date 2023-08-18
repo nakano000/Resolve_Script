@@ -1,117 +1,179 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\subtitle2text_plus\subtitle2text_plus.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\subtitle2text_plus\subtitle2text_plus.ui' applies.
-#
-# Created: Sun Jun 11 07:59:55 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'subtitle2text_plus.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
+    QFormLayout, QGroupBox, QHBoxLayout, QLabel,
+    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(217, 281)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.settingGroupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.settingGroupBox.setObjectName("settingGroupBox")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.settingGroupBox)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.formLayout_2 = QtWidgets.QFormLayout()
-        self.formLayout_2.setObjectName("formLayout_2")
-        self.waitLabel = QtWidgets.QLabel(self.settingGroupBox)
-        self.waitLabel.setObjectName("waitLabel")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.waitLabel)
-        self.waitTimeSpinBox = QtWidgets.QDoubleSpinBox(self.settingGroupBox)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(217, 302)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.settingGroupBox = QGroupBox(self.centralwidget)
+        self.settingGroupBox.setObjectName(u"settingGroupBox")
+        self.verticalLayout_3 = QVBoxLayout(self.settingGroupBox)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.formLayout_2 = QFormLayout()
+        self.formLayout_2.setObjectName(u"formLayout_2")
+        self.waitLabel = QLabel(self.settingGroupBox)
+        self.waitLabel.setObjectName(u"waitLabel")
+
+        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.waitLabel)
+
+        self.waitTimeSpinBox = QDoubleSpinBox(self.settingGroupBox)
+        self.waitTimeSpinBox.setObjectName(u"waitTimeSpinBox")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.waitTimeSpinBox.sizePolicy().hasHeightForWidth())
         self.waitTimeSpinBox.setSizePolicy(sizePolicy)
-        self.waitTimeSpinBox.setMaximum(999.99)
-        self.waitTimeSpinBox.setObjectName("waitTimeSpinBox")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.waitTimeSpinBox)
-        self.clipCplorLabel = QtWidgets.QLabel(self.settingGroupBox)
-        self.clipCplorLabel.setObjectName("clipCplorLabel")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.clipCplorLabel)
-        self.colorComboBox = QtWidgets.QComboBox(self.settingGroupBox)
-        self.colorComboBox.setObjectName("colorComboBox")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.colorComboBox)
+        self.waitTimeSpinBox.setMaximum(999.990000000000009)
+
+        self.formLayout_2.setWidget(0, QFormLayout.FieldRole, self.waitTimeSpinBox)
+
+        self.clipCplorLabel = QLabel(self.settingGroupBox)
+        self.clipCplorLabel.setObjectName(u"clipCplorLabel")
+
+        self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.clipCplorLabel)
+
+        self.colorComboBox = QComboBox(self.settingGroupBox)
+        self.colorComboBox.setObjectName(u"colorComboBox")
+
+        self.formLayout_2.setWidget(1, QFormLayout.FieldRole, self.colorComboBox)
+
+
         self.verticalLayout_3.addLayout(self.formLayout_2)
-        self.autoLockCheckBox = QtWidgets.QCheckBox(self.settingGroupBox)
-        self.autoLockCheckBox.setObjectName("autoLockCheckBox")
+
+        self.autoLockCheckBox = QCheckBox(self.settingGroupBox)
+        self.autoLockCheckBox.setObjectName(u"autoLockCheckBox")
+
         self.verticalLayout_3.addWidget(self.autoLockCheckBox)
-        self.shortcutButton = QtWidgets.QPushButton(self.settingGroupBox)
-        self.shortcutButton.setObjectName("shortcutButton")
+
+        self.shortcutButton = QPushButton(self.settingGroupBox)
+        self.shortcutButton.setObjectName(u"shortcutButton")
+
         self.verticalLayout_3.addWidget(self.shortcutButton)
+
+
         self.verticalLayout_2.addWidget(self.settingGroupBox)
-        self.trackGroupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.trackGroupBox.setObjectName("trackGroupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.trackGroupBox)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.formLayout = QtWidgets.QFormLayout()
-        self.formLayout.setObjectName("formLayout")
-        self.label = QtWidgets.QLabel(self.trackGroupBox)
-        self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
-        self.subtitleComboBox = QtWidgets.QComboBox(self.trackGroupBox)
-        self.subtitleComboBox.setObjectName("subtitleComboBox")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.subtitleComboBox)
-        self.label_2 = QtWidgets.QLabel(self.trackGroupBox)
-        self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.videoComboBox = QtWidgets.QComboBox(self.trackGroupBox)
-        self.videoComboBox.setObjectName("videoComboBox")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.videoComboBox)
+
+        self.trackGroupBox = QGroupBox(self.centralwidget)
+        self.trackGroupBox.setObjectName(u"trackGroupBox")
+        self.verticalLayout = QVBoxLayout(self.trackGroupBox)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.formLayout = QFormLayout()
+        self.formLayout.setObjectName(u"formLayout")
+        self.label = QLabel(self.trackGroupBox)
+        self.label.setObjectName(u"label")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
+
+        self.subtitleComboBox = QComboBox(self.trackGroupBox)
+        self.subtitleComboBox.setObjectName(u"subtitleComboBox")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.subtitleComboBox)
+
+        self.label_2 = QLabel(self.trackGroupBox)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_2)
+
+        self.videoComboBox = QComboBox(self.trackGroupBox)
+        self.videoComboBox.setObjectName(u"videoComboBox")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.videoComboBox)
+
+
         self.horizontalLayout_2.addLayout(self.formLayout)
-        self.updateButton = QtWidgets.QPushButton(self.trackGroupBox)
-        self.updateButton.setMinimumSize(QtCore.QSize(50, 30))
-        self.updateButton.setObjectName("updateButton")
+
+        self.updateButton = QPushButton(self.trackGroupBox)
+        self.updateButton.setObjectName(u"updateButton")
+        self.updateButton.setMinimumSize(QSize(50, 30))
+
         self.horizontalLayout_2.addWidget(self.updateButton)
+
         self.horizontalLayout_2.setStretch(0, 1)
+
         self.verticalLayout.addLayout(self.horizontalLayout_2)
+
+
         self.verticalLayout_2.addWidget(self.trackGroupBox)
-        spacerItem = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.convertButton = QtWidgets.QPushButton(self.centralwidget)
-        self.convertButton.setMinimumSize(QtCore.QSize(50, 30))
-        self.convertButton.setObjectName("convertButton")
+
+        self.verticalSpacer = QSpacerItem(20, 0, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_2.addItem(self.verticalSpacer)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.convertButton = QPushButton(self.centralwidget)
+        self.convertButton.setObjectName(u"convertButton")
+        self.convertButton.setMinimumSize(QSize(50, 30))
+
         self.horizontalLayout.addWidget(self.convertButton)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(50, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(50, 30))
+
         self.horizontalLayout.addWidget(self.closeButton)
+
+
         self.verticalLayout_2.addLayout(self.horizontalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.settingGroupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "設定", None, -1))
-        self.waitLabel.setText(QtWidgets.QApplication.translate("MainWindow", "待ち時間(秒)", None, -1))
-        self.clipCplorLabel.setText(QtWidgets.QApplication.translate("MainWindow", "クリップカラー", None, -1))
-        self.autoLockCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Auto Lock", None, -1))
-        self.shortcutButton.setText(QtWidgets.QApplication.translate("MainWindow", "shortcut", None, -1))
-        self.trackGroupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "トラック", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Subtitle", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Video", None, -1))
-        self.updateButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "トラック更新", None, -1))
-        self.updateButton.setText(QtWidgets.QApplication.translate("MainWindow", "update", None, -1))
-        self.convertButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "トラック更新", None, -1))
-        self.convertButton.setText(QtWidgets.QApplication.translate("MainWindow", "convert", None, -1))
-        self.closeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "閉じる", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.settingGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u8a2d\u5b9a", None))
+        self.waitLabel.setText(QCoreApplication.translate("MainWindow", u"\u5f85\u3061\u6642\u9593(\u79d2)", None))
+        self.clipCplorLabel.setText(QCoreApplication.translate("MainWindow", u"\u30af\u30ea\u30c3\u30d7\u30ab\u30e9\u30fc", None))
+        self.autoLockCheckBox.setText(QCoreApplication.translate("MainWindow", u"Auto Lock", None))
+        self.shortcutButton.setText(QCoreApplication.translate("MainWindow", u"shortcut", None))
+        self.trackGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u30c8\u30e9\u30c3\u30af", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Subtitle", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Video", None))
+#if QT_CONFIG(tooltip)
+        self.updateButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u30c8\u30e9\u30c3\u30af\u66f4\u65b0", None))
+#endif // QT_CONFIG(tooltip)
+        self.updateButton.setText(QCoreApplication.translate("MainWindow", u"update", None))
+#if QT_CONFIG(tooltip)
+        self.convertButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u30c8\u30e9\u30c3\u30af\u66f4\u65b0", None))
+#endif // QT_CONFIG(tooltip)
+        self.convertButton.setText(QCoreApplication.translate("MainWindow", u"convert", None))
+#if QT_CONFIG(tooltip)
+        self.closeButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u9589\u3058\u308b", None))
+#endif // QT_CONFIG(tooltip)
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+    # retranslateUi
 

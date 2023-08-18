@@ -1,9 +1,9 @@
 import sys
 from pathlib import Path
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QMessageBox,

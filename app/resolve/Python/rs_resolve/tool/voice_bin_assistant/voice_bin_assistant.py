@@ -6,16 +6,16 @@ import time
 
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QStringListModel,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
     QMainWindow,
 )
-from PySide2.QtGui import (
+from PySide6.QtGui import (
     QColor,
 )
 

@@ -1,15 +1,19 @@
 import sys
 import functools
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QStringListModel,
-    QSortFilterProxyModel, QEvent,
+    QSortFilterProxyModel,
+    QEvent, QItemSelectionModel,
 )
-from PySide2.QtGui import QKeySequence, QKeyEvent
-from PySide2.QtWidgets import (
+from PySide6.QtGui import (
+    QKeySequence,
+    QKeyEvent,
+    QAction,
+)
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
-    QAction,
 )
 
 from rs.gui import (
@@ -95,7 +99,7 @@ class MainWindow(QMainWindow):
 
     def select_first(self):
         self.selection_model.clearSelection()
-        self.selection_model.select(self.proxy_model.index(0, 0), self.selection_model.SelectCurrent)
+        self.selection_model.select(self.proxy_model.index(0, 0), QItemSelectionModel.SelectionFlag.SelectCurrent)
         self.ui.listView.keyPressEvent(QKeyEvent(QEvent.KeyPress, Qt.Key_Up, Qt.NoModifier))
 
     def select_up(self):

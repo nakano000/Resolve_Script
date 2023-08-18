@@ -1,12 +1,12 @@
 from typing import List
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QModelIndex,
     QItemSelectionModel,
 )
 
-from PySide2.QtWidgets import QTableView, QApplication
+from PySide6.QtWidgets import QTableView, QApplication
 
 from rs.core import (
     pipe as p,
@@ -70,8 +70,8 @@ class View(QTableView):
         # select
         for i in range(len(data_list)):
             index = m.index(target_row + i, 0, QModelIndex())
-            sm.select(index, QItemSelectionModel.Select)
-            sm.setCurrentIndex(index, QItemSelectionModel.Select)
+            sm.select(index, QItemSelectionModel.SelectionFlag.Select)
+            sm.setCurrentIndex(index, QItemSelectionModel.SelectionFlag.Select)
         # end
         m.undo_stack.endMacro()
 
@@ -96,8 +96,8 @@ class View(QTableView):
         # select
         for i in range(len(data_list)):
             index = m.index(target_row + i, 0, QModelIndex())
-            sm.select(index, QItemSelectionModel.Select)
-            sm.setCurrentIndex(index, QItemSelectionModel.Select)
+            sm.select(index, QItemSelectionModel.SelectionFlag.Select)
+            sm.setCurrentIndex(index, QItemSelectionModel.SelectionFlag.Select)
         # end
         m.undo_stack.endMacro()
 
@@ -129,7 +129,7 @@ class View(QTableView):
         for row in range(min_row, max_row + 1):
             for col in range(min_col, max_col + 1):
                 index = m.index(row, col, QModelIndex())
-                sm.select(index, QItemSelectionModel.Select)
+                sm.select(index, QItemSelectionModel.SelectionFlag.Select)
         return min_row, max_row, min_col, max_col
 
     def copy(self):
@@ -182,7 +182,7 @@ class View(QTableView):
                 index = m.index(row, col, QModelIndex())
                 if index.flags() & Qt.ItemIsEditable:
                     m.setData(index, ss[src_row][src_col], Qt.EditRole)
-                sm.select(index, QItemSelectionModel.Select)
+                sm.select(index, QItemSelectionModel.SelectionFlag.Select)
         m.undo_stack.endMacro()
 
 

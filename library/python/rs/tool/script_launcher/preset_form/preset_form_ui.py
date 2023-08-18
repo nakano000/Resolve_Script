@@ -1,135 +1,185 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\script_launcher\preset_form\preset_form.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\script_launcher\preset_form\preset_form.ui' applies.
-#
-# Created: Sat Jun 25 17:44:52 2022
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'preset_form.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QGroupBox, QHBoxLayout,
+    QLabel, QLineEdit, QListView, QPushButton,
+    QSizePolicy, QSpacerItem, QSpinBox, QSplitter,
+    QVBoxLayout, QWidget)
+
+from rs.tool.script_launcher.preset_form.drag_button import DragButton
 
 class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName("Form")
+        if not Form.objectName():
+            Form.setObjectName(u"Form")
         Form.resize(552, 459)
-        self.verticalLayout_5 = QtWidgets.QVBoxLayout(Form)
-        self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.splitter_2 = QtWidgets.QSplitter(Form)
-        self.splitter_2.setOrientation(QtCore.Qt.Vertical)
-        self.splitter_2.setObjectName("splitter_2")
-        self.groupBox = QtWidgets.QGroupBox(self.splitter_2)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.splitter = QtWidgets.QSplitter(self.groupBox)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_5 = QVBoxLayout(Form)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.splitter_2 = QSplitter(Form)
+        self.splitter_2.setObjectName(u"splitter_2")
+        self.splitter_2.setOrientation(Qt.Vertical)
+        self.groupBox = QGroupBox(self.splitter_2)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout_4 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.splitter = QSplitter(self.groupBox)
+        self.splitter.setObjectName(u"splitter")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.splitter.sizePolicy().hasHeightForWidth())
         self.splitter.setSizePolicy(sizePolicy)
-        self.splitter.setOrientation(QtCore.Qt.Horizontal)
-        self.splitter.setObjectName("splitter")
-        self.dirListView = QtWidgets.QListView(self.splitter)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.dirListView.sizePolicy().hasHeightForWidth())
-        self.dirListView.setSizePolicy(sizePolicy)
-        self.dirListView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.dirListView.setObjectName("dirListView")
-        self.fileListView = QtWidgets.QListView(self.splitter)
-        self.fileListView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.fileListView.setObjectName("fileListView")
+        self.splitter.setOrientation(Qt.Horizontal)
+        self.dirListView = QListView(self.splitter)
+        self.dirListView.setObjectName(u"dirListView")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.dirListView.sizePolicy().hasHeightForWidth())
+        self.dirListView.setSizePolicy(sizePolicy1)
+        self.dirListView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.splitter.addWidget(self.dirListView)
+        self.fileListView = QListView(self.splitter)
+        self.fileListView.setObjectName(u"fileListView")
+        self.fileListView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.splitter.addWidget(self.fileListView)
+
         self.verticalLayout_4.addWidget(self.splitter)
-        self.layoutWidget = QtWidgets.QWidget(self.splitter_2)
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.layoutWidget)
+
+        self.splitter_2.addWidget(self.groupBox)
+        self.layoutWidget = QWidget(self.splitter_2)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.horizontalLayout_3 = QHBoxLayout(self.layoutWidget)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.groupBox_3 = QtWidgets.QGroupBox(self.layoutWidget)
-        self.groupBox_3.setTitle("")
-        self.groupBox_3.setObjectName("groupBox_3")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_3)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.groupBox_3 = QGroupBox(self.layoutWidget)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+        self.verticalLayout_2 = QVBoxLayout(self.groupBox_3)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.applyButton = DragButton(self.groupBox_3)
-        self.applyButton.setMinimumSize(QtCore.QSize(100, 100))
-        self.applyButton.setObjectName("applyButton")
+        self.applyButton.setObjectName(u"applyButton")
+        self.applyButton.setMinimumSize(QSize(100, 100))
+
         self.verticalLayout_2.addWidget(self.applyButton)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label = QtWidgets.QLabel(self.groupBox_3)
-        self.label.setObjectName("label")
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label = QLabel(self.groupBox_3)
+        self.label.setObjectName(u"label")
+
         self.horizontalLayout_2.addWidget(self.label)
-        self.trackIndexSpinBox = QtWidgets.QSpinBox(self.groupBox_3)
+
+        self.trackIndexSpinBox = QSpinBox(self.groupBox_3)
+        self.trackIndexSpinBox.setObjectName(u"trackIndexSpinBox")
         self.trackIndexSpinBox.setMinimum(1)
-        self.trackIndexSpinBox.setProperty("value", 1)
-        self.trackIndexSpinBox.setObjectName("trackIndexSpinBox")
+        self.trackIndexSpinBox.setValue(1)
+
         self.horizontalLayout_2.addWidget(self.trackIndexSpinBox)
+
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+
+
         self.verticalLayout_3.addWidget(self.groupBox_3)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem)
-        self.closeButton = QtWidgets.QPushButton(self.layoutWidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(100, 40))
-        self.closeButton.setObjectName("closeButton")
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_3.addItem(self.verticalSpacer)
+
+        self.closeButton = QPushButton(self.layoutWidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(100, 40))
+
         self.verticalLayout_3.addWidget(self.closeButton)
+
+
         self.horizontalLayout_3.addLayout(self.verticalLayout_3)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.layoutWidget)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.filterListView = QtWidgets.QListView(self.groupBox_2)
-        self.filterListView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.filterListView.setObjectName("filterListView")
+
+        self.groupBox_2 = QGroupBox(self.layoutWidget)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.verticalLayout = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.filterListView = QListView(self.groupBox_2)
+        self.filterListView.setObjectName(u"filterListView")
+        self.filterListView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
         self.verticalLayout.addWidget(self.filterListView)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.filterNameLineEdit = QtWidgets.QLineEdit(self.groupBox_2)
-        self.filterNameLineEdit.setObjectName("filterNameLineEdit")
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.filterNameLineEdit = QLineEdit(self.groupBox_2)
+        self.filterNameLineEdit.setObjectName(u"filterNameLineEdit")
+
         self.horizontalLayout.addWidget(self.filterNameLineEdit)
-        self.addFilterButton = QtWidgets.QPushButton(self.groupBox_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.addFilterButton.sizePolicy().hasHeightForWidth())
-        self.addFilterButton.setSizePolicy(sizePolicy)
-        self.addFilterButton.setMinimumSize(QtCore.QSize(0, 0))
-        self.addFilterButton.setMaximumSize(QtCore.QSize(40, 16777215))
-        self.addFilterButton.setObjectName("addFilterButton")
+
+        self.addFilterButton = QPushButton(self.groupBox_2)
+        self.addFilterButton.setObjectName(u"addFilterButton")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.addFilterButton.sizePolicy().hasHeightForWidth())
+        self.addFilterButton.setSizePolicy(sizePolicy2)
+        self.addFilterButton.setMinimumSize(QSize(0, 0))
+        self.addFilterButton.setMaximumSize(QSize(40, 16777215))
+
         self.horizontalLayout.addWidget(self.addFilterButton)
-        self.renameButton = QtWidgets.QPushButton(self.groupBox_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.renameButton.sizePolicy().hasHeightForWidth())
-        self.renameButton.setSizePolicy(sizePolicy)
-        self.renameButton.setMinimumSize(QtCore.QSize(40, 0))
-        self.renameButton.setMaximumSize(QtCore.QSize(70, 16777215))
-        self.renameButton.setObjectName("renameButton")
+
+        self.renameButton = QPushButton(self.groupBox_2)
+        self.renameButton.setObjectName(u"renameButton")
+        sizePolicy2.setHeightForWidth(self.renameButton.sizePolicy().hasHeightForWidth())
+        self.renameButton.setSizePolicy(sizePolicy2)
+        self.renameButton.setMinimumSize(QSize(40, 0))
+        self.renameButton.setMaximumSize(QSize(70, 16777215))
+
         self.horizontalLayout.addWidget(self.renameButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.editFilterButton = QtWidgets.QPushButton(self.groupBox_2)
-        self.editFilterButton.setObjectName("editFilterButton")
+
+        self.editFilterButton = QPushButton(self.groupBox_2)
+        self.editFilterButton.setObjectName(u"editFilterButton")
+
         self.verticalLayout.addWidget(self.editFilterButton)
+
+
         self.horizontalLayout_3.addWidget(self.groupBox_2)
+
+        self.splitter_2.addWidget(self.layoutWidget)
+
         self.verticalLayout_5.addWidget(self.splitter_2)
 
+
         self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+
+        QMetaObject.connectSlotsByName(Form)
+    # setupUi
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QtWidgets.QApplication.translate("Form", "Form", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("Form", "Setting File", None, -1))
-        self.applyButton.setText(QtWidgets.QApplication.translate("Form", " Apply", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("Form", "トラック番号", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("Form", "close", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("Form", "Filter", None, -1))
-        self.addFilterButton.setText(QtWidgets.QApplication.translate("Form", "add", None, -1))
-        self.renameButton.setText(QtWidgets.QApplication.translate("Form", "rename", None, -1))
-        self.editFilterButton.setText(QtWidgets.QApplication.translate("Form", "edit", None, -1))
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        self.groupBox.setTitle(QCoreApplication.translate("Form", u"Setting File", None))
+        self.groupBox_3.setTitle("")
+        self.applyButton.setText(QCoreApplication.translate("Form", u" Apply", None))
+        self.label.setText(QCoreApplication.translate("Form", u"\u30c8\u30e9\u30c3\u30af\u756a\u53f7", None))
+        self.closeButton.setText(QCoreApplication.translate("Form", u"close", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("Form", u"Filter", None))
+        self.addFilterButton.setText(QCoreApplication.translate("Form", u"add", None))
+        self.renameButton.setText(QCoreApplication.translate("Form", u"rename", None))
+        self.editFilterButton.setText(QCoreApplication.translate("Form", u"edit", None))
+    # retranslateUi
 
-from rs.tool.script_launcher.preset_form.drag_button import DragButton

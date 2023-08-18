@@ -1,319 +1,460 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\tool\voice_sync\voice_sync.ui' applies.
-#
-# Created: Mon Jul 10 23:06:15 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'voice_sync.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDoubleSpinBox, QFormLayout,
+    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
+    QSplitter, QTabWidget, QTextEdit, QToolButton,
+    QVBoxLayout, QWidget)
+
+from rs.gui.log import LogTextEdit
+from rs.tool.voice_sync.wav_table import View
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(626, 787)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.splitter = QtWidgets.QSplitter(self.centralwidget)
-        self.splitter.setOrientation(QtCore.Qt.Vertical)
-        self.splitter.setObjectName("splitter")
-        self.tabWidget = QtWidgets.QTabWidget(self.splitter)
-        self.tabWidget.setObjectName("tabWidget")
-        self.tab = QtWidgets.QWidget()
-        self.tab.setObjectName("tab")
-        self.formLayout = QtWidgets.QFormLayout(self.tab)
-        self.formLayout.setObjectName("formLayout")
-        self.label = QtWidgets.QLabel(self.tab)
-        self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.actionOpen = QAction(MainWindow)
+        self.actionOpen.setObjectName(u"actionOpen")
+        self.actionSave = QAction(MainWindow)
+        self.actionSave.setObjectName(u"actionSave")
+        self.actionExit = QAction(MainWindow)
+        self.actionExit.setObjectName(u"actionExit")
+        self.actionNew = QAction(MainWindow)
+        self.actionNew.setObjectName(u"actionNew")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout_7 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.splitter = QSplitter(self.centralwidget)
+        self.splitter.setObjectName(u"splitter")
+        self.splitter.setOrientation(Qt.Vertical)
+        self.tabWidget = QTabWidget(self.splitter)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.formLayout = QFormLayout(self.tab)
+        self.formLayout.setObjectName(u"formLayout")
+        self.label = QLabel(self.tab)
+        self.label.setObjectName(u"label")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
+
+        self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setSpacing(0)
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.srcLineEdit = QtWidgets.QLineEdit(self.tab)
-        self.srcLineEdit.setObjectName("srcLineEdit")
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.srcLineEdit = QLineEdit(self.tab)
+        self.srcLineEdit.setObjectName(u"srcLineEdit")
+
         self.horizontalLayout_5.addWidget(self.srcLineEdit)
-        self.srcToolButton = QtWidgets.QToolButton(self.tab)
-        self.srcToolButton.setObjectName("srcToolButton")
+
+        self.srcToolButton = QToolButton(self.tab)
+        self.srcToolButton.setObjectName(u"srcToolButton")
+
         self.horizontalLayout_5.addWidget(self.srcToolButton)
-        self.formLayout.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_5)
-        self.label_3 = QtWidgets.QLabel(self.tab)
-        self.label_3.setObjectName("label_3")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+
+
+        self.formLayout.setLayout(0, QFormLayout.FieldRole, self.horizontalLayout_5)
+
+        self.label_3 = QLabel(self.tab)
+        self.label_3.setObjectName(u"label_3")
+
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_3)
+
+        self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setSpacing(0)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.srcLabLineEdit = QtWidgets.QLineEdit(self.tab)
-        self.srcLabLineEdit.setObjectName("srcLabLineEdit")
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.srcLabLineEdit = QLineEdit(self.tab)
+        self.srcLabLineEdit.setObjectName(u"srcLabLineEdit")
+
         self.horizontalLayout_4.addWidget(self.srcLabLineEdit)
-        self.srcLabToolButton = QtWidgets.QToolButton(self.tab)
-        self.srcLabToolButton.setObjectName("srcLabToolButton")
+
+        self.srcLabToolButton = QToolButton(self.tab)
+        self.srcLabToolButton.setObjectName(u"srcLabToolButton")
+
         self.horizontalLayout_4.addWidget(self.srcLabToolButton)
-        self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_4)
-        self.useAutoSetCheckBox = QtWidgets.QCheckBox(self.tab)
-        self.useAutoSetCheckBox.setObjectName("useAutoSetCheckBox")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.useAutoSetCheckBox)
+
+
+        self.formLayout.setLayout(2, QFormLayout.FieldRole, self.horizontalLayout_4)
+
+        self.useAutoSetCheckBox = QCheckBox(self.tab)
+        self.useAutoSetCheckBox.setObjectName(u"useAutoSetCheckBox")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.useAutoSetCheckBox)
+
         self.tabWidget.addTab(self.tab, "")
-        self.tab_2 = QtWidgets.QWidget()
-        self.tab_2.setObjectName("tab_2")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.tab_2)
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.groupBox = QtWidgets.QGroupBox(self.tab_2)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.lyricsTextEdit = QtWidgets.QTextEdit(self.groupBox)
-        self.lyricsTextEdit.setObjectName("lyricsTextEdit")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.horizontalLayout_7 = QHBoxLayout(self.tab_2)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.groupBox = QGroupBox(self.tab_2)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout_3 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.lyricsTextEdit = QTextEdit(self.groupBox)
+        self.lyricsTextEdit.setObjectName(u"lyricsTextEdit")
+
         self.verticalLayout_3.addWidget(self.lyricsTextEdit)
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem)
-        self.readButton = QtWidgets.QPushButton(self.groupBox)
-        self.readButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.readButton.setObjectName("readButton")
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_3)
+
+        self.readButton = QPushButton(self.groupBox)
+        self.readButton.setObjectName(u"readButton")
+        self.readButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_6.addWidget(self.readButton)
-        self.copyButton = QtWidgets.QPushButton(self.groupBox)
-        self.copyButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.copyButton.setObjectName("copyButton")
+
+        self.copyButton = QPushButton(self.groupBox)
+        self.copyButton.setObjectName(u"copyButton")
+        self.copyButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_6.addWidget(self.copyButton)
+
+
         self.verticalLayout_3.addLayout(self.horizontalLayout_6)
+
+
         self.horizontalLayout_7.addWidget(self.groupBox)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.tab_2)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
+
+        self.groupBox_2 = QGroupBox(self.tab_2)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.verticalLayout_4 = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.wavTableView = View(self.groupBox_2)
-        self.wavTableView.setObjectName("wavTableView")
+        self.wavTableView.setObjectName(u"wavTableView")
+
         self.verticalLayout_4.addWidget(self.wavTableView)
-        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_8.addItem(spacerItem1)
-        self.addButton = QtWidgets.QPushButton(self.groupBox_2)
-        self.addButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.addButton.setObjectName("addButton")
+
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_2)
+
+        self.addButton = QPushButton(self.groupBox_2)
+        self.addButton.setObjectName(u"addButton")
+        self.addButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_8.addWidget(self.addButton)
-        self.clearButton = QtWidgets.QPushButton(self.groupBox_2)
-        self.clearButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.clearButton.setObjectName("clearButton")
+
+        self.clearButton = QPushButton(self.groupBox_2)
+        self.clearButton.setObjectName(u"clearButton")
+        self.clearButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_8.addWidget(self.clearButton)
+
+
         self.verticalLayout_4.addLayout(self.horizontalLayout_8)
+
+
         self.horizontalLayout_7.addWidget(self.groupBox_2)
+
         self.horizontalLayout_7.setStretch(0, 1)
         self.horizontalLayout_7.setStretch(1, 2)
         self.tabWidget.addTab(self.tab_2, "")
-        self.layoutWidget = QtWidgets.QWidget(self.splitter)
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.layoutWidget)
+        self.splitter.addWidget(self.tabWidget)
+        self.layoutWidget = QWidget(self.splitter)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.verticalLayout_6 = QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.groupBox_3 = QtWidgets.QGroupBox(self.layoutWidget)
-        self.groupBox_3.setObjectName("groupBox_3")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_3)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.formLayout_2 = QtWidgets.QFormLayout()
-        self.formLayout_2.setObjectName("formLayout_2")
-        self.label_2 = QtWidgets.QLabel(self.groupBox_3)
-        self.label_2.setObjectName("label_2")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.groupBox_3 = QGroupBox(self.layoutWidget)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+        self.verticalLayout_2 = QVBoxLayout(self.groupBox_3)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.formLayout_2 = QFormLayout()
+        self.formLayout_2.setObjectName(u"formLayout_2")
+        self.label_2 = QLabel(self.groupBox_3)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.label_2)
+
+        self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(0)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.refLabLineEdit = QtWidgets.QLineEdit(self.groupBox_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.refLabLineEdit = QLineEdit(self.groupBox_3)
+        self.refLabLineEdit.setObjectName(u"refLabLineEdit")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.refLabLineEdit.sizePolicy().hasHeightForWidth())
         self.refLabLineEdit.setSizePolicy(sizePolicy)
-        self.refLabLineEdit.setObjectName("refLabLineEdit")
+
         self.horizontalLayout_2.addWidget(self.refLabLineEdit)
-        self.refLabToolButton = QtWidgets.QToolButton(self.groupBox_3)
-        self.refLabToolButton.setObjectName("refLabToolButton")
+
+        self.refLabToolButton = QToolButton(self.groupBox_3)
+        self.refLabToolButton.setObjectName(u"refLabToolButton")
+
         self.horizontalLayout_2.addWidget(self.refLabToolButton)
-        self.formLayout_2.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
-        self.label_4 = QtWidgets.QLabel(self.groupBox_3)
-        self.label_4.setObjectName("label_4")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.repeatSpinBox = QtWidgets.QSpinBox(self.groupBox_3)
-        self.repeatSpinBox.setMinimumSize(QtCore.QSize(80, 0))
-        self.repeatSpinBox.setObjectName("repeatSpinBox")
+
+
+        self.formLayout_2.setLayout(0, QFormLayout.FieldRole, self.horizontalLayout_2)
+
+        self.label_4 = QLabel(self.groupBox_3)
+        self.label_4.setObjectName(u"label_4")
+
+        self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.label_4)
+
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.repeatSpinBox = QSpinBox(self.groupBox_3)
+        self.repeatSpinBox.setObjectName(u"repeatSpinBox")
+        self.repeatSpinBox.setMinimumSize(QSize(80, 0))
+
         self.horizontalLayout_10.addWidget(self.repeatSpinBox)
-        self.excludeEndCheckBox = QtWidgets.QCheckBox(self.groupBox_3)
-        self.excludeEndCheckBox.setObjectName("excludeEndCheckBox")
+
+        self.excludeEndCheckBox = QCheckBox(self.groupBox_3)
+        self.excludeEndCheckBox.setObjectName(u"excludeEndCheckBox")
+
         self.horizontalLayout_10.addWidget(self.excludeEndCheckBox)
-        self.formLayout_2.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_10)
+
+
+        self.formLayout_2.setLayout(1, QFormLayout.FieldRole, self.horizontalLayout_10)
+
+
         self.verticalLayout_2.addLayout(self.formLayout_2)
-        self.usePauCompCheckBox = QtWidgets.QCheckBox(self.groupBox_3)
-        self.usePauCompCheckBox.setObjectName("usePauCompCheckBox")
+
+        self.usePauCompCheckBox = QCheckBox(self.groupBox_3)
+        self.usePauCompCheckBox.setObjectName(u"usePauCompCheckBox")
+
         self.verticalLayout_2.addWidget(self.usePauCompCheckBox)
+
+
         self.verticalLayout_6.addWidget(self.groupBox_3)
-        self.useReplaceGroupBox = QtWidgets.QGroupBox(self.layoutWidget)
-        self.useReplaceGroupBox.setTitle("音程を置き換えたファイルも作る")
+
+        self.useReplaceGroupBox = QGroupBox(self.layoutWidget)
+        self.useReplaceGroupBox.setObjectName(u"useReplaceGroupBox")
+        self.useReplaceGroupBox.setTitle(u"\u97f3\u7a0b\u3092\u7f6e\u304d\u63db\u3048\u305f\u30d5\u30a1\u30a4\u30eb\u3082\u4f5c\u308b")
         self.useReplaceGroupBox.setCheckable(True)
-        self.useReplaceGroupBox.setObjectName("useReplaceGroupBox")
-        self.formLayout_3 = QtWidgets.QFormLayout(self.useReplaceGroupBox)
-        self.formLayout_3.setObjectName("formLayout_3")
-        self.label_5 = QtWidgets.QLabel(self.useReplaceGroupBox)
-        self.label_5.setObjectName("label_5")
-        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.formLayout_3 = QFormLayout(self.useReplaceGroupBox)
+        self.formLayout_3.setObjectName(u"formLayout_3")
+        self.label_5 = QLabel(self.useReplaceGroupBox)
+        self.label_5.setObjectName(u"label_5")
+
+        self.formLayout_3.setWidget(0, QFormLayout.LabelRole, self.label_5)
+
+        self.horizontalLayout_11 = QHBoxLayout()
         self.horizontalLayout_11.setSpacing(0)
-        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.pitchWavLineEdit = QtWidgets.QLineEdit(self.useReplaceGroupBox)
-        self.pitchWavLineEdit.setObjectName("pitchWavLineEdit")
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.pitchWavLineEdit = QLineEdit(self.useReplaceGroupBox)
+        self.pitchWavLineEdit.setObjectName(u"pitchWavLineEdit")
+
         self.horizontalLayout_11.addWidget(self.pitchWavLineEdit)
-        self.pitchWavToolButton = QtWidgets.QToolButton(self.useReplaceGroupBox)
-        self.pitchWavToolButton.setObjectName("pitchWavToolButton")
+
+        self.pitchWavToolButton = QToolButton(self.useReplaceGroupBox)
+        self.pitchWavToolButton.setObjectName(u"pitchWavToolButton")
+
         self.horizontalLayout_11.addWidget(self.pitchWavToolButton)
-        self.formLayout_3.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_11)
-        self.label_6 = QtWidgets.QLabel(self.useReplaceGroupBox)
-        self.label_6.setObjectName("label_6")
-        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_6)
-        self.apValueSpinBox = QtWidgets.QDoubleSpinBox(self.useReplaceGroupBox)
-        self.apValueSpinBox.setMaximum(1.0)
-        self.apValueSpinBox.setProperty("value", 1.0)
-        self.apValueSpinBox.setObjectName("apValueSpinBox")
-        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.apValueSpinBox)
-        self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
+
+
+        self.formLayout_3.setLayout(0, QFormLayout.FieldRole, self.horizontalLayout_11)
+
+        self.label_6 = QLabel(self.useReplaceGroupBox)
+        self.label_6.setObjectName(u"label_6")
+
+        self.formLayout_3.setWidget(1, QFormLayout.LabelRole, self.label_6)
+
+        self.apValueSpinBox = QDoubleSpinBox(self.useReplaceGroupBox)
+        self.apValueSpinBox.setObjectName(u"apValueSpinBox")
+        self.apValueSpinBox.setMaximum(1.000000000000000)
+        self.apValueSpinBox.setValue(1.000000000000000)
+
+        self.formLayout_3.setWidget(1, QFormLayout.FieldRole, self.apValueSpinBox)
+
+        self.horizontalLayout_13 = QHBoxLayout()
         self.horizontalLayout_13.setSpacing(0)
-        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
-        self.replacedWavLineEdit = QtWidgets.QLineEdit(self.useReplaceGroupBox)
-        self.replacedWavLineEdit.setObjectName("replacedWavLineEdit")
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.replacedWavLineEdit = QLineEdit(self.useReplaceGroupBox)
+        self.replacedWavLineEdit.setObjectName(u"replacedWavLineEdit")
+
         self.horizontalLayout_13.addWidget(self.replacedWavLineEdit)
-        self.replacedWavToolButton = QtWidgets.QToolButton(self.useReplaceGroupBox)
-        self.replacedWavToolButton.setObjectName("replacedWavToolButton")
+
+        self.replacedWavToolButton = QToolButton(self.useReplaceGroupBox)
+        self.replacedWavToolButton.setObjectName(u"replacedWavToolButton")
+
         self.horizontalLayout_13.addWidget(self.replacedWavToolButton)
-        self.formLayout_3.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_13)
-        self.replaceWavLabel = QtWidgets.QLabel(self.useReplaceGroupBox)
-        self.replaceWavLabel.setObjectName("replaceWavLabel")
-        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.replaceWavLabel)
+
+
+        self.formLayout_3.setLayout(2, QFormLayout.FieldRole, self.horizontalLayout_13)
+
+        self.replaceWavLabel = QLabel(self.useReplaceGroupBox)
+        self.replaceWavLabel.setObjectName(u"replaceWavLabel")
+
+        self.formLayout_3.setWidget(2, QFormLayout.LabelRole, self.replaceWavLabel)
+
+
         self.verticalLayout_6.addWidget(self.useReplaceGroupBox)
-        self.groupBox_4 = QtWidgets.QGroupBox(self.layoutWidget)
-        self.groupBox_4.setTitle("出力先")
-        self.groupBox_4.setObjectName("groupBox_4")
-        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.groupBox_4)
-        self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
+
+        self.groupBox_4 = QGroupBox(self.layoutWidget)
+        self.groupBox_4.setObjectName(u"groupBox_4")
+        self.groupBox_4.setTitle(u"\u51fa\u529b\u5148")
+        self.verticalLayout_5 = QVBoxLayout(self.groupBox_4)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.dstLineEdit = QtWidgets.QLineEdit(self.groupBox_4)
-        self.dstLineEdit.setObjectName("dstLineEdit")
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.dstLineEdit = QLineEdit(self.groupBox_4)
+        self.dstLineEdit.setObjectName(u"dstLineEdit")
+
         self.horizontalLayout.addWidget(self.dstLineEdit)
-        self.dstToolButton = QtWidgets.QToolButton(self.groupBox_4)
-        self.dstToolButton.setObjectName("dstToolButton")
+
+        self.dstToolButton = QToolButton(self.groupBox_4)
+        self.dstToolButton.setObjectName(u"dstToolButton")
+
         self.horizontalLayout.addWidget(self.dstToolButton)
+
+
         self.verticalLayout_5.addLayout(self.horizontalLayout)
+
+
         self.verticalLayout_6.addWidget(self.groupBox_4)
-        self.logGroupBox = QtWidgets.QGroupBox(self.layoutWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.logGroupBox.sizePolicy().hasHeightForWidth())
-        self.logGroupBox.setSizePolicy(sizePolicy)
-        self.logGroupBox.setObjectName("logGroupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.logGroupBox)
-        self.verticalLayout.setObjectName("verticalLayout")
+
+        self.logGroupBox = QGroupBox(self.layoutWidget)
+        self.logGroupBox.setObjectName(u"logGroupBox")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(1)
+        sizePolicy1.setHeightForWidth(self.logGroupBox.sizePolicy().hasHeightForWidth())
+        self.logGroupBox.setSizePolicy(sizePolicy1)
+        self.verticalLayout = QVBoxLayout(self.logGroupBox)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.logTextEdit = LogTextEdit(self.logGroupBox)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.logTextEdit.sizePolicy().hasHeightForWidth())
-        self.logTextEdit.setSizePolicy(sizePolicy)
-        self.logTextEdit.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
+        self.logTextEdit.setObjectName(u"logTextEdit")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.logTextEdit.sizePolicy().hasHeightForWidth())
+        self.logTextEdit.setSizePolicy(sizePolicy2)
+        self.logTextEdit.setLineWrapMode(QTextEdit.NoWrap)
         self.logTextEdit.setReadOnly(True)
-        self.logTextEdit.setObjectName("logTextEdit")
+
         self.verticalLayout.addWidget(self.logTextEdit)
+
+
         self.verticalLayout_6.addWidget(self.logGroupBox)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.checkButton = QtWidgets.QPushButton(self.layoutWidget)
-        self.checkButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.checkButton.setObjectName("checkButton")
+
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.checkButton = QPushButton(self.layoutWidget)
+        self.checkButton.setObjectName(u"checkButton")
+        self.checkButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_3.addWidget(self.checkButton)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem2)
-        self.syncButton = QtWidgets.QPushButton(self.layoutWidget)
-        self.syncButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.syncButton.setObjectName("syncButton")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer)
+
+        self.syncButton = QPushButton(self.layoutWidget)
+        self.syncButton.setObjectName(u"syncButton")
+        self.syncButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_3.addWidget(self.syncButton)
-        self.closeButton = QtWidgets.QPushButton(self.layoutWidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.closeButton = QPushButton(self.layoutWidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_3.addWidget(self.closeButton)
+
+
         self.verticalLayout_6.addLayout(self.horizontalLayout_3)
+
+        self.splitter.addWidget(self.layoutWidget)
+
         self.verticalLayout_7.addWidget(self.splitter)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 626, 21))
-        self.menubar.setObjectName("menubar")
-        self.menuFile = QtWidgets.QMenu(self.menubar)
-        self.menuFile.setObjectName("menuFile")
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 626, 22))
+        self.menuFile = QMenu(self.menubar)
+        self.menuFile.setObjectName(u"menuFile")
         MainWindow.setMenuBar(self.menubar)
-        self.actionOpen = QtWidgets.QAction(MainWindow)
-        self.actionOpen.setObjectName("actionOpen")
-        self.actionSave = QtWidgets.QAction(MainWindow)
-        self.actionSave.setObjectName("actionSave")
-        self.actionExit = QtWidgets.QAction(MainWindow)
-        self.actionExit.setObjectName("actionExit")
-        self.actionNew = QtWidgets.QAction(MainWindow)
-        self.actionNew.setObjectName("actionNew")
+
+        self.menubar.addAction(self.menuFile.menuAction())
         self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit)
-        self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
+
         self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "音声(wav)", None, -1))
-        self.srcToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "音素タイミング(lab)", None, -1))
-        self.srcLabToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.useAutoSetCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "wavと同名のlabファイルがあれば、同時に設定する。", None, -1))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtWidgets.QApplication.translate("MainWindow", "Talk", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "歌詞", None, -1))
-        self.readButton.setText(QtWidgets.QApplication.translate("MainWindow", "read", None, -1))
-        self.copyButton.setText(QtWidgets.QApplication.translate("MainWindow", "copy", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "ファイル", None, -1))
-        self.addButton.setText(QtWidgets.QApplication.translate("MainWindow", "add", None, -1))
-        self.clearButton.setText(QtWidgets.QApplication.translate("MainWindow", "clear", None, -1))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtWidgets.QApplication.translate("MainWindow", "Song", None, -1))
-        self.groupBox_3.setTitle(QtWidgets.QApplication.translate("MainWindow", "リファレンス", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "変換タイミング (lab)", None, -1))
-        self.refLabToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "母音を繰り返す", None, -1))
-        self.excludeEndCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "休符の前では繰り返さない。", None, -1))
-        self.usePauCompCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "pau(休符)、sil(全休符)、br(息継ぎ)が並んでいたら、一つのpauにする。", None, -1))
-        self.label_5.setText(QtWidgets.QApplication.translate("MainWindow", "音程(wav)", None, -1))
-        self.pitchWavToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.label_6.setText(QtWidgets.QApplication.translate("MainWindow", "雑味(aperiodicity)", None, -1))
-        self.replacedWavToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.replaceWavLabel.setText(QtWidgets.QApplication.translate("MainWindow", "保存先", None, -1))
-        self.dstToolButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.logGroupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "ログ", None, -1))
-        self.checkButton.setText(QtWidgets.QApplication.translate("MainWindow", "check", None, -1))
-        self.syncButton.setText(QtWidgets.QApplication.translate("MainWindow", "sync", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
-        self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
-        self.actionOpen.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
-        self.actionOpen.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+O", None, -1))
-        self.actionSave.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
-        self.actionSave.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+S", None, -1))
-        self.actionExit.setText(QtWidgets.QApplication.translate("MainWindow", "Exit", None, -1))
-        self.actionExit.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Q", None, -1))
-        self.actionNew.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
-        self.actionNew.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+N", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.actionOpen.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+#if QT_CONFIG(shortcut)
+        self.actionOpen.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+O", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionSave.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+#if QT_CONFIG(shortcut)
+        self.actionSave.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+S", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionExit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
+#if QT_CONFIG(shortcut)
+        self.actionExit.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Q", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionNew.setText(QCoreApplication.translate("MainWindow", u"New", None))
+#if QT_CONFIG(shortcut)
+        self.actionNew.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+N", None))
+#endif // QT_CONFIG(shortcut)
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u97f3\u58f0(wav)", None))
+        self.srcToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u97f3\u7d20\u30bf\u30a4\u30df\u30f3\u30b0(lab)", None))
+        self.srcLabToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.useAutoSetCheckBox.setText(QCoreApplication.translate("MainWindow", u"wav\u3068\u540c\u540d\u306elab\u30d5\u30a1\u30a4\u30eb\u304c\u3042\u308c\u3070\u3001\u540c\u6642\u306b\u8a2d\u5b9a\u3059\u308b\u3002", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Talk", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u6b4c\u8a5e", None))
+        self.readButton.setText(QCoreApplication.translate("MainWindow", u"read", None))
+        self.copyButton.setText(QCoreApplication.translate("MainWindow", u"copy", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"\u30d5\u30a1\u30a4\u30eb", None))
+        self.addButton.setText(QCoreApplication.translate("MainWindow", u"add", None))
+        self.clearButton.setText(QCoreApplication.translate("MainWindow", u"clear", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Song", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"\u30ea\u30d5\u30a1\u30ec\u30f3\u30b9", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u5909\u63db\u30bf\u30a4\u30df\u30f3\u30b0 (lab)", None))
+        self.refLabToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u6bcd\u97f3\u3092\u7e70\u308a\u8fd4\u3059", None))
+        self.excludeEndCheckBox.setText(QCoreApplication.translate("MainWindow", u"\u4f11\u7b26\u306e\u524d\u3067\u306f\u7e70\u308a\u8fd4\u3055\u306a\u3044\u3002", None))
+        self.usePauCompCheckBox.setText(QCoreApplication.translate("MainWindow", u"pau(\u4f11\u7b26)\u3001sil(\u5168\u4f11\u7b26)\u3001br(\u606f\u7d99\u304e)\u304c\u4e26\u3093\u3067\u3044\u305f\u3089\u3001\u4e00\u3064\u306epau\u306b\u3059\u308b\u3002", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u97f3\u7a0b(wav)", None))
+        self.pitchWavToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u96d1\u5473(aperiodicity)", None))
+        self.replacedWavToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.replaceWavLabel.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u5148", None))
+        self.dstToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.logGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u30ed\u30b0", None))
+        self.checkButton.setText(QCoreApplication.translate("MainWindow", u"check", None))
+        self.syncButton.setText(QCoreApplication.translate("MainWindow", u"sync", None))
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+        self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
+    # retranslateUi
 
-from rs.tool.voice_sync.wav_table import View
-from rs.gui.log import LogTextEdit

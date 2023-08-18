@@ -1,88 +1,132 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\font_tool\font_tool.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\font_tool\font_tool.ui' applies.
-#
-# Created: Tue Apr  4 10:18:45 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'font_tool.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QHBoxLayout,
+    QHeaderView, QLabel, QLineEdit, QMainWindow,
+    QPushButton, QSizePolicy, QSpacerItem, QToolButton,
+    QTreeView, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(405, 594)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setObjectName("label")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+
         self.horizontalLayout_2.addWidget(self.label)
-        self.sampleLineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.sampleLineEdit.setObjectName("sampleLineEdit")
+
+        self.sampleLineEdit = QLineEdit(self.centralwidget)
+        self.sampleLineEdit.setObjectName(u"sampleLineEdit")
+
         self.horizontalLayout_2.addWidget(self.sampleLineEdit)
-        self.readButton = QtWidgets.QPushButton(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+
+        self.readButton = QPushButton(self.centralwidget)
+        self.readButton.setObjectName(u"readButton")
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.readButton.sizePolicy().hasHeightForWidth())
         self.readButton.setSizePolicy(sizePolicy)
-        self.readButton.setMinimumSize(QtCore.QSize(40, 20))
-        self.readButton.setObjectName("readButton")
+        self.readButton.setMinimumSize(QSize(40, 20))
+
         self.horizontalLayout_2.addWidget(self.readButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.autoCheckBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.autoCheckBox.setObjectName("autoCheckBox")
+
+        self.autoCheckBox = QCheckBox(self.centralwidget)
+        self.autoCheckBox.setObjectName(u"autoCheckBox")
+
         self.verticalLayout.addWidget(self.autoCheckBox)
-        self.treeView = QtWidgets.QTreeView(self.centralwidget)
-        self.treeView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+
+        self.treeView = QTreeView(self.centralwidget)
+        self.treeView.setObjectName(u"treeView")
+        self.treeView.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.treeView.setExpandsOnDoubleClick(False)
-        self.treeView.setObjectName("treeView")
+
         self.verticalLayout.addWidget(self.treeView)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
+
+        self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setSpacing(2)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.applyButton = QtWidgets.QPushButton(self.centralwidget)
-        self.applyButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.applyButton.setObjectName("applyButton")
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.applyButton = QPushButton(self.centralwidget)
+        self.applyButton.setObjectName(u"applyButton")
+        self.applyButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout.addWidget(self.applyButton)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.favoritesButton = QtWidgets.QPushButton(self.centralwidget)
-        self.favoritesButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.favoritesButton.setObjectName("favoritesButton")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.favoritesButton = QPushButton(self.centralwidget)
+        self.favoritesButton.setObjectName(u"favoritesButton")
+        self.favoritesButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout.addWidget(self.favoritesButton)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
-        self.minimizeButton.setMinimumSize(QtCore.QSize(30, 30))
-        self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)
-        self.minimizeButton.setObjectName("minimizeButton")
+
+        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+        self.minimizeButton = QToolButton(self.centralwidget)
+        self.minimizeButton.setObjectName(u"minimizeButton")
+        self.minimizeButton.setMinimumSize(QSize(30, 30))
+        self.minimizeButton.setArrowType(Qt.DownArrow)
+
         self.horizontalLayout.addWidget(self.minimizeButton)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout.addWidget(self.closeButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "SampleText", None, -1))
-        self.readButton.setText(QtWidgets.QApplication.translate("MainWindow", "read", None, -1))
-        self.autoCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "auto apply", None, -1))
-        self.applyButton.setText(QtWidgets.QApplication.translate("MainWindow", "apply", None, -1))
-        self.favoritesButton.setText(QtWidgets.QApplication.translate("MainWindow", "Favorites", None, -1))
-        self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
-        self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.closeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "閉じる", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"SampleText", None))
+        self.readButton.setText(QCoreApplication.translate("MainWindow", u"read", None))
+        self.autoCheckBox.setText(QCoreApplication.translate("MainWindow", u"auto apply", None))
+        self.applyButton.setText(QCoreApplication.translate("MainWindow", u"apply", None))
+        self.favoritesButton.setText(QCoreApplication.translate("MainWindow", u"Favorites", None))
+#if QT_CONFIG(tooltip)
+        self.minimizeButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u6700\u5c0f\u5316", None))
+#endif // QT_CONFIG(tooltip)
+        self.minimizeButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+#if QT_CONFIG(tooltip)
+        self.closeButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u9589\u3058\u308b", None))
+#endif // QT_CONFIG(tooltip)
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+    # retranslateUi
 

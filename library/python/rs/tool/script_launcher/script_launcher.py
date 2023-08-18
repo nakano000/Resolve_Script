@@ -2,12 +2,12 @@ import subprocess
 import sys
 from functools import partial
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     QDir,
     QFileSystemWatcher,
     Qt,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QFileSystemModel,
     QHeaderView,
@@ -169,7 +169,7 @@ def run() -> None:
 
     app.setPalette(appearance.palette)
     app.setStyleSheet(appearance.stylesheet)
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

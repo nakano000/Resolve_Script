@@ -4,15 +4,15 @@ import sys
 
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
     QMainWindow,
 )
-from PySide2.QtGui import (
+from PySide6.QtGui import (
     QColor,
 )
 
@@ -49,8 +49,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle('%s' % APP_NAME)
         self.setWindowFlags(
             Qt.Window
-            | Qt.WindowCloseButtonHint
-            | Qt.WindowStaysOnTopHint
+            # | Qt.WindowCloseButtonHint
+            # | Qt.WindowStaysOnTopHint
         )
         self.resize(600, 600)
 
@@ -321,7 +321,7 @@ def run() -> None:
 
     window = MainWindow()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

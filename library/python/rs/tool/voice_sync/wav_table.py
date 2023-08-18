@@ -1,10 +1,16 @@
 import dataclasses
 from pathlib import Path
 
-from PySide2.QtCore import Qt
-from PySide2.QtGui import QKeySequence
-from PySide2.QtWidgets import QAction, QMenu, QStyledItemDelegate, QFileDialog
-
+from PySide6.QtCore import Qt
+from PySide6.QtGui import (
+    QKeySequence,
+    QAction,
+)
+from PySide6.QtWidgets import (
+    QMenu,
+    QStyledItemDelegate,
+    QFileDialog,
+)
 
 from rs.core import (
     pipe as p,
@@ -91,11 +97,11 @@ class View(table.View):
         self.actionPaste = QAction('Paste', self)
         self.actionPaste.setShortcut(QKeySequence('Ctrl+V'))
         self.actionDelete = QAction('Delete', self)
-        self.actionDelete.setShortcut(QKeySequence(Qt.CTRL + Qt.Key_Delete))
+        self.actionDelete.setShortcut(QKeySequence(Qt.CTRL | Qt.Key_Delete))
         self.actionUp = QAction('Up', self)
-        self.actionUp.setShortcut(QKeySequence(Qt.ALT + Qt.Key_Up))
+        self.actionUp.setShortcut(QKeySequence(Qt.ALT | Qt.Key_Up))
         self.actionDown = QAction('Down', self)
-        self.actionDown.setShortcut(QKeySequence(Qt.ALT + Qt.Key_Down))
+        self.actionDown.setShortcut(QKeySequence(Qt.ALT | Qt.Key_Down))
         # event
         self.actionUndo.triggered.connect(self.model().undo_stack.undo)
         self.actionRedo.triggered.connect(self.model().undo_stack.redo)

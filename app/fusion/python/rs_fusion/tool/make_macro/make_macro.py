@@ -3,16 +3,20 @@ from functools import partial
 from pathlib import Path
 
 import dataclasses
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QModelIndex,
 )
-from PySide2.QtGui import QStandardItemModel, QStandardItem
-from PySide2.QtWidgets import (
+from PySide6.QtGui import (
+    QStandardItemModel,
+    QStandardItem,
+)
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
     QMainWindow,
-    QHeaderView, QMessageBox,
+    QHeaderView,
+    QMessageBox,
 )
 
 from rs.core import (

@@ -1,77 +1,109 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\gui\chara\chara.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\library\python\rs\gui\chara\chara.ui' applies.
-#
-# Created: Sat Apr 29 05:55:04 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'chara.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QHeaderView, QLabel,
+    QMainWindow, QMenu, QMenuBar, QPushButton,
+    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+
+from rs.tool.voice_sync.wav_table import View
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(470, 463)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
+        self.actionCopy = QAction(MainWindow)
+        self.actionCopy.setObjectName(u"actionCopy")
+        self.actionPaste = QAction(MainWindow)
+        self.actionPaste.setObjectName(u"actionPaste")
+        self.actionUp = QAction(MainWindow)
+        self.actionUp.setObjectName(u"actionUp")
+        self.actionDown = QAction(MainWindow)
+        self.actionDown.setObjectName(u"actionDown")
+        self.actionDelete = QAction(MainWindow)
+        self.actionDelete.setObjectName(u"actionDelete")
+        self.actionRedo = QAction(MainWindow)
+        self.actionRedo.setObjectName(u"actionRedo")
+        self.actionUndo = QAction(MainWindow)
+        self.actionUndo.setObjectName(u"actionUndo")
+        self.actionClear = QAction(MainWindow)
+        self.actionClear.setObjectName(u"actionClear")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.tableView = View(self.centralwidget)
+        self.tableView.setObjectName(u"tableView")
         self.tableView.setWordWrap(False)
-        self.tableView.setObjectName("tableView")
         self.tableView.horizontalHeader().setDefaultSectionSize(150)
+
         self.verticalLayout.addWidget(self.tableView)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem = QtWidgets.QSpacerItem(40, 0, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem)
-        self.commentLabel = QtWidgets.QLabel(self.centralwidget)
-        self.commentLabel.setText("")
-        self.commentLabel.setObjectName("commentLabel")
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalSpacer_2 = QSpacerItem(40, 0, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
+        self.commentLabel = QLabel(self.centralwidget)
+        self.commentLabel.setObjectName(u"commentLabel")
+
         self.horizontalLayout_2.addWidget(self.commentLabel)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.addButton = QtWidgets.QPushButton(self.centralwidget)
-        self.addButton.setMinimumSize(QtCore.QSize(100, 40))
-        self.addButton.setObjectName("addButton")
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.addButton = QPushButton(self.centralwidget)
+        self.addButton.setObjectName(u"addButton")
+        self.addButton.setMinimumSize(QSize(100, 40))
+
         self.horizontalLayout.addWidget(self.addButton)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.setButton = QtWidgets.QPushButton(self.centralwidget)
-        self.setButton.setMinimumSize(QtCore.QSize(100, 40))
-        self.setButton.setObjectName("setButton")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.setButton = QPushButton(self.centralwidget)
+        self.setButton.setObjectName(u"setButton")
+        self.setButton.setMinimumSize(QSize(100, 40))
+
         self.horizontalLayout.addWidget(self.setButton)
-        self.cancelButton = QtWidgets.QPushButton(self.centralwidget)
-        self.cancelButton.setMinimumSize(QtCore.QSize(100, 40))
-        self.cancelButton.setObjectName("cancelButton")
+
+        self.cancelButton = QPushButton(self.centralwidget)
+        self.cancelButton.setObjectName(u"cancelButton")
+        self.cancelButton.setMinimumSize(QSize(100, 40))
+
         self.horizontalLayout.addWidget(self.cancelButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 470, 21))
-        self.menubar.setObjectName("menubar")
-        self.menuEdit = QtWidgets.QMenu(self.menubar)
-        self.menuEdit.setObjectName("menuEdit")
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 470, 22))
+        self.menuEdit = QMenu(self.menubar)
+        self.menuEdit.setObjectName(u"menuEdit")
         MainWindow.setMenuBar(self.menubar)
-        self.actionCopy = QtWidgets.QAction(MainWindow)
-        self.actionCopy.setObjectName("actionCopy")
-        self.actionPaste = QtWidgets.QAction(MainWindow)
-        self.actionPaste.setObjectName("actionPaste")
-        self.actionUp = QtWidgets.QAction(MainWindow)
-        self.actionUp.setObjectName("actionUp")
-        self.actionDown = QtWidgets.QAction(MainWindow)
-        self.actionDown.setObjectName("actionDown")
-        self.actionDelete = QtWidgets.QAction(MainWindow)
-        self.actionDelete.setObjectName("actionDelete")
-        self.actionRedo = QtWidgets.QAction(MainWindow)
-        self.actionRedo.setObjectName("actionRedo")
-        self.actionUndo = QtWidgets.QAction(MainWindow)
-        self.actionUndo.setObjectName("actionUndo")
-        self.actionClear = QtWidgets.QAction(MainWindow)
-        self.actionClear.setObjectName("actionClear")
+
+        self.menubar.addAction(self.menuEdit.menuAction())
         self.menuEdit.addAction(self.actionUndo)
         self.menuEdit.addAction(self.actionRedo)
         self.menuEdit.addSeparator()
@@ -83,32 +115,50 @@ class Ui_MainWindow(object):
         self.menuEdit.addAction(self.actionDown)
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionDelete)
-        self.menubar.addAction(self.menuEdit.menuAction())
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.addButton.setText(QtWidgets.QApplication.translate("MainWindow", "add", None, -1))
-        self.setButton.setText(QtWidgets.QApplication.translate("MainWindow", "set", None, -1))
-        self.cancelButton.setText(QtWidgets.QApplication.translate("MainWindow", "cancel", None, -1))
-        self.menuEdit.setTitle(QtWidgets.QApplication.translate("MainWindow", "Edit", None, -1))
-        self.actionCopy.setText(QtWidgets.QApplication.translate("MainWindow", "Copy", None, -1))
-        self.actionCopy.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+C", None, -1))
-        self.actionPaste.setText(QtWidgets.QApplication.translate("MainWindow", "Paste", None, -1))
-        self.actionPaste.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+V", None, -1))
-        self.actionUp.setText(QtWidgets.QApplication.translate("MainWindow", "Up", None, -1))
-        self.actionUp.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Alt+Up", None, -1))
-        self.actionDown.setText(QtWidgets.QApplication.translate("MainWindow", "Down", None, -1))
-        self.actionDown.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Alt+Down", None, -1))
-        self.actionDelete.setText(QtWidgets.QApplication.translate("MainWindow", "Delete", None, -1))
-        self.actionDelete.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Del", None, -1))
-        self.actionRedo.setText(QtWidgets.QApplication.translate("MainWindow", "Redo", None, -1))
-        self.actionRedo.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+Z", None, -1))
-        self.actionUndo.setText(QtWidgets.QApplication.translate("MainWindow", "Undo", None, -1))
-        self.actionUndo.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Z", None, -1))
-        self.actionClear.setText(QtWidgets.QApplication.translate("MainWindow", "Clear", None, -1))
-        self.actionClear.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Del", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.actionCopy.setText(QCoreApplication.translate("MainWindow", u"Copy", None))
+#if QT_CONFIG(shortcut)
+        self.actionCopy.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+C", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionPaste.setText(QCoreApplication.translate("MainWindow", u"Paste", None))
+#if QT_CONFIG(shortcut)
+        self.actionPaste.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+V", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionUp.setText(QCoreApplication.translate("MainWindow", u"Up", None))
+#if QT_CONFIG(shortcut)
+        self.actionUp.setShortcut(QCoreApplication.translate("MainWindow", u"Alt+Up", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionDown.setText(QCoreApplication.translate("MainWindow", u"Down", None))
+#if QT_CONFIG(shortcut)
+        self.actionDown.setShortcut(QCoreApplication.translate("MainWindow", u"Alt+Down", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionDelete.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+#if QT_CONFIG(shortcut)
+        self.actionDelete.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Del", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionRedo.setText(QCoreApplication.translate("MainWindow", u"Redo", None))
+#if QT_CONFIG(shortcut)
+        self.actionRedo.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Shift+Z", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionUndo.setText(QCoreApplication.translate("MainWindow", u"Undo", None))
+#if QT_CONFIG(shortcut)
+        self.actionUndo.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Z", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionClear.setText(QCoreApplication.translate("MainWindow", u"Clear", None))
+#if QT_CONFIG(shortcut)
+        self.actionClear.setShortcut(QCoreApplication.translate("MainWindow", u"Del", None))
+#endif // QT_CONFIG(shortcut)
+        self.commentLabel.setText("")
+        self.addButton.setText(QCoreApplication.translate("MainWindow", u"add", None))
+        self.setButton.setText(QCoreApplication.translate("MainWindow", u"set", None))
+        self.cancelButton.setText(QCoreApplication.translate("MainWindow", u"cancel", None))
+        self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
+    # retranslateUi
 
-from rs.gui.table import View

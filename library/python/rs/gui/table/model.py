@@ -4,15 +4,14 @@ import dataclasses
 import operator
 from typing import List
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QModelIndex,
     QAbstractTableModel,
 )
-
-from PySide2.QtWidgets import (
-    QUndoStack,
+from PySide6.QtGui import (
     QUndoCommand,
+    QUndoStack,
 )
 
 from rs.core import (

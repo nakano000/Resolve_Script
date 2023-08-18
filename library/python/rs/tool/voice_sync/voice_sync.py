@@ -12,15 +12,16 @@ import soundfile as sf
 import pyworld as pw
 import pytsmod as tsm
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     Signal,
 )
-from PySide2.QtGui import QColor
-from PySide2.QtWidgets import (
+from PySide6.QtGui import QColor
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
-    QMainWindow, QHeaderView,
+    QMainWindow,
+    QHeaderView,
 )
 
 from rs.core import (
@@ -683,7 +684,7 @@ def run() -> None:
 
     window = MainWindow()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

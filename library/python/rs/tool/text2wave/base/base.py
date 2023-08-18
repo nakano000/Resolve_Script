@@ -7,19 +7,19 @@ import subprocess
 
 from pathlib import Path
 
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QDir,
     QItemSelectionModel,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
     QFileSystemModel,
     QMainWindow,
     QHeaderView,
 )
-from PySide2.QtGui import (
+from PySide6.QtGui import (
     QColor,
 )
 
@@ -308,8 +308,8 @@ class MainWindow(QMainWindow):
         srt_index = model.index(str(srt_file))
         sel = tree.selectionModel()
         sel.clearSelection()
-        sel.select(wav_index, QItemSelectionModel.Select)
-        sel.select(srt_index, QItemSelectionModel.Select)
+        sel.select(wav_index, QItemSelectionModel.SelectionFlag.Select)
+        sel.select(srt_index, QItemSelectionModel.SelectionFlag.Select)
 
 
 def run() -> None:
@@ -320,7 +320,7 @@ def run() -> None:
 
     window = MainWindow()
     window.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == '__main__':

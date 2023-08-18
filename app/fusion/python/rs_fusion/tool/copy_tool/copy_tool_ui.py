@@ -1,110 +1,167 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\copy_tool\copy_tool.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\copy_tool\copy_tool.ui' applies.
-#
-# Created: Sat Feb 18 17:59:12 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'copy_tool.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFormLayout, QGroupBox,
+    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
+    QMainWindow, QPushButton, QRadioButton, QSizePolicy,
+    QSpacerItem, QToolButton, QTreeView, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(314, 452)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.treeView = QtWidgets.QTreeView(self.centralwidget)
-        self.treeView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.treeView.setObjectName("treeView")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.treeView = QTreeView(self.centralwidget)
+        self.treeView.setObjectName(u"treeView")
+        self.treeView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.treeView.setSelectionMode(QAbstractItemView.ExtendedSelection)
+
         self.verticalLayout.addWidget(self.treeView)
-        self.groupBox_3 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_3.setObjectName("groupBox_3")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.groupBox_3)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.l2rRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
+
+        self.groupBox_3 = QGroupBox(self.centralwidget)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+        self.horizontalLayout_3 = QHBoxLayout(self.groupBox_3)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.l2rRadioButton = QRadioButton(self.groupBox_3)
+        self.l2rRadioButton.setObjectName(u"l2rRadioButton")
         self.l2rRadioButton.setChecked(True)
-        self.l2rRadioButton.setObjectName("l2rRadioButton")
+
         self.horizontalLayout_3.addWidget(self.l2rRadioButton)
-        self.randomRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
-        self.randomRadioButton.setObjectName("randomRadioButton")
+
+        self.randomRadioButton = QRadioButton(self.groupBox_3)
+        self.randomRadioButton.setObjectName(u"randomRadioButton")
+
         self.horizontalLayout_3.addWidget(self.randomRadioButton)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_4)
+
+
         self.verticalLayout.addWidget(self.groupBox_3)
-        self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setObjectName("groupBox")
-        self.formLayout = QtWidgets.QFormLayout(self.groupBox)
-        self.formLayout.setObjectName("formLayout")
-        self.label = QtWidgets.QLabel(self.groupBox)
-        self.label.setObjectName("label")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label)
-        self.stepLineEdit = QtWidgets.QLineEdit(self.groupBox)
-        self.stepLineEdit.setObjectName("stepLineEdit")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.stepLineEdit)
-        self.label_2 = QtWidgets.QLabel(self.groupBox)
-        self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.jitterInfLineEdit = QtWidgets.QLineEdit(self.groupBox)
-        self.jitterInfLineEdit.setObjectName("jitterInfLineEdit")
+
+        self.groupBox = QGroupBox(self.centralwidget)
+        self.groupBox.setObjectName(u"groupBox")
+        self.formLayout = QFormLayout(self.groupBox)
+        self.formLayout.setObjectName(u"formLayout")
+        self.label = QLabel(self.groupBox)
+        self.label.setObjectName(u"label")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label)
+
+        self.stepLineEdit = QLineEdit(self.groupBox)
+        self.stepLineEdit.setObjectName(u"stepLineEdit")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.stepLineEdit)
+
+        self.label_2 = QLabel(self.groupBox)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.label_2)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.jitterInfLineEdit = QLineEdit(self.groupBox)
+        self.jitterInfLineEdit.setObjectName(u"jitterInfLineEdit")
+
         self.horizontalLayout.addWidget(self.jitterInfLineEdit)
-        self.jitterSupLineEdit = QtWidgets.QLineEdit(self.groupBox)
-        self.jitterSupLineEdit.setObjectName("jitterSupLineEdit")
+
+        self.jitterSupLineEdit = QLineEdit(self.groupBox)
+        self.jitterSupLineEdit.setObjectName(u"jitterSupLineEdit")
+
         self.horizontalLayout.addWidget(self.jitterSupLineEdit)
-        self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
-        self.label_3 = QtWidgets.QLabel(self.groupBox)
-        self.label_3.setObjectName("label_3")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        self.offsetLineEdit = QtWidgets.QLineEdit(self.groupBox)
-        self.offsetLineEdit.setObjectName("offsetLineEdit")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.offsetLineEdit)
+
+
+        self.formLayout.setLayout(2, QFormLayout.FieldRole, self.horizontalLayout)
+
+        self.label_3 = QLabel(self.groupBox)
+        self.label_3.setObjectName(u"label_3")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label_3)
+
+        self.offsetLineEdit = QLineEdit(self.groupBox)
+        self.offsetLineEdit.setObjectName(u"offsetLineEdit")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.offsetLineEdit)
+
+
         self.verticalLayout.addWidget(self.groupBox)
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.sourceButton = QtWidgets.QPushButton(self.centralwidget)
-        self.sourceButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.sourceButton.setObjectName("sourceButton")
+
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.sourceButton = QPushButton(self.centralwidget)
+        self.sourceButton.setObjectName(u"sourceButton")
+        self.sourceButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_4.addWidget(self.sourceButton)
-        self.setButton = QtWidgets.QPushButton(self.centralwidget)
-        self.setButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.setButton.setObjectName("setButton")
+
+        self.setButton = QPushButton(self.centralwidget)
+        self.setButton.setObjectName(u"setButton")
+        self.setButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_4.addWidget(self.setButton)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem1)
-        self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
-        self.minimizeButton.setMinimumSize(QtCore.QSize(30, 30))
-        self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)
-        self.minimizeButton.setObjectName("minimizeButton")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer)
+
+        self.minimizeButton = QToolButton(self.centralwidget)
+        self.minimizeButton.setObjectName(u"minimizeButton")
+        self.minimizeButton.setMinimumSize(QSize(30, 30))
+        self.minimizeButton.setArrowType(Qt.DownArrow)
+
         self.horizontalLayout_4.addWidget(self.minimizeButton)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_4.addWidget(self.closeButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout_4)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.groupBox_3.setTitle(QtWidgets.QApplication.translate("MainWindow", "Oder", None, -1))
-        self.l2rRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "LtoR", None, -1))
-        self.randomRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "random", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Animation Shift", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Step", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Jitter", None, -1))
-        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "Offset", None, -1))
-        self.sourceButton.setText(QtWidgets.QApplication.translate("MainWindow", "source", None, -1))
-        self.setButton.setText(QtWidgets.QApplication.translate("MainWindow", "set", None, -1))
-        self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
-        self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Oder", None))
+        self.l2rRadioButton.setText(QCoreApplication.translate("MainWindow", u"LtoR", None))
+        self.randomRadioButton.setText(QCoreApplication.translate("MainWindow", u"random", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Animation Shift", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Step", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Jitter", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Offset", None))
+        self.sourceButton.setText(QCoreApplication.translate("MainWindow", u"source", None))
+        self.setButton.setText(QCoreApplication.translate("MainWindow", u"set", None))
+#if QT_CONFIG(tooltip)
+        self.minimizeButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u6700\u5c0f\u5316", None))
+#endif // QT_CONFIG(tooltip)
+        self.minimizeButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+    # retranslateUi
 

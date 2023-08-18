@@ -3,7 +3,7 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QPushButton,
 )
 

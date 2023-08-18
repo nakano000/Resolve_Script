@@ -2,7 +2,7 @@ import decimal
 import enum
 import random
 
-from PySide2.QtWidgets import QFileDialog
+from PySide6.QtWidgets import QFileDialog
 
 from rs.core import (
     pipe as p,

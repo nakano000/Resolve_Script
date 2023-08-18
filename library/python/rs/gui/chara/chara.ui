@@ -113,7 +113,7 @@
      <x>0</x>
      <y>0</y>
      <width>470</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuEdit">
@@ -203,7 +203,7 @@
   <customwidget>
    <class>View</class>
    <extends>QTableView</extends>
-   <header>rs.gui.table</header>
+   <header>rs.tool.voice_sync.wav_table</header>
   </customwidget>
  </customwidgets>
  <resources/>

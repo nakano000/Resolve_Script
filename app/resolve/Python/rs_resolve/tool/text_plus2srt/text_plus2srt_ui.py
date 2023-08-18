@@ -1,88 +1,128 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\text_plus2srt\text_plus2srt.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\text_plus2srt\text_plus2srt.ui' applies.
-#
-# Created: Fri Jul 14 18:28:41 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'text_plus2srt.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QComboBox, QGroupBox, QHBoxLayout,
+    QLabel, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QTextEdit, QVBoxLayout, QWidget)
+
+from rs.gui.log import LogTextEdit
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(289, 233)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setObjectName("label_2")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label_2 = QLabel(self.centralwidget)
+        self.label_2.setObjectName(u"label_2")
+
         self.horizontalLayout_2.addWidget(self.label_2)
-        self.videoComboBox = QtWidgets.QComboBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+
+        self.videoComboBox = QComboBox(self.centralwidget)
+        self.videoComboBox.setObjectName(u"videoComboBox")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.videoComboBox.sizePolicy().hasHeightForWidth())
         self.videoComboBox.setSizePolicy(sizePolicy)
-        self.videoComboBox.setObjectName("videoComboBox")
+
         self.horizontalLayout_2.addWidget(self.videoComboBox)
-        self.updateButton = QtWidgets.QPushButton(self.centralwidget)
-        self.updateButton.setMinimumSize(QtCore.QSize(50, 30))
-        self.updateButton.setObjectName("updateButton")
+
+        self.updateButton = QPushButton(self.centralwidget)
+        self.updateButton.setObjectName(u"updateButton")
+        self.updateButton.setMinimumSize(QSize(50, 30))
+
         self.horizontalLayout_2.addWidget(self.updateButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.groupBox_2.sizePolicy().hasHeightForWidth())
-        self.groupBox_2.setSizePolicy(sizePolicy)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+
+        self.groupBox_2 = QGroupBox(self.centralwidget)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.groupBox_2.sizePolicy().hasHeightForWidth())
+        self.groupBox_2.setSizePolicy(sizePolicy1)
+        self.verticalLayout_2 = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.logTextEdit = LogTextEdit(self.groupBox_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.logTextEdit.sizePolicy().hasHeightForWidth())
-        self.logTextEdit.setSizePolicy(sizePolicy)
-        self.logTextEdit.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
+        self.logTextEdit.setObjectName(u"logTextEdit")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.logTextEdit.sizePolicy().hasHeightForWidth())
+        self.logTextEdit.setSizePolicy(sizePolicy2)
+        self.logTextEdit.setLineWrapMode(QTextEdit.NoWrap)
         self.logTextEdit.setReadOnly(True)
-        self.logTextEdit.setObjectName("logTextEdit")
+
         self.verticalLayout_2.addWidget(self.logTextEdit)
+
+
         self.verticalLayout.addWidget(self.groupBox_2)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.saveButton = QtWidgets.QPushButton(self.centralwidget)
-        self.saveButton.setMinimumSize(QtCore.QSize(50, 30))
-        self.saveButton.setObjectName("saveButton")
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.saveButton = QPushButton(self.centralwidget)
+        self.saveButton.setObjectName(u"saveButton")
+        self.saveButton.setMinimumSize(QSize(50, 30))
+
         self.horizontalLayout.addWidget(self.saveButton)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(50, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(50, 30))
+
         self.horizontalLayout.addWidget(self.closeButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Video Track", None, -1))
-        self.updateButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "トラック更新", None, -1))
-        self.updateButton.setText(QtWidgets.QApplication.translate("MainWindow", "update", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "Log", None, -1))
-        self.saveButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "トラック更新", None, -1))
-        self.saveButton.setText(QtWidgets.QApplication.translate("MainWindow", "save", None, -1))
-        self.closeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "閉じる", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Video Track", None))
+#if QT_CONFIG(tooltip)
+        self.updateButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u30c8\u30e9\u30c3\u30af\u66f4\u65b0", None))
+#endif // QT_CONFIG(tooltip)
+        self.updateButton.setText(QCoreApplication.translate("MainWindow", u"update", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Log", None))
+#if QT_CONFIG(tooltip)
+        self.saveButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u30c8\u30e9\u30c3\u30af\u66f4\u65b0", None))
+#endif // QT_CONFIG(tooltip)
+        self.saveButton.setText(QCoreApplication.translate("MainWindow", u"save", None))
+#if QT_CONFIG(tooltip)
+        self.closeButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u9589\u3058\u308b", None))
+#endif // QT_CONFIG(tooltip)
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+    # retranslateUi
 
-from rs.gui.log import LogTextEdit

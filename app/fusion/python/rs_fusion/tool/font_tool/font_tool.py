@@ -1,14 +1,11 @@
 import functools
 import sys
-from functools import partial
-from pathlib import Path
 
-import dataclasses
-from PySide2.QtCore import (
+from PySide6.QtCore import (
     Qt,
     QSize, QEvent,
 )
-from PySide2.QtGui import (
+from PySide6.QtGui import (
     QTextDocument,
     QAbstractTextDocumentLayout,
     QPalette,
@@ -16,16 +13,14 @@ from PySide2.QtGui import (
     QKeyEvent,
     QStandardItemModel,
     QStandardItem,
+    QAction,
 )
-from PySide2.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
     QStyledItemDelegate,
     QTreeWidgetItem,
     QStyle,
-    QDialog,
-    QVBoxLayout,
-    QProgressBar, QAction,
 )
 
 from rs.core import (

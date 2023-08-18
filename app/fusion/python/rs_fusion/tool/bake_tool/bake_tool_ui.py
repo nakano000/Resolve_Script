@@ -1,131 +1,189 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\bake_tool\bake_tool.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\bake_tool\bake_tool.ui' applies.
-#
-# Created: Wed Apr 26 04:40:27 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'bake_tool.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QFormLayout,
+    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
+    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
+    QSpinBox, QToolButton, QTreeView, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(314, 487)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.treeView = QtWidgets.QTreeView(self.centralwidget)
-        self.treeView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.treeView.setObjectName("treeView")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.treeView = QTreeView(self.centralwidget)
+        self.treeView.setObjectName(u"treeView")
+        self.treeView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.treeView.setSelectionMode(QAbstractItemView.ExtendedSelection)
+
         self.verticalLayout_3.addWidget(self.treeView)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.connectedCheckBox = QtWidgets.QCheckBox(self.groupBox_2)
-        self.connectedCheckBox.setObjectName("connectedCheckBox")
+
+        self.groupBox_2 = QGroupBox(self.centralwidget)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.verticalLayout_2 = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.connectedCheckBox = QCheckBox(self.groupBox_2)
+        self.connectedCheckBox.setObjectName(u"connectedCheckBox")
+
         self.horizontalLayout_3.addWidget(self.connectedCheckBox)
-        self.expressionCheckBox = QtWidgets.QCheckBox(self.groupBox_2)
-        self.expressionCheckBox.setObjectName("expressionCheckBox")
+
+        self.expressionCheckBox = QCheckBox(self.groupBox_2)
+        self.expressionCheckBox.setObjectName(u"expressionCheckBox")
+
         self.horizontalLayout_3.addWidget(self.expressionCheckBox)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
+
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+
+
         self.verticalLayout_3.addWidget(self.groupBox_2)
-        self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.formLayout = QtWidgets.QFormLayout()
-        self.formLayout.setObjectName("formLayout")
-        self.label = QtWidgets.QLabel(self.groupBox)
-        self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
-        self.sfSpinBox = QtWidgets.QSpinBox(self.groupBox)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+
+        self.groupBox = QGroupBox(self.centralwidget)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout = QVBoxLayout(self.groupBox)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.formLayout = QFormLayout()
+        self.formLayout.setObjectName(u"formLayout")
+        self.label = QLabel(self.groupBox)
+        self.label.setObjectName(u"label")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.label)
+
+        self.sfSpinBox = QSpinBox(self.groupBox)
+        self.sfSpinBox.setObjectName(u"sfSpinBox")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.sfSpinBox.sizePolicy().hasHeightForWidth())
         self.sfSpinBox.setSizePolicy(sizePolicy)
         self.sfSpinBox.setMinimum(-999999999)
         self.sfSpinBox.setMaximum(999999999)
-        self.sfSpinBox.setObjectName("sfSpinBox")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.sfSpinBox)
-        self.label_2 = QtWidgets.QLabel(self.groupBox)
-        self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.efSpinBox = QtWidgets.QSpinBox(self.groupBox)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.sfSpinBox)
+
+        self.label_2 = QLabel(self.groupBox)
+        self.label_2.setObjectName(u"label_2")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.label_2)
+
+        self.efSpinBox = QSpinBox(self.groupBox)
+        self.efSpinBox.setObjectName(u"efSpinBox")
         sizePolicy.setHeightForWidth(self.efSpinBox.sizePolicy().hasHeightForWidth())
         self.efSpinBox.setSizePolicy(sizePolicy)
         self.efSpinBox.setMinimum(-999999999)
         self.efSpinBox.setMaximum(999999999)
-        self.efSpinBox.setObjectName("efSpinBox")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.efSpinBox)
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.efSpinBox)
+
+
         self.verticalLayout.addLayout(self.formLayout)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.globalRangeButton = QtWidgets.QPushButton(self.groupBox)
-        self.globalRangeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.globalRangeButton.setObjectName("globalRangeButton")
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+        self.globalRangeButton = QPushButton(self.groupBox)
+        self.globalRangeButton.setObjectName(u"globalRangeButton")
+        self.globalRangeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout.addWidget(self.globalRangeButton)
-        self.renderRangeButton = QtWidgets.QPushButton(self.groupBox)
-        self.renderRangeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.renderRangeButton.setObjectName("renderRangeButton")
+
+        self.renderRangeButton = QPushButton(self.groupBox)
+        self.renderRangeButton.setObjectName(u"renderRangeButton")
+        self.renderRangeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout.addWidget(self.renderRangeButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
+
         self.verticalLayout_3.addWidget(self.groupBox)
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.readButton = QtWidgets.QPushButton(self.centralwidget)
-        self.readButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.readButton.setObjectName("readButton")
+
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.readButton = QPushButton(self.centralwidget)
+        self.readButton.setObjectName(u"readButton")
+        self.readButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_4.addWidget(self.readButton)
-        self.bakeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.bakeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.bakeButton.setObjectName("bakeButton")
+
+        self.bakeButton = QPushButton(self.centralwidget)
+        self.bakeButton.setObjectName(u"bakeButton")
+        self.bakeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_4.addWidget(self.bakeButton)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem2)
-        self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
-        self.minimizeButton.setMinimumSize(QtCore.QSize(30, 30))
-        self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)
-        self.minimizeButton.setObjectName("minimizeButton")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer)
+
+        self.minimizeButton = QToolButton(self.centralwidget)
+        self.minimizeButton.setObjectName(u"minimizeButton")
+        self.minimizeButton.setMinimumSize(QSize(30, 30))
+        self.minimizeButton.setArrowType(Qt.DownArrow)
+
         self.horizontalLayout_4.addWidget(self.minimizeButton)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_4.addWidget(self.closeButton)
+
+
         self.verticalLayout_3.addLayout(self.horizontalLayout_4)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "Option", None, -1))
-        self.connectedCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Connected", None, -1))
-        self.expressionCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "Expression", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Range", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Start Frame", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "End Frame", None, -1))
-        self.globalRangeButton.setText(QtWidgets.QApplication.translate("MainWindow", "Global Range", None, -1))
-        self.renderRangeButton.setText(QtWidgets.QApplication.translate("MainWindow", "Render Range", None, -1))
-        self.readButton.setText(QtWidgets.QApplication.translate("MainWindow", "read", None, -1))
-        self.bakeButton.setText(QtWidgets.QApplication.translate("MainWindow", "bake", None, -1))
-        self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
-        self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Option", None))
+        self.connectedCheckBox.setText(QCoreApplication.translate("MainWindow", u"Connected", None))
+        self.expressionCheckBox.setText(QCoreApplication.translate("MainWindow", u"Expression", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Range", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Start Frame", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"End Frame", None))
+        self.globalRangeButton.setText(QCoreApplication.translate("MainWindow", u"Global Range", None))
+        self.renderRangeButton.setText(QCoreApplication.translate("MainWindow", u"Render Range", None))
+        self.readButton.setText(QCoreApplication.translate("MainWindow", u"read", None))
+        self.bakeButton.setText(QCoreApplication.translate("MainWindow", u"bake", None))
+#if QT_CONFIG(tooltip)
+        self.minimizeButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u6700\u5c0f\u5316", None))
+#endif // QT_CONFIG(tooltip)
+        self.minimizeButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+    # retranslateUi
 

@@ -1,55 +1,74 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\path_mapper\path_mapper.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\path_mapper\path_mapper.ui' applies.
-#
-# Created: Mon Mar 13 22:57:57 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'path_mapper.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QApplication, QMainWindow, QPushButton, QSizePolicy,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(98, 120)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.applyButton = QtWidgets.QPushButton(self.centralwidget)
-        self.applyButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.applyButton.setObjectName("applyButton")
-        self.verticalLayout.addWidget(self.applyButton)
-        self.removeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.removeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.removeButton.setObjectName("removeButton")
-        self.verticalLayout.addWidget(self.removeButton)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.closeButton.setObjectName("closeButton")
-        self.verticalLayout.addWidget(self.closeButton)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.actionauto = QtWidgets.QAction(MainWindow)
+        self.actionauto = QAction(MainWindow)
+        self.actionauto.setObjectName(u"actionauto")
         self.actionauto.setCheckable(True)
-        self.actionauto.setObjectName("actionauto")
-        self.actionja = QtWidgets.QAction(MainWindow)
+        self.actionja = QAction(MainWindow)
+        self.actionja.setObjectName(u"actionja")
         self.actionja.setCheckable(True)
-        self.actionja.setObjectName("actionja")
-        self.actionen = QtWidgets.QAction(MainWindow)
+        self.actionen = QAction(MainWindow)
+        self.actionen.setObjectName(u"actionen")
         self.actionen.setCheckable(True)
-        self.actionen.setObjectName("actionen")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.applyButton = QPushButton(self.centralwidget)
+        self.applyButton.setObjectName(u"applyButton")
+        self.applyButton.setMinimumSize(QSize(80, 30))
+
+        self.verticalLayout.addWidget(self.applyButton)
+
+        self.removeButton = QPushButton(self.centralwidget)
+        self.removeButton.setObjectName(u"removeButton")
+        self.removeButton.setMinimumSize(QSize(80, 30))
+
+        self.verticalLayout.addWidget(self.removeButton)
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(80, 30))
+
+        self.verticalLayout.addWidget(self.closeButton)
+
+        MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.applyButton.setText(QtWidgets.QApplication.translate("MainWindow", "適用", None, -1))
-        self.removeButton.setText(QtWidgets.QApplication.translate("MainWindow", "取り除く", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
-        self.actionauto.setText(QtWidgets.QApplication.translate("MainWindow", "auto", None, -1))
-        self.actionja.setText(QtWidgets.QApplication.translate("MainWindow", "ja", None, -1))
-        self.actionen.setText(QtWidgets.QApplication.translate("MainWindow", "en", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.actionauto.setText(QCoreApplication.translate("MainWindow", u"auto", None))
+        self.actionja.setText(QCoreApplication.translate("MainWindow", u"ja", None))
+        self.actionen.setText(QCoreApplication.translate("MainWindow", u"en", None))
+        self.applyButton.setText(QCoreApplication.translate("MainWindow", u"\u9069\u7528", None))
+        self.removeButton.setText(QCoreApplication.translate("MainWindow", u"\u53d6\u308a\u9664\u304f", None))
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+    # retranslateUi
 

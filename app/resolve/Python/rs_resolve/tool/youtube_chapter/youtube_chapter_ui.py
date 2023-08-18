@@ -1,101 +1,150 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\youtube_chapter\youtube_chapter.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\resolve\Python\rs_resolve\tool\youtube_chapter\youtube_chapter.ui' applies.
-#
-# Created: Sat Apr  1 11:55:04 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'youtube_chapter.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QFormLayout,
+    QGroupBox, QHBoxLayout, QLabel, QLayout,
+    QLineEdit, QListView, QMainWindow, QPlainTextEdit,
+    QPushButton, QSizePolicy, QSpacerItem, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(465, 441)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.formLayout = QtWidgets.QFormLayout()
-        self.formLayout.setObjectName("formLayout")
-        self.titleLabel = QtWidgets.QLabel(self.centralwidget)
-        self.titleLabel.setObjectName("titleLabel")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.titleLabel)
-        self.titleLineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.titleLineEdit.setObjectName("titleLineEdit")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.titleLineEdit)
-        self.delimiterLabel = QtWidgets.QLabel(self.centralwidget)
-        self.delimiterLabel.setObjectName("delimiterLabel")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.delimiterLabel)
-        self.delimiterLineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.delimiterLineEdit.setObjectName("delimiterLineEdit")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.delimiterLineEdit)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.formLayout = QFormLayout()
+        self.formLayout.setObjectName(u"formLayout")
+        self.titleLabel = QLabel(self.centralwidget)
+        self.titleLabel.setObjectName(u"titleLabel")
+
+        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.titleLabel)
+
+        self.titleLineEdit = QLineEdit(self.centralwidget)
+        self.titleLineEdit.setObjectName(u"titleLineEdit")
+
+        self.formLayout.setWidget(0, QFormLayout.FieldRole, self.titleLineEdit)
+
+        self.delimiterLabel = QLabel(self.centralwidget)
+        self.delimiterLabel.setObjectName(u"delimiterLabel")
+
+        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.delimiterLabel)
+
+        self.delimiterLineEdit = QLineEdit(self.centralwidget)
+        self.delimiterLineEdit.setObjectName(u"delimiterLineEdit")
+
+        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.delimiterLineEdit)
+
+
         self.verticalLayout_2.addLayout(self.formLayout)
-        self.niconicoCheckBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.niconicoCheckBox.setObjectName("niconicoCheckBox")
+
+        self.niconicoCheckBox = QCheckBox(self.centralwidget)
+        self.niconicoCheckBox.setObjectName(u"niconicoCheckBox")
+
         self.verticalLayout_2.addWidget(self.niconicoCheckBox)
-        self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+
+        self.groupBox = QGroupBox(self.centralwidget)
+        self.groupBox.setObjectName(u"groupBox")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
         self.groupBox.setSizePolicy(sizePolicy)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
+        self.verticalLayout = QVBoxLayout(self.groupBox)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.markerListView = QtWidgets.QListView(self.groupBox)
-        self.markerListView.setBaseSize(QtCore.QSize(0, 0))
-        self.markerListView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.markerListView.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.markerListView.setObjectName("markerListView")
+        self.markerListView = QListView(self.groupBox)
+        self.markerListView.setObjectName(u"markerListView")
+        self.markerListView.setBaseSize(QSize(0, 0))
+        self.markerListView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.markerListView.setSelectionBehavior(QAbstractItemView.SelectRows)
+
         self.verticalLayout.addWidget(self.markerListView)
+
+
         self.verticalLayout_2.addWidget(self.groupBox)
+
+
         self.horizontalLayout_2.addLayout(self.verticalLayout_2)
-        self.chapterPlainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.chapterPlainTextEdit.setObjectName("chapterPlainTextEdit")
+
+        self.chapterPlainTextEdit = QPlainTextEdit(self.centralwidget)
+        self.chapterPlainTextEdit.setObjectName(u"chapterPlainTextEdit")
+
         self.horizontalLayout_2.addWidget(self.chapterPlainTextEdit)
+
         self.horizontalLayout_2.setStretch(0, 1)
         self.horizontalLayout_2.setStretch(1, 2)
+
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.makeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.makeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.makeButton.setObjectName("makeButton")
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+        self.makeButton = QPushButton(self.centralwidget)
+        self.makeButton.setObjectName(u"makeButton")
+        self.makeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout.addWidget(self.makeButton)
-        self.copyButton = QtWidgets.QPushButton(self.centralwidget)
-        self.copyButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.copyButton.setObjectName("copyButton")
+
+        self.copyButton = QPushButton(self.centralwidget)
+        self.copyButton.setObjectName(u"copyButton")
+        self.copyButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout.addWidget(self.copyButton)
-        spacerItem1 = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.horizontalSpacer = QSpacerItem(10, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout.addWidget(self.closeButton)
+
+
         self.verticalLayout_3.addLayout(self.horizontalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.titleLabel.setText(QtWidgets.QApplication.translate("MainWindow", "題名", None, -1))
-        self.delimiterLabel.setText(QtWidgets.QApplication.translate("MainWindow", "区切り文字", None, -1))
-        self.niconicoCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "ニコニコ動画用に#を付ける", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "marker", None, -1))
-        self.makeButton.setText(QtWidgets.QApplication.translate("MainWindow", "生成", None, -1))
-        self.copyButton.setText(QtWidgets.QApplication.translate("MainWindow", "コピー", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.titleLabel.setText(QCoreApplication.translate("MainWindow", u"\u984c\u540d", None))
+        self.delimiterLabel.setText(QCoreApplication.translate("MainWindow", u"\u533a\u5207\u308a\u6587\u5b57", None))
+        self.niconicoCheckBox.setText(QCoreApplication.translate("MainWindow", u"\u30cb\u30b3\u30cb\u30b3\u52d5\u753b\u7528\u306b#\u3092\u4ed8\u3051\u308b", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"marker", None))
+        self.makeButton.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210", None))
+        self.copyButton.setText(QCoreApplication.translate("MainWindow", u"\u30b3\u30d4\u30fc", None))
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+    # retranslateUi
 

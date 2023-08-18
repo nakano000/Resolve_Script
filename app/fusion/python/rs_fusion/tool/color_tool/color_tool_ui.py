@@ -1,146 +1,216 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\color_tool\color_tool.ui',
-# licensing of 'C:\Users\yoshi\PycharmProjects\Resolve_Script\app\fusion\python\rs_fusion\tool\color_tool\color_tool.ui' applies.
-#
-# Created: Tue Feb 14 06:41:48 2023
-#      by: pyside2-uic  running on PySide2 5.12.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'color_tool.ui'
+##
+## Created by: Qt User Interface Compiler version 6.5.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
+    QCursor, QFont, QFontDatabase, QGradient,
+    QIcon, QImage, QKeySequence, QLinearGradient,
+    QPainter, QPalette, QPixmap, QRadialGradient,
+    QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QGroupBox,
+    QHBoxLayout, QHeaderView, QLabel, QMainWindow,
+    QMenu, QMenuBar, QPushButton, QRadioButton,
+    QSizePolicy, QSpacerItem, QToolButton, QVBoxLayout,
+    QWidget)
+
+from rs_fusion.tool.color_tool.color_table import View
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(566, 757)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.actionNew = QAction(MainWindow)
+        self.actionNew.setObjectName(u"actionNew")
+        self.actionOpen = QAction(MainWindow)
+        self.actionOpen.setObjectName(u"actionOpen")
+        self.actionSave = QAction(MainWindow)
+        self.actionSave.setObjectName(u"actionSave")
+        self.actionSave_As = QAction(MainWindow)
+        self.actionSave_As.setObjectName(u"actionSave_As")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.tableView = View(self.centralwidget)
-        self.tableView.setEditTriggers(QtWidgets.QAbstractItemView.DoubleClicked|QtWidgets.QAbstractItemView.EditKeyPressed)
-        self.tableView.setObjectName("tableView")
+        self.tableView.setObjectName(u"tableView")
+        self.tableView.setEditTriggers(QAbstractItemView.DoubleClicked|QAbstractItemView.EditKeyPressed)
+
         self.verticalLayout_2.addWidget(self.tableView)
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(self.groupBox)
-        self.label.setObjectName("label")
+
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.groupBox = QGroupBox(self.centralwidget)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout = QVBoxLayout(self.groupBox)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label = QLabel(self.groupBox)
+        self.label.setObjectName(u"label")
+
         self.horizontalLayout.addWidget(self.label)
-        self.colormindDefButton = QtWidgets.QPushButton(self.groupBox)
-        self.colormindDefButton.setMinimumSize(QtCore.QSize(100, 30))
-        self.colormindDefButton.setObjectName("colormindDefButton")
+
+        self.colormindDefButton = QPushButton(self.groupBox)
+        self.colormindDefButton.setObjectName(u"colormindDefButton")
+        self.colormindDefButton.setMinimumSize(QSize(100, 30))
+
         self.horizontalLayout.addWidget(self.colormindDefButton)
-        self.colormindUiButton = QtWidgets.QPushButton(self.groupBox)
-        self.colormindUiButton.setMinimumSize(QtCore.QSize(100, 30))
-        self.colormindUiButton.setObjectName("colormindUiButton")
+
+        self.colormindUiButton = QPushButton(self.groupBox)
+        self.colormindUiButton.setObjectName(u"colormindUiButton")
+        self.colormindUiButton.setMinimumSize(QSize(100, 30))
+
         self.horizontalLayout.addWidget(self.colormindUiButton)
-        self.useSelectionCheckBox = QtWidgets.QCheckBox(self.groupBox)
-        self.useSelectionCheckBox.setObjectName("useSelectionCheckBox")
+
+        self.useSelectionCheckBox = QCheckBox(self.groupBox)
+        self.useSelectionCheckBox.setObjectName(u"useSelectionCheckBox")
+
         self.horizontalLayout.addWidget(self.useSelectionCheckBox)
-        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.openUrlButton = QtWidgets.QPushButton(self.groupBox)
-        self.openUrlButton.setMinimumSize(QtCore.QSize(0, 30))
-        self.openUrlButton.setObjectName("openUrlButton")
+
+        self.horizontalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+        self.openUrlButton = QPushButton(self.groupBox)
+        self.openUrlButton.setObjectName(u"openUrlButton")
+        self.openUrlButton.setMinimumSize(QSize(0, 30))
+
         self.horizontalLayout.addWidget(self.openUrlButton)
+
+
         self.verticalLayout.addLayout(self.horizontalLayout)
+
+
         self.horizontalLayout_5.addWidget(self.groupBox)
+
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_5)
-        self.groupBox_3 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_3.setObjectName("groupBox_3")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.groupBox_3)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.l2rRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
+
+        self.groupBox_3 = QGroupBox(self.centralwidget)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+        self.horizontalLayout_3 = QHBoxLayout(self.groupBox_3)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.l2rRadioButton = QRadioButton(self.groupBox_3)
+        self.l2rRadioButton.setObjectName(u"l2rRadioButton")
         self.l2rRadioButton.setChecked(True)
-        self.l2rRadioButton.setObjectName("l2rRadioButton")
+
         self.horizontalLayout_3.addWidget(self.l2rRadioButton)
-        self.randomRadioButton = QtWidgets.QRadioButton(self.groupBox_3)
-        self.randomRadioButton.setObjectName("randomRadioButton")
+
+        self.randomRadioButton = QRadioButton(self.groupBox_3)
+        self.randomRadioButton.setObjectName(u"randomRadioButton")
+
         self.horizontalLayout_3.addWidget(self.randomRadioButton)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem1)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_4)
+
+
         self.verticalLayout_2.addWidget(self.groupBox_3)
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setObjectName("label_2")
+
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.label_2 = QLabel(self.centralwidget)
+        self.label_2.setObjectName(u"label_2")
+
         self.horizontalLayout_4.addWidget(self.label_2)
-        self.currentRowButton = QtWidgets.QPushButton(self.centralwidget)
-        self.currentRowButton.setMinimumSize(QtCore.QSize(100, 30))
-        self.currentRowButton.setObjectName("currentRowButton")
+
+        self.currentRowButton = QPushButton(self.centralwidget)
+        self.currentRowButton.setObjectName(u"currentRowButton")
+        self.currentRowButton.setMinimumSize(QSize(100, 30))
+
         self.horizontalLayout_4.addWidget(self.currentRowButton)
-        self.selectedButton = QtWidgets.QPushButton(self.centralwidget)
-        self.selectedButton.setMinimumSize(QtCore.QSize(100, 30))
-        self.selectedButton.setObjectName("selectedButton")
+
+        self.selectedButton = QPushButton(self.centralwidget)
+        self.selectedButton.setObjectName(u"selectedButton")
+        self.selectedButton.setMinimumSize(QSize(100, 30))
+
         self.horizontalLayout_4.addWidget(self.selectedButton)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem2)
-        self.minimizeButton = QtWidgets.QToolButton(self.centralwidget)
-        self.minimizeButton.setMinimumSize(QtCore.QSize(30, 30))
-        self.minimizeButton.setArrowType(QtCore.Qt.DownArrow)
-        self.minimizeButton.setObjectName("minimizeButton")
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer)
+
+        self.minimizeButton = QToolButton(self.centralwidget)
+        self.minimizeButton.setObjectName(u"minimizeButton")
+        self.minimizeButton.setMinimumSize(QSize(30, 30))
+        self.minimizeButton.setArrowType(Qt.DownArrow)
+
         self.horizontalLayout_4.addWidget(self.minimizeButton)
-        self.closeButton = QtWidgets.QPushButton(self.centralwidget)
-        self.closeButton.setMinimumSize(QtCore.QSize(80, 30))
-        self.closeButton.setObjectName("closeButton")
+
+        self.closeButton = QPushButton(self.centralwidget)
+        self.closeButton.setObjectName(u"closeButton")
+        self.closeButton.setMinimumSize(QSize(80, 30))
+
         self.horizontalLayout_4.addWidget(self.closeButton)
+
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 566, 21))
-        self.menubar.setObjectName("menubar")
-        self.menuFile = QtWidgets.QMenu(self.menubar)
-        self.menuFile.setObjectName("menuFile")
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 566, 22))
+        self.menuFile = QMenu(self.menubar)
+        self.menuFile.setObjectName(u"menuFile")
         MainWindow.setMenuBar(self.menubar)
-        self.actionNew = QtWidgets.QAction(MainWindow)
-        self.actionNew.setObjectName("actionNew")
-        self.actionOpen = QtWidgets.QAction(MainWindow)
-        self.actionOpen.setObjectName("actionOpen")
-        self.actionSave = QtWidgets.QAction(MainWindow)
-        self.actionSave.setObjectName("actionSave")
-        self.actionSave_As = QtWidgets.QAction(MainWindow)
-        self.actionSave_As.setObjectName("actionSave_As")
+
+        self.menubar.addAction(self.menuFile.menuAction())
         self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
-        self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Colormind", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "Add:", None, -1))
-        self.colormindDefButton.setText(QtWidgets.QApplication.translate("MainWindow", "model: default", None, -1))
-        self.colormindUiButton.setText(QtWidgets.QApplication.translate("MainWindow", "model: ui", None, -1))
-        self.useSelectionCheckBox.setText(QtWidgets.QApplication.translate("MainWindow", "use selection", None, -1))
-        self.openUrlButton.setText(QtWidgets.QApplication.translate("MainWindow", "website", None, -1))
-        self.groupBox_3.setTitle(QtWidgets.QApplication.translate("MainWindow", "Oder", None, -1))
-        self.l2rRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "LtoR", None, -1))
-        self.randomRadioButton.setText(QtWidgets.QApplication.translate("MainWindow", "random", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "Apply:", None, -1))
-        self.currentRowButton.setText(QtWidgets.QApplication.translate("MainWindow", "current row", None, -1))
-        self.selectedButton.setText(QtWidgets.QApplication.translate("MainWindow", "selected", None, -1))
-        self.minimizeButton.setToolTip(QtWidgets.QApplication.translate("MainWindow", "最小化", None, -1))
-        self.minimizeButton.setText(QtWidgets.QApplication.translate("MainWindow", "...", None, -1))
-        self.closeButton.setText(QtWidgets.QApplication.translate("MainWindow", "close", None, -1))
-        self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
-        self.actionNew.setText(QtWidgets.QApplication.translate("MainWindow", "New", None, -1))
-        self.actionNew.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+N", None, -1))
-        self.actionOpen.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
-        self.actionOpen.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+O", None, -1))
-        self.actionSave.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
-        self.actionSave.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+S", None, -1))
-        self.actionSave_As.setText(QtWidgets.QApplication.translate("MainWindow", "Save As", None, -1))
-        self.actionSave_As.setShortcut(QtWidgets.QApplication.translate("MainWindow", "Ctrl+Shift+S", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.actionNew.setText(QCoreApplication.translate("MainWindow", u"New", None))
+#if QT_CONFIG(shortcut)
+        self.actionNew.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+N", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionOpen.setText(QCoreApplication.translate("MainWindow", u"Open", None))
+#if QT_CONFIG(shortcut)
+        self.actionOpen.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+O", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionSave.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+#if QT_CONFIG(shortcut)
+        self.actionSave.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+S", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionSave_As.setText(QCoreApplication.translate("MainWindow", u"Save As", None))
+#if QT_CONFIG(shortcut)
+        self.actionSave_As.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Shift+S", None))
+#endif // QT_CONFIG(shortcut)
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Colormind", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Add:", None))
+        self.colormindDefButton.setText(QCoreApplication.translate("MainWindow", u"model: default", None))
+        self.colormindUiButton.setText(QCoreApplication.translate("MainWindow", u"model: ui", None))
+        self.useSelectionCheckBox.setText(QCoreApplication.translate("MainWindow", u"use selection", None))
+        self.openUrlButton.setText(QCoreApplication.translate("MainWindow", u"website", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Oder", None))
+        self.l2rRadioButton.setText(QCoreApplication.translate("MainWindow", u"LtoR", None))
+        self.randomRadioButton.setText(QCoreApplication.translate("MainWindow", u"random", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Apply:", None))
+        self.currentRowButton.setText(QCoreApplication.translate("MainWindow", u"current row", None))
+        self.selectedButton.setText(QCoreApplication.translate("MainWindow", u"selected", None))
+#if QT_CONFIG(tooltip)
+        self.minimizeButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u6700\u5c0f\u5316", None))
+#endif // QT_CONFIG(tooltip)
+        self.minimizeButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
+        self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
+    # retranslateUi
 
-from rs_fusion.tool.color_tool.color_table import View
