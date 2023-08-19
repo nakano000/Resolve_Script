@@ -119,12 +119,11 @@ class MainWindow(QMainWindow):
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
 
-        self.anim_setting: str = config.ROOT_PATH.joinpath(
-            'data', 'app', 'VoiceDropper', 'setting_base.txt'
-        ).read_text(encoding='utf-8')
-        self.anim_setting_mm: str = config.ROOT_PATH.joinpath(
-            'data', 'app', 'VoiceDropper', 'setting_aiueo_mm.txt'
-        ).read_text(encoding='utf-8')
+        data_dir: Path = config.DATA_PATH.joinpath('app', 'VoiceDropper')
+        self.text_plus_dir_name: str = '__RS_TextPlus_FPS__'
+        self.text_plus_drb: Path = data_dir.joinpath(self.text_plus_dir_name + '.drb')
+        self.anim_setting: str = data_dir.joinpath('setting_base.txt').read_text(encoding='utf-8')
+        self.anim_setting_mm: str = data_dir.joinpath('setting_aiueo_mm.txt').read_text(encoding='utf-8')
 
         # window
         self.chara_window = CharaWindow(self)
@@ -214,10 +213,25 @@ class MainWindow(QMainWindow):
             return
         media_pool = project.GetMediaPool()
         root_folder = media_pool.GetRootFolder()
+        # store current folder
+        current_folder = media_pool.GetCurrentFolder()
+        # make folder
+        dropper_folder = None
         for folder in root_folder.GetSubFolderList():
             if folder.GetName() == 'VoiceDropper':
+                dropper_folder = folder
+                break
+        if dropper_folder is None:
+            dropper_folder = media_pool.AddSubFolder(root_folder, 'VoiceDropper')
+        # import text+
+        for folder in dropper_folder.GetSubFolderList():
+            if folder.GetName() == self.text_plus_dir_name:
                 return
-        media_pool.AddSubFolder(root_folder, 'VoiceDropper')
+
+        media_pool.SetCurrentFolder(dropper_folder)
+        media_pool.ImportFolderFromFile(str(self.text_plus_drb))
+        # restore current folder
+        media_pool.SetCurrentFolder(current_folder)
 
     def directory_changed(self, created_lst):
         use_watchdog = self.__observer.is_alive()
@@ -359,26 +373,43 @@ class MainWindow(QMainWindow):
         if timeline is None:
             self.add2log('Timelineが見付かりません。', log.ERROR_COLOR)
             return
+        fps = get_fps(timeline)
 
         root_folder = media_pool.GetRootFolder()
         dropper_folder = None
+        text_plus_folder = None
         voice_folder = None
         for folder in root_folder.GetSubFolderList():
             if folder.GetName() == 'VoiceDropper':
                 dropper_folder = folder
             if folder.GetName() == 'Voice':
                 voice_folder = folder
+        if dropper_folder is not None:
+            for folder in dropper_folder.GetSubFolderList():
+                if folder.GetName() == self.text_plus_dir_name:
+                    text_plus_folder = folder
+                    break
         if voice_folder is None:
             voice_folder = media_pool.AddSubFolder(root_folder, "Voice")
         media_pool.SetCurrentFolder(voice_folder)
 
-        if dropper_folder is None:
-            self.add2log('MediaPool VoiceDropperフォルダにtext+が見付かりません。', log.ERROR_COLOR)
+        if dropper_folder is None or text_plus_folder is None:
+            self.add2log(f'MediaPoolにVoiceDropper/{self.text_plus_dir_name}フォルダ見付かりません。', log.ERROR_COLOR)
             return
-        if len(dropper_folder.GetClipList()) == 0:
-            self.add2log('MediaPool VoiceDropperフォルダにtext+が見付かりません。', log.ERROR_COLOR)
+
+        text_template = None
+        for clip in text_plus_folder.GetClipList():
+            if clip.GetClipProperty('Clip Name') == f'TextPlus{fps}FPS':
+                text_template = clip
+                break
+
+        if text_template is None:
+            self.add2log(
+                f'MediaPoolにVoiceDropper/{self.text_plus_dir_name}/TextPlus{fps}FPSが見付かりません。',
+                log.ERROR_COLOR,
+            )
             return
-        text_template = dropper_folder.GetClipList()[0]
+        self.add2log('Use %s' % text_template.GetClipProperty('Clip Name'))
 
         # get data
         data = self.get_data()
@@ -636,7 +667,6 @@ class MainWindow(QMainWindow):
         comp.Unlock()
         comp.EndUndo(True)
         self.add2log('Apply Anim: Done')
-
 
     def set_anim_mm_o(self, comp, f, fps):
         self.add2log('Load Anim(open, <MultiMerge>): Start')
