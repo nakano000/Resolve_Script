@@ -48,7 +48,9 @@ class ConfigData(config.Data):
     height: int = 1080
 
 
-def uc_button(node_a, node_b, page, layer_name, width, hide_list: list = []):
+def uc_button(node_a, node_b, page, layer_name, width, hide_list=None) -> dict:
+    if hide_list is None:
+        hide_list = []
     inp = node_a.FindMainInput(1)
     if node_b is None:
         lua = [
@@ -148,9 +150,9 @@ class MainWindow(QMainWindow):
             r = QMessageBox.warning(
                 self,
                 f'Warning:  {str(d)}', f'ディレクトリが見つかりません。\n{str(d)}\n作成しますか？',
-                QMessageBox.Yes | QMessageBox.No
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
             )
-            if r == QMessageBox.Yes:
+            if r == QMessageBox.StandardButton.Yes:
                 d.mkdir(parents=True, exist_ok=True)
             else:
                 return

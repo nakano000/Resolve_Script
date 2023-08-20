@@ -97,8 +97,8 @@ class MainWindow(QMainWindow):
         # table
         v = self.ui.wavTableView
         h = v.horizontalHeader()
-        h.setSectionResizeMode(0, QHeaderView.Stretch)
-        h.setSectionResizeMode(1, QHeaderView.Stretch)
+        h.setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        h.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
 
         # button
         self.ui.syncButton.setStyleSheet(appearance.ex_stylesheet)

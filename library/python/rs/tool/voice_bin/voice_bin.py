@@ -112,7 +112,7 @@ class Form(QWidget):
         # tree view
         for v in [self.ui.treeView, self.ui.wavTreeView]:
             model = QFileSystemModel()
-            model.setOption(QFileSystemModel.DontWatchForChanges)
+            model.setOption(QFileSystemModel.Option.DontWatchForChanges)
             model.setFilter(QDir.Files)
             model.setNameFilterDisables(False)
             v.setModel(model)
@@ -126,10 +126,10 @@ class Form(QWidget):
             # header
             h = v.header()
             h.setStretchLastSection(False)
-            h.setSectionResizeMode(0, QHeaderView.Stretch)
-            h.setSectionResizeMode(1, QHeaderView.ResizeToContents)
-            h.setSectionResizeMode(2, QHeaderView.ResizeToContents)
-            h.setSectionResizeMode(3, QHeaderView.ResizeToContents)
+            h.setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+            h.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+            h.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+            h.setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
             h.setSortIndicator(3, Qt.SortOrder.DescendingOrder)
         self.ui.treeView.model().setNameFilters(['*.wav', '*.srt'])
         self.ui.wavTreeView.model().setNameFilters(['*.wav'])
@@ -280,7 +280,8 @@ class Form(QWidget):
         if path != '':
             w.setText(path)
 
-    def new_config(self):
+    @staticmethod
+    def new_config():
         return ConfigData()
 
     def set_data(self, c: ConfigData):

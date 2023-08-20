@@ -74,9 +74,9 @@ class ItemDelegate(QStyledItemDelegate):
         elif index.column() in [7, 8]:
             editor = QFileDialog(parent)
             editor.setWindowTitle('ファイル選択')
-            editor.setFileMode(QFileDialog.ExistingFile)
-            editor.setAcceptMode(QFileDialog.AcceptOpen)
-            editor.setOptions(QFileDialog.DontUseNativeDialog)
+            editor.setFileMode(QFileDialog.FileMode.ExistingFile)
+            editor.setAcceptMode(QFileDialog.AcceptMode.AcceptOpen)
+            editor.setOptions(QFileDialog.Option.DontUseNativeDialog)
             if index.column() == 7:
                 editor.setNameFilter('JSON File (*.json)')
             else:
@@ -161,14 +161,14 @@ class MainWindow(QMainWindow):
         v.setItemDelegate(ItemDelegate(self))
 
         hh = v.horizontalHeader()
-        hh.setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        hh.setSectionResizeMode(2, QHeaderView.ResizeToContents)
-        hh.setSectionResizeMode(3, QHeaderView.ResizeToContents)
-        hh.setSectionResizeMode(4, QHeaderView.ResizeToContents)
-        hh.setSectionResizeMode(5, QHeaderView.ResizeToContents)
-        hh.setSectionResizeMode(6, QHeaderView.ResizeToContents)
-        hh.setSectionResizeMode(7, QHeaderView.ResizeToContents)
-        hh.setSectionResizeMode(8, QHeaderView.Stretch)
+        hh.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        hh.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+        hh.setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
+        hh.setSectionResizeMode(4, QHeaderView.ResizeMode.ResizeToContents)
+        hh.setSectionResizeMode(5, QHeaderView.ResizeMode.ResizeToContents)
+        hh.setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
+        hh.setSectionResizeMode(7, QHeaderView.ResizeMode.ResizeToContents)
+        hh.setSectionResizeMode(8, QHeaderView.ResizeMode.Stretch)
 
         v.setContextMenuPolicy(Qt.CustomContextMenu)
         v.customContextMenuRequested.connect(self.contextMenu)

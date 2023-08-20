@@ -55,7 +55,7 @@ class ItemDelegate(QStyledItemDelegate):
             painter.setPen(bgPen)
             painter.setBrush(bgBrush)
             rect = option.rect
-            if option.state & QStyle.State_Selected:
+            if option.state & QStyle.StateFlag.State_Selected:
                 rect.setX(rect.x() + 1)
                 rect.setY(rect.y() + 1)
                 rect.setWidth(rect.width() - 2)

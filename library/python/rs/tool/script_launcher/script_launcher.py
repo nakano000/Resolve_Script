@@ -76,10 +76,10 @@ class MainWindow(QWidget):
             # header
             h = v.header()
             h.setStretchLastSection(False)
-            h.setSectionResizeMode(0, QHeaderView.Stretch)
-            h.setSectionResizeMode(1, QHeaderView.ResizeToContents)
-            h.setSectionResizeMode(2, QHeaderView.ResizeToContents)
-            h.setSectionResizeMode(3, QHeaderView.ResizeToContents)
+            h.setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+            h.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+            h.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+            h.setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
             # h.setSortIndicator(0, Qt.SortOrder.DescendingOrder)
 
         # watcher

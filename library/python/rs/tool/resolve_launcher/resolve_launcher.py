@@ -150,7 +150,8 @@ class MainWindow(QMainWindow):
         if path != '':
             w.setText(path)
 
-    def new_config(self):
+    @staticmethod
+    def new_config():
         return ConfigData()
 
     def set_data(self, c: ConfigData):

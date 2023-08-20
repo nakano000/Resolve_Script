@@ -39,9 +39,9 @@ class Form(QWidget):
         self.ui.frame.setHidden(self._collapse)
 
         if self._collapse:
-            self.ui.toolButton.setArrowType(QtCore.Qt.RightArrow)
+            self.ui.toolButton.setArrowType(QtCore.Qt.ArrowType.RightArrow)
         else:
-            self.ui.toolButton.setArrowType(QtCore.Qt.DownArrow)
+            self.ui.toolButton.setArrowType(QtCore.Qt.ArrowType.DownArrow)
 
     def toggleCollapse(self):
         self.setCollapse(not self._collapse)
@@ -49,8 +49,8 @@ class Form(QWidget):
     def layout(self):
         return self.ui.frame.layout()
 
-    def setLayout(self, l):
-        self.ui.frame.setLayout(l)
+    def setLayout(self, lo):
+        self.ui.frame.setLayout(lo)
 
 
 if __name__ == "__main__":

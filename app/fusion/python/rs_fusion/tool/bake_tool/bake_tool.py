@@ -192,7 +192,6 @@ class MainWindow(QMainWindow):
     def show(self) -> None:
         super().show()
         self.ui.treeView.setModel(QStandardItemModel())
-        self.tool_name = None
 
 
 def run(fusion) -> None:

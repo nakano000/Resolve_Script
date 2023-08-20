@@ -111,8 +111,8 @@ class MainWindow(QMainWindow):
         c = self.get_data()
         c.save(self.config_file)
 
-    def open(self, is_template=False) -> None:
-        dir_path = str(self.template_dir) if is_template else self.ui.dstLineEdit.text().strip()
+    def open(self) -> None:
+        dir_path = self.ui.dstLineEdit.text().strip()
         path, _ = QFileDialog.getOpenFileName(
             self,
             'Open File',

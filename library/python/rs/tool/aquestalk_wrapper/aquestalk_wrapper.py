@@ -78,6 +78,7 @@ class ItemDelegate(QStyledItemDelegate):
 
     def setEditorData(self, editor, index):
         if index.column() in (1, 2):
+            editor: QPlainTextEdit
             value = index.model().data(index, Qt.DisplayRole)
             editor.clear()
             editor.insertPlainText(value)
@@ -147,12 +148,12 @@ class MainWindow(QMainWindow):
         self.undo_stack = v.model().undo_stack
 
         h = v.horizontalHeader()
-        h.setSectionResizeMode(1, QHeaderView.Stretch)
-        h.setSectionResizeMode(2, QHeaderView.Stretch)
+        h.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        h.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
         vh = v.verticalHeader()
         vh.setMinimumWidth(40)
         vh.setMinimumSectionSize(55)
-        vh.setSectionResizeMode(QHeaderView.ResizeToContents)
+        vh.setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         vh.setDefaultAlignment(Qt.AlignCenter)
 
         v.setContextMenuPolicy(Qt.CustomContextMenu)

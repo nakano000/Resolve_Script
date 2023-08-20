@@ -1,14 +1,11 @@
 import subprocess
 import time
-from pathlib import Path
 from typing import List
 
 from PySide6.QtCore import (
     QObject,
     Signal,
 )
-
-from rs.core import util
 
 
 class Player(QObject):

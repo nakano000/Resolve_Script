@@ -55,14 +55,14 @@ class ItemDelegate(QStyledItemDelegate):
 
             option.text = ''
             style = QApplication.style()
-            style.drawControl(QStyle.CE_ItemViewItem, option, painter)
+            style.drawControl(QStyle.ControlElement.CE_ItemViewItem, option, painter)
 
             painter.save()
-            rect = style.subElementRect(QStyle.SE_ItemViewItemText, option)
+            rect = style.subElementRect(QStyle.SubElement.SE_ItemViewItemText, option)
             painter.translate(rect.topLeft())
             painter.setClipRect(rect.translated(-rect.topLeft()))
             context = QAbstractTextDocumentLayout.PaintContext()
-            if option.state & QStyle.State_Selected:
+            if option.state & QStyle.StateFlag.State_Selected:
                 context.palette.setColor(
                     QPalette.Text, option.palette.color(QPalette.Active, QPalette.HighlightedText))
             self.doc.documentLayout().draw(painter, context)

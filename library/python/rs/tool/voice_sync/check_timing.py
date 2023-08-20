@@ -73,9 +73,9 @@ class MainWindow(QMainWindow):
         v = self.ui.tableView
         v.setModel(Model(Data))
         h = v.horizontalHeader()
-        h.setSectionResizeMode(0, QHeaderView.Stretch)
-        h.setSectionResizeMode(1, QHeaderView.Stretch)
-        h.setSectionResizeMode(2, QHeaderView.Stretch)
+        h.setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        h.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        h.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
 
     def set_data(self, data_list: list) -> None:
         self.ui.tableView.model().set_data(
