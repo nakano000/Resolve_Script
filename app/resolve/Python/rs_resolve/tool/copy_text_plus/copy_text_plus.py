@@ -83,22 +83,15 @@ class MainWindow(QMainWindow):
         self.update_track()
         self.ui.closeButton.setFocus()
 
-    def get_text_plus(self, item):
+    @staticmethod
+    def get_text_plus(item):
         if item.GetFusionCompCount() == 0:
-            print(
-                'FusionComp not found.'
-                if self.lang_code == lang.Code.en else
-                'FusionCompが見付かりません。'
-            )
+            print('FusionComp not found.')
             return
         comp = item.GetFusionCompByIndex(1)
         lst = comp.GetToolList(False, 'TextPlus')
         if not lst[1]:
-            print(
-                'TextPlus Node not found.'
-                if self.lang_code == lang.Code.en else
-                'TextPlus Nodeが見付かりません。'
-            )
+            print('TextPlus Node not found.')
             return
         return lst[1]
 
@@ -225,6 +218,7 @@ class MainWindow(QMainWindow):
             self.ui.plainTextEdit.toPlainText(),
             encoding='utf-8',
         )
+
 
 def run(fusion) -> None:
     app = QApplication(sys.argv)
