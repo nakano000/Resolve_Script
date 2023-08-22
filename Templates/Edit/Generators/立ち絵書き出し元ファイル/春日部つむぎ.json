@@ -1278,6 +1278,16 @@
     {
       "node": "EyeAnim",
       "page": "目パチ",
+      "id": "Offset",
+      "name": "Offset",
+      "control_group": 0,
+      "option01": "",
+      "option02": "",
+      "option03": ""
+    },
+    {
+      "node": "EyeAnim",
+      "page": "目パチ",
       "id": "Make",
       "name": "Make Anim",
       "control_group": 0,

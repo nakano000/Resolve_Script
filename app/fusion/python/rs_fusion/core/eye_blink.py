@@ -48,7 +48,7 @@ def apply(comp, length: int, close_length: int):
     comp.Unlock()
 
 
-def apply_mm(comp, length: int, close_length: int):
+def apply_mm(comp, length: int, close_length: int, offset: int = 0):
     tool = comp.FindTool('EyeAnim')
     if tool is None:
         return
@@ -76,9 +76,9 @@ def apply_mm(comp, length: int, close_length: int):
             CtrlWZoom = false,
             NameSet = true,
             KeyFrames = {
-                [0] = { 1, RH = { %d, 0 }, Flags = { Linear = true, Loop = true, PreLoop = true } },
-                [%d] = { 0, LH = { %d, 0.666666666666667 }, RH = { %d, 1 }, Flags = { StepIn = true } },
-                [%d] = { 1, LH = { %d, 0.333333333333333 }, Flags = { StepIn = true, Loop = true, PreLoop = true } }
+                [%d] = { 1, Flags = { Linear = true, Loop = true, PreLoop = true } },
+                [%d] = { 0, Flags = { StepIn = true } },
+                [%d] = { 1, Flags = { StepIn = true, Loop = true, PreLoop = true } }
             }
         },
         EyeAnimLayerEnabled2 = BezierSpline {
@@ -86,21 +86,21 @@ def apply_mm(comp, length: int, close_length: int):
             CtrlWZoom = false,
             NameSet = true,
             KeyFrames = {
-                [0] = { 0, RH = { %d, 0 }, Flags = { Linear = true, Loop = true, PreLoop = true } },
-                [%d] = { 1, LH = { %d, 0.666666666666667 }, RH = { %d, 1 }, Flags = { StepIn = true } },
-                [%d] = { 0, LH = { %d, 0.333333333333333 }, Flags = { StepIn = true, Loop = true, PreLoop = true } }
+                [%d] = { 0, Flags = { Linear = true, Loop = true, PreLoop = true } },
+                [%d] = { 1, Flags = { StepIn = true } },
+                [%d] = { 0, Flags = { StepIn = true, Loop = true, PreLoop = true } }
             }
         }
     },
     ActiveTool = "EyeAnim"
 }
 ''' % (
-        close_frame / 3.0,
-        close_frame, close_frame, close_frame + (close_length / 3.0),
-        length, length,
-        close_frame / 3.0,
-        close_frame, close_frame, close_frame + (close_length / 3.0),
-        length, length,
+        offset,
+        offset + close_frame,
+        offset + length,
+        offset,
+        offset + close_frame,
+        offset + length,
     )
     st = ordered_dict_to_dict(bmd.readstring(text))
 

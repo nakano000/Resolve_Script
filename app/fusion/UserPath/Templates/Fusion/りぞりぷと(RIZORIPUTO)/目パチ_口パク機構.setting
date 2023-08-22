@@ -1,5 +1,372 @@
 {
 	Tools = ordered() {
+		MouthScale = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			Inputs = {
+				Pivot = Input { Value = { 0.460079669291306, 0.690525920907883 }, },
+				Input = Input {
+					SourceOp = "MouthBase",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 110, -412.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+		},
+		Instance_MouthScale = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			SourceOp = "MouthScale",
+			Inputs = {
+				EffectMask = Input { },
+				SettingsNest = Input { },
+				TransformNest = Input { },
+				ReferenceSize = Input { },
+				Input = Input {
+					SourceOp = "N",
+					Source = "Output",
+				},
+				CommentsNest = Input { },
+				FrameRenderScriptNest = Input { },
+				StartRenderScripts = Input { },
+				EndRenderScripts = Input { },
+			},
+			ViewInfo = OperatorInfo { Pos = { 0, -412.5 } },
+		},
+		MouthAnim = MultiMerge {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				},
+			},
+			Inputs = {
+				LayerOrder = Input { Value = ScriptVal { {
+							[0] = 1,
+							2,
+							3,
+							4,
+							5,
+							6,
+							7
+						} }, },
+				Background = Input {
+					SourceOp = "Body",
+					Source = "Output",
+				},
+				["Layer1.Foreground"] = Input {
+					SourceOp = "MouthScale",
+					Source = "Output",
+				},
+				LayerName1 = Input { Value = "MouthBase", },
+				["Layer2.Foreground"] = Input {
+					SourceOp = "Instance_MouthScale",
+					Source = "Output",
+				},
+				LayerName2 = Input { Value = "N", },
+				LayerEnabled2 = Input { Value = 0, },
+				["Layer3.Foreground"] = Input {
+					SourceOp = "Instance_MouthScale_1",
+					Source = "Output",
+				},
+				LayerName3 = Input { Value = "A", },
+				LayerEnabled3 = Input { Value = 0, },
+				["Layer4.Foreground"] = Input {
+					SourceOp = "Instance_MouthScale_2",
+					Source = "Output",
+				},
+				LayerName4 = Input { Value = "I", },
+				LayerEnabled4 = Input { Value = 0, },
+				["Layer5.Foreground"] = Input {
+					SourceOp = "Instance_MouthScale_3",
+					Source = "Output",
+				},
+				LayerName5 = Input { Value = "U", },
+				LayerEnabled5 = Input { Value = 0, },
+				["Layer6.Foreground"] = Input {
+					SourceOp = "Instance_MouthScale_4",
+					Source = "Output",
+				},
+				LayerName6 = Input { Value = "E", },
+				LayerEnabled6 = Input { Value = 0, },
+				["Layer7.Foreground"] = Input {
+					SourceOp = "Instance_MouthScale_5",
+					Source = "Output",
+				},
+				LayerName7 = Input { Value = "O", },
+				LayerEnabled7 = Input { Value = 0, },
+			},
+			ViewInfo = OperatorInfo { Pos = { -110, -280.5 } },
+			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
+		},
+		Instance_MouthScale_1 = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			SourceOp = "MouthScale",
+			Inputs = {
+				EffectMask = Input { },
+				SettingsNest = Input { },
+				TransformNest = Input { },
+				ReferenceSize = Input { },
+				Input = Input {
+					SourceOp = "A",
+					Source = "Output",
+				},
+				CommentsNest = Input { },
+				FrameRenderScriptNest = Input { },
+				StartRenderScripts = Input { },
+				EndRenderScripts = Input { },
+			},
+			ViewInfo = OperatorInfo { Pos = { -110, -412.5 } },
+		},
+		Instance_MouthScale_2 = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			SourceOp = "MouthScale",
+			Inputs = {
+				EffectMask = Input { },
+				SettingsNest = Input { },
+				TransformNest = Input { },
+				ReferenceSize = Input { },
+				Input = Input {
+					SourceOp = "I",
+					Source = "Output",
+				},
+				CommentsNest = Input { },
+				FrameRenderScriptNest = Input { },
+				StartRenderScripts = Input { },
+				EndRenderScripts = Input { },
+			},
+			ViewInfo = OperatorInfo { Pos = { -220, -412.5 } },
+		},
+		Instance_MouthScale_3 = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			SourceOp = "MouthScale",
+			Inputs = {
+				EffectMask = Input { },
+				SettingsNest = Input { },
+				TransformNest = Input { },
+				ReferenceSize = Input { },
+				Input = Input {
+					SourceOp = "U",
+					Source = "Output",
+				},
+				CommentsNest = Input { },
+				FrameRenderScriptNest = Input { },
+				StartRenderScripts = Input { },
+				EndRenderScripts = Input { },
+			},
+			ViewInfo = OperatorInfo { Pos = { -330, -412.5 } },
+		},
+		Instance_MouthScale_4 = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			SourceOp = "MouthScale",
+			Inputs = {
+				EffectMask = Input { },
+				SettingsNest = Input { },
+				TransformNest = Input { },
+				ReferenceSize = Input { },
+				Input = Input {
+					SourceOp = "E",
+					Source = "Output",
+				},
+				CommentsNest = Input { },
+				FrameRenderScriptNest = Input { },
+				StartRenderScripts = Input { },
+				EndRenderScripts = Input { },
+			},
+			ViewInfo = OperatorInfo { Pos = { -440, -412.5 } },
+		},
+		Instance_MouthScale_5 = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			SourceOp = "MouthScale",
+			Inputs = {
+				EffectMask = Input { },
+				SettingsNest = Input { },
+				TransformNest = Input { },
+				ReferenceSize = Input { },
+				Input = Input {
+					SourceOp = "O",
+					Source = "Output",
+				},
+				CommentsNest = Input { },
+				FrameRenderScriptNest = Input { },
+				StartRenderScripts = Input { },
+				EndRenderScripts = Input { },
+			},
+			ViewInfo = OperatorInfo { Pos = { -550, -412.5 } },
+		},
+		Body = Transform {
+			Locked = true,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			Inputs = {
+				FlattenTransform = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { -550, -280.5 } },
+			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+		},
+		Closed = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 385, -676.5 } },
+		},
+		EyeBase = Transform {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			Inputs = {
+				FlattenTransform = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 550, -676.5 } },
+			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+		},
+		A = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { -110, -676.5 } },
+		},
+		I = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { -220, -676.5 } },
+		},
+		MouthBase = Transform {
+			Locked = true,
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			Inputs = {
+				FlattenTransform = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 110, -676.5 } },
+			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
+		},
+		U = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { -330, -676.5 } },
+		},
+		N = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 0, -676.5 } },
+		},
+		E = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { -440, -676.5 } },
+		},
+		O = Fuse.Wireless {
+			NameSet = true,
+			CustomData = {
+				Path = {
+					Map = {
+						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
+					}
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { -550, -676.5 } },
+		},
 		EyeAnim = MultiMerge {
 			CtrlWZoom = false,
 			NameSet = true,
@@ -38,7 +405,7 @@
 					Source = "Value",
 				},
 			},
-			ViewInfo = OperatorInfo { Pos = { 13805, 115.5 } },
+			ViewInfo = OperatorInfo { Pos = { 550, -280.5 } },
 			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, },
 			UserControls = ordered() {
 				Blink = {
@@ -67,11 +434,22 @@
 					ICS_ControlPage = "目パチ",
 					LINKS_Name = "Close",
 				},
+				Offset = {
+					INP_Integer = true,
+					ICS_ControlPage = "目パチ",
+					INP_MaxScale = 100,
+					INP_Default = 0,
+					INP_MinScale = 0,
+					INP_External = false,
+					LINKID_DataType = "Number",
+					INPID_InputControl = "SliderControl",
+					LINKS_Name = "Offset"
+				},
 				Make = {
 					ICD_Width = 0.5,
 					INP_Integer = false,
 					LINKID_DataType = "Number",
-					BTNCS_Execute = "local tool = comp:FindTool('EyeAnim')\ncomp:Execute('!Py3: from rs_fusion.core.eye_blink import apply_mm;apply_mm(comp,' .. tostring(tool:GetInput('Blink')) .. ','  .. tostring(tool:GetInput('Close')) .. ')')\n",
+					BTNCS_Execute = "local tool = comp:FindTool('EyeAnim')\ncomp:Execute('!Py3: from rs_fusion.core.eye_blink import apply_mm;apply_mm(comp,' .. tostring(tool:GetInput('Blink')) .. ','  .. tostring(tool:GetInput('Close')) .. ','  .. tostring(tool:GetInput('Offset')) .. ')')\n",
 					ICS_ControlPage = "目パチ",
 					INPID_InputControl = "ButtonControl",
 					LINKS_Name = "Make Anim",
@@ -138,373 +516,6 @@
 				[123] = { 1, LH = { 123, 0.666666666666667 }, RH = { 124, 1 }, Flags = { StepIn = true } },
 				[127] = { 0, LH = { 127, 0.333333333333333 }, Flags = { StepIn = true, Loop = true, PreLoop = true } }
 			}
-		},
-		MouthScale = Transform {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			Inputs = {
-				Pivot = Input { Value = { 0.460079669291306, 0.690525920907883 }, },
-				Input = Input {
-					SourceOp = "MouthBase",
-					Source = "Output",
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13365, -16.5 } },
-			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
-		},
-		Instance_MouthScale = Transform {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			SourceOp = "MouthScale",
-			Inputs = {
-				SettingsNest = Input { },
-				TransformNest = Input { },
-				ReferenceSize = Input { },
-				Input = Input {
-					SourceOp = "N",
-					Source = "Output",
-				},
-				CommentsNest = Input { },
-				FrameRenderScriptNest = Input { },
-				StartRenderScripts = Input { },
-				EndRenderScripts = Input { },
-				EffectMask = Input { }
-			},
-			ViewInfo = OperatorInfo { Pos = { 13255, -16.5 } },
-		},
-		Instance_MouthScale_1 = Transform {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			SourceOp = "MouthScale",
-			Inputs = {
-				SettingsNest = Input { },
-				TransformNest = Input { },
-				ReferenceSize = Input { },
-				Input = Input {
-					SourceOp = "A",
-					Source = "Output",
-				},
-				CommentsNest = Input { },
-				FrameRenderScriptNest = Input { },
-				StartRenderScripts = Input { },
-				EndRenderScripts = Input { },
-				EffectMask = Input { }
-			},
-			ViewInfo = OperatorInfo { Pos = { 13145, -16.5 } },
-		},
-		MouthAnim = MultiMerge {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				}
-			},
-			Inputs = {
-				LayerOrder = Input { Value = ScriptVal { {
-							[0] = 1,
-							2,
-							3,
-							4,
-							5,
-							6,
-							7
-						} }, },
-				Background = Input {
-					SourceOp = "Body",
-					Source = "Output",
-				},
-				["Layer1.Foreground"] = Input {
-					SourceOp = "MouthScale",
-					Source = "Output",
-				},
-				LayerName1 = Input { Value = "MouthBase", },
-				["Layer2.Foreground"] = Input {
-					SourceOp = "Instance_MouthScale",
-					Source = "Output",
-				},
-				LayerName2 = Input { Value = "N", },
-				LayerEnabled2 = Input { Value = 0, },
-				["Layer3.Foreground"] = Input {
-					SourceOp = "Instance_MouthScale_1",
-					Source = "Output",
-				},
-				LayerName3 = Input { Value = "A", },
-				LayerEnabled3 = Input { Value = 0, },
-				["Layer4.Foreground"] = Input {
-					SourceOp = "Instance_MouthScale_2",
-					Source = "Output",
-				},
-				LayerName4 = Input { Value = "I", },
-				LayerEnabled4 = Input { Value = 0, },
-				["Layer5.Foreground"] = Input {
-					SourceOp = "Instance_MouthScale_3",
-					Source = "Output",
-				},
-				LayerName5 = Input { Value = "U", },
-				LayerEnabled5 = Input { Value = 0, },
-				["Layer6.Foreground"] = Input {
-					SourceOp = "Instance_MouthScale_4",
-					Source = "Output",
-				},
-				LayerName6 = Input { Value = "E", },
-				LayerEnabled6 = Input { Value = 0, },
-				["Layer7.Foreground"] = Input {
-					SourceOp = "Instance_MouthScale_5",
-					Source = "Output",
-				},
-				LayerName7 = Input { Value = "O", },
-				LayerEnabled7 = Input { Value = 0, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 13145, 115.5 } },
-			Colors = { TileColor = { R = 0.92156862745098, G = 0.431372549019608, B = 0 }, }
-		},
-		Instance_MouthScale_2 = Transform {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			SourceOp = "MouthScale",
-			Inputs = {
-				SettingsNest = Input { },
-				TransformNest = Input { },
-				ReferenceSize = Input { },
-				Input = Input {
-					SourceOp = "I",
-					Source = "Output",
-				},
-				CommentsNest = Input { },
-				FrameRenderScriptNest = Input { },
-				StartRenderScripts = Input { },
-				EndRenderScripts = Input { },
-				EffectMask = Input { }
-			},
-			ViewInfo = OperatorInfo { Pos = { 13035, -16.5 } },
-		},
-		Closed = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				}
-			},
-			ViewInfo = OperatorInfo { Pos = { 13640, -280.5 } },
-		},
-		Instance_MouthScale_3 = Transform {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			SourceOp = "MouthScale",
-			Inputs = {
-				SettingsNest = Input { },
-				TransformNest = Input { },
-				ReferenceSize = Input { },
-				Input = Input {
-					SourceOp = "U",
-					Source = "Output",
-				},
-				CommentsNest = Input { },
-				FrameRenderScriptNest = Input { },
-				StartRenderScripts = Input { },
-				EndRenderScripts = Input { },
-				EffectMask = Input { }
-			},
-			ViewInfo = OperatorInfo { Pos = { 12925, -16.5 } },
-		},
-		I = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13035, -280.5 } },
-		},
-		MouthBase = Transform {
-			Locked = true,
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			Inputs = {
-				FlattenTransform = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 13365, -280.5 } },
-			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
-		},
-		U = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 12925, -280.5 } },
-		},
-		A = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13145, -280.5 } },
-		},
-		N = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 13255, -280.5 } },
-		},
-		EyeBase = Transform {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				}
-			},
-			Inputs = {
-				FlattenTransform = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 13805, -280.5 } },
-			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
-		},
-		E = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 12815, -280.5 } },
-		},
-		Instance_MouthScale_4 = Transform {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			SourceOp = "MouthScale",
-			Inputs = {
-				SettingsNest = Input { },
-				TransformNest = Input { },
-				ReferenceSize = Input { },
-				Input = Input {
-					SourceOp = "E",
-					Source = "Output",
-				},
-				CommentsNest = Input { },
-				FrameRenderScriptNest = Input { },
-				StartRenderScripts = Input { },
-				EndRenderScripts = Input { },
-				EffectMask = Input { }
-			},
-			ViewInfo = OperatorInfo { Pos = { 12815, -16.5 } },
-		},
-		O = Fuse.Wireless {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			ViewInfo = OperatorInfo { Pos = { 12705, -280.5 } },
-		},
-		Instance_MouthScale_5 = Transform {
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			SourceOp = "MouthScale",
-			Inputs = {
-				SettingsNest = Input { },
-				TransformNest = Input { },
-				ReferenceSize = Input { },
-				Input = Input {
-					SourceOp = "O",
-					Source = "Output",
-				},
-				CommentsNest = Input { },
-				FrameRenderScriptNest = Input { },
-				StartRenderScripts = Input { },
-				EndRenderScripts = Input { },
-				EffectMask = Input { }
-			},
-			ViewInfo = OperatorInfo { Pos = { 12705, -16.5 } },
-		},
-		Body = Transform {
-			Locked = true,
-			NameSet = true,
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "FusionTemplates:\\りぞりぷと(RIZORIPUTO)\\"
-					}
-				},
-			},
-			Inputs = {
-				FlattenTransform = Input { Value = 1, },
-			},
-			ViewInfo = OperatorInfo { Pos = { 12705, 115.5 } },
-			Colors = { TileColor = { R = 0.913725490196078, G = 0.549019607843137, B = 0.709803921568627 }, }
 		}
 	},
 	ActiveTool = "EyeAnim"
