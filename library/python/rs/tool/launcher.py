@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 from functools import partial
 from pathlib import Path
@@ -19,6 +20,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QToolButton,
     QMenu,
+    QMessageBox,
 )
 
 from rs.core import (
@@ -112,6 +114,18 @@ class MainWindow(QWidget):
         self.minimize_button.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
         self.lang_window.ui.setButton.clicked.connect(self.set_title)
 
+        # check
+        if re.search(r'[ぁ-ん]+|[ァ-ヴー]+|[一-龠]+', str(config.ROOT_PATH)):
+            lang_code: lang.Code = lang.load()
+            comment = 'パスに日本語が含まれています。\nツールを別の場所に移動してください。'
+            if lang_code == lang.Code.en:
+                comment = 'The path contains Japanese.\nPlease move the tool to another location.'
+            QMessageBox.warning(
+                self,
+                'Warning',
+                f'{str(config.ROOT_PATH)}\n\n{comment}'
+            )
+
     def set_title(self):
         lang_code: lang.Code = lang.load()
         title = '%s  其ノ%s' % (APP_NAME, __version__)
@@ -121,6 +135,7 @@ class MainWindow(QWidget):
 
 
 def run() -> None:
+
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
     app.setPalette(appearance.palette)
