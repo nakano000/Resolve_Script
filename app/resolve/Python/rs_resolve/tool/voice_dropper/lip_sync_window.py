@@ -46,7 +46,7 @@ def get_index(timeline, track_type, v):
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
-    time_out: float = 2.0
+    time_out: float = 5.0
     use_auto_lock: bool = True
     use_delete: bool = False
 
