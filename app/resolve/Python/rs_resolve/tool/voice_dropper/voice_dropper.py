@@ -58,7 +58,6 @@ from rs_resolve.gui import (
     get_resolve_window,
 )
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
-from rs_resolve.tool.voice_dropper.lip_sync_window import MainWindow as LipSyncWindow
 
 APP_NAME = 'Voice Dropper'
 
@@ -127,7 +126,7 @@ class MainWindow(QMainWindow):
 
         # window
         self.chara_window = CharaWindow(self)
-        self.lip_sync_window = LipSyncWindow(self, self.fusion)
+        self.lip_sync_window = None
 
         # watcher
         self.modified.connect(self.directory_changed, Qt.QueuedConnection)
@@ -147,8 +146,7 @@ class MainWindow(QMainWindow):
         self.ui.stopButton.clicked.connect(self.stop)
 
         self.ui.importButton.clicked.connect(self.import_wave)
-        self.ui.lipSyncButton.clicked.connect(self.lip_sync_window.show)
-        self.lip_sync_window.ui.applyButton.clicked.connect(self.lip_sync)
+        self.ui.lipSyncButton.clicked.connect(self.open_lip_sync_window)
 
         self.ui.minimizeButton.clicked.connect(partial(self.setWindowState, Qt.WindowMinimized))
         self.ui.closeButton.clicked.connect(self.close)
@@ -159,6 +157,13 @@ class MainWindow(QMainWindow):
         self.make_dropper_folder()
         self.ui.closeButton.setFocus()
         self.start()
+
+    def open_lip_sync_window(self):
+        if self.lip_sync_window is None:
+            from rs_resolve.tool.voice_dropper.lip_sync_window import MainWindow as LipSyncWindow
+            self.lip_sync_window = LipSyncWindow(self, self.fusion)
+            self.lip_sync_window.ui.applyButton.clicked.connect(self.lip_sync)
+        self.lip_sync_window.show()
 
     def import_wave(self) -> None:
         data = self.get_data()
@@ -552,6 +557,9 @@ class MainWindow(QMainWindow):
             anim = lab.wav2anim(f, fps, offset)
         elif lab_file.is_file():
             anim = lab.lab2anim(lab_file, fps, ch_data.anim_type.strip().lower(), offset)
+        else:
+            self.add2log(f'labファイルが見付かりません。{str(lab_file)}', log.ERROR_COLOR)
+            return
 
         st = ordered_dict_to_dict(bmd.readstring(self.anim_setting % (
             ch_data.anim_parameter,
@@ -599,6 +607,9 @@ class MainWindow(QMainWindow):
         offset = comp.GetAttrs()['COMPN_GlobalStart']
         if lab_file.is_file():
             anim_list = lab.lab2anim_mm(lab_file, fps, ch_data.anim_type, offset)
+        else:
+            self.add2log(f'labファイルが見付かりません。{str(lab_file)}', log.ERROR_COLOR)
+            return
         if len(anim_list) < 7:
             self.add2log('アニメーションの読み込みに失敗しました。', log.ERROR_COLOR)
             return
