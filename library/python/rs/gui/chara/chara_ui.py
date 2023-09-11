@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QHeaderView, QLabel,
     QMainWindow, QMenu, QMenuBar, QPushButton,
     QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 
-from rs.tool.voice_sync.wav_table import View
+from rs.gui.table.view import View
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

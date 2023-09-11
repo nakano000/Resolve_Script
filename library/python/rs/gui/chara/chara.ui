@@ -203,7 +203,7 @@
   <customwidget>
    <class>View</class>
    <extends>QTableView</extends>
-   <header>rs.tool.voice_sync.wav_table</header>
+   <header>rs.gui.table.view</header>
   </customwidget>
  </customwidgets>
  <resources/>
