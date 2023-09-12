@@ -10,13 +10,18 @@ from rs.core.app import App
 from rs.core.env import Env, EnvKey
 
 
+def _get_def():
+    if util.IS_WIN:
+        return r'C:\Program Files\Blackmagic Design\Fusion 18\Fusion.exe'
+    elif util.IS_MAC:
+        return '/Applications/Blackmagic Fusion 18/Fusion.app'
+    else:
+        return '/opt/BlackmagicDesign/Fusion9/Fusion'
+
+
 @dataclasses.dataclass
 class Fusion(App):
-    exe: str = (
-        r'C:\Program Files\Blackmagic Design\Fusion 18\Fusion.exe'
-        if util.IS_WIN else
-        '/opt/BlackmagicDesign/Fusion9/Fusion'
-    )
+    exe: str = _get_def()
 
     def get_path(self) -> Path:
         return Path(self.exe)
@@ -39,14 +44,17 @@ class Fusion(App):
         env.add_path(EnvKey.PYTHONPATH, pre=[
             config.APP_SET_PATH.joinpath('fusion', 'python'),
         ])
-        if util.IS_WIN:
+        if util.IS_WIN or util.IS_MAC:
             # PYTHONHOME
             env.set(EnvKey.PYTHON3HOME, str(config.PYTHON_INSTALL_PATH))
             env.set(EnvKey.FUSION_Python3_Home, str(config.PYTHON_INSTALL_PATH))
             env.set(EnvKey.FUSION_Python36_Home, str(config.PYTHON_INSTALL_PATH))
             # PATH
+            python_bin_path = config.PYTHON_INSTALL_PATH
+            if util.IS_MAC:
+                python_bin_path = config.PYTHON_INSTALL_PATH.joinpath('bin')
             env.add_path(EnvKey.PATH, pre=[
-                config.PYTHON_INSTALL_PATH,
+                python_bin_path,
             ])
 
         return env

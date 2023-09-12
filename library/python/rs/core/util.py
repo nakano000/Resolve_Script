@@ -44,6 +44,7 @@ def memoize(f):
 
 
 IS_WIN = platform.system() == 'Windows'
+IS_MAC = platform.system() == 'Darwin'
 
 
 def write_text(path: Path, s: str) -> None:

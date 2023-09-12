@@ -98,16 +98,28 @@ class MainWindow(QMainWindow):
         self.ui.resolveButton.clicked.connect(self.run_resolve)
         self.ui.closeButton.clicked.connect(self.close)
 
-        self.ui.fusionToolButton.clicked.connect(partial(
-            self.toolButton_clicked,
-            self.ui.fusionLineEdit,
-            'Fusion.exe' if util.IS_WIN else 'Fusion'
-        ))
-        self.ui.resolveToolButton.clicked.connect(partial(
-            self.toolButton_clicked,
-            self.ui.resolveLineEdit,
-            'Resolve.exe' if util.IS_WIN else 'resolve'
-        ))
+        if not util.IS_MAC:
+            self.ui.fusionToolButton.clicked.connect(partial(
+                self.toolButton_clicked,
+                self.ui.fusionLineEdit,
+                'Fusion.exe' if util.IS_WIN else 'Fusion'
+            ))
+            self.ui.resolveToolButton.clicked.connect(partial(
+                self.toolButton_clicked,
+                self.ui.resolveLineEdit,
+                'Resolve.exe' if util.IS_WIN else 'resolve'
+            ))
+        else:
+            self.ui.fusionToolButton.clicked.connect(partial(
+                self.toolButton_clicked_for_mac,
+                self.ui.fusionLineEdit,
+                'Fusion.app'
+            ))
+            self.ui.resolveToolButton.clicked.connect(partial(
+                self.toolButton_clicked_for_mac,
+                self.ui.resolveLineEdit,
+                'Davinci Resolve.app'
+            ))
 
     def translate(self) -> None:
         if self.lang_code == lang.Code.en:
@@ -123,7 +135,7 @@ class MainWindow(QMainWindow):
     def run_fusion(self):
         c = self.get_data()
         app = c.fusion
-        if not Path(app.exe).is_file():
+        if not Path(app.exe).exists():
             QMessageBox.warning(self, 'File Not Found:', '%s' % app.exe)
             return
         app.execute([])
@@ -133,7 +145,7 @@ class MainWindow(QMainWindow):
     def run_resolve(self):
         c = self.get_data()
         app = c.resolve
-        if not Path(app.exe).is_file():
+        if not Path(app.exe).exists():
             QMessageBox.warning(self, 'File Not Found:', '%s' % app.exe)
             return
         app.execute([])
@@ -146,6 +158,15 @@ class MainWindow(QMainWindow):
             'Select %s' % name,
             w.text(),
             '%s(%s)' % (name, name),
+        )
+        if path != '':
+            w.setText(path)
+
+    def toolButton_clicked_for_mac(self, w, name: str) -> None:
+        path = QFileDialog.getExistingDirectory(
+            self,
+            'Select %s' % name,
+            w.text(),
         )
         if path != '':
             w.setText(path)

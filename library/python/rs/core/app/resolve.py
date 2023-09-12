@@ -8,13 +8,18 @@ from rs.core.app import Fusion
 from rs.core.env import Env, EnvKey
 
 
+def _get_def():
+    if util.IS_WIN:
+        return r'C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe'
+    elif util.IS_MAC:
+        return '/Applications/DaVinci Resolve/DaVinci Resolve.app'
+    else:
+        return '/opt/resolve/bin/resolve'
+
+
 @dataclasses.dataclass
 class Resolve(Fusion):
-    exe: str = (
-        r'C:\Program Files\Blackmagic Design\DaVinci Resolve\Resolve.exe'
-        if util.IS_WIN else
-        '/opt/resolve/bin/resolve'
-    )
+    exe: str = _get_def()
 
     def get_env(self) -> Env:
         env = super().get_env()

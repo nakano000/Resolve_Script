@@ -1,3 +1,4 @@
+import os
 import re
 from pathlib import Path
 
@@ -27,11 +28,11 @@ class CharaData(table.RowData):
     anim_type: str = anim.Type.aiueo.value
     anim_parameter: str = 'Anim'
     _pose: str = ''
-    _setting: str = r'Preset\TextPlus\字幕_白.setting'
+    _setting: str = r'Preset\TextPlus\字幕_白.setting'.replace('\\', os.sep)
 
     @property
     def setting_file(self) -> Path:
-        path = Path(self._setting)
+        path = Path(self._setting.replace('\\', os.sep))
         if not path.is_absolute():
             return config.ROOT_PATH.joinpath(str(path))
         return path
@@ -39,13 +40,13 @@ class CharaData(table.RowData):
     @setting_file.setter
     def setting_file(self, path: Path):
         if str(path).lower().startswith(str(config.ROOT_PATH).lower()):
-            self._setting = str(path.relative_to(config.ROOT_PATH))
+            self._setting = str(path.relative_to(config.ROOT_PATH)).replace('\\', os.sep)
         else:
-            self._setting = str(path)
+            self._setting = str(path).replace('\\', os.sep)
 
     @property
     def pose_file(self) -> Path:
-        path = Path(self._pose)
+        path = Path(self._pose.replace('\\', os.sep))
         if not path.is_absolute():
             return config.ROOT_PATH.joinpath(str(path))
         return path
@@ -53,9 +54,9 @@ class CharaData(table.RowData):
     @pose_file.setter
     def pose_file(self, path: Path):
         if str(path).lower().startswith(str(config.ROOT_PATH).lower()):
-            self._pose = str(path.relative_to(config.ROOT_PATH))
+            self._pose = str(path.relative_to(config.ROOT_PATH)).replace('\\', os.sep)
         else:
-            self._pose = str(path)
+            self._pose = str(path).replace('\\', os.sep)
 
     @classmethod
     def toHeaderList(cls) -> List[str]:

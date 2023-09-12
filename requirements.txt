@@ -33,8 +33,8 @@ pooch==1.6.0
 psd-tools==1.9.24
 PyAutoGUI==0.9.54
 pycparser==2.21
-PyGetWindow==0.0.9
 pykakasi==2.2.1
+PyMonCtl==0.5
 PyMsgBox==1.0.9
 pyperclip==1.8.2
 PyRect==0.2.0
@@ -47,6 +47,8 @@ PySoundFile==0.9.0.post1
 pytsmod==0.3.6
 pytweening==1.0.7
 PyWavelets==1.4.1
+PyWinBox==0.5
+PyWinCtl==0.1
 pyworld==0.3.3
 requests==2.31.0
 scikit-image==0.21.0

@@ -21,6 +21,7 @@ from rs_resolve.core import (
 )
 
 from rs_resolve.gui.shortcut.shortcut_ui import Ui_MainWindow
+from rs_resolve.gui import get_resolve_window
 
 APP_NAME = 'Shortcut'
 
@@ -64,12 +65,7 @@ class MainWindow(QMainWindow):
         if project is None:
             print('Project not found.')
             return None
-
-        import pygetwindow
-        for t in pygetwindow.getAllTitles():
-            if t.startswith('DaVinci Resolve') and t.endswith(project.GetName()):
-                return pygetwindow.getWindowsWithTitle(t)[0]
-        return None
+        return get_resolve_window(project.GetName())
 
     def razor_test(self):
         c = self.get_data()

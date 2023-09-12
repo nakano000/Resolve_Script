@@ -2,7 +2,7 @@ import dataclasses
 import subprocess
 from pathlib import Path
 
-from rs.core import config
+from rs.core import config, util
 from rs.core.env import Env, EnvKey
 
 
@@ -22,6 +22,9 @@ class App(config.DataInterface):
         return env
 
     def execute(self, args) -> None:
+        if util.IS_MAC:
+            self.execute_for_mac(args)
+            return
         path = self.get_path()
         cmd = [
                   str(path),
@@ -32,3 +35,14 @@ class App(config.DataInterface):
             env=env,
         )
 
+    def execute_for_mac(self, args) -> None:
+        path = self.get_path()
+        cmd = [
+                  'open',
+                  str(path),
+              ] + args
+        env = self.get_env().to_dict()
+        subprocess.Popen(
+            cmd,
+            env=env,
+        )
