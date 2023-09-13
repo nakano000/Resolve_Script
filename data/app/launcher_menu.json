@@ -2,56 +2,89 @@
   {
     "name": "ResolveLauncher",
     "path": "bin/resolve_launcher.py",
-    "ss": "utility"
+    "ss": "utility",
+    "win": true,
+    "mac": true,
+    "linux": true
   },
   {
     "name": "softalk2wave",
     "path": "bin/softalk2wave.py",
-    "ss": "sound"
+    "ss": "sound",
+    "win": true,
+    "mac": false,
+    "linux": false
   },
   {
     "name": "AssistantSeika2wave",
     "path": "bin/assistant_seika2wave.py",
-    "ss": "sound"
+    "ss": "sound",
+    "win": true,
+    "mac": false,
+    "linux": false
   },
   {
     "name": "AquesTalkWrapper",
     "path": "bin/aquestalk_wrapper.py",
-    "ss": "sound"
+    "ss": "sound",
+    "win": true,
+    "mac": false,
+    "linux": false
   },
   {
     "name": "VoiceBin",
     "path": "bin/voice_bin.py",
-    "ss": "sound"
+    "ss": "sound",
+    "win": true,
+    "mac": true,
+    "linux": true
   },
   {
     "name": "VoiceSync",
     "path": "bin/voice_sync.py",
-    "ss": "sound"
+    "ss": "sound",
+    "win": true,
+    "mac": false,
+    "linux": true
   },
   {
     "name": "PsdSplitter",
     "path": "bin/psd_splitter.py",
-    "ss": "picture"
+    "ss": "picture",
+    "win": true,
+    "mac": true,
+    "linux": true
   },
   {
     "name": "Macro2Group",
     "path": "bin/macro2group.py",
-    "ss": "utility"
+    "ss": "utility",
+    "win": true,
+    "mac": true,
+    "linux": true
   },
   {
     "name": "ScriptLauncher",
     "path": "bin/script_launcher.py",
-    "ss": "utility"
+    "ss": "utility",
+    "win": true,
+    "mac": true,
+    "linux": true
   },
   {
     "name": "DiskCache",
     "path": "bin/disk_cache.py",
-    "ss": "utility"
+    "ss": "utility",
+    "win": true,
+    "mac": true,
+    "linux": true
   },
   {
     "name": "Characters",
     "path": "bin/characters.py",
-    "ss": "utility"
+    "ss": "utility",
+    "win": true,
+    "mac": true,
+    "linux": true
   }
 ]

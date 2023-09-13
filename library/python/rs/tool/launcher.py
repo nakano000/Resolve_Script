@@ -27,6 +27,7 @@ from rs.core import (
     config,
     lang,
     pipe as p,
+    util,
 )
 from rs.gui import appearance
 from rs.gui.lang.lang import MainWindow as LangWindow
@@ -95,6 +96,15 @@ class MainWindow(QWidget):
                 json.loads,
                 list,
         ):
+            if util.IS_WIN:
+                if i['win'] is False:
+                    continue
+            elif util.IS_MAC:
+                if i['mac'] is False:
+                    continue
+            else:
+                if i['linux'] is False:
+                    continue
             btn = ScriptButton(i['name'], script_path=Path(config.ROOT_PATH.joinpath(i['path'])))
             btn.setMinimumHeight(40)
             btn.setStyleSheet(SS_DICT[i['ss']])
@@ -135,7 +145,6 @@ class MainWindow(QWidget):
 
 
 def run() -> None:
-
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
     app.setPalette(appearance.palette)
