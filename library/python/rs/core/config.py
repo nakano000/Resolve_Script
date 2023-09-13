@@ -22,10 +22,18 @@ RESOLVE_SET_PATH = APP_SET_PATH.joinpath('resolve')
 PYTHON_INSTALL_PATH: Path = PYTHONW_EXE_PATH.parent
 PYTHON_EXE_PATH = PYTHON_INSTALL_PATH.joinpath('python.exe')
 PYTHON_SCRIPTS_PATH = PYTHON_INSTALL_PATH.joinpath('Scripts')
-
-APPDATA_PATH = Path(os.path.expandvars('$APPDATA'))
-RESOLVE_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'DaVinci Resolve', 'Support', 'Fusion')
-FUSION_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'Fusion')
+if util.IS_WIN:
+    APPDATA_PATH = Path(os.path.expandvars('$APPDATA'))
+    RESOLVE_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'DaVinci Resolve', 'Support', 'Fusion')
+    FUSION_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'Fusion')
+elif util.IS_MAC:
+    APPDATA_PATH = Path(os.path.expandvars('$HOME')).joinpath('Library', 'Application Support')
+    RESOLVE_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'DaVinci Resolve', 'Fusion')
+    FUSION_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'Fusion')
+else:
+    APPDATA_PATH = Path(os.path.expandvars('$HOME')).joinpath('.local', 'share')
+    RESOLVE_USER_PATH = APPDATA_PATH.joinpath('DaVinci Resolve', 'Fusion')
+    FUSION_USER_PATH = APPDATA_PATH.joinpath('Fusion')
 
 ENCODING_LIST = [
     'utf-8',

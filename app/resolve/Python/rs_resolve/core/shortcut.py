@@ -3,16 +3,16 @@ from pathlib import Path
 
 import pyautogui
 
-from rs.core import config
+from rs.core import config, util
 
 CONFIG_FILE: Path = config.CONFIG_DIR.joinpath('Shortcut.json')
 
 
 @dataclasses.dataclass
 class Data(config.Data):
-    key_razor: tuple = ('ctrl', 'b')
-    key_deselect_all: tuple = ('ctrl', 'shift', 'a')
-    key_active_timeline_panel: tuple = ('ctrl', '4')
+    key_razor: tuple = ('ctrl', 'b') if not util.IS_MAC else ('command', 'b')
+    key_deselect_all: tuple = ('ctrl', 'shift', 'a') if not util.IS_MAC else ('command', 'shift', 'a')
+    key_active_timeline_panel: tuple = ('ctrl', '4') if not util.IS_MAC else ('command', '4')
 
     def razor(self):
         pyautogui.hotkey(*self.key_razor)

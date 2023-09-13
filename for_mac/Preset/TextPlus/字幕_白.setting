@@ -1,0 +1,30 @@
+{
+	Tools = ordered() {
+		Text1 = TextPlus {
+			CtrlWZoom = false,
+			Inputs = {
+				GlobalOut = Input { Value = 149, },
+				Width = Input { Value = 1920, },
+				Height = Input { Value = 1080, },
+				UseFrameFormatSettings = Input { Value = 1, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				Center = Input { Value = { 0.5, 0.15 }, },
+				SelectElement = Input { Value = 1, },
+				Select = Input { Value = 1, },
+				StyledText = Input { Value = "Subtitle", },
+				Font = Input { Value = "Hiragino Kaku Gothic Std", },
+				Style = Input { Value = "W8", },
+				Size = Input { Value = 0.07, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				Thickness2 = Input { Value = 0.125, },
+				Red2 = Input { Value = 0.0705882352941176, },
+				Green2 = Input { Value = 0.388235294117647, },
+				Blue2 = Input { Value = 0.0549019607843137, },
+				ElementShape5 = Input { Value = 1, },
+				Thickness5 = Input { Value = 0.14, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 220, 16.5 } },
+		}
+	}
+}
