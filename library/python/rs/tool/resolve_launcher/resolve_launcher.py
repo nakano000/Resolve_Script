@@ -50,7 +50,7 @@ def run_app(app_name):
         app = c.fusion
     else:
         return
-    if not Path(app.exe).is_file():
+    if not Path(app.exe).exists():
         run()
         return
     app.execute([])
