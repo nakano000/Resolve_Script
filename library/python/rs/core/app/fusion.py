@@ -2,6 +2,7 @@
 
 import os
 import dataclasses
+import sys
 from pathlib import Path
 
 from rs.core import config, util
@@ -44,19 +45,25 @@ class Fusion(App):
         env.add_path(EnvKey.PYTHONPATH, pre=[
             config.APP_SET_PATH.joinpath('fusion', 'python'),
         ])
-        if util.IS_WIN or util.IS_MAC:
+        if util.IS_WIN:
             # PYTHONHOME
             env.set(EnvKey.PYTHON3HOME, str(config.PYTHON_INSTALL_PATH))
             env.set(EnvKey.FUSION_Python3_Home, str(config.PYTHON_INSTALL_PATH))
             env.set(EnvKey.FUSION_Python36_Home, str(config.PYTHON_INSTALL_PATH))
             # PATH
             python_bin_path = config.PYTHON_INSTALL_PATH
-            if util.IS_MAC:
-                python_bin_path = config.PYTHON_INSTALL_PATH.joinpath('bin')
             env.add_path(EnvKey.PATH, pre=[
                 python_bin_path,
             ])
-
+        else:
+            # PYTHONPATH
+            env.add_path(EnvKey.PYTHONPATH, suf=[
+                config.PYTHON_INSTALL_PATH.joinpath(
+                    'lib',
+                    'python' + str(sys.version_info.major) + '.' + str(sys.version_info.minor),
+                    'site-packages'
+                ),
+            ])
         return env
 
 

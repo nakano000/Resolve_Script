@@ -2,6 +2,6 @@
 
 cd `dirname $0`
 
+python3 -m venv bin/python-3
 source bin/python-3/bin/activate
-
-python bin/run_resolve.py
+pip install -r requirements.txt
