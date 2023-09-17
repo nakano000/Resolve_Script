@@ -56,6 +56,7 @@ from rs_resolve.core import (
 )
 from rs_resolve.gui import (
     get_resolve_window,
+    activate_window,
 )
 from rs_resolve.tool.voice_dropper.voice_dropper_ui import Ui_MainWindow
 
@@ -520,7 +521,7 @@ class MainWindow(QMainWindow):
 
     def cut_clip(self, w, timeline, index, sf, ef, wait, sc: shortcut.Data):
         self.add2log('Cut Clip: Start')
-        w.activate()
+        activate_window(w)
         sc.active_timeline_panel()
         sc.deselect_all()
 
@@ -535,7 +536,7 @@ class MainWindow(QMainWindow):
         # cut
         for n in cut_lst:
             set_currentframe(timeline, n)
-            w.activate()
+            activate_window(w)
             _cnt = get_track_item_count(timeline, 'video', index)
             start_time = time.time()
             sc.razor()
@@ -763,7 +764,7 @@ class MainWindow(QMainWindow):
                 audio_items.append(item)
 
         w = get_resolve_window(project.GetName())
-        if w is None:
+        if w is None and not util.IS_MAC:
             self.add2log('DaVinci ResolveのWindowが見付かりません。', log.ERROR_COLOR)
             return
         if util.IS_WIN:

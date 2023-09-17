@@ -8,7 +8,8 @@ from PySide6.QtCore import (
 )
 from PySide6.QtWidgets import (
     QApplication,
-    QMainWindow, QFileDialog,
+    QMainWindow,
+    QFileDialog,
 )
 
 from rs.core import (

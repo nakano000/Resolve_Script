@@ -21,7 +21,10 @@ from rs_resolve.core import (
 )
 
 from rs_resolve.gui.shortcut.shortcut_ui import Ui_MainWindow
-from rs_resolve.gui import get_resolve_window
+from rs_resolve.gui import (
+    get_resolve_window,
+    activate_window,
+)
 
 APP_NAME = 'Shortcut'
 
@@ -70,19 +73,19 @@ class MainWindow(QMainWindow):
     def razor_test(self):
         c = self.get_data()
         w = self.get_resolve_window()
-        w.activate()
+        activate_window(w)
         c.razor()
 
     def deselect_all_test(self):
         c = self.get_data()
         w = self.get_resolve_window()
-        w.activate()
+        activate_window(w)
         c.deselect_all()
 
     def active_timeline_panel_test(self):
         c = self.get_data()
         w = self.get_resolve_window()
-        w.activate()
+        activate_window(w)
         c.active_timeline_panel()
 
     def set_data(self, c: sc.Data):

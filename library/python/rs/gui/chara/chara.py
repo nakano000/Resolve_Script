@@ -139,7 +139,7 @@ class MainWindow(QMainWindow):
         self.setWindowFlags(
             Qt.Window
             | Qt.WindowCloseButtonHint
-            # | Qt.WindowStaysOnTopHint
+            | Qt.WindowStaysOnTopHint
         )
         self.resize(1200, 300)
 

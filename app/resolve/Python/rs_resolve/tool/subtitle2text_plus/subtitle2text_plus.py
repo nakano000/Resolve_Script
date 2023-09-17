@@ -17,6 +17,7 @@ from rs.core import (
     config,
     pipe as p,
     lang,
+    util,
 )
 from rs.gui import (
     appearance,
@@ -29,6 +30,7 @@ from rs_resolve.core import (
 )
 from rs_resolve.gui import (
     get_resolve_window,
+    activate_window,
 )
 from rs_resolve.gui.shortcut.shortcut_window import MainWindow as ShortcutWindow
 from rs_resolve.tool.subtitle2text_plus.subtitle2text_plus_ui import Ui_MainWindow
@@ -191,7 +193,7 @@ class MainWindow(QMainWindow):
                 subtitle_items.append(item)
 
         w = get_resolve_window(project.GetName())
-        if w is None:
+        if w is None and not util.IS_MAC:
             print(
                 'DaVinci Resolve window not found.'
                 if self.lang_code == lang.Code.en else
@@ -217,12 +219,12 @@ class MainWindow(QMainWindow):
                 cf = int((sf + ef) / 2)
                 text = item.GetName()
                 # split
-                w.activate()
+                activate_window(w)
                 sc.active_timeline_panel()
                 sc.deselect_all()
                 for n in [sf, ef]:
                     timeline.SetCurrentTimecode(str(n))
-                    w.activate()
+                    activate_window(w)
                     sc.razor()
                     time.sleep(data.wait_time)
                 # setup

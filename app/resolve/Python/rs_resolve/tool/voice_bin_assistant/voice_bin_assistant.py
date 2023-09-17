@@ -23,6 +23,7 @@ from rs.core import (
     config,
     pipe as p,
     voice_bin_process,
+    util,
 )
 from rs.gui import (
     appearance,
@@ -37,6 +38,7 @@ from rs_resolve.core import (
 )
 from rs_resolve.gui import (
     get_resolve_window,
+    activate_window,
 )
 from rs_resolve.tool.voice_bin_assistant.voice_bin_assistant_ui import Ui_MainWindow
 
@@ -253,7 +255,7 @@ class MainWindow(QMainWindow):
             return
 
         w = get_resolve_window(project.GetName())
-        if w is None:
+        if w is None and not util.IS_MAC:
             self.add2log('DaVinci ResolveのWindowが見付かりません。')
             return
 
@@ -282,7 +284,7 @@ class MainWindow(QMainWindow):
             if pool_item.GetClipProperty('Usage') == '0':
                 mediapool.DeleteClips([pool_item])  # Media Poolで選択状態にするため、削除して読み直す。
                 mediapool.ImportMedia([f])[0]
-                w.activate()
+                activate_window(w)
                 pyautogui.hotkey('f10')
                 time.sleep(data.import_wait)
                 if len(que) == 0:
@@ -337,7 +339,7 @@ class MainWindow(QMainWindow):
                 audio_items.append(item)
 
         w = get_resolve_window(project.GetName())
-        if w is None:
+        if w is None and not util.IS_MAC:
             self.add2log('DaVinci ResolveのWindowが見付かりません。')
             return
 
@@ -360,11 +362,11 @@ class MainWindow(QMainWindow):
             tatie_lua = f.parent.joinpath(f.stem + '.tatie.lua')
             # split
             self.add2log(f.stem)
-            w.activate()
+            activate_window(w)
             pyautogui.hotkey('ctrl', 'shift', 'a')
             for n in [sf, ef]:
                 timeline.SetCurrentTimecode(str(n))
-                w.activate()
+                activate_window(w)
                 pyautogui.hotkey('ctrl', 'b')
                 time.sleep(data.tatie_wait)
             # setup
