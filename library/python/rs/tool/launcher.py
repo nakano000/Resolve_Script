@@ -35,7 +35,7 @@ from rs.gui.script_button import ScriptButton
 
 APP_NAME = 'りぞりぷと'
 APP_NAME_EN = 'RIZORIPUTO'
-__version__ = '2.4.1'
+__version__ = '2.4.2'
 
 MENU_JSON = config.ROOT_PATH.joinpath('data', 'app', 'launcher_menu.json')
 
