@@ -54,11 +54,21 @@ def write_text(path: Path, s: str) -> None:
 
 def open_url(url):
     import webbrowser
-    webbrowser.get('windows-default').open(url)
+    if IS_WIN:
+        webbrowser.get('windows-default').open(url)
+    elif IS_MAC:
+        webbrowser.get('macosx').open(url)
+    else:
+        webbrowser.open(url)
 
 
 def open_directory(path: Path):
-    subprocess.Popen(['explorer', str(path)])
+    if IS_WIN:
+        subprocess.Popen(['explorer', str(path)])
+    elif IS_MAC:
+        subprocess.Popen(['open', str(path)])
+    else:
+        subprocess.Popen(['xdg-open', str(path)])
 
 
 def get_char_width(c):
