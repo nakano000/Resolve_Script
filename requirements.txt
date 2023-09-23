@@ -32,8 +32,8 @@ pooch==1.7.0
 psd-tools==1.9.28
 PyAutoGUI==0.9.54
 pycparser==2.21
-PyGetWindow==0.0.9
 pykakasi==2.2.1
+PyMonCtl==0.7
 PyMsgBox==1.0.9
 pyperclip==1.8.2
 PyRect==0.2.0
@@ -45,6 +45,8 @@ PySide6-Essentials==6.5.2
 pytsmod==0.3.6
 pytweening==1.0.7
 PyWavelets==1.4.1
+PyWinBox==0.6
+PyWinCtl==0.3
 pyworld==0.3.4
 requests==2.31.0
 scikit-image==0.21.0

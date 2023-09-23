@@ -38,7 +38,7 @@ elif util.IS_MAC:
     FUSION_USER_PATH = APPDATA_PATH.joinpath('Blackmagic Design', 'Fusion')
 else:
     APPDATA_PATH = Path(os.path.expandvars('$HOME')).joinpath('.local', 'share')
-    RESOLVE_USER_PATH = APPDATA_PATH.joinpath('DaVinci Resolve', 'Fusion')
+    RESOLVE_USER_PATH = APPDATA_PATH.joinpath('DaVinciResolve', 'Fusion')
     FUSION_USER_PATH = APPDATA_PATH.joinpath('Fusion')
 
 ENCODING_LIST = [
