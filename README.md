@@ -26,7 +26,6 @@ https://youtu.be/WyKujodsLh0
 * [ScriptLauncher](#ScriptLauncher)
 * [DiskCache](#DiskCache)
 * [Characters](#Characters)
-* [Linuxで使う](#Linuxで使う)
 
 ### ResolveLauncher
 
@@ -135,41 +134,5 @@ https://youtu.be/kta_94REcEE
 ### Characters
 
 コピー用の文字を表示します。
-
-[目次へ](#目次)
-
-### Linuxで使う
-
-検証不足です。ご注意ください。<br>
-下記環境にて確認しています。
-(りぞりぷと 2.0.0からpythonは3.10.11に変更しました。)
-
-- りぞりぷと 1.x.x
-- CentOS Linux release 7.9.2009 (Core)
-- python 3.6.8
-- DaVinci Resolve 18.02
-
-#### python3.6をダビンチリゾルブに認識させる。
-
-```
-cd /lib64
-sudo ln -s libpython3.6m.so.1.0 libpython3.6.so.1.0
-sudo ldconfig
-```
-
-#### python3に必要なライブラリを入れる。
-
-りぞりぷと を解凍したフォルダ内で
-
-```
-sudo pip3 install --upgrade pip
-pin3 install -r requirements.txt
-```
-
-#### りぞりぷと を立ち上げる
-
-```
-python3 bin/launcher.py
-```
 
 [目次へ](#目次)
