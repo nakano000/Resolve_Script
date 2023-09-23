@@ -25,7 +25,7 @@ class Resolve(Fusion):
         env = super().get_env()
         # PYTHONPATH
         env.add_path(EnvKey.PYTHONPATH, pre=[
-            config.APP_SET_PATH.joinpath('resolve', 'Python'),
+            config.APP_SET_PATH.joinpath('resolve', 'python'),
         ])
         return env
 
