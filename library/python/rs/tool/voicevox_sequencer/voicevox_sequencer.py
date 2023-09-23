@@ -39,20 +39,28 @@ APP_NAME = 'VoicevoxSequencer'
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
-    chara: str = 'れいむ'
-    exe_path: str = ''
-    voice_dir: str = ''
+    chara: str = 'ずんだもん'
 
 
 @dataclasses.dataclass
 class VoiceData(table.RowData):
-    note: int = ''
-    vel: int = ''
-    time: int = ''
+    note: int = 60
+    length: int = 480
+    consonant_length: int = 96
+    rest: int = 0
+    velocity: int = 100
+    kana: str = 'ラ'
 
     @classmethod
     def toHeaderList(cls) -> List[str]:
-        return ['キャラ', '字幕', '読み']
+        return [
+            'Note',
+            'Len',
+            'C Len',
+            'Rest',
+            'Vel',
+            'Kana',
+        ]
 
 
 @dataclasses.dataclass
@@ -70,19 +78,19 @@ class ItemDelegate(QStyledItemDelegate):
         super().__init__(parent)
         self._parent = parent
 
-    def createEditor(self, parent, option, index):
-        if index.column() in (1, 2):
-            return QPlainTextEdit(parent)
-        return super().createEditor(parent, option, index)
+    # def createEditor(self, parent, option, index):
+    #     if index.column() in (1, 2):
+    #         return QPlainTextEdit(parent)
+    #     return super().createEditor(parent, option, index)
 
-    def setEditorData(self, editor, index):
-        if index.column() in (1, 2):
-            editor: QPlainTextEdit
-            value = index.model().data(index, Qt.DisplayRole)
-            editor.clear()
-            editor.insertPlainText(value)
-            return
-        super().setEditorData(editor, index)
+    # def setEditorData(self, editor, index):
+    #     if index.column() in (1, 2):
+    #         editor: QPlainTextEdit
+    #         value = index.model().data(index, Qt.DisplayRole)
+    #         editor.clear()
+    #         editor.insertPlainText(value)
+    #         return
+    #     super().setEditorData(editor, index)
 
     def eventFilter(self, editor, event):
         if event.type() == QEvent.KeyPress:
@@ -170,9 +178,6 @@ class MainWindow(QMainWindow):
         # event
         self.undo_stack.cleanChanged.connect(self.set_title)
 
-        self.ui.folderToolButton.clicked.connect(self.folderToolButton_clicked)
-        self.ui.exeToolButton.clicked.connect(self.exeToolButton_clicked)
-
         self.ui.playButton.clicked.connect(self.play)
         self.ui.stopButton.clicked.connect(self.stop)
         self.ui.saveButton.clicked.connect(self.wave_save)
@@ -182,7 +187,6 @@ class MainWindow(QMainWindow):
         self.ui.actionOpen.triggered.connect(self.open_doc)
         self.ui.actionSave.triggered.connect(self.save_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
-        self.ui.actionImport_From_Clipboard.triggered.connect(self.import_from_clipboard)
         self.ui.actionExit.triggered.connect(self.close)
 
         self.ui.actionUndo.triggered.connect(self.undo_stack.undo)
@@ -276,12 +280,10 @@ class MainWindow(QMainWindow):
             w.setText(path)
 
     def set_data(self, a: VoiceDataset):
-        self.ui.folderLineEdit.setText(a.voice_dir)
         self.ui.tableView.model().set_data(a.voice_list)
 
     def get_data(self) -> VoiceDataset:
         a = VoiceDataset()
-        a.voice_dir = self.ui.folderLineEdit.text().strip()
         a.voice_list.set_list(self.ui.tableView.model().to_list())
         return a
 
@@ -346,14 +348,10 @@ class MainWindow(QMainWindow):
 
     def set_config(self, c: ConfigData):
         self.ui.charaLineEdit.setText(c.chara)
-        self.ui.exeLineEdit.setText(c.exe_path)
-        self.ui.folderLineEdit.setText(c.voice_dir)
 
     def get_config(self) -> ConfigData:
         c = ConfigData()
         c.chara = self.ui.charaLineEdit.text().strip()
-        c.exe_path = self.ui.exeLineEdit.text().strip()
-        c.voice_dir = self.ui.folderLineEdit.text().strip()
         return c
 
     def load_config(self) -> None:
