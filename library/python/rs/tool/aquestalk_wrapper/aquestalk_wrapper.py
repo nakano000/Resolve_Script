@@ -334,7 +334,7 @@ class MainWindow(QMainWindow):
         menu.addSeparator()
         menu.addAction(self.ui.actionUp)
         menu.addAction(self.ui.actionDown)
-        menu.exec_(v.mapToGlobal(pos))
+        menu.exec(v.mapToGlobal(pos))
 
     def add(self):
         c = self.get_config()

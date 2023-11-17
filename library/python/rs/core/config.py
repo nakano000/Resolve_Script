@@ -126,7 +126,7 @@ class DataList(list):
     def to_list_of_dict(self) -> list:
         lst = []
         for i in self:
-            lst.append(dataclasses.asdict(i))
+            lst.append(i.as_dict())
         return lst
 
 
