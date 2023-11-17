@@ -265,6 +265,9 @@ class Paragraph:
     def get_text(self):
         return ''.join([x.kana for x in self.note_list])
 
+    def get_rest_sec(self, tempo: int) -> float:
+        return self.rest_length / (tempo * 480 / 60)
+
 
 class View(table.View):
     def __init__(self, parent=None):

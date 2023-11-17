@@ -48,7 +48,7 @@ class Doc(config.Data):
     note_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(seq.NoteData))
 
 
-def paragraph2accent_phrases(paragraph: seq.Paragraph, tempo: int) -> list[voicevox.data.AccentPhrase]:
+def paragraph2audio_query(paragraph: seq.Paragraph, tempo: int, sampling_rate: int) -> voicevox.data.AudioQuery:
     moras = []
     accent_phrases = []
     for note in paragraph.note_list:
@@ -63,6 +63,7 @@ def paragraph2accent_phrases(paragraph: seq.Paragraph, tempo: int) -> list[voice
         moras.append(mora)
 
         if note.get_sec(tempo) > max_sec:
+            # 最大時間を超えた場合は、休符追加し次のアクセント句に切り替え
             accent_phrase = voicevox.data.AccentPhrase()
             pause_mora = voicevox.data.Mora()
             pause_mora.set_rest(length - max_sec)
@@ -71,31 +72,15 @@ def paragraph2accent_phrases(paragraph: seq.Paragraph, tempo: int) -> list[voice
             accent_phrases.append(accent_phrase)
             moras = []
     if len(moras) > 0:
-        if paragraph.rest_length > 0:
-            mora = voicevox.data.Mora()
-            mora.set_rest(paragraph.rest_length)
-            moras.append(mora)
         accent_phrase = voicevox.data.AccentPhrase()
         accent_phrase.moras.set_list(moras)
         accent_phrases.append(accent_phrase)
-    else:
-        if paragraph.rest_length > 0:
-            mora = accent_phrases[-1].pause_mora
-            rest_length = 0
-            if mora is None:
-                mora = voicevox.data.Mora()
-            else:
-                rest_length = mora.vowel_length
-            note = seq.NoteData(
-                note=-1,
-                length=paragraph.rest_length,
-                max_time=0.5,
-                kana='、',
-            )
-            note.get_sec(tempo)
-            mora.set_rest(rest_length + note.get_sec(tempo))
-            accent_phrases[-1].pause_mora = mora
-    return accent_phrases
+
+    # audio_query
+    audio_query = voicevox.data.AudioQuery()
+    audio_query.accent_phrases.set_list(accent_phrases)
+    audio_query.outputSamplingRate = sampling_rate
+    return audio_query
 
 
 class MainWindow(QMainWindow):
@@ -117,6 +102,7 @@ class MainWindow(QMainWindow):
             self.speaker_list.load(self.speakers_file)
         self.set_speaker_list()
         self.ui.tempoSpinBox.setValue(120)
+        self.sampling_rate = 24000
 
         self.play_obj = None
 
@@ -180,63 +166,58 @@ class MainWindow(QMainWindow):
             star = '*' if self.ui.tableView.model().undo_stack.isClean() is False else ''
             self.setWindowTitle('%s - %s%s' % (APP_NAME, self.file, star))
 
-    def make_wav_data(self, sampling_rate=24000, is_phrase=False):
+    def make_wav_data(self, is_phrase=False):
         v = self.ui.tableView
         doc = self.get_data()
 
-        # make query
+        # phrase or all
         paragraph_list = [v.get_current_paragraph()] if is_phrase else v.get_paragraph_list()
-        query_list = []
-        for paragraph in paragraph_list:
-            accent_phrases = paragraph2accent_phrases(
-                paragraph, doc.tempo
-            )
-            query = voicevox.data.AudioQuery()
-            query.accent_phrases.set_list(accent_phrases)
-            query.outputSamplingRate = sampling_rate
-            query_list.append({
-                'query': query,
-                'text': paragraph.get_text(),
-            })
 
-        # synthesis
-        self.log_clear()
+        # make data
         data_list = []
-        for query_data in query_list:
-            query = query_data['query']
-            text = query_data['text']
-            self.add_log('Synthesis...  %s' % text)
-            try:
-                audio = synthesis(doc.speaker_id, query.as_dict(), 5)
-                fs, data = sp.io.wavfile.read(io.BytesIO(audio))
+        self.log_clear()
+        for paragraph in paragraph_list:
+            if len(paragraph.note_list) > 0:
+                # use voicevox
+                # make query
+                query = paragraph2audio_query(
+                    paragraph, doc.tempo, self.sampling_rate
+                )
+                # synthesis
+                self.add_log('Synthesis...  %s' % query.get_text())
+                try:
+                    audio = synthesis(doc.speaker_id, query.as_dict(), 5)
+                    fs, data = sp.io.wavfile.read(io.BytesIO(audio))
+                    data_list.append(data)
+                except Exception as e:
+                    self.add_error(f'Error: {e}')
+                    self.add_log('Failed.')
+                    return
+            # rest
+            if paragraph.rest_length > 0:
+                data = np.zeros(int(paragraph.get_rest_sec(doc.tempo) * self.sampling_rate), dtype=np.int16)
                 data_list.append(data)
-            except Exception as e:
-                self.add_error(f'Error: {e}')
-                self.add_log('Failed.')
-                return
 
         # 連結
         return np.block(data_list)
 
     def play(self):
-        sampling_rate = 24000
-        data = self.make_wav_data(sampling_rate=sampling_rate)
+        data = self.make_wav_data()
         # Play
         self.add_log('Play')
         self.stop()
-        self.play_obj = simpleaudio.play_buffer(data, 1, 2, sampling_rate)
+        self.play_obj = simpleaudio.play_buffer(data, 1, 2, self.sampling_rate)
 
     def play_phrase(self):
         v = self.ui.tableView
-        sampling_rate = 24000
         if v.get_current_paragraph() is None:
             self.add_log('No selected paragraph.')
             return
-        data = self.make_wav_data(sampling_rate=sampling_rate, is_phrase=True)
+        data = self.make_wav_data(is_phrase=True)
         # Play
         self.add_log('Play')
         self.stop()
-        self.play_obj = simpleaudio.play_buffer(data, 1, 2, sampling_rate)
+        self.play_obj = simpleaudio.play_buffer(data, 1, 2, self.sampling_rate)
 
     def stop(self):
         if self.play_obj is not None:
@@ -256,10 +237,9 @@ class MainWindow(QMainWindow):
         if path != '':
             file_path = Path(path)
             self.log_clear()
-            sampling_rate = 24000
             self.add_log('Start ...')
-            data = self.make_wav_data(sampling_rate=sampling_rate)
-            sp.io.wavfile.write(file_path, sampling_rate, data)
+            data = self.make_wav_data()
+            sp.io.wavfile.write(file_path, self.sampling_rate, data)
             self.add_log('Save: %s' % str(file_path))
             self.add_log('Done.')
 

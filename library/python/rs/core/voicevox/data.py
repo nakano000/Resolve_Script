@@ -117,6 +117,11 @@ class Mora(config.DataInterface):
         # pitch
         self.pitch = note.index2pitch(note_index)
 
+    def get_sec(self):
+        if self.consonant is None:
+            return self.vowel_length
+        return self.consonant_length + self.vowel_length
+
 
 @dataclasses.dataclass
 class AccentPhrase(config.DataInterface):
@@ -124,6 +129,13 @@ class AccentPhrase(config.DataInterface):
     accent: int = 1
     pause_mora: Optional[Mora] = None
     is_interrogative: bool = False
+
+    def get_text(self):
+        return p.pipe(
+            self.moras,
+            p.map(lambda x: x.text),
+            ''.join,
+        )
 
 
 @dataclasses.dataclass
@@ -137,6 +149,13 @@ class AudioQuery(config.DataInterface):
     postPhonemeLength: float = 0.0
     outputSamplingRate: int = 24000
     outputStereo: bool = False
+
+    def get_text(self):
+        return p.pipe(
+            self.accent_phrases,
+            p.map(lambda x: x.get_text()),
+            ''.join,
+        )
 
 
 if __name__ == "__main__":
