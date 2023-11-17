@@ -16,18 +16,19 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QHBoxLayout, QHeaderView,
-    QMainWindow, QMenu, QMenuBar, QPushButton,
-    QSizePolicy, QSpacerItem, QStatusBar, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QHBoxLayout,
+    QHeaderView, QLabel, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
+    QSpinBox, QTextEdit, QVBoxLayout, QWidget)
 
-from rs.gui.table import View
+from rs.gui.log import LogTextEdit
+from rs.tool.voicevox_sequencer.seq import View
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(703, 678)
+        MainWindow.resize(502, 632)
         self.actionNew = QAction(MainWindow)
         self.actionNew.setObjectName(u"actionNew")
         self.actionOpen = QAction(MainWindow)
@@ -64,15 +65,86 @@ class Ui_MainWindow(object):
         self.actionUndo.setObjectName(u"actionUndo")
         self.actionRedo = QAction(MainWindow)
         self.actionRedo.setObjectName(u"actionRedo")
+        self.actionDecrement = QAction(MainWindow)
+        self.actionDecrement.setObjectName(u"actionDecrement")
+        self.actionIncrement = QAction(MainWindow)
+        self.actionIncrement.setObjectName(u"actionIncrement")
+        self.actionIncrementPlus = QAction(MainWindow)
+        self.actionIncrementPlus.setObjectName(u"actionIncrementPlus")
+        self.actionDecrementPlus = QAction(MainWindow)
+        self.actionDecrementPlus.setObjectName(u"actionDecrementPlus")
+        self.actionOpwn_MIDI = QAction(MainWindow)
+        self.actionOpwn_MIDI.setObjectName(u"actionOpwn_MIDI")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout_2.addWidget(self.label)
+
+        self.speakerComboBox = QComboBox(self.centralwidget)
+        self.speakerComboBox.setObjectName(u"speakerComboBox")
+        self.speakerComboBox.setMinimumSize(QSize(200, 30))
+
+        self.horizontalLayout_2.addWidget(self.speakerComboBox)
+
+        self.getSpeakerButton = QPushButton(self.centralwidget)
+        self.getSpeakerButton.setObjectName(u"getSpeakerButton")
+        self.getSpeakerButton.setMinimumSize(QSize(0, 30))
+        self.getSpeakerButton.setMaximumSize(QSize(40, 16777215))
+
+        self.horizontalLayout_2.addWidget(self.getSpeakerButton)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
+        self.label_2 = QLabel(self.centralwidget)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout_2.addWidget(self.label_2)
+
+        self.tempoSpinBox = QSpinBox(self.centralwidget)
+        self.tempoSpinBox.setObjectName(u"tempoSpinBox")
+        self.tempoSpinBox.setMinimumSize(QSize(50, 0))
+        self.tempoSpinBox.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.tempoSpinBox.setMinimum(5)
+        self.tempoSpinBox.setMaximum(999)
+        self.tempoSpinBox.setValue(120)
+
+        self.horizontalLayout_2.addWidget(self.tempoSpinBox)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
         self.tableView = View(self.centralwidget)
         self.tableView.setObjectName(u"tableView")
-        self.tableView.setEditTriggers(QAbstractItemView.DoubleClicked|QAbstractItemView.EditKeyPressed)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tableView.sizePolicy().hasHeightForWidth())
+        self.tableView.setSizePolicy(sizePolicy)
+        self.tableView.setEditTriggers(QAbstractItemView.DoubleClicked)
 
         self.verticalLayout.addWidget(self.tableView)
+
+        self.logTextEdit = LogTextEdit(self.centralwidget)
+        self.logTextEdit.setObjectName(u"logTextEdit")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.logTextEdit.sizePolicy().hasHeightForWidth())
+        self.logTextEdit.setSizePolicy(sizePolicy1)
+        self.logTextEdit.setMaximumSize(QSize(16777215, 80))
+        self.logTextEdit.setLineWrapMode(QTextEdit.NoWrap)
+        self.logTextEdit.setReadOnly(True)
+
+        self.verticalLayout.addWidget(self.logTextEdit)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -114,7 +186,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 703, 22))
+        self.menubar.setGeometry(QRect(0, 0, 502, 22))
         self.menuFaile = QMenu(self.menubar)
         self.menuFaile.setObjectName(u"menuFaile")
         self.menuEdit = QMenu(self.menubar)
@@ -122,30 +194,30 @@ class Ui_MainWindow(object):
         self.menuPlay = QMenu(self.menubar)
         self.menuPlay.setObjectName(u"menuPlay")
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuFaile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuPlay.menuAction())
         self.menuFaile.addAction(self.actionNew)
         self.menuFaile.addAction(self.actionOpen)
+        self.menuFaile.addAction(self.actionOpwn_MIDI)
         self.menuFaile.addSeparator()
         self.menuFaile.addAction(self.actionSave)
         self.menuFaile.addAction(self.actionSave_As)
-        self.menuFaile.addSeparator()
-        self.menuFaile.addAction(self.actionImport_From_Clipboard)
         self.menuFaile.addSeparator()
         self.menuFaile.addAction(self.actionExit)
         self.menuEdit.addAction(self.actionUndo)
         self.menuEdit.addAction(self.actionRedo)
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionEdit)
-        self.menuEdit.addAction(self.actionClear)
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionCopy)
         self.menuEdit.addAction(self.actionPaste)
+        self.menuEdit.addSeparator()
+        self.menuEdit.addAction(self.actionIncrement)
+        self.menuEdit.addAction(self.actionIncrementPlus)
+        self.menuEdit.addAction(self.actionDecrement)
+        self.menuEdit.addAction(self.actionDecrementPlus)
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionAdd)
         self.menuEdit.addAction(self.actionDelete)
@@ -196,7 +268,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(shortcut)
         self.actionDelete.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
 #if QT_CONFIG(shortcut)
-        self.actionDelete.setShortcut(QCoreApplication.translate("MainWindow", u"Shift+Del", None))
+        self.actionDelete.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Del", None))
 #endif // QT_CONFIG(shortcut)
         self.actionUp.setText(QCoreApplication.translate("MainWindow", u"Up", None))
 #if QT_CONFIG(shortcut)
@@ -212,7 +284,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(shortcut)
         self.actionEdit.setText(QCoreApplication.translate("MainWindow", u"Edit", None))
 #if QT_CONFIG(shortcut)
-        self.actionEdit.setShortcut(QCoreApplication.translate("MainWindow", u"Return", None))
+        self.actionEdit.setShortcut(QCoreApplication.translate("MainWindow", u"I", None))
 #endif // QT_CONFIG(shortcut)
         self.actionSave_As.setText(QCoreApplication.translate("MainWindow", u"Save As", None))
 #if QT_CONFIG(shortcut)
@@ -234,6 +306,26 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(shortcut)
         self.actionRedo.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Shift+Z", None))
 #endif // QT_CONFIG(shortcut)
+        self.actionDecrement.setText(QCoreApplication.translate("MainWindow", u"-", None))
+#if QT_CONFIG(shortcut)
+        self.actionDecrement.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Down", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionIncrement.setText(QCoreApplication.translate("MainWindow", u"+", None))
+#if QT_CONFIG(shortcut)
+        self.actionIncrement.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Up", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionIncrementPlus.setText(QCoreApplication.translate("MainWindow", u"++", None))
+#if QT_CONFIG(shortcut)
+        self.actionIncrementPlus.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Shift+Up", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionDecrementPlus.setText(QCoreApplication.translate("MainWindow", u"--", None))
+#if QT_CONFIG(shortcut)
+        self.actionDecrementPlus.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Shift+Down", None))
+#endif // QT_CONFIG(shortcut)
+        self.actionOpwn_MIDI.setText(QCoreApplication.translate("MainWindow", u"Opwn MIDI", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Speakers:", None))
+        self.getSpeakerButton.setText(QCoreApplication.translate("MainWindow", u"Get", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Tempo:", None))
         self.playButton.setText(QCoreApplication.translate("MainWindow", u"Play", None))
         self.stopButton.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.saveButton.setText(QCoreApplication.translate("MainWindow", u"Wav Save", None))

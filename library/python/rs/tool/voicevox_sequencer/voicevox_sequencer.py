@@ -1,37 +1,35 @@
-from typing import (
-    List,
-)
-
 import dataclasses
-import re
+import io
 import sys
 from pathlib import Path
+
+import scipy as sp
+import simpleaudio
 
 from PySide6.QtCore import (
     Qt,
     QItemSelectionModel,
-    QModelIndex, QEvent, QThread,
 )
+from PySide6.QtGui import QColor, QUndoStack
 from PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
-    QHeaderView,
     QMainWindow,
-    QPlainTextEdit,
     QMenu,
-    QStyledItemDelegate,
 )
-from shiboken6 import Shiboken
 
 from rs.core import (
     config,
     pipe as p,
+    voicevox,
 )
+from rs.core.voicevox.data import SpeakerList
+from rs.core.voicevox.api import synthesis
 from rs.gui import (
-    appearance,
-    table,
+    appearance, log,
 )
 
+from rs.tool.voicevox_sequencer import seq
 from rs.tool.voicevox_sequencer.voicevox_sequencer_ui import Ui_MainWindow
 
 APP_NAME = 'VoicevoxSequencer'
@@ -39,89 +37,66 @@ APP_NAME = 'VoicevoxSequencer'
 
 @dataclasses.dataclass
 class ConfigData(config.Data):
-    chara: str = 'ずんだもん'
+    speaker_index: int = 0
 
 
 @dataclasses.dataclass
-class VoiceData(table.RowData):
-    note: int = 60
-    length: int = 480
-    consonant_length: int = 96
-    rest: int = 0
-    velocity: int = 100
-    kana: str = 'ラ'
-
-    @classmethod
-    def toHeaderList(cls) -> List[str]:
-        return [
-            'Note',
-            'Len',
-            'C Len',
-            'Rest',
-            'Vel',
-            'Kana',
-        ]
+class Doc(config.Data):
+    speaker_id: int = 0
+    tempo: int = 120
+    note_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(seq.NoteData))
 
 
-@dataclasses.dataclass
-class VoiceDataset(config.Data):
-    voice_dir: str = ''
-    voice_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(VoiceData))
+def paragraph2accent_phrases(
+        paragraph: seq.Paragraph, tempo: int
+) -> list[voicevox.data.AccentPhrase]:
+    moras = []
+    accent_phrases = []
+    for note in paragraph.note_list:
+        mora = voicevox.data.Mora()
+        length = note.get_sec(tempo)
+        max_sec = note.max_time
+        mora.set_note(
+            note.kana,
+            note.note,
+            min(length, max_sec),
+        )
+        moras.append(mora)
 
-
-class Model(table.Model):
-    pass
-
-
-class ItemDelegate(QStyledItemDelegate):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self._parent = parent
-
-    # def createEditor(self, parent, option, index):
-    #     if index.column() in (1, 2):
-    #         return QPlainTextEdit(parent)
-    #     return super().createEditor(parent, option, index)
-
-    # def setEditorData(self, editor, index):
-    #     if index.column() in (1, 2):
-    #         editor: QPlainTextEdit
-    #         value = index.model().data(index, Qt.DisplayRole)
-    #         editor.clear()
-    #         editor.insertPlainText(value)
-    #         return
-    #     super().setEditorData(editor, index)
-
-    def eventFilter(self, editor, event):
-        if event.type() == QEvent.KeyPress:
-            key = event.key()
-            mod = event.modifiers()
-            v = self._parent.ui.tableView
-            if (
-                    (key == Qt.Key_Escape and mod == Qt.NoModifier)
-            ):
-                self.commitData.emit(editor)
-                self.closeEditor.emit(editor)
-                return True
-            if (
-                    (key in (Qt.Key_Down, Qt.Key_Up) and mod == Qt.NoModifier) or
-                    (key in (Qt.Key_Tab, Qt.Key_Backtab) and mod == Qt.NoModifier)
-            ):
-                self.commitData.emit(editor)
-                self.closeEditor.emit(editor)
-                v.keyPressEvent(event)
-                v.edit(v.currentIndex())
-                return True
-            if (
-                    (key == Qt.Key_Return and mod == Qt.ShiftModifier)
-            ):
-                self.commitData.emit(editor)
-                self.closeEditor.emit(editor)
-                self._parent.add()
-                v.edit(v.currentIndex())
-                return True
-
-        return super().eventFilter(editor, event)
+        if note.get_sec(tempo) > max_sec:
+            accent_phrase = voicevox.data.AccentPhrase()
+            pause_mora = voicevox.data.Mora()
+            pause_mora.set_rest(length - max_sec)
+            accent_phrase.pause_mora = pause_mora
+            accent_phrase.moras.set_list(moras)
+            accent_phrases.append(accent_phrase)
+            moras = []
+    if len(moras) > 0:
+        if paragraph.rest_length > 0:
+            mora = voicevox.data.Mora()
+            mora.set_rest(paragraph.rest_length)
+            moras.append(mora)
+        accent_phrase = voicevox.data.AccentPhrase()
+        accent_phrase.moras.set_list(moras)
+        accent_phrases.append(accent_phrase)
+    else:
+        if paragraph.rest_length > 0:
+            mora = accent_phrases[-1].pause_mora
+            rest_length = 0
+            if mora is None:
+                mora = voicevox.data.Mora()
+            else:
+                rest_length = mora.vowel_length
+            note = seq.NoteData(
+                note=-1,
+                length=paragraph.rest_length,
+                max_time=0.5,
+                kana='、',
+            )
+            note.get_sec(tempo)
+            mora.set_rest(rest_length + note.get_sec(tempo))
+            accent_phrases[-1].pause_mora = mora
+    return accent_phrases
 
 
 class MainWindow(QMainWindow):
@@ -134,55 +109,48 @@ class MainWindow(QMainWindow):
         self.setWindowFlags(
             Qt.Window
         )
-        self.resize(800, 800)
-        self.is_playing = False
+        self.resize(500, 800)
+
+        # header
+        self.speaker_list = SpeakerList()
+        self.speakers_file: Path = config.CONFIG_DIR.joinpath('voicevox_speakers.json')
+        if self.speakers_file.is_file():
+            self.speaker_list.load(self.speakers_file)
+        self.set_speaker_list()
+        self.ui.tempoSpinBox.setValue(120)
+
         # config
-        # self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
-        # self.load_config()
+        self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
+        self.load_config()
 
         # style sheet
         self.ui.saveButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.playButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.stopButton.setStyleSheet(appearance.other_stylesheet)
+        self.ui.getSpeakerButton.setStyleSheet(appearance.other_stylesheet)
 
         # table
         v = self.ui.tableView
-        v.setModel(Model(VoiceData))
-        v.setItemDelegate(ItemDelegate(self))
-        self.undo_stack = v.model().undo_stack
-
-        h = v.horizontalHeader()
-        h.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
-        h.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
-        vh = v.verticalHeader()
-        vh.setMinimumWidth(40)
-        vh.setMinimumSectionSize(55)
-        vh.setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
-        vh.setDefaultAlignment(Qt.AlignCenter)
+        self.undo_stack: QUndoStack = v.undo_stack
 
         v.setContextMenuPolicy(Qt.CustomContextMenu)
         v.customContextMenuRequested.connect(self.contextMenu)
 
-        v.setStyleSheet(
-            'QTableView::item::focus {'
-            ' border: 2px solid white;'
-            ' border-radius: 0px;'
-            ' border-bottom-right-radius: 0px;'
-            ' border-style: double;}'
-        )
-
         self.new_doc()
         # thread
-        self.player_thread = None
-        self.player = None
+        # self.player_thread = None
+        # self.player = None
+
         # event
         self.undo_stack.cleanChanged.connect(self.set_title)
 
-        self.ui.playButton.clicked.connect(self.play)
-        self.ui.stopButton.clicked.connect(self.stop)
-        self.ui.saveButton.clicked.connect(self.wave_save)
-        self.ui.closeButton.clicked.connect(self.close)
+        self.ui.getSpeakerButton.clicked.connect(self.get_speakers)
 
+        self.ui.playButton.clicked.connect(self.play)
+        # self.ui.stopButton.clicked.connect(self.stop)
+        # self.ui.saveButton.clicked.connect(self.wave_save)
+        self.ui.closeButton.clicked.connect(self.close)
+        #
         self.ui.actionNew.triggered.connect(self.new_doc)
         self.ui.actionOpen.triggered.connect(self.open_doc)
         self.ui.actionSave.triggered.connect(self.save_doc)
@@ -194,15 +162,19 @@ class MainWindow(QMainWindow):
 
         self.ui.actionEdit.triggered.connect(self.edit)
         self.ui.actionAdd.triggered.connect(self.add)
+        self.ui.actionIncrement.triggered.connect(self.ui.tableView.increment)
+        self.ui.actionIncrementPlus.triggered.connect(self.ui.tableView.increment_plus)
+        self.ui.actionDecrement.triggered.connect(self.ui.tableView.decrement)
+        self.ui.actionDecrementPlus.triggered.connect(self.ui.tableView.decrement_plus)
         self.ui.actionClear.triggered.connect(self.ui.tableView.clear)
         self.ui.actionCopy.triggered.connect(self.ui.tableView.copy)
         self.ui.actionPaste.triggered.connect(self.ui.tableView.paste)
         self.ui.actionDelete.triggered.connect(self.ui.tableView.delete)
         self.ui.actionUp.triggered.connect(self.ui.tableView.up)
         self.ui.actionDown.triggered.connect(self.ui.tableView.down)
-
-        self.ui.actionPlay.triggered.connect(self.play_or_stop)
-        self.ui.actionWav_Save.triggered.connect(self.wave_save)
+        #
+        # self.ui.actionPlay.triggered.connect(self.play_or_stop)
+        # self.ui.actionWav_Save.triggered.connect(self.wave_save)
 
     def set_title(self):
         if self.file is None:
@@ -212,7 +184,37 @@ class MainWindow(QMainWindow):
             self.setWindowTitle('%s - %s%s' % (APP_NAME, self.file, star))
 
     def play(self):
-        pass
+        v = self.ui.tableView
+        doc = self.get_data()
+
+        # make query
+        paragraph_list = v.get_paragraph_list()
+        query_list = []
+        for paragraph in paragraph_list:
+            accent_phrases = paragraph2accent_phrases(
+                paragraph, doc.tempo
+            )
+            query = voicevox.data.AudioQuery()
+            query.accent_phrases.set_list(accent_phrases)
+            query_list.append(query)
+
+        from pprint import pprint
+        self.log_clear()
+        data_list = []
+        for query in query_list:
+            self.add_log('Synthesis...')
+            try:
+                audio = synthesis(doc.speaker_id, query.as_dict(), 5)
+                fs, data = sp.io.wavfile.read(io.BytesIO(audio))
+                data_list.append((fs, data))
+            except Exception as e:
+                self.add_error(f'Error: {e}')
+                self.add_log('Failed.')
+                return
+        self.add_log('Play')
+        for data in data_list:
+            play_obj = simpleaudio.play_buffer(data[1], 1, 2, data[0])
+            play_obj.wait_done()
 
     def play_state_off(self):
         self.is_playing = False
@@ -240,7 +242,11 @@ class MainWindow(QMainWindow):
         menu.addAction(self.ui.actionRedo)
         menu.addSeparator()
         menu.addAction(self.ui.actionEdit)
-        menu.addAction(self.ui.actionClear)
+        menu.addSeparator()
+        menu.addAction(self.ui.actionIncrement)
+        menu.addAction(self.ui.actionIncrementPlus)
+        menu.addAction(self.ui.actionDecrement)
+        menu.addAction(self.ui.actionDecrementPlus)
         menu.addSeparator()
         menu.addAction(self.ui.actionCopy)
         menu.addAction(self.ui.actionPaste)
@@ -250,47 +256,83 @@ class MainWindow(QMainWindow):
         menu.addSeparator()
         menu.addAction(self.ui.actionUp)
         menu.addAction(self.ui.actionDown)
-        menu.exec_(v.mapToGlobal(pos))
+        menu.exec(v.mapToGlobal(pos))
 
     def add(self):
-        c = self.get_config()
         v = self.ui.tableView
-        m: Model = v.model()
+        m: seq.Model = v.model()
         sm = v.selectionModel()
         row = v.currentIndex().row()
-        col = v.currentIndex().column()
-        d = VoiceData()
+        d = seq.NoteData()
         if row < 0:
-            d.chara = c.chara
             m.add_row_data(d)
         else:
-            d.chara = m.get_row_data(row).chara
+            current_index = v.currentIndex()
             m.insert_row_data(row + 1, d)
-            index = m.index(row + 1, col, QModelIndex())
-            sm.setCurrentIndex(index, QItemSelectionModel.SelectionFlag.ClearAndSelect)
+            sm.setCurrentIndex(
+                current_index.siblingAtRow(row + 1),
+                QItemSelectionModel.SelectionFlag.ClearAndSelect
+            )
 
-    def folderToolButton_clicked(self) -> None:
-        w = self.ui.folderLineEdit
-        path = QFileDialog.getExistingDirectory(
-            self,
-            'Select Directory',
-            w.text(),
+    def add_log(self, text: str, color: QColor = log.TEXT_COLOR) -> None:
+        self.ui.logTextEdit.log(text, color)
+
+    def add_error(self, text: str) -> None:
+        self.ui.logTextEdit.log(text, log.ERROR_COLOR)
+
+    def log_clear(self) -> None:
+        self.ui.logTextEdit.clear()
+
+    def set_speaker_list(self) -> None:
+        self.ui.speakerComboBox.clear()
+        self.ui.speakerComboBox.addItems(self.speaker_list.get_display_name_list())
+
+    def get_speakers(self):
+        self.log_clear()
+        self.add_log('Get speakers...')
+        try:
+            self.speaker_list.set_from_voicevox()
+        except Exception as e:
+            self.add_error(f'Error: {e}')
+            self.add_log('Failed.')
+            return
+        self.set_speaker_list()
+        self.save_speakers()
+        self.add_log('Done.')
+
+    def set_data(self, doc: Doc):
+        # id
+        display_name = self.speaker_list.get_display_name(doc.speaker_id)
+        if display_name is not None:
+            self.ui.speakerComboBox.setCurrentText(display_name)
+        pass
+        # tempo
+        self.ui.tempoSpinBox.setValue(doc.tempo)
+        # note
+        v = self.ui.tableView
+        m: seq.Model = v.model()
+        m.set_data(doc.note_list)
+
+    def get_data(self) -> Doc:
+        doc = Doc()
+        # id
+        speaker_id = self.speaker_list.get_id_from_display_name(
+            self.ui.speakerComboBox.currentText()
         )
-        if path != '':
-            w.setText(path)
-
-    def set_data(self, a: VoiceDataset):
-        self.ui.tableView.model().set_data(a.voice_list)
-
-    def get_data(self) -> VoiceDataset:
-        a = VoiceDataset()
-        a.voice_list.set_list(self.ui.tableView.model().to_list())
-        return a
+        if speaker_id is not None:
+            doc.speaker_id = speaker_id
+        # tempo
+        doc.tempo = self.ui.tempoSpinBox.value()
+        # note
+        v = self.ui.tableView
+        m: seq.Model = v.model()
+        doc.note_list.set_list(m.to_list())
+        return doc
 
     def new_doc(self):
         self.file = None
         v = self.ui.tableView
-        m: Model = v.model()
+        m: seq.Model = v.model()
         m.clear()
         self.add()
         self.undo_stack.clear()
@@ -312,7 +354,8 @@ class MainWindow(QMainWindow):
                 a = self.get_data()
                 a.load(file_path)
                 self.set_data(a)
-                # self.add2log('Open: %s' % str(file_path))
+                self.log_clear()
+                self.add_log('Open: %s' % str(file_path))
                 self.file = str(file_path)
                 self.undo_stack.clear()
                 self.set_title()
@@ -322,8 +365,10 @@ class MainWindow(QMainWindow):
             self.save_as_doc()
             return
         file_path = Path(self.file)
-        a = self.get_data()
-        a.save(file_path)
+        doc = self.get_data()
+        doc.save(file_path)
+        self.log_clear()
+        self.add_log('Save: %s' % str(file_path))
         self.undo_stack.setClean()
         self.set_title()
 
@@ -339,19 +384,27 @@ class MainWindow(QMainWindow):
         )
         if path != '':
             file_path = Path(path)
-            a = self.get_data()
-            a.save(file_path)
-            # self.add2log('Save: %s' % str(file_path))
+            doc = self.get_data()
+            doc.save(file_path)
+            self.log_clear()
+            self.add_log('Save: %s' % str(file_path))
             self.file = str(file_path)
             self.undo_stack.setClean()
             self.set_title()
 
     def set_config(self, c: ConfigData):
-        self.ui.charaLineEdit.setText(c.chara)
+        display_name = self.speaker_list.get_display_name(c.speaker_index)
+        if display_name is not None:
+            self.ui.speakerComboBox.setCurrentText(display_name)
+        pass
 
     def get_config(self) -> ConfigData:
         c = ConfigData()
-        c.chara = self.ui.charaLineEdit.text().strip()
+        speaker_id = self.speaker_list.get_id_from_display_name(
+            self.ui.speakerComboBox.currentText()
+        )
+        if speaker_id is not None:
+            c.speaker_index = speaker_id
         return c
 
     def load_config(self) -> None:
@@ -364,6 +417,12 @@ class MainWindow(QMainWindow):
         config.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
         c = self.get_config()
         c.save(self.config_file)
+        pass
+
+    def save_speakers(self) -> None:
+        config.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+        self.speaker_list.save(self.speakers_file)
+        pass
 
     def closeEvent(self, event):
         self.save_config()

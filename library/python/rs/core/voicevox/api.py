@@ -58,8 +58,10 @@ def synthesis(speaker: int, data, max_retry: int):
 
 
 if __name__ == "__main__":
+    from pprint import pprint
+
     print(core_versions(10))
     print(speakers(10))
-    query_data = audio_query('こんにちは', 8, 10)
-    print(query_data)
+    query_data = audio_query('こんにちは さようなら', 8, 10)
+    pprint(query_data)
     print(synthesis(8, query_data, 10))
