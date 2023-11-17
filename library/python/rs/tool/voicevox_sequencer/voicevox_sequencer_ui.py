@@ -154,6 +154,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.playButton)
 
+        self.playPhraseButton = QPushButton(self.centralwidget)
+        self.playPhraseButton.setObjectName(u"playPhraseButton")
+        self.playPhraseButton.setMinimumSize(QSize(80, 30))
+
+        self.horizontalLayout.addWidget(self.playPhraseButton)
+
         self.stopButton = QPushButton(self.centralwidget)
         self.stopButton.setObjectName(u"stopButton")
         self.stopButton.setMinimumSize(QSize(80, 30))
@@ -191,13 +197,10 @@ class Ui_MainWindow(object):
         self.menuFaile.setObjectName(u"menuFaile")
         self.menuEdit = QMenu(self.menubar)
         self.menuEdit.setObjectName(u"menuEdit")
-        self.menuPlay = QMenu(self.menubar)
-        self.menuPlay.setObjectName(u"menuPlay")
         MainWindow.setMenuBar(self.menubar)
 
         self.menubar.addAction(self.menuFaile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
-        self.menubar.addAction(self.menuPlay.menuAction())
         self.menuFaile.addAction(self.actionNew)
         self.menuFaile.addAction(self.actionOpen)
         self.menuFaile.addAction(self.actionOpwn_MIDI)
@@ -224,8 +227,6 @@ class Ui_MainWindow(object):
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionUp)
         self.menuEdit.addAction(self.actionDown)
-        self.menuPlay.addAction(self.actionPlay)
-        self.menuPlay.addAction(self.actionWav_Save)
 
         self.retranslateUi(MainWindow)
 
@@ -327,11 +328,11 @@ class Ui_MainWindow(object):
         self.getSpeakerButton.setText(QCoreApplication.translate("MainWindow", u"Get", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Tempo:", None))
         self.playButton.setText(QCoreApplication.translate("MainWindow", u"Play", None))
+        self.playPhraseButton.setText(QCoreApplication.translate("MainWindow", u"Play Phrase", None))
         self.stopButton.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
         self.saveButton.setText(QCoreApplication.translate("MainWindow", u"Wav Save", None))
         self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
         self.menuFaile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
-        self.menuPlay.setTitle(QCoreApplication.translate("MainWindow", u"Play", None))
     # retranslateUi
 

@@ -151,6 +151,19 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="playPhraseButton">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Play Phrase</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="stopButton">
         <property name="minimumSize">
          <size>
@@ -267,16 +280,8 @@
     <addaction name="actionUp"/>
     <addaction name="actionDown"/>
    </widget>
-   <widget class="QMenu" name="menuPlay">
-    <property name="title">
-     <string>Play</string>
-    </property>
-    <addaction name="actionPlay"/>
-    <addaction name="actionWav_Save"/>
-   </widget>
    <addaction name="menuFaile"/>
    <addaction name="menuEdit"/>
-   <addaction name="menuPlay"/>
   </widget>
   <action name="actionNew">
    <property name="text">

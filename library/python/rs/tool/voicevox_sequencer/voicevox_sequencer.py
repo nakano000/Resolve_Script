@@ -3,6 +3,7 @@ import io
 import sys
 from pathlib import Path
 
+import numpy as np
 import scipy as sp
 import simpleaudio
 
@@ -47,9 +48,7 @@ class Doc(config.Data):
     note_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(seq.NoteData))
 
 
-def paragraph2accent_phrases(
-        paragraph: seq.Paragraph, tempo: int
-) -> list[voicevox.data.AccentPhrase]:
+def paragraph2accent_phrases(paragraph: seq.Paragraph, tempo: int) -> list[voicevox.data.AccentPhrase]:
     moras = []
     accent_phrases = []
     for note in paragraph.note_list:
@@ -109,7 +108,7 @@ class MainWindow(QMainWindow):
         self.setWindowFlags(
             Qt.Window
         )
-        self.resize(500, 800)
+        self.resize(600, 800)
 
         # header
         self.speaker_list = SpeakerList()
@@ -119,6 +118,8 @@ class MainWindow(QMainWindow):
         self.set_speaker_list()
         self.ui.tempoSpinBox.setValue(120)
 
+        self.play_obj = None
+
         # config
         self.config_file: Path = config.CONFIG_DIR.joinpath('%s.json' % APP_NAME)
         self.load_config()
@@ -126,6 +127,7 @@ class MainWindow(QMainWindow):
         # style sheet
         self.ui.saveButton.setStyleSheet(appearance.ex_stylesheet)
         self.ui.playButton.setStyleSheet(appearance.other_stylesheet)
+        self.ui.playPhraseButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.stopButton.setStyleSheet(appearance.other_stylesheet)
         self.ui.getSpeakerButton.setStyleSheet(appearance.other_stylesheet)
 
@@ -137,9 +139,6 @@ class MainWindow(QMainWindow):
         v.customContextMenuRequested.connect(self.contextMenu)
 
         self.new_doc()
-        # thread
-        # self.player_thread = None
-        # self.player = None
 
         # event
         self.undo_stack.cleanChanged.connect(self.set_title)
@@ -147,8 +146,9 @@ class MainWindow(QMainWindow):
         self.ui.getSpeakerButton.clicked.connect(self.get_speakers)
 
         self.ui.playButton.clicked.connect(self.play)
-        # self.ui.stopButton.clicked.connect(self.stop)
-        # self.ui.saveButton.clicked.connect(self.wave_save)
+        self.ui.playPhraseButton.clicked.connect(self.play_phrase)
+        self.ui.stopButton.clicked.connect(self.stop)
+        self.ui.saveButton.clicked.connect(self.wave_save)
         self.ui.closeButton.clicked.connect(self.close)
         #
         self.ui.actionNew.triggered.connect(self.new_doc)
@@ -172,9 +172,6 @@ class MainWindow(QMainWindow):
         self.ui.actionDelete.triggered.connect(self.ui.tableView.delete)
         self.ui.actionUp.triggered.connect(self.ui.tableView.up)
         self.ui.actionDown.triggered.connect(self.ui.tableView.down)
-        #
-        # self.ui.actionPlay.triggered.connect(self.play_or_stop)
-        # self.ui.actionWav_Save.triggered.connect(self.wave_save)
 
     def set_title(self):
         if self.file is None:
@@ -183,12 +180,12 @@ class MainWindow(QMainWindow):
             star = '*' if self.ui.tableView.model().undo_stack.isClean() is False else ''
             self.setWindowTitle('%s - %s%s' % (APP_NAME, self.file, star))
 
-    def play(self):
+    def make_wav_data(self, sampling_rate=24000, is_phrase=False):
         v = self.ui.tableView
         doc = self.get_data()
 
         # make query
-        paragraph_list = v.get_paragraph_list()
+        paragraph_list = [v.get_current_paragraph()] if is_phrase else v.get_paragraph_list()
         query_list = []
         for paragraph in paragraph_list:
             accent_phrases = paragraph2accent_phrases(
@@ -196,40 +193,75 @@ class MainWindow(QMainWindow):
             )
             query = voicevox.data.AudioQuery()
             query.accent_phrases.set_list(accent_phrases)
-            query_list.append(query)
+            query.outputSamplingRate = sampling_rate
+            query_list.append({
+                'query': query,
+                'text': paragraph.get_text(),
+            })
 
-        from pprint import pprint
+        # synthesis
         self.log_clear()
         data_list = []
-        for query in query_list:
-            self.add_log('Synthesis...')
+        for query_data in query_list:
+            query = query_data['query']
+            text = query_data['text']
+            self.add_log('Synthesis...  %s' % text)
             try:
                 audio = synthesis(doc.speaker_id, query.as_dict(), 5)
                 fs, data = sp.io.wavfile.read(io.BytesIO(audio))
-                data_list.append((fs, data))
+                data_list.append(data)
             except Exception as e:
                 self.add_error(f'Error: {e}')
                 self.add_log('Failed.')
                 return
+
+        # 連結
+        return np.block(data_list)
+
+    def play(self):
+        sampling_rate = 24000
+        data = self.make_wav_data(sampling_rate=sampling_rate)
+        # Play
         self.add_log('Play')
-        for data in data_list:
-            play_obj = simpleaudio.play_buffer(data[1], 1, 2, data[0])
-            play_obj.wait_done()
+        self.stop()
+        self.play_obj = simpleaudio.play_buffer(data, 1, 2, sampling_rate)
 
-    def play_state_off(self):
-        self.is_playing = False
-
-    def play_or_stop(self):
-        if self.is_playing:
-            self.stop()
-        else:
-            self.play()
+    def play_phrase(self):
+        v = self.ui.tableView
+        sampling_rate = 24000
+        if v.get_current_paragraph() is None:
+            self.add_log('No selected paragraph.')
+            return
+        data = self.make_wav_data(sampling_rate=sampling_rate, is_phrase=True)
+        # Play
+        self.add_log('Play')
+        self.stop()
+        self.play_obj = simpleaudio.play_buffer(data, 1, 2, sampling_rate)
 
     def stop(self):
-        pass
+        if self.play_obj is not None:
+            self.play_obj.stop()
+            self.play_obj = None
 
     def wave_save(self):
-        pass
+        dir_path = ''
+        if self.file is not None:
+            dir_path = Path(self.file).parent
+        path, _ = QFileDialog.getSaveFileName(
+            self,
+            'Save File',
+            str(dir_path),
+            'WAV File (*.wav);;All File (*.*)'
+        )
+        if path != '':
+            file_path = Path(path)
+            self.log_clear()
+            sampling_rate = 24000
+            self.add_log('Start ...')
+            data = self.make_wav_data(sampling_rate=sampling_rate)
+            sp.io.wavfile.write(file_path, sampling_rate, data)
+            self.add_log('Save: %s' % str(file_path))
+            self.add_log('Done.')
 
     def edit(self):
         v = self.ui.tableView

@@ -311,6 +311,8 @@ class View(table.View):
                 col = i.column()
                 if col == 0:
                     v = m.get_value(i.row(), i.column())
+                    if v < 0:
+                        continue
                     if v > 0:
                         m.setData(i, v - 1, Qt.EditRole)
                 elif col == 1:
@@ -334,6 +336,8 @@ class View(table.View):
                 col = i.column()
                 if col == 0:
                     v = m.get_value(i.row(), i.column())
+                    if v < 0:
+                        continue
                     if v >= 12:
                         m.setData(i, v - 12, Qt.EditRole)
                 elif col == 1:
@@ -361,6 +365,8 @@ class View(table.View):
                 col = i.column()
                 if col == 0:
                     v = m.get_value(i.row(), i.column())
+                    if v < 0:
+                        continue
                     m.setData(i, v + 1, Qt.EditRole)
                 elif col == 1:
                     v = m.get_value(i.row(), i.column())
@@ -382,6 +388,8 @@ class View(table.View):
                 col = i.column()
                 if col == 0:
                     v = m.get_value(i.row(), i.column())
+                    if v < 0:
+                        continue
                     m.setData(i, v + 12, Qt.EditRole)
                 elif col == 1:
                     v = m.get_value(i.row(), i.column())
