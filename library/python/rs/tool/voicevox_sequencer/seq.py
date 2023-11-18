@@ -9,7 +9,7 @@ from PySide6.QtCore import (
     QItemSelectionModel,
     Qt,
     QEvent,
-    QSize,
+    QSize, QSignalBlocker,
 )
 from PySide6.QtGui import QIcon, QColor, QKeyEvent
 from PySide6.QtWidgets import (
@@ -119,13 +119,13 @@ class Model(table.Model):
                 if note_index < 0:
                     return f'----  {self.get_value(index.row(), 3)}'
 
-        if role == Qt.BackgroundRole:
+        elif role == Qt.BackgroundRole:
             note_index = self.get_value(index.row(), 0)
             length = self.get_value(index.row(), 1)
             if note_index < 0 and length == 0:
                 return QColor(100, 100, 100)
 
-        if role == Qt.DecorationRole:
+        elif role == Qt.DecorationRole:
             if index.column() == 1:
                 is_rest = self.get_value(index.row(), 0) < 0
                 length = self.get_value(index.row(), 1)
@@ -299,6 +299,10 @@ class View(table.View):
         )
 
         # h = self.horizontalHeader()
+        # h.setSectionHidden(0, True)
+        # h.setSectionHidden(1, True)
+        # h.setSectionHidden(2, True)
+        # h.setSectionHidden(3, True)
         # h.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         # h.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
         vh = self.verticalHeader()
@@ -310,8 +314,22 @@ class View(table.View):
         # ---------------------
         self.octave = 4
 
+    def undo(self):
+        m = self.model()
+        with QSignalBlocker(m):
+            self.undo_stack.undo()
+        self.viewport().update()
+
+    def redo(self):
+        m = self.model()
+        with QSignalBlocker(m):
+            self.undo_stack.redo()
+        self.viewport().update()
+
     def paste(self):
-        super().paste()
+        m: Model = self.model()
+        with QSignalBlocker(m):
+            super().paste()
         self.viewport().update()
 
     def set_octave(self, octave: int):
@@ -320,9 +338,9 @@ class View(table.View):
     def decrement(self):
         m: Model = self.model()
         sm = self.selectionModel()
-        m.undo_stack.beginMacro('Decrement')
-        for i in sm.selectedIndexes():
-            if i.flags() & Qt.ItemIsEditable:
+        with QSignalBlocker(m):
+            m.undo_stack.beginMacro('Decrement')
+            for i in sm.selectedIndexes():
                 col = i.column()
                 if col == 0:
                     v = m.get_value(i.row(), i.column())
@@ -340,14 +358,15 @@ class View(table.View):
                     v = m.get_value(i.row(), i.column())
                     if v > 0.1:
                         m.setData(i, v - 0.1, Qt.EditRole)
-        m.undo_stack.endMacro()
+            m.undo_stack.endMacro()
+        self.viewport().update()
 
     def decrement_plus(self):
         m: Model = self.model()
         sm = self.selectionModel()
-        m.undo_stack.beginMacro('DecrementPlus')
-        for i in sm.selectedIndexes():
-            if i.flags() & Qt.ItemIsEditable:
+        with QSignalBlocker(m):
+            m.undo_stack.beginMacro('DecrementPlus')
+            for i in sm.selectedIndexes():
                 col = i.column()
                 if col == 0:
                     v = m.get_value(i.row(), i.column())
@@ -369,14 +388,15 @@ class View(table.View):
                     v = m.get_value(i.row(), i.column())
                     if v > 0.5:
                         m.setData(i, v - 0.5, Qt.EditRole)
-        m.undo_stack.endMacro()
+            m.undo_stack.endMacro()
+        self.viewport().update()
 
     def increment(self):
         m: Model = self.model()
         sm = self.selectionModel()
-        m.undo_stack.beginMacro('Increment')
-        for i in sm.selectedIndexes():
-            if i.flags() & Qt.ItemIsEditable:
+        with QSignalBlocker(m):
+            m.undo_stack.beginMacro('Increment')
+            for i in sm.selectedIndexes():
                 col = i.column()
                 if col == 0:
                     v = m.get_value(i.row(), i.column())
@@ -392,14 +412,15 @@ class View(table.View):
                 elif col == 2:
                     v = m.get_value(i.row(), i.column())
                     m.setData(i, v + 0.1, Qt.EditRole)
-        m.undo_stack.endMacro()
+            m.undo_stack.endMacro()
+        self.viewport().update()
 
     def increment_plus(self):
         m: Model = self.model()
         sm = self.selectionModel()
-        m.undo_stack.beginMacro('IncrementPlus')
-        for i in sm.selectedIndexes():
-            if i.flags() & Qt.ItemIsEditable:
+        with QSignalBlocker(m):
+            m.undo_stack.beginMacro('IncrementPlus')
+            for i in sm.selectedIndexes():
                 col = i.column()
                 if col == 0:
                     v = m.get_value(i.row(), i.column())
@@ -419,7 +440,8 @@ class View(table.View):
                 elif col == 2:
                     v = m.get_value(i.row(), i.column())
                     m.setData(i, v + 0.5, Qt.EditRole)
-        m.undo_stack.endMacro()
+            m.undo_stack.endMacro()
+        self.viewport().update()
 
     def get_paragraph_list(self):
         m: Model = self.model()

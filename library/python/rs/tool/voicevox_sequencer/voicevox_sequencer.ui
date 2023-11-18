@@ -251,6 +251,7 @@
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionOpen_MIDI"/>
+    <addaction name="actionOpen_UST"/>
     <addaction name="separator"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
@@ -474,6 +475,11 @@
   <action name="actionLyrics">
    <property name="text">
     <string>Lyrics</string>
+   </property>
+  </action>
+  <action name="actionOpen_UST">
+   <property name="text">
+    <string>Open UST</string>
    </property>
   </action>
  </widget>

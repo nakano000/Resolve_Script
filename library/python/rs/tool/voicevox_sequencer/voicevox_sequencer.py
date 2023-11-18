@@ -7,6 +7,7 @@ import mido
 import numpy as np
 import scipy as sp
 import simpleaudio
+import pykakasi
 
 from PySide6.QtCore import (
     Qt,
@@ -24,9 +25,13 @@ from rs.core import (
     config,
     pipe as p,
     voicevox,
+    ust,
 )
 from rs.core.voicevox.data import SpeakerList
 from rs.core.voicevox.api import synthesis
+from rs.core.voicevox.mora_list import openjtalk_text2mora as text2mora
+from rs.core.voicevox.mora_list import openjtalk_mora2text as mora2text
+
 from rs.gui import (
     appearance, log,
 )
@@ -82,8 +87,62 @@ class Doc(config.Data):
         if len(lst) == 0:
             self.note_list.clear()
         else:
-            print(lst[0])
             self.note_list.set_list(lst[0])
+
+    def load_ust(self, f: Path):
+        dct = ust.read(f)
+        self.note_list.clear()
+
+        if 'SETTING' in dct:
+            if 'Tempo' in dct['SETTING']:
+                try:
+                    _tempo = float(dct['SETTING']['Tempo'])
+                    self.tempo = int(_tempo)
+                except ValueError:
+                    pass
+        # notes
+        kks = pykakasi.kakasi()
+        for i, _note in enumerate(dct['notes']):
+            if 'Tempo' in _note.keys():
+                try:
+                    _tempo = float(_note['Tempo'])
+                    self.tempo = int(_tempo)
+                except ValueError:
+                    pass
+
+            note = seq.NoteData()
+
+            if 'Length' in _note:
+                try:
+                    note.length = int(_note['Length'])
+                except ValueError:
+                    pass
+            if 'NoteNum' in _note:
+                try:
+                    note.note = int(_note['NoteNum'])
+                except ValueError:
+                    pass
+
+            if 'Lyric' in _note:
+                lyric = _note['Lyric']
+                if lyric == 'R':
+                    note.note = -1
+                    note.kana = ''
+                else:
+                    lyric = lyric.replace('x', '')
+                    _split = lyric.split(' ')
+                    kana = _split[-1].strip()
+                    if kana == '-' and i > 0:
+                        _pre_kana = self.note_list[i - 1].kana
+                        if _pre_kana in text2mora:
+                            _vowel = text2mora[_pre_kana][-1]
+                            note.kana = mora2text[_vowel]
+                    else:
+                        note.kana = kks.convert(kana)[0]['kana']
+                    if kana in mora2text:
+                        note.kana = mora2text[kana]
+
+            self.note_list.append(note)
 
 
 def paragraph2audio_query(paragraph: seq.Paragraph, tempo: int, sampling_rate: int) -> voicevox.data.AudioQuery:
@@ -182,12 +241,13 @@ class MainWindow(QMainWindow):
         self.ui.actionNew.triggered.connect(self.new_doc)
         self.ui.actionOpen.triggered.connect(self.open_doc)
         self.ui.actionOpen_MIDI.triggered.connect(self.open_midi)
+        self.ui.actionOpen_UST.triggered.connect(self.open_ust)
         self.ui.actionSave.triggered.connect(self.save_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
         self.ui.actionExit.triggered.connect(self.close)
 
-        self.ui.actionUndo.triggered.connect(self.undo_stack.undo)
-        self.ui.actionRedo.triggered.connect(self.undo_stack.redo)
+        self.ui.actionUndo.triggered.connect(self.ui.tableView.undo)
+        self.ui.actionRedo.triggered.connect(self.ui.tableView.redo)
 
         self.ui.actionEdit.triggered.connect(self.edit)
         self.ui.actionAdd.triggered.connect(self.add)
@@ -432,6 +492,28 @@ class MainWindow(QMainWindow):
             if file_path.is_file():
                 doc = self.get_data()
                 doc.load_midi(file_path)
+                self.set_data(doc)
+                self.log_clear()
+                self.add_log('Open: %s' % str(file_path))
+                self.file = None
+                self.undo_stack.clear()
+                self.set_title()
+
+    def open_ust(self):
+        dir_path = ''
+        if self.file is not None:
+            dir_path = Path(self.file).parent
+        path, _ = QFileDialog.getOpenFileName(
+            self,
+            'Open File',
+            str(dir_path),
+            'UST File (*.ust);;All File (*.*)'
+        )
+        if path != '':
+            file_path = Path(path)
+            if file_path.is_file():
+                doc = self.get_data()
+                doc.load_ust(file_path)
                 self.set_data(doc)
                 self.log_clear()
                 self.add_log('Open: %s' % str(file_path))
