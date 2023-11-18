@@ -36,7 +36,7 @@
     "path": "bin/voicevox_sequencer.py",
     "ss": "sound",
     "win": true,
-    "mac": true,
+    "mac": false,
     "linux": true
   },
   {
