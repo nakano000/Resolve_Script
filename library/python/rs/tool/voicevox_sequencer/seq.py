@@ -2,6 +2,8 @@ import dataclasses
 from enum import Enum
 from typing import Optional, List
 
+import pykakasi
+
 from PySide6.QtCore import (
     QModelIndex,
     QItemSelectionModel,
@@ -58,7 +60,7 @@ class NoteData(table.RowData):
         return [
             'Note',
             'Length',
-            'Max Time',
+            'Limit(sec)',
             'Kana',
         ]
 
@@ -170,7 +172,10 @@ class ItemDelegate(QStyledItemDelegate):
                 if _value[-1] not in '0123456789':
                     _value = _value + str(v.octave)
                 _value = str(note.name2index(_value))
-
+        # kanaの文字をカタカナに変換
+        elif col == 3:
+            kks = pykakasi.kakasi()
+            _value = kks.convert(_value)[0]['kana']
         # 変更が場合は何もしない
         if editor.org_text == _value:
             editor.org_text = None
@@ -189,6 +194,13 @@ class ItemDelegate(QStyledItemDelegate):
             try:
                 value = float(_value)
                 model.setData(index, value)
+                editor.org_text = None
+                return
+            except ValueError:
+                return
+        elif col == 3:
+            try:
+                model.setData(index, _value)
                 editor.org_text = None
                 return
             except ValueError:
