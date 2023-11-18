@@ -18,6 +18,7 @@ https://youtu.be/WyKujodsLh0
 * [softalk2wave](#softalk2wave)
 * [AssistantSeika2wave](#AssistantSeika2wave)
 * [AquesTalkWrapper](#AquesTalkWrapper)
+* [VoicevoxSequencer](#VoicevoxSequencer)
 * [VoiceBin](#VoiceBin)
 * [VoiceSync](#VoiceSync)
 * [PsdSplitter](#PsdSplitter)
@@ -70,6 +71,13 @@ AssistantSeika、他音声読み上げソフトが必要です。
 ### AquesTalkWrapper
 
 AquesTalkPlayerをラップして使いやすくします。
+
+[目次へ](#目次)
+
+### VoicevoxSequencer
+
+Voicevoxを操作して歌わせます。
+Mac版はsimpleaudioのインストールが簡単に出来なかったので、一時無効化しました。
 
 [目次へ](#目次)
 
