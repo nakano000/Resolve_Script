@@ -280,8 +280,15 @@
     <addaction name="actionUp"/>
     <addaction name="actionDown"/>
    </widget>
+   <widget class="QMenu" name="menuTool">
+    <property name="title">
+     <string>Tool</string>
+    </property>
+    <addaction name="actionLyrics"/>
+   </widget>
    <addaction name="menuFaile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuTool"/>
   </widget>
   <action name="actionNew">
    <property name="text">
@@ -462,6 +469,11 @@
   <action name="actionOpen_MIDI">
    <property name="text">
     <string>Open MIDI</string>
+   </property>
+  </action>
+  <action name="actionLyrics">
+   <property name="text">
+    <string>Lyrics</string>
    </property>
   </action>
  </widget>

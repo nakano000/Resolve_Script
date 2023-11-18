@@ -75,6 +75,8 @@ class Ui_MainWindow(object):
         self.actionDecrementPlus.setObjectName(u"actionDecrementPlus")
         self.actionOpen_MIDI = QAction(MainWindow)
         self.actionOpen_MIDI.setObjectName(u"actionOpen_MIDI")
+        self.actionLyrics = QAction(MainWindow)
+        self.actionLyrics.setObjectName(u"actionLyrics")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -197,10 +199,13 @@ class Ui_MainWindow(object):
         self.menuFaile.setObjectName(u"menuFaile")
         self.menuEdit = QMenu(self.menubar)
         self.menuEdit.setObjectName(u"menuEdit")
+        self.menuTool = QMenu(self.menubar)
+        self.menuTool.setObjectName(u"menuTool")
         MainWindow.setMenuBar(self.menubar)
 
         self.menubar.addAction(self.menuFaile.menuAction())
         self.menubar.addAction(self.menuEdit.menuAction())
+        self.menubar.addAction(self.menuTool.menuAction())
         self.menuFaile.addAction(self.actionNew)
         self.menuFaile.addAction(self.actionOpen)
         self.menuFaile.addAction(self.actionOpen_MIDI)
@@ -227,6 +232,7 @@ class Ui_MainWindow(object):
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionUp)
         self.menuEdit.addAction(self.actionDown)
+        self.menuTool.addAction(self.actionLyrics)
 
         self.retranslateUi(MainWindow)
 
@@ -324,6 +330,7 @@ class Ui_MainWindow(object):
         self.actionDecrementPlus.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Shift+Down", None))
 #endif // QT_CONFIG(shortcut)
         self.actionOpen_MIDI.setText(QCoreApplication.translate("MainWindow", u"Open MIDI", None))
+        self.actionLyrics.setText(QCoreApplication.translate("MainWindow", u"Lyrics", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Speakers:", None))
         self.getSpeakerButton.setText(QCoreApplication.translate("MainWindow", u"Get", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Tempo:", None))
@@ -334,5 +341,6 @@ class Ui_MainWindow(object):
         self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
         self.menuFaile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
+        self.menuTool.setTitle(QCoreApplication.translate("MainWindow", u"Tool", None))
     # retranslateUi
 

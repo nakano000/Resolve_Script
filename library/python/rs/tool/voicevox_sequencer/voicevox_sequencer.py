@@ -33,6 +33,7 @@ from rs.gui import (
 
 from rs.tool.voicevox_sequencer import seq
 from rs.tool.voicevox_sequencer.voicevox_sequencer_ui import Ui_MainWindow
+from rs.tool.voicevox_sequencer.lyrics import MainWindow as LyricsWindow
 
 APP_NAME = 'VoicevoxSequencer'
 
@@ -161,6 +162,10 @@ class MainWindow(QMainWindow):
         v.setContextMenuPolicy(Qt.CustomContextMenu)
         v.customContextMenuRequested.connect(self.contextMenu)
 
+        # window
+        self.lyrics_window = LyricsWindow(self)
+
+        #
         self.new_doc()
 
         # event
@@ -196,6 +201,8 @@ class MainWindow(QMainWindow):
         self.ui.actionDelete.triggered.connect(self.ui.tableView.delete)
         self.ui.actionUp.triggered.connect(self.ui.tableView.up)
         self.ui.actionDown.triggered.connect(self.ui.tableView.down)
+
+        self.ui.actionLyrics.triggered.connect(self.lyrics_window.show)
 
     def set_title(self):
         if self.file is None:
