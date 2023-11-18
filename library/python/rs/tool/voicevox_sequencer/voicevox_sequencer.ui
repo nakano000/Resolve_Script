@@ -250,7 +250,7 @@
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
-    <addaction name="actionOpwn_MIDI"/>
+    <addaction name="actionOpen_MIDI"/>
     <addaction name="separator"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
@@ -459,9 +459,9 @@
     <string>Ctrl+Shift+Down</string>
    </property>
   </action>
-  <action name="actionOpwn_MIDI">
+  <action name="actionOpen_MIDI">
    <property name="text">
-    <string>Opwn MIDI</string>
+    <string>Open MIDI</string>
    </property>
   </action>
  </widget>

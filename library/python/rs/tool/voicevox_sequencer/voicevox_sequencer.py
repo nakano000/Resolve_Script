@@ -3,6 +3,7 @@ import io
 import sys
 from pathlib import Path
 
+import mido
 import numpy as np
 import scipy as sp
 import simpleaudio
@@ -41,11 +42,47 @@ class ConfigData(config.Data):
     speaker_index: int = 0
 
 
+def msg2notes(msg_lst: list[mido.Message]):
+    lst = []
+    if len(msg_lst) < 2:
+        return lst
+    if msg_lst[0].time > 0:
+        lst.append(seq.NoteData(note=-1, length=msg_lst[0].time, kana=''))
+    pair_lst = zip(msg_lst, msg_lst[1:])
+    for msg1, msg2 in pair_lst:
+        if msg1.type == 'note_on':
+            lst.append(seq.NoteData(note=msg1.note, length=msg2.time))
+        elif msg1.type == 'note_off':
+            if msg2.time == 0:
+                continue
+            lst.append(seq.NoteData(note=-1, length=msg2.time, kana=''))
+    return lst
+
+
 @dataclasses.dataclass
 class Doc(config.Data):
     speaker_id: int = 0
     tempo: int = 120
     note_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(seq.NoteData))
+
+    def load_midi(self, f: Path):
+        mid = mido.MidiFile(f)
+        lst = p.pipe(
+            mid.tracks,
+            p.map(lambda track: p.pipe(
+                track,
+                p.filter(lambda msg: msg.type == 'note_on' or msg.type == 'note_off'),
+                list,
+            )),
+            p.map(msg2notes),
+            p.filter(lambda s: len(s) > 0),
+            list,
+        )
+        if len(lst) == 0:
+            self.note_list.clear()
+        else:
+            print(lst[0])
+            self.note_list.set_list(lst[0])
 
 
 def paragraph2audio_query(paragraph: seq.Paragraph, tempo: int, sampling_rate: int) -> voicevox.data.AudioQuery:
@@ -139,6 +176,7 @@ class MainWindow(QMainWindow):
         #
         self.ui.actionNew.triggered.connect(self.new_doc)
         self.ui.actionOpen.triggered.connect(self.open_doc)
+        self.ui.actionOpen_MIDI.triggered.connect(self.open_midi)
         self.ui.actionSave.triggered.connect(self.save_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
         self.ui.actionExit.triggered.connect(self.close)
@@ -369,6 +407,28 @@ class MainWindow(QMainWindow):
                 self.log_clear()
                 self.add_log('Open: %s' % str(file_path))
                 self.file = str(file_path)
+                self.undo_stack.clear()
+                self.set_title()
+
+    def open_midi(self):
+        dir_path = ''
+        if self.file is not None:
+            dir_path = Path(self.file).parent
+        path, _ = QFileDialog.getOpenFileName(
+            self,
+            'Open File',
+            str(dir_path),
+            'MIDI File (*.mid);;All File (*.*)'
+        )
+        if path != '':
+            file_path = Path(path)
+            if file_path.is_file():
+                doc = self.get_data()
+                doc.load_midi(file_path)
+                self.set_data(doc)
+                self.log_clear()
+                self.add_log('Open: %s' % str(file_path))
+                self.file = None
                 self.undo_stack.clear()
                 self.set_title()
 

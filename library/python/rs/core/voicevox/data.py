@@ -131,11 +131,14 @@ class AccentPhrase(config.DataInterface):
     is_interrogative: bool = False
 
     def get_text(self):
-        return p.pipe(
+        text = p.pipe(
             self.moras,
             p.map(lambda x: x.text),
             ''.join,
         )
+        if self.pause_mora is not None:
+            text += self.pause_mora.text
+        return text
 
 
 @dataclasses.dataclass
