@@ -32,6 +32,14 @@
     "linux": false
   },
   {
+    "name": "VoicevoxSequencer",
+    "path": "bin/voicevox_sequencer.py",
+    "ss": "sound",
+    "win": true,
+    "mac": true,
+    "linux": true
+  },
+  {
     "name": "VoiceBin",
     "path": "bin/voice_bin.py",
     "ss": "sound",
