@@ -210,8 +210,6 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuTool.menuAction())
         self.menuFaile.addAction(self.actionNew)
         self.menuFaile.addAction(self.actionOpen)
-        self.menuFaile.addAction(self.actionOpen_MIDI)
-        self.menuFaile.addAction(self.actionOpen_UST)
         self.menuFaile.addSeparator()
         self.menuFaile.addAction(self.actionSave)
         self.menuFaile.addAction(self.actionSave_As)

@@ -242,8 +242,6 @@ class MainWindow(QMainWindow):
         #
         self.ui.actionNew.triggered.connect(self.new_doc)
         self.ui.actionOpen.triggered.connect(self.open_doc)
-        self.ui.actionOpen_MIDI.triggered.connect(self.open_midi)
-        self.ui.actionOpen_UST.triggered.connect(self.open_ust)
         self.ui.actionSave.triggered.connect(self.save_doc)
         self.ui.actionSave_As.triggered.connect(self.save_as_doc)
         self.ui.actionExit.triggered.connect(self.close)
@@ -465,61 +463,24 @@ class MainWindow(QMainWindow):
             self,
             'Open File',
             str(dir_path),
-            'JSON File (*.json);;All File (*.*)'
-        )
-        if path != '':
-            file_path = Path(path)
-            if file_path.is_file():
-                a = self.get_data()
-                a.load(file_path)
-                self.set_data(a)
-                self.log_clear()
-                self.add_log('Open: %s' % str(file_path))
-                self.file = str(file_path)
-                self.undo_stack.clear()
-                self.set_title()
-
-    def open_midi(self):
-        dir_path = ''
-        if self.file is not None:
-            dir_path = Path(self.file).parent
-        path, _ = QFileDialog.getOpenFileName(
-            self,
-            'Open File',
-            str(dir_path),
-            'MIDI File (*.mid);;All File (*.*)'
+            'JSON MIDI UST File (*.json *.mid *.midi *.smf *.ust);;All File (*.*)'
         )
         if path != '':
             file_path = Path(path)
             if file_path.is_file():
                 doc = self.get_data()
-                doc.load_midi(file_path)
+                if file_path.suffix in ('.mid', '.midi', '.smf'):
+                    doc.load_midi(file_path)
+                    self.file = None
+                elif file_path.suffix == '.ust':
+                    doc.load_ust(file_path)
+                    self.file = None
+                else:
+                    doc.load(file_path)
+                    self.file = str(file_path)
                 self.set_data(doc)
                 self.log_clear()
                 self.add_log('Open: %s' % str(file_path))
-                self.file = None
-                self.undo_stack.clear()
-                self.set_title()
-
-    def open_ust(self):
-        dir_path = ''
-        if self.file is not None:
-            dir_path = Path(self.file).parent
-        path, _ = QFileDialog.getOpenFileName(
-            self,
-            'Open File',
-            str(dir_path),
-            'UST File (*.ust);;All File (*.*)'
-        )
-        if path != '':
-            file_path = Path(path)
-            if file_path.is_file():
-                doc = self.get_data()
-                doc.load_ust(file_path)
-                self.set_data(doc)
-                self.log_clear()
-                self.add_log('Open: %s' % str(file_path))
-                self.file = None
                 self.undo_stack.clear()
                 self.set_title()
 
