@@ -122,6 +122,19 @@ class Mora(config.DataInterface):
             return self.vowel_length
         return self.consonant_length + self.vowel_length
 
+    def get_phoneme_list(self):
+        lst = []
+        if self.consonant is not None:
+            lst.append({
+                'sign': self.consonant,
+                'length': self.consonant_length,
+            })
+        lst.append({
+            'sign': self.vowel,
+            'length': self.vowel_length,
+        })
+        return lst
+
 
 @dataclasses.dataclass
 class AccentPhrase(config.DataInterface):
@@ -139,6 +152,14 @@ class AccentPhrase(config.DataInterface):
         if self.pause_mora is not None:
             text += self.pause_mora.text
         return text
+
+    def get_phoneme_list(self):
+        lst = []
+        for m in self.moras:
+            lst.extend(m.get_phoneme_list())
+        if self.pause_mora is not None:
+            lst.extend(self.pause_mora.get_phoneme_list())
+        return lst
 
 
 @dataclasses.dataclass
@@ -159,6 +180,22 @@ class AudioQuery(config.DataInterface):
             p.map(lambda x: x.get_text()),
             ''.join,
         )
+
+    def get_phoneme_list(self):
+        lst = []
+        if self.prePhonemeLength > 0.0:
+            lst.append({
+                'sign': 'pau',
+                'length': self.prePhonemeLength,
+            })
+        for a in self.accent_phrases:
+            lst.extend(a.get_phoneme_list())
+        if self.postPhonemeLength > 0.0:
+            lst.append({
+                'sign': 'pau',
+                'length': self.postPhonemeLength,
+            })
+        return lst
 
 
 if __name__ == "__main__":

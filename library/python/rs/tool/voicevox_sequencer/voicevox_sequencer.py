@@ -182,6 +182,30 @@ def paragraph2audio_query(paragraph: seq.Paragraph, tempo: int, sampling_rate: i
     return audio_query
 
 
+def write_label(f: Path, phoneme_list: list[dict]):
+    if len(phoneme_list) == 0:
+        return
+    n = 10000000
+    lst = [{
+        's': 0,
+        'e': int(phoneme_list[0]['length'] * n),
+        'sign': phoneme_list[0]['sign'],
+    }]
+    for phoneme in phoneme_list[1:]:
+        lst.append({
+            's': lst[-1]['e'],
+            'e': lst[-1]['e'] + int(phoneme['length'] * n),
+            'sign': phoneme['sign'],
+        })
+    with f.open('w', encoding='utf-8') as fp:
+        for phoneme in lst:
+            fp.write('%s %s %s\n' % (
+                str(phoneme['s']),
+                str(phoneme['e']),
+                phoneme['sign'],
+            ))
+
+
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -280,6 +304,7 @@ class MainWindow(QMainWindow):
 
         # make data
         data_list = []
+        phoneme_list = []
         self.log_clear()
         for paragraph in paragraph_list:
             if len(paragraph.note_list) > 0:
@@ -288,6 +313,9 @@ class MainWindow(QMainWindow):
                 query = paragraph2audio_query(
                     paragraph, doc.tempo, self.sampling_rate
                 )
+                # phoneme_list
+                phoneme_list.extend(query.get_phoneme_list())
+
                 # synthesis
                 self.add_log('Synthesis...  %s' % query.get_text())
                 try:
@@ -300,14 +328,33 @@ class MainWindow(QMainWindow):
                     return
             # rest
             if paragraph.rest_length > 0:
-                data = np.zeros(int(paragraph.get_rest_sec(doc.tempo) * self.sampling_rate), dtype=np.int16)
-                data_list.append(data)
+                phoneme_list.append({
+                    'sign': 'pau',
+                    'length': paragraph.get_rest_sec(doc.tempo),
+                })
+                # 想定している尺
+                all_length = p.pipe(
+                    phoneme_list,
+                    p.map(lambda x: x['length']),
+                    sum,
+                )
+                # wav dataの長さ(voicevoxから長めに返ってくる)
+                data_num = p.pipe(
+                    data_list,
+                    p.map(lambda x: x.shape[-1]),
+                    sum,
+                )
+                # 足りない分を0埋め
+                rest_num = int(all_length * self.sampling_rate) - data_num
+                if rest_num > 0:
+                    data = np.zeros(rest_num, dtype=np.int16)
+                    data_list.append(data)
 
         # 連結
-        return np.block(data_list)
+        return np.block(data_list), phoneme_list
 
     def play(self):
-        data = self.make_wav_data()
+        data, _ = self.make_wav_data()
         # Play
         self.add_log('Play')
         self.stop()
@@ -318,7 +365,7 @@ class MainWindow(QMainWindow):
         if v.get_current_paragraph() is None:
             self.add_log('No selected paragraph.')
             return
-        data = self.make_wav_data(is_phrase=True)
+        data, _ = self.make_wav_data(is_phrase=True)
         # Play
         self.add_log('Play')
         self.stop()
@@ -341,11 +388,14 @@ class MainWindow(QMainWindow):
         )
         if path != '':
             file_path = Path(path)
+            label_path = file_path.with_suffix('.lab')
             self.log_clear()
             self.add_log('Start ...')
-            data = self.make_wav_data()
+            data, phoneme_list = self.make_wav_data()
             sp.io.wavfile.write(file_path, self.sampling_rate, data)
             self.add_log('Save: %s' % str(file_path))
+            write_label(label_path, phoneme_list)
+            self.add_log('Save: %s' % str(label_path))
             self.add_log('Done.')
 
     def edit(self):
