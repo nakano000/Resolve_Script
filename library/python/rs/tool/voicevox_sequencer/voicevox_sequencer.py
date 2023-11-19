@@ -1,5 +1,6 @@
 import dataclasses
 import io
+import re
 import sys
 from pathlib import Path
 
@@ -102,6 +103,7 @@ class Doc(config.Data):
                     pass
         # notes
         kks = pykakasi.kakasi()
+        hira_pat = re.compile('[\u3041-\u309F]+')
         for i, _note in enumerate(dct['notes']):
             if 'Tempo' in _note.keys():
                 try:
@@ -129,18 +131,18 @@ class Doc(config.Data):
                     note.note = -1
                     note.kana = ''
                 else:
-                    lyric = lyric.replace('x', '')
-                    _split = lyric.split(' ')
-                    kana = _split[-1].strip()
-                    if kana == '-' and i > 0:
+                    hira_match = hira_pat.search(lyric)
+                    if hira_match is not None:
+                        note.kana = kks.convert(hira_match.group())[-1]['kana']
+
+                    elif lyric == '-' and i > 0:
                         _pre_kana = self.note_list[i - 1].kana
                         if _pre_kana in text2mora:
                             _vowel = text2mora[_pre_kana][-1]
                             note.kana = mora2text[_vowel]
-                    else:
-                        note.kana = kks.convert(kana)[0]['kana']
-                    if kana in mora2text:
-                        note.kana = mora2text[kana]
+
+                    elif lyric in mora2text:
+                        note.kana = mora2text[lyric]
 
             self.note_list.append(note)
 
