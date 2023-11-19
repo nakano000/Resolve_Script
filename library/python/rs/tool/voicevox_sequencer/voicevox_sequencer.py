@@ -127,7 +127,7 @@ class Doc(config.Data):
 
             if 'Lyric' in _note:
                 lyric = _note['Lyric']
-                if lyric == 'R':
+                if lyric in ['R', 'br']:
                     note.note = -1
                     note.kana = ''
                 else:
