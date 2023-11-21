@@ -111,6 +111,9 @@
       <property name="editTriggers">
        <set>QAbstractItemView::DoubleClicked</set>
       </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
     <item>

@@ -134,6 +134,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.tableView.sizePolicy().hasHeightForWidth())
         self.tableView.setSizePolicy(sizePolicy)
         self.tableView.setEditTriggers(QAbstractItemView.DoubleClicked)
+        self.tableView.setWordWrap(False)
 
         self.verticalLayout.addWidget(self.tableView)
 

@@ -308,7 +308,7 @@ class View(table.View):
         vh = self.verticalHeader()
         vh.setMinimumWidth(40)
         vh.setMinimumSectionSize(55)
-        vh.setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
+        # vh.setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         vh.setDefaultAlignment(Qt.AlignCenter)
 
         # ---------------------
