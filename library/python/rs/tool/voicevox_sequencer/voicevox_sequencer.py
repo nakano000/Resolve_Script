@@ -2,6 +2,7 @@ import dataclasses
 import io
 import re
 import sys
+from copy import deepcopy
 from pathlib import Path
 
 import mido
@@ -275,6 +276,8 @@ class MainWindow(QMainWindow):
 
         self.ui.actionEdit.triggered.connect(self.edit)
         self.ui.actionAdd.triggered.connect(self.add)
+        self.ui.actionDuplicate.triggered.connect(self.duplicate)
+        self.ui.actionSplit.triggered.connect(self.split)
         self.ui.actionIncrement.triggered.connect(self.ui.tableView.increment)
         self.ui.actionIncrementPlus.triggered.connect(self.ui.tableView.increment_plus)
         self.ui.actionDecrement.triggered.connect(self.ui.tableView.decrement)
@@ -419,6 +422,9 @@ class MainWindow(QMainWindow):
         menu.addAction(self.ui.actionPaste)
         menu.addSeparator()
         menu.addAction(self.ui.actionAdd)
+        menu.addAction(self.ui.actionDuplicate)
+        menu.addAction(self.ui.actionSplit)
+        menu.addSeparator()
         menu.addAction(self.ui.actionDelete)
         menu.addSeparator()
         menu.addAction(self.ui.actionUp)
@@ -431,6 +437,42 @@ class MainWindow(QMainWindow):
         sm = v.selectionModel()
         row = v.currentIndex().row()
         d = seq.NoteData()
+        if row < 0:
+            m.add_row_data(d)
+        else:
+            current_index = v.currentIndex()
+            m.insert_row_data(row + 1, d)
+            sm.setCurrentIndex(
+                current_index.siblingAtRow(row + 1),
+                QItemSelectionModel.SelectionFlag.ClearAndSelect
+            )
+
+    def duplicate(self):
+        v = self.ui.tableView
+        m: seq.Model = v.model()
+        sm = v.selectionModel()
+        row = v.currentIndex().row()
+        d = deepcopy(m.get_row_data(row))
+        if row < 0:
+            m.add_row_data(d)
+        else:
+            current_index = v.currentIndex()
+            m.insert_row_data(row + 1, d)
+            sm.setCurrentIndex(
+                current_index.siblingAtRow(row + 1),
+                QItemSelectionModel.SelectionFlag.ClearAndSelect
+            )
+
+    def split(self):
+        v = self.ui.tableView
+        m: seq.Model = v.model()
+        sm = v.selectionModel()
+        row = v.currentIndex().row()
+        d = deepcopy(m.get_row_data(row))
+        length = d.length // 2
+        current_index = v.currentIndex()
+        m.setData(current_index.siblingAtColumn(1), d.length - length, Qt.EditRole)
+        d.length = length
         if row < 0:
             m.add_row_data(d)
         else:

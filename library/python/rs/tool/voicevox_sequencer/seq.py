@@ -308,7 +308,6 @@ class View(table.View):
         vh = self.verticalHeader()
         vh.setMinimumWidth(40)
         vh.setMinimumSectionSize(55)
-        # vh.setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
         vh.setDefaultAlignment(Qt.AlignCenter)
 
         # ---------------------
@@ -522,7 +521,7 @@ class View(table.View):
             return
         # Shift_A Sift_I
         if key == Qt.Key_A and mod == Qt.ShiftModifier:
-            self.setCurrentIndex(self.currentIndex().siblingAtColumn(2))
+            self.setCurrentIndex(self.currentIndex().siblingAtColumn(3))
             self.edit(self.currentIndex())
             return
         if key == Qt.Key_I and mod == Qt.ShiftModifier:

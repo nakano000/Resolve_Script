@@ -277,6 +277,9 @@
     <addaction name="actionDecrementPlus"/>
     <addaction name="separator"/>
     <addaction name="actionAdd"/>
+    <addaction name="actionDuplicate"/>
+    <addaction name="actionSplit"/>
+    <addaction name="separator"/>
     <addaction name="actionDelete"/>
     <addaction name="separator"/>
     <addaction name="actionUp"/>
@@ -393,7 +396,7 @@
     <string>Edit</string>
    </property>
    <property name="shortcut">
-    <string>I</string>
+    <string>S</string>
    </property>
   </action>
   <action name="actionSave_As">
@@ -481,6 +484,22 @@
   <action name="actionOpen_UST">
    <property name="text">
     <string>Open UST</string>
+   </property>
+  </action>
+  <action name="actionSplit">
+   <property name="text">
+    <string>Split</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionDuplicate">
+   <property name="text">
+    <string>Duplicate</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
    </property>
   </action>
  </widget>
