@@ -1,4 +1,5 @@
 import sys
+import time
 
 from PySide6.QtCore import (
     Qt,
@@ -70,22 +71,24 @@ class MainWindow(QMainWindow):
             return None
         return get_resolve_window(project.GetName())
 
-    def razor_test(self):
-        c = self.get_data()
+    def activate_resolve(self):
         w = self.get_resolve_window()
         activate_window(w)
+        time.sleep(0.1)
+
+    def razor_test(self):
+        c = self.get_data()
+        self.activate_resolve()
         c.razor()
 
     def deselect_all_test(self):
         c = self.get_data()
-        w = self.get_resolve_window()
-        activate_window(w)
+        self.activate_resolve()
         c.deselect_all()
 
     def active_timeline_panel_test(self):
         c = self.get_data()
-        w = self.get_resolve_window()
-        activate_window(w)
+        self.activate_resolve()
         c.active_timeline_panel()
 
     def set_data(self, c: sc.Data):
