@@ -236,6 +236,7 @@ class ItemDelegate(QStyledItemDelegate):
                 self.closeEditor.emit(editor)
                 current_index: QModelIndex = v.currentIndex()
                 row = current_index.row()
+                m.undo_stack.beginMacro('Commit')
 
                 if row == m.rowCount() - 1:
                     d = NoteData()
@@ -244,13 +245,13 @@ class ItemDelegate(QStyledItemDelegate):
                     current_index.siblingAtRow(row + 1),
                     QItemSelectionModel.SelectionFlag.ClearAndSelect
                 )
+                m.undo_stack.endMacro()
+
                 v.edit(v.currentIndex())
                 return True
             if (
                     (key == Qt.Key_Return and mod == Qt.ShiftModifier)
             ):
-                m.undo_stack.beginMacro('Commit')
-                m.undo_stack.endMacro()
                 v.keyPressEvent(event)
                 v.edit(v.currentIndex())
                 return True
