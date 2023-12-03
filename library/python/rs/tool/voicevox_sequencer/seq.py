@@ -9,13 +9,13 @@ from PySide6.QtCore import (
     QItemSelectionModel,
     Qt,
     QEvent,
-    QSize, QSignalBlocker,
+    QSize,
 )
 from PySide6.QtGui import QIcon, QColor, QKeyEvent
 from PySide6.QtWidgets import (
     QAbstractItemDelegate,
     QLineEdit,
-    QStyledItemDelegate, QHeaderView,
+    QStyledItemDelegate,
 )
 
 from rs.core import (
@@ -315,21 +315,15 @@ class View(table.View):
 
     def undo(self):
         m = self.model()
-        with QSignalBlocker(m):
-            self.undo_stack.undo()
-        self.viewport().update()
+        self.undo_stack.undo()
 
     def redo(self):
         m = self.model()
-        with QSignalBlocker(m):
-            self.undo_stack.redo()
-        self.viewport().update()
+        self.undo_stack.redo()
 
     def paste(self):
         m: Model = self.model()
-        with QSignalBlocker(m):
-            super().paste()
-        self.viewport().update()
+        super().paste()
 
     def set_octave(self, octave: int):
         self.octave = octave
@@ -337,110 +331,102 @@ class View(table.View):
     def decrement(self):
         m: Model = self.model()
         sm = self.selectionModel()
-        with QSignalBlocker(m):
-            m.undo_stack.beginMacro('Decrement')
-            for i in sm.selectedIndexes():
-                col = i.column()
-                if col == 0:
-                    v = m.get_value(i.row(), i.column())
-                    if v < 0:
-                        continue
-                    if v > 0:
-                        m.setData(i, v - 1, Qt.EditRole)
-                elif col == 1:
-                    v = m.get_value(i.row(), i.column())
-                    for length in LENGTH_LIST:
-                        if length < v:
-                            m.setData(i, length, Qt.EditRole)
-                            break
-                elif col == 2:
-                    v = m.get_value(i.row(), i.column())
-                    if v > 0.1:
-                        m.setData(i, v - 0.1, Qt.EditRole)
-            m.undo_stack.endMacro()
-        self.viewport().update()
+        m.undo_stack.beginMacro('Decrement')
+        for i in sm.selectedIndexes():
+            col = i.column()
+            if col == 0:
+                v = m.get_value(i.row(), i.column())
+                if v < 0:
+                    continue
+                if v > 0:
+                    m.setData(i, v - 1, Qt.EditRole)
+            elif col == 1:
+                v = m.get_value(i.row(), i.column())
+                for length in LENGTH_LIST:
+                    if length < v:
+                        m.setData(i, length, Qt.EditRole)
+                        break
+            elif col == 2:
+                v = m.get_value(i.row(), i.column())
+                if v > 0.1:
+                    m.setData(i, v - 0.1, Qt.EditRole)
+        m.undo_stack.endMacro()
 
     def decrement_plus(self):
         m: Model = self.model()
         sm = self.selectionModel()
-        with QSignalBlocker(m):
-            m.undo_stack.beginMacro('DecrementPlus')
-            for i in sm.selectedIndexes():
-                col = i.column()
-                if col == 0:
-                    v = m.get_value(i.row(), i.column())
-                    if v < 0:
-                        continue
-                    if v >= 12:
-                        m.setData(i, v - 12, Qt.EditRole)
-                elif col == 1:
-                    v = m.get_value(i.row(), i.column())
-                    for length in LENGTH_LIST:
-                        if length < v:
-                            v = length
-                            break
-                    for length in LENGTH_LIST:
-                        if length < v:
-                            m.setData(i, length, Qt.EditRole)
-                            break
-                elif col == 2:
-                    v = m.get_value(i.row(), i.column())
-                    if v > 0.5:
-                        m.setData(i, v - 0.5, Qt.EditRole)
-            m.undo_stack.endMacro()
-        self.viewport().update()
+        m.undo_stack.beginMacro('DecrementPlus')
+        for i in sm.selectedIndexes():
+            col = i.column()
+            if col == 0:
+                v = m.get_value(i.row(), i.column())
+                if v < 0:
+                    continue
+                if v >= 12:
+                    m.setData(i, v - 12, Qt.EditRole)
+            elif col == 1:
+                v = m.get_value(i.row(), i.column())
+                for length in LENGTH_LIST:
+                    if length < v:
+                        v = length
+                        break
+                for length in LENGTH_LIST:
+                    if length < v:
+                        m.setData(i, length, Qt.EditRole)
+                        break
+            elif col == 2:
+                v = m.get_value(i.row(), i.column())
+                if v > 0.5:
+                    m.setData(i, v - 0.5, Qt.EditRole)
+        m.undo_stack.endMacro()
 
     def increment(self):
         m: Model = self.model()
         sm = self.selectionModel()
-        with QSignalBlocker(m):
-            m.undo_stack.beginMacro('Increment')
-            for i in sm.selectedIndexes():
-                col = i.column()
-                if col == 0:
-                    v = m.get_value(i.row(), i.column())
-                    if v < 0:
-                        continue
-                    m.setData(i, v + 1, Qt.EditRole)
-                elif col == 1:
-                    v = m.get_value(i.row(), i.column())
-                    for length in reversed(LENGTH_LIST):
-                        if length > v:
-                            m.setData(i, length, Qt.EditRole)
-                            break
-                elif col == 2:
-                    v = m.get_value(i.row(), i.column())
-                    m.setData(i, v + 0.1, Qt.EditRole)
-            m.undo_stack.endMacro()
-        self.viewport().update()
+        m.undo_stack.beginMacro('Increment')
+        for i in sm.selectedIndexes():
+            col = i.column()
+            if col == 0:
+                v = m.get_value(i.row(), i.column())
+                if v < 0:
+                    continue
+                m.setData(i, v + 1, Qt.EditRole)
+            elif col == 1:
+                v = m.get_value(i.row(), i.column())
+                for length in reversed(LENGTH_LIST):
+                    if length > v:
+                        m.setData(i, length, Qt.EditRole)
+                        break
+            elif col == 2:
+                v = m.get_value(i.row(), i.column())
+                m.setData(i, v + 0.1, Qt.EditRole)
+        m.undo_stack.endMacro()
 
     def increment_plus(self):
         m: Model = self.model()
         sm = self.selectionModel()
-        with QSignalBlocker(m):
-            m.undo_stack.beginMacro('IncrementPlus')
-            for i in sm.selectedIndexes():
-                col = i.column()
-                if col == 0:
-                    v = m.get_value(i.row(), i.column())
-                    if v < 0:
-                        continue
-                    m.setData(i, v + 12, Qt.EditRole)
-                elif col == 1:
-                    v = m.get_value(i.row(), i.column())
-                    for length in reversed(LENGTH_LIST):
-                        if length > v:
-                            v = length
-                            break
-                    for length in reversed(LENGTH_LIST):
-                        if length > v:
-                            m.setData(i, length, Qt.EditRole)
-                            break
-                elif col == 2:
-                    v = m.get_value(i.row(), i.column())
-                    m.setData(i, v + 0.5, Qt.EditRole)
-            m.undo_stack.endMacro()
-        self.viewport().update()
+        m.undo_stack.beginMacro('IncrementPlus')
+        for i in sm.selectedIndexes():
+            col = i.column()
+            if col == 0:
+                v = m.get_value(i.row(), i.column())
+                if v < 0:
+                    continue
+                m.setData(i, v + 12, Qt.EditRole)
+            elif col == 1:
+                v = m.get_value(i.row(), i.column())
+                for length in reversed(LENGTH_LIST):
+                    if length > v:
+                        v = length
+                        break
+                for length in reversed(LENGTH_LIST):
+                    if length > v:
+                        m.setData(i, length, Qt.EditRole)
+                        break
+            elif col == 2:
+                v = m.get_value(i.row(), i.column())
+                m.setData(i, v + 0.5, Qt.EditRole)
+        m.undo_stack.endMacro()
 
     def get_paragraph_list(self):
         m: Model = self.model()
