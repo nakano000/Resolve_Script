@@ -43,7 +43,9 @@ class MainWindow(QMainWindow):
         src_text = self.ui.srcPlainTextEdit.toPlainText()
         kks = pykakasi.kakasi()
         text = '\n'.join(p.pipe(
-            kks.convert(src_text),
+            src_text.split(),
+            p.map(lambda x: x.strip()),
+            lambda x: kks.convert(' '.join(x)),
             p.map(lambda x: x['kana']),
             p.map(lambda x: '\n'.join(x)),
             p.map(lambda x: pattern.sub(r'\1', x)),
