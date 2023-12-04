@@ -165,6 +165,8 @@ class ItemDelegate(QStyledItemDelegate):
         _value = editor.text().strip()
         # noteの文字を数値に変換
         if col == 0:
+            if len(_value) == 0:
+                _value = '-1'
             try:
                 _value = str(int(_value))
             except ValueError:
