@@ -61,6 +61,6 @@ StrEnum==0.4.15
 threadpoolctl==3.2.0
 tifffile==2023.8.30
 typing_extensions==4.7.1
-urllib3==2.0.4
+urllib3==2.1.0
 watchdog==3.0.0
 wrapt==1.15.0
