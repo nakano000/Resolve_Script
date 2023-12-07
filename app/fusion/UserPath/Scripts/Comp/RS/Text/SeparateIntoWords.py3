@@ -85,11 +85,14 @@ def make_instance(instance_name, source_name, s, e, x, y):
 }""")
 
 
-def separate2word():
+def separate_into_words():
     x_step = 110
     y_step = 100
 
     tool_list: dict = comp.GetToolList(True, 'TextPlus')
+
+    special_characters = "!@#$%^&*()_-+=<>,./?;:'\"[]{}\\|`~"
+    translation_table = str.maketrans("", "", special_characters)
 
     comp.Lock()
     comp.StartUndo('RS Text Separate2Word')
@@ -113,7 +116,7 @@ def separate2word():
         prev = bg_name
         for i, m in enumerate(re.finditer(r'\S+', txt, flags=re.MULTILINE)):
             m: re.Match
-            s = m.group()
+            s = m.group().translate(translation_table)
 
             inst_name = 'Instance' + v.Name + '_' + str(i) + '_' + s
             inst_st = make_instance(
@@ -146,4 +149,4 @@ def separate2word():
     comp.Unlock()
 
 
-separate2word()
+separate_into_words()
