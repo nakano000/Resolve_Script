@@ -825,6 +825,19 @@ def distribute_dod(fusion, comp, attr_id: str, is_x=True, is_random=False, use_c
     comp.Unlock()
 
 
+def get_frame_by_index(comp, tool, attr_id: str, index: int):
+    target_time = comp.CurrentTime
+    x = tool.GetInputList().values()
+    for inp in x:
+        if inp.GetAttrs()['INPS_ID'] == attr_id:
+            key_frames = inp.GetKeyFrames()
+            if index in key_frames:
+                target_time = key_frames[index]
+            break
+
+    return target_time
+
+
 def set_value(comp, attr_id: str, value, step, is_abs=True, is_random=False):
     tools = get_tools(comp, 1, is_random)
     if tools is None:
@@ -846,7 +859,14 @@ def set_value(comp, attr_id: str, value, step, is_abs=True, is_random=False):
     comp.Unlock()
 
 
-def set_value2d(comp, attr_id: str, x, y, x_step, y_step, lock_x=False, lock_y=False, is_abs=True, is_random=False):
+def set_value2d(
+        comp, attr_id: str,
+        x, y,
+        x_step, y_step,
+        lock_x=False, lock_y=False,
+        is_abs=True, is_random=False,
+        use_key=False, key_index=1,
+):
     tools = get_tools(comp, 1, is_random)
     if tools is None:
         return
@@ -855,7 +875,8 @@ def set_value2d(comp, attr_id: str, x, y, x_step, y_step, lock_x=False, lock_y=F
     x_offset = 0
     y_offset = 0
     for tool in tools:
-        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(comp, tool, attr_id, key_index)
+        _v = tool.GetInput(attr_id, target_frame)
         if _v is None:
             continue
         if lock_x:
@@ -874,7 +895,7 @@ def set_value2d(comp, attr_id: str, x, y, x_step, y_step, lock_x=False, lock_y=F
         tool.SetInput(attr_id, {
             1: _x,
             2: _y,
-        }, comp.CurrentTime)
+        }, target_frame)
         x_offset += x_step
         y_offset += y_step
 
@@ -882,21 +903,27 @@ def set_value2d(comp, attr_id: str, x, y, x_step, y_step, lock_x=False, lock_y=F
     comp.Unlock()
 
 
-def random_value(comp, attr_id: str, inf, sup, is_abs=True, is_random=False):
+def random_value(
+        comp, attr_id: str,
+        inf, sup,
+        is_abs=True, is_random=False,
+        use_key=False, key_index=1,
+):
     tools = get_tools(comp, 1, is_random)
     if tools is None:
         return
     comp.Lock()
     comp.StartUndo('RS Random Value')
     for tool in tools:
-        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(comp, tool, attr_id, key_index)
+        _v = tool.GetInput(attr_id, target_frame)
         if _v is None:
             continue
         _value = random.uniform(inf, sup)
         if not is_abs:
             _value += _v
 
-        tool.SetInput(attr_id, _value, comp.CurrentTime)
+        tool.SetInput(attr_id, _value, target_frame)
     comp.EndUndo(True)
     comp.Unlock()
 
@@ -905,14 +932,17 @@ def random_value2d(
         comp, attr_id: str,
         x_inf, y_inf, x_suo, y_sup,
         lock_x=False, lock_y=False,
-        is_abs=True, is_random=False):
+        is_abs=True, is_random=False,
+        use_key=False, key_index=1,
+):
     tools = get_tools(comp, 1, is_random)
     if tools is None:
         return
     comp.Lock()
     comp.StartUndo('RS Random Value')
     for tool in tools:
-        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(comp, tool, attr_id, key_index)
+        _v = tool.GetInput(attr_id, target_frame)
         if _v is None:
             continue
         if lock_x:
@@ -931,7 +961,7 @@ def random_value2d(
         tool.SetInput(attr_id, {
             1: _x,
             2: _y,
-        }, comp.CurrentTime)
+        }, target_frame)
 
     comp.EndUndo(True)
     comp.Unlock()

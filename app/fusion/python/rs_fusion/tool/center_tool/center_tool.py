@@ -168,6 +168,8 @@ class MainWindow(QMainWindow):
             lock_y=lock_y,
             is_abs=self.ui.absoluteRadioButton.isChecked(),
             is_random=self.ui.randomRadioButton.isChecked(),
+            use_key=self.ui.keyFrameRadioButton.isChecked(),
+            key_index=self.ui.keyFrameIndexSpinBox.value(),
         )
 
     def random_center(self, lock_x, lock_y) -> None:
@@ -186,6 +188,8 @@ class MainWindow(QMainWindow):
             lock_y=lock_y,
             is_abs=self.ui.absoluteRadioButton.isChecked(),
             is_random=self.ui.randomRadioButton.isChecked(),
+            use_key=self.ui.keyFrameRadioButton.isChecked(),
+            key_index=self.ui.keyFrameIndexSpinBox.value(),
         )
 
 

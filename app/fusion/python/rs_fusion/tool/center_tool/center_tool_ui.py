@@ -15,16 +15,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QGroupBox,
-    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
-    QToolButton, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QButtonGroup, QCheckBox, QGridLayout,
+    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
+    QMainWindow, QPushButton, QRadioButton, QSizePolicy,
+    QSpacerItem, QSpinBox, QToolButton, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(298, 558)
+        MainWindow.resize(291, 640)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
@@ -197,6 +198,59 @@ class Ui_MainWindow(object):
         self.groupBox_2.setMaximumSize(QSize(280, 16777215))
         self.verticalLayout = QVBoxLayout(self.groupBox_2)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.groupBox = QGroupBox(self.groupBox_2)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout_4 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.currentFrameRadioButton = QRadioButton(self.groupBox)
+        self.frameButtonGroup = QButtonGroup(MainWindow)
+        self.frameButtonGroup.setObjectName(u"frameButtonGroup")
+        self.frameButtonGroup.addButton(self.currentFrameRadioButton)
+        self.currentFrameRadioButton.setObjectName(u"currentFrameRadioButton")
+        self.currentFrameRadioButton.setChecked(True)
+
+        self.horizontalLayout_5.addWidget(self.currentFrameRadioButton)
+
+        self.keyFrameRadioButton = QRadioButton(self.groupBox)
+        self.frameButtonGroup.addButton(self.keyFrameRadioButton)
+        self.keyFrameRadioButton.setObjectName(u"keyFrameRadioButton")
+
+        self.horizontalLayout_5.addWidget(self.keyFrameRadioButton)
+
+        self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_13)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.label_9 = QLabel(self.groupBox)
+        self.label_9.setObjectName(u"label_9")
+
+        self.horizontalLayout_6.addWidget(self.label_9)
+
+        self.keyFrameIndexSpinBox = QSpinBox(self.groupBox)
+        self.keyFrameIndexSpinBox.setObjectName(u"keyFrameIndexSpinBox")
+        self.keyFrameIndexSpinBox.setMinimumSize(QSize(80, 0))
+        self.keyFrameIndexSpinBox.setMinimum(1)
+        self.keyFrameIndexSpinBox.setMaximum(999)
+
+        self.horizontalLayout_6.addWidget(self.keyFrameIndexSpinBox)
+
+        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_14)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_6)
+
+
+        self.verticalLayout.addWidget(self.groupBox)
+
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.absoluteRadioButton = QRadioButton(self.groupBox_2)
@@ -219,156 +273,51 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.yLineEdit = QLineEdit(self.groupBox_2)
-        self.yLineEdit.setObjectName(u"yLineEdit")
-
-        self.gridLayout_2.addWidget(self.yLineEdit, 2, 1, 1, 1)
-
-        self.setYButton = QPushButton(self.groupBox_2)
-        self.setYButton.setObjectName(u"setYButton")
+        self.setButton = QPushButton(self.groupBox_2)
+        self.setButton.setObjectName(u"setButton")
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.setYButton.sizePolicy().hasHeightForWidth())
-        self.setYButton.setSizePolicy(sizePolicy1)
-        self.setYButton.setMinimumSize(QSize(50, 50))
-        self.setYButton.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_2.addWidget(self.setYButton, 2, 3, 2, 1)
-
-        self.yStepLineEdit = QLineEdit(self.groupBox_2)
-        self.yStepLineEdit.setObjectName(u"yStepLineEdit")
-
-        self.gridLayout_2.addWidget(self.yStepLineEdit, 3, 1, 1, 1)
-
-        self.ySupLineEdit = QLineEdit(self.groupBox_2)
-        self.ySupLineEdit.setObjectName(u"ySupLineEdit")
-
-        self.gridLayout_2.addWidget(self.ySupLineEdit, 8, 1, 1, 1)
-
-        self.xInfLineEdit = QLineEdit(self.groupBox_2)
-        self.xInfLineEdit.setObjectName(u"xInfLineEdit")
-
-        self.gridLayout_2.addWidget(self.xInfLineEdit, 5, 1, 1, 1)
-
-        self.randomYButton = QPushButton(self.groupBox_2)
-        self.randomYButton.setObjectName(u"randomYButton")
-        sizePolicy1.setHeightForWidth(self.randomYButton.sizePolicy().hasHeightForWidth())
-        self.randomYButton.setSizePolicy(sizePolicy1)
-        self.randomYButton.setMinimumSize(QSize(50, 50))
-        self.randomYButton.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_2.addWidget(self.randomYButton, 7, 3, 2, 1)
-
-        self.randomXButton = QPushButton(self.groupBox_2)
-        self.randomXButton.setObjectName(u"randomXButton")
-        sizePolicy1.setHeightForWidth(self.randomXButton.sizePolicy().hasHeightForWidth())
-        self.randomXButton.setSizePolicy(sizePolicy1)
-        self.randomXButton.setMinimumSize(QSize(50, 50))
-        self.randomXButton.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_2.addWidget(self.randomXButton, 5, 3, 2, 1)
-
-        self.xStepLineEdit = QLineEdit(self.groupBox_2)
-        self.xStepLineEdit.setObjectName(u"xStepLineEdit")
-
-        self.gridLayout_2.addWidget(self.xStepLineEdit, 1, 1, 1, 1)
-
-        self.horizontalSpacer_7 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_7, 2, 2, 1, 1)
-
-        self.xSupLineEdit = QLineEdit(self.groupBox_2)
-        self.xSupLineEdit.setObjectName(u"xSupLineEdit")
-
-        self.gridLayout_2.addWidget(self.xSupLineEdit, 6, 1, 1, 1)
-
-        self.yInfLineEdit = QLineEdit(self.groupBox_2)
-        self.yInfLineEdit.setObjectName(u"yInfLineEdit")
-
-        self.gridLayout_2.addWidget(self.yInfLineEdit, 7, 1, 1, 1)
-
-        self.label = QLabel(self.groupBox_2)
-        self.label.setObjectName(u"label")
-
-        self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
-
-        self.horizontalSpacer_8 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_8, 3, 2, 1, 1)
-
-        self.horizontalSpacer_11 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_11, 7, 2, 1, 1)
-
-        self.label_4 = QLabel(self.groupBox_2)
-        self.label_4.setObjectName(u"label_4")
-
-        self.gridLayout_2.addWidget(self.label_4, 3, 0, 1, 1)
-
-        self.setXButton = QPushButton(self.groupBox_2)
-        self.setXButton.setObjectName(u"setXButton")
-        sizePolicy1.setHeightForWidth(self.setXButton.sizePolicy().hasHeightForWidth())
-        self.setXButton.setSizePolicy(sizePolicy1)
-        self.setXButton.setMinimumSize(QSize(50, 50))
-        self.setXButton.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_2.addWidget(self.setXButton, 0, 3, 2, 1)
-
-        self.horizontalSpacer_12 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_12, 8, 2, 1, 1)
-
-        self.horizontalSpacer_5 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_5, 0, 2, 1, 1)
-
-        self.randomButton = QPushButton(self.groupBox_2)
-        self.randomButton.setObjectName(u"randomButton")
-        sizePolicy1.setHeightForWidth(self.randomButton.sizePolicy().hasHeightForWidth())
-        self.randomButton.setSizePolicy(sizePolicy1)
-        self.randomButton.setMinimumSize(QSize(60, 106))
-        self.randomButton.setMaximumSize(QSize(50, 16777215))
-
-        self.gridLayout_2.addWidget(self.randomButton, 5, 4, 4, 1)
-
-        self.label_6 = QLabel(self.groupBox_2)
-        self.label_6.setObjectName(u"label_6")
-
-        self.gridLayout_2.addWidget(self.label_6, 6, 0, 1, 1)
-
-        self.horizontalSpacer_10 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_10, 6, 2, 1, 1)
-
-        self.xLineEdit = QLineEdit(self.groupBox_2)
-        self.xLineEdit.setObjectName(u"xLineEdit")
-
-        self.gridLayout_2.addWidget(self.xLineEdit, 0, 1, 1, 1)
-
-        self.label_3 = QLabel(self.groupBox_2)
-        self.label_3.setObjectName(u"label_3")
-
-        self.gridLayout_2.addWidget(self.label_3, 1, 0, 1, 1)
-
-        self.label_5 = QLabel(self.groupBox_2)
-        self.label_5.setObjectName(u"label_5")
-
-        self.gridLayout_2.addWidget(self.label_5, 5, 0, 1, 1)
-
-        self.label_8 = QLabel(self.groupBox_2)
-        self.label_8.setObjectName(u"label_8")
-
-        self.gridLayout_2.addWidget(self.label_8, 8, 0, 1, 1)
-
-        self.setButton = QPushButton(self.groupBox_2)
-        self.setButton.setObjectName(u"setButton")
         sizePolicy1.setHeightForWidth(self.setButton.sizePolicy().hasHeightForWidth())
         self.setButton.setSizePolicy(sizePolicy1)
         self.setButton.setMinimumSize(QSize(60, 106))
         self.setButton.setMaximumSize(QSize(50, 16777215))
 
         self.gridLayout_2.addWidget(self.setButton, 0, 4, 4, 1)
+
+        self.xSupLineEdit = QLineEdit(self.groupBox_2)
+        self.xSupLineEdit.setObjectName(u"xSupLineEdit")
+
+        self.gridLayout_2.addWidget(self.xSupLineEdit, 6, 1, 1, 1)
+
+        self.xStepLineEdit = QLineEdit(self.groupBox_2)
+        self.xStepLineEdit.setObjectName(u"xStepLineEdit")
+
+        self.gridLayout_2.addWidget(self.xStepLineEdit, 1, 1, 1, 1)
+
+        self.label_5 = QLabel(self.groupBox_2)
+        self.label_5.setObjectName(u"label_5")
+
+        self.gridLayout_2.addWidget(self.label_5, 5, 0, 1, 1)
+
+        self.horizontalSpacer_7 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_7, 2, 2, 1, 1)
+
+        self.ySupLineEdit = QLineEdit(self.groupBox_2)
+        self.ySupLineEdit.setObjectName(u"ySupLineEdit")
+
+        self.gridLayout_2.addWidget(self.ySupLineEdit, 8, 1, 1, 1)
+
+        self.yLineEdit = QLineEdit(self.groupBox_2)
+        self.yLineEdit.setObjectName(u"yLineEdit")
+
+        self.gridLayout_2.addWidget(self.yLineEdit, 2, 1, 1, 1)
+
+        self.label_4 = QLabel(self.groupBox_2)
+        self.label_4.setObjectName(u"label_4")
+
+        self.gridLayout_2.addWidget(self.label_4, 3, 0, 1, 1)
 
         self.label_2 = QLabel(self.groupBox_2)
         self.label_2.setObjectName(u"label_2")
@@ -379,14 +328,119 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addItem(self.horizontalSpacer_9, 5, 2, 1, 1)
 
+        self.yInfLineEdit = QLineEdit(self.groupBox_2)
+        self.yInfLineEdit.setObjectName(u"yInfLineEdit")
+
+        self.gridLayout_2.addWidget(self.yInfLineEdit, 7, 1, 1, 1)
+
+        self.label_8 = QLabel(self.groupBox_2)
+        self.label_8.setObjectName(u"label_8")
+
+        self.gridLayout_2.addWidget(self.label_8, 8, 0, 1, 1)
+
+        self.label_6 = QLabel(self.groupBox_2)
+        self.label_6.setObjectName(u"label_6")
+
+        self.gridLayout_2.addWidget(self.label_6, 6, 0, 1, 1)
+
+        self.label_3 = QLabel(self.groupBox_2)
+        self.label_3.setObjectName(u"label_3")
+
+        self.gridLayout_2.addWidget(self.label_3, 1, 0, 1, 1)
+
+        self.horizontalSpacer_12 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_12, 8, 2, 1, 1)
+
+        self.horizontalSpacer_10 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_10, 6, 2, 1, 1)
+
+        self.xLineEdit = QLineEdit(self.groupBox_2)
+        self.xLineEdit.setObjectName(u"xLineEdit")
+
+        self.gridLayout_2.addWidget(self.xLineEdit, 0, 1, 1, 1)
+
         self.horizontalSpacer_6 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.gridLayout_2.addItem(self.horizontalSpacer_6, 1, 2, 1, 1)
+
+        self.horizontalSpacer_11 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_11, 7, 2, 1, 1)
+
+        self.xInfLineEdit = QLineEdit(self.groupBox_2)
+        self.xInfLineEdit.setObjectName(u"xInfLineEdit")
+
+        self.gridLayout_2.addWidget(self.xInfLineEdit, 5, 1, 1, 1)
+
+        self.horizontalSpacer_5 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_5, 0, 2, 1, 1)
 
         self.label_7 = QLabel(self.groupBox_2)
         self.label_7.setObjectName(u"label_7")
 
         self.gridLayout_2.addWidget(self.label_7, 7, 0, 1, 1)
+
+        self.randomXButton = QPushButton(self.groupBox_2)
+        self.randomXButton.setObjectName(u"randomXButton")
+        sizePolicy1.setHeightForWidth(self.randomXButton.sizePolicy().hasHeightForWidth())
+        self.randomXButton.setSizePolicy(sizePolicy1)
+        self.randomXButton.setMinimumSize(QSize(50, 50))
+        self.randomXButton.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_2.addWidget(self.randomXButton, 5, 3, 2, 1)
+
+        self.setYButton = QPushButton(self.groupBox_2)
+        self.setYButton.setObjectName(u"setYButton")
+        sizePolicy1.setHeightForWidth(self.setYButton.sizePolicy().hasHeightForWidth())
+        self.setYButton.setSizePolicy(sizePolicy1)
+        self.setYButton.setMinimumSize(QSize(50, 50))
+        self.setYButton.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_2.addWidget(self.setYButton, 2, 3, 2, 1)
+
+        self.label = QLabel(self.groupBox_2)
+        self.label.setObjectName(u"label")
+
+        self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
+
+        self.yStepLineEdit = QLineEdit(self.groupBox_2)
+        self.yStepLineEdit.setObjectName(u"yStepLineEdit")
+
+        self.gridLayout_2.addWidget(self.yStepLineEdit, 3, 1, 1, 1)
+
+        self.horizontalSpacer_8 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.gridLayout_2.addItem(self.horizontalSpacer_8, 3, 2, 1, 1)
+
+        self.setXButton = QPushButton(self.groupBox_2)
+        self.setXButton.setObjectName(u"setXButton")
+        sizePolicy1.setHeightForWidth(self.setXButton.sizePolicy().hasHeightForWidth())
+        self.setXButton.setSizePolicy(sizePolicy1)
+        self.setXButton.setMinimumSize(QSize(50, 50))
+        self.setXButton.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_2.addWidget(self.setXButton, 0, 3, 2, 1)
+
+        self.randomButton = QPushButton(self.groupBox_2)
+        self.randomButton.setObjectName(u"randomButton")
+        sizePolicy1.setHeightForWidth(self.randomButton.sizePolicy().hasHeightForWidth())
+        self.randomButton.setSizePolicy(sizePolicy1)
+        self.randomButton.setMinimumSize(QSize(60, 106))
+        self.randomButton.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_2.addWidget(self.randomButton, 5, 4, 4, 1)
+
+        self.randomYButton = QPushButton(self.groupBox_2)
+        self.randomYButton.setObjectName(u"randomYButton")
+        sizePolicy1.setHeightForWidth(self.randomYButton.sizePolicy().hasHeightForWidth())
+        self.randomYButton.setSizePolicy(sizePolicy1)
+        self.randomYButton.setMinimumSize(QSize(50, 50))
+        self.randomYButton.setMaximumSize(QSize(50, 16777215))
+
+        self.gridLayout_2.addWidget(self.randomYButton, 7, 3, 2, 1)
 
         self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
@@ -472,22 +526,26 @@ class Ui_MainWindow(object):
         self.useDodCheckBox.setText(QCoreApplication.translate("MainWindow", u"DoD", None))
         self.useCanvasCheckBox.setText(QCoreApplication.translate("MainWindow", u"Canvas", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Input", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Target Frame", None))
+        self.currentFrameRadioButton.setText(QCoreApplication.translate("MainWindow", u"Current Frame", None))
+        self.keyFrameRadioButton.setText(QCoreApplication.translate("MainWindow", u"Key Frame", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Key Frame Index: ", None))
         self.absoluteRadioButton.setText(QCoreApplication.translate("MainWindow", u"Absolute", None))
         self.relativeRadioButton.setText(QCoreApplication.translate("MainWindow", u"Relative", None))
-        self.setYButton.setText(QCoreApplication.translate("MainWindow", u"Y", None))
-        self.randomYButton.setText(QCoreApplication.translate("MainWindow", u"Y", None))
-        self.randomXButton.setText(QCoreApplication.translate("MainWindow", u"X", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.setButton.setText(QCoreApplication.translate("MainWindow", u"Set", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"inf", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Step", None))
-        self.setXButton.setText(QCoreApplication.translate("MainWindow", u"X", None))
-        self.randomButton.setText(QCoreApplication.translate("MainWindow", u"Random", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Y", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"sup", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"sup", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Step", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"inf", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"sup", None))
-        self.setButton.setText(QCoreApplication.translate("MainWindow", u"Set", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Y", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"inf ", None))
+        self.randomXButton.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.setYButton.setText(QCoreApplication.translate("MainWindow", u"Y", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.setXButton.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.randomButton.setText(QCoreApplication.translate("MainWindow", u"Random", None))
+        self.randomYButton.setText(QCoreApplication.translate("MainWindow", u"Y", None))
 #if QT_CONFIG(tooltip)
         self.minimizeButton.setToolTip(QCoreApplication.translate("MainWindow", u"\u6700\u5c0f\u5316", None))
 #endif // QT_CONFIG(tooltip)
