@@ -471,6 +471,8 @@ class MainWindow(QMainWindow):
         d = deepcopy(m.get_row_data(row))
         length = d.length // 2
         current_index = v.currentIndex()
+
+        m.undo_stack.beginMacro('Split')
         m.setData(current_index.siblingAtColumn(1), d.length - length, Qt.EditRole)
         d.length = length
         if row < 0:
@@ -482,6 +484,7 @@ class MainWindow(QMainWindow):
                 current_index.siblingAtRow(row + 1),
                 QItemSelectionModel.SelectionFlag.ClearAndSelect
             )
+        m.undo_stack.endMacro()
 
     def add_log(self, text: str, color: QColor = log.TEXT_COLOR) -> None:
         self.ui.logTextEdit.log(text, color)
