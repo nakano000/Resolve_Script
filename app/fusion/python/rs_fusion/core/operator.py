@@ -825,8 +825,8 @@ def distribute_dod(fusion, comp, attr_id: str, is_x=True, is_random=False, use_c
     comp.Unlock()
 
 
-def get_frame_by_index(comp, tool, attr_id: str, index: int):
-    target_time = comp.CurrentTime
+def get_frame_by_index(tool, attr_id: str, index: int):
+    target_time = None
     x = tool.GetInputList().values()
     for inp in x:
         if inp.GetAttrs()['INPS_ID'] == attr_id:
@@ -875,7 +875,9 @@ def set_value2d(
     x_offset = 0
     y_offset = 0
     for tool in tools:
-        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(comp, tool, attr_id, key_index)
+        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(tool, attr_id, key_index)
+        if target_frame is None:
+            continue
         _v = tool.GetInput(attr_id, target_frame)
         if _v is None:
             continue
@@ -915,7 +917,9 @@ def random_value(
     comp.Lock()
     comp.StartUndo('RS Random Value')
     for tool in tools:
-        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(comp, tool, attr_id, key_index)
+        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(tool, attr_id, key_index)
+        if target_frame is None:
+            continue
         _v = tool.GetInput(attr_id, target_frame)
         if _v is None:
             continue
@@ -941,7 +945,9 @@ def random_value2d(
     comp.Lock()
     comp.StartUndo('RS Random Value')
     for tool in tools:
-        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(comp, tool, attr_id, key_index)
+        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(tool, attr_id, key_index)
+        if target_frame is None:
+            continue
         _v = tool.GetInput(attr_id, target_frame)
         if _v is None:
             continue
