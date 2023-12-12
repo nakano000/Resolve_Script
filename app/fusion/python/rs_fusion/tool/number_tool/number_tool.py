@@ -200,6 +200,8 @@ class MainWindow(QMainWindow):
             float(self.ui.stepLineEdit.text()),
             is_abs=self.ui.absoluteRadioButton.isChecked(),
             is_random=self.ui.randomRadioButton.isChecked(),
+            use_key=self.ui.keyFrameRadioButton.isChecked(),
+            key_index=self.ui.keyFrameIndexSpinBox.value(),
         )
 
     def random_value(self) -> None:
@@ -217,6 +219,8 @@ class MainWindow(QMainWindow):
             float(self.ui.supLineEdit.text()),
             is_abs=self.ui.absoluteRadioButton.isChecked(),
             is_random=self.ui.randomRadioButton.isChecked(),
+            use_key=self.ui.keyFrameRadioButton.isChecked(),
+            key_index=self.ui.keyFrameIndexSpinBox.value(),
         )
 
 

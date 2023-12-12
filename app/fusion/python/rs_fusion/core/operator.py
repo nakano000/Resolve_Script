@@ -838,7 +838,12 @@ def get_frame_by_index(tool, attr_id: str, index: int):
     return target_time
 
 
-def set_value(comp, attr_id: str, value, step, is_abs=True, is_random=False):
+def set_value(
+        comp, attr_id: str,
+        value, step,
+        is_abs=True, is_random=False,
+        use_key=False, key_index=1,
+):
     tools = get_tools(comp, 1, is_random)
     if tools is None:
         return
@@ -846,14 +851,17 @@ def set_value(comp, attr_id: str, value, step, is_abs=True, is_random=False):
     comp.StartUndo('RS Set Value')
     offset = 0
     for tool in tools:
-        _v = tool.GetInput(attr_id, comp.CurrentTime)
+        target_frame = comp.CurrentTime if not use_key else get_frame_by_index(tool, attr_id, key_index)
+        if target_frame is None:
+            continue
+        _v = tool.GetInput(attr_id, target_frame)
         if _v is None:
             continue
         _value = value + offset
         if not is_abs:
             _value += _v
 
-        tool.SetInput(attr_id, _value, comp.CurrentTime)
+        tool.SetInput(attr_id, _value, target_frame)
         offset += step
     comp.EndUndo(True)
     comp.Unlock()

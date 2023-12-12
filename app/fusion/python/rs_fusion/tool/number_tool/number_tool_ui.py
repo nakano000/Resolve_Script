@@ -18,14 +18,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QGridLayout, QGroupBox,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
     QMainWindow, QPushButton, QRadioButton, QSizePolicy,
-    QSpacerItem, QToolButton, QTreeView, QVBoxLayout,
-    QWidget)
+    QSpacerItem, QSpinBox, QToolButton, QTreeView,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(341, 733)
+        MainWindow.resize(298, 717)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
@@ -148,6 +148,55 @@ class Ui_MainWindow(object):
         self.groupBox_2.setMaximumSize(QSize(16777215, 16777215))
         self.verticalLayout = QVBoxLayout(self.groupBox_2)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.groupBox = QGroupBox(self.groupBox_2)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout_4 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.currentFrameRadioButton = QRadioButton(self.groupBox)
+        self.currentFrameRadioButton.setObjectName(u"currentFrameRadioButton")
+        self.currentFrameRadioButton.setChecked(True)
+
+        self.horizontalLayout_5.addWidget(self.currentFrameRadioButton)
+
+        self.keyFrameRadioButton = QRadioButton(self.groupBox)
+        self.keyFrameRadioButton.setObjectName(u"keyFrameRadioButton")
+
+        self.horizontalLayout_5.addWidget(self.keyFrameRadioButton)
+
+        self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_13)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.label_9 = QLabel(self.groupBox)
+        self.label_9.setObjectName(u"label_9")
+
+        self.horizontalLayout_6.addWidget(self.label_9)
+
+        self.keyFrameIndexSpinBox = QSpinBox(self.groupBox)
+        self.keyFrameIndexSpinBox.setObjectName(u"keyFrameIndexSpinBox")
+        self.keyFrameIndexSpinBox.setMinimumSize(QSize(80, 0))
+        self.keyFrameIndexSpinBox.setMinimum(1)
+        self.keyFrameIndexSpinBox.setMaximum(999)
+
+        self.horizontalLayout_6.addWidget(self.keyFrameIndexSpinBox)
+
+        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_14)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_6)
+
+
+        self.verticalLayout.addWidget(self.groupBox)
+
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.absoluteRadioButton = QRadioButton(self.groupBox_2)
@@ -320,6 +369,10 @@ class Ui_MainWindow(object):
         self.distributeButton.setText(QCoreApplication.translate("MainWindow", u"|||", None))
         self.alignCButton.setText(QCoreApplication.translate("MainWindow", u"\u2503", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Input", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Target Frame", None))
+        self.currentFrameRadioButton.setText(QCoreApplication.translate("MainWindow", u"Current Frame", None))
+        self.keyFrameRadioButton.setText(QCoreApplication.translate("MainWindow", u"Key Frame", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Key Frame Index: ", None))
         self.absoluteRadioButton.setText(QCoreApplication.translate("MainWindow", u"Absolute", None))
         self.relativeRadioButton.setText(QCoreApplication.translate("MainWindow", u"Relative", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Value", None))
