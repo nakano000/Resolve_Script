@@ -830,9 +830,19 @@ def get_frame_by_index(tool, attr_id: str, index: int):
     x = tool.GetInputList().values()
     for inp in x:
         if inp.GetAttrs()['INPS_ID'] == attr_id:
-            key_frames = inp.GetKeyFrames()
-            if index in key_frames:
-                target_time = key_frames[index]
+            outp = inp.GetConnectedOutput()
+            if outp is None:
+                continue
+            x = outp.GetTool()
+            if x.ID == 'BezierSpline':
+                _frames = list(x.GetKeyFrames().keys())
+                key_frames = {}
+                for i, frame in enumerate(_frames):
+                    key_frames[i + 1] = frame
+                if index in key_frames:
+                    target_time = key_frames[index]
+            elif x.ID == 'PolyPath':
+                target_time = get_frame_by_index(x, 'Displacement', index)
             break
 
     return target_time
