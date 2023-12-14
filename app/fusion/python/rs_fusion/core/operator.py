@@ -848,15 +848,37 @@ def get_frame_by_index(tool, attr_id: str, index: int):
     return target_time
 
 
+def tools2modifiers(tools, attr_id: str):
+    modifiers = []
+    for tool in tools:
+        x = tool.GetInputList().values()
+        for inp in x:
+            if inp.GetAttrs()['INPS_ID'] == attr_id:
+                outp = inp.GetConnectedOutput()
+                if outp is None:
+                    continue
+                modifiers.append(outp.GetTool())
+    return modifiers
+
+
 def set_value(
         comp, attr_id: str,
         value, step,
+        modi_attr_id=None,
         is_abs=True, is_random=False,
         use_key=False, key_index=1,
 ):
     tools = get_tools(comp, 1, is_random)
     if tools is None:
         return
+
+    # modifiers
+    if modi_attr_id is not None:
+        tools = tools2modifiers(tools, attr_id)
+        if tools is None:
+            return
+        attr_id = modi_attr_id
+
     comp.Lock()
     comp.StartUndo('RS Set Value')
     offset = 0
@@ -926,12 +948,20 @@ def set_value2d(
 def random_value(
         comp, attr_id: str,
         inf, sup,
+        modi_attr_id=None,
         is_abs=True, is_random=False,
         use_key=False, key_index=1,
 ):
     tools = get_tools(comp, 1, is_random)
     if tools is None:
         return
+    # modifiers
+    if modi_attr_id is not None:
+        tools = tools2modifiers(tools, attr_id)
+        if tools is None:
+            return
+        attr_id = modi_attr_id
+
     comp.Lock()
     comp.StartUndo('RS Random Value')
     for tool in tools:

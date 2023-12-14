@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QGridLayout, QGroupBox,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
     QMainWindow, QPushButton, QRadioButton, QSizePolicy,
-    QSpacerItem, QSpinBox, QToolButton, QTreeView,
-    QVBoxLayout, QWidget)
+    QSpacerItem, QSpinBox, QTabWidget, QToolButton,
+    QTreeView, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -30,12 +30,49 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.treeView = QTreeView(self.centralwidget)
-        self.treeView.setObjectName(u"treeView")
-        self.treeView.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.treeView.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.tabWidget = QTabWidget(self.centralwidget)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.verticalLayout_3 = QVBoxLayout(self.tab)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.toolTreeView = QTreeView(self.tab)
+        self.toolTreeView.setObjectName(u"toolTreeView")
+        self.toolTreeView.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.toolTreeView.setSelectionMode(QAbstractItemView.SingleSelection)
 
-        self.verticalLayout_2.addWidget(self.treeView)
+        self.verticalLayout_3.addWidget(self.toolTreeView)
+
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.horizontalLayout_7 = QHBoxLayout(self.tab_2)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.toolBTreeView = QTreeView(self.tab_2)
+        self.toolBTreeView.setObjectName(u"toolBTreeView")
+
+        self.horizontalLayout_7.addWidget(self.toolBTreeView)
+
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.modifierTreeView = QTreeView(self.tab_2)
+        self.modifierTreeView.setObjectName(u"modifierTreeView")
+
+        self.verticalLayout_5.addWidget(self.modifierTreeView)
+
+        self.loadButton = QPushButton(self.tab_2)
+        self.loadButton.setObjectName(u"loadButton")
+
+        self.verticalLayout_5.addWidget(self.loadButton)
+
+
+        self.horizontalLayout_7.addLayout(self.verticalLayout_5)
+
+        self.tabWidget.addTab(self.tab_2, "")
+
+        self.verticalLayout_2.addWidget(self.tabWidget)
 
         self.groupBox_4 = QGroupBox(self.centralwidget)
         self.groupBox_4.setObjectName(u"groupBox_4")
@@ -60,20 +97,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.groupBox_4)
 
-        self.groupBox_3 = QGroupBox(self.centralwidget)
-        self.groupBox_3.setObjectName(u"groupBox_3")
+        self.alignGroupBox = QGroupBox(self.centralwidget)
+        self.alignGroupBox.setObjectName(u"alignGroupBox")
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.groupBox_3.sizePolicy().hasHeightForWidth())
-        self.groupBox_3.setSizePolicy(sizePolicy)
-        self.groupBox_3.setMinimumSize(QSize(280, 80))
-        self.groupBox_3.setMaximumSize(QSize(16777215, 80))
-        self.horizontalLayout_2 = QHBoxLayout(self.groupBox_3)
+        sizePolicy.setHeightForWidth(self.alignGroupBox.sizePolicy().hasHeightForWidth())
+        self.alignGroupBox.setSizePolicy(sizePolicy)
+        self.alignGroupBox.setMinimumSize(QSize(280, 80))
+        self.alignGroupBox.setMaximumSize(QSize(16777215, 80))
+        self.horizontalLayout_2 = QHBoxLayout(self.alignGroupBox)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.alignRButton = QPushButton(self.groupBox_3)
+        self.alignRButton = QPushButton(self.alignGroupBox)
         self.alignRButton.setObjectName(u"alignRButton")
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
@@ -92,7 +129,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.alignRButton, 0, 2, 1, 1)
 
-        self.alignLButton = QPushButton(self.groupBox_3)
+        self.alignLButton = QPushButton(self.alignGroupBox)
         self.alignLButton.setObjectName(u"alignLButton")
         sizePolicy1.setHeightForWidth(self.alignLButton.sizePolicy().hasHeightForWidth())
         self.alignLButton.setSizePolicy(sizePolicy1)
@@ -103,7 +140,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.alignLButton, 0, 0, 1, 1)
 
-        self.distributeButton = QPushButton(self.groupBox_3)
+        self.distributeButton = QPushButton(self.alignGroupBox)
         self.distributeButton.setObjectName(u"distributeButton")
         sizePolicy1.setHeightForWidth(self.distributeButton.sizePolicy().hasHeightForWidth())
         self.distributeButton.setSizePolicy(sizePolicy1)
@@ -119,7 +156,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.distributeButton, 0, 3, 1, 1)
 
-        self.alignCButton = QPushButton(self.groupBox_3)
+        self.alignCButton = QPushButton(self.alignGroupBox)
         self.alignCButton.setObjectName(u"alignCButton")
         sizePolicy1.setHeightForWidth(self.alignCButton.sizePolicy().hasHeightForWidth())
         self.alignCButton.setSizePolicy(sizePolicy1)
@@ -138,7 +175,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
 
 
-        self.verticalLayout_2.addWidget(self.groupBox_3)
+        self.verticalLayout_2.addWidget(self.alignGroupBox)
 
         self.groupBox_2 = QGroupBox(self.centralwidget)
         self.groupBox_2.setObjectName(u"groupBox_2")
@@ -336,7 +373,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         MainWindow.setCentralWidget(self.centralwidget)
-        QWidget.setTabOrder(self.treeView, self.l2rRadioButton)
         QWidget.setTabOrder(self.l2rRadioButton, self.randomRadioButton)
         QWidget.setTabOrder(self.randomRadioButton, self.alignLButton)
         QWidget.setTabOrder(self.alignLButton, self.alignCButton)
@@ -355,15 +391,21 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
+        self.tabWidget.setCurrentIndex(0)
+
+
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tool", None))
+        self.loadButton.setText(QCoreApplication.translate("MainWindow", u"Load", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Modifier", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"Oder", None))
         self.l2rRadioButton.setText(QCoreApplication.translate("MainWindow", u"LtoR", None))
         self.randomRadioButton.setText(QCoreApplication.translate("MainWindow", u"random", None))
-        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Align", None))
+        self.alignGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Align", None))
         self.alignRButton.setText(QCoreApplication.translate("MainWindow", u"\u21e5", None))
         self.alignLButton.setText(QCoreApplication.translate("MainWindow", u"\u21e4", None))
         self.distributeButton.setText(QCoreApplication.translate("MainWindow", u"|||", None))
