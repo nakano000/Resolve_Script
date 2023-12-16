@@ -7,6 +7,7 @@ from PySide6.QtGui import (
 )
 
 TEXT_COLOR = QColor(210, 210, 210)
+WARNING_COLOR = QColor(210, 110, 0)
 ERROR_COLOR = QColor(210, 0, 0)
 
 
