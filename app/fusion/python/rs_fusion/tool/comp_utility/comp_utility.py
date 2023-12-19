@@ -52,12 +52,14 @@ class MainWindow(QMainWindow):
         self.paste_window = None
         self.center_window = None
         self.number_window = None
+        self.nudge_window = None
 
         # menu
         lst = [
             ('STILL IMAGE', self.load),
             ('MERGE', self.merge),
             ('INSERT', self.insert_tool),
+            ('NUDGE', self.nudge_tool),
             ('PIVOT', self.pivot_tool),
             ('CENTER', self.center_tool),
             ('NUMBER', self.number_tool),
@@ -164,6 +166,12 @@ class MainWindow(QMainWindow):
         if self.number_window is None:
             self.number_window = NumberWindow(fusion=self.fusion)
         self.number_window.show()
+
+    def nudge_tool(self):
+        from rs_fusion.tool.nudge_tool import MainWindow as NudgeWindow
+        if self.nudge_window is None:
+            self.nudge_window = NudgeWindow(fusion=self.fusion)
+        self.nudge_window.show()
 
 
 def run(fusion) -> None:
