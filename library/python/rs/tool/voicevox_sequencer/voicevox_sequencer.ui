@@ -21,6 +21,32 @@
        <number>0</number>
       </property>
       <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Engine:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="engineComboBox"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>10</width>
+          <height>10</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Speakers:</string>
@@ -31,7 +57,7 @@
        <widget class="QComboBox" name="speakerComboBox">
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>140</width>
           <height>30</height>
          </size>
         </property>

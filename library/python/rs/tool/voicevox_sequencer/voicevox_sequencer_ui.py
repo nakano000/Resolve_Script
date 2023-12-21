@@ -90,6 +90,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label_3 = QLabel(self.centralwidget)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout_2.addWidget(self.label_3)
+
+        self.engineComboBox = QComboBox(self.centralwidget)
+        self.engineComboBox.setObjectName(u"engineComboBox")
+
+        self.horizontalLayout_2.addWidget(self.engineComboBox)
+
+        self.horizontalSpacer_4 = QSpacerItem(10, 10, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
+
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
 
@@ -97,7 +111,7 @@ class Ui_MainWindow(object):
 
         self.speakerComboBox = QComboBox(self.centralwidget)
         self.speakerComboBox.setObjectName(u"speakerComboBox")
-        self.speakerComboBox.setMinimumSize(QSize(200, 30))
+        self.speakerComboBox.setMinimumSize(QSize(140, 30))
 
         self.horizontalLayout_2.addWidget(self.speakerComboBox)
 
@@ -349,6 +363,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(shortcut)
         self.actionDuplicate.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+D", None))
 #endif // QT_CONFIG(shortcut)
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Engine:", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Speakers:", None))
         self.getSpeakerButton.setText(QCoreApplication.translate("MainWindow", u"Get", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Tempo:", None))

@@ -30,7 +30,12 @@ from rs.core import (
     ust,
 )
 from rs.core.voicevox.data import SpeakerList
-from rs.core.voicevox.api import synthesis
+from rs.core.voicevox.api import (
+    synthesis,
+    VOICEVOX_PORT,
+    VOICEVOX_NEMO_PORT,
+    SHAREVOX_PORT,
+)
 from rs.core.voicevox.mora_list import openjtalk_text2mora as text2mora
 from rs.core.voicevox.mora_list import openjtalk_mora2text as mora2text
 
@@ -46,7 +51,28 @@ APP_NAME = 'VoicevoxSequencer'
 
 
 @dataclasses.dataclass
+class Engine:
+    port: int = VOICEVOX_PORT
+    name: str = 'VOICEVOX'
+    speakers: SpeakerList = dataclasses.field(default_factory=SpeakerList)
+
+    def get_speakers_file(self):
+        return config.CONFIG_DIR.joinpath('%s_speakers.json' % self.name.lower().replace(' ', '_'))
+
+    def load_speakers(self):
+        _file = self.get_speakers_file()
+        if _file.is_file():
+            self.speakers.load(_file)
+
+    def save_speakers(self):
+        config.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+        _file = self.get_speakers_file()
+        self.speakers.save(_file)
+
+
+@dataclasses.dataclass
 class ConfigData(config.Data):
+    port: int = VOICEVOX_PORT
     speaker_index: int = 0
 
 
@@ -69,6 +95,7 @@ def msg2notes(msg_lst: list[mido.Message]):
 
 @dataclasses.dataclass
 class Doc(config.Data):
+    port: int = VOICEVOX_PORT
     speaker_id: int = 0
     tempo: int = 120
     note_list: config.DataList = dataclasses.field(default_factory=lambda: config.DataList(seq.NoteData))
@@ -219,12 +246,22 @@ class MainWindow(QMainWindow):
         )
         self.resize(600, 800)
 
-        # header
-        self.speaker_list = SpeakerList()
-        self.speakers_file: Path = config.CONFIG_DIR.joinpath('voicevox_speakers.json')
-        if self.speakers_file.is_file():
-            self.speaker_list.load(self.speakers_file)
+        # Engine
+        self.engine_list = [
+            Engine(port=VOICEVOX_PORT, name='VOICEVOX'),
+            Engine(port=VOICEVOX_NEMO_PORT, name='VOICEVOX Nemo'),
+            Engine(port=SHAREVOX_PORT, name='SHAREVOX'),
+        ]
+        for engine in self.engine_list:
+            engine.load_speakers()
+        self.ui.engineComboBox.clear()
+        self.ui.engineComboBox.addItems([e.name for e in self.engine_list])
+        self.ui.engineComboBox.setCurrentIndex(0)
+        self.ui.engineComboBox.currentIndexChanged.connect(self.set_speaker_list)
+
+        # speaker
         self.set_speaker_list()
+
         self.ui.tempoSpinBox.setValue(120)
         self.sampling_rate = 24000
 
@@ -322,7 +359,7 @@ class MainWindow(QMainWindow):
                 # synthesis
                 self.add_log('Synthesis...  %s' % query.get_text())
                 try:
-                    audio = synthesis(doc.speaker_id, query.as_dict(), 5)
+                    audio = synthesis(doc.speaker_id, query.as_dict(), 5, port=doc.port)
                     fs, data = sp.io.wavfile.read(io.BytesIO(audio))
                     data_list.append(data)
                 except Exception as e:
@@ -497,24 +534,36 @@ class MainWindow(QMainWindow):
 
     def set_speaker_list(self) -> None:
         self.ui.speakerComboBox.clear()
-        self.ui.speakerComboBox.addItems(self.speaker_list.get_display_name_list())
+        speaker_list = self.engine_list[self.ui.engineComboBox.currentIndex()].speakers
+        self.ui.speakerComboBox.addItems(speaker_list.get_display_name_list())
 
     def get_speakers(self):
         self.log_clear()
         self.add_log('Get speakers...')
+        engine = self.engine_list[self.ui.engineComboBox.currentIndex()]
         try:
-            self.speaker_list.set_from_voicevox()
+            engine.speakers.set_from_voicevox(port=engine.port)
         except Exception as e:
             self.add_error(f'Error: {e}')
             self.add_log('Failed.')
             return
         self.set_speaker_list()
-        self.save_speakers()
+        engine.save_speakers()
         self.add_log('Done.')
 
+    def port2engine(self, port: int) -> Engine:
+        for engine in self.engine_list:
+            if engine.port == port:
+                return engine
+        return self.engine_list[0]
+
     def set_data(self, doc: Doc):
+        engine = self.port2engine(doc.port)
+        # port
+        self.ui.engineComboBox.setCurrentText(engine.name)
         # id
-        display_name = self.speaker_list.get_display_name(doc.speaker_id)
+        speaker_list = engine.speakers
+        display_name = speaker_list.get_display_name(doc.speaker_id)
         if display_name is not None:
             self.ui.speakerComboBox.setCurrentText(display_name)
         pass
@@ -527,8 +576,11 @@ class MainWindow(QMainWindow):
 
     def get_data(self) -> Doc:
         doc = Doc()
+        engine = self.engine_list[self.ui.engineComboBox.currentIndex()]
+        # port
+        doc.port = engine.port
         # id
-        speaker_id = self.speaker_list.get_id_from_display_name(
+        speaker_id = engine.speakers.get_id_from_display_name(
             self.ui.speakerComboBox.currentText()
         )
         if speaker_id is not None:
@@ -571,6 +623,7 @@ class MainWindow(QMainWindow):
                     doc.load_ust(file_path)
                     self.file = None
                 else:
+                    doc.port = VOICEVOX_PORT
                     doc.load(file_path)
                     self.file = str(file_path)
                 self.set_data(doc)
@@ -612,14 +665,22 @@ class MainWindow(QMainWindow):
             self.set_title()
 
     def set_config(self, c: ConfigData):
-        display_name = self.speaker_list.get_display_name(c.speaker_index)
+        engine = self.port2engine(c.port)
+        # port
+        self.ui.engineComboBox.setCurrentText(engine.name)
+        # id
+        display_name = engine.speakers.get_display_name(c.speaker_index)
         if display_name is not None:
             self.ui.speakerComboBox.setCurrentText(display_name)
         pass
 
     def get_config(self) -> ConfigData:
         c = ConfigData()
-        speaker_id = self.speaker_list.get_id_from_display_name(
+        engine = self.engine_list[self.ui.engineComboBox.currentIndex()]
+        # port
+        c.port = engine.port
+        # id
+        speaker_id = engine.speakers.get_id_from_display_name(
             self.ui.speakerComboBox.currentText()
         )
         if speaker_id is not None:
@@ -636,11 +697,6 @@ class MainWindow(QMainWindow):
         config.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
         c = self.get_config()
         c.save(self.config_file)
-        pass
-
-    def save_speakers(self) -> None:
-        config.CONFIG_DIR.mkdir(parents=True, exist_ok=True)
-        self.speaker_list.save(self.speakers_file)
         pass
 
     def closeEvent(self, event):

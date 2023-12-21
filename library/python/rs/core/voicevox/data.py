@@ -54,9 +54,9 @@ class SpeakerList(config.Data):
                 break
         return speaker_id
 
-    def set_from_voicevox(self, max_retry: int = 10):
+    def set_from_voicevox(self, max_retry: int = 10, port: int = 50021):
         self._list.set_list(p.pipe(
-            api.speakers(max_retry),
+            api.speakers(max_retry, port),
             p.map(lambda x: p.pipe(
                 x['styles'],
                 p.map(
@@ -71,7 +71,6 @@ class SpeakerList(config.Data):
             list,
             lambda x: sum(x, []),
         ))
-
 
 @dataclasses.dataclass
 class Mora(config.DataInterface):
