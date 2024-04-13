@@ -305,7 +305,8 @@ class MainWindow(QMainWindow):
         op.distribute(
             comp,
             attr_id,
-            is_random=self.ui.randomRadioButton.isChecked()
+            is_random=self.ui.randomRadioButton.isChecked(),
+            is_reverse=self.ui.r2lRadioButton.isChecked(),
         )
 
     def set_value(self) -> None:
@@ -336,6 +337,7 @@ class MainWindow(QMainWindow):
             modi_attr_id=modi_attr_id,
             is_abs=self.ui.absoluteRadioButton.isChecked(),
             is_random=self.ui.randomRadioButton.isChecked(),
+            is_reverse=self.ui.r2lRadioButton.isChecked(),
             use_key=self.ui.keyFrameRadioButton.isChecked(),
             key_index=self.ui.keyFrameIndexSpinBox.value(),
         )

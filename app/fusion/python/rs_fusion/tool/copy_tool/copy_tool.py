@@ -173,6 +173,7 @@ class MainWindow(QMainWindow):
             jitter_inf=jitter_inf,
             jitter_sup=jitter_sup,
             is_random=self.ui.randomRadioButton.isChecked(),
+            is_reverse=self.ui.r2lRadioButton.isChecked(),
         )
 
     def show(self) -> None:

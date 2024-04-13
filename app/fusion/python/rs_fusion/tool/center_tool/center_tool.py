@@ -142,14 +142,16 @@ class MainWindow(QMainWindow):
         if self.ui.useDodCheckBox.isChecked():
             op.distribute_dod(
                 self.fusion, comp, 'Center', is_x,
-                self.ui.randomRadioButton.isChecked(),
-                self.ui.useCanvasCheckBox.isChecked(),
+                is_random=self.ui.randomRadioButton.isChecked(),
+                is_reverse=self.ui.r2lRadioButton.isChecked(),
+                use_canvas=self.ui.useCanvasCheckBox.isChecked(),
             )
         else:
             op.distribute2d(
                 comp, 'Center', is_x,
-                self.ui.randomRadioButton.isChecked(),
-                self.ui.useCanvasCheckBox.isChecked(),
+                is_random=self.ui.randomRadioButton.isChecked(),
+                is_reverse=self.ui.r2lRadioButton.isChecked(),
+                use_canvas=self.ui.useCanvasCheckBox.isChecked(),
             )
 
     def set_center(self, lock_x, lock_y) -> None:
@@ -168,6 +170,7 @@ class MainWindow(QMainWindow):
             lock_y=lock_y,
             is_abs=self.ui.absoluteRadioButton.isChecked(),
             is_random=self.ui.randomRadioButton.isChecked(),
+            is_reverse=self.ui.r2lRadioButton.isChecked(),
             use_key=self.ui.keyFrameRadioButton.isChecked(),
             key_index=self.ui.keyFrameIndexSpinBox.value(),
         )

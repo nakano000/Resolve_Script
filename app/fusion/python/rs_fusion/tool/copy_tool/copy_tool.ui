@@ -42,6 +42,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QRadioButton" name="r2lRadioButton">
+         <property name="text">
+          <string>RtoL</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QRadioButton" name="randomRadioButton">
          <property name="text">
           <string>random</string>

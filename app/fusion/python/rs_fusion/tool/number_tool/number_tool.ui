@@ -110,6 +110,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QRadioButton" name="r2lRadioButton">
+         <property name="text">
+          <string>RtoL</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QRadioButton" name="randomRadioButton">
          <property name="text">
           <string>random</string>
@@ -182,7 +189,6 @@
             <font>
              <family>メイリオ</family>
              <pointsize>24</pointsize>
-             <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>
@@ -219,7 +225,6 @@
             <font>
              <family>メイリオ</family>
              <pointsize>24</pointsize>
-             <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>
@@ -256,7 +261,6 @@
             <font>
              <family>メイリオ</family>
              <pointsize>16</pointsize>
-             <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>
@@ -293,7 +297,6 @@
             <font>
              <family>メイリオ</family>
              <pointsize>16</pointsize>
-             <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
             </font>

@@ -85,6 +85,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.l2rRadioButton)
 
+        self.r2lRadioButton = QRadioButton(self.groupBox_4)
+        self.r2lRadioButton.setObjectName(u"r2lRadioButton")
+
+        self.horizontalLayout_3.addWidget(self.r2lRadioButton)
+
         self.randomRadioButton = QRadioButton(self.groupBox_4)
         self.randomRadioButton.setObjectName(u"randomRadioButton")
 
@@ -404,6 +409,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Modifier", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"Oder", None))
         self.l2rRadioButton.setText(QCoreApplication.translate("MainWindow", u"LtoR", None))
+        self.r2lRadioButton.setText(QCoreApplication.translate("MainWindow", u"RtoL", None))
         self.randomRadioButton.setText(QCoreApplication.translate("MainWindow", u"random", None))
         self.alignGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Align", None))
         self.alignRButton.setText(QCoreApplication.translate("MainWindow", u"\u21e5", None))

@@ -14,7 +14,7 @@ def to_int(value):
     return int(decimal.Decimal(str(value)).quantize(decimal.Decimal('0'), rounding=decimal.ROUND_HALF_UP))
 
 
-def get_tools(comp, min_size, is_random=False):
+def get_tools(comp, min_size, is_random=False, is_reverse=False):
     tools = list(comp.GetToolList(True).values())
     if len(tools) < min_size:
         return None
@@ -23,6 +23,8 @@ def get_tools(comp, min_size, is_random=False):
     tools.sort(key=lambda x: list(flow.GetPosTable(x).values())[0])
     if is_random:
         random.shuffle(tools)
+    if is_reverse:
+        tools.reverse()
     return tools
 
 
@@ -161,12 +163,21 @@ def get_modifiers(tool, param_list=None):
     return modifiers
 
 
-def copy(comp, src_tool_name, param_list=None, offset=0, sift_step=0, jitter_inf=0, jitter_sup=0, is_random=False):
+def copy(
+        comp,
+        src_tool_name,
+        param_list=None,
+        offset=0, sift_step=0,
+        jitter_inf=0,
+        jitter_sup=0,
+        is_random=False,
+        is_reverse=False
+):
     # tools
     src_tool = comp.FindTool(src_tool_name)
     if src_tool is None:
         return
-    tools = get_tools(comp, 1, is_random)
+    tools = get_tools(comp, 1, is_random, is_reverse)
     if tools is None:
         return
 
@@ -621,8 +632,8 @@ def align_dod(fusion, comp, attr_id: str, align_type: AlignType2D, use_canvas=Fa
     comp.Unlock()
 
 
-def distribute(comp, attr_id: str, is_random=False):
-    tools = get_tools(comp, 3, is_random)
+def distribute(comp, attr_id: str, is_random=False, is_reverse=False):
+    tools = get_tools(comp, 3, is_random, is_reverse)
     if tools is None:
         return
 
@@ -655,8 +666,15 @@ def distribute(comp, attr_id: str, is_random=False):
     comp.Unlock()
 
 
-def distribute2d(comp, attr_id: str, is_x=True, is_random=False, use_canvas=False):
-    tools = get_tools(comp, 3, is_random)
+def distribute2d(
+        comp,
+        attr_id: str,
+        is_x=True,
+        is_random=False,
+        is_reverse=False,
+        use_canvas=False,
+):
+    tools = get_tools(comp, 3, is_random, is_reverse)
     if tools is None:
         return
 
@@ -711,8 +729,16 @@ def distribute2d(comp, attr_id: str, is_x=True, is_random=False, use_canvas=Fals
     comp.Unlock()
 
 
-def distribute_dod(fusion, comp, attr_id: str, is_x=True, is_random=False, use_canvas=False):
-    tools = get_tools(comp, 3, is_random)
+def distribute_dod(
+        fusion,
+        comp,
+        attr_id: str,
+        is_x=True,
+        is_random=False,
+        is_reverse=False,
+        use_canvas=False,
+):
+    tools = get_tools(comp, 3, is_random, is_reverse)
     if tools is None:
         return
 
@@ -865,10 +891,10 @@ def set_value(
         comp, attr_id: str,
         value, step,
         modi_attr_id=None,
-        is_abs=True, is_random=False,
+        is_abs=True, is_random=False, is_reverse=False,
         use_key=False, key_index=1,
 ):
-    tools = get_tools(comp, 1, is_random)
+    tools = get_tools(comp, 1, is_random, is_reverse)
     if tools is None:
         return
 
@@ -904,10 +930,10 @@ def set_value2d(
         x, y,
         x_step, y_step,
         lock_x=False, lock_y=False,
-        is_abs=True, is_random=False,
+        is_abs=True, is_random=False, is_reverse=False,
         use_key=False, key_index=1,
 ):
-    tools = get_tools(comp, 1, is_random)
+    tools = get_tools(comp, 1, is_random, is_reverse)
     if tools is None:
         return
     comp.Lock()
