@@ -191,7 +191,7 @@ class MainWindow(QMainWindow):
             text_plus = media_pool.AppendToTimeline([{
                 'mediaPoolItem': text_template,
                 'startFrame': 0,
-                'endFrame': ef - sf - 1,
+                'endFrame': ef - sf,
                 'trackIndex': v_index,
                 'mediaType': 1,
                 'recordFrame': sf,

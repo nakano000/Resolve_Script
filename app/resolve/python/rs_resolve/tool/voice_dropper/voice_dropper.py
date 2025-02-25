@@ -475,7 +475,7 @@ class MainWindow(QMainWindow):
             if clip is None:
                 continue
 
-            duration = clip.GetDuration()
+            duration = clip.GetDuration() + 1
 
             # Text+の挿入
             self.add2log('Insert Text Clip: Start')
@@ -483,7 +483,7 @@ class MainWindow(QMainWindow):
             text_plus = media_pool.AppendToTimeline([{
                 'mediaPoolItem': text_template,
                 'startFrame': 0,
-                'endFrame': duration - 1 + data.extend,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
+                'endFrame': duration + data.extend,
                 'trackIndex': video_index,
                 'mediaType': 1,
                 'recordFrame': current_frame,
@@ -846,7 +846,7 @@ class MainWindow(QMainWindow):
             del_list = []
             for clip in timeline.GetItemListInTrack('video', v_index):
                 if clip.GetStart() < v_ef and v_sf < clip.GetEnd():
-                    c_frame = clip.GetStart() + clip.GetDuration() // 2
+                    c_frame = clip.GetStart() + clip.GetDuration() // 2 + 1
                     _wav = get_item(timeline, 'audio', a_index, c_frame)
                     if _wav is None:
                         del_list.append(clip)
