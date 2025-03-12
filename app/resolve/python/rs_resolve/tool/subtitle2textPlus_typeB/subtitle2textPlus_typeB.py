@@ -27,7 +27,9 @@ from rs_fusion.core import ordered_dict_to_dict
 
 from rs_resolve.core import (
     get_track_names,
-    track_name2index, get_fps,
+    track_name2index,
+    get_fps,
+    Appender,
 )
 
 from rs_resolve.tool.subtitle2textPlus_typeB.subtitle2textPlus_typeB_ui import Ui_MainWindow
@@ -184,18 +186,18 @@ class MainWindow(QMainWindow):
 
         # main
         self.add2log('Start: Convert')
+        appender = Appender(resolve, media_pool)
         for item in timeline.GetItemListInTrack('subtitle', s_index):
             sf = item.GetStart()
             ef = item.GetEnd()
             text = item.GetName()
-            text_plus = media_pool.AppendToTimeline([{
-                'mediaPoolItem': text_template,
-                'startFrame': 0,
-                'endFrame': ef - sf - 1,
-                'trackIndex': v_index,
-                'mediaType': 1,
-                'recordFrame': sf,
-            }])[0]
+            text_plus = appender.append2timeline(
+                item=text_template,
+                duration=ef - sf,
+                track_index=v_index,
+                media_type=1,
+                record_frame=sf,
+            )
             if text_plus is None:
                 self.add2log('Insert Text Clip: Failed', log.ERROR_COLOR)
                 continue

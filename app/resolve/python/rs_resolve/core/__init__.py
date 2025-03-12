@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 def timecode2Frame(tc: str, fps):
     int_fps = {
         23: 24,
@@ -81,6 +84,42 @@ def get_track_item_count(timeline, track_type, index):
     if lst is None:
         return 0
     return len(lst)
+
+
+class Appender:
+    def __init__(self, resolve, media_pool):
+        self.resolve = resolve
+        self.media_pool = media_pool
+
+    def append2timeline(
+            self, item,
+            duration: Optional[int] = None,
+            media_type: Optional[int] = None,
+            track_index: Optional[int] = None,
+            record_frame: Optional[int] = None
+    ):
+        data = {
+            'mediaPoolItem': item,
+        }
+        if duration is not None:
+            version = self.resolve.GetVersion()
+            major_version = version[0]
+            minor_version = version[1]
+            offset = 0
+            if major_version > 19:  # 19.1から仕様変更？
+                offset = 1
+            elif version == 19:
+                if minor_version >= 1:
+                    offset = 1
+            data['startFrame'] = 0
+            data['endFrame'] = duration - offset
+        if media_type is not None:
+            data['mediaType'] = media_type
+        if track_index is not None:
+            data['trackIndex'] = track_index
+        if record_frame is not None:
+            data['recordFrame'] = record_frame
+        return self.media_pool.AppendToTimeline([data])[0]
 
 
 class LockOtherTrack:

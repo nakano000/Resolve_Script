@@ -1,4 +1,5 @@
 import json
+import math
 import os
 from functools import partial
 
@@ -53,6 +54,7 @@ from rs_resolve.core import (
     get_track_item_count,
     LockOtherTrack,
     shortcut,
+    Appender,
 )
 from rs_resolve.gui import (
     get_resolve_window,
@@ -422,6 +424,7 @@ class MainWindow(QMainWindow):
 
         # main
         resolve.OpenPage('edit')
+        appender = Appender(resolve, media_pool)
         for f in p.pipe(
                 created_lst,
                 p.filter(p.call.is_file()),
@@ -475,19 +478,18 @@ class MainWindow(QMainWindow):
             if clip is None:
                 continue
 
-            duration = clip.GetDuration()
+            duration = clip.GetDuration(True)  # GetDuration(True)で少数対応なら少数が帰る
 
             # Text+の挿入
             self.add2log('Insert Text Clip: Start')
 
-            text_plus = media_pool.AppendToTimeline([{
-                'mediaPoolItem': text_template,
-                'startFrame': 0,
-                'endFrame': duration - 1 + data.extend,  # 1フレーム短くする (start 0 end 0 で 尺は1フレーム)
-                'trackIndex': video_index,
-                'mediaType': 1,
-                'recordFrame': current_frame,
-            }])[0]
+            text_plus = appender.append2timeline(
+                item=text_template,
+                duration=math.ceil(duration) + data.extend,  # 少数は切り上げ
+                track_index=video_index,
+                media_type=1,
+                record_frame=current_frame,
+            )
             if text_plus is None:
                 self.add2log('Insert Text Clip: Failed', log.ERROR_COLOR)
                 continue
@@ -784,7 +786,7 @@ class MainWindow(QMainWindow):
             # main loop
             for item in audio_items:
                 sf = max([item.GetStart(), v_sf])
-                ef = min([item.GetEnd(), v_ef])
+                ef = min([math.ceil(item.GetEnd(True)), v_ef])  # endが少数なら切り上げ
                 f = Path(item.GetMediaPoolItem().GetClipProperty('File Path'))
                 self.add2log('wav: ' + str(f))
 
