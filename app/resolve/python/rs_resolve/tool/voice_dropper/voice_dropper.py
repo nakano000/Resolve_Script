@@ -478,14 +478,14 @@ class MainWindow(QMainWindow):
             if clip is None:
                 continue
 
-            duration = clip.GetDuration(True)  # GetDuration(True)で少数対応なら少数が帰る
+            duration = math.ceil(clip.GetDuration(True))  # GetDuration(True)で少数対応なら少数が帰る
 
             # Text+の挿入
             self.add2log('Insert Text Clip: Start')
 
             text_plus = appender.append2timeline(
                 item=text_template,
-                duration=math.ceil(duration) + data.extend,  # 少数は切り上げ
+                duration=duration + data.extend,
                 track_index=video_index,
                 media_type=1,
                 record_frame=current_frame,
