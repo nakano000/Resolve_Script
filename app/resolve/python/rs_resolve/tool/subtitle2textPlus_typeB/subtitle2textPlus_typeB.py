@@ -1,3 +1,4 @@
+import math
 from pathlib import Path
 
 import dataclasses
@@ -189,11 +190,11 @@ class MainWindow(QMainWindow):
         appender = Appender(resolve, media_pool)
         for item in timeline.GetItemListInTrack('subtitle', s_index):
             sf = item.GetStart()
-            ef = item.GetEnd()
+            duration = math.ceil(item.GetDuration(True))
             text = item.GetName()
             text_plus = appender.append2timeline(
                 item=text_template,
-                duration=ef - sf,
+                duration=duration,
                 track_index=v_index,
                 media_type=1,
                 record_frame=sf,

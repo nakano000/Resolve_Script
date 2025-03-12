@@ -88,8 +88,17 @@ def get_track_item_count(timeline, track_type, index):
 
 class Appender:
     def __init__(self, resolve, media_pool):
-        self.resolve = resolve
         self.media_pool = media_pool
+        self.ver19_1_or_later = False
+        version = resolve.GetVersion()
+        major_version = version[0]
+        minor_version = version[1]
+        patch_version = version[2]
+        if major_version > 19:  # 19.1から仕様変更？
+            self.ver19_1_or_later = True
+        elif version == 19:
+            if minor_version >= 1:
+                self.ver19_1_or_later = True
 
     def append2timeline(
             self, item,
@@ -102,15 +111,7 @@ class Appender:
             'mediaPoolItem': item,
         }
         if duration is not None:
-            version = self.resolve.GetVersion()
-            major_version = version[0]
-            minor_version = version[1]
-            offset = 0
-            if major_version > 19:  # 19.1から仕様変更？
-                offset = 1
-            elif version == 19:
-                if minor_version >= 1:
-                    offset = 1
+            offset = 1 if self.ver19_1_or_later else 0
             data['startFrame'] = 0
             data['endFrame'] = duration - offset
         if media_type is not None:
