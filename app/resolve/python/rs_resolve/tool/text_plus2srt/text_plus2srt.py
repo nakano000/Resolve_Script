@@ -140,6 +140,8 @@ class MainWindow(QMainWindow):
                 continue
             comp = item.GetFusionCompByIndex(1)
             lst = comp.GetToolList(False, 'TextPlus')
+            if not lst:
+                continue
             if not lst[1]:
                 continue
             s_text = to_time(fps, item.GetStart() - start_frame)
