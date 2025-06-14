@@ -1,0 +1,20 @@
+{
+	Tools = ordered() {
+		Template = MultiMerge {
+			CtrlWZoom = false,
+				MainInput1 = InstanceInput {
+					SourceOp = "Template",
+					Source = "Input",
+				},
+			Inputs = {
+				LayerOrder = Input { Value = ScriptVal { {
+						} }, },
+				Background = Input {
+					SourceOp = "MediaIn1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = OperatorInfo { Pos = { 330, 49.5 } },
+		}
+	}
+}

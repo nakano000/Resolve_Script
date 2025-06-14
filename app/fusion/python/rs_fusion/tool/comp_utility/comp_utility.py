@@ -53,10 +53,12 @@ class MainWindow(QMainWindow):
         self.center_window = None
         self.number_window = None
         self.nudge_window = None
+        self.separate_window = None
 
         # menu
         lst = [
             ('STILL IMAGE', self.load),
+            ('SEPARATE LAYERS', self.separate),
             ('MERGE', self.merge),
             ('INSERT', self.insert_tool),
             ('NUDGE', self.nudge_tool),
@@ -172,6 +174,12 @@ class MainWindow(QMainWindow):
         if self.nudge_window is None:
             self.nudge_window = NudgeWindow(fusion=self.fusion)
         self.nudge_window.show()
+
+    def separate(self):
+        from rs_fusion.tool.separate_layers import MainWindow as SeparateWindow
+        if self.separate_window is None:
+            self.separate_window = SeparateWindow(fusion=self.fusion)
+        self.separate_window.show()
 
 
 def run(fusion) -> None:
