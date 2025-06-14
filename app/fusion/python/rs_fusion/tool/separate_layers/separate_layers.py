@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowStaysOnTopHint
             | Qt.MSWindowsFixedSizeDialogHint
         )
-        self.resize(350, 50)
+        self.resize(180, 50)
 
         self.fusion = fusion
 
@@ -80,27 +80,23 @@ class MainWindow(QMainWindow):
         # flow
         flow = comp.CurrentFrame.FlowView
         _x, _y = flow.GetPosTable(tool).values()
+        _x = to_int(_x)
+        _y = to_int(_y)
 
         # start
         comp.Lock()
         comp.StartUndo('RS Separate Layers')
 
-        # LayerMuxer
-        if tool_type == 'LayerMuxer':
-            for i, layer_name in enumerate(layer_list):
-                if layer_name == '':
-                    continue
-                node = comp.AddTool(tool_type, to_int(_x) + i - 1, to_int(_y) + 4)
-
+        for i, layer_name in enumerate(layer_list):
+            if layer_name == '':
+                continue
+            node = comp.AddTool(tool_type, _x + i - 1, _y + 4)
+            # LayerMuxer
+            if tool_type == 'LayerMuxer':
                 node.Image2.ConnectTo(outp)
                 node.Layer = layer_name
-        # Wireless Link
-        elif tool_type == 'Fuse.Wireless':
-            for i, layer_name in enumerate(layer_list):
-                if layer_name == '':
-                    continue
-                node = comp.AddTool(tool_type, to_int(_x) + i - 1, to_int(_y) + 4)
-
+            # Wireless Link
+            elif tool_type == 'Fuse.Wireless':
                 node.Input.ConnectTo(outp)
                 node.Input_LayerSelect = layer_name
 
