@@ -64,7 +64,7 @@ class MainWindow(QMainWindow):
         # tools
         tools = list(comp.GetToolList(True).values())
         if len(tools) == 0:
-            tool = comp.ActiveTool()
+            tool = comp.ActiveTool
         else:
             tool = tools[0]
         if tool is None:
