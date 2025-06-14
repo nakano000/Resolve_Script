@@ -203,7 +203,9 @@ class MainWindow(QMainWindow):
         if path.is_dir():
             self.stop()
             self.__observer = PollingObserver()
-            self.__observer.schedule(WatchdogEvent(self.modified), str(path), True)
+            self.__observer.schedule(
+                WatchdogEvent(self.modified), path=str(path), recursive=True
+            )
             self.__observer.start()
         self.set_status_label()
 

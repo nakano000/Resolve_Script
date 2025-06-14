@@ -50,7 +50,7 @@ PyWavelets==1.4.1
 pywin32==306
 PyWinBox==0.6
 PyWinCtl==0.3
-pyworld==0.3.4
+pyworld==0.3.5
 requests==2.32.4
 scikit-image==0.25.2
 scikit-learn==1.7.0
