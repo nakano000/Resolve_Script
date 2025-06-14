@@ -39,9 +39,9 @@ pyperclip==1.8.2
 PyRect==0.2.0
 pyscreenshot==3.1
 PyScreeze==0.1.29
-PySide6==6.5.2
-PySide6-Addons==6.5.2
-PySide6-Essentials==6.5.2
+PySide6==6.9.1
+PySide6-Addons==6.9.1
+PySide6-Essentials==6.9.1
 pytsmod==0.3.8
 pytweening==1.0.7
 PyWavelets==1.4.1
@@ -49,7 +49,7 @@ requests==2.32.4
 scikit-image==0.25.2
 scikit-learn==1.7.0
 scipy==1.15.3
-shiboken6==6.5.2
+shiboken6==6.9.1
 soundfile==0.12.1
 soxr==0.3.6
 StrEnum==0.4.15
