@@ -91,6 +91,7 @@ class MainWindow(QMainWindow):
             if layer_name == '':
                 continue
             node = comp.AddTool(tool_type, _x + i - 1, _y + 4)
+            node.SetAttrs({'TOOLS_Name': layer_name})
             # LayerMuxer
             if tool_type == 'LayerMuxer':
                 node.Image2.ConnectTo(outp)
