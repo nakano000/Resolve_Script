@@ -63,6 +63,14 @@
     "mac": true,
     "linux": true
   },
+    {
+    "name": "Psd2Exr",
+    "path": "bin/psd2exr.py",
+    "ss": "picture",
+    "win": true,
+    "mac": true,
+    "linux": true
+  },
   {
     "name": "Macro2Group",
     "path": "bin/macro2group.py",

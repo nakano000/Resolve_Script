@@ -26,6 +26,7 @@ mss==9.0.1
 networkx==3.1
 numba==0.61.2
 numpy==2.2.6
+OpenEXR==3.3.4
 packaging==23.1
 pillow==11.2.1
 platformdirs==3.10.0
@@ -56,6 +57,6 @@ StrEnum==0.4.15
 threadpoolctl==3.2.0
 tifffile==2023.8.30
 typing_extensions==4.14.0
-urllib3==2.4.0
+urllib3==2.5.0
 watchdog==6.0.0
 wrapt==1.15.0
