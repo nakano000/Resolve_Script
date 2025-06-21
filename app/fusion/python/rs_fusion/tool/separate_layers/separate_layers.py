@@ -2,15 +2,8 @@ import sys
 import functools
 from PySide6.QtCore import (
     Qt,
-    QStringListModel,
-    QSortFilterProxyModel,
-    QEvent, QItemSelectionModel,
 )
-from PySide6.QtGui import (
-    QKeySequence,
-    QKeyEvent,
-    QAction,
-)
+
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -20,7 +13,7 @@ from rs.gui import (
     appearance,
 )
 
-from rs_fusion.core.operator import to_int, get_main_input
+from rs_fusion.core.operator import to_int
 from rs_fusion.tool.separate_layers.separate_layers_ui import Ui_MainWindow
 
 APP_NAME = 'Separate Layers'
