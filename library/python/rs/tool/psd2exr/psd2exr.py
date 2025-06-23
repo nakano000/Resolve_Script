@@ -156,7 +156,7 @@ class MainWindow(QMainWindow):
         kakasi.setMode('K', 'a')
         kakasi.setMode('J', 'a')
         conversion = kakasi.getConverter()
-        lst = []
+        dct = {}
         for layer in group:
             layer_name: str = layer.name
             layer_name_en = ''.join(filter(str.isalnum, conversion.do(layer_name)))
@@ -164,16 +164,14 @@ class MainWindow(QMainWindow):
                 layer_name_en = ''.join(filter(lambda s: s not in '!@#$%^&*()-=+\\|`~[]{};\':",./<>?', layer_name))
             if len(layer_name_en) == 0:
                 layer_name_en = 'none'
-            dct = {
-                'name': layer_name,
+            _dct = {
                 'name_en': layer_name_en,
                 'visible': layer.is_visible(),
-                'is_group': layer.is_group(),
             }
             if layer.is_group():
-                dct['data'] = self.get_layer_info(layer)
-            lst.append(dct)
-        return lst
+                _dct['data'] = self.get_layer_info(layer)
+            dct[layer_name] = _dct
+        return dct
 
     def psd_layers_to_exr(self):
         """
@@ -219,11 +217,10 @@ class MainWindow(QMainWindow):
             info_file,
             json.dumps(
                 {
-                    'name': 'Root',
-                    'x': psd.size[0],
-                    'y': psd.size[1],
-                    'exr_file': str(output_exr_file).replace('\\', '/'),
-                    'data': self.get_layer_info(psd),
+                    'Root': {
+                        'exr_file': str(output_exr_file).replace('\\', '/'),
+                        'data': self.get_layer_info(psd),
+                    },
                 },
                 indent=2,
                 ensure_ascii=False,
