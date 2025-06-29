@@ -715,16 +715,19 @@ class MainWindow(QMainWindow):
         comp.StartUndo('RS Builder')
 
         # load template
+        self.add2log('Load Template...')
         dummy_tool = comp.AddTool('Background', 0, 20)  # 位置決め用
         flow.Select(dummy_tool)
         aiueo_template = bmd.readfile(str(AIUEO_TEMPLATE_PATH))
         comp.Paste(aiueo_template)
         dummy_tool.Delete()
+        self.add2log('Template loaded')
 
         # node
         root_xf = comp.FindTool('Root')
 
         # import
+        self.add2log('Importing layers...')
         importer = Importer(
             comp,
             root_xf=root_xf,
@@ -742,6 +745,7 @@ class MainWindow(QMainWindow):
             exr_path=exr_path,
         )
         importer.make()
+        self.add2log('Import completed')
 
         # end
         comp.EndUndo(True)
