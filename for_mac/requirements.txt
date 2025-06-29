@@ -34,7 +34,7 @@ pooch==1.7.0
 psd-tools==1.10.8
 PyAutoGUI==0.9.54
 pycparser==2.21
-pykakasi==2.2.1
+pykakasi==2.3.0
 PyMsgBox==1.0.9
 pyperclip==1.8.2
 PyRect==0.2.0
