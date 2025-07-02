@@ -28,7 +28,7 @@ numba==0.61.2
 numpy==2.2.6
 OpenEXR==3.3.4
 packaging==23.1
-pillow==11.2.1
+pillow==11.3.0
 platformdirs==3.10.0
 pooch==1.7.0
 psd-tools==1.10.8
