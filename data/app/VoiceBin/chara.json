@@ -17,6 +17,14 @@
       "_setting": "Preset\\TextPlus\\字幕_白_緑.setting"
     },
     {
+      "track_name": "TU",
+      "reg_exp": "^\\d+_春日部つむぎ.+",
+      "color": "Yellow",
+      "anim_type": "aiueo3",
+      "anim_parameter": "<MultiMerge>",
+      "_setting": "Preset\\TextPlus\\字幕_白_茶.setting"
+    },
+    {
       "track_name": "USA",
       "reg_exp": "^\\d+_中国うさぎ.+",
       "color": "Pink",

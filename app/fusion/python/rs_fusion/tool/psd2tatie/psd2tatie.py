@@ -197,6 +197,56 @@ class MainWindow(QMainWindow):
         set_attrs(dct, self.info_data)
         return dct
 
+    def save_png(self, output_dir: Path, config_data: ConfigData) -> dict:
+
+        # レイヤーデータを収集
+        parts_data = {}
+
+        for layer in self.psd:
+            if layer.is_group():
+                continue
+            if layer.name in config_data.remove_list:
+                continue
+
+            if layer.size[0] == 0 or layer.size[1] == 0:
+                continue
+
+            # pil image
+            img = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+            layer_img = layer.topil()
+            if layer_img is not None:
+                img.paste(layer_img, (0, 0), mask=layer_img)
+
+            # filename
+            name: str = layer.name.strip().translate(str.maketrans('*\\/:?"<>|', '-________', ''))
+            if name == '':
+                name = '_none_'
+            if name[-1].isdigit():
+                name += '_'
+            png_path = output_dir.joinpath(f'{name}.png')
+            for i in range(1, 100):
+                if png_path.is_file():
+                    png_path = output_dir.joinpath(f'{name}_{i}.png')
+                else:
+                    break
+
+            # save image
+            # todo:compress_levelを変更してパフォーマンスをチェック
+            # compress_levelは0-9で、0が圧縮なし、9が最大圧縮
+            # defaultは6
+            img.save(png_path, format='PNG', compress_level=6)
+            self.add2log('Save PNG: ' + str(png_path).replace("\\", "/"))
+
+            #
+            parts_data[layer.name] = {
+                'path': str(png_path).replace('\\', '/'),
+                'size': layer.size,
+                'bbox': layer.bbox,
+                'offset': layer.offset,
+            }
+
+        return parts_data
+
     def save_exr(self, exr_path: Path, config_data: ConfigData) -> None:
         # レイヤーデータを収集
         parts_data = []
@@ -307,11 +357,17 @@ class MainWindow(QMainWindow):
             return
 
         # OpenEXR
-        exr_path = psd_path.with_suffix('.exr')
-        self.save_exr(exr_path, config_data=data)
-        if not exr_path.is_file():
-            self.add2log(f'[ERROR] Failed to save EXR file:\n{exr_path}', log.ERROR_COLOR)
-            return
+        # exr_path = psd_path.with_suffix('.exr')
+        # self.save_exr(exr_path, config_data=data)
+        # if not exr_path.is_file():
+        #     self.add2log(f'[ERROR] Failed to save EXR file:\n{exr_path}', log.ERROR_COLOR)
+        #     return
+
+        # png export
+        out_dir = psd_path.parent.joinpath('parts')
+        if not out_dir.is_dir():
+            out_dir.mkdir(parents=True, exist_ok=True)
+        parts_data = self.save_png(out_dir, config_data=data)
 
         # tree data
         other_list = []
@@ -369,23 +425,19 @@ class MainWindow(QMainWindow):
             e_layer=data.mouth_e,
             o_layer=data.mouth_o,
             n_layer=data.mouth_n,
-            exr_path=exr_path,
+            parts_data=parts_data,
+            canvas_width=self.canvas_width,
+            canvas_height=self.canvas_height,
         )
-        ld = importer.make()
+        importer.make()
         self.add2log('Import completed')
 
-        # Setting:を使う
-        exr_filename = exr_path.name
-        ld.Clip[1] = 'Setting:\\' + exr_filename
         # macro
         self.add2log('Saving macro...')
         macro_path = psd_path.with_suffix('.setting')
         macro_builder = MacroBuilder(comp)
         macro_builder.build('Template', macro_path)
         self.add2log(f'Macro saved: {macro_path}')
-
-        # 戻す
-        ld.Clip[1] = comp.ReverseMapPath(str(exr_path).replace('/', '\\'))
 
         # end
         comp.EndUndo(True)

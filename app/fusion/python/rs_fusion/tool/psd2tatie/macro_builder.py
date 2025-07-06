@@ -132,7 +132,7 @@ class MacroBuilder:
             macro_name,
             '\n'.join([
                 macro.get_header(macro_name, True),
-                custom_data,
+                # custom_data,
                 macro.get_input(main_in_list, in_list),
                 macro.get_output(output_list),
                 macro.get_footer(),

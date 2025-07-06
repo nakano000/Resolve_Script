@@ -487,7 +487,7 @@ class MainWindow(QMainWindow):
 
             text_plus = appender.append2timeline(
                 item=text_template,
-                duration=duration + data.extend,
+                duration=duration + 1 + data.extend,
                 track_index=video_index,
                 media_type=1,
                 record_frame=current_frame,

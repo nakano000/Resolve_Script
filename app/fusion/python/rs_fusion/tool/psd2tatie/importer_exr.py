@@ -20,9 +20,7 @@ class Importer:
             e_layer: str,
             o_layer: str,
             n_layer: str,
-            parts_data: dict,
-            canvas_width: int,
-            canvas_height: int,
+            exr_path: Path,
     ):
         self.comp = comp
         self.flow = comp.CurrentFrame.FlowView
@@ -32,10 +30,7 @@ class Importer:
         self.eye_data = eye_data
         self.mouth_data = mouth_data
         self.front_data = front_data
-        self.parts_data = parts_data
-
-        self.canvas_width = canvas_width
-        self.canvas_height = canvas_height
+        self.exr_path = exr_path
 
         self.close_layer = close_layer
         self.close_node = None
@@ -52,13 +47,18 @@ class Importer:
         self.n_layer = n_layer
         self.n_node = None
 
+        self.size_x = 0
+        self.size_y = 0
+
         self.X_OFFSET = 1
         self.Y_OFFSET = 4
 
         self.btn_size: float = 0.25
 
+        self.exr_node = None
         self.blank_node = None
 
+        self.layer_list: list[str] = []
         self.tree_data = None
         self.json_data = None
 
@@ -113,16 +113,38 @@ class Importer:
     def setup_base_node(self):
         pos_x = 0
         pos_y = 0
+        # exr
+        exr_x = pos_x - 1
+        exr = self.add_tool('Loader', exr_x, pos_y)
+        exr.Clip[1] = self.comp.ReverseMapPath(str(self.exr_path).replace('/', '\\'))
+        exr.Loop[1] = 1
+        exr.GlobalIn = -1000
+        exr.GlobalOut = -1000
+
+        # node
+        self.exr_node = exr
+
+        # layer
+        outp = exr.FindMainOutput(1)
+        lst = list(outp.GetLayerList().values())
+        if '' in lst:
+            lst.remove('')
+        self.layer_list = lst
+
+        # get image size
+        img = outp.GetValue()
+        self.size_x = img.Width
+        self.size_y = img.Height
 
         # bg
         bg_x = pos_x - 2
         bg_y = pos_y - 1
         bg = self.add_tool('Background', bg_x, bg_y)
         bg.UseFrameFormatSettings = 0
-        bg.Width = self.canvas_width
-        bg.Height = self.canvas_height
+        bg.Width = self.size_x
+        bg.Height = self.size_y
         bg.TopLeftAlpha = 0
-        bg.Depth = 1  # 8bit int
+        bg.Depth = 3  # 16bit floating point
 
         # set domain
         node_x = pos_x - 2
@@ -147,28 +169,11 @@ class Importer:
         return node
 
     def add_layer(self, pos_x, pos_y, layer_name):
-        data = self.parts_data[layer_name]
-
-        ld = self.add_tool('Loader', pos_x, pos_y - 1)
-        ld.Clip[1] = self.comp.ReverseMapPath(data['path'].replace('/', '\\'))
-        ld.Loop[1] = 1
-        ld.PostMultiplyByAlpha = 0
-        ld.GlobalIn = -1000
-        ld.GlobalOut = -1000
-
-        offset_x = data['offset'][0] + data['size'][0] - self.canvas_width / 2.0
-        offset_y = - data['offset'][1] + self.canvas_height / 2.0
-
-        node = self.add_tool('Transform', pos_x, pos_y)
-        node.Width = data['size'][0]
-        node.Height = data['size'][1]
-        node.Center = (
-            offset_x / data['size'][0],
-            offset_y / data['size'][1],
-        )
+        node = self.add_tool('Fuse.Wireless', pos_x, pos_y)
         ss = layer_name.split('.')
         node.SetAttrs({'TOOLS_Name': ss[-1]})
-        node.ConnectInput('Input', ld)
+        node.ConnectInput('Input', self.exr_node)
+        node.Input_LayerSelect = layer_name
 
         if layer_name == self.close_layer:
             self.close_node = node
@@ -226,7 +231,7 @@ class Importer:
             # add loader
             if 'data' in layer:
                 node, pos_x, _uc, _name_list = self.add_node(
-                    pos_x, pos_y - 2, layer['data'], layer_name, {},
+                    pos_x, pos_y - 1, layer['data'], layer_name, {},
                 )
                 uc_list.append(_uc)
                 name_list += _name_list
@@ -293,14 +298,10 @@ class Importer:
     def set_mouth_scale(self):
         xf = self.comp.FindTool('MouthScale')
         center_list = []
-        lst = []
-        lst.append(self.comp.FindTool('A_Mrg'))
-        lst.append(self.comp.FindTool('I_Mrg'))
-        lst.append(self.comp.FindTool('U_Mrg'))
-        lst.append(self.comp.FindTool('E_Mrg'))
-        lst.append(self.comp.FindTool('O_Mrg'))
-        lst.append(self.comp.FindTool('N_Mrg'))
-        for node in lst:
+        for node in [
+            self.a_node, self.i_node, self.u_node,
+            self.e_node, self.o_node, self.n_node
+        ]:
             outp = node.FindMainOutput(1)
             img = outp.GetValue()
             dw = img.DataWindow
@@ -313,7 +314,7 @@ class Importer:
         else:
             center_x = sum(x for x, _ in center_list) / len(center_list)
             center_y = sum(y for _, y in center_list) / len(center_list)
-            xf.Pivot = (center_x / self.canvas_width, center_y / self.canvas_height)
+            xf.Pivot = (center_x / self.size_x, center_y / self.size_y)
 
     def make(self):
         self.setup_base_node()
@@ -346,7 +347,6 @@ class Importer:
             'MOUSE_LINK': mouth_xf,
             'EYE_LINK': eye_xf,
             'FRONT_LINK': front_xf,
-            'BLANK_LINK': self.blank_node,
             'Closed': self.close_node,
             'A': self.a_node,
             'I': self.i_node,
@@ -377,3 +377,5 @@ class Importer:
         self.set_orange(self.root_xf)
 
         self.root_xf.Comments = '\n'.join(reversed(name_list))
+
+        return self.exr_node
