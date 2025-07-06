@@ -59,6 +59,7 @@ FRONTMOST_COLOR = QColor(159, 125, 0)
 @dataclasses.dataclass
 class ConfigData(config.Data):
     psd_path: str = ''
+    dst_path: str = ''
     eye_close: str = ''
     mouth_a: str = ''
     mouth_i: str = ''
@@ -96,7 +97,7 @@ class MainWindow(QMainWindow):
             | Qt.WindowCloseButtonHint
             | Qt.WindowStaysOnTopHint
         )
-        self.resize(750, 900)
+        self.resize(750, 1000)
 
         self.fusion = fusion
 
@@ -129,6 +130,7 @@ class MainWindow(QMainWindow):
         self.ui.psdLineEdit.textChanged.connect(self.load_psd)
 
         self.ui.psdToolButton.clicked.connect(self.psdToolButton_clicked)
+        self.ui.dstToolButton.clicked.connect(self.dstToolButton_clicked)
 
         self.ui.convertButton.clicked.connect(self.conv)
         self.ui.closeButton.clicked.connect(self.close)
@@ -196,6 +198,35 @@ class MainWindow(QMainWindow):
 
         set_attrs(dct, self.info_data)
         return dct
+
+    def save_thumbnail(self, config_data: ConfigData):
+        self.add2log('Making thumbnail...')
+        # 104x58のサムネイルを保存
+        # 下をクロップ
+        ref_height = self.canvas_width * 58 // 104
+        ref_width = self.canvas_height * 104 // 58
+        if self.canvas_height > ref_height:
+            viewport = (0, 0, self.canvas_width, ref_height)
+        else:
+            viewport = (0, 0, ref_width, self.canvas_height)
+
+        self.add2log('Compositing PSD image...')
+        base_img = self.psd.composite(viewport=viewport, color=(0.5, 0.5, 0.5))
+        if base_img is None:
+            self.add2log('[ERROR] Failed to composite PSD image', log.ERROR_COLOR)
+            return
+
+        # サイズを変更
+        self.add2log('Resizing thumbnail image...')
+        thumbnail_img = base_img.resize((104, 58))
+        if thumbnail_img is None:
+            self.add2log('[ERROR] Failed to resize thumbnail image', log.ERROR_COLOR)
+        # 保存先のパスを決定
+        psd_path = Path(config_data.psd_path)
+        thumbnail_path = psd_path.with_suffix('.png')
+        # サムネイルを保存
+        thumbnail_img.save(thumbnail_path, format='PNG', compress_level=6)
+        self.add2log('Thumbnail saved: %s' % str(thumbnail_path).replace('\\', '/'))
 
     def save_png(self, output_dir: Path, config_data: ConfigData) -> dict:
 
@@ -329,9 +360,19 @@ class MainWindow(QMainWindow):
             return
 
         data = self.get_data()
+        if data.psd_path == '':
+            self.add2log('[ERROR] Please select PSD file', log.ERROR_COLOR)
+            return
         psd_path = Path(data.psd_path)
         if not psd_path.is_file():
             self.add2log(f'[ERROR] PSD file does not exist:\n{psd_path}', log.ERROR_COLOR)
+            return
+        if data.dst_path == '':
+            self.add2log('[ERROR] Please select output directory', log.ERROR_COLOR)
+            return
+        dst_path = Path(data.dst_path)
+        if not dst_path.is_dir():
+            self.add2log(f'[ERROR] Output directory does not exist:\n{dst_path}', log.ERROR_COLOR)
             return
 
         if data.eye_close == '':
@@ -356,6 +397,9 @@ class MainWindow(QMainWindow):
             self.add2log('[ERROR] Please select mouth N layer', log.ERROR_COLOR)
             return
 
+        # save thumbnail
+        self.save_thumbnail(data)
+
         # OpenEXR
         # exr_path = psd_path.with_suffix('.exr')
         # self.save_exr(exr_path, config_data=data)
@@ -364,7 +408,7 @@ class MainWindow(QMainWindow):
         #     return
 
         # png export
-        out_dir = psd_path.parent.joinpath('parts')
+        out_dir = dst_path.joinpath(psd_path.stem)
         if not out_dir.is_dir():
             out_dir.mkdir(parents=True, exist_ok=True)
         parts_data = self.save_png(out_dir, config_data=data)
@@ -458,6 +502,16 @@ class MainWindow(QMainWindow):
         if path != '':
             w.setText(path)
 
+    def dstToolButton_clicked(self) -> None:
+        w = self.ui.dstLineEdit
+        path = QFileDialog.getExistingDirectory(
+            self,
+            'Select Directory',
+            w.text(),
+        )
+        if path != '':
+            w.setText(path)
+
     def set_combo_box_current_text(self, w):
         indexes = self.selection_model.selectedRows()
         if len(indexes) == 0:
@@ -493,6 +547,7 @@ class MainWindow(QMainWindow):
 
     def set_data(self, c: ConfigData):
         self.ui.psdLineEdit.setText(c.psd_path)
+        self.ui.dstLineEdit.setText(c.dst_path)
         self.ui.closeComboBox.setCurrentText(c.eye_close)
         self.ui.aComboBox.setCurrentText(c.mouth_a)
         self.ui.iComboBox.setCurrentText(c.mouth_i)
@@ -525,6 +580,7 @@ class MainWindow(QMainWindow):
     def get_data(self) -> ConfigData:
         c = ConfigData()
         c.psd_path = self.ui.psdLineEdit.text().strip().replace('\\', '/')
+        c.dst_path = self.ui.dstLineEdit.text().strip().replace('\\', '/')
         c.eye_close = self.ui.closeComboBox.currentText()
         c.mouth_a = self.ui.aComboBox.currentText()
         c.mouth_i = self.ui.iComboBox.currentText()

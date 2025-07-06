@@ -74,6 +74,27 @@ class Ui_MainWindow(object):
 
         self.formLayout.setLayout(0, QFormLayout.ItemRole.FieldRole, self.horizontalLayout_2)
 
+        self.label_9 = QLabel(self.fileGroupBox)
+        self.label_9.setObjectName(u"label_9")
+
+        self.formLayout.setWidget(1, QFormLayout.ItemRole.LabelRole, self.label_9)
+
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.dstLineEdit = QLineEdit(self.fileGroupBox)
+        self.dstLineEdit.setObjectName(u"dstLineEdit")
+
+        self.horizontalLayout_4.addWidget(self.dstLineEdit)
+
+        self.dstToolButton = QToolButton(self.fileGroupBox)
+        self.dstToolButton.setObjectName(u"dstToolButton")
+
+        self.horizontalLayout_4.addWidget(self.dstToolButton)
+
+
+        self.formLayout.setLayout(1, QFormLayout.ItemRole.FieldRole, self.horizontalLayout_4)
+
 
         self.verticalLayout_2.addLayout(self.formLayout)
 
@@ -362,6 +383,8 @@ class Ui_MainWindow(object):
         self.fileGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"PSD", None))
         self.psdToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"PNG save loc.", None))
+        self.dstToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Setting", None))
         self.groupBox_4.setTitle("")
         self.setFrontmostButton.setText(QCoreApplication.translate("MainWindow", u"Frontmost", None))
