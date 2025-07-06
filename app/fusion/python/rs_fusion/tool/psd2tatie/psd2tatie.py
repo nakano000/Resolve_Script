@@ -168,6 +168,10 @@ class MainWindow(QMainWindow):
         )
 
         self.ui.actionPSD.triggered.connect(self.open_psd_dir)
+        self.ui.actionGenerators_Dir_User.triggered.connect(partial(
+            self.open_dir,
+            config.RESOLVE_USER_PATH.joinpath('Templates', 'Edit', 'Generators'),
+        ))
 
     def make_tree_data(self, layer_list: list[str]) -> dict:
         dct = {}

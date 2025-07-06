@@ -38,6 +38,8 @@ class Ui_MainWindow(object):
         self.actionExit.setObjectName(u"actionExit")
         self.actionPSD = QAction(MainWindow)
         self.actionPSD.setObjectName(u"actionPSD")
+        self.actionGenerators_Dir_User = QAction(MainWindow)
+        self.actionGenerators_Dir_User.setObjectName(u"actionGenerators_Dir_User")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_4 = QVBoxLayout(self.centralwidget)
@@ -359,6 +361,7 @@ class Ui_MainWindow(object):
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit)
         self.menuDirectory.addAction(self.actionPSD)
+        self.menuDirectory.addAction(self.actionGenerators_Dir_User)
 
         self.retranslateUi(MainWindow)
 
@@ -380,6 +383,7 @@ class Ui_MainWindow(object):
         self.actionExit.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+Q", None))
 #endif // QT_CONFIG(shortcut)
         self.actionPSD.setText(QCoreApplication.translate("MainWindow", u"PSD", None))
+        self.actionGenerators_Dir_User.setText(QCoreApplication.translate("MainWindow", u"Generators Dir (User)", None))
         self.fileGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"PSD", None))
         self.psdToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))

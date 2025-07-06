@@ -508,6 +508,7 @@
      <string>Directory</string>
     </property>
     <addaction name="actionPSD"/>
+    <addaction name="actionGenerators_Dir_User"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuDirectory"/>
@@ -539,6 +540,11 @@
   <action name="actionPSD">
    <property name="text">
     <string>PSD</string>
+   </property>
+  </action>
+  <action name="actionGenerators_Dir_User">
+   <property name="text">
+    <string>Generators Dir (User)</string>
    </property>
   </action>
  </widget>
