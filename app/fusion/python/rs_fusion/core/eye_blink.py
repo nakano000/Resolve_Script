@@ -132,22 +132,54 @@ def delete_mm(comp):
     tool = comp.FindTool('EyeAnim')
     if tool is None:
         return
+    # apply
+    comp.Lock()
+    comp.StartUndo('RS Delete EyeBlink')
+    tool.LayerEnabled1.ConnectTo()
+    tool.LayerEnabled1 = 1
+    tool.LayerEnabled2.ConnectTo()
+    tool.LayerEnabled2 = 0
+    comp.EndUndo(True)
+    comp.Unlock()
 
+
+def apply_sw(comp, length: int, close_length: int, offset: int = 0):
+    tool = comp.FindTool('EyeAnim')
+    if tool is None:
+        return
+
+    close_frame = length - close_length
     text = '''
-    {
-        Tools = ordered() {
-            EyeAnim = PipeRouter {
-                CtrlWZoom = false,
-                Inputs = {
-                    LayerEnabled1 = Input { Value = 1, },
-                    LayerEnabled2 = Input { Value = 0, },
-                },
-                ViewInfo = OperatorInfo { Pos = { 10285, -940.5 } },
-            },
+{
+    Tools = ordered() {
+        EyeAnim = PipeRouter {
+            CtrlWZoom = false,
+            Inputs = {
+				Source = Input {
+					SourceOp = "EyeAnimSource",
+					Source = "Value",
+				}
+			},
+            ViewInfo = OperatorInfo { Pos = { 10285, -940.5 } },
         },
-        ActiveTool = "EyeAnim"
-    }
-    '''
+        EyeAnimSource = BezierSpline {
+			SplineColor = { Red = 220, Green = 245, Blue = 25 },
+			CtrlWZoom = false,
+			NameSet = true,
+            KeyFrames = {
+                [%d] = { 0, Flags = { Linear = true, Loop = true, PreLoop = true } },
+                [%d] = { 1, Flags = { StepIn = true } },
+                [%d] = { 0, Flags = { StepIn = true, Loop = true, PreLoop = true } }
+            }
+        },
+    },
+    ActiveTool = "EyeAnim"
+}
+''' % (
+        offset,
+        offset + close_frame,
+        offset + length,
+    )
     st = ordered_dict_to_dict(bmd.readstring(text))
 
     # store
@@ -162,7 +194,7 @@ def delete_mm(comp):
 
     # apply
     comp.Lock()
-    comp.StartUndo('RS Delete EyeBlink')
+    comp.StartUndo('RS EyeBlink')
 
     tool.LoadSettings(st)
 
@@ -170,5 +202,16 @@ def delete_mm(comp):
     for parm in parm_name_list:
         tool.SetInput(parm, parm_dct[parm], comp.CurrentTime)
 
+    comp.EndUndo(True)
+    comp.Unlock()
+
+def delete_sw(comp):
+    tool = comp.FindTool('EyeAnim')
+    if tool is None:
+        return
+    comp.Lock()
+    comp.StartUndo('RS Delete EyeBlink')
+    tool.Source.ConnectTo()
+    tool.Source = 0
     comp.EndUndo(True)
     comp.Unlock()
