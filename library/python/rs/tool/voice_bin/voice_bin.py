@@ -162,7 +162,9 @@ class Form(QWidget):
                 self.__observer.stop()
                 self.__observer.join()
             self.__observer = PollingObserver()
-            self.__observer.schedule(WatchdogEvent(self.modified), str(path), True)
+            self.__observer.schedule(
+                WatchdogEvent(self.modified), path=str(path), recursive=True
+            )
             self.__observer.start()
 
     def stop(self):
