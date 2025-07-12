@@ -118,7 +118,6 @@ class MacroBuilder:
             macro.get_output(output_list),
             macro.get_footer(),
         ])
-        print(m)
 
         # build
         self.comp.Execute(macro.get_save_script(

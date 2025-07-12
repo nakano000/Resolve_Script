@@ -148,11 +148,13 @@ class Importer:
 
     def add_layer(self, pos_x, pos_y, layer_name):
         data = self.parts_data[layer_name]
+        if data['path'] is None or data['path'] == '':
+            return self.add_blank(pos_x, pos_y)
 
         ld = self.add_tool('Loader', pos_x, pos_y - 1)
         ld.Clip[1] = self.comp.ReverseMapPath(data['path'].replace('/', '\\'))
         ld.Loop[1] = 1
-        ld.PostMultiplyByAlpha = 0
+        # ld.Clip1.PNGFormat.PostMultiply = 0
         ld.GlobalIn = -1000
         ld.GlobalOut = -1000
 
@@ -172,17 +174,17 @@ class Importer:
 
         if layer_name == self.close_layer:
             self.close_node = node
-        elif layer_name == self.a_layer:
+        if layer_name == self.a_layer:
             self.a_node = node
-        elif layer_name == self.i_layer:
+        if layer_name == self.i_layer:
             self.i_node = node
-        elif layer_name == self.u_layer:
+        if layer_name == self.u_layer:
             self.u_node = node
-        elif layer_name == self.e_layer:
+        if layer_name == self.e_layer:
             self.e_node = node
-        elif layer_name == self.o_layer:
+        if layer_name == self.o_layer:
             self.o_node = node
-        elif layer_name == self.n_layer:
+        if layer_name == self.n_layer:
             self.n_node = node
         return node
 

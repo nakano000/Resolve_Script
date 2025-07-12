@@ -244,13 +244,20 @@ class MainWindow(QMainWindow):
                 continue
 
             if layer.size[0] == 0 or layer.size[1] == 0:
+                parts_data[layer.name] = {
+                    'path': None,
+                    'size': layer.size,
+                    'bbox': layer.bbox,
+                    'offset': layer.offset,
+                }
                 continue
 
             # pil image
             img = Image.new("RGBA", layer.size, (0, 0, 0, 0))
             layer_img = layer.topil()
             if layer_img is not None:
-                img.paste(layer_img, (0, 0), mask=layer_img)
+                # img.paste(layer_img, (0, 0), mask=layer_img)
+                img.paste(layer_img, (0, 0))
 
             # filename
             name: str = layer.name.strip().translate(str.maketrans('*\\/:?"<>|', '-________', ''))
@@ -261,7 +268,7 @@ class MainWindow(QMainWindow):
             png_path = output_dir.joinpath(f'{name}.png')
             for i in range(1, 100):
                 if png_path.is_file():
-                    png_path = output_dir.joinpath(f'{name}_{i}.png')
+                    png_path = output_dir.joinpath(f'{name}_{i}_.png')
                 else:
                     break
 
@@ -269,7 +276,9 @@ class MainWindow(QMainWindow):
             # todo:compress_levelを変更してパフォーマンスをチェック
             # compress_levelは0-9で、0が圧縮なし、9が最大圧縮
             # defaultは6
-            img.save(png_path, format='PNG', compress_level=6)
+            # えーーなんでオプション付けると色変わるの？オプションはpathのみなら正しいっぽい
+            # img.save(png_path, format='PNG', compress_level=6)
+            img.save(png_path)
             self.add2log('Save PNG: ' + str(png_path).replace("\\", "/"))
 
             #
