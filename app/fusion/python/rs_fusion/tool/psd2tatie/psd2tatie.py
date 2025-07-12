@@ -781,6 +781,10 @@ class MainWindow(QMainWindow):
             )
             return
 
+        # ."を全角に変換
+        for layer in psd.descendants():
+            layer.name = layer.name.strip().replace('.', '．').replace('"', '”')
+
         # rename layers
         for layer in psd:
             if layer.is_group():

@@ -8,15 +8,6 @@ DATA_PATH = config.DATA_PATH.joinpath('app', 'Psd2Tatie')
 MAIN_OUTPUT_PATH = DATA_PATH.joinpath('main_output.json')
 BEFORE_INPUT_PATH = DATA_PATH.joinpath('before_input.json')
 AFTER_INPUT_PATH = DATA_PATH.joinpath('after_input.json')
-CUSTOM_DATA = """
-			CustomData = {
-				Path = {
-					Map = {
-						["Setting:"] = "%s"
-					}
-				},
-			},
-"""
 
 
 class MacroBuilder:
@@ -120,11 +111,14 @@ class MacroBuilder:
         for _tool in list(self.comp.GetToolList().values()):
             self.flow.Select(_tool, True)
 
-        dir_path = str(macro_path.parent).replace('/', '\\')
-        if not dir_path.endswith('\\'):
-            dir_path += '\\'
-
-        custom_data = CUSTOM_DATA % dir_path
+        #
+        m = '\n'.join([
+            macro.get_header(macro_name, True),
+            macro.get_input(main_in_list, in_list),
+            macro.get_output(output_list),
+            macro.get_footer(),
+        ])
+        print(m)
 
         # build
         self.comp.Execute(macro.get_save_script(
@@ -132,7 +126,6 @@ class MacroBuilder:
             macro_name,
             '\n'.join([
                 macro.get_header(macro_name, True),
-                # custom_data,
                 macro.get_input(main_in_list, in_list),
                 macro.get_output(output_list),
                 macro.get_footer(),
