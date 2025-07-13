@@ -60,6 +60,7 @@ FRONTMOST_COLOR = QColor(159, 125, 0)
 class ConfigData(config.Data):
     psd_path: str = ''
     dst_path: str = ''
+    use_clear: bool = True
     eye_close: str = ''
     mouth_a: str = ''
     mouth_i: str = ''
@@ -422,6 +423,13 @@ class MainWindow(QMainWindow):
 
         # png export
         out_dir = dst_path.joinpath(psd_path.stem)
+        if out_dir.is_dir():
+            if data.use_clear:
+                self.add2log('Clear output directory: %s' % str(out_dir).replace('\\', '/'))
+                for item in out_dir.iterdir():
+                    if item.is_file() and item.suffix.lower() == '.png':
+                        item.unlink()
+
         if not out_dir.is_dir():
             out_dir.mkdir(parents=True, exist_ok=True)
         parts_data = self.save_png(out_dir, config_data=data)
@@ -561,6 +569,7 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.psdLineEdit.setText(c.psd_path)
         self.ui.dstLineEdit.setText(c.dst_path)
+        self.ui.clearPngCheckBox.setChecked(c.use_clear)
         self.ui.closeComboBox.setCurrentText(c.eye_close)
         self.ui.aComboBox.setCurrentText(c.mouth_a)
         self.ui.iComboBox.setCurrentText(c.mouth_i)
@@ -594,6 +603,7 @@ class MainWindow(QMainWindow):
         c = ConfigData()
         c.psd_path = self.ui.psdLineEdit.text().strip().replace('\\', '/')
         c.dst_path = self.ui.dstLineEdit.text().strip().replace('\\', '/')
+        c.use_clear = self.ui.clearPngCheckBox.isChecked()
         c.eye_close = self.ui.closeComboBox.currentText()
         c.mouth_a = self.ui.aComboBox.currentText()
         c.mouth_i = self.ui.iComboBox.currentText()

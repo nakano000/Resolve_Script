@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>676</width>
-    <height>897</height>
+    <height>916</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -78,6 +78,16 @@
           </layout>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="clearPngCheckBox">
+         <property name="text">
+          <string>Clear old PNG files</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

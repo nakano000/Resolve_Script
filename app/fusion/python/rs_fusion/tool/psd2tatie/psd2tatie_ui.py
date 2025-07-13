@@ -16,12 +16,12 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QFormLayout,
-    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
-    QLabel, QLineEdit, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
-    QSplitter, QTextEdit, QToolButton, QTreeView,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
+    QFormLayout, QGridLayout, QGroupBox, QHBoxLayout,
+    QHeaderView, QLabel, QLineEdit, QMainWindow,
+    QMenu, QMenuBar, QPushButton, QSizePolicy,
+    QSpacerItem, QSplitter, QTextEdit, QToolButton,
+    QTreeView, QVBoxLayout, QWidget)
 
 from rs.gui.log import LogTextEdit
 
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(676, 897)
+        MainWindow.resize(676, 916)
         self.actionOpen = QAction(MainWindow)
         self.actionOpen.setObjectName(u"actionOpen")
         self.actionSave = QAction(MainWindow)
@@ -99,6 +99,12 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_2.addLayout(self.formLayout)
+
+        self.clearPngCheckBox = QCheckBox(self.fileGroupBox)
+        self.clearPngCheckBox.setObjectName(u"clearPngCheckBox")
+        self.clearPngCheckBox.setChecked(True)
+
+        self.verticalLayout_2.addWidget(self.clearPngCheckBox)
 
 
         self.verticalLayout_4.addWidget(self.fileGroupBox)
@@ -389,6 +395,7 @@ class Ui_MainWindow(object):
         self.psdToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"PNG save loc.", None))
         self.dstToolButton.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.clearPngCheckBox.setText(QCoreApplication.translate("MainWindow", u"Clear old PNG files", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Setting", None))
         self.groupBox_4.setTitle("")
         self.setFrontmostButton.setText(QCoreApplication.translate("MainWindow", u"Frontmost", None))
