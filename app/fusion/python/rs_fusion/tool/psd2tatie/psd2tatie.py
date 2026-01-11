@@ -20,7 +20,10 @@ from PySide6.QtWidgets import (
 
 from PySide6.QtGui import (
     QColor,
-    QStandardItemModel, QStandardItem, QPixmap, QIcon,
+    QStandardItemModel,
+    QStandardItem,
+    QPixmap,
+    QIcon,
 )
 from psd_tools import PSDImage
 from PIL import Image
@@ -60,6 +63,8 @@ FRONTMOST_COLOR = QColor(159, 125, 0)
 class ConfigData(config.Data):
     psd_path: str = ''
     dst_path: str = ''
+    output_name: str = '<PSD_NAME>_<SIZE>'
+    size: int = 100
     use_clear: bool = True
     eye_close: str = ''
     mouth_a: str = ''
@@ -174,6 +179,9 @@ class MainWindow(QMainWindow):
             config.RESOLVE_USER_PATH.joinpath('Templates', 'Edit', 'Generators'),
         ))
 
+        #
+        self.set_data(ConfigData())
+
     def make_tree_data(self, layer_list: list[str]) -> dict:
         dct = {}
         for layer in layer_list:
@@ -204,7 +212,7 @@ class MainWindow(QMainWindow):
         set_attrs(dct, self.info_data)
         return dct
 
-    def save_thumbnail(self, config_data: ConfigData):
+    def save_thumbnail(self, config_data: ConfigData, name: str):
         self.add2log('Making thumbnail...')
         # 104x58のサムネイルを保存
         # 下をクロップ
@@ -228,7 +236,7 @@ class MainWindow(QMainWindow):
             self.add2log('[ERROR] Failed to resize thumbnail image', log.ERROR_COLOR)
         # 保存先のパスを決定
         psd_path = Path(config_data.psd_path)
-        thumbnail_path = psd_path.with_suffix('.png')
+        thumbnail_path = psd_path.with_name(f'{name}.png')
         # サムネイルを保存
         thumbnail_img.save(thumbnail_path, format='PNG', compress_level=6)
         self.add2log('Thumbnail saved: %s' % str(thumbnail_path).replace('\\', '/'))
@@ -247,9 +255,20 @@ class MainWindow(QMainWindow):
             if layer.size[0] == 0 or layer.size[1] == 0:
                 parts_data[layer.name] = {
                     'path': None,
-                    'size': layer.size,
-                    'bbox': layer.bbox,
-                    'offset': layer.offset,
+                    'size': (
+                        layer.size[0] * config_data.size // 100,
+                        layer.size[1] * config_data.size // 100,
+                    ),
+                    'bbox': (
+                        layer.bbox[0] * config_data.size // 100,
+                        layer.bbox[1] * config_data.size // 100,
+                        layer.bbox[2] * config_data.size // 100,
+                        layer.bbox[3] * config_data.size // 100,
+                    ),
+                    'offset': (
+                        layer.offset[0] * config_data.size // 100,
+                        layer.offset[1] * config_data.size // 100,
+                    ),
                 }
                 continue
 
@@ -272,7 +291,10 @@ class MainWindow(QMainWindow):
                     png_path = output_dir.joinpath(f'{name}_{i}_.png')
                 else:
                     break
-
+            # resize image
+            img = img.resize(
+                (layer.size[0] * config_data.size // 100, layer.size[1] * config_data.size // 100)
+            )
             # save image
             # todo:compress_levelを変更してパフォーマンスをチェック
             # compress_levelは0-9で、0が圧縮なし、9が最大圧縮
@@ -285,9 +307,20 @@ class MainWindow(QMainWindow):
             #
             parts_data[layer.name] = {
                 'path': str(png_path).replace('\\', '/'),
-                'size': layer.size,
-                'bbox': layer.bbox,
-                'offset': layer.offset,
+                'size': (
+                    layer.size[0] * config_data.size // 100,
+                    layer.size[1] * config_data.size // 100,
+                ),
+                'bbox': (
+                    layer.bbox[0] * config_data.size // 100,
+                    layer.bbox[1] * config_data.size // 100,
+                    layer.bbox[2] * config_data.size // 100,
+                    layer.bbox[3] * config_data.size // 100,
+                ),
+                'offset': (
+                    layer.offset[0] * config_data.size // 100,
+                    layer.offset[1] * config_data.size // 100,
+                ),
             }
 
         return parts_data
@@ -388,6 +421,8 @@ class MainWindow(QMainWindow):
         if not dst_path.is_dir():
             self.add2log(f'[ERROR] Output directory does not exist:\n{dst_path}', log.ERROR_COLOR)
             return
+        if data.output_name == '':
+            self.add2log('[ERROR] Please enter output name', log.ERROR_COLOR)
 
         if data.eye_close == '':
             self.add2log('[ERROR] Please select eye close layer', log.ERROR_COLOR)
@@ -411,8 +446,11 @@ class MainWindow(QMainWindow):
             self.add2log('[ERROR] Please select mouth N layer', log.ERROR_COLOR)
             return
 
+        # output name
+        output_name = data.output_name.replace('<PSD_NAME>', psd_path.stem).replace('<SIZE>', str(data.size))
+
         # save thumbnail
-        self.save_thumbnail(data)
+        self.save_thumbnail(data, output_name)
 
         # OpenEXR
         # exr_path = psd_path.with_suffix('.exr')
@@ -422,7 +460,7 @@ class MainWindow(QMainWindow):
         #     return
 
         # png export
-        out_dir = dst_path.joinpath(psd_path.stem)
+        out_dir = dst_path.joinpath(output_name)
         if out_dir.is_dir():
             if data.use_clear:
                 self.add2log('Clear output directory: %s' % str(out_dir).replace('\\', '/'))
@@ -491,15 +529,16 @@ class MainWindow(QMainWindow):
             o_layer=data.mouth_o,
             n_layer=data.mouth_n,
             parts_data=parts_data,
-            canvas_width=self.canvas_width,
-            canvas_height=self.canvas_height,
+            canvas_width=self.canvas_width * data.size // 100,
+            canvas_height=self.canvas_height * data.size // 100,
         )
         importer.make()
         self.add2log('Import completed')
 
         # macro
         self.add2log('Saving macro...')
-        macro_path = psd_path.with_suffix('.setting')
+        # macro_path = psd_path.with_suffix('.setting')
+        macro_path = psd_path.with_name(output_name + '.setting')
         macro_builder = MacroBuilder(comp)
         macro_builder.build('Template', macro_path)
         self.add2log(f'Macro saved: {macro_path}')
@@ -569,6 +608,8 @@ class MainWindow(QMainWindow):
     def set_data(self, c: ConfigData):
         self.ui.psdLineEdit.setText(c.psd_path)
         self.ui.dstLineEdit.setText(c.dst_path)
+        self.ui.outputLineEdit.setText(c.output_name)
+        self.ui.sizeSpinBox.setValue(c.size)
         self.ui.clearPngCheckBox.setChecked(c.use_clear)
         self.ui.closeComboBox.setCurrentText(c.eye_close)
         self.ui.aComboBox.setCurrentText(c.mouth_a)
@@ -603,6 +644,8 @@ class MainWindow(QMainWindow):
         c = ConfigData()
         c.psd_path = self.ui.psdLineEdit.text().strip().replace('\\', '/')
         c.dst_path = self.ui.dstLineEdit.text().strip().replace('\\', '/')
+        c.output_name = self.ui.outputLineEdit.text().strip()
+        c.size = self.ui.sizeSpinBox.value()
         c.use_clear = self.ui.clearPngCheckBox.isChecked()
         c.eye_close = self.ui.closeComboBox.currentText()
         c.mouth_a = self.ui.aComboBox.currentText()
