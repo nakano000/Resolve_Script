@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
         self.pivot_window = None
         self.insert_window = None
         self.copy_window = None
+        self.duplicate_window = None
         self.bake_window = None
         self.bg_window = None
         self.color_window = None
@@ -59,6 +60,7 @@ class MainWindow(QMainWindow):
         lst = [
             ('STILL IMAGE', self.load),
             ('SEPARATE LAYERS', self.separate),
+            ('DUPLICATE', self.duplicate_tool),
             ('MERGE', self.merge),
             ('INSERT', self.insert_tool),
             ('NUDGE', self.nudge_tool),
@@ -126,6 +128,12 @@ class MainWindow(QMainWindow):
         if self.copy_window is None:
             self.copy_window = CopyWindow(fusion=self.fusion)
         self.copy_window.show()
+
+    def duplicate_tool(self):
+        from rs_fusion.tool.duplicate_tool import MainWindow as DuplicateWindow
+        if self.duplicate_window is None:
+            self.duplicate_window = DuplicateWindow(fusion=self.fusion)
+        self.duplicate_window.show()
 
     def bake_tool(self):
         from rs_fusion.tool.bake_tool import MainWindow as BakeWindow
