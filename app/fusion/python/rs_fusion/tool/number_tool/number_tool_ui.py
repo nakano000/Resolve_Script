@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'number_tool.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.2
+## Created by: Qt User Interface Compiler version 6.9.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -15,11 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QGridLayout, QGroupBox,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QRadioButton, QSizePolicy,
-    QSpacerItem, QSpinBox, QTabWidget, QToolButton,
-    QTreeView, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QButtonGroup, QGridLayout,
+    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QRadioButton,
+    QSizePolicy, QSpacerItem, QSpinBox, QTabWidget,
+    QToolButton, QTreeView, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -39,8 +39,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.toolTreeView = QTreeView(self.tab)
         self.toolTreeView.setObjectName(u"toolTreeView")
-        self.toolTreeView.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.toolTreeView.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.toolTreeView.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.toolTreeView.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
 
         self.verticalLayout_3.addWidget(self.toolTreeView)
 
@@ -80,22 +80,27 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QHBoxLayout(self.groupBox_4)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.l2rRadioButton = QRadioButton(self.groupBox_4)
+        self.buttonGroup_3 = QButtonGroup(MainWindow)
+        self.buttonGroup_3.setObjectName(u"buttonGroup_3")
+        self.buttonGroup_3.addButton(self.l2rRadioButton)
         self.l2rRadioButton.setObjectName(u"l2rRadioButton")
         self.l2rRadioButton.setChecked(True)
 
         self.horizontalLayout_3.addWidget(self.l2rRadioButton)
 
         self.r2lRadioButton = QRadioButton(self.groupBox_4)
+        self.buttonGroup_3.addButton(self.r2lRadioButton)
         self.r2lRadioButton.setObjectName(u"r2lRadioButton")
 
         self.horizontalLayout_3.addWidget(self.r2lRadioButton)
 
         self.randomRadioButton = QRadioButton(self.groupBox_4)
+        self.buttonGroup_3.addButton(self.randomRadioButton)
         self.randomRadioButton.setObjectName(u"randomRadioButton")
 
         self.horizontalLayout_3.addWidget(self.randomRadioButton)
 
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_4)
 
@@ -104,7 +109,7 @@ class Ui_MainWindow(object):
 
         self.alignGroupBox = QGroupBox(self.centralwidget)
         self.alignGroupBox.setObjectName(u"alignGroupBox")
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.alignGroupBox.sizePolicy().hasHeightForWidth())
@@ -117,7 +122,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.alignRButton = QPushButton(self.alignGroupBox)
         self.alignRButton.setObjectName(u"alignRButton")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.alignRButton.sizePolicy().hasHeightForWidth())
@@ -175,7 +180,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addLayout(self.gridLayout_2)
 
-        self.horizontalSpacer_2 = QSpacerItem(51, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(51, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
 
@@ -197,17 +202,21 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.currentFrameRadioButton = QRadioButton(self.groupBox)
+        self.buttonGroup = QButtonGroup(MainWindow)
+        self.buttonGroup.setObjectName(u"buttonGroup")
+        self.buttonGroup.addButton(self.currentFrameRadioButton)
         self.currentFrameRadioButton.setObjectName(u"currentFrameRadioButton")
         self.currentFrameRadioButton.setChecked(True)
 
         self.horizontalLayout_5.addWidget(self.currentFrameRadioButton)
 
         self.keyFrameRadioButton = QRadioButton(self.groupBox)
+        self.buttonGroup.addButton(self.keyFrameRadioButton)
         self.keyFrameRadioButton.setObjectName(u"keyFrameRadioButton")
 
         self.horizontalLayout_5.addWidget(self.keyFrameRadioButton)
 
-        self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_5.addItem(self.horizontalSpacer_13)
 
@@ -229,7 +238,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.keyFrameIndexSpinBox)
 
-        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_14)
 
@@ -242,17 +251,21 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.absoluteRadioButton = QRadioButton(self.groupBox_2)
+        self.buttonGroup_2 = QButtonGroup(MainWindow)
+        self.buttonGroup_2.setObjectName(u"buttonGroup_2")
+        self.buttonGroup_2.addButton(self.absoluteRadioButton)
         self.absoluteRadioButton.setObjectName(u"absoluteRadioButton")
         self.absoluteRadioButton.setChecked(True)
 
         self.horizontalLayout_4.addWidget(self.absoluteRadioButton)
 
         self.relativeRadioButton = QRadioButton(self.groupBox_2)
+        self.buttonGroup_2.addButton(self.relativeRadioButton)
         self.relativeRadioButton.setObjectName(u"relativeRadioButton")
 
         self.horizontalLayout_4.addWidget(self.relativeRadioButton)
 
-        self.horizontalSpacer_3 = QSpacerItem(0, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_3 = QSpacerItem(0, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer_3)
 
@@ -271,13 +284,13 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.valueLineEdit, 0, 1, 1, 1)
 
-        self.horizontalSpacer_5 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_5 = QSpacerItem(13, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_5, 0, 2, 1, 1)
 
         self.setButton = QPushButton(self.groupBox_2)
         self.setButton.setObjectName(u"setButton")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.setButton.sizePolicy().hasHeightForWidth())
@@ -297,11 +310,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.stepLineEdit, 1, 1, 1, 1)
 
-        self.horizontalSpacer_6 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_6 = QSpacerItem(13, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_6, 1, 2, 1, 1)
 
-        self.verticalSpacer = QSpacerItem(20, 13, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer = QSpacerItem(20, 13, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
         self.gridLayout.addItem(self.verticalSpacer, 2, 0, 1, 1)
 
@@ -315,7 +328,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.infLineEdit, 3, 1, 1, 1)
 
-        self.horizontalSpacer_9 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_9 = QSpacerItem(13, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_9, 3, 2, 1, 1)
 
@@ -338,7 +351,7 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.supLineEdit, 4, 1, 1, 1)
 
-        self.horizontalSpacer_10 = QSpacerItem(13, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_10 = QSpacerItem(13, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
         self.gridLayout.addItem(self.horizontalSpacer_10, 4, 2, 1, 1)
 
@@ -357,14 +370,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.sourceButton)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
         self.minimizeButton = QToolButton(self.centralwidget)
         self.minimizeButton.setObjectName(u"minimizeButton")
         self.minimizeButton.setMinimumSize(QSize(30, 30))
-        self.minimizeButton.setArrowType(Qt.DownArrow)
+        self.minimizeButton.setArrowType(Qt.ArrowType.DownArrow)
 
         self.horizontalLayout.addWidget(self.minimizeButton)
 

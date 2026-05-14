@@ -44,6 +44,7 @@ class MainWindow(QMainWindow):
         # event
         #
         self.ui.duplicateButton.clicked.connect(self.duplicate_node)
+        self.ui.spinBox.lineEdit().returnPressed.connect(self.duplicate_node)
         self.ui.closeButton.clicked.connect(self.close)
 
         #
