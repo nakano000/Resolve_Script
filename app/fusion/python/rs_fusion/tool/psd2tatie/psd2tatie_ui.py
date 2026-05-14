@@ -352,9 +352,6 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addItem(self.verticalSpacer_3, 6, 1, 1, 1)
 
         self.tabWidget.addTab(self.tab, "")
-        self.tab_2 = QWidget()
-        self.tab_2.setObjectName(u"tab_2")
-        self.tabWidget.addTab(self.tab_2, "")
 
         self.verticalLayout_7.addWidget(self.tabWidget)
 
@@ -492,7 +489,6 @@ class Ui_MainWindow(object):
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"I", None))
         self.setNToolButton.setText(QCoreApplication.translate("MainWindow", u"Set", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"AIUEO", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Open", None))
         self.logGroupBox.setTitle(QCoreApplication.translate("MainWindow", u"Log", None))
         self.convertButton.setText(QCoreApplication.translate("MainWindow", u"convert", None))
         self.closeButton.setText(QCoreApplication.translate("MainWindow", u"close", None))
