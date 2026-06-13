@@ -603,6 +603,36 @@ class MainWindow(QMainWindow):
         comp.EndUndo(True)
         self.add2log('Apply Anim: Done')
 
+    def set_anim_ofx(self, comp, ch_data, f):
+        self.add2log(f'Load Anim({ch_data.anim_type.strip().lower()}, {ch_data.anim_parameter}): Start')
+        lab_file = f.with_suffix('.lab')
+        ch_data.anim_type = ch_data.anim_type.strip().lower()
+        offset = comp.GetAttrs()['COMPN_GlobalStart']
+        if  not lab_file.is_file():
+            self.add2log(f'labファイルが見付かりません。{str(lab_file)}', log.ERROR_COLOR)
+            return
+        tools = comp.GetToolList()
+        tool = None
+        for t in tools.values():
+            if t.ID.startswith('ofx.net.tachie_ofx.'):
+                tool = t
+                break
+        if tool is None:
+            self.add2log('立ち絵プラグインが見付かりません。', log.ERROR_COLOR)
+            return
+        # set Lip Sync
+        self.add2log('Apply Anim: Start')
+        comp.StartUndo('RS Lip Sync')
+        comp.Lock()
+        st = tool.SaveSettings()
+        st['Tools'][tool.Name]['Inputs']['@lipsync/use_lab']['Value'] = 1
+        st['Tools'][tool.Name]['Inputs']['@lipsync/lab_path']['Value'] = str(lab_file).replace('\\', '/')
+        st['Tools'][tool.Name]['Inputs']['@lipsync/offset_frames']['Value'] = offset
+        tool.LoadSettings(st)
+        comp.Unlock()
+        comp.EndUndo(True)
+        self.add2log('Apply Anim: Done')
+
     def set_anim_mm(self, comp, ch_data, f, fps):
         # get anim
         self.add2log(f'Load Anim({ch_data.anim_type.strip().lower()}, {ch_data.anim_parameter}): Start')
@@ -824,6 +854,8 @@ class MainWindow(QMainWindow):
                         self.set_anim_mm_o(comp, f, fps)
                     else:
                         self.set_anim_mm(comp, ch_data, f, fps)
+                elif ch_data.anim_parameter == '<TACHIE_OFX>':
+                    self.set_anim_ofx(comp, ch_data, f)
                 else:
                     self.set_anim(comp, tool, ch_data, f, fps)
 
